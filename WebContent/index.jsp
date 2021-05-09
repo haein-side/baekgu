@@ -18,6 +18,11 @@
 		
 	<!-- 관리자페이지 테스트 -->
 <%-- 	<jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward> --%>
+	<%-- <jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward> --%>
+
+	
+	<!-- 상세공고페이지 테스트 -->
+	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward>
 	
 </body>
 </html>
