@@ -1,10 +1,10 @@
 @font-face {
 	font-family: "Nanum";
-	src: url(../FONTS/Nanum.ttf);
+	src: url(../../../FONTS/NanumBarunGothic.ttf);
 }
 @font-face {
 	font-family: "BM";
-	src: url(../FONTS/BM.ttf);
+	src: url(../../../FONTS/BMEuljiro10yearslater.ttf);
 }
 html,
 body {
