@@ -27,6 +27,7 @@
 	<!-- 공고 상세보기 테스트 -->
 	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward>
 
-	
+
+
 </body>
 </html>
