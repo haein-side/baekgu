@@ -8,7 +8,21 @@
 </head>
 <body>
 	
+<%-- 	<!-- 고객페이지 테스트 -->
 	<jsp:forward page="/WEB-INF/views/customer/main/main.jsp"></jsp:forward>
 	
+	<!-- 기업페이지 테스트 -->
+	<jsp:forward page="/WEB-INF/views/business/main/main.jsp"></jsp:forward> --%>
+		
+	<!-- 관리자페이지 테스트 -->
+	<%-- <jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward> --%>
+<<<<<<< HEAD
+=======
+	
+	<!-- 상세공고페이지 테스트 -->
+	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward>
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
+	
+	<jsp:forward page="WEB-INF/views/customer/main/signup.jsp"></jsp:forward>
 </body>
 </html>
