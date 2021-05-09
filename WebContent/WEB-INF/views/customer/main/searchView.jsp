@@ -9,9 +9,6 @@
 <!-- Css Styles -->
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
-
-
-
 </head>
 
 <body>
