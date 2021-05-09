@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+
+@font-face {
+  font-family: "Nanum";
+src: url("../../FONTS/NanumBarunGothic.ttf");
+}
+
+ @font-face {
+    font-family: "BM";
+    src: url("../../FONTS/BMEuljiro10yearslater.ttf");
+ }
+
+
+
+
+/*  통화 가능시간 옵션 */
+.resume__possible-time {
+    padding-top: 10px;
+}
+
+/* 성격 및 강점 체크부분   */
+.resume__forte-list {
+    overflow: hidden;
+}
+.resume__forte-list li {
+    float: left;
+    width: 33.333%;
+    margin-bottom: 10px;
+}
+
+/* 각 단락마다 쓰는 legend부분  */
+.blind,
+legend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+
+/* 이력서 부분 input , textarea , select  */
+input.inp4 {
+    margin: 0;
+    padding: 0 4px;
+    height: 30px;
+    line-height: 27px;
+    *height: 18px;
+    *line-height: 20px;
+    border: 1px solid #d1d1d1;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    letter-spacing: 0;
+    font-family: "Nanum";
+}
+
+select.select {
+    height: 26px;
+    padding: 0 0 0 8px;
+    *height: 26px;
+    font-size: 20px;
+    border: 1px solid #d1d1d1;
+}
+
+.tblst {
+    clear: both;
+    border-top: 1px solid #494949;
+    border-bottom: 2px solid #494949;
+}
+
+.tblst .memotip {
+    position: relative;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+    background: #fff8d6;
+    border: 1px solid #d3c199;
+}
+
+/* 표 선 색깔 */
+.tblst td,
+.tblst th {
+    border-top: 1px solid #adadad;
+}
+
+.tblst td,
+.tblst td label,
+.tblst td select,
+.tblst th {
+    font-family: "Nanum";
+}
+
+/* body부분 표 카테고리 색. */
+.tblst th {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: #e0e0e0;
+    text-align: left;
+}
+.tblst th.brl {
+    border-left: 1px solid #e0e0e0;
+}
+/* 표 부분 카테고리 센터  */
+.tblst th span.txt {
+    display: inline-block;
+    margin-left: 19px;
+    padding-left: 20px;
+    background: url("//image.findall.co.kr/FACache/Job/Resume/common/ico_chk.png") no-repeat 0 4px;
+    color: #282828;
+}
+
+.tblst td {
+    padding: 12px 20px;
+    border-left: 1px solid #e0e0e0;
+}
+/* 첫째 단락 이름 ,성별, 생년월일 부분   */
+.tblst th.name {
+    letter-spacing: -1px;
+    font-weight: normal;
+    font-family: Malgun Gothic,gulim;
+    line-height: 21px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* 각종 태그 0 */
+a,
+abbr,
+address,
+b,
+blockquote,
+body,
+button,
+caption,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+input,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+select,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+tr,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/*  body , 각종 태그 설정 */
+body,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+label,
+select,
+textarea {
+    font-size: 20px;
+    font-family:  'Nanum';
+    color: #494949;
+    line-height: 18px;
+}
+
+/* 프레임 선 얇아지게  */
+button,
+fieldset,
+frame,
+iframe,
+img {
+    border: 0 none;
+}
+/* 테이블 넓이가 미들  */
+button,
+img,
+input,
+label,
+select,
+textarea {
+    vertical-align: middle;
+}
+
+/* ul , ol 동그라미 안보이게 할려고 만듦~~~!  */
+ol,
+ul {
+    list-style: none;
+}
+
+/* table td에 좌우여백을 넣고 싶을때는 inline요소를 사용하여 margin으로 대체 */
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+/* 테이블 각 단락 이름부분  */
+table caption {
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+/* 사진등록 버튼  */
+.button {
+
+    width: 100px;
+    background-color: #ff9046;
+    border: none;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+
+}
+
+/* 이력서저장 버튼  */
+.button2 {
+
+    /* width:200px; */
+    background-color: #ff9046;
+    border: none;
+    color: #fff;
+    padding: 15px 20;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+
+}
+
+
