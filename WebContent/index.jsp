@@ -19,7 +19,7 @@
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header.jsp"></jsp:forward>  --%>
 
 
-	<jsp:forward page="/WEB-INF/views/customer/common/footer.jsp"></jsp:forward>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/common/footer.jsp"></jsp:forward> --%>
 
 
 
