@@ -11,7 +11,7 @@
 
 
 	<!-- 고객페이지 테스트 -->
-	  	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"></jsp:forward> 
+	  <%-- 	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"></jsp:forward>  --%>
 	
 	<!-- 기업페이지 테스트 -->
 <%-- 	<jsp:forward page="/WEB-INF/views/business/main/addpost.jsp"></jsp:forward> --%>
@@ -24,7 +24,8 @@
 <%-- 	<jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward> --%>
 	<%-- <jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward> --%>
 
-	
+	<!-- 공고 상세보기 테스트 -->
+	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward>
 
 	
 </body>
