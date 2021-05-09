@@ -5,155 +5,425 @@
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      background: darkslategrey;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      /* background-color: #f1f1f1; */
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-  </style>
-</head>
-<body>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Guide &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">백구</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="home.html">홈</a></li>
-        <li><a href="#">공고등록</a></li>
-        <li><a href="#">지원자관리</a></li>
-        <li class="active"><a href="#">공고관리</a></li>
-        <li ><a href="payment.html">결제관리</a></li>
-        <li><a href="ad.html">상품안내</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">회사명</a></li>
-        <li><a href="#">담당자명</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/animate.css">
+	<!-- Flexslider -->
+	<!-- <link rel="stylesheet" href="css/flexslider.css"> -->
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/icomoon.css">
+	<!-- Magnific Popup -->
+	<!-- <link rel="stylesheet" href="css/magnific-popup.css"> -->
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/bootstrap.css">
+
+	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/style.css">
+
+
+	<!-- 오렌지 색상
+	FF7844 -->
+	
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	
+	<!-- 로딩 중일 때 이미지 -->
+	<!-- <div class="fh5co-loader"></div> -->
+	
+	
+	<div id="fh5co-page">
+		<section id="fh5co-header">
+			<div class="container">
+				<nav role="navigation">
+					<ul class="pull-left left-menu">
+						
+					</ul>
+					<h1 id="fh5co-logo">
+						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
+						<a href="index.html"><img src="RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+					</h1>
+					<ul class="pull-right right-menu">
+						<!-- 로그인, 회원가입 -->
+						<li><a href="#" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
+						<li class="fh5co-cta-btn"><a href="#"style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<!-- #fh5co-header -->
+
+		<section id="fh5co-hero" class="js-fullheight" style="background-image: url(RESOURCES/IMAGES/grass.jpg); height:561px;" data-next="yes">
+			<div class="fh5co-overlay"></div>
+			<div class="container">
+				<div class="fh5co-intro js-fullheight"  >
+					<div class="fh5co-intro-text" style="padding-top:200px;">
+						<div class="fh5co-left-position">
+							<!-- 시작페이지 타이틀 -->
+							<h2 class="animate-box" style="font-family: BME; font-size: 90px;">백세 구인구직, 백구</h2>
+							<p class="animate-box"></a> 
+								<!-- 채용공고 검색 버튼 / a 태그 뒤에 채용공고 검색 페이지로 이동하게 링크 수정해야 -->
+								<a href="http://freehtml5.co" target="_blank" class="btn btn-primary" style="font-family: icomoon; font-size: 40px;">채용공고 검색</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-learn-more animate-box" style="margin-left:-150.5px;">
+				<a href="#" class="scroll-btn">
+					<span class="text" style="font-family: icomoon; font-size: 20px;">중장년층을 위한 구인구직 사이트,<br> 백구에 대하여</span>
+					<span class="arrow"><i class="icon-chevron-down"></i></span>
+				</a>
+			</div>
+		</section>
+		<!-- END #fh5co-hero -->
+
+
+		<!-- 백구에 대한 설명 부분 시작 -->
+		<section id="fh5co-features">
+			<div class="container">
+				<div class="row text-center row-bottom-padded-md">
+					<div class="col-md-8 col-md-offset-2">
+						<!-- 이미지 수정해야 -->
+						<figure class="fh5co-devices animate-box"><img src="RESOURCES/IMAGES/baekgu3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></figure>
+						<!-- 백구 설명 타이틀 -->
+						<h2 class="fh5co-lead animate-box" style="font-family: BME; font-size: 70px;">단순하지만 똑똑한 백구</h2>
+						<!-- 백구 설명 타이틀 하단 내용 -->
+						<p class="fh5co-sub-lead animate-box" style="font-size: 25px;">중장년층 구직자를 위해 <br> 기존 구인구직 홈페이지의 복잡함은 덜고 편의성은 채웠습니다</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-search2"></i>
+							</div>
+							<!-- 설명1 -->
+							<h3  style="font-family: BME; font-size: 30px;">검색은 쉽게</h3>
+							<p style="font-size: 20px;">단순검색, 상세검색 중 원하는 것을 고르고 질문에 답하기만 하세요! 답변을 모아 백구가 검색해드립니다.</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-eye"></i>
+							</div>
+							<!-- 설명2 -->
+							<h3 style="font-family: BME; font-size: 30px;">조회는 상세하게</h3>
+							<p style="font-size: 20px;">검색은 손쉽게, 조회는 맞춤형으로 보세요! 알고리즘을 통해 사용자 개개인에게 꼭 맞는 구인 공고를 보여드립니다.</p>
+						</div>
+					</div>
+					<div class="clearfix visible-sm-block"></div>
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-expand2"></i>
+							</div>
+							<!-- 설명3 -->
+							<h3 style="font-family: BME; font-size: 30px;">글씨는 크게</h3>
+							<p style="font-size: 20px;">글씨가 보이지 않을 땐, 상단의 "글씨 크게" 버튼을 눌러보세요! 버튼 클릭 한 번으로 글씨를 글씨를 크게 만들 수 있습니다.</p>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-folder-open"></i>
+							</div>
+							<!-- 설명4 -->
+							<h3 style="font-family: BME; font-size: 30px;">이력서는 간편하게</h3>
+							<p style="font-size: 20px;">구직 할 때 필수인 이력서! 작성하는 게 어려우셨나요? 회원가입할 때 받은 기본 정보를 가지고 백구가 자동으로 작성해드립니다.</p>
+						</div>
+					</div>
+					<div class="clearfix visible-sm-block"></div>
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-mouse-pointer"></i>
+							</div>
+							<!-- 설명5 -->
+							<h3 style="font-family: BME; font-size: 30px;">지원은 하나로</h3>
+							<p style="font-size: 20px;">온라인 지원, 이메일 지원, 방문 지원... 백구는 지원하기 버튼 하나만 누르면 자동으로 이력서가 기업 담당자에게 전송됩니다.</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-feature">
+							<div class="fh5co-icon">
+								<i class="icon-briefcase"></i>
+							</div>
+							<!-- 설명6 -->
+							<h3 style="font-family: BME; font-size: 30px;">이 모든 걸 백구에서</h3>
+							<p style="font-size: 20px;">백구는 중장년층 구직자가 가장 쉽고 편하게 구인구직을 할 수 있도록 만들어졌습니다. 백구를 통해 제2의 인생을 시작하세요!</p>
+						</div>
+					</div>
+					<div class="clearfix visible-sm-block"></div>
+				</div>
+			</div>
+		</section>	
+
+
+
+		<!-- 팀 실버타운 소개 시작 -->
+		<section id="fh5co-testimonials" class="team" style="background-color: rgb(247, 240, 240);">
+			<div class="container">
+				<div class="row row-bottom-padded-sm">
+					<div class="col-md-6 col-md-offset-3 text-center">
+						<div class="fh5co-label animate-box" style="font-size: 23px;">팀 실버타운</div>
+						<h2 class="fh5co-lead animate-box" style="font-family: BME; font-size: 70px;">백구를 만든 사람들 </h2>
+						<p class="fh5co-sub-lead animate-box" style="font-size: 25px;">팀 실버타운은 중장년층 사용자를 생각하며<br> 고민하고 또 고민하며 만들었습니다</p>
+					</div>
+				</div>
+			
+			<!-- 팀원 profile 이미지, 한마디, 링크 시작 -->
+			  <div class="row justify-content-center">
+				<div class="col-xl-10">
+
+					<!-- 진서 시작 -->
+					<div class="col-xl-3 col-lg-4 col-md-6 animate-box">
+					  <div class="member">
+						  <!-- 프로필 이미지 수정해야-->
+						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<div class="member-info">
+						  <div class="member-info-content">
+							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">차진서</h4>
+							<!-- 팀원 한마디 수정해야 -->
+							<span style="font-size: 18px;">당신의 열정에 백구를 더하다</span> 
+							<!-- 깃허브 주소 -->
+							<a href="https://github.com/jinseo-James-Cha"><i class="icon-github"></i></a>
+							<!-- <img src="images/githubicon.png"  width="30" class="img-responsive"> -->
+						  </div>
+						  <div class="social"></div>
+						  	<a href=""><i class="bi bi-twitter"></i></a>
+							<a href=""><i class="bi bi-facebook"></i></a>
+							<a href=""><i class="bi bi-instagram"></i></a>
+							<a href=""><i class="bi bi-linkedin"></i></a>
+						  </div>
+						</div>
+					  </div>
+					</div>
+
+					<!-- 현우 시작 -->
+					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.1s">
+					  <div class="member">
+						  <!-- 프로필 이미지 수정해야-->
+						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<div class="member-info">
+						  <div class="member-info-content">
+							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">강현우</h4>
+							<!-- 팀원 한마디 수정해야 -->
+							<span style="font-size: 18px;">50세부터 100세까지,<br>
+								인생의 반을 사용할 새로운 직업 플랫폼</span>
+							<!-- 깃허브 주소 -->
+							<a href="https://github.com/HyonWooKang"><i class="icon-github"></i></a>
+						  </div>
+						</div>
+					  </div>
+					</div> 
+					
+					<!-- 현빈 시작 -->
+					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.2s">
+					  <div class="member">
+						  <!-- 프로필 이미지 수정해야-->
+						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<div class="member-info">
+						  <div class="member-info-content">
+							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김현빈</h4>
+							<span style="font-size: 18px;">부모님이 쓰신다는 마음으로 만들었습니다</span>
+							<!-- 깃허브 주소 -->
+							<a href="https://github.com/Priesticide"><i class="icon-github"></i></a>
+						  </div>
+						</div>
+					  </div>
+					</div> 
+	  
+					<!-- 유진 시작 -->
+					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
+					  <div class="member">
+						  <!-- 프로필 이미지 수정해야-->
+						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<div class="member-info">
+						  <div class="member-info-content">
+							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김유진</h4>
+							<span style="font-size: 18px;">백세 시대에 걸맞는<br>백구 시대를 만들었습니다</span>
+							<!-- 노션 주소로 수정해야 -->
+							<a href="https://github.com/YuJin-Kimm"><i class="icon-github"></i></a>
+						  </div>
+						</div>
+					  </div>
+					</div> 
+
+					<!--주영 시작 -->
+					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
+						<div class="member">
+							<!-- 프로필 이미지 수정해야-->
+						  <img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <div class="member-info">
+							<div class="member-info-content">
+							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">정주영</h4>
+							  <!-- 팀원 한마디 수정해야 -->
+							  <span style="font-size: 18px;">30년 뒤 내가 쓸 홈페이지, 백구</span>
+							  <a href="https://github.com/jeong-juyoung"><i class="icon-github"></i></a>
+							</div>
+						  </div>
+						</div>
+					  </div> 
+
+					  <!-- 해인 시작 -->
+					  <div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
+						<div class="member">
+							<!-- 프로필 이미지 수정해야-->
+						  <img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <div class="member-info">
+							<div class="member-info-content">
+							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김해인</h4>
+							  <span  style="font-size: 18px;">백구를 만들 수 있어서 좋았습니다</span>
+							  <a href="https://github.com/haein-side"><i class="icon-github"></i></a>
+							</div>
+						  </div>
+						</div>
+					  </div> 
+
+	  
+				  </div>
+				</div>
+			  </div>
+	  
+			</div>
+		  </section>
+		  <!-- 팀 실버타운 소개 끝 -->
+
+		  <!-- 푸터 시작 -->
+		<footer id="fh5co-footer" style="padding-top: 50px;" style="background-color: rgb(255, 254, 254);">
+			<div class="container">
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-3 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-footer-widget">
+							<h3 style="font-family: BME; font-size: 30px;">고객센터</h3>
+							<ul class="fh5co-links">
+								<li>02-1234-5678</a></li>
+								<li>상담시간 09:00~18:00</a></li>
+								<li>토,일요일 및 공휴일은 휴무</a></li>
+								<!-- 자주 묻는 질문들 링크 넣어야 -->
+								<li><a href="#">자주 묻는 질문들</a></li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-footer-widget">
+							<h3 style="font-family: BME; font-size: 30px;">광고문의</h3>
+							<ul class="fh5co-links">
+								<li>02-2345-6789</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-footer-widget">
+							<h3 style="font-family: BME; font-size: 30px;">약관 및 방침</h3>
+							<ul class="fh5co-links">
+								<!-- 이용 약관 링크 넣어야 -->
+								<li><a href="https://member.findjob.co.kr/Stipulation/Stipulation.asp?faflag=615">이용약관</a></li>
+								<!-- 개인정보처리방침 링크 넣어야 -->
+								<li><a href="https://member.findjob.co.kr/Stipulation/PrivacyRule.asp">개인정보처리방침</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-xs-12 animate-box">
+						<div class="fh5co-footer-widget">
+							<h3 style="font-family: BME; font-size: 30px;">백구 소스코드</h3>
+							<ul class="fh5co-social">
+								<!-- 백구 깃허브 주소 연결해놨음 -->
+								<li><a href="https://github.com/109SilverTown"><i class="icon-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				
+			</div>
+
+
+			<!-- 하단에 템플릿 출처 남겨놨음 -->
+			<div class="fh5co-copyright animate-box">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p class="fh5co-left"><small>&copy; 2016 <a href="index.html">Guide</a> free html5. All Rights Reserved.</small></p>
+							<p class="fh5co-right"><small class="fh5co-right">Designed by <a href="http://freehtml5.co" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></small></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+
+
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
+
+	<!-- 
+	INFO:
+	jQuery Cookie for Demo Purposes Only. 
+	The code below is to toggle the layout to boxed or wide 
+	-->
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+		$(function(){
+
+			if ( $.cookie('layoutCookie') != '' ) {
+				$('body').addClass($.cookie('layoutCookie'));
+			}
+
+			$('a[data-layout="boxed"]').click(function(event){
+				event.preventDefault();
+				$.cookie('layoutCookie', 'boxed', { expires: 7, path: '/'});
+				$('body').addClass($.cookie('layoutCookie')); // the value is boxed.
+			});
+
+			$('a[data-layout="wide"]').click(function(event){
+				event.preventDefault();
+				$('body').removeClass($.cookie('layoutCookie')); // the value is boxed.
+				$.removeCookie('layoutCookie', { path: '/' }); // remove the value of our cookie 'layoutCookie'
+			});
+		});
+	</script>
+	
+
+	</body>
   
-<div class="container-fluid text-center" style="padding-left: 0%;">    
-  <div class="row content" style="height: auto;">
-    <div class="col-sm-1 sidenav">
-    </div>
-    <div class="col-sm-10 text-left"> 
-      <h1>공고관리</h1>
-      <ul style="padding-left: 25px;">
-        <li> 해당 공고의 지원자 정보를 보시려면 '상세보기' 버튼을 눌러주세요</li>
-        <li> 대기 목록에는 미승인 공고 또는 게시되지 않은 공고가 표시됩니다 </li>
-        <li> 진행중인 공고는 수정이 불가능합니다</li>
-        <li> 마감된 공고는 연장버튼을 통해 재등록 할 수 있습니다</li>
-      </ul>
-      <hr>
-      <!-- <h3>Test</h3>
-      <p>Lorem ipsum...</p> -->
-      <div class="btn-group btn-group-justified">
-        <a href="#" class="btn btn-primary active">전체 (n건)</a>
-        <a href="#" class="btn btn-primary">대기 (n건)</a>
-        <a href="#" class="btn btn-primary">진행 (n건)</a>
-        <a href="#" class="btn btn-primary">마감 (n건)</a>
-      </div>
-       
-      <br>
-      <br>
-
-        
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>공고제목</th>
-              <th>공고기간</th>
-              <th>공고등록일</th>
-              <th>공고업종</th>
-              <th>지원자수</th>
-            </tr>
-          </thead>
-
-          <!-- for-loop 을 이용하여 공고 리스트 출력 -->
-          <tbody>
-            <tr>
-              <td>백앤드 자바 개발자를 구합니다</td>
-              <td>시작일 : 2021-02-10<br>마감일 : 2021-02-20</td>
-              <td>2021-02-08</td>
-              <td>IT</td>
-              <td style="text-align: center;">12 <input type="button" value="상세보기"/></td>
-            </tr>
-          </tbody>
-          <!-- for loop 끝-->
-        </table>
-        
-
-      <br>
-      <br>
-      <div class="text-center">
-        <ul class="pagination"  align="center">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div>
-
-   
-
-  </div>
-
-
-
-  <div class="col-sm-1 sidenav">
-  </div>
-</div>
-
-<footer class="container-fluid text-center">
-  <!-- <footer class="footer navbar-fixed-bottom text-center"> -->
-  <!-- <div class="footer fixed-bottom"> -->
-    <p>Footer Text</p>
-
-  <!-- </div> -->
-</footer>
-
-</body>
+  
+  
+  
+  
 </html>
