@@ -9,9 +9,9 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleHeader.css">
 
 	</head>
 	<body>
@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col">
-					<a class="navbar-brand" href="index.html"><img src="images/백구로고.png" width="150" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+					<a class="navbar-brand" href="index.html"><img src="RESOURCES/IMAGES/백구로고.png" width="150" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 				</div>
 				<div class="col d-flex justify-content-end">
 		    		<p class="mb-0 d-flex">
