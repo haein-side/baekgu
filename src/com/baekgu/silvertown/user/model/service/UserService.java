@@ -1,12 +1,12 @@
 package com.baekgu.silvertown.user.model.service;
 
-import static com.greedy.mvc.common.jdbc.JDBCTemplate.close;
-import static com.greedy.mvc.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 
-import com.greedy.mvc.employee.model.dao.EmployeeDAO;
-import com.greedy.mvc.employee.model.dto.EmployeeDTO;
+import com.baekgu.silvertown.user.model.dao.USerDAO;
+
 
 /*
  * 1. connection 객체 생성
