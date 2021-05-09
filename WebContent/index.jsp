@@ -13,10 +13,11 @@
 
 < 	<!-- 고객페이지 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"></jsp:forward> --%>
-	<jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"></jsp:forward>
+	<jsp:forward page="/WEB-INF/views/customer/common/footer.jsp"></jsp:forward>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"></jsp:forward> --%>
 
 	<!-- 고객페이지 테스트 -->
-	  	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"></jsp:forward> 
+	  	<%-- <jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"></jsp:forward> --%> 
 	
 	<!-- 기업페이지 테스트 -->
 <%-- 	<jsp:forward page="/WEB-INF/views/business/main/addpost.jsp"></jsp:forward> --%>

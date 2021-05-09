@@ -1,15 +1,16 @@
 /* 나눔바른고딕, 을지로 10년후 체 */
 @font-face {
   font-family: 'icomoon';
-  src: url("../입사지원관리/NanumBarunGothic.ttf");
+  src: url("../../FONTS/NanumBarunGothic.ttf");
   font-style: normal;
 }
 @font-face {
   font-family: 'BME';
-  src: url("../입사지원관리/BMEuljiro10yearslater.ttf");
+  src: url("../../FONTS/BMEuljiro10yearslater.ttf");
   font-style: normal;
 }
 
+ 
 #fh5co-footer {
   background-color: #fff;
   padding: 7em 0;
