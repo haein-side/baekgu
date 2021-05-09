@@ -1,15 +1,15 @@
 /* 나눔바른고딕, 을지로 10년후 체 */
 @font-face {
   font-family: 'icomoon';
-  src: url("../FONTS/NanumBarunGothic.ttf");
-  src: url("../FONTS/NanumBarunGothic.ttf") format("embedded-opentype"), url("../FONTS/NanumBarunGothic.ttf") format("truetype"), url("../FONTS/NanumBarunGothic.ttf") format("woff"), url("../FONTS/NanumBarunGothic.ttf") format("svg");
+  src: url("../../FONTS/NanumBarunGothic.ttf");
+  src: url("../../FONTS/NanumBarunGothic.ttf") format("embedded-opentype"), url("../../FONTS/NanumBarunGothic.ttf") format("truetype"), url("../../FONTS/NanumBarunGothic.ttf") format("woff"), url("../../FONTS/NanumBarunGothic.ttf") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'BME';
-  src: url("../FONTS/BMEuljiro10yearslater.ttf");
-  src: url("../FONTS/BMEuljiro10yearslater.ttf") format("embedded-opentype"), url("../FONTS/BMEuljiro10yearslater.ttf") format("truetype"), url("../FONTS/BMEuljiro10yearslater.ttf") format("woff"), url("../FONTS/BMEuljiro10yearslater.ttf") format("svg");
+  src: url("../../FONTS/BMEuljiro10yearslater.ttf");
+  src: url("../../FONTS/BMEuljiro10yearslater.ttf") format("embedded-opentype"), url("../../FONTS/BMEuljiro10yearslater.ttf") format("truetype"), url("../../FONTS/BMEuljiro10yearslater.ttf") format("woff"), url("../../FONTS/BMEuljiro10yearslater.ttf") format("svg");
   font-weight: normal;
   font-style: normal;
 }
