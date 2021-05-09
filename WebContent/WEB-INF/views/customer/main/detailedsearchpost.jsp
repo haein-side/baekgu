@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>¹é¼¼±¸&nbsp;ÀÎ±¸Á÷</title>
+        <title>ë°±ì„¸êµ¬&nbsp;ì¸êµ¬ì§</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/bootstrapSP.css">    
         <!-- main css -->
@@ -31,6 +31,7 @@
         </style>
     </head>
     <body>
+     	<%@ include file="../common/header.jsp" %>
         <!--================Header Area =================-->
         <!-- <header class="header_area">
             <div class="container">
@@ -64,22 +65,22 @@
             </div>
         </header> -->
         
-        <!-- »ó´Ü ¹Ù-->
+        <!-- ìƒë‹¨ ë°”-->
         <section style="margin-top: 30px;margin-bottom: 30px;">
             <div>
                 <br><br>
-                <p style="font-size: xx-large;">°ø°í&nbsp;°Ë»ö(»ó¼¼ °Ë»ö)</p><br><br>
+                <p style="font-size: xx-large;">ê³µê³ &nbsp;ê²€ìƒ‰(ìƒì„¸ ê²€ìƒ‰)</p><br><br>
             </div>
         </section>
-        <!--±âº» ¹öÆ° »ó¼¼ ¹öÆ°-->
+        <!--ê¸°ë³¸ ë²„íŠ¼ ìƒì„¸ ë²„íŠ¼-->
         <section>
             <div align="center" id="btn_group">
-                <a href="index.html" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">±âº» °Ë»ö</a>
-                <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;margin-left: 160px;"disabled>»ó¼¼ °Ë»ö</a>
+                <a href="index.html" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">ê¸°ë³¸ ê²€ìƒ‰</a>
+                <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;margin-left: 160px;"disabled>ìƒì„¸ ê²€ìƒ‰</a>
                 <br><br><br>
             </div>
         </section>
-        <!--Áöµµ ÀÚ¸®ÀÔ´Ï´Ù....-->
+        <!--ì§€ë„ ìë¦¬ì…ë‹ˆë‹¤....-->
         <section>
             <div>
                 <div>
@@ -87,79 +88,80 @@
                 </div>
             </div>
         </section>
-        <!--================ Á÷Á¾ ¼±ÅÃ  =================-->
+        <!--================ ì§ì¢… ì„ íƒ  =================-->
         <section class="facilities_area section_gap" style="padding-top: 50px;padding-bottom: 10px;">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="" style="transform: translateY(-29.3162px); height: 900px;">  
             </div> 
             </div>
               <div class="container">
                 <div class="section_title text-center">
-                    <h2 class="title_w"> Èñ¸Á Á÷Á¾À» ¼±ÅÃÇØ ÁÖ¼¼¿ä!</h2>
+                    <h2 class="title_w"> í¬ë§ ì§ì¢…ì„ ì„ íƒí•´ ì£¼ì„¸ìš”!</h2>
                     <br><br>
                     <div align="center"> 
                    <div style="width: 700px;;">
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>½Ä&nbsp;´ç</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;"><br>¸ÅÀå<br>°ü¸®</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>»ó&nbsp;´ã</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>°Ç&nbsp;¼³</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>°£&nbsp;È£</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>±³&nbsp;»ç</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>¿î&nbsp;Àü</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>»ç&nbsp;¹«</a>
-                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>±â&nbsp;Å¸</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ì‹&nbsp;ë‹¹</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;"><br>ë§¤ì¥<br>ê´€ë¦¬</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ìƒ&nbsp;ë‹´</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ê±´&nbsp;ì„¤</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ê°„&nbsp;í˜¸</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>êµ&nbsp;ì‚¬</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ìš´&nbsp;ì „</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ì‚¬&nbsp;ë¬´</a>
+                    <a href="#job" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ê¸°&nbsp;íƒ€</a>
                 </div>   
             </div>    
+            
         </div>
     </div>
 </section>
-<!-- »ó¼¼Á÷Á¾ °Ë»ö-->
+<!-- ìƒì„¸ì§ì¢… ê²€ìƒ‰-->
 <section class="job"style="margin-top: 150px; margin-bottom: 150px;" id="job">
     <div class="container">
         <div class="section_title text-center">
             <br>
             <br>
-            <h2 class="title title_color">Èñ¸Á Á÷Á¾À» ´õ »ó¼¼ÇÏ°Ô ¼±ÅÃÇØÁÖ¼¼¿ä.</h2>
+            <h2 class="title title_color">í¬ë§ ì§ì¢…ì„ ë” ìƒì„¸í•˜ê²Œ ì„ íƒí•´ì£¼ì„¸ìš”.</h2>
             <br><br>
             <div align="center">
                 <div>
-                    <!-- for loop À¸·Î Á÷Á¾¿¡´ëÇÑ »ó¼¼ Ä«Å×°í¸® -->
-                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">ÁÖ¹æÀå</a>
-                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">¼­&nbsp;ºù</a>
-                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 20px;">µğ½¬ ¿ö¼Å</a>
-                    <a href="#times" id="times"class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">Ä³&nbsp;¼Å</a>
+                    <!-- for loop ìœ¼ë¡œ ì§ì¢…ì—ëŒ€í•œ ìƒì„¸ ì¹´í…Œê³ ë¦¬ -->
+                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">ì£¼ë°©ì¥</a>
+                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">ì„œ&nbsp;ë¹™</a>
+                    <a href="#times" class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 20px;">ë””ì‰¬ ì›Œì…”</a>
+                    <a href="#times" id="times"class="button_hover theme_btn_two" style="width : 100pt;height: 70pt;border-radius: 10px;font-size:x-large;padding-top: 34px;">ìº&nbsp;ì…”</a>
 
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ±Ù¹« ½Ã°£ -->
+<!-- ê·¼ë¬´ ì‹œê°„ -->
 <section class="job_area section_gap">
     <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="" style="transform: translateY(-29.3162px); height: 900px;">  
     </div> 
     <div class="container">
         <div class="section_title text-center">
             <br><br><br><br><br><br><br>
-                <h2 class="title_w">¿øÇÏ½Ã´Â ±Ù¹« ½Ã°£ÀÌ ÀÖÀ¸½Å°¡¿ä?</h2>
+                <h2 class="title_w">ì›í•˜ì‹œëŠ” ê·¼ë¬´ ì‹œê°„ì´ ìˆìœ¼ì‹ ê°€ìš”?</h2>
                 <br>
                 <br>
                 <div align="center">
                     <div style="display: flex;" align="left"> 
                         <div style ="width: 400px;">
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> Ç®Å¸ÀÓ</label><br>
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> Àú³á(18½Ã ~ 24½Ã)</label>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> í’€íƒ€ì„</label><br>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ì €ë…(18ì‹œ ~ 24ì‹œ)</label>
                         </div>
                         <div style="width: 400px">
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ¿ÀÀü(6½Ã ~ 12½Ã)</label><br>
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> »õº®(0½Ã ~ 4½Ã)</label>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ì˜¤ì „(6ì‹œ ~ 12ì‹œ)</label><br>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ìƒˆë²½(0ì‹œ ~ 4ì‹œ)</label>
                         </div>
                         <div style="width: 400px">
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ¿ÀÈÄ(12½Ã ~ 18½Ã)</label><br>
-                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ½Ã°£&nbsp;ÇùÀÇ</label>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ì˜¤í›„(12ì‹œ ~ 18ì‹œ)</label><br>
+                            <label class="radio" style="height: 10px; width: 280px;"><input name="time" type="checkbox" style="zoom: 2;"> ì‹œê°„&nbsp;í˜‘ì˜</label>
                         </div>
                         <div style="width: 400px">
-                            <label class="radio"><input name="time" type="checkbox" style="zoom: 2;"> »ó°ü&nbsp;¾øÀ½</label>
-                            <!-- <label class="radio"><input name="time" type="checkbox" style="zoom: 2;"> ½Ã°£ ÇùÀÇ</label> -->
+                            <label class="radio"><input name="time" type="checkbox" style="zoom: 2;"> ìƒê´€&nbsp;ì—†ìŒ</label>
+                            <!-- <label class="radio"><input name="time" type="checkbox" style="zoom: 2;"> ì‹œê°„ í˜‘ì˜</label> -->
                         </div>
                     </div>
                 </div>
@@ -167,141 +169,64 @@
     </div>
 </section>
 
-<!-- °æ·Â »çÇ×-->
+<!-- ê²½ë ¥ ì‚¬í•­-->
 <section style="margin-bottom: 170px; margin-top: 100px;">
     <div class="container">
         <div class="section_title text-center">
             <br>
             <br>
-                <h2 class="title title_color">ÇØ´ç Á÷Á¾¿¡ ´ëÇØ °æ·ÂÀÌ ÀÖÀ¸½Å°¡¿ä?</h2>
+                <h2 class="title title_color">í•´ë‹¹ ì§ì¢…ì— ëŒ€í•´ ê²½ë ¥ì´ ìˆìœ¼ì‹ ê°€ìš”?</h2>
                 <br>
                 <br>
                 <div align="center">
                     <div style="width: 1200px; display: flex;" align="left"> 
                         <div style="width: 400px">
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> °æ·Â&nbsp;¾øÀ½</label>
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 3³â&nbsp;ÀÌ»ó</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> ê²½ë ¥&nbsp;ì—†ìŒ</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 3ë…„&nbsp;ì´ìƒ</label>
                         </div>
                         <div style="width: 400px">
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 1³â&nbsp;ÀÌÇÏ</label>
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 4³â&nbsp;ÀÌ»ó</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 1ë…„&nbsp;ì´í•˜</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 4ë…„&nbsp;ì´ìƒ</label>
                         </div>
                         <div style="width: 400px">
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 1³â&nbsp;ÀÌ»ó</label>
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 5³â&nbsp;ÀÌ»ó</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 1ë…„&nbsp;ì´ìƒ</label>
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 5ë…„&nbsp;ì´ìƒ</label>
                         </div>
                         <div style="width: 400px" >
-                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 2³â&nbsp;ÀÌ»ó</label>
-                            <!-- <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> »ó°ü ¾øÀ½</label> -->
+                            <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> 2ë…„&nbsp;ì´ìƒ</label>
+                            <!-- <label class="checkboxTime"><input type="checkbox" style="zoom: 2;"> ìƒê´€ ì—†ìŒ</label> -->
                         </div>
                     </div>
                 </div>
         </div>
     </div>
 </section>
-<!--================ ±â°£ ¼±ÅÃ  =================-->
+<!--================ ê¸°ê°„ ì„ íƒ  =================-->
         <section class="period_area section_gap">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="" style="transform: translateY(-29.3162px); height: 900px;">  
             </div> 
              <div class="container" align="center">
                 <div class="about_content">
-                    <h2 class="title_w">ÀÏÇÏ°í ½ÍÀº ±â°£À» ¼±ÅÃÇÏ¼¼¿ä. </h2><br><br>
+                    <h2 class="title_w">ì¼í•˜ê³  ì‹¶ì€ ê¸°ê°„ì„ ì„ íƒí•˜ì„¸ìš”. </h2><br><br>
                     <div  style="width: 1000px;">
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">ÀÏÁÖÀÏ&nbsp;ÀÌÇÏ</a>
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">ÇÑ´Ş&nbsp;ÀÌÇÏ</a>
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">3°³¿ù&nbsp;ÀÌÇÏ</a>
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">6°³¿ù&nbsp;ÀÌÇÏ</a>
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">1³â&nbsp;ÀÌ»ó</a>
-                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">±â&nbsp;&nbsp;Å¸</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">ì¼ì£¼ì¼&nbsp;ì´í•˜</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">í•œë‹¬&nbsp;ì´í•˜</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">3ê°œì›”&nbsp;ì´í•˜</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">6ê°œì›”&nbsp;ì´í•˜</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">1ë…„&nbsp;ì´ìƒ</a>
+                    <a href="#" class="button_hover1 theme_btn_two2" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">ê¸°&nbsp;&nbsp;íƒ€</a>
                 </div>
             </div>
         </div>
     </section>
-    <!--================ °Ë»öÇÏ±â  =================-->
+    <!--================ ê²€ìƒ‰í•˜ê¸°  =================-->
     <section id="search"class="testimonial_area section_gap">
         <div class="container" align="center">
-            <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>°Ë»öÇÏ±â</a>
+            <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ê²€ìƒ‰í•˜ê¸°</a>
             
         </div>
         </section>
-        
-        <!--================ start footer Area  =================-->	
-        <!-- <footer class="footer-area section_gap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3  col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h6 class="footer_title">About Agency</h6>
-                            <p>The world has become so fast paced that people don¡¯t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h6 class="footer_title">Navigation Links</h6>
-                            <div class="row">
-                                <div class="col-4">
-                                    <ul class="list_style">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Feature</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Portfolio</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-4">
-                                    <ul class="list_style">
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                    </ul>
-                                </div>										
-                            </div>							
-                        </div>
-                    </div>							
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h6 class="footer_title">Newsletter</h6>
-                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>		
-                            <div id="mc_embed_signup">
-                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
-                                    <div class="input-group d-flex flex-row">
-                                        <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		
-                                    </div>									
-                                    <div class="mt-10 info"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget instafeed">
-                            <h6 class="footer_title">InstaFeed</h6>
-                            <ul class="list_style instafeed d-flex flex-wrap">
-                                <li><img src="image/instagram/Image-01.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-02.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-03.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-04.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-05.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-06.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-07.jpg" alt=""></li>
-                                <li><img src="image/instagram/Image-08.jpg" alt=""></li>
-                            </ul>
-                        </div>
-                    </div>						
-                </div>
-                <div class="border_line"></div>
-                <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                    <p class="col-lg-8 col-sm-12 footer-text m-0">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-</p>
-                    <div class="col-lg-4 col-sm-12 footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                    </div>
-                </div>
-            </div>
-        </footer> -->
+ 	<%@ include file="../common/footer.jsp" %>
+
     </body>
 </html>
