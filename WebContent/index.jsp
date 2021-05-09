@@ -13,7 +13,8 @@
 
 < 	<!-- 고객페이지 테스트 -->
 
-	<jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"></jsp:forward> 
+<jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"></jsp:forward> 
+
 
 </body>
 </html>
