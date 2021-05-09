@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -65,8 +64,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -100,6 +99,9 @@
                             </a>
                             <ul class="sub">
                                 <li>
+                                    <a class="" href="Resume.html">이력서</a>
+                                </li>
+                                <li>
                                     <a class="" href="MemberInfo.html">회원정보</a>
                                 </li>
                                 <li>
@@ -108,7 +110,7 @@
                             </ul>
                         </li>
 
-        
+ 
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -116,6 +118,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
+                                <li>
+                                    <a class="" href="inquiry.html">기업문의</a>
+                                </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -147,48 +152,64 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
+                                광고상품 관리</h3>
+                      
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
                 </section>
 
+                <!-- 광고 상품 관리 시작  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          광고상품 관리 상세보기
+                        </header>
+                        <div class="panel-body">
+                          <div class="form">
+                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">광고코드 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="advertcode" name="code"  type="text" value="1">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cemail" class="control-label col-lg-2">광고명 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="advertName" type="adName" name="adName" value="광고상단A">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="curl" class="control-label col-lg-2">광고비용</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="advertCost" type="cost" name="cost" value="300000원">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">광고기간 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="advertPeriod" name="Period"  type="text" value="30일">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button class="btn btn-primary" type="button" onClick="location.href='Advert.html'">등록</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+          
+                        </div>
+                      </section>
+                    </div>
+                  </div>   
+                   <!-- 광고 상품 관리 끝    -->
             </section>
             <!--main content end-->
-            
-        </section>
-        <!-- container section start -->
+
+      
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

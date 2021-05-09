@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -65,8 +64,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+ 
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -147,48 +147,92 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
+                                신고관리</h3>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+                        <div class="col-lg-12">
+                          <section class="panel">
+                            <header class="panel-heading">
+                              신고 리스트
+                              <a class="btn btn-success" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                                미차단 모아보기
+                            </a>
+                            <a class="btn btn-info" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                                확인완료 모아보기
+                            </a>
+                            <a class="btn btn-warning" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                                미확인 모아보기
+                            </a>
+                            </header>
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th><input type="checkbox" id="checkAll"></th>
+                                    <th>신고명</th>
+                                    <th>신고대상</th>
+                                    <th>신고 접수 날짜</th>
+                                    <th>신고자</th>
+                                    <th>차단상태</th>
+                                    <th>확인상태</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>스팸 이력서 신고합니다</td>
+                                    <td><a href="MemberInfoDetail.html">김홍길</a></td>
+                                    <td>2021-05-05</td>
+                                    <td>kimcine</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                  </tr>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>수상한 공고 게시글 신고합니다</td>
+                                    <td><a href="CompanyInfoDetail.html">김씨네 식당</a></td>
+                                    <td>2021-05-05</td>
+                                    <td>백다봥</td>
+                                    <td>N</td>
+                                    <td>Y</td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
+    
+                    <!--하단 페이지 넘기기-->
+                    <section class="panel">
+                    <div class="panel-body">
+                      <div class="text-center">
+                        <ul class="pagination">
+                          <li><a href="#">«</a></li>
+                          <li><a href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">4</a></li>
+                          <li><a href="#">5</a></li>
+                          <li><a href="#">»</a></li>
+                        </ul>
+                      </div>
+                      <a class="btn btn-success btn-lg" href="" title="Bootstrap 3 themes generator">
+                        확인완료
+                      </a>
+                       <!--  search form start -->
+                        <ul class="nav top-menu" style="float: right;">
+                            <li>
+                            <form class="navbar-form">
+                                <input class="form-control" placeholder="Search" type="text">
+                                <button type="submit" class="btn btn-primary">검색하기</button>
+                            </form>
+                            </li>
+                        </ul>
+                        <!--  search form end -->
                 </section>
-
-            </section>
             <!--main content end-->
-            
         </section>
         <!-- container section start -->
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

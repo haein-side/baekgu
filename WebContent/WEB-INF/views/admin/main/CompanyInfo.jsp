@@ -34,8 +34,7 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
-    <body>
+ <body style="overflow-x:hidden">
         <!-- container section start -->
         <section id="container" class="">
 
@@ -65,8 +64,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+   
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -147,48 +147,109 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
+                                기업 정보</h3>           
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
+
+                 <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          기업 리스트
+                          <a class="btn btn-success" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                            정상기업 모아보기
+                        </a>
+                        <a class="btn btn-warning" data-toggle="modal" href="#myModal2" style="margin-left: 30px;">
+                            차단기업 모아보기
+                        </a>
+                        </header>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th><input type="checkbox" id="checkAll"></th>
+                                <th>이름</th>
+                                <th>아이디</th>
+                                <th>연락처</th>
+                                <th>차단상태</th>
+                                <th>차단코드</th>
+                                <th>관리자명</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="CompanyInfoDetail.html">김씨네 식당</a></td>
+                                <td>kimcine</td>
+                                <td>010-1111-2222</td>
+                                <td>N</td>
+                                <td>N</td>
+                                <td>N</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">백스다방</a></td>
+                                <td>backsDaBang</td>
+                                <td>010-2225-6666</td>
+                                <td>Y</td>
+                                <td>R2</td>
+                                <td>김사원</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">검포스커피</a></td>
+                                <td>gumposecoffe</td>
+                                <td>010-8888-9999</td>
+                                <td>Y</td>
+                                <td>R2</td>
+                                <td>차사원</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">별버그</a></td>
+                                <td>starbug</td>
+                                <td>010-7777-7777</td>
+                                <td>N</td>
+                                <td>N</td>
+                                <td>N</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
-                        <!--/.col-->
 
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
+                        <!--하단 페이지 넘기기-->
+                        <section class="panel">
+                        <div class="panel-body">
+                        <div class="text-center">
+                            <ul class="pagination">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li>
+                            </ul>
                         </div>
-                        <!--/.col-->
+                            <!--하단 페이지 넘기기-->
+                        <a class="btn btn-danger" data-toggle="modal" href="#myModal3">
+                            차단하기
+                        </a>
+                        <!--  search form start -->
+                        <ul class="nav top-menu" style="float: right;">
+                            <li>
+                            <form class="navbar-form">
+                                <input class="form-control" placeholder="Search" type="text">
+                                <button type="submit" class="btn btn-primary">검색하기</button>
+                            </form>
+                            </li>
+                        </ul>
+                        <!--  search form end -->
 
-                    </div>
-                    <!--/.row-->
+                    </section>
+                    <!--main content end-->
 
-
-                    
-
-                  
-                </section>
-
-            </section>
-            <!--main content end-->
-            
-        </section>
-        <!-- container section start -->
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

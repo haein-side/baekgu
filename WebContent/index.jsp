@@ -15,6 +15,7 @@
 	<jsp:forward page="/WEB-INF/views/business/main/main.jsp"></jsp:forward> --%>
 		
 	<!-- 관리자페이지 테스트 -->
+	
 	<jsp:forward page="/WEB-INF/views/admin/main/index.jsp"></jsp:forward>
 	
 </body>

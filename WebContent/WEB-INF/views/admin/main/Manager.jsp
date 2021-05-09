@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -65,8 +64,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -116,6 +116,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
+                                <li>
+                                    <a class="" href="inquiry.html">기업문의</a>
+                                </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -147,46 +150,132 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
+                                관리자 및 직원 관리</h3>
                             
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
+                </section>
+               
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          관리자 및 직원 관리
+                          <button class="btn btn-success"  style="margin-left: 30px;" type="button" onClick="location.href='Registration.html'">
+                            등록하기</button>
+                        <a class="btn btn-warning" data-toggle="modal" href="#myModal2" style="margin-left: 30px;">
+                            삭제하기
+                        </a>
+                        </header>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th><input type="checkbox" id="checkAll"></th>
+                                <th>이름</th>
+                                <th>아이디</th>
+                                <th>비밀번호</th>
+                                <th>이메일</th>
+                                <th>등록일</th>
+                                <th>권한</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="ManagerDetail.html">강현우</a></td>
+                                <td>kang</td>
+                                <td>1234</td>
+                                <td>kang@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td>1</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">차진서</a></td>
+                                <td>cha</td>
+                                <td>1255</td>
+                                <td>cha@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td>1</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">김현빈</a></td>
+                                <td>kim</td>
+                                <td>1255</td>
+                                <td>kim@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">김유진</a></td>
+                                <td>jin</td>
+                                <td>1255</td>
+                                <td>jin@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td>1</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">김해인</a></td>
+                                <td>hae</td>
+                                <td>1255</td>
+                                <td>hae@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td>1</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">정주영</a></td>
+                                <td>jung</td>
+                                <td>1255</td>
+                                <td>jung@beakgu.com</td>
+                                <td>2021/05/02</td>
+                                <td>1</td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
                         </div>
-                        <!--/.col-->
 
-                       
+                <!--하단 페이지 넘기기-->
+                <section class="panel">
+                <div class="panel-body">
+                  <div class="text-center">
+                    <ul class="pagination">
+                      <li><a href="#">«</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li><a href="#">»</a></li>
+                    </ul>
+                  </div>
+              <!--  검색창  -->
+              <ul class="nav top-menu" style="float: right;">
+                <li>
+                  <form class="navbar-form">
+                    <input class="form-control" placeholder="Search" type="text">
+                    <button type="submit" class="btn btn-primary">검색하기</button>
+                  </form>
+                </li>
+              </ul>
+              <!--  search form end -->
+              </section>
 
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
+              
 
-                    </div>
-                    <!--/.row-->
+
+            </section>
 
 
                     
 
-                  
-                </section>
-
-            </section>
+  
             <!--main content end-->
-            
         </section>
         <!-- container section start -->
 

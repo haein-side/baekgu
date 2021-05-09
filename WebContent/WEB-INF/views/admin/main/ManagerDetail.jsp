@@ -34,8 +34,7 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
-    <body>
+   <body>
         <!-- container section start -->
         <section id="container" class="">
 
@@ -65,8 +64,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+ 
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -116,6 +116,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
+                                <li>
+                                    <a class="" href="inquiry.html">기업문의</a>
+                                </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -147,48 +150,75 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
+                                관리자 및 직원관리</h3>
                             
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
                 </section>
 
+                <!-- 백구 홈페이지 정보 시작  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          관리자 및 직원관리 상세보기
+                        </header>
+                        <div class="panel-body">
+                          <div class="form">
+                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">이름 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beakname" name="name"  type="text" value="강현우"/>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cemail" class="control-label col-lg-2">아이디</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="baekid" type="id" name="id" value="kang">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="curl" class="control-label col-lg-2">비밀번호</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="beakpassword" type="password" name="password" value="1234" >
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">이메일 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beakemail" name="email" type="text" value="kang@gmail.com">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">등록일</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="beakconfirm" name="confirm" value="2021/05/08">
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">권한</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beak" name="beakre" type="text" value="1">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                  <button class="btn btn-primary" type="button" onClick="location.href='Manager.html'">등록</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+          
+                        </div>
+                      </section>
+                    </div>
+                  </div>   
+                   <!-- 백구 홈페이지 정보 끝   -->
             </section>
             <!--main content end-->
-            
-        </section>
-        <!-- container section start -->
+
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

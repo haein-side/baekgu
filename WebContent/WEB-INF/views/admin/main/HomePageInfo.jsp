@@ -34,8 +34,8 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
-    <body>
+	
+	    <body>
         <!-- container section start -->
         <section id="container" class="">
 
@@ -65,8 +65,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +108,8 @@
                             </ul>
                         </li>
 
-        
+
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -116,6 +117,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
+                                <li>
+                                    <a class="" href="inquiry.html">기업문의</a>
+                                </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -147,48 +151,74 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
+                                백구 홈페이지 정보</h3>
                             
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
                 </section>
 
+                <!-- 백구 홈페이지 정보 시작  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          백구 홈페이지 정보
+                        </header>
+                        <div class="panel-body">
+                          <div class="form">
+                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">회사명</label>
+                                <div class="col-lg-10">
+                                  <td>백구</td>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cemail" class="control-label col-lg-2">회사 전화번호</label>
+                                <div class="col-lg-10">
+                                  <td>02-109-1009</td>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="curl" class="control-label col-lg-2">회사 팩스번호</label>
+                                <div class="col-lg-10">
+                                  <td>02-6000-1314</td>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">회사주소 </label>
+                                <div class="col-lg-10">
+                                  <td>서울시 강남구 </td>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">사업자 등록번호</label>
+                                <div class="col-lg-10">
+                                  <td>1237-121-146545 </td>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">대표자명</label>
+                                <div class="col-lg-10">
+                                  <td>미정 </td>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                  <button class="btn btn-primary" type="button" onClick="location.href='HomeDetail.html'">수정</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+          
+                        </div>
+                      </section>
+                    </div>
+                  </div>   
+                   <!-- 백구 홈페이지 정보 끝   -->
             </section>
             <!--main content end-->
-            
-        </section>
-        <!-- container section start -->
+	
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

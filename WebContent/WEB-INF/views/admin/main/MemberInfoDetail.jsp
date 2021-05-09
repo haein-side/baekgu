@@ -34,8 +34,7 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
-    <body>
+  <body>
         <!-- container section start -->
         <section id="container" class="">
 
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -139,56 +139,100 @@
             </aside>
             <!--sidebar end-->
 
-            <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+               <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+         
+          <!-- page start-->
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading tab-bg-info">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab">
+                       <i class="icon-home"></i>
+                        회원정보
+                      </a>
+                    </li>
+                    </li>
+                  </ul>
+                </header>
+               
+                    <!-- 고객정보 -->
+                    <div id="profile" class="tab-pane">
+                      <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <h2>개인정보</h2>
+                          <div class="row">
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>고객코드 </span>: 1 </p>
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>이름 </span>: 김홍길</p>
                             </div>
-                            <!--/.info-box-->
+                            <div class="bio-row">
+                              <p><span>전화번호</span>: 010-1234-2222</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>생년월일 </span>: 1965/11/11</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>성별 </span>: 남</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>주소 </span>: 서울특별시 어쩌구 저쩌동</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>차단여부 </span>: Y</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>차단코드 </span>: R1</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>관리자명 </span>: 김사원</p>
+                              </div>
                         </div>
-                        <!--/.col-->
-
+                      </section>
                     </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
-                </section>
-
-            </section>
-            <!--main content end-->
-            
+                    <!-- 이력서정보 -->
+                    <div id="profile" class="tab-pane">
+                        <section class="panel">
+                            <div class="panel-body bio-graph-info">
+                              <h2>이력서 </h2>
+                            <div class="row">
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>이력서코드 </span>: 1 </p>
+                              </div>
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>비상연락망 </span>: </p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>자기소개 : </span>
+                                    안녕하세요 저는 김홍길입니다. 제 주특기는 밥먹기입니다.
+                                    뽑아주신다면 열심히 하겠습니다. 
+                                    커피를 좋아해서 이 일을 지원하게 됐습니다. 열심히 하겠습니다.
+                                </p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>우대조건 </span>: 자차 출퇴 가능 </p>
+                              </div>
+                          </div>
+                          <a class="btn btn-danger" href="#">
+                            사용자 차단하기
+                          </a>
+                        </section>
+                      </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+  
+          <!-- page end-->
         </section>
-        <!-- container section start -->
+      </section>
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
