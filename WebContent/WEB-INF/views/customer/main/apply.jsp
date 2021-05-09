@@ -26,7 +26,7 @@
             <script>
 
                 function checkNext(){
-                    window.open("checkNext.html", "a", "width=400, height=500, left=500, top=250");
+                    window.open("checkNext.jsp", "a", "width=400, height=500, left=500, top=250");
                 }
             </script>
         </button>

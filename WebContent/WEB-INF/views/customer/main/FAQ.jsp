@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/FAQbootstrap.css"/>
 
 	
-        <script type="text/javascript" src="RESOURCES/JS/USER/FAQjquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/USER/FAQbootstrap.min.js"></script>
+        <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQjquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
     </head>
     <body>
 

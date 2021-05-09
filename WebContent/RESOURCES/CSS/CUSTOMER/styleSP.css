@@ -561,12 +561,12 @@ font-family: "jua";
 
 
 .period_area .bg-parallax {
-  background: url("../../IMAGES/middlemen.jsp") no-repeat scroll center 0/cover;
+  background: url("../../IMAGES/middleman.jpg") no-repeat scroll center 0/cover;
   opacity: 0.15;
 }
 
 .job_area .bg-parallax {
-  background: url("../../IMAGES/oldman.jsp") no-repeat scroll center 0/cover;
+  background: url("../../IMAGES/oldman.jpg") no-repeat scroll center 0/cover;
   opacity: 0.15;
 }
 .facilities_area .bg-parallax {

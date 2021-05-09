@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,11 @@
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
 
-
-
 </head>
 
 <body>
+    <%-- <%@ include file="../common/header.jsp" %> --%>
+    
    <section class="product-details">
     <div class="container">
         <div class="row">
@@ -36,12 +37,11 @@
                             <button class="jione_button" onclick=apply();>
                                 <script>
                                     function apply(){
-                                        // var url = "WebContent/WEB-INF/views/customer/main/apply.jsp";
-                                        var url = "WebContent/WEB-INF/views/customer/main/apply.jsp";
+                                        
                                         //로그인 회원일 경우 바로 지원하기로 넘어간다
-                                        window.open(url, "a", "width=400, height=500, left=500, top=250");
+                                        window.open("apply.jsp", "a", "width=400, height=500, left=500, top=250");
                                         //비회원일 경우 로그인하라는 페이지를 띄운다
-                                        // window.open("login_plz.html", "a", "width=600, height=300, left=500, top=250");
+                                        // window.open("login_plz.jsp", "a", "width=600, height=300, left=500, top=250");
                                     }
                                 </script>
                                 <h2>지원하기</h2>
@@ -67,13 +67,13 @@
                                                 <b>근무시간</b>
                                                 <span>10시~1시</span>
                                             </li>
-                                        </li>
+                                        
                                         <br>
                                             <li style="font-size: 25px;">
                                                 <b>근무지역</b>
                                                 <span>강남구</span>
                                             </li>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                                             <ul style="margin-top: 20px; margin-bottom: 50px;">
                                                                 <li style="font-size: 30px;">
                                                                     <b>근무지역</b>서울특별시 어쩌구 저쩌동 상세로 270 1층</li>
-                                                            </li>
+                                                           		 </li>
                                                         </ul>
                                                     </div>
                                                     <div id="map" style="width:500px;height:400px;"></div>
@@ -337,15 +337,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
+												</div>
+											</div>
+										
+                                            <div style="position: fixed; bottom: 5px; left: 5px;">
+                                                <h3 style="color: black;">수상한 공고인가요?</h3>
+                                                <button class="police_button" onclick="">
+                                                    <h3>신고하기</h3>
+                                                </button>
+                                            </div>
+    </section>
+    <%@ include file="../common/footer.jsp" %>
+</body>
 
-                                                </section>
-                                                <div style="position: fixed; bottom: 5px; left: 5px;">
-                                                    <h3 style="color: black;">수상한 공고인가요?</h3>
-                                                    <button class="police_button" onclick="">
-                                                        <h3>신고하기</h3>
-                                                    </button>
-                                                </div>
-
-                                            </body>
-
-                                        </html>
+</html>
