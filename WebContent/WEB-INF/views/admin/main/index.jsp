@@ -17,17 +17,17 @@
         <title>백구 관리자페이지</title>
 
         
-        <link href="/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+        <link href="RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
 
  
         <!-- owl carousel -->
-        <link rel="stylesheet" href="/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+        <link rel="stylesheet" href="RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+        <link href="RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
         <!-- Custom styles -->
-        <link href="/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        <link href="RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+        <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+        <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+        <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
         <!-- ======================================================= Theme Name:
         NiceAdmin Theme URL:
         https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
@@ -191,34 +191,34 @@
         <!-- container section start -->
 
         <!-- javascripts -->
-        <script src="/RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="/RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="/RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="/RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
         <!-- bootstrap -->
-        <script src="/RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
+        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
         <!-- nice scroll -->
-        <script src="/RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="/RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
         <!-- charts scripts -->
-        <script src="/RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="/RESOURCES/JS/ADMIN/owl.carousel.js"></script>
+        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
+        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
         <!-- jQuery full calendar -->
-        <script src="/RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
+        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
         Calendar --> 
-        <script src="/RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
+        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
         <!-- custom select --> 
-        <script src="/RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="/RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="/RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="/RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="/RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="/RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="/RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="/RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="/RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="/RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="/RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="/RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="/RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
+        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
+        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
+        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
+        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
+        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
+        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
+        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
+        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
+        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
+        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
+        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
         $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
         //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
         navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });

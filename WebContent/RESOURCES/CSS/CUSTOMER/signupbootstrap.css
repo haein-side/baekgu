@@ -1,0 +1,445 @@
+
+/* 폰트 설정 */
+@font-face {
+  font-family: "nanumbarungothic";
+  src : url("./fonts/NanumBarunGothic.ttf");
+}
+
+@font-face {
+  font-family: "euljiro10years";
+  src: url("./fonts/BMEuljiro10yearslater.ttf");
+}
+
+/* 전체 입력창 박스선 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* html 기본 설정 */
+html {
+  font-family: "nanumbarungothic";
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 제목, 입력창 공간 패딩 설정(가운데 정렬) */
+.container {
+  width: 100%;
+  padding-right: 100px;
+  padding-left: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* header footer를 block 방식으료 표시 */
+article, footer, header{
+  display: block;
+}
+
+/* 바디 기본 텍스트, 배경 설정 */
+body {
+  font-family: "nanumbarungothic";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+
+/* 상단 제목 폰트 설정 */
+.form-signin-heading {
+  font-family: "euljiro10years";
+  font-size: 45px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* 입력창 위 카테고리 문자(ex.전화번호, 이름) */
+.basiclabel {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 출생정보(연도,월,일) 관련 설정 (input태그) */
+
+
+/* Small 태그 : 입력창 하단 설명 */
+small {
+  font-size: 100%;
+  font-weight: 400;
+}
+
+/* Container 반응형 웹 설정 */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* 출생정보 입력칸 정렬 */
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* div 배치 설정 */
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8,
+.col-md-9, .col-md-10, .col-md-11, .col-md-12
+{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* 반응형 웹 설정 */
+@media (min-width: 576px) {
+  .col-sm {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .col-sm-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+  .col-sm-1 {
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  .col-sm-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-sm-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-sm-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-sm-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  .col-sm-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+  .col-sm-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-sm-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-sm-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+  .col-sm-11 {
+    -ms-flex: 0 0 91.666667%;
+    flex: 0 0 91.666667%;
+    max-width: 91.666667%;
+  }
+  .col-sm-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* 반응형 웹 설정 */
+@media (min-width: 768px) {
+  .col-md {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .col-md-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+  .col-md-1 {
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+  .col-md-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  }
+  .col-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-md-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  .col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-md-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+  .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-md-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-md-10 {
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+}
+
+
+/* 입력창 */
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2em + 1rem + 3px);
+  padding: 0.375rem 0.75rem;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* 입력창 선택 시 포커싱 이펙트 */
+.form-group {
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+/* 입력창 선택 시 효과 */
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem black;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.form-text {
+  display: block;
+  margin-top: 18px;
+}
+
+/* 생일 입력창 설정 */
+.birthinfo {
+  height: 35px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+
+/* footer padding */
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+/* 제목 div 설정 */
+.py-0 {
+  padding-top: 0 !important;
+  background-color: white;
+}
+
+
+/* 제목과 footer 텍스트 정렬 */
+.text-center {
+  text-align: center !important;
+}
+
+/* small 태그 설정 */
+.text-muted {
+  color: #6c757d !important;
+  font-size: 17px;
+}
+
+/* 라디오 버튼 설정 */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* 라디오 박스 텍스트 설정 */
+.genderlabel {
+  font-size: 20px;
+  padding-right: 20px;
+}
+
+/* 체크 박스 크기 설정 */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* 버튼 설정 */
+.btn {
+  display: inline-block;
+  font-family: "euljiro10years";
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding-top: 12px;
+  padding-left: 10px;
+  font-size: 30px;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.btn-block {
+  display: block;
+  width: 300px;
+}
+
+.btn-block + .btn-block {
+  margin-top: 0.5rem;
+  
+}
+
+/* 버튼 및 글자 색상 */
+.btn-primary {
+  font-size: 30 px; 
+  background-color: orange;
+  border-color: orange;
+}
+
+
+/* 버튼 클릭 시 효과 */
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* footer href 설정 */
+.list-inline-item {
+  display: inline-block;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+/* 헤더 풋터 패딩 설정 
+.pt-5,
+.py-5 {
+  padding-top: 3rem !important;
+}
+
+.pr-5,
+.px-5 {
+  padding-right: 3rem !important;
+}
+
+.pb-5,
+.py-5 {
+  padding-bottom: 3rem !important;
+}
+
+.pl-5,
+.px-5 {
+  padding-left: 3rem !important;
+}
+*/
+
+
+
+/*# sourceMappingURL=bootstrap.css.map */
