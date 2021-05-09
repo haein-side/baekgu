@@ -36,8 +36,10 @@
                             <button class="jione_button" onclick=apply();>
                                 <script>
                                     function apply(){
+                                        // var url = "WebContent/WEB-INF/views/customer/main/apply.jsp";
+                                        var url = "WebContent/WEB-INF/views/customer/main/apply.jsp";
                                         //로그인 회원일 경우 바로 지원하기로 넘어간다
-                                        window.open("apply.html", "a", "width=400, height=500, left=500, top=250");
+                                        window.open(url, "a", "width=400, height=500, left=500, top=250");
                                         //비회원일 경우 로그인하라는 페이지를 띄운다
                                         // window.open("login_plz.html", "a", "width=600, height=300, left=500, top=250");
                                     }
