@@ -34,8 +34,7 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
-    <body>
+   <body>
         <!-- container section start -->
         <section id="container" class="">
 
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -147,48 +147,107 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
+                                공고관리</h3>
                             
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
                 </section>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          기업 리스트
+                          <a class="btn btn-success" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                            정상기업 모아보기
+                        </a>
+                        <a class="btn btn-warning" data-toggle="modal" href="#myModal2" style="margin-left: 30px;">
+                            차단기업 모아보기
+                        </a>
+                        </header>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th><input type="checkbox" id="checkAll"></th>
+                                <th>제목</th>
+                                <th>지역</th>
+                                <th>모집시작일</th>
+                                <th>모집마감일</th>
+                                <th>등록일</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="PostDetail.html">[주5일]홀서빙 모집하고 있습니다</a></td>
+                                <td>강남구</td>
+                                <td>2021/05/07</td>
+                                <td>2021/05/30</td>
+                                <td>2021/05/05</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">[재택근무/주5일]소형용달이사 기사배차팀 직원모집</a></td>
+                                <td>관악구</td>
+                                <td>2021/05/07</td>
+                                <td>2021/05/30</td>
+                                <td>2021/05/05</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">반도체 생산직 모집공고</a></td>
+                                <td>구로구</td>
+                                <td>2021/05/07</td>
+                                <td>2021/05/30</td>
+                                <td>2021/05/05</td>
+                              </tr>
+                              <tr>
+                                <th><input type="checkbox"></th>
+                                <td><a href="">주방업무외/월 250만원</a></td>
+                                <td>서초구</td>
+                                <td>2021/05/07</td>
+                                <td>2021/05/30</td>
+                                <td>2021/05/05</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                <!--하단 페이지 넘기기-->
+                <section class="panel">
+                <div class="panel-body">
+                  <div class="text-center">
+                    <ul class="pagination">
+                      <li><a href="#">«</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li><a href="#">»</a></li>
+                    </ul>
+                  </div>
+                <!--하단 페이지 넘기기-->
+              <a class="btn btn-danger" data-toggle="modal" href="#myModal3">
+                차단하기
+              </a>
+              <!--  search form start -->
+              <ul class="nav top-menu" style="float: right;">
+                <li>
+                  <form class="navbar-form">
+                    <input class="form-control" placeholder="Search" type="text">
+                    <button type="submit" class="btn btn-primary">검색하기</button>
+                  </form>
+                </li>
+              </ul>
+              <!--  search form end -->
 
             </section>
             <!--main content end-->
-            
         </section>
         <!-- container section start -->
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

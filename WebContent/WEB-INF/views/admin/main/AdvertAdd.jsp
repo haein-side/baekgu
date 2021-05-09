@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -139,56 +139,60 @@
             </aside>
             <!--sidebar end-->
 
-            <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+               <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+         
+          <!-- page start-->
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading tab-bg-info">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab">
+                       <i class="icon-home"></i>
+                        광고관리
+                      </a>
+                    </li>
+                    </li>
+                  </ul>
+                </header>
+               
+                    <!-- 기업정보 -->
+                    <div id="profile" class="tab-pane">
+                      <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <h2>광고추가</h2>
+                          <div class="row">
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p>광고명 : </p>
+                              <input type="text" class="col-lg-8">
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p>광고비용 : </p>
+                              <input type="text" class="col-lg-8">
                             </div>
-                            <!--/.info-box-->
+                            <div class="bio-row">
+                              <p>광고기간 : </p>
+                              <input type="text" class="col-lg-8">
+                            </div>
+                            <button type="submit" style="width: 100px; height: 50px;">
+                                추가하기
+                            </button>
                         </div>
-                        <!--/.col-->
-
+                      </section>
                     </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
-                </section>
-
-            </section>
-            <!--main content end-->
-            
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+  
+          <!-- page end-->
         </section>
-        <!-- container section start -->
+      </section>
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

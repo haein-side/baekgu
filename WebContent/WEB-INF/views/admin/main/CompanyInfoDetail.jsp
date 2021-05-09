@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -108,7 +107,8 @@
                             </ul>
                         </li>
 
-        
+ 
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -139,56 +139,96 @@
             </aside>
             <!--sidebar end-->
 
-            <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+               <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+         
+          <!-- page start-->
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading tab-bg-info">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab">
+                       <i class="icon-home"></i>
+                        기업정보
+                      </a>
+                    </li>
+                    </li>
+                  </ul>
+                </header>
+               
+                    <!-- 기업정보 -->
+                    <div id="profile" class="tab-pane">
+                      <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <h2>기업</h2>
+                          <div class="row">
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>회사명 </span>: 김씨네 식당 </p>
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>대표자명 </span>: 김김씨</p>
                             </div>
-                            <!--/.info-box-->
+                            <div class="bio-row">
+                              <p><span>기업코드</span>: 1</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>사업자등록번호 </span>: 123-45-12345</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>주소 </span>: 서울특별시 강남구 어쩌동</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>회사전화번호 </span>: 02-2222-3333</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>연매출액 </span>: </p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>차단여부 </span>: N</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>차단코드 </span>: N</p>
+                            </div>
                         </div>
-                        <!--/.col-->
-
+                      </section>
                     </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
-                </section>
-
-            </section>
-            <!--main content end-->
-            
+                    <!-- 기업정보 -->
+                    <div id="profile" class="tab-pane">
+                        <section class="panel">
+                            <div class="panel-body bio-graph-info">
+                              <h2>담당자 </h2>
+                            <div class="row">
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>아이디 </span>: kimcine </p>
+                              </div>
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>이름 </span>: 샘직원</p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>전화번호</span>: 010-5555-5555</p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>이메일 </span>: kimcine@greedy.com</p>
+                              </div>
+                          </div>
+                          <a class="btn btn-danger" href="#">
+                            기업 차단하기
+                          </a>
+                        </section>
+                      </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+  
+          <!-- page end-->
         </section>
-        <!-- container section start -->
+      </section>
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

@@ -53,7 +53,7 @@ body {
 /* 상단 제목 폰트 설정 */
 .form-signin-heading {
   font-family: "euljiro10years";
-  font-size: 60px;
+  font-size: 45px;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -61,7 +61,7 @@ body {
 
 /* 입력창 위 카테고리 문자(ex.전화번호, 이름) */
 .basiclabel {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -349,7 +349,7 @@ input[type="radio"] {
 
 /* 라디오 박스 텍스트 설정 */
 .genderlabel {
-  font-size: 28px;
+  font-size: 20px;
   padding-right: 20px;
 }
 
@@ -377,7 +377,7 @@ input[type="checkbox"] {
 .btn-lg, .btn-group-lg > .btn {
   padding-top: 12px;
   padding-left: 10px;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 1.5;
   border-radius: 0.3rem;
   text-align: center;
@@ -397,7 +397,7 @@ input[type="checkbox"] {
 
 /* 버튼 및 글자 색상 */
 .btn-primary {
-  font-size: 40 px; 
+  font-size: 30 px; 
   background-color: orange;
   border-color: orange;
 }

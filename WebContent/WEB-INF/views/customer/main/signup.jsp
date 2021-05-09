@@ -92,9 +92,8 @@
                   <div class="user_join_agree agrSelect">
                     <input type="checkbox" name="Agree1" id="agreeChk_0" class="agrSelect" value="on"><label for="agreeChk_0" style="font-size: 19px;">[선택] 이메일/SMS 수신 동의</label>&nbsp;<a href="#" style="font-size: 20px;">내용보기</a>
                   </div>
-                <div class="" align="center">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">회원가입 완료</button>   
-            </div>
+        		<button class="btn btn-lg btn-primary btn-block" type="submit" style="font-size: 30px; margin-left: 290px">들어가기</button>
+
           </div>
         </div>
 

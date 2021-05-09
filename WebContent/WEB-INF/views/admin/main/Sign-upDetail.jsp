@@ -34,7 +34,6 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -108,7 +107,7 @@
                             </ul>
                         </li>
 
-        
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -139,56 +138,83 @@
             </aside>
             <!--sidebar end-->
 
-            <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+               <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+         
+          <!-- page start-->
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading tab-bg-info">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a data-toggle="tab">
+                       <i class="icon-home"></i>
+                        기업정보
+                      </a>
+                    </li>
+                    </li>
+                  </ul>
+                </header>
+               
+                    <!-- 기업정보 -->
+                    <div id="profile" class="tab-pane">
+                      <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <h2>기업</h2>
+                          <div class="row">
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>회사명 </span>: 자바칩프라푸치노식당</p>
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
+                            <div class="bio-row" style="margin-top: 50px;">
+                              <p><span>대표자명 </span>: 자대표</p>
                             </div>
-                            <!--/.info-box-->
+                            <div class="bio-row">
+                              <p><span>사업자등록번호 </span>: 123-45-12345</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>주소 </span>: 서울특별시 자바구 푸치동</p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>회사전화번호 </span>: 02-2134-5567</p>
+                            </div>
                         </div>
-                        <!--/.col-->
-
+                      </section>
                     </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
-                </section>
-
-            </section>
-            <!--main content end-->
-            
+                    <!-- 기업정보 -->
+                    <div id="profile" class="tab-pane">
+                        <section class="panel">
+                            <div class="panel-body bio-graph-info">
+                              <h2>담당자 </h2>
+                            <div class="row">
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>아이디 </span>: javapu </p>
+                              </div>
+                              <div class="bio-row" style="margin-top: 50px;">
+                                <p><span>이름 </span>: 김푸치</p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>전화번호</span>: 010-7777-7575</p>
+                              </div>
+                              <div class="bio-row">
+                                <p><span>이메일 </span>: javapu@greedy.com</p>
+                              </div>
+                          </div>
+                          <a class="btn btn-success btn-lg" href="" title="Bootstrap 3 themes generator">
+                            승인하기
+                        </a>
+                        </section>
+                      </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+  
+          <!-- page end-->
         </section>
-        <!-- container section start -->
+      </section>
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>

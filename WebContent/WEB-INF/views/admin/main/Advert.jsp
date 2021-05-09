@@ -34,7 +34,7 @@
         BootstrapMade Author URL: https://bootstrapmade.com
         ======================================================= -->
     </head>
-
+    
     <body>
         <!-- container section start -->
         <section id="container" class="">
@@ -65,8 +65,8 @@
             </header>
             <!--header end-->
 
-            <!--sidebar start-->
-            <aside>
+             <!--sidebar start-->
+             <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
@@ -108,7 +108,8 @@
                             </ul>
                         </li>
 
-        
+   
+
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
@@ -147,48 +148,91 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                Dashboard</h3>
-                            
+                                광고상품관리</h3>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box blue-bg">
-                                <i class="fa fa-cloud-download"></i>
-                                <div class="count">2</div>
-                                <div class="title">신규 신고목록</div>
+                        <div class="col-lg-12">
+                          <section class="panel">
+                            <header class="panel-heading">
+                              광고 리스트
+                            </header>
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th><input type="checkbox" id="checkAll" ></th>
+                                    <th >광고코드</th>
+                                    <th>광고명</th>
+                                    <th>광고비용</th>
+                                    <th>광고기간</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>1</td>
+                                    <td><a href="AdvertDetail.html">광고 상단 A</a></td>
+                                    <td>300000원</td>
+                                    <td>30일</td>
+                                  </tr>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>2</td>
+                                    <td><a href="">광고 반짝임 A</a></td>
+                                    <td>300000원</td>
+                                    <td>30일</td>
+                                  </tr>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>3</td>
+                                    <td><a href="">프리미엄 상단배치 A</a></td>
+                                    <td>500000원</td>
+                                    <td>30일</td>
+                                  </tr>
+                                  <tr>
+                                    <th><input type="checkbox"></th>
+                                    <td>4</td>
+                                    <td><a href="">프리미엄 반짝임 A</a></td>
+                                    <td>500000원</td>
+                                    <td>30일</td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                       
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                            <div class="info-box green-bg">
-                                <i class="fa fa-cubes"></i>
-                                <div class="count">20</div>
-                                <div class="title">가입승인 대기중인 기업</div>
-                            </div>
-                            <!--/.info-box-->
-                        </div>
-                        <!--/.col-->
-
-                    </div>
-                    <!--/.row-->
-
-
-                    
-
-                  
+    
+                    <!--하단 페이지 넘기기-->
+                    <section class="panel">
+                    <div class="panel-body">
+                      <div class="text-center">
+                        <ul class="pagination">
+                          <li><a href="#">«</a></li>
+                          <li><a href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">4</a></li>
+                          <li><a href="#">5</a></li>
+                          <li><a href="#">»</a></li>
+                        </ul>
+                      </div>
+                      <a class="btn btn-success btn-lg" href="AdvertAdd.html" title="Bootstrap 3 themes generator">
+                        추가하기
+                      </a>
+                       <!--  search form start -->
+                        <ul class="nav top-menu" style="float: right;">
+                            <li>
+                            <form class="navbar-form">
+                                <input class="form-control" placeholder="Search" type="text">
+                                <button type="submit" class="btn btn-primary">검색하기</button>
+                            </form>
+                            </li>
+                        </ul>
+                        <!--  search form end -->
                 </section>
-
-            </section>
             <!--main content end-->
-            
         </section>
         <!-- container section start -->
+
 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
