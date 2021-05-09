@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<jsp:forward page="/WEB-INF/views/customer/main/main.jsp"></jsp:forward>
-	
+	<h1 align="center">${ requestScope.message }</h1>
 </body>
 </html>
