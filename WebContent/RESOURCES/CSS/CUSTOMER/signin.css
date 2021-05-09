@@ -1,0 +1,219 @@
+
+/* 폰트 설정 */
+@font-face {
+  font-family: "nanumbarungothic";
+  src : url("./fonts/NanumBarunGothic.ttf");
+}
+
+@font-face {
+  font-family: "euljiro10years";
+  src: url("./fonts/BMEuljiro10yearslater.ttf");
+}
+
+/* 배경 */
+html {
+  background: white;
+}
+
+/* body 배경 및 폰트 */
+body {
+  background: white !important;
+  font-family: "nanumbarungothic";
+}
+
+
+/* 제목, 입력창 공간 패딩 설정(가운데 정렬) */
+
+
+/* 제목 폰트 설정 */
+.form-signin-heading {
+  font-family: "euljiro10years";
+  font-size: 50px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+/* 개인, 기업회원 버튼 */
+.signinbutton {
+  font-family: "euljiro10years";
+  font-size: 20px;
+  color: white;
+  background-color: orange;
+  border: 1px solid orange;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* 관리자모드 버튼*/
+.adminbutton {
+  font-family: "euljiro10years";
+  font-size: 20px;
+  color: white;
+  background-color: orange;
+  border: 1px solid orange;
+  padding: 10px;
+  padding-top: 50px;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+
+/* 입력창 위 텍스트 설정 (ex.비밀번호) */
+.text-label {
+  text-align: left;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+/* 로그인 입력창, 버튼 영역 */
+.form-signin {
+  max-width: 450px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  
+  background-color: white;
+  border: 1px solid white;
+}
+
+/* 타이틀, 체크박스 */
+.form-signin,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+/* 타이틀 위치, 폰트 크기, 패딩, 경계선 설정 */
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  /*padding: 10px;*/
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+}
+
+.form-control {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+/* 아이디(전화번호) 입력창 설정 */
+.form-signin input[type=text] {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* 비밀번호 입력창 설정 */
+.form-signin input[type=password] {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.buttontype {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-lg {
+  font-family: "euljiro10years";
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.33;
+  border-radius: 5px;
+}
+
+/* 버튼 컬러 */
+.btn-primary {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+}
+
+/* 전화번호, 비밀번호 입력칸 설정 */
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: 1; /* 내부 글씨 투명도 설정 */
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* 입력창 하단 안내 텍스트 설정 */
+small {
+  font-size: 100%;
+  font-weight: 400;
+}
+
+/* 로그인 기억하기 라디오 버튼 */
+.radio, .checkbox {
+    display: block;
+    height: 10px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* 체크박스 크기 */
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+}
+
+/* 체크박스 (선택 시) */
+input[type='checkbox']:checked {
+  width: 20px;
+  height: 20px;
+}
+
+/* 비밀번호 찾기 a태그 정렬 */
+.atag {
+  text-align: center;
+  font-size: 20px;
+}
+
+/* 관리자 버튼 설정 */
+.admin-sigin {
+  font-size: 20px;
+}
+
