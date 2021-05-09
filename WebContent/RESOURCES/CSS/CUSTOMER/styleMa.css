@@ -1,0 +1,52 @@
+/* 나눔바른고딕, 을지로 10년후 체 */
+@font-face {
+  font-family: 'icomoon';
+  src: url("../입사지원관리/NanumBarunGothic.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BME';
+  src: url("../입사지원관리/BMEuljiro10yearslater.ttf");
+  font-style: normal;
+}
+
+#fh5co-footer {
+  background-color: #fff;
+  padding: 7em 0;
+}
+
+/* =======================================================
+*
+* 	Template Style 
+*	Edit this section
+*
+* ======================================================= */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.container-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+
+.footer {
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 260px;
+  color: white;
+  text-align: left;
+  background-color: lightgray; 
+  /* height: 50px;
+  margin-top: -50px; */
+}
