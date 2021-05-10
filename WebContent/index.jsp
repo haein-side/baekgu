@@ -15,14 +15,14 @@
 
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"></jsp:forward> --%>
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"></jsp:forward>  --%>
-	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header.jsp"></jsp:forward>  --%>
+	 <jsp:forward page="/WEB-INF/views/customer/common/header.jsp"></jsp:forward>  
 
 
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/footer.jsp"></jsp:forward> --%>
 
 
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/footer.jsp"></jsp:forward> --%>
-	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"></jsp:forward> --%>
 
 
 	<!-- 고객페이지 테스트 -->
