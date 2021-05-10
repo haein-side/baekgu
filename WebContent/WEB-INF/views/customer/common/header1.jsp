@@ -5,21 +5,27 @@
   <head>
   	<title>Website menu 02</title>
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'> -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-	<!-- <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+	
 	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleHeader1.css">
 
- 
 	</head>
-	<body>
+	<body style="margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;">
 	<section class="ftco-section" style="padding-top: 20px; padding-bottom: 50px;">
 
 		
-		<div class="container">
+		<div class="container-1">
 			<div class="row justify-content-between">
 				<div class="col">
 					<a class="navbar-brand" href="index.html"><img src="RESOURCES/IMAGES/백구로고.png" width="150" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
@@ -31,7 +37,7 @@
 			</div>
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
+	    <div class="container-1">
 	    
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
@@ -55,6 +61,10 @@
 
 	</section>
 
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 
 	<div>
 		<button style="height: 60px; color: black !important; margin-top: 10px; margin-right: 10px; font-size: 20px; position: fixed; top: 520px;
