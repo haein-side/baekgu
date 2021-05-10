@@ -17,7 +17,7 @@
     <br>
 
     <body marginwidth="0" marginheight="0" style="height: auto; width: 1000px; margin-left: 500px;"   >
-
+	 <%@ include file="../common/header.jsp" %> 
         <!-- 개인정보 입력 폼 -->
         <div class="tblst mt10">
             <fieldset>
@@ -424,6 +424,6 @@
 <br>
 <br>
 <br>
-
+   <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>
