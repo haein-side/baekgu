@@ -5,13 +5,17 @@
   <head>
   	<title>Website menu 02</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-	
+	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleHeader.css">
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 
 	</head>
 	<body>
@@ -54,10 +58,6 @@
 
 	</section>
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
 
 	<div>
 		<button style="height: 60px; color: black !important; margin-top: 10px; margin-right: 10px; font-size: 20px; position: fixed; top: 520px;

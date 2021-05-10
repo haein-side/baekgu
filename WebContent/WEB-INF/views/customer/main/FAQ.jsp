@@ -14,6 +14,7 @@
         <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
     </head>
     <body>
+     
 
 <div class="container">
 
