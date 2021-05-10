@@ -14,8 +14,12 @@
         <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
     </head>
     <body>
+<<<<<<< HEAD
     <%@ include file="../common/header.jsp"%> 
      
+=======
+  	 <%@ include file="../common/header.jsp" %>    
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 
 <div class="container">
 
@@ -157,5 +161,6 @@
 
             
         </div>
+           <%@ include file="../common/footer.jsp" %> 
         </body>
     </html>
