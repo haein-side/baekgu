@@ -5,7 +5,8 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 
-import com.baekgu.silvertown.user.model.dao.USerDAO;
+import com.baekgu.silvertown.user.model.dao.UserDAO;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
 /*
@@ -19,7 +20,7 @@ import com.baekgu.silvertown.user.model.dao.USerDAO;
 public class UserService {
 
 	/* EmployeeDAO와 연결할 필드 변수 */
-	private EmployeeDAO empDAO = new EmployeeDAO();
+	private UserDAO empDAO = new UserDAO();
 	
 	/**
 	 * 사원번호를 이용해서 사용자 정보 조회
@@ -27,13 +28,13 @@ public class UserService {
 	 * @param empId 사원번호
 	 * @return 사원정보
 	 */
-	public EmployeeDTO selectOneEmpById(String empId) {
+	public UserDTO selectOneEmpById(String empId) {
 		
 		/* Connection 생성 ->common.jdbc.JDBCTemplate */
 		Connection con = getConnection();
 		
 		/* Connection과 함께 정보를 전달하여 조회를 한다. */
-		EmployeeDTO selectedEmp = empDAO.selectEmpById(con, empId);
+		UserDTO selectedEmp = empDAO.selectOneEmpById(con, empId);
 		
 		/* 생각 : transaction(rollback or commit)이 필요한 상황인가? */
 		

@@ -172,7 +172,7 @@
                                   <tr>
                                     <th><input type="checkbox"></th>
                                     <td>1</td>
-                                    <td><a href="AdvertDetail.html">광고 상단 A</a></td>
+                                    <td><a href="AdvertDetail.html">광고 상단</a></td>
                                     <td>300000원</td>
                                     <td>30일</td>
                                   </tr>
