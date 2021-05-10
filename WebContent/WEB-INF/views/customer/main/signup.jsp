@@ -11,7 +11,7 @@
 
 <body class="bg-light">
   <!-- 헤더 부분 -->
-   <%@ include file="../common/header.jsp" %> 
+   <%@ include file="../common/header1.jsp" %> 
 
   <form>
     <div class="container">
