@@ -10,6 +10,10 @@
     </head>
     <body>
         
+        <!-- header -->
+        <%@ include file="../common/header.jsp" %> 
+        
+        
         <!-- Page Content-->
         <section class="py-5">
             <div class="container">
@@ -150,6 +154,9 @@
                 </div>
             </div>
         </section>
+        
+        <!-- footer -->
+        <%@ include file="../common/footer.jsp" %> 
         
     </body>
 </html>
