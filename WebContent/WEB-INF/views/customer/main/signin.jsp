@@ -9,7 +9,8 @@
 </head>
 
 <body>
-  <div class="container">
+   <%@ include file="../common/header.jsp" %> 
+	<div class="container">
     <div class="wrapper">
       <form class="form-signin">
 
@@ -39,6 +40,9 @@
       </form>
     </div>
   </div> 
+
+<!-- footer -->
+<%@ include file="../common/footer.jsp" %> 
 
 </body>
 </html>

@@ -8,14 +8,17 @@
 </head>
 <body>
 
+
  	<!-- 강현우 테스트 -->
-	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
+	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/>
+
 
 	<!-- 차진서 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> --%>
 	
 	<!-- 김현빈 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
+
 	
 	<!-- 정주영 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> --%>
@@ -25,7 +28,7 @@
 	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/>
 	
 	<!-- 김해인 테스트 -->
-	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
+	 <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> 
 	
 </body>
 </html>

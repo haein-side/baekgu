@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="RESOURCES/CSS/CUSTOMER/styleMa.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>입사지원관리페이지</title>
@@ -24,13 +24,15 @@
 
 <%@include file ="../common/header.jsp" %>
 
-    <div class="container" style=" top: 30%; left: 30%;">
-     <div class="container-inside">
-        <div class="col-sm-1 sidenav">
-        </div>
-        <div class="col-sm-10 text-left">
-        <h1 style="font-family:BME; font-size: 50px;">입사지원관리</h1>
-        <table border="0" width="800">
+    <div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-1 sidenav">
+    </div>
+    <div class="col-sm-10 text-left"> 
+      <h1 style="font-family:BME; font-size: 50px;">입사지원관리</h1>
+        <table border="1" width="800">
+          <br>
+          <br>
             <thead style= "font-family: BME; font-size:30px; font-weight: lighter;">
                 <tr height="40">
                     <th>지원일</th>
@@ -55,10 +57,15 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+	<br>
+	<br>
+	<br>
+	<br>
+
     </div>
     <div class="col-sm-1 sidenav">
-    </div>   
+    </div>
+  </div>
 </div>
 
 
