@@ -9,7 +9,7 @@
 </head>
 
 <body>
-   <%@ include file="../common/header.jsp" %> 
+   <%-- <%@ include file="../common/header.jsp" %>  --%>
 	<div class="container">
     <div class="wrapper">
       <form class="form-signin">
