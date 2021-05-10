@@ -12,11 +12,8 @@
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleHeader.css">
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
 
+ 
 	</head>
 	<body>
 	<section class="ftco-section" style="padding-top: 20px; padding-bottom: 50px;">
