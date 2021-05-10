@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
 
@@ -32,7 +33,7 @@ public class UserDAO {
 		}
 	}
 	
-	public UserDAO selectEmpById(Connection con, String empId) {
+	public UserDTO selectOneEmpById(Connection con, String empId) {
 
 		/* 생각 무엇을 쓸지? 
 		 * Statement - 속도빠르지만 안정성이 좋지않다 
@@ -52,7 +53,7 @@ public class UserDAO {
 		 * 1개의 행 -> EmployeeDTO로 결과값 저장
 		 * 여러 행 -> List<EmployeeDTO> 결과값 저장
 		 * */
-		UserDAO selectedEmp = null;
+		UserDTO selectedEmp = null;
 		
 		String query = prop.getProperty("selectEmpById");
 		
@@ -63,7 +64,7 @@ public class UserDAO {
 			rset = psmt.executeQuery();
 			
 			if(rset.next()) {
-				selectedEmp = new UserDAO();
+				selectedEmp = new UserDTO();
 //				selectedEmp.setEmpId(rset.getString("EMP_ID"));
 //				selectedEmp.setEmpName(rset.getString("EMP_NAME"));
 //				selectedEmp.setDeptCode(rset.getString("DEPT_CODE"));

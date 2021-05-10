@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <%-- <%@ include file="../common/header.jsp" %> --%>
+   <%@ include file="../common/header.jsp" %> 
     
    <section class="product-details">
     <div class="container">
@@ -347,7 +347,7 @@
                                                 </button>
                                             </div>
     </section>
-    <%@ include file="../common/footer.jsp" %>
+     <%@ include file="../common/footer.jsp" %> 
 </body>
 
 </html>

@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.greedy.mvc.employee.model.dto.EmployeeDTO;
-import com.greedy.mvc.employee.model.service.EmployeeService;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
+import com.baekgu.silvertown.user.model.service.UserService;
 
 /**
  * Servlet implementation class SelectOneEmpByidServlet
  */
 @WebServlet("/employee/select")
-public class SelectOneEmpByidServlet extends HttpServlet {
+public class SelectOneUserByidServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,11 +25,11 @@ public class SelectOneEmpByidServlet extends HttpServlet {
 		String empId = request.getParameter("empId");
 
 		/* 사번을 이용해 사원정보를 조회하는 비지니스 로직 호출 */
-		EmployeeService empService = new EmployeeService();
+		UserService empService = new UserService();
 		
 		/* 결과값을 반환 받기 */
 		/* 반환값은 어떤 타입? DTO? list? int? void? -> 어떤 작업중인지 고민 */
-		EmployeeDTO selectEmp = empService.selectOneEmpById(empId);
+		UserDTO selectEmp = empService.selectOneEmpById(empId);
 		
 		
 	
