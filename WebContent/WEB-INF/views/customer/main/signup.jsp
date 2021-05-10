@@ -11,10 +11,7 @@
 
 <body class="bg-light">
   <!-- 헤더 부분 -->
-  <header>
-    <div>
-    </div>
-  </header>
+   <%@ include file="../common/header.jsp" %> 
 
   <form>
     <div class="container">
@@ -99,15 +96,9 @@
 
   </form>
 </div>
-  <!--</div>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2021 백구</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
-  </div>-->
+
+<!-- footer -->
+<%@ include file="../common/footer.jsp" %> 
+
 </body>
 </html>
