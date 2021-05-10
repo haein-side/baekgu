@@ -14,6 +14,7 @@
         <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
     </head>
     <body>
+    <%@ include file="../common/header.jsp"%> 
      
 
 <div class="container">
