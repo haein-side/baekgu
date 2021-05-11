@@ -14,14 +14,16 @@
 </head>
 
 <body>
-<%-- <%@ include file="../common/header.jsp" %> --%>
-    
-   <section class="product-details">
+    <header>
+        <%@ include file="../common/header2.jsp" %>
+    </header>
+
+   <section class="product-details" style="margin-top: 10%;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <!-- <div class="col-lg-12 col-md-12"> -->
-                    <div class="product__details__text">
+                    <div class="product__details__text ">
                         <h1>홀서빙 구합니다</h1>
                         <hr>
                         <div class="company__title" style="font-size: 40px;">김씨네 식당</div>
@@ -89,7 +91,7 @@
                                                             <ul style="margin-top: 20px; margin-bottom: 50px;">
                                                                 <li style="font-size: 30px;">
                                                                     <b>근무지역</b>서울특별시 어쩌구 저쩌동 상세로 270 1층</li>
-                                                           		 </li>
+                                                           		 
                                                         </ul>
                                                     </div>
                                                     <div id="map" style="width:500px;height:400px;"></div>
@@ -118,7 +120,6 @@
                         </div>
                         <div>
                             <div class="product__details__text">
-                                <div class="tab-content"></div>
                                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                     <div class="product__details__tab__desc" >
                                         <h2 align="center">모집부분</h2>
@@ -147,7 +148,8 @@
                                                                         </b>
                                                                         <span>60세 이하</span>
                                                                     </li>
-                                                                    <br></ul>
+                                                                    <br>
+                                                                    </ul>
                                                                 </th>
                                                             </tr>
                                                         </tbody>
@@ -331,7 +333,7 @@
                                                                 </div>
                                                                 <div class="product__details__tab__desc">
                                                                     <div
-                                                                        style="height: 120px; border: 2px solid lightgray;"
+                                                                        style="height: 120px; border: 2px solid lightgray; margin-bottom: 80px;"
                                                                         align="center">
                                                                         <p style="font-size: 18px; margin-top: 40px;">
 

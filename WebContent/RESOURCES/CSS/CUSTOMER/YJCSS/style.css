@@ -115,17 +115,7 @@ ol {
 	margin: 0 auto;
 }
 
-/* 백구의상세정보(큰타이틀) 배경 깨지지 않게 함 */
-.set-bg {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
-}
 
-/* .spad {
-	padding-top: 100px;
-	padding-bottom: 100px;
-} */
 
 .text-white h1,
 .text-white h2,
@@ -320,4 +310,12 @@ ol {
 .final_check div{
 	margin-top: 50px;
 	color: black;
+}
+
+.header{
+	position: fixed;
+	top: 0;
+	/* width: 100% */
+	left: 0;
+	right: 0;
 }
