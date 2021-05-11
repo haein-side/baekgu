@@ -19,12 +19,15 @@
     <%-- <jsp:forward page="/WEB-INF/views/customer/main/searchpost.jsp"/> --%>
 	
 	<!-- 김현빈 테스트 -->
-<%-- 	 <jsp:forward page="/WEB-INF/views/customer/main/searchpost.jsp"/> --%>
+
+	 <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
+
 
 	<!-- 정주영 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> --%>
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/FAQ.jsp"/> --%>
 	 <%-- <jsp:forward page="/WEB-INF/views/customer/main/FAQ.jsp"/> --%>
+	
 	
 	<!-- 김유진 테스트 -->
 	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/>
