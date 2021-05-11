@@ -27,7 +27,7 @@
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
 	
 	<!-- 김해인 테스트 -->
-	 <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/> 
+	<%--  <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/>  --%>
 	
 </body>
 </html>
