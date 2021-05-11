@@ -10,7 +10,7 @@
 
 
  	<!-- 강현우 테스트 -->
-	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> --%>
 
 
 	<!-- 차진서 테스트 -->
@@ -27,7 +27,7 @@
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
 	
 	<!-- 김해인 테스트 -->
-	 <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> 
+	 <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/> 
 	
 </body>
 </html>
