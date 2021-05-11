@@ -2,12 +2,12 @@
 /* 폰트 설정 */
 @font-face {
   font-family: "nanumbarungothic";
-  src : url("./fonts/NanumBarunGothic.ttf");
+  src : url("../../FONTS/NanumBarunGothic.ttf");
 }
 
 @font-face {
   font-family: "euljiro10years";
-  src: url("./fonts/BMEuljiro10yearslater.ttf");
+  src: url("../../FONTS/BMEuljiro10yearslater.ttf");
 }
 
 /* 배경 */
