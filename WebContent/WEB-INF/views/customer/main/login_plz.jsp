@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인 부탁드려요!</title>
-    <link rel="stylesheet" href="resource/css/style.css" type="text/css">
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
 </head>
 <body style="overflow-x: hidden; overflow-y: hidden;">
     <div style="font-size: 30px; margin-top: 30px; line-height: 1.5em;" align="center">
