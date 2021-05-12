@@ -211,7 +211,7 @@ textarea {
     vertical-align: middle;
 }
 
-/* ul , ol 동그라미 안보이게 할려고 만듦~~~!  */
+/* ul , ol 동그라미 안보이게 할려고 만듦!  */
 ol,
 ul {
     list-style: none;
@@ -269,3 +269,14 @@ table caption {
 }
 
 
+/* 반응형 웹 페이지 */
+
+@media(max-width:1000px){
+    #grid{
+        display: block;
+    }
+
+
+
+
+}
