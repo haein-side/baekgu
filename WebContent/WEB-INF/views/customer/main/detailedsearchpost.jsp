@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
     	.btn1{
-    		background-color: orange;
+    		background-color: black;
 			color : white;
     	}
     </style>
@@ -43,7 +43,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;"> 희망 직종을 선택해 주세요.</h2>
+                            <h2 style="color: orange;"> 희망 직종을 선택해 주세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -72,7 +72,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">희망 직종을 더 상세하게 선택해주세요.</h2>
+                            <h2 style="color: orange;">희망 직종을 더 상세하게 선택해주세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -94,7 +94,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">해당 직종에 대해 경력이 있으신가요?</h2>
+                            <h2 style="color: orange;">해당 직종에 대해 경력이 있으신가요?</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -120,7 +120,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">일하고 싶은 기간을 선택하세요.</h2>
+                            <h2 style="color: orange;">일하고 싶은 기간을 선택하세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -143,7 +143,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">원하시는 근무 시간이 있으신가요?</h2>
+                            <h2 style="color: orange;">원하시는 근무 시간이 있으신가요?</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
