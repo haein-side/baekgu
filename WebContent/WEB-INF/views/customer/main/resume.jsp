@@ -17,7 +17,12 @@
     <br>
 
     <body marginwidth="0" marginheight="0" style="height: auto; width: 1000px; margin-left: 500px;"   >
+<<<<<<< HEAD
+    <%@ include file="../common/header.jsp" %> 
 
+=======
+	 <%@ include file="../common/header.jsp" %> 
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
         <!-- 개인정보 입력 폼 -->
         <div class="tblst mt10">
             <fieldset>
@@ -424,6 +429,6 @@
 <br>
 <br>
 <br>
-
+   <%@ include file="../common/footer.jsp" %> 
 </body>
 </html>

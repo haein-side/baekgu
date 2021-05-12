@@ -11,12 +11,12 @@
 
 <body class="bg-light">
   <!-- 헤더 부분 -->
-   <%@ include file="../common/header1.jsp" %> 
+   <%-- <%@ include file="../common/header1.jsp" %> --%> 
 
   <form>
     <div class="container">
       <div class="py-5 text-center" background="white">
-        <h2 class="form-signin-heading">개인회원 가입</h2>
+        <h1 class="form-signin-heading">개인회원 가입</h1>
       </div>
 
       <div class="row">
