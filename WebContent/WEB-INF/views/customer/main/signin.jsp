@@ -9,7 +9,7 @@
 </head>
 
 <body>
-   <%@ include file="../common/header.jsp" %>
+   <%-- <%@ include file="../common/header2.jsp" %> --%>
 	<div class="container">
     <div class="wrapper">
       <form class="form-signin">
@@ -34,7 +34,7 @@
         <div class="atag">
             <a href="">비밀번호 찾기</a><br>
             <p>아직 백구 회원이 아니세요?<a href="">회원가입하러 가기</a></p>
-        </div>
+        </div><br><br><br>
         <div class="buttontype">
           <input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick="">
         </div>
@@ -42,7 +42,8 @@
     </div>
   </div> 
 
-<!-- footer -->	<%@ include file="../common/footer.jsp" %>
+<!-- footer -->
+<%-- <%@ include file="../common/footer.jsp" %> --%>
  
 
 </body>
