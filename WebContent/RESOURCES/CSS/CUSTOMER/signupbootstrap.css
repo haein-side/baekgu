@@ -2,12 +2,12 @@
 /* 폰트 설정 */
 @font-face {
   font-family: "nanumbarungothic";
-  src : url("./fonts/NanumBarunGothic.ttf");
+  src : url("../../FONTS/NanumBarunGothic.ttf");
 }
 
 @font-face {
   font-family: "euljiro10years";
-  src: url("./fonts/BMEuljiro10yearslater.ttf");
+  src: url("../../FONTS/BMEuljiro10yearslater.ttf");
 }
 
 /* 전체 입력창 박스선 설정 */
@@ -29,8 +29,9 @@ html {
   width: 100%;
   padding-right: 100px;
   padding-left: 100px;
-  margin-right: auto;
-  margin-left: auto;
+/*   margin-right: auto;
+  margin-left: auto; */
+  margin: auto;
 }
 
 /* header footer를 block 방식으료 표시 */
@@ -53,15 +54,16 @@ body {
 /* 상단 제목 폰트 설정 */
 .form-signin-heading {
   font-family: "euljiro10years";
-  font-size: 45px;
+  /* font-size: 45px; */
   text-align: center;
+  color: orange;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 /* 입력창 위 카테고리 문자(ex.전화번호, 이름) */
 .basiclabel {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -105,8 +107,9 @@ small {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+/*   margin-right: -15px;
+  margin-left: -15px; */
+  margin: auto;
 }
 
 /* div 배치 설정 */
@@ -126,7 +129,7 @@ small {
     flex-basis: 0;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    max-width: 100%;
+    max-width: 80%;
   }
   .col-sm-auto {
     -ms-flex: 0 0 auto;
@@ -263,14 +266,13 @@ small {
   }
 }
 
-
 /* 입력창 */
 .form-control {
   display: block;
   width: 100%;
-  height: calc(2em + 1rem + 3px);
+  /* height: calc(2em + 1rem + 3px); */
   padding: 0.375rem 0.75rem;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -285,13 +287,14 @@ small {
 .form-group {
   margin-top: 5px;
   margin-bottom: 25px;
+  
 }
 
 /* 입력창 선택 시 효과 */
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: black;
   box-shadow: 0 0 0 0.2rem black;
 }
 
@@ -338,13 +341,13 @@ small {
 /* small 태그 설정 */
 .text-muted {
   color: #6c757d !important;
-  font-size: 17px;
+  font-size: 13px;
 }
 
 /* 라디오 버튼 설정 */
 input[type="radio"] {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 /* 라디오 박스 텍스트 설정 */
@@ -439,7 +442,5 @@ button:focus {
   padding-left: 3rem !important;
 }
 */
-
-
 
 /*# sourceMappingURL=bootstrap.css.map */

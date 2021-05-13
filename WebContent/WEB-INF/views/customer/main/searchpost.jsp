@@ -1,90 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!doctype html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>πÈºº&nbsp;±∏¿Œ±∏¡˜</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/bootstrapSP.css">    
-        <!-- main css -->
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleSP.css">
-        <style>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
 
-        </style>
-    </head>
-    <body>
-        <section>
-            <div>
-                <br><br>
-                <p style="font-size: xx-large; font-weight: bold;">∞¯∞Ì&nbsp;&nbsp;∞Àªˆ</p><br><br>
-            </div>
-        </section>
-        <!--±‚∫ª πˆ∆∞ ªÛºº πˆ∆∞-->
-        <section>
-            <div align="center" id="btn_group">
-                <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;"disabled>±‚∫ª&nbsp;∞Àªˆ</a>
-                <a href="index2.html" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;margin-left: 160px;">ªÛºº&nbsp;∞Àªˆ</a>
+<head>
+    <meta charset="UTF-8">
+    <title>ÏÉÅÏÑ∏Ï°∞Ìöå</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
+    <style>
+    
+    	.btn1{
+    		color : white;
+    		background-color : orange;	
+    	}
+    </style>
+</head>
+
+<body>
+<%@ include file="../common/header2.jsp" %>
+    <form>
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                </div>
+                <div class="col-sm-8 text-left">
+                    <div align="center">
+                        <h1>Í≥µÍ≥†&nbsp;Í≤ÄÏÉâ</h1>
+                        <hr><br><br>
+                    </div>
+                    <div align="center" id="btn_group">
+                        <button class="btn1" style="width:200pt;height:80pt;border-radius:10px;font-size:x-large;"disabled>Í∏∞Î≥∏&nbsp;Í≤ÄÏÉâ</button>
+                        <button class="btn1" style="width:200pt;height:80pt;border-radius:10px;font-size:x-large; margin-left: 160px;">ÏÉÅÏÑ∏&nbsp;Í≤ÄÏÉâ</button>
+                        <br>
+                    </div>
+
+                    <div class="container">
+                        <div class="section_title text-center">
+                            <hr>
+                            <h2 style="color: black;"> Ìù¨Îßù ÏßÅÏ¢ÖÏùÑ ÏÑ†ÌÉùÌï¥ Ï£ºÏÑ∏Ïöî.</h2>
+                            <br><br>
+                            <div align="center" style="margin-bottom: 100px;">
+                                <div style="width: 1000px;">
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Ïãù&nbsp;Îãπ</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Îß§Ïû•&nbsp;Í¥ÄÎ¶¨</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">ÏÉÅ&nbsp;Îã¥</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Í±¥&nbsp;ÏÑ§</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Í∞Ñ&nbsp;Ìò∏</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Íµê&nbsp;ÏÇ¨</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Ïö¥&nbsp;Ï†Ñ</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">ÏÇ¨&nbsp;Î¨¥</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Í∏∞&nbsp;ÌÉÄ</button>
+                                </div>
+                            </div>
+                        </div><hr>
+                    </div>
+                </div>
+                <div class="container" align="center">
+                    <div class="about_content">
+                        <h2 style="color: black;">ÏùºÌïòÍ≥† Ïã∂ÏùÄ Í∏∞Í∞ÑÏùÑ ÏÑ†ÌÉùÌïòÏÑ∏Ïöî.</h2><br><br><br>
+                        <div style="width: 1000px;">
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">ÏùºÏ£ºÏùº&nbsp;&nbsp;Ïù¥Ìïò</button>
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">ÌïúÎã¨&nbsp;&nbsp;Ïù¥Ìïò</button>
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">3Í∞úÏõî&nbsp;&nbsp;Ïù¥Ìïò</button>
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">6Í∞úÏõî&nbsp;&nbsp;Ïù¥Ìïò</button>
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">1ÎÖÑ&nbsp;&nbsp;Ïù¥ÏÉÅ</button>
+                            <button class="btn1"
+                                style=" margin: 15px; width:200pt;height: 80pt;border-radius: 10px;font-size:x-large;">Í∏∞&nbsp;&nbsp;ÌÉÄ</button>
+                        </div>
+                    </div>
+                </div>
                 <br><br><br>
-            </div>
-        </section>
-        <!--¡ˆµµ ¿⁄∏Æ¿‘¥œ¥Ÿ....-->
-        <section>
-            <div>
-                <div>
-
+                <div class="container" align="center">
+                    <hr><br><br>
+                    <button class="btn1"
+                        style="width: 200pt; height: 80pt; border-radius: 10px; font-size: x-large;">Í≤ÄÏÉâÌïòÍ∏∞</button>
                 </div>
-            </div>
-        </section>
-        <!--================ ¡˜¡æ º±≈√  =================-->
-        <section class="facilities_area section_gap" style="padding-top: 50px;padding-bottom: 10px;">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="" style="transform: translateY(-29.3162px); height: 900px;">  
-            </div> 
-            </div>
-              <div class="container">
-                <div class="section_title text-center">
-                    <h2 class="title_w"> »Ò∏¡ ¡˜¡æ¿ª º±≈√«ÿ ¡÷ººø‰!</h2>
-                    <br><br>
-                    <div align="center"> 
-                   <div style="width: 700px;">
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>Ωƒ&nbsp;¥Á</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;"><br>∏≈¿Â<br>∞¸∏Æ</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ªÛ&nbsp;¥„</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>∞«&nbsp;º≥</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>∞£&nbsp;»£</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>±≥&nbsp;ªÁ</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>øÓ&nbsp;¿¸</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>ªÁ&nbsp;π´</a>
-                    <a href="#times" class="button_hover1 theme_btn_two2" style="width : 100pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>±‚&nbsp;≈∏</a>
-                </div>   
-            </div>    
-        </div>
-    </div>
-</section>
-<!--================ ±‚∞£ º±≈√  =================-->
-        <section id="times"class="about_history_area section_gap">
-             <div class="container" align="center">
-                <div class="about_content">
-                    <h2 class="title title_color">¿œ«œ∞Ì ΩÕ¿∫ ±‚∞£¿ª º±≈√«œººø‰. </h2><br><br>
-                    <div  style="width: 1000px;">
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">¿œ¡÷¿œ&nbsp;&nbsp;¿Ã«œ</a>
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">«—¥ﬁ&nbsp;&nbsp;¿Ã«œ</a>
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">3∞≥ø˘&nbsp;&nbsp;¿Ã«œ</a>
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">6∞≥ø˘&nbsp;&nbsp;¿Ã«œ</a>
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">1≥‚&nbsp;&nbsp;¿ÃªÛ</a>
-                    <a href="#search" class="button_hover theme_btn_two" style="width : 200pt;height: 80pt;border-radius: 10px;font-size:x-large;padding-top: 40px;">±‚&nbsp;&nbsp;≈∏</a>
+                <div class="col-sm-2 sidenav">
                 </div>
             </div>
         </div>
-    </section>
-    <!--================ ∞Àªˆ«œ±‚  =================-->
-    <section id="search" class="testimonial_area section_gap">
-        <div class="container" align="center">
-            <a href="#" class="button_hover theme_btn_two" style="width : 200pt;height: 100pt;border-radius: 10px;font-size:x-large;padding-top: 26px;"><br>∞Àªˆ«œ±‚</a>  
-        </div>
-        </section>
-    </body>
+        <br><br><br>
+    </form>
+<%@ include file="../common/footer.jsp" %>
+</body>
 </html>

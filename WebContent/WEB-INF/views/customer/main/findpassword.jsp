@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/findpassword.css" type="text/css">
 </head>
 <body>
-	<%@ include file="../common/header.jsp" %> 	
+
+<%-- <%@ include file="../common/header1.jsp" %> --%>
+	
 	<div class="wrapper">
     <form class="form-signin">        
       <h2 class="form-signin-heading">비밀번호 찾기</h2>
@@ -37,8 +39,8 @@
       </form>
     </div>
 
-<!-- footer -->
-<%@ include file="../common/footer.jsp" %> 	
+	<!-- footer -->
+	<%-- <%@ include file="../common/footer.jsp" %> --%>
 	
 </body>
 </html>
