@@ -1,20 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
-</head>
-<body>
 
-    
+
+
     <!-- 헤더 영역 -->   
 	<div class="header">
 	
 		<!-- 헤드라인 -->
-		<div style="height: 100%; text-align: center; background: pink;">
+		<div style="height: 100%; text-align: center; background: white;">
 			<!-- 의도 : 백구 네임을 클릭하면 메인 화면으로 넘어간다 -->
 			<br><br>
 			<h1 style="font-size: 100px;"><a href="" style="color: black; text-decoration:none; margin-bottom: 1%;">
@@ -83,10 +76,3 @@
 		</div>	<!-- nav-area end -->
 	</div>	<!-- menu-area end -->
 	</div>	<!-- header end -->
-
-
-	
-
-
-</body>
-</html>

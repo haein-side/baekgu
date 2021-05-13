@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/header2.jsp" %>
     <form>
         <div class="container-fluid text-center">
             <div class="row content">
