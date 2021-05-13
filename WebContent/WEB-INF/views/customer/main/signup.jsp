@@ -10,47 +10,47 @@
 </head>
 
 <body class="bg-light">
-  <!-- 헤더 부분 -->
-   <%-- <%@ include file="../common/header1.jsp" %> --%> 
+ 	<!-- 헤더 부분 -->
+	<%@ include file="../common/header1.jsp" %>
+	   
+ 	<form>
+		<div class="container">
+      	<div class="py-5 text-center" background="white">
+			<h1 class="form-signin-heading">개인회원 가입</h1>
+		</div>
 
-  <form>
-    <div class="container">
-      <div class="py-5 text-center" background="white">
-        <h1 class="form-signin-heading">개인회원 가입</h1>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-
-          <div class="form-group">
-            <label for="mobile" class="basiclabel">전화번호 (아이디로 사용됩니다.)</label>
-            <input type="text" class="form-control" id="mobile" placeholder="(예 : 01012345678)" required>
-            <small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.</small>
-          </div><br>
-          <div class="form-group">
-            <label for="password" class="basiclabel">비밀번호</label>
-            <input type="password" class="form-control" id="password" placeholder="(예 : hgd610405)" aria-describedby="" required>
-            <small id="passwordHelp" class="form-text text-muted">영어와 숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)</small>
-          </div><br>
-          <div class="form-group">
-            <label for="name" class="basiclabel">이름</label>
-            <input type="text" class="form-control" id="name" placeholder="(예 : 홍길동)" required>
-            <small id="passwordHelp" class="form-text text-muted">이름을 입력해주세요.</small>
-          </div><br>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+            	<label for="mobile" class="basiclabel">휴대폰번호 (아이디로 사용됩니다.)</label>
+            	<input type="text" class="form-control" id="mobile" placeholder="(예 : 01012345678)" required>
+            	<small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.</small>
+          	</div><br>
+          	<div class="form-group">
+            	<label for="password" class="basiclabel">비밀번호</label>
+            	<input type="password" class="form-control" id="password" placeholder="(예 : hgd610405)" aria-describedby="" required>
+            	<small id="passwordHelp" class="form-text text-muted">영어와 숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)</small>
+        	</div><br>
+          	<div class="form-group">
+            	<label for="name" class="basiclabel">이름</label>
+            	<input type="text" class="form-control" id="name" placeholder="(예 : 홍길동)" required>
+            	<small id="passwordHelp" class="form-text text-muted">이름을 입력해주세요.</small>
+          	</div><br>
           
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <label for="birthyear" class="basiclabel">태어난 해</label><br>
-              <input type="number" class="birthinfo" id="birthyear" min="1900" max="2021" step="1" value="1" placeholder="(예 : 1960)" style="width:150px" required>
-              <label>년</label><br>
-              <small class="form-text text-muted">(예 : 1970)</small>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="birthmonth" class="basiclabel">태어난 달</label><br>
-              <input type="number" class="birthinfo" id="birthmonth" min="1" max="12" step="1" value="1" placeholder="(예 : 08)" style="width:150px" required>
-              <label>월</label><br>
-              <small class="form-text text-muted">(예 : 08)</small>
-            </div>
+          	<div class="row">
+            	<div class="col-md-3 mb-3">
+              		<label for="birthyear" class="basiclabel">태어난 해</label><br>
+              		<input type="number" class="birthinfo" id="birthyear" min="1900" max="2021" step="1" value="1" placeholder="(예 : 1960)" style="width:150px" required>
+              		<label>년</label><br>
+              		<small class="form-text text-muted">(예 : 1970)</small>
+            	</div>
+            	
+            	<div class="col-md-3 mb-3">
+              		<label for="birthmonth" class="basiclabel">태어난 달</label><br>
+              		<input type="number" class="birthinfo" id="birthmonth" min="1" max="12" step="1" value="1" placeholder="(예 : 08)" style="width:150px" required>
+              		<label>월</label><br>
+              		<small class="form-text text-muted">(예 : 08)</small>
+           		</div>
             <div class="col-md-3 mb-3">
           		<label for="birthday" class="basiclabel">태어난 날</label><br>
                 <input type="number" class="birthinfo" id="birthday" min="1" max="31" step="1" value="1" placeholder="(예 : 08)" style="width:150px" required>

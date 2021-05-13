@@ -9,7 +9,7 @@
 </head>
 
 <body>
-   <%-- <%@ include file="../common/header.jsp" %>  --%>
+   <%@ include file="../common/header.jsp" %>
 	<div class="container">
     <div class="wrapper">
       <form class="form-signin">
@@ -20,7 +20,7 @@
           <input type="button" value="기업회원" class="signinbutton" onclick="">
         </div>
         <div>
-          <lable class="text-label"><b>전화번호</b></lable>
+          <lable class="text-label"><b>휴대폰 번호 (아이디로 사용됩니다.)</b></lable>
           <input type="text" class="form-control" name="mobile" placeholder="(예 : 01012345678)" required="" autofocus=""/>
           <small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자만 10자리 혹은 11자리를 입력하세요.</small><br><br>
           <lable class="text-label"><b>비밀번호</b></lable>
@@ -32,7 +32,8 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit">들어가기</button><br><br>
         </div>
         <div class="atag">
-            <a href="">비밀번호 찾기</a>
+            <a href="">비밀번호 찾기</a><br>
+            <p>아직 백구 회원이 아니세요?<a href="">회원가입하러 가기</a></p>
         </div>
         <div class="buttontype">
           <input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick="">
@@ -41,8 +42,8 @@
     </div>
   </div> 
 
-<!-- footer -->
-<%@ include file="../common/footer.jsp" %> 
+<!-- footer -->	<%@ include file="../common/footer.jsp" %>
+ 
 
 </body>
 </html>
