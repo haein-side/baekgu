@@ -10,7 +10,7 @@
             border: 1px solid black;
             background: orange;
         }
-
+ij
         .fr_txta{
             width: 600px;
             height: 300px;
@@ -44,7 +44,7 @@
 <body class="none">
     <div id="FRWrap">
         <div class="header">
-            <h1 class="bg_fr fr_tit" align="center"><span class="blind">허위정보 신고하기</span></h1>
+            <h1 class="bg_fr fr_tit" align="center"><span class="blind">공고 신고하기</span></h1>
         </div>
 
         <div class="body">
@@ -84,20 +84,14 @@
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th>광고제목</th>
+                            <th>공고제목</th>
                             <td align="center">
                                 신규 최대 10만원 지급 이벤트/원하는요일/단기알바/초보가능/쿠팡플렉스
                             </td>
                         </tr>
                         <tr>
-                            <th>등록자</th>
+                            <th>공고 등록자</th>
                             <td align="center">쿠팡 주식회사</td>
-                        </tr>
-                        <tr>
-                            <th>연락처 <span class="bg_fr fr_point"></span></th>
-                            <td>
-                                <input type="text" name="callInfo" class="fr_inp" maxlength="50" style="ime-mode:disabled" onchange="fn_keyCHK(this)">
-                            </td>
                         </tr>
                         <tr>
                             <th>신고사유 <span class="bg_fr fr_point"></span></th>
@@ -125,8 +119,8 @@
                         <tr class="last" style="font-family: nan;">
                             <th>신고내용 <span class="bg_fr fr_point"></span></th>
                             <td>
-                                <textarea colspan="10" rowspan="5" name="txtContents" id="txtContents" class="fr_txta" onkeyup="limitTextNum('txtContents',500,'txtContentsspan')" style="resize:none;"></textarea>
-                                <p align="center">신고내용을 500자 이내로 입력해주세요. (<span id="txtContentsspan">0</span>/500자)</p>
+                                <textarea cols="75" rows="15" name="txtContents" id="txtContents" class="fr_txta" onkeyup="limitTextNum('txtContents',500,'txtContentsspan')" style="resize:none;"></textarea>
+                                <p align="center">신고내용을 30자 이내로 입력해주세요. (<span id="txtContentsspan">0</span>/30자)</p>
                             </td>
                         </tr>
                     </tbody>
@@ -134,7 +128,7 @@
             </div>
             <!-- //테이블 -->
             <div style="margin-top:10px;padding:10px;border:1px solid #d7d7d7;background-color:#f8f8f8;font-family: nan;">
-                <p style="font-size:11px;line-height:18px;color:#777"><strong style="font-size:12px;color:#777">개인정보 수집 및 이용 안내</strong><br />1. 수집 항목 : 이메일, 휴대폰 번호<br />2. 수집·이용목적 : 민원 처리 및 결과 회신<br />3. 보유 및 이용기간 : 3년(소비자의 불만 또는 분쟁처리에 관한 기록에 의거)</p>
+                <p style="font-size:11px;line-height:18px;color:#777"><strong style="font-size:12px;color:#777">개인정보 수집 및 이용 안내</strong><br />1. 수집 항목 : 휴대폰 번호<br />2. 수집·이용목적 : 민원 처리 및 결과 회신<br />3. 보유 및 이용기간 : 3년(소비자의 불만 또는 분쟁처리에 관한 기록에 의거)</p>
                 <div style="padding-top:10px"><label for="" style="font-size:11px;color:#f26522"><input type="checkbox" name="check" style="width:13px;height:13px;margin:0;vertical-align:-2px;" /> 위 ‘개인정보 수집 및 이용’ 에 동의합니다.</label></div>
             </div>
         </div>
@@ -144,4 +138,4 @@
     </div>
     </form>
 </body>
-</html>k87
+</html>

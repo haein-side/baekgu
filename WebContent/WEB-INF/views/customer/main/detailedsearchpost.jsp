@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
+	type="text/css">
     <style>
     	.btn1{
     		background-color: black;
@@ -17,10 +19,11 @@
     	}
     </style>
 </head>
-<%@ include file="../common/header.jsp" %>
 <body>
+<%@ include file="../common/header2.jsp" %>
+<div></div>
     <form>
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center"  style="margin-top: 10%;z-index: 1;">
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                 </div>
@@ -177,6 +180,7 @@
             </div>
         </div>
     </form>
+    </section>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

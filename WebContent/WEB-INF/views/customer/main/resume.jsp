@@ -20,6 +20,8 @@
     <body marginwidth="0" marginheight="0"  style="margin-top: 10%; z-index: 1;"  >
         	<%@ include file="../common/header2.jsp"%>
 
+
+
 	<form style="margin:100px;">
         <!-- 개인정보 입력 폼 -->
         <div class="tblst mt10">
@@ -340,6 +342,9 @@
 </div>
 
 
+
+
+
 <br>
 <br>
 <br>
@@ -378,7 +383,7 @@
     <a href="enter.html" class="button2" style="margin-top:10px; width:200px; height:50px; text-align:center; line-height: 50px; font-size: 20px;">이력서 등록하기</a>
 </div>
 
-</div>
+
 
 </form>
 
