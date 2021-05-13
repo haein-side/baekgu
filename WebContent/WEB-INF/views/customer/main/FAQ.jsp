@@ -12,12 +12,14 @@
 	
         <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQjquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
+        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
+	        type="text/css"> 
     </head>
     <body>
-    <%@ include file="../common/header.jsp"%> 
+      <%@ include file="../common/header2.jsp"%> 
  
 
-<div class="container">
+<div class="container" style="margin-top: 15%; z-index: 1;">
 
     <div class="page-header">
         <h1 style="font-family:BM; color: orange;">무엇을 도와드릴까요?</h1>
@@ -45,9 +47,10 @@
                 <br/>
                 <br/>
 
-                <div class="panel-group" id="accordion">
-                    <div class="faqHeader"><h2 style="font-family:BM; color: orange;">자주 묻는 질문들</h2></div>
-                    <div class="panel panel-default">
+		<div class="page-header">
+			<h1 style="font-family: BM; color: orange;">자주 묻는 질문들</h1>
+		</div>
+		<div class="panel panel-default" style="font-family:Glyphicons Halflings;">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a
@@ -71,10 +74,10 @@
                                     class="accordion-toggle collapsed"
                                     data-toggle="collapse"
                                     data-parent="#accordion"
-                                    href="#collapseTen">회원탈퇴는 어디서 하나요?</a>
+                                    href="#collapseTwo">회원탈퇴는 어디서 하나요?</a>
                             </h4>
                         </div>
-                        <div id="collapseTen" class="panel-collapse collapse">
+                        <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
                                 회원 탈퇴는 이렇게 하시면 됩니다.
                             </div>
@@ -87,10 +90,10 @@
                                     class="accordion-toggle collapsed"
                                     data-toggle="collapse"
                                     data-parent="#accordion"
-                                    href="#collapseEleven">가입에 나이제한은 없나요 ?</a>
+                                    href="#collapseThree">가입에 나이제한은 없나요 ?</a>
                             </h4>
                         </div>
-                        <div id="collapseEleven" class="panel-collapse collapse">
+                        <div id="collapseThree" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <strong>네
                                 </strong>
@@ -98,17 +101,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" >
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a
                                     class="accordion-toggle collapsed"
                                     data-toggle="collapse"
                                     data-parent="#accordion"
-                                    href="#collapseEleven">백구는 언제나 존재하나요?</a>
+                                    href="#collapseFour">백구는 언제나 존재하나요?</a>
                             </h4>
                         </div>
-                        <div id="collapseEleven" class="panel-collapse collapse">
+                        <div id="collapseFour" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <strong>네
                                 </strong>
