@@ -38,7 +38,7 @@ body {
 	/* width: 100% */
 	left: 0;
 	right: 0;
-	z-index: 100;
+	z-index: 200;
 }
 
 /*로그인 영역 흐름 속성 설정*/
