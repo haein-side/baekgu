@@ -51,12 +51,12 @@
               <label>월</label><br>
               <small class="form-text text-muted">(예 : 08)</small>
             </div>
-              <div class="col-md-3 mb-3">
-                <label for="birthday" class="basiclabel">태어난 날</label><br>
+            <div class="col-md-3 mb-3">
+          		<label for="birthday" class="basiclabel">태어난 날</label><br>
                 <input type="number" class="birthinfo" id="birthday" min="1" max="31" step="1" value="1" placeholder="(예 : 08)" style="width:150px" required>
                 <label>일</label><br>
                 <small class="form-text text-muted">(예 : 31)</small>
-              </div>
+            </div>
             </div><br>
             
             <div class="form-group">
@@ -90,10 +90,8 @@
                     <input type="checkbox" name="Agree1" id="agreeChk_0" class="agrSelect" value="on"><label for="agreeChk_0" style="font-size: 19px;">[선택] 이메일/SMS 수신 동의</label>&nbsp;<a href="#" style="font-size: 20px;">내용보기</a>
                   </div>
         		<button class="btn btn-lg btn-primary btn-block" type="submit" style="font-size: 30px; margin-left: 290px">들어가기</button>
-
-          </div>
-        </div>
-
+               </div>
+        	</div>
   </form>
 </div>
 
