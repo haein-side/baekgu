@@ -10,11 +10,9 @@
 
 
  	<!-- 강현우 테스트 -->
-<<<<<<< HEAD
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> --%>
-=======
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
+
 
 
 	<!-- 차진서 테스트 -->
@@ -24,7 +22,7 @@
 	
 	<!-- 김현빈 테스트 -->
 
-	 <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
+	 <%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
 
 
 	<!-- 정주영 테스트 -->
@@ -34,17 +32,12 @@
 	
 	
 	<!-- 김유진 테스트 -->
-	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/> --%>
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header2.jsp"/> --%>
 	
 	<!-- 김해인 테스트 -->
-<<<<<<< HEAD
-	<%--  <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/>  --%>
-=======
-	<%-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> --%>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
-	
-	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
+	<jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/>
+
 
 </body>
 </html>

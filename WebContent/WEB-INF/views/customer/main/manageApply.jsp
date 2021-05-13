@@ -22,13 +22,13 @@
 
 <body class="body">
 
-<%@include file ="../common/header.jsp" %>
+<%@include file ="../common/header2.jsp" %>
 
-    <div class="container-fluid text-center">    
+    <div class="container-fluid text-center" style="margin-top: 200px;">    
   <div class="row content">
     <div class="col-sm-1 sidenav">
     </div>
-    <div class="col-sm-10 text-left"> 
+    <div class="col-sm-10 text-left" style="margin-top: 200px;"> 
       <h1 style="font-family:BME; font-size: 50px;">입사지원관리</h1>
         <table border="1" width="800">
           <br>
