@@ -22,10 +22,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                    <img src="RESOURCES/IMAGES/product-details-1.jpg"></div>
+                    <div><img src="RESOURCES/IMAGES/product-details-1.jpg"></div>
             </div>
 
-                <!-- <div class="col-lg-12 col-md-12"> -->
+               <div class="col-lg-6 col-md-6">
                     <div class="product__details__text ">
                         <h1>홀서빙 구합니다</h1>
                         <hr>
