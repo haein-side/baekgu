@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>
 
 
-
+	
     <!-- 헤더 영역 -->   
 	<div class="header" style="z-index: 10000;">
 	
 		<!-- 헤드라인 -->
-		<div style="height: 100%; text-align: center; background: white;">
+		<div style="text-align: center;">
 			<!-- 의도 : 백구 네임을 클릭하면 메인 화면으로 넘어간다 -->
 			<br><br>
-			<h1 style="font-size: 100px;"><a href="" style="color: black; text-decoration:none; margin-bottom: 1%;">
+			<h1 style="font-size: 100px; height:100%;"><a href="" style="color: black; text-decoration:none; margin-bottom: 1%;">
 			백구
 			</a></h1>
 		</div>
