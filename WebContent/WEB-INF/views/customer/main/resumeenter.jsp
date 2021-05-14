@@ -16,7 +16,7 @@
  
     <br>
 
-    <body   style="margin-top: 10%; z-index: 1;"   >
+    <body style="margin-top: 10%; z-index: 1;">
 			<%@ include file="../common/header2.jsp"%>
         <!-- 개인정보 입력 폼 -->
         <form style="margin:100px;">
