@@ -20,8 +20,8 @@
 <%--     <jsp:forward page="/WEB-INF/views/custimer/main/main.jsp"/>  --%>
 
 
-	<!-- 정주영 테스트 hello -->
-	 <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> 
+	<!-- 정주영 테스트 -->
+	 <jsp:forward page="/WEB-INF/views/customer/main/resumeenter.jsp"/> 
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header2.jsp"/> --%>
