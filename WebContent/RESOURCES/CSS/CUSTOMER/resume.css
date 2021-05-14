@@ -15,7 +15,7 @@ src: url("../../FONTS/NanumBarunGothic.ttf");
 
 /*  통화 가능시간 옵션 */
 .resume__possible-time {
-    padding-top: 10px;
+    padding-top: 10px;  
 }
 
 /* 성격 및 강점 체크부분   */
@@ -34,7 +34,7 @@ legend {
     left: 0;
     width: 1px;
     height: 1px;
-
+    
     visibility: hidden;
     font-size: 0;
     line-height: 0;
@@ -126,12 +126,11 @@ select.select {
 }
 
 /* 각종 태그 0 */
-a,
+/* a,
 abbr,
 address,
 b,
 blockquote,
-body,
 button,
 caption,
 dd,
@@ -161,17 +160,15 @@ table,
 tbody,
 td,
 textarea,
-tfoot,
 th,
 thead,
 tr,
 ul {
     margin: 0;
     padding: 0;
-}
+} */
 
 /*  body , 각종 태그 설정 */
-body,
 button,
 h1,
 h2,
@@ -186,7 +183,7 @@ textarea {
     font-size: 20px;
     font-family:  'Nanum';
     color: #494949;
-    line-height: 18px;
+  
 }
 
 /* 프레임 선 얇아지게  */
@@ -221,7 +218,7 @@ table {
     table-layout: fixed;
 }
 /* 테이블 각 단락 이름부분  */
-table caption {
+  table caption {
     overflow: hidden; 
     visibility: hidden;
     width: 0;
@@ -247,6 +244,7 @@ table caption {
     cursor: pointer;
 
 }
+
 
 
 
