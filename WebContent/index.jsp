@@ -16,13 +16,13 @@
 	
 	<!-- 김현빈 테스트 -->
 
+
          <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
          <jsp:forward page="/WEB-INF/views/customer/main/searchpost.jsp"/>
 
 
-
 	<!-- 정주영 테스트 -->
-	<%--  <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> --%>
+	 <jsp:forward page="/WEB-INF/views/customer/main/resumeenter.jsp"/> 
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header2.jsp"/> --%>
