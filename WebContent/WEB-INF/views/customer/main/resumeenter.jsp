@@ -13,7 +13,7 @@
  
     <br>
 
-    <body  marginwidth="0" marginheight="0"  style="margin-top: 10%; z-index: 1;"   >
+    <body style="margin-top: 10%; z-index: 1;">
 			<%@ include file="../common/header2.jsp"%>
         <!-- 개인정보 입력 폼 -->
         <form style="margin:100px;">
@@ -222,6 +222,6 @@
 <br>
 <br>
 <br>
-<%@ include file="../common/footer.jsp"%>
+<%@ include file="../common/footer2.jsp"%>
 </body>
 </html>
