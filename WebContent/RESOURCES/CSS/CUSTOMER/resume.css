@@ -13,16 +13,13 @@ src: url("../../FONTS/NanumBarunGothic.ttf");
 
 
 
-
 /*  통화 가능시간 옵션 */
 .resume__possible-time {
     padding-top: 10px;
 }
 
 /* 성격 및 강점 체크부분   */
-.resume__forte-list {
-    overflow: hidden;
-}
+
 .resume__forte-list li {
     float: left;
     width: 33.333%;
@@ -37,7 +34,7 @@ legend {
     left: 0;
     width: 1px;
     height: 1px;
-    overflow: hidden;
+
     visibility: hidden;
     font-size: 0;
     line-height: 0;
@@ -110,7 +107,6 @@ select.select {
     display: inline-block;
     margin-left: 19px;
     padding-left: 20px;
-    background: url("//image.findall.co.kr/FACache/Job/Resume/common/ico_chk.png") no-repeat 0 4px;
     color: #282828;
 }
 
@@ -211,7 +207,7 @@ textarea {
     vertical-align: middle;
 }
 
-/* ul , ol 동그라미 안보이게 할려고 만듦~~~!  */
+/* ul , ol 동그라미 안보이게 할려고 만듦!  */
 ol,
 ul {
     list-style: none;
@@ -226,7 +222,7 @@ table {
 }
 /* 테이블 각 단락 이름부분  */
 table caption {
-    overflow: hidden;
+    overflow: hidden; 
     visibility: hidden;
     width: 0;
     height: 0;
@@ -234,38 +230,26 @@ table caption {
     line-height: 0;
 }
 
-/* 사진등록 버튼  */
-.button {
 
-    width: 100px;
-    background-color: #ff9046;
-    border: none;
-    color: #fff;
-    padding: 15px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    margin: 4px;
-    cursor: pointer;
-
-}
 
 /* 이력서저장 버튼  */
 .button2 {
 
-    /* width:200px; */
     background-color: #ff9046;
     border: none;
     color: #fff;
-    padding: 15px 20;
+    padding: 15px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px;
+    font-size: 20px;
     margin: 4px;
     cursor: pointer;
 
 }
+
+
+
+
 
 

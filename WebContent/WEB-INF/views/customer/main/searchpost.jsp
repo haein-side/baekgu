@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
     <style>
     
     	.btn1{
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/header2.jsp" %>
     <form>
         <div class="container-fluid text-center">
             <div class="row content">

@@ -10,17 +10,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
+	type="text/css">
     <style>
     	.btn1{
-    		background-color: orange;
+    		background-color: black;
 			color : white;
     	}
     </style>
 </head>
-<%@ include file="../common/header.jsp" %>
 <body>
+<%@ include file="../common/header2.jsp" %>
+<div></div>
     <form>
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center"  style="margin-top: 10%;z-index: 1;">
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                 </div>
@@ -43,7 +46,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;"> 희망 직종을 선택해 주세요.</h2>
+                            <h2 style="color: orange;"> 희망 직종을 선택해 주세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -72,7 +75,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">희망 직종을 더 상세하게 선택해주세요.</h2>
+                            <h2 style="color: orange;">희망 직종을 더 상세하게 선택해주세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -94,7 +97,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">해당 직종에 대해 경력이 있으신가요?</h2>
+                            <h2 style="color: orange;">해당 직종에 대해 경력이 있으신가요?</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -120,7 +123,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">일하고 싶은 기간을 선택하세요.</h2>
+                            <h2 style="color: orange;">일하고 싶은 기간을 선택하세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -143,7 +146,7 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: black;">원하시는 근무 시간이 있으신가요?</h2>
+                            <h2 style="color: orange;">원하시는 근무 시간이 있으신가요?</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
@@ -177,6 +180,7 @@
             </div>
         </div>
     </form>
+    </section>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
