@@ -31,14 +31,16 @@
 
     <div class="container-fluid text-center"  style="margin-top: 250px; z-index: 1;">    
   <div class="row content" style=" z-index: 1;">
-    <div class="col-sm-2 sidenav">
+    <div class="col-sm-3 sidenav">
     </div>
+    
     <div class="col-sm-6 text-left" style="padding-left: 70px;"> 
-      <h1 style="font-family:BME;">입사지원관리</h1>
-        <table border="1" width="800">
+      <h2 style="font-family:BME;">입사지원관리</h1>
+        <table border="1" width="950">
           <br>
           <br>
           <br>
+          <div class="text-center">
             <thead style= "font-family: icomoon; font-size:20px; font-weight: lighter;">
                 <tr height="40">
                     <th style="text-align: center;">지원일</th>
@@ -63,6 +65,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
         <br>
         <br>
         <div class="text-center">
@@ -79,7 +82,7 @@
 	<br>
 	<br>
 	<h1 style="font-family:BME;">신고내역관리</h1>
-        <table border="1" width="800">
+        <table border="1" width="950">
           <br>
           <br>
             <thead style= "font-family: icomoon; font-size:20px; font-weight: lighter;">
