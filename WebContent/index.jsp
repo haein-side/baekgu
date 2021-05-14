@@ -32,7 +32,7 @@
 
 
 	<!-- 김해인 테스트 -->
-	 <jsp:forward page="/WEB-INF/views/customer/main/FAQ.jsp"/> 
+	 <jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> 
 
 </body>
 </html>
