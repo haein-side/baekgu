@@ -22,12 +22,19 @@
 
 
 
+
 	<!-- 정주영 테스트 -->
 	<%--  <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> --%>
 
 
+     <%--     <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
+         <jsp:forward page="/WEB-INF/views/customer/main/searchpost.jsp"/> --%>
+
+
+
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header2.jsp"/> --%>
+
 
 	<!-- 김해인 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> --%>
