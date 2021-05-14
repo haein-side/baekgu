@@ -21,7 +21,6 @@
 </head>
 <body>
 <%@ include file="../common/header2.jsp" %>
-
     <div style="z-index:1;">
         <div class="container-fluid text-center"  style="margin-top: 15%;">
             <div class="row content">
@@ -36,7 +35,7 @@
                     </div>
                     <div align="center" id="btn_group"style="height: 170px;">
                         <button class="btn1"
-                            style="width:200pt;height:60pt;border-radius:10px;font-size:x-large;">기본&nbsp;검색</button>
+                            style="width:200pt;height:60pt;border-radius:10px;font-size:x-large;">단순&nbsp;검색</button>
                         <button class="btn1"
                             style="width:200pt;height:60pt;border-radius:10px;font-size:x-large; margin-left: 160px;"
                             disabled>상세&nbsp;검색</button>
@@ -46,26 +45,26 @@
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: orange;"> 희망 직종을 선택해 주세요.</h2>
+                            <h2 style="color: orange;"> 희망 업종을 선택해 주세요.</h2>
                             <br><br>
                             <div align="center" style="margin-bottom: 100px;">
                                 <div style="width: 1000px;">
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">식&nbsp;당</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">식당/서빙</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">매장&nbsp;관리</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">매장관리</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">상&nbsp;담</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">상담/영업</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">건&nbsp;설</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">건설/생산/기술</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">간&nbsp;호</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">간호/요양</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">교&nbsp;사</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">교사/강사</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">운&nbsp;전</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">운전/배달</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">사&nbsp;무</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">사무/경리</button>
                                     <button class="btn1"
                                         style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">기&nbsp;타</button>
                                 </div>
@@ -180,7 +179,6 @@
             </div>
         </div>
     </div>
-
-	<%@ include file="../common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

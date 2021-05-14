@@ -79,6 +79,48 @@ select.select {
     border: 1px solid #d3c199;
 }
 
+/* 각종 태그 0 */
+a,
+abbr,
+address,
+b,
+blockquote,
+button,
+caption,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+input,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+select,
+table,
+td,
+textarea,
+th,
+thead,
+tr,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 /* 표 선 색깔 */
 .tblst td,
 .tblst th {
@@ -125,53 +167,7 @@ select.select {
     color: #333;
 }
 
-/* 각종 태그 0 */
-a,
-abbr,
-address,
-b,
-blockquote,
-body,
-button,
-caption,
-dd,
-div,
-dl,
-dt,
-fieldset,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-iframe,
-img,
-input,
-label,
-legend,
-li,
-object,
-ol,
-p,
-pre,
-select,
-table,
-tbody,
-td,
-textarea,
-tfoot,
-th,
-thead,
-tr,
-ul {
-    margin: 0;
-    padding: 0;
-}
-
 /*  body , 각종 태그 설정 */
-body,
 button,
 h1,
 h2,
@@ -186,7 +182,7 @@ textarea {
     font-size: 20px;
     font-family:  'Nanum';
     color: #494949;
-    line-height: 18px;
+  
 }
 
 /* 프레임 선 얇아지게  */
@@ -221,13 +217,25 @@ table {
     table-layout: fixed;
 }
 /* 테이블 각 단락 이름부분  */
-table caption {
+  table caption {
     overflow: hidden; 
     visibility: hidden;
     width: 0;
     height: 0;
     font-size: 0;
     line-height: 0;
+}
+
+
+/* 체크박스 크기 */
+input[type='checkbox'] {
+  width: 40px;
+  height: 40px;
+}
+
+input[type='radio'] {
+  width: 40px;
+  height: 40px;
 }
 
 
@@ -247,6 +255,7 @@ table caption {
     cursor: pointer;
 
 }
+
 
 
 
