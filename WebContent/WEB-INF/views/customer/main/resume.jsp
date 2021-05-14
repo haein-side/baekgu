@@ -61,35 +61,84 @@
                             <th scope="row" rowspan="2">
                                 <span class="txt">연락처</span></th>
                             <td> 
+                            	  <select
+                                    name="HPhone1"
+                                    id="HPhone1"
+                                    class="select"
+                                    style="width:90px;"
+                                    title="연락처 앞자리">
+                                    <option value="010" selected="">010</option>
+                                    <option value="011">011</option>
+                                    <option value="016">016</option>
+                                    <option value="017">017</option>
+                                    <option value="018">018</option>
+                                    <option value="019">019</option>
+                                </select>	
+                            		<b> - </b>
                                     <input
                                         type="text"
                                         name="txtPhone"
                                         id="res_txt1"
                                         title="연락처"
-                                        value="010-0000-0000"
+                                        value="0000"
                                         class="inp4"
-                                        style="width:328px;">
+                                        style="width:80px;">
+                                     	<b> - </b>   
+                                    <input
+                                        type="text"
+                                        name="txtPhone"
+                                        id="res_txt2"
+                                        title="연락처2"
+                                        value="0000"
+                                        class="inp4"
+                                        style="width:80px;">   
+                                     
                               </td>      
                             
 
-                        </div>
-                    </td>
+                    
+       
                 </tr>
                 <tr></tr>
                 <tr>
                     <!-- 비상연락망 -->
                     <th scope="row">
-                        <span class="txt">비상연락</span></th>
-                    <td class="vamfix">
-                        <input
-                            type="text"
-                            name="txtEmail"
-                            id="res_txt1"
-                            title="비상연락망"
-                            value="010-0000-0000"
-                            class="inp4"
-                            style="width:328px;">
-                    </td>
+                        <span class="txt">비상연락망</span></th>
+                       <td> 
+                            	  <select
+                                    name="HPhone1"
+                                    id="HPhone1"
+                                    class="select"
+                                    style="width:90px;"
+                                    title="연락처 앞자리">
+                                    <option value="010" selected="">010</option>
+                                    <option value="011">011</option>
+                                    <option value="016">016</option>
+                                    <option value="017">017</option>
+                                    <option value="018">018</option>
+                                    <option value="019">019</option>
+                                </select>	
+                            		<b> - </b>
+                                    <input
+                                        type="text"
+                                        name="txtPhone"
+                                        id="res_txt1"
+                                        title="연락처"
+                                        value="0000"
+                                        class="inp4"
+                                        style="width:80px;">
+                                     	<b> - </b>   
+                                    <input
+                                        type="text"
+                                        name="txtPhone"
+                                        id="res_txt2"
+                                        title="연락처2"
+                                        value="0000"
+                                        class="inp4"
+                                        style="width:80px;">   
+                                     
+                              </td>      
+                            
                 </tr>
                 
                 <tr>
@@ -176,7 +225,7 @@
                             title="거주지"
                             value="서울시 송파구 "
                             class="inp4"
-                            style="width:328px;">
+                            style="width:600px;">
                     </td>
                 </tr>
 
@@ -297,31 +346,31 @@
                     <td>
                         <ul class="resume__forte-list">
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_1" value="22">
+                            <li><input type="radio" name="radio1" id="radio1" value="22">
                                 <label for="res_chk6_1">학력사항 없음</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_2" value="16">
+                            <li><input type="radio" name="radio1" id="radio1" value="16">
                                 <label for="res_chk6_2">초등학교 졸업</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_3" value="25">
+                            <li><input type="radio" name="radio1" id="radio1" value="25">
                                 <label for="res_chk6_3">중학교 졸업</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_4" value="27">
+                            <li><input type="radio" name="radio1" id="radio1" value="27">
                                 <label for="res_chk6_4">고등학교 졸업</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_5" value="29">
+                            <li><input type="radio" name="radio1" id="radio1" value="29">
                                 <label for="res_chk6_5">대학교 2-3년제 졸업</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_6" value="31">
+                            <li><input type="radio" name="radio1" id="radio1" value="31">
                                 <label for="res_chk6_6">대학교 4년제 졸업</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_7" value="35">
+                            <li><input type="radio" name="radio1" id="radio1" value="35">
                                 <label for="res_chk6_7">대학원 이상</label>
                             </li>
                         </ul>

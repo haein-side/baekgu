@@ -20,7 +20,7 @@
 
 
 	<!-- 정주영 테스트 -->
-	<%--  <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> --%>
+	  <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/> 
 	
 
 	<!-- 김유진 테스트 -->
