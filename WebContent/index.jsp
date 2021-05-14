@@ -16,8 +16,9 @@
 	
 	<!-- 김현빈 테스트 -->
 
-        <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> 
-<%--     <jsp:forward page="/WEB-INF/views/custimer/main/main.jsp"/>  --%>
+         <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
+         <jsp:forward page="/WEB-INF/views/customer/main/searchpost.jsp"/>
+
 
 
 	<!-- 정주영 테스트 -->
