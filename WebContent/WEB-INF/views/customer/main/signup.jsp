@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+	<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 
 	
 <title>백세구인구직 백구</title>
@@ -19,8 +19,8 @@
 
  	
 <form>
-	<div class="container" style="z-index: 1; margin-top: 15%;">
-      	<div class="py-5 text-center" style="background:white; margin-top: 60px;">
+	<div class="container" style="z-index: 1; margin-top: 15%; margin:auto;">
+      	<div class="py-5 text-center" style="background:white; margin-top: 25%;">
 			<h1 class="form-signin-heading">개인회원 가입</h1>
 		</div>
 
