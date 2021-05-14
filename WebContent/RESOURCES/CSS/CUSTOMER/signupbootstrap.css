@@ -294,7 +294,7 @@ small {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: black;
   box-shadow: 0 0 0 0.2rem black;
 }
 
@@ -346,8 +346,8 @@ small {
 
 /* 라디오 버튼 설정 */
 input[type="radio"] {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 /* 라디오 박스 텍스트 설정 */

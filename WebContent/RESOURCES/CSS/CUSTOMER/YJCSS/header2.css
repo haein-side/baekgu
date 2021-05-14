@@ -13,7 +13,7 @@ body {
 	height: 200%;
 	font-family: "Nanum", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	
+	z-index: 100;
 }
 
 h1 {
@@ -22,13 +22,6 @@ h1 {
 	font-family: "BM", sans-serif;
 }
 
-/*배경 화면 설정*/
-body {
-	background:url("/jsp/resources/image/city1.PNG") no-repeat;
-	background-size:cover;
-	min-height:800px;
-	
-}
 
 /*타이틀 및 로그인영역 너비 설정*/
 .header {
@@ -38,7 +31,7 @@ body {
 	/* width: 100% */
 	left: 0;
 	right: 0;
-	z-index: 200;
+	z-index: 10000;
 }
 
 /*로그인 영역 흐름 속성 설정*/
