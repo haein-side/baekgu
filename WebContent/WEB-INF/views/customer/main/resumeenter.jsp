@@ -6,12 +6,9 @@
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>백구</title>
-        <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/resume.css">
+        <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/YJCSS/resume.css">
         <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
 	       type="text/css">
-        <!-- <script type="text/javascript"
-        src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
-
     </head>
  
     <br>
