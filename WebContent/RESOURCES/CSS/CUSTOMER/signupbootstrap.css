@@ -421,10 +421,11 @@ button:focus {
   margin-right: 0.5rem;
 }
 
-/* 헤더 풋터 패딩 설정 
+/* 
+헤더 풋터 패딩 설정 
 .pt-5,
 .py-5 {
-  padding-top: 3rem !important;
+  padding-top: 100px !important;
 }
 
 .pr-5,

@@ -13,11 +13,13 @@
 
 <body class="bg-light">
  	<!-- 헤더 부분 -->
+ 	<div style="z-index 1;">
 	<%@ include file="../common/header2.jsp" %>
+ 	</div>
  	
  	<form>
 		<div class="container">
-      	<div class="py-5 text-center" background="white">
+      	<div class="py-5 text-center" style="background:white; margin-top: 60px;">
 			<h1 class="form-signin-heading">개인회원 가입</h1>
 		</div>
 
