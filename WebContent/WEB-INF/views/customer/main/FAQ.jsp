@@ -16,15 +16,10 @@
 	        type="text/css"> 
     </head>
     <body>
-<<<<<<< HEAD
+
       <%@ include file="../common/header2.jsp"%> 
  
-=======
 
-    <%@ include file="../common/header.jsp"%> 
-  
-
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 
 <div class="container" style="margin-top: 15%; z-index: 1;">
 

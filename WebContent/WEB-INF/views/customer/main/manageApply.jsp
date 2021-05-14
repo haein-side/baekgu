@@ -15,6 +15,9 @@
     	h1 {
     	color:orange;
     	}
+    	h2 {
+    	color:orange;
+    	}
         /* .container {
             position:absolute;
             top: 30%;
@@ -34,13 +37,14 @@
     <div class="col-sm-3 sidenav">
     </div>
     
-    <div class="col-sm-6 text-left" style="padding-left: 70px;"> 
+    <div class="col-sm-6 text-left"> 
+    <h1 style="text-align: center">나의 공간</h1>
       <h2 style="font-family:BME;">입사지원관리</h1>
-        <table border="1" width="950">
+        <table border="1" width="950" style="margin:auto;">
           <br>
           <br>
           <br>
-          <div class="text-center">
+          <!-- <div class="text-center"> -->
             <thead style= "font-family: icomoon; font-size:20px; font-weight: lighter;">
                 <tr height="40">
                     <th style="text-align: center;">지원일</th>
@@ -65,7 +69,7 @@
                 </tr>
             </tbody>
         </table>
-        </div>
+       <!--  </div> -->
         <br>
         <br>
         <div class="text-center">
@@ -81,8 +85,8 @@
 	<br>
 	<br>
 	<br>
-	<h1 style="font-family:BME;">신고내역관리</h1>
-        <table border="1" width="950">
+	<h2 style="font-family:BME;">신고내역관리</h1>
+        <table border="1" width="950" style="margin:auto;">
           <br>
           <br>
             <thead style= "font-family: icomoon; font-size:20px; font-weight: lighter;">

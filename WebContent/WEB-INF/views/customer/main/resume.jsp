@@ -13,7 +13,6 @@
         <!-- <script type="text/javascript"
         src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
         
-
     </head>
 
 	<br>
@@ -389,6 +388,6 @@
 
 
 <br>
-	<%@ include file="../common/footer.jsp"%>
+	<%@ include file="../common/footer2.jsp"%>
 </body>
 </html>
