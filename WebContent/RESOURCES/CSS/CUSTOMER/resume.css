@@ -125,49 +125,6 @@ select.select {
     color: #333;
 }
 
-/* 각종 태그 0 */
-/* a,
-abbr,
-address,
-b,
-blockquote,
-button,
-caption,
-dd,
-div,
-dl,
-dt,
-fieldset,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-iframe,
-img,
-input,
-label,
-legend,
-li,
-object,
-ol,
-p,
-pre,
-select,
-table,
-tbody,
-td,
-textarea,
-th,
-thead,
-tr,
-ul {
-    margin: 0;
-    padding: 0;
-} */
-
 /*  body , 각종 태그 설정 */
 button,
 h1,
