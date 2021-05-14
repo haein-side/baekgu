@@ -29,8 +29,8 @@
 
 <%@ include file="../common/header2.jsp"%>
 
-    <div class="container-fluid text-center">    
-  <div class="row content" style="margin-top: 250px; z-index: 1;">
+    <div class="container-fluid text-center"  style="margin-top: 250px; z-index: 1;">    
+  <div class="row content" style=" z-index: 1;">
     <div class="col-sm-2 sidenav">
     </div>
     <div class="col-sm-6 text-left" style="padding-left: 70px;"> 
