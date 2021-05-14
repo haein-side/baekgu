@@ -20,7 +20,7 @@
 
 	<%@ include file="../common/header2.jsp"%>
 
-	<section class="product-details" style="margin-top: 10%; z-index: 1;">
+	<section class="product-details" style="margin-top: 25%; z-index: 1;">
 		<div class="container">
 			<div class="row">
          <div class="col-lg-6 col-md-6">
@@ -31,9 +31,12 @@
 						<h1>홀서빙 구합니다</h1>
 						<hr>
 						<div class="company__title" style="font-size: 40px;">김씨네 식당</div>
-						<p style="font-size: 20px; width: 800px;">3시간 일하면 500만원 주는 회사
-							들어가고싶다.... 이 일에 대한 사장님의 간단 설명이 들어가는 곳
-							이게어디까지길어지냐아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</p>
+						<p style="font-size: 20px; width: 100%;">
+							3시간 일하면 500만원 주는 회사 첫번째줄 br <br>
+							들어가고싶다.... 이 일에 대한 사장님의 간단 설명이 들어가는 곳 두번째줄 br<br>
+							이게어디까지길어지냐아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ세번째줄 br<br>
+							가장 글자수가 많고 길이가 긴 네번째줄입니다. 우리는 300년전통의 맛집입니다. 점심시간에는 사람이 많습니다 조심하세요. 네번째줄 br <br>
+						</p>
 						<div align="right">
 							<button class="jione_button" onclick=apply();>
 								<script>
@@ -75,16 +78,16 @@
 								<div class="tab-pane active" id="tabs-1" role="tabpanel">
 									<div class="tab-pane active" id="tabs-2" role="tabpanel">
 										<div class="product__details__tab__desc"
-											style="margin-bottom: 50px; margin-top: 100px;">
+											style="margin-bottom: 50px; margin-top: 100px;" align="center">
 											<h2 align="center">상세 근무 지역</h2>
 											<div>
 												<ul style="margin-top: 20px; margin-bottom: 50px;">
 													<li style="font-size: 30px;"><b>근무지역</b>서울특별시 어쩌구 저쩌동
 														상세로 270 1층</li>
-
 												</ul>
 											</div>
-											<div id="map" style="width: 500px; height: 400px;"></div>
+											<br><br><br>
+											<div id="map" style="width: 500px; height: 400px;">
 											<script type="text/javascript"
 												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65305e0eba5c1c2d79790d8038140b78"></script>
 											<script>
@@ -99,7 +102,8 @@
                                                         var map = new kakao
                                                             .maps
                                                             .Map(container, options);
-                                                    </script>
+                                            </script>
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -110,14 +114,14 @@
 				<div>
 					<div class="product__details__text">
 						<div class="tab-pane active" id="tabs-1" role="tabpanel">
-							<div class="product__details__tab__desc">
+							<div class="product__details__tab__desc" style="margin-bottom: 100px;">
 								<h2 align="center">모집부분</h2>
 								<br>
 								<table class="table" style="text-align: center;">
 									<thead>
 										<tr style="font-size: 25px;">
 											<th scope="col">모집분야</th>
-											<th scope="col">담당업무 및 자격요건</th>
+											<th scope="col">담당업무</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -128,10 +132,6 @@
 													style="margin-top: 0px; border: 0px; padding: 0px; text-align: left; margin-left: 370px;">
 													<li style="font-size: 20px;"><b>담당업무 </b> <span>서빙</span>
 													</li>
-													<br>
-													<li style="font-size: 20px;"><b>자격요건 </b> <span>60세
-															이하</span></li>
-													<br>
 												</ul>
 											</th>
 										</tr>
