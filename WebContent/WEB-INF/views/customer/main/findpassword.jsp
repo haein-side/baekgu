@@ -37,7 +37,7 @@
           <input type="text" class="form-control" name="phone" placeholder="(예 : 01012345678)" required=""/>
         
         <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" style="height: 60px; width: 150px; font-size: 35px;" onclick=apply();>확인</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="height: 55px; width: 150px; font-size: 28px; margin-top: 70px; margin-bottom: 30px;" onclick=apply();>확인</button>
           <script>
               function apply(){
                   //로그인 회원일 경우 바로 지원하기로 넘어간다

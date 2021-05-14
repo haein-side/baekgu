@@ -30,10 +30,10 @@
 		    <label class="checkbox">
 		    <input type="checkbox" id="rememberMe" class="rememberMe" name="rememberMe">내 들어가기 정보 기억하기
 		    </label><br>
-		    <button class="btn btn-lg btn-primary btn-block" type="submit" style="height: 50px; margin-left: 110px;">들어가기</button><br><br>
+		    <button class="btn btn-lg btn-primary btn-block" type="submit" style="height: 50px; margin-left: 110px; margin-top: 30px;">들어가기</button><br><br>
         </div>
         <div class="atag">
-            <p style="padding-right: 5px;">아직 백구 회원이 아니세요?&nbsp;<a href="">백구 회원가입하러 가기</a></p><br><br>
+            <p style="padding-right: 5px;">아직 백구 회원이 아니세요?&nbsp;<a href="">백구 회원가입하러 가기</a></p><br>
             <a href="findpassword.jsp">비밀번호 찾기</a>
 
         </div><br><br><br>
@@ -45,7 +45,7 @@
   </div> 
 
 <!-- footer -->
-<%@ include file="../main/footerHW.jsp" %>
+<%@ include file="../common/footer2.jsp" %>
  
 
 </body>
