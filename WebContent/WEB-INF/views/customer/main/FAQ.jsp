@@ -18,9 +18,6 @@
     <body>
 
       <%@ include file="../common/header2.jsp"%> 
- 
-
- 
 
 <div class="container" style="margin-top: 15%; z-index: 1;">
 

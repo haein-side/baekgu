@@ -11,7 +11,7 @@
 <div class="footer">
     <footer>
         <div class="container">
-            <div class="row justify-content-center" style="margin-left:20%">
+            <div class="row justify-content-center" style="margin-left:25%">
                 <div class="col-sm-4 col-md-3 item" style="float: left; width: 240px !important; padding:10px; margin-left:0px;">
                     <h3 style="font-family: BME; font-size: 32px; color: black; margin: 15px;">고객센터</h3>
                     <ul style="font-family: icomoon; font-size: 18px; list-style: none; padding-left:0px; color: black; line-height:30px; ">

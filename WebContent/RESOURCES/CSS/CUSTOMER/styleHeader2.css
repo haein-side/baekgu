@@ -209,17 +209,19 @@
                                                   li {
                                                     text-align: -webkit-match-parent;
                                                 }
- @media (min-width: 992px)
- .navbar-expand-lg .navbar-nav {
+@media (min-width: 992px)
+.navbar-expand-lg .navbar-nav {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
- }
+}
+
 li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
+
 .navbar-nav {
     display: -webkit-box;
     display: -ms-flexbox;
