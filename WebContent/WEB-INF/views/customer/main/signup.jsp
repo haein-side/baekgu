@@ -8,17 +8,18 @@
 	<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
 
+	
 <title>백세구인구직 백구</title>
 </head>
 
 <body class="bg-light">
 <!-- 헤더 부분 -->
-<div style="z-index 1;">
+
 	<%@ include file="../common/header2.jsp" %>
-</div>
+
  	
 <form>
-	<div class="container">
+	<div class="container" style="z-index: 1; margin-top: 15%;">
       	<div class="py-5 text-center" style="background:white; margin-top: 60px;">
 			<h1 class="form-signin-heading">개인회원 가입</h1>
 		</div>
@@ -103,9 +104,9 @@
 </form>
 
 <!-- footer -->
-<div>
-	<%@ include file="../common/footer.jsp" %>
-</div>
+
+<%@ include file="../main/footerHW.jsp" %>
+
 
 </body>
 </html>

@@ -16,8 +16,8 @@
 	        type="text/css"> 
     </head>
     <body>
+
       <%@ include file="../common/header2.jsp"%> 
- 
 
 <div class="container" style="margin-top: 15%; z-index: 1;">
 
@@ -50,77 +50,51 @@
 		<div class="page-header">
 			<h1 style="font-family: BM; color: orange;">자주 묻는 질문들</h1>
 		</div>
-		<div class="panel panel-default" style="font-family:Glyphicons Halflings;">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a
-                                    class="accordion-toggle"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseOne">회원가입은 무료인가요?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <strong>맞습니다.</strong>
-                                바로 그것이 정답입니다.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a
-                                    class="accordion-toggle collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseTwo">회원탈퇴는 어디서 하나요?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                회원 탈퇴는 이렇게 하시면 됩니다.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a
-                                    class="accordion-toggle collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseThree">가입에 나이제한은 없나요 ?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <strong>네
-                                </strong>
-                                저희는 나이제한은 없습니다.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default" >
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a
-                                    class="accordion-toggle collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseFour">백구는 언제나 존재하나요?</a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <strong>네
-                                </strong>
-                                항상 있습니다.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- FAQ 끝 -->
+		
+	 <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                Q. 회원가입은 어떻게 하나요 ?
+                </a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                네 , 가능합니다.
+            </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                Q. 백구는 언제나 존재하나요 ? 
+              </a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+                네 존재합니다.
+            </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                Q. 탈퇴 어떻게 하죠 ? 
+              </a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <div class="panel-body">
+             	탈퇴 할 수 없습니다.
+            </div>
+            </div>
+          </div>
+        </div>
 
                 <style>
                     .faqHeader {
@@ -128,32 +102,7 @@
                         margin: 20px;
                     }
 
-                    .panel-heading [data-toggle="collapse"]:after {
-                        font-family: 'Glyphicons Halflings';
-                        content: "\e072";
-                        /* "play" icon */
-                        float: right;
-                        color: #F58723;
-                        font-size: 18px;
-                        line-height: 22px;
-                        /* rotate "play" icon from > (right arrow) to down arrow */
-                        -webkit-transform: rotate(-90deg);
-                        -moz-transform: rotate(-90deg);
-                        -ms-transform: rotate(-90deg);
-                        -o-transform: rotate(-90deg);
-                        transform: rotate(-90deg);
-                    }
-
-                    .panel-heading [data-toggle="collapse"].collapsed:after {
-                        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
-                        -webkit-transform: rotate(90deg);
-                        -moz-transform: rotate(90deg);
-                        -ms-transform: rotate(90deg);
-                        -o-transform: rotate(90deg);
-                        transform: rotate(90deg);
-                        color: #454444;
-                    }
-
+                    
             
                  
                 </style>

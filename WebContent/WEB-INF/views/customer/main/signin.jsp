@@ -7,22 +7,19 @@
 <title>백구 개인회원 로그인</title>
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/signin.css" type="text/css">
 <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+
 </head>
 
 <body>
-
-<div style="z-index 1;">
 	<%@ include file="../common/header2.jsp" %>
-</div>
+
  	
 <div class="container">
 	<div class="wrapper">
     	<form class="form-signin">
         	<h2 class="form-signin-heading">개인회원 로그인</h2>
-        <div class="buttontype">
-        	<input type="button" value="개인회원" class="signinbutton" onclick="" default> &nbsp;&nbsp;
-          	<input type="button" value="기업회원" class="signinbutton" onclick="">
-        </div>
+        	
+  
         <div>
 		    <lable class="text-label"><b>휴대폰 번호 (아이디로 사용됩니다.)</b></lable>
 		    <input type="text" class="form-control" name="mobile" placeholder="(예 : 01012345678)" required="" autofocus=""/>
@@ -36,8 +33,8 @@
 		    <button class="btn btn-lg btn-primary btn-block" type="submit">들어가기</button><br><br>
         </div>
         <div class="atag">
-            <a href="">비밀번호 찾기</a><br>
-            <p>아직 백구 회원이 아니세요?<a href="">회원가입하러 가기</a></p>
+            <a href="findpassword.jsp">비밀번호 찾기</a>
+            <p>아직 백구 회원이 아니세요?<a href="">백구 회원가입하러 가기</a></p>
         </div><br><br><br>
         <div class="buttontype">
         	<input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick="">
@@ -47,7 +44,7 @@
   </div> 
 
 <!-- footer -->
-<%@ include file="../common/footer.jsp" %>
+<%@ include file="../main/footerHW.jsp" %>
  
 
 </body>

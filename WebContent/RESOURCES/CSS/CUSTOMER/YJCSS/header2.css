@@ -35,9 +35,10 @@ h1 {
 	/* width: 100% */
 	left: 0;
 	right: 0;
-	z-index: 10000;
+	z-index: 1000;
 	margin: 0;
 	padding: 0;
+	background:white;
 }
 
 /*로그인 영역 흐름 속성 설정*/
@@ -118,3 +119,9 @@ h1 {
 	background:orangered;
 }
 
+ul,
+ol {
+
+    margin-bottom: 0 !important;
+  
+}

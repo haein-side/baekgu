@@ -26,13 +26,13 @@ html {
 
 /* 제목, 입력창 공간 패딩 설정(가운데 정렬) */
 .container {
-  width: 100%;
-  padding-right: 100px;
-  padding-left: 100px;
-/*   margin-right: auto;
-  margin-left: auto; */
-  margin: auto;
-  margin: 100px;
+	position: absolute;
+  	width: 100%;
+  	padding-right: 100px;
+  	padding-left: 100px;
+	/*   margin-right: auto;
+  	margin-left: auto; */
+  	margin-top: 100px;
 }
 
 /* header footer를 block 방식으료 표시 */

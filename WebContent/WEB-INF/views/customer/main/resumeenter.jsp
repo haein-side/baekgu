@@ -35,7 +35,7 @@
                         <!-- 첫 단락 시작 이력서 사진 및 사진 등록 -->
                        <tr class="first">
 
-                            <td rowspan="7" class="userinfo" style=" padding-left: 10px; padding-right: 10px;">
+                            <td rowspan="8" class="userinfo" style=" padding-left: 10px; padding-right: 10px;">
                                 <div class="picbx">
                                     <div id="div" class="pic" style="display:block;">
                                         <span class="img"><img src="RESOURCES/IMAGES/백구로고.png" width="150" height="300"></span><br>
@@ -91,7 +91,8 @@
                         <b>1997년 11월 29일</b>
                     </td>
                 </tr>
-          
+          	
+          	
                 <tr>
                     <!-- 3. 회원가입시 DB로 넘어오는 부분 (거주지) -->
                     <th scope="row">
@@ -100,6 +101,7 @@
                         <b>서울시 송파구</b>
                     </td>
                 </tr>
+                
 
             </tbody>
         </table>
