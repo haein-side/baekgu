@@ -283,11 +283,7 @@
                                 <label for="res_chk6_7">대학원 이상</label>
                             </li>
                         </ul>
-                        <ul class="caution_lst">
-                            <li>
-                                <span class="txef">※</span>
-                                자신이 속해있는 항목을 선택해주세요.</li>
-                        </ul>
+                      
                     </td>
                 </tr>
                   <!-- 학력사항 부분 끝   -->
@@ -300,39 +296,41 @@
                         <ul class="resume__forte-list">
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_1" value="22">
-                                <label for="res_chk6_1">서비스</label>
+                                <label for="res_chk6_1">식당/서빙</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_2" value="16">
-                                <label for="res_chk6_2">초등학교 졸업</label>
+                                <label for="res_chk6_2">매장관리</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_3" value="25">
-                                <label for="res_chk6_3">중학교 졸업</label>
+                                <label for="res_chk6_3">상담/영업</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_4" value="27">
-                                <label for="res_chk6_4">고등학교 졸업</label>
+                                <label for="res_chk6_4">건설/생산/기술</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_5" value="29">
-                                <label for="res_chk6_5">대학교 2-3년제 졸업</label>
+                                <label for="res_chk6_5">간호/요양</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_6" value="31">
-                                <label for="res_chk6_6">대학교 4년제 졸업</label>
+                                <label for="res_chk6_6">교사/강사</label>
                             </li>
 
                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_7" value="35">
-                                <label for="res_chk6_7">대학원 이상</label>
+                                <label for="res_chk6_7">운전/배달</label>
+                            </li>
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_8" value="36">
+                                <label for="res_chk6_7">사무/경리</label>
+                            </li>
+                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_9" value="37">
+                                <label for="res_chk6_7">기타</label>
                             </li>
 
                         </ul>
-                        <ul class="caution_lst">
-                            <li>
-                                <span class="txef">※</span>
-                               자신의 경력사항을 선택해주세요</li>
-                        </ul>
+                     
                     </td>
                 </tr>
               <!-- 경력사항 부분 끝    -->
