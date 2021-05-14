@@ -4,7 +4,7 @@
 
 
     <!-- 헤더 영역 -->   
-	<div class="header">
+	<div class="header" style="z-index: 10000;">
 	
 		<!-- 헤드라인 -->
 		<div style="height: 100%; text-align: center; background: white;">
