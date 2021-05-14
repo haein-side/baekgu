@@ -18,7 +18,7 @@
         </div>
         <div style="float: left; margin-left: 20px;">
             <button onclick="window.close();" style="width: 180px; height: 100px; ">
-                <h2 style="color: black;">머무르기</h2>
+                <h2 style="color: black;">들어가기</h2>
             </button>
         </div>
     </div>
