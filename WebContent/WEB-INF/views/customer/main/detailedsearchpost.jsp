@@ -23,7 +23,7 @@
 <%@ include file="../common/header2.jsp" %>
 <div></div>
     <form>
-        <div class="container-fluid text-center"  style="margin-top: 10%;z-index: 1;">
+        <div class="container-fluid text-center"  style="margin-top: 15%;z-index: 1;">
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                 </div>
