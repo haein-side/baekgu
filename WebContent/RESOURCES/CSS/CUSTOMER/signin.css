@@ -29,9 +29,11 @@ body {
 .form-signin-heading {
   font-family: "euljiro10years";
   font-size: 50px;
+  color: orange;
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 0px;
+  padding-top: 90px;
+  padding-bottom: 100px;
+
 }
 
 .wrapper {
@@ -141,7 +143,7 @@ body {
 
 .btn-block {
   display: block;
-  width: 100%;
+  width: 50%;
 }
 
 .btn-lg {
@@ -189,10 +191,11 @@ small {
     display: block;
     height: 10px;
     font-size: 18px;
-    padding-bottom: 5px;
-    padding-left: 3px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 /* 체크박스 크기 */
