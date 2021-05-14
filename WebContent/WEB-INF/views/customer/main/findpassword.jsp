@@ -6,10 +6,13 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
     <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/findpassword.css" type="text/css">
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
 </head>
 <body>
 
-<%-- <%@ include file="../common/header1.jsp" %> --%>
+ 	<div class="form-group" style="z-index 1;">
+	<%@ include file="../common/header2.jsp" %>
+ 	</div>
 	
 	<div class="wrapper">
     <form class="form-signin">        
@@ -40,7 +43,7 @@
     </div>
 
 	<!-- footer -->
-	<%-- <%@ include file="../common/footer.jsp" %> --%>
+	<%@ include file="../common/footer.jsp" %>
 	
 </body>
 </html>

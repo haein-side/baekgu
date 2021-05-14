@@ -32,6 +32,7 @@ html {
 /*   margin-right: auto;
   margin-left: auto; */
   margin: auto;
+  margin: 100px;
 }
 
 /* header footer를 block 방식으료 표시 */
