@@ -41,7 +41,7 @@ article, footer, header{
 
 /* 바디 기본 텍스트, 배경 설정 */
 body {
-  font-family: "nanumbarungothic";
+  /* font-family: "nanumbarungothic"; */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -57,7 +57,7 @@ body {
   /* font-size: 45px; */
   text-align: center;
   color: orange;
-  padding-top: 10px;
+  padding-top: 100px;
   padding-bottom: 10px;
 }
 

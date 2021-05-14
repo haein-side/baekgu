@@ -5,13 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
+	<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+
 <title>백세구인구직 백구</title>
 </head>
 
 <body class="bg-light">
  	<!-- 헤더 부분 -->
-	<%-- <%@ include file="../common/header1.jsp" %> --%> 
+	<%@ include file="../common/header2.jsp" %>
  	
  	<form>
 		<div class="container">
