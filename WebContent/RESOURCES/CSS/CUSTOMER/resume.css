@@ -79,6 +79,48 @@ select.select {
     border: 1px solid #d3c199;
 }
 
+/* 각종 태그 0 */
+a,
+abbr,
+address,
+b,
+blockquote,
+button,
+caption,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+input,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+select,
+table,
+td,
+textarea,
+th,
+thead,
+tr,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 /* 표 선 색깔 */
 .tblst td,
 .tblst th {

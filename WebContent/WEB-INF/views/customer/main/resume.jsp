@@ -8,8 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>백구</title>
         <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/resume.css">
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-	type="text/css">
+        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css">
+        
         <!-- <script type="text/javascript"
         src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
         
@@ -17,12 +17,12 @@
     </head>
 
 	<br>
-    <body marginwidth="0" marginheight="0"  style="margin-top: 10%; z-index: 1;"  >
+    <body style="margin-top: 10%; z-index: 1;"  >
         	<%@ include file="../common/header2.jsp"%>
 
 
 
-	<form style="margin:100px;">
+	<form style="margin:100px; padding:0; ">
         <!-- 개인정보 입력 폼 -->
         <div class="tblst mt10">
             <fieldset>
@@ -91,34 +91,76 @@
                             style="width:328px;">
                     </td>
                 </tr>
+                
                 <tr>
                     <!-- 3. 회원가입시 DB로 넘어오는 부분 (성별) -->
                     <th scope="row">
                         <span class="txt">성별</span></th>
                         <td class="vamfix">
-                            <input
-                                type="text"
-                                name="txtgender"
-                                id="res_txt1"
-                                title="성별"
-                                value="여"
-                                class="inp4"
-                                style="width:328px;">
+                          <input type="radio" name="chk_info" value="W"> 여성
+                           <input type="radio" name="chk_info" value="M"> 남성	
                         </td>
                 </tr>
+                
+                
                 <tr>
                     <!-- 3. 회원가입시 DB로 넘어오는 부분 (생년월일)) -->
                     <th scope="row">
                         <span class="txt">생년월일</span></th>
                     <td class="vamfix">
-                        <input
-                            type="text"
-                            name="res_BDY"
-                            id="res_txt3"
-                            title="생년월일"
-                            value="1997년 11월 29일"
-                            class="inp4"
-                            style="width:328px;">
+                   <div class="row">
+            	<div class="col-md-3 mb-3" style="float:left;">
+              		<input type="number" class="birthinfo" id="birthyear" min="1900" max="2021" step="1" value="1"  style="width:80px;" required>
+              			<label>년</label>
+            
+            	</div>
+            	
+            	<div class="col-md-3 mb-3" style="float:left;">
+              		     <select
+                                    name="Month"
+                                    id="Month"
+                                    class="select"
+                                    style="width:90px;"
+                                    title="월">
+                                    <option value="1" selected="">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                     <option value="7">7</option>
+                                      <option value="8">8</option>
+                                       <option value="9">9</option>
+                                        <option value="10">10</option>
+                                         <option value="11">11</option>
+                                          <option value="12">12</option>
+                                </select>
+              		<label>월</label>
+          
+           		</div>
+            	<div class="col-md-3 mb-3" style="float:left;">
+                	     <select
+                                    name="Day"
+                                    id="Day"
+                                    class="select"
+                                    style="width:90px;"
+                                    title="일">
+                                    <option value="1" selected="">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                     <option value="7">7</option>
+                                      <option value="8">8</option>
+                                       <option value="9">9</option>
+                                        <option value="10">10</option>
+                                         <option value="11">11</option>
+                                          <option value="12">12</option>
+                                </select>
+                	<label>일</label>
+            	</div>
+            </div>
                     </td>
                 </tr>
 
