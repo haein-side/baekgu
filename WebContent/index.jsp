@@ -9,23 +9,20 @@
 <body>
 
  	<!-- 강현우 테스트 -->
+	<jsp:forward page="/WEB-INF/views/customer/main/findpassword.jsp"/>
 
-<%-- 	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> --%>
 
 	<!-- 차진서 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> --%>
 	
 	<!-- 김현빈 테스트 -->
+  	<!--<jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>-->
 
-        <%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>  --%>
-   	<!-- 김현빈 테스트 -->
-
-<%--     <jsp:forward page="/WEB-INF/views/custimer/main/main.jsp"/>  --%>
 
 
 	<!-- 정주영 테스트 -->
-	  <%-- <jsp:forward page="/WEB-INF/views/customer/main/resume.jsp"/>  --%>
-	
+
+<%-- 	 <jsp:forward page="/WEB-INF/views/customer/main/resumeenter.jsp"/>  --%>
 
 	<!-- 김유진 테스트 -->
 
@@ -38,7 +35,11 @@
 
 
 	<!-- 김해인 테스트 -->
+<<<<<<< HEAD
 	 <jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> 
+=======
+	<!-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> -->
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 
 </body>
 </html>

@@ -27,12 +27,12 @@ html {
 /* 제목, 입력창 공간 패딩 설정(가운데 정렬) */
 .container {
 	position: relative;
-  	width: 100%;
+  	width: 40%;
   	padding-right: 100px;
   	padding-left: 100px;
 	/*   margin-right: auto;
   	margin-left: auto; */
-  	margin-top: 100px;
+  	padding-top: 5%;
 }
 
 /* header footer를 block 방식으료 표시 */
@@ -55,11 +55,11 @@ body {
 /* 상단 제목 폰트 설정 */
 .form-signin-heading {
   font-family: "euljiro10years";
-  /* font-size: 45px; */
+  font-size: 50px;
   text-align: center;
   color: orange;
-  padding-top: 100px;
-  padding-bottom: 10px;
+  padding-top: 120px;
+  padding-bottom: 60px;
 }
 
 /* 입력창 위 카테고리 문자(ex.전화번호, 이름) */
@@ -306,12 +306,12 @@ small {
 
 .form-text {
   display: block;
-  margin-top: 18px;
+  margin-top: 5px;
 }
 
 /* 생일 입력창 설정 */
 .birthinfo {
-  height: 35px;
+  height: 30px;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
@@ -349,45 +349,37 @@ small {
 input[type="radio"] {
   width: 18px;
   height: 18px;
+  margin-right: 8px;
 }
 
 /* 라디오 박스 텍스트 설정 */
 .genderlabel {
-  font-size: 20px;
+  font-size: 18px;
   padding-right: 20px;
 }
 
 /* 체크 박스 크기 설정 */
 input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
 }
 
 /* 버튼 설정 */
-.btn {
-	border-radius: 10px;
-    width: 135px;
-    height: 25px;
-    cursor: pointer;
-    border: 0px;
-    color: white;
-    padding-bottom: 50px;
-}
 
 .btn-lg, .btn-group-lg > .btn {
+  font-family: "euljiro10years";
   padding-top: 12px;
   padding-left: 10px;
-  font-size: 30px;
   line-height: 1.5;
-  border-radius: 0.3rem;
+  border-radius: 5px;
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 100px;
+  
 }
 
 .btn-block {
   display: block;
-  width: 300px;
+  width: 260px;
 }
 
 .btn-block + .btn-block {
@@ -417,28 +409,5 @@ button:focus {
 .list-inline-item:not(:last-child) {
   margin-right: 0.5rem;
 }
-
-/* 
-헤더 풋터 패딩 설정 
-.pt-5,
-.py-5 {
-  padding-top: 100px !important;
-}
-
-.pr-5,
-.px-5 {
-  padding-right: 3rem !important;
-}
-
-.pb-5,
-.py-5 {
-  padding-bottom: 3rem !important;
-}
-
-.pl-5,
-.px-5 {
-  padding-left: 3rem !important;
-}
-*/
 
 /*# sourceMappingURL=bootstrap.css.map */
