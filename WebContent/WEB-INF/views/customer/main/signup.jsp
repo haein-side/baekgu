@@ -44,6 +44,10 @@
 						<small id="passwordHelp" class="form-text text-muted">영어와
 							숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)
 						</small>
+						<label for="password" class="basiclabel">비밀번호를 다시 입력하세요.</label> <input
+							type="password" class="form-control" id="password2"
+							placeholder="(예 : hgd610405)">
+						<input value="">
 					</div>
 					<br>
 					<div class="form-group">
