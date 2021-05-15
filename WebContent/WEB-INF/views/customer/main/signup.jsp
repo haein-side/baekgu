@@ -59,8 +59,8 @@
 			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="birthyear" class="basiclabel">태어난 해</label><br> <input
-						type="number" class="birthinfo" id="birthyear" min="1900"
-						max="2021" step="1" value="1" placeholder="(예 : 1960)"
+						type="number" class="birthinfo" id="birthyear" min="1922"
+						max="1972" step="1" value="1" placeholder="(예 : 1960)"
 						style="width: 150px" required> <label>년</label><br> <small
 						class="form-text text-muted">(예 : 1970)</small>
 				</div>
