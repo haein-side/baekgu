@@ -105,7 +105,7 @@
 
 <!-- footer -->
 
-<%@ include file="../main/footerHW.jsp" %>
+<%@ include file="../common/footer2.jsp" %>
 
 
 </body>

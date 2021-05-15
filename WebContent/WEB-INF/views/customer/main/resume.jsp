@@ -442,7 +442,7 @@
 
     <div class="box_check">
         <input
-            type="checkbox"
+            type="checkbox",                                          
             class="inp_campaign"
             name="chkUprightAgree"
             id="chkUprightAgree"
