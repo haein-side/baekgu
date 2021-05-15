@@ -35,11 +35,9 @@
 
 
 	<!-- 김해인 테스트 -->
-<<<<<<< HEAD
 	 <jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> 
-=======
-	<!-- <jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/> -->
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
+
+
 
 </body>
 </html>
