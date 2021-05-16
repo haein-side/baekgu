@@ -5,25 +5,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>상세조회</title>
+    <title>단순 검색</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
-    <style>
-    	.btn1{
-    		background-color: black;
-			color : white;
-    	}
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
+    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleSP.css">
 </head>
 
 <body>
 <%@ include file="../common/header2.jsp" %>
-    <form>
-        <div class="container-fluid text-center">
+    <div style="z-index:1;">
+        <div class="container-fluid text-center"  style="margin-top: 13%;">
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                 </div>
@@ -34,40 +29,38 @@
 	                        <hr>
                         </div>
                     </div>
-                    <div align="center" id="btn_group"style="height: 170px;">
+                    <div align="center" id="btn_group" style="padding:50px;">
                         <button class="btn1"
-                            style="width:200pt;height:60pt;border-radius:10px;font-size:x-large;">단순&nbsp;검색</button>
+                            style="width:200pt;height:60pt;font-size:x-large;">단순&nbsp;검색</button>
                         <button class="btn1"
-                            style="width:200pt;height:60pt;border-radius:10px;font-size:x-large; margin-left: 160px;"
+                            style="width:200pt;height:60pt;font-size:x-large; margin-left: 160px;"
                             disabled>상세&nbsp;검색</button>
-                        <br><br><br><br><br>
-                        <br>
                     </div>
                     <div class="container">
                         <div class="section_title text-center">
                             <hr>
                             <h2 style="color: orange;"> 희망 직종을 선택해 주세요.</h2>
                             <br><br>
-                            <div align="center" style="margin-bottom: 100px;">
+                            <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">식당/서빙</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">식당/서빙</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">매장관리</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">매장관리</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">상담/영업</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">상담/영업</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">건설/생산/기술</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">건설/생산/기술</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">간호/요양</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">간호/요양</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">교사/강사</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">교사/강사</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">운전/배달</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">운전/배달</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">사무/경리</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">사무/경리</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;border-radius: 10px;font-size:x-large;">기&nbsp;타</button>
+                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">기&nbsp;타</button>
                                 </div>
                             </div>
                         </div><hr>
@@ -78,35 +71,34 @@
                             <hr>
                             <h2 style="color: orange;">일하고 싶은 기간을 선택하세요.</h2>
                             <br><br>
-                            <div align="center" style="margin-bottom: 100px;">
+                            <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">일주일&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">일주일&nbsp;&nbsp;이하</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">한달&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">한달&nbsp;&nbsp;이하</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">3개월&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">3개월&nbsp;&nbsp;이하</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">6개월&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">6개월&nbsp;&nbsp;이하</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">1년&nbsp;&nbsp;이상</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">1년&nbsp;&nbsp;이상</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;border-radius: 10px;font-size:x-large;">기&nbsp;&nbsp;타</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">기&nbsp;&nbsp;타</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <div class="container" align="center">
-                    <hr><br><br>
-                    <button class="btn1"
-                        style="width: 200pt; height: 80pt; border-radius: 10px; font-size: x-large;">검색하기</button>
-                </div>
+                    <div class="container" align="center"><hr>
+                        <button class="btn1"
+                            style="width: 180pt; height:60pt; font-size: x-large;">검색하기</button>
+                    </div>
+                    <br><br><br>
                 <div class="col-sm-2 sidenav">
                 </div>
             </div>
         </div>
-        <br><br><br>
-    </form>
+      </div>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
