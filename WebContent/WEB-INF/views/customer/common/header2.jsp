@@ -6,7 +6,7 @@
     <!-- 헤더 영역 -->   
 	<div class="header" style="z-index: 10000;">
 	
-		<!-- 헤드라인 -->
+		<!-- 헤드라인 -->`
 		<div style="text-align: center;">
 			<!-- 의도 : 백구 네임을 클릭하면 메인 화면으로 넘어간다 -->
 			<br>
