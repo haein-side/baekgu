@@ -34,6 +34,7 @@ public class JDBCTemplate {
 			/* autoCommit 설정 변경 */
 			con.setAutoCommit(false);
 			
+			System.out.println("DB와 연결 성공!");
 		}catch(IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
