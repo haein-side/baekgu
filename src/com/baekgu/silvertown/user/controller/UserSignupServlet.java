@@ -17,7 +17,7 @@ import com.baekgu.silvertown.user.model.service.UserService;
 /**
  * Servlet implementation class UserSignupServlet
  */
-@WebServlet("/user/signup")
+@WebServlet("/user/sign")
 public class UserSignupServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,7 +79,8 @@ public class UserSignupServlet extends HttpServlet {
         	 System.out.println("경축 하산함");
 //        	 path = "/WEB-INF/views/customer/main/main.jsp";
 //        	 request.setAttribute("newUser", newUser);
-        	 response.sendRedirect(request.getContextPath() + "/customer/main/main.jsp");
+        	 response.sendRedirect(request.getContextPath() + "/user/result");
+        	 // do get으로 포워드 해주기
         	 //request.getContextPath()
          } else {
         	 path = "/WEB-INF/views/customer/common/errorPage.jsp";
