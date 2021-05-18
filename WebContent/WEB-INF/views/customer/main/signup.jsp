@@ -10,6 +10,36 @@
    type="text/css">
 <link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$("#duplicationCheck").click(function(){
+		var userCode = $('#userCode').val();
+		
+		$.ajax({
+			url: "baekgu/customer/signup",
+			type: "get",
+			success: function(data,textStatus,xhr){
+				console.log(data);
+				if (data == 1){
+				$("#checkMessage").html("사용할 수 있는 아이디입니다.");
+				alert("사용가능아이디");
+				} else {
+				$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+				alert("사용불가아이디")
+				}
+			},
+			error: function(xhr, status, error){
+				console.log(xhr);
+				console.log(status);
+				console.log(error);
+			}
+			
+		});
+		
+	});
+});
+</script>
 <style>
 
 /*연두색 버튼*/
@@ -38,10 +68,15 @@
    <!-- 헤더 부분 -->
 
    <%@ include file="../common/header2.jsp"%>
+   
+	
+</form>
 
    <!-- 입력한 값을 전송하기 위해 form 태그를 사용함 -->
    <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 customer/signup 서블렛 -->
-   <form id="signup" action="${ pageContext.servletContext.contextPath }/customer/signup" method="post" onsubmit="return validate();">
+   <form action="${ pageContext.servletContext.contextPath }/customer/signup" method="post">
+  
+  
    
       <div class="container" style="z-index: 1; margin-top: 15%; margin: auto;">
          <div class="py-5 text-center"
@@ -59,11 +94,12 @@
                  
                   <small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.</small>
                   
-                  
                   <br>
-                 
-                  
-                    <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck">
+                
+                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck">
+                
+					<div id="checkMessage">
+					</div>     
                 
                  <button onclick="test1();">실행확인</button>
                    <script>
@@ -109,34 +145,25 @@
          </div>
 
          <div class="row">
-            <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3">
                <label for="birthyear" class="basiclabel">태어난 해</label><br> 
                
-               <input type="number" class="birthinfo" id="userBday1" name="userBday1" min="1900" max="19" step="1"  placeholder="연도(4자)" value=1971 
-                  style="width: 150px" minlength="4" maxlength="4" required> 
+               <!--  <input type="number" class="birthinfo" id="userBday1" name="userBday1" min="1900" max="19" step="1"  placeholder="연도(4자)" 
+                  style="width: 150px" minlength="4" maxlength="4" value="1921" > -->
+                  
+                   <input type="number" class="birthinfo" id="userBday1" name="userBday1" min="1900" step="1" placeholder="연도(4자)"
+              maxlength="4" style="width: 150px" required  value="1920" >
                   
                   <label>년</label><br> 
                   <small class="form-text text-muted">(예 : 1970)</small>
-                  
-                <%--   <%! 
-                  private Date today;
-                  private Date endDate; %>
-                  
-                  <% today = new Date();%>
-                  <% endDate = new Date(today.getFullYear()-50, today.getMonth(), today.getDate());
-                      System.out.println("endDate : " + endDate);
-                  %>
-                  
-                  <input type="date" id="start" name="trip-start" value="2018-07-22"  min="2018-01-01" max=<%= endDate %>>
-                   --%>
-                  
-                  
+                 
+
             </div>
 
             <div class="col-md-4 mb-3">
                <label for="birthmonth" class="basiclabel">태어난 달</label><br>
                 
-                <select required id="userBday2" name="userBday2" style="width: 150px; height:30px; border: 1px solid #ced4da; font-size: 18px; color: #495057;">
+                <select required id="userBday2" name="userBday2" style="width: 150px; height:30px; border: 1px solid #ced4da; font-size: 18px; color: #495057;"  value="01" >
                      <option value="">월</option>
                      <option value="01" >1</option>
                      <option value="02" >2</option>
@@ -160,7 +187,7 @@
                <label for="birthday" class="basiclabel">태어난 날</label><br> 
                
               <input type="number" class="birthinfo" id="userBday3" name="userBday3" min="1" max="31" step="1" placeholder="일(2자)"
-              maxlength="2" style="width: 150px" required>
+              maxlength="2" style="width: 150px" required  value="11" >
                 
                 
                 <label>일</label><br>
@@ -188,13 +215,13 @@
 
          <div class="form-group">
             <label for="address" class="basiclabel">주소</label> 
-            <input type="text" class="form-control" name="userAddress1" placeholder="(예 : 서울시 서초구 서초동 1310-15)" required  value = "서울"> 
+            <input type="text" class="form-control" name="userAddress1" id="userAddress1" placeholder="(예 : 서울시 서초구 서초동 1310-15)" required value="서울시 서초구"> 
                <small id="address" class="form-text text-muted">시, 구, 동까지 입력해주세요.</small>
                
                <br>
                
-            <input type="text" class="form-control" name="userAddress2" placeholder="(예 : 서초빌라 302호)" value = "192"> 
-               <small id="address"   class="form-text text-muted">세부 주소(번지, 건물명, 호수)를 입력해주세요.</small>
+            <input type="text" class="form-control" name="userAddress2" id="userAddress2" placeholder="(예 : 서초빌라 302호)"  value="반포1동 서초빌라"> 
+               <small id="address" class="form-text text-muted">세부 주소(번지, 건물명, 호수)를 입력해주세요.</small>
          </div>
          
          <br>
@@ -242,7 +269,7 @@
                <input class="btn btn-lg btn-primary btn-block" type="submit" id="btnSubmit"
                   style="font-size: 28px; margin: auto; margin-top: 100px; margin-bottom: 200px; padding-bottom: 55px;" value="들어가기">
             
-            	<input type="submit" value="완료">
+            	<button type="submit" id="regist">제출하기</button>
             
             </div>
          </div>
@@ -252,133 +279,7 @@
    <!-- form 끝남 -->      
   
    
-  <!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 --> 
-   <script type="text/javascript">
-    $("#btnSubmit").click(function(){
-    	validate();
-    });
-    
-       function validate(){
-       
-          var userCode = document.getElementById("userCode");
-          var userPwd = document.getElementById("userPwd");
-          var userPwd1 = document.getElementById("userPwd1");
-          var userName = document.getElementById("userName");
-          var userBday1 = document.getElementById("userBday1");
-          var userBday2 = document.getElementById("userBday2");
-          var userBday3 = document.getElementById("userBday3");
-          var userGender = document.getElementById("userGender");
-          var userAddress1 = document.getElementById("userAddress1");
-          var userAddress2 = document.getElementById("userAddress2");
-          
-          
-          // userCode 유효성 검사
-          if(!chk(/^[0-9]{10,11}$/,userCode,"휴대폰번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
-            return false;
-         }
-         
-          // userPwd 유효성 검사
-         if(!chk(/^[a-zA-Z0-9]{8,15}$/,userPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
-            return false;
-         }
-         
-         var checkNum = document.getElementById("userPwd").value.search(/[0-9]/g);
-         var checkEng = document.getElementById("userPwd").value.search(/[a-z]/ig);
-         // i: case insensitive, 대소문자 구별 안함
-         
-         
-         if(checkNum < 0 || checkEng < 0){
-            alert("비밀번호는 숫자와 영문자를 혼용하여야 합니다.");
-            userPwd.value="";
-            userPwd.focus();
-            return false;
-         }
-         
-         // userPwd와 userPwd1 일치하는지 확인
-         if(userPwd.value != userPwd1.value){
-            alert("비밀번호가 다릅니다. 다시 확인해주세요.");
-            userPwd1.value="";
-            userPwd1.focus();
-             return false;
-         }
-       
-         // userName 유효성 검사
-          if(!chk(/^[가-힣]{1,}$/,userName,"이름은 한글로 1글자 이상 입력하세요")){
-            return false;
-         }
-         
-         // userBday1 유효성 검사 (4개인지 추가 검증 필요)
-          if(isNaN(userBday1.value)){
-				alert("년도는 숫자만 입력가능합니다.");
-				userBday1.value="";
-				userBday1.focus();
-				return false;
-			}
-         
-         // userBday3 유효성 검사 (1자리 이상 2자리 이하인지 추가 검증 필요)
-          if(isNaN(userBday3.value)){
-				alert("날짜는 숫자만 입력가능합니다.");
-				userBday3.value="";
-				userBday3.focus();
-				return false;
-			}
-         
-         let today = new Date();
-         let untilDay = new Date(today.getFullYear()-50, today.getMonth(), today.getDate());
-         
-         let fullUserBday = new Date(userBday1.value, userBday2.value-1, userBday3.value);
-         
-         console.log(fullUserBday);
-         
-         if(fullUserBday > untilDay){
-      	   alert("백구는 만 50세 이상만 회원가입이 가능합니다.");
-      	   userBday1.value="";
-      	   userBday1.focus();
-      	   return false;
-      	   
-         } else {
-      	   return true;
-         }
-      }
-      
-      
-      function chk(re, ele, msg){
-         if(!re.test(ele.value)){
-            alert(msg);
-            ele.value="";
-            ele.focus();   
-            return false;
-         }
-         
-         return true;
-      }
- 
- 		
- 			
-      // 체크박스 모두 선택
-      /* function selectAll(selectAll){
-      	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      	
-      	checkboxes.forEach((checkbox)) => {
-      		checkbox.checked = selectAll.checked;
-      	})
-      } */
-      
-      // 체크 박스 하나 해제 시 전체 동의 체크박스 풀리게 해줘야
-      function selectAll(selectAll)  {
-      	  const checkboxes 
-      	       = document.getElementsByName('agree');
-      	  
-      	  checkboxes.forEach((checkbox) => {
-      	    checkbox.checked = selectAll.checked;
-      	  })
-      	}
-      
 
-   
-        
-   </script>
-   <!-- script 끝남 -->
 
 
    
