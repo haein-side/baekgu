@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectBusinessMember">
+		SELECT
+               HR_ID
+             , HR_PWD
+             , HR_NAME
+             , HR_PHONE
+             , HR_EMAIL
+             , B_CODE
+          FROM HR
+         WHERE HR_ID = ?   
+	</entry>
+</properties>

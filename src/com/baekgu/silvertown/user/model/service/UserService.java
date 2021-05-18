@@ -1,45 +1,95 @@
 package com.baekgu.silvertown.user.model.service;
 
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.baekgu.silvertown.user.model.dao.UserDAO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
-
-/*
- * 1. connection 객체 생성
- * 2. 결과에 따른 transaction(commit, rollback) 처리
- * 3. connection 객체 소멸
- * 4. 결과 리턴
- * 
- * */
-
 public class UserService {
 
-	/* EmployeeDAO와 연결할 필드 변수 */
-	private UserDAO empDAO = new UserDAO();
+	// DAO와 연결할 필드 변수 선언 (private 선언 후 내부에서만 사용)
+	private final UserDAO userDAO; 
+	
+	// DAO 연결할 생성자 생성
+	public UserService() {
+		userDAO = new UserDAO();
+	}
 	
 	/**
-	 * 사원번호를 이용해서 사용자 정보 조회
-	 * 
-	 * @param empId 사원번호
-	 * @return 사원정보
+	 * 로그인용 메소드
+	 * @param requestUser
+	 * @return loginUser
 	 */
-	public UserDTO selectOneEmpById(String empId) {
+	public UserDTO loginCheck(UserDTO requestUser) {
 		
-		/* Connection 생성 ->common.jdbc.JDBCTemplate */
+		Connection con = getConnection();
+		UserDTO loginUser = null;
+		
+		// 비밀번호, 유저 차단 여부 조회
+		UserDTO encPwdBlock = null;
+		encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
+		
+		// 비밀번호 값이 있는지 확인
+		if(!encPwdBlock.getUserPwd().isEmpty()) {
+			
+			if(encPwdBlock.getUserBlock() != 0) {
+				
+				BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+				
+				// 비밀번호 대조
+				if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock.getUserPwd())) {
+					
+					loginUser = userDAO.selectLoginMember(con, requestUser);
+				}
+				
+				loginUser = userDAO.selectLoginMember(con, requestUser);
+				System.out.println("service : " + loginUser);
+			
+			} else {
+				
+				// 고객 차단 알림
+			}
+		} else {
+			
+			// 회원가입 안함: 알림		
+		}
+
+		return loginUser;
+	}
+	
+	
+
+	/**
+	 * 회원가입용 메소드
+	 * @param requestUser
+	 * @return int newUser
+	 */
+	public int insertNewUser(UserDTO requestUser) {
+		
 		Connection con = getConnection();
 		
-		/* Connection과 함께 정보를 전달하여 조회를 한다. */
-		UserDTO selectedEmp = empDAO.selectOneEmpById(con, empId);
+		int newUser = userDAO.insertNewUser(con, requestUser);
 		
-		/* 생각 : transaction(rollback or commit)이 필요한 상황인가? */
+		if(newUser > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
 		
-		/* Connection 소멸 */
 		close(con);
-		return selectedEmp;
+		
+		return newUser;
+		
 	}
+	
+	
+	
+	
 }
