@@ -23,12 +23,12 @@
 
 	<!-- 정주영 테스트 -->
 
-	<jsp:forward page="/WEB-INF/views/admin/main/Manager.jsp" />
+	<%-- <jsp:forward page="/WEB-INF/views/admin/main/Manager.jsp" /> --%>
 
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/> --%>
-
+	<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp" />
 
 
 	<%-- <jsp:forward page="/WEB-INF/views/customer/common/header2.jsp"/> --%>
