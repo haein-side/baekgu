@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.baekgu.silvertown.business.model.dto.BusinessDTO;
+
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
@@ -62,6 +62,7 @@ public class BusinessDAO {
 				businessLoginMember.setbCode(rset.getInt("B_CODE"));
 				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
+				businessLoginMember.setCName(rset.getString("B_NAME"));
 				
 				
 			}	
@@ -78,24 +79,5 @@ public class BusinessDAO {
 		return businessLoginMember;
 	}
 
-	public int insertNewBusiness(Connection con, BusinessDTO business) {
-		
-		PreparedStatement pstmt = null;
-		
-		int result = 0;
-		
-		String query = prop.getProperty("insertBusinessInfo");
-		
-		try {
-			
-			pstmt = con.prepareStatement(query);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-		return result;
-	}
 
 }

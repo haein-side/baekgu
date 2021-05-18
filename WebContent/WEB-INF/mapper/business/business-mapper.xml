@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="selectLoginBusinessMember">
-select
+select 
        H.HR_ID
      , H.HR_PWD
      , H.HR_NAME
@@ -11,6 +11,7 @@ select
      , H.B_CODE
      , B.B_BLOCK
      , D.D_LIST_REASON
+     , B.B_NAME
   FROM HR H
   join BUSINESS B on (H.B_CODE = B.B_CODE)
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
