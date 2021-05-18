@@ -176,7 +176,6 @@
                                 <th><input type="checkbox" id="checkAll"></th>
                                 <th>이름</th>
                                 <th>아이디</th>
-                                <th>비밀번호</th>
                                 <th>이메일</th>
                                 <th>등록일</th>
                                 <th>권한</th>
@@ -187,7 +186,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="ManagerDetail.html">강현우</a></td>
                                 <td>kang</td>
-                                <td>1234</td>
                                 <td>kang@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -196,7 +194,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">차진서</a></td>
                                 <td>cha</td>
-                                <td>1255</td>
                                 <td>cha@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -205,7 +202,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김현빈</a></td>
                                 <td>kim</td>
-                                <td>1255</td>
                                 <td>kim@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td></td>
@@ -214,7 +210,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김유진</a></td>
                                 <td>jin</td>
-                                <td>1255</td>
                                 <td>jin@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -223,7 +218,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김해인</a></td>
                                 <td>hae</td>
-                                <td>1255</td>
                                 <td>hae@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -232,7 +226,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">정주영</a></td>
                                 <td>jung</td>
-                                <td>1255</td>
                                 <td>jung@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
