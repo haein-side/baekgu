@@ -75,7 +75,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
+                          <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_document_alt"></i>
                                 <span>백구관리</span>
@@ -94,7 +94,7 @@
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_desktop"></i>
-                                <span>회원 관리</span>
+                                <span>회원관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
@@ -107,15 +107,17 @@
                             </ul>
                         </li>
 
-
-
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
-                                <span>콘텐츠 관리</span>
+                                <span>콘텐츠관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
+                                <li>
+                                    <a class="" href="PostApprove.html">
+                                        <span>공고심사관리</span></a>
+                                   </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -126,6 +128,9 @@
                                 </li>
                                 <li>
                                     <a class="" href="Advert.html">광고상품관리</a>
+                                </li>
+                                <li>
+                                    <a class="" href="Payment.html">재무관리</a>
                                 </li>
                                 <li>
                                     <a class="" href="Report.html">신고관리</a>
@@ -169,7 +174,7 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                <th><input type="checkbox" id="checkAll"></th>
+                                <th></th>
                                 <th>이름</th>
                                 <th>연락처</th>
                                 <th>생년월일</th>
@@ -234,9 +239,6 @@
                     </ul>
                   </div>
                 <!--하단 페이지 넘기기-->
-              <a class="btn btn-danger" data-toggle="modal" href="#myModal3">
-                차단하기
-              </a>
               <!--  search form start -->
               <ul class="nav top-menu" style="float: right;">
                 <li>

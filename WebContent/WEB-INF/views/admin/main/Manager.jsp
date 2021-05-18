@@ -75,7 +75,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
+                          <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_document_alt"></i>
                                 <span>백구관리</span>
@@ -94,7 +94,7 @@
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_desktop"></i>
-                                <span>회원 관리</span>
+                                <span>회원관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
@@ -107,18 +107,17 @@
                             </ul>
                         </li>
 
-
-
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
-                                <span>콘텐츠 관리</span>
+                                <span>콘텐츠관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
                                 <li>
-                                    <a class="" href="inquiry.html">기업문의</a>
-                                </li>
+                                    <a class="" href="PostApprove.html">
+                                        <span>공고심사관리</span></a>
+                                   </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -129,6 +128,9 @@
                                 </li>
                                 <li>
                                     <a class="" href="Advert.html">광고상품관리</a>
+                                </li>
+                                <li>
+                                    <a class="" href="Payment.html">재무관리</a>
                                 </li>
                                 <li>
                                     <a class="" href="Report.html">신고관리</a>
@@ -174,7 +176,6 @@
                                 <th><input type="checkbox" id="checkAll"></th>
                                 <th>이름</th>
                                 <th>아이디</th>
-                                <th>비밀번호</th>
                                 <th>이메일</th>
                                 <th>등록일</th>
                                 <th>권한</th>
@@ -185,7 +186,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="ManagerDetail.html">강현우</a></td>
                                 <td>kang</td>
-                                <td>1234</td>
                                 <td>kang@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -194,7 +194,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">차진서</a></td>
                                 <td>cha</td>
-                                <td>1255</td>
                                 <td>cha@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -203,7 +202,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김현빈</a></td>
                                 <td>kim</td>
-                                <td>1255</td>
                                 <td>kim@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td></td>
@@ -212,7 +210,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김유진</a></td>
                                 <td>jin</td>
-                                <td>1255</td>
                                 <td>jin@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -221,7 +218,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">김해인</a></td>
                                 <td>hae</td>
-                                <td>1255</td>
                                 <td>hae@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>
@@ -230,7 +226,6 @@
                                 <th><input type="checkbox"></th>
                                 <td><a href="">정주영</a></td>
                                 <td>jung</td>
-                                <td>1255</td>
                                 <td>jung@beakgu.com</td>
                                 <td>2021/05/02</td>
                                 <td>1</td>

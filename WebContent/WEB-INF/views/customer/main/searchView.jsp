@@ -20,7 +20,7 @@
 
 	<%@ include file="../common/header2.jsp"%>
 
-	<section class="product-details" style="margin-top: 25%; z-index: 1;">
+	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
 			<div class="row">
          <div class="col-lg-6 col-md-6">
