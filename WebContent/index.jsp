@@ -23,7 +23,7 @@
 
 	<!-- 정주영 테스트 -->
 
-	<jsp:forward page="/WEB-INF/views/admin/main/Registration.jsp" />
+	<jsp:forward page="/WEB-INF/views/admin/main/Manager.jsp" />
 
 
 	<!-- 김유진 테스트 -->

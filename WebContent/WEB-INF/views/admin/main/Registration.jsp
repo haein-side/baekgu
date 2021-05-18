@@ -28,6 +28,43 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        
+        
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+   	$(function(){
+   		
+   		$("#duplicationCheck").click(function(){
+   			var checkId = $("#adminId").val();
+   				
+   			$.ajax({
+   				url:"/baeckgu/adminIdCheck",
+   				type:"post",
+   				data : {
+   						adminId : checkId
+   				},
+   				success: function(data,textStatus,xhr) {
+   					if(data == 'success') {
+   						alert("이용하세요");
+   					}  else {
+   						alert("중복된 아이디입니다.");
+   						$("#adminId").select();
+   					}
+   					
+   				},
+   				error : function(xhr,status,error) {
+   					console.log(error);
+   				}
+   			})
+   		});
+   		
+
+   	});
+   
+   
+   </script>
+   
+   
     </head>
     <body>
         <!-- container section start -->
@@ -167,42 +204,44 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakname" name="name"  type="text" value=""/>
+                                  <input class="form-control" id="adminName" name="adminName"  type="text" required/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="baekid" type="id" name="id" value="">
+                                  <input class="form-control " id="adminId" name="adminId" type="id" required/>
+                       
+                                  <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakpassword" type="password" name="password" value="" >
+                                  <input class="form-control " id="adminPwd"  name="adminPwd" type="password" required/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이메일 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakemail" name="email" type="text" value="">
+                                  <input class="form-control" id="adminEmail" name="adminEmail" type="text" required/>
                                 </div>
                               </div>
-                              <div class="form-group ">
+                              <!-- <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">등록일</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakconfirm" name="confirm" value="">
+                                  <input class="form-control " id="adminDate" name="adminDate" required/>
                                 </div>
-                              </div>
+                              </div> -->
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beak" name="beakre" type="text" value="">
+                                  <input class="form-control" id="adminRole" name="adminRole" type="text" required/>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="button" onClick="location.href='Manager.html'">등록</button>
+                                  <button class="btn btn-primary" type="submit" >등록</button>
                                 </div>
                               </div>
                             </form>
