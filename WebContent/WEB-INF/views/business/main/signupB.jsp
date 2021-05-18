@@ -501,9 +501,15 @@
           </div>
           <div class="form-group">
             <label for="bsaddress">기업 주소</label>
-            <input type="text" class="form-control" id="bsaddress" placeholder="기업 주소 입력" name="address1">
             <br>
-            <input type="text" class="form-control" id="bsaddress" placeholder="기업 상세주소 입력" name="address2">
+            <label>우편 번호</label>
+            <input type="text" name="zipCode" id="zipCode" readonly>
+            <br>
+            <label>주소</label>
+            <input type="text" name="address1" id="address1" readonly>
+            <br>
+            <label>상세주소</label>
+            <input type="text" name="address2" id="address2">
           </div>
           <hr>
           <!-- 이름, 휴대폰 번호, 이메일 -->
@@ -545,5 +551,31 @@
   <footer class="container-fluid text-center">
     <p>Footer Text</p>
   </footer>
+  	<!-- 다음 우편번호 api -->
+	<!-- key 발급 없이 무제한으로 이용이 가능하다. -->
+	<!-- 아래 스크립트를 불러온 후 사용해야 한다. -->
+	<!-- 참고 링크 : http://postcode.map.daum.net/guide -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		const $searchZipCode = document.getElementById("searchZipCode");
+		const $goMain = document.getElementById("goMain");
+		
+		$searchZipCode.onclick = function() {
+		
+			//다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다.
+			new daum.Postcode({
+				oncomplete: function(data){
+					//팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분
+					document.getElementById("zipCode").value = data.zonecode;
+					document.getElementById("address1").value = data.address;
+					document.getElementById("address2").focus();
+				}
+			}).open();
+		}
+		
+		$goMain.onclick = function() {
+			location.href = "${ pageContext.servletContext.contextPath }";
+		}
+	</script>
 </body>
 </html>

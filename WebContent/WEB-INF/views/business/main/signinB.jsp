@@ -181,6 +181,9 @@
       </div>
     </div>
   </div>
+
 <%@ include file="../common/footer.jsp" %>
+
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 </body>
 </html>

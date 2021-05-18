@@ -10,11 +10,13 @@ public class BusinessMemberDTO {
 	private int bCode;
 	private int blockStatus;
 	private String bReason;
+	private String CName;
+	
 	public BusinessMemberDTO() {
 		super();
 	}
 	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode, int blockStatus,
-			String bReason) {
+			String bReason, String CName) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -24,6 +26,14 @@ public class BusinessMemberDTO {
 		this.bCode = bCode;
 		this.blockStatus = blockStatus;
 		this.bReason = bReason;
+		this.CName = CName;
+	}
+	
+	public String getCName() {
+		return CName;
+	}
+	public void setCName(String cName) {
+		CName = cName;
 	}
 	public String getbId() {
 		return bId;
@@ -75,9 +85,11 @@ public class BusinessMemberDTO {
 	}
 	@Override
 	public String toString() {
-		return "BusinessDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone + ", bEmail="
-				+ bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason + "]";
+		return "BusinessMemberDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone
+				+ ", bEmail=" + bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason
+				+ ", CName=" + CName + "]";
 	}
 	
+
 	 
 }
