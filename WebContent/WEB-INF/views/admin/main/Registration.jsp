@@ -28,11 +28,6 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
     </head>
     <body>
         <!-- container section start -->
@@ -167,7 +162,8 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                            <form class="form-validate form-horizontal" id="feedback_form" 
+                                  action="${ pageContext.servletContext.contextPath }/admin/regist" method="post" >
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
