@@ -25,7 +25,7 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String adminId = request.getParameter("adminId");
-		String adminPwd = request.getParameter("adminPwd");
+		String adminPwd = request.getParameter("enteredPwd");
 		
 		System.out.println("adminId : " + adminId);
 		System.out.println("adminPwd : " + adminPwd);

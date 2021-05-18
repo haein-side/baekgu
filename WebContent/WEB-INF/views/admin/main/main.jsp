@@ -75,7 +75,7 @@
                             </a>
                         </li>
                           <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/homepage">
                                 <i class="icon_house_alt"></i>
                                 <span>홈페이지 정보</span>
                             </a>

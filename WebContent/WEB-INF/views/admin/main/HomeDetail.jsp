@@ -18,17 +18,17 @@
         <title>백구 관리자페이지</title>
 
         
-        <link href="RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
 
  
         <!-- owl carousel -->
-        <link rel="stylesheet" href="RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
         <!-- Custom styles -->
-        <link href="RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
         <!-- ======================================================= Theme Name:
         NiceAdmin Theme URL:
         https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
@@ -163,17 +163,17 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                            <form class="form-validate form-horizontal" action="${ pageContext.servletContext.contextPath }/admin/homedetail" method="post">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사명 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="cname" name="fullname"  type="text" value="백구">
+                                  <input class="form-control" id="cname" name="baekguName"  type="text" value="백구">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">회사 전화번호 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="cphone" type="phone" name="phone" value="02-109-1009">
+                                  <input class="form-control " id="cphone" type="baekguPhone" name="phone" value="02-109-1009">
                                 </div>
                               </div>
                               <div class="form-group ">
@@ -185,19 +185,19 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사주소 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="subject" name="subject"  type="text" value="서울시 강남구">
+                                  <input class="form-control" id="subject" name="addresss"  type="text" value="서울시 강남구">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">사업자 등록번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="ccomment" name="comment" value="1237-121-146545">
+                                  <input class="form-control " id="ccomment" name="baekguNum" value="1237-121-146545">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">대표자명 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="representation" name="rename" type="text" value="미정">
+                                  <input class="form-control" id="representation" name="ownerName" type="text" value="미정">
                                 </div>
                               </div>
                               <div class="form-group">

@@ -18,17 +18,17 @@
         <title>백구 관리자페이지</title>
 
         
-        <link href="RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
 
  
         <!-- owl carousel -->
-        <link rel="stylesheet" href="RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
         <!-- Custom styles -->
-        <link href="RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
         <!-- ======================================================= Theme Name:
         NiceAdmin Theme URL:
         https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
@@ -196,7 +196,12 @@
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="button" onClick="location.href='HomeDetail.html'">수정</button>
+                               <button class="btn btn-primary" type="button" name=btn id=btn onclick="location='homedetail'">
+                                  수정 
+                               </button>
+                              <%--     <a class="btn btn-primary" name=btn id=btn href="${ pageContext.servletContext.contextPath }/admin/main">
+                                  수정
+                                  </a> --%>
                                 </div>
                               </div>
                             </form>
