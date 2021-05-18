@@ -14,7 +14,7 @@ import com.baekgu.silvertown.admin.model.service.AdminRegistService;
 /**
  * Servlet implementation class AdminRegistServlet
  */
-@WebServlet("/admin/regist")
+@WebServlet("/admin/signup")
 public class AdminRegistServlet extends HttpServlet {
 
 	
@@ -31,7 +31,7 @@ public class AdminRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String adminId = request.getParameter("adminId");
-		String adminPwd = request.getParameter("adminPwd");
+		String adminPwd = request.getParameter("enteredPwd");
 		String adminName = request.getParameter("adminName");
 		String adminEmail = request.getParameter("adminEmail");
 		String adminRole = request.getParameter("adminRole");	
