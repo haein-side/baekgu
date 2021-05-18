@@ -22,7 +22,7 @@ public class AdminRegistDAO {
 		prop = new Properties();
 
 		try {
-			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "admin-mapper.xml"));
+			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "admin/admin-login.xml"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
