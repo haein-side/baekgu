@@ -1,6 +1,6 @@
-package com.baekgu.silvertown.user.model.dto;
+package com.baekgu.silvertown.business.model.dto;
 
-public class BusinessDTO {
+public class BusinessMemberDTO {
 
 	private String bId;
 	private String bPwd;
@@ -8,11 +8,13 @@ public class BusinessDTO {
 	private String bPhone;
 	private String bEmail;
 	private int bCode;
-	public BusinessDTO() {
+	private int blockStatus;
+	private String bReason;
+	public BusinessMemberDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public BusinessDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode) {
+	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode, int blockStatus,
+			String bReason) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -20,6 +22,8 @@ public class BusinessDTO {
 		this.bPhone = bPhone;
 		this.bEmail = bEmail;
 		this.bCode = bCode;
+		this.blockStatus = blockStatus;
+		this.bReason = bReason;
 	}
 	public String getbId() {
 		return bId;
@@ -57,11 +61,23 @@ public class BusinessDTO {
 	public void setbCode(int bCode) {
 		this.bCode = bCode;
 	}
+	public int getBlockStatus() {
+		return blockStatus;
+	}
+	public void setBlockStatus(int blockStatus) {
+		this.blockStatus = blockStatus;
+	}
+	public String getbReason() {
+		return bReason;
+	}
+	public void setbReason(String bReason) {
+		this.bReason = bReason;
+	}
 	@Override
 	public String toString() {
 		return "BusinessDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone + ", bEmail="
-				+ bEmail + ", bCode=" + bCode + "]";
+				+ bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason + "]";
 	}
 	
-	
-	}
+	 
+}
