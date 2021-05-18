@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">${ requestScope.message }</h1>
+	<script>
+	var errorMessage = "${ requestScope.errorMessage }";
+	movePath = "${ pageContext.servletContext.contextPath }";
+	
+	alert(errorMessage);
+	location.replace(movePath);
+	
+	</script>
+	
+	
 </body>
 </html>
