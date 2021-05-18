@@ -189,7 +189,7 @@
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="button" onClick="location.href='Manager.html'">등록</button>
+                                  <button class="btn btn-primary" class="btn btn-primary" type="submit" >등록</button>
                                 </div>
                               </div>
                             </form>

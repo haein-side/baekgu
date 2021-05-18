@@ -159,6 +159,45 @@ public class UserDAO {
 		return newUser;
 	}
 
+	public String checkId(Connection con, String userPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String userId = userPhone;
+		String result = "";
+		
+		System.out.println("DAO에 들어온 userPhone : " + userId);
+		
+		String query = prop.getProperty("checkId");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				int userCode = rset.getInt("USER_CODE");
+				
+				if(userCode >= 1) {
+					result = "fail";
+				} else {
+					result = "success";
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("DAO에서 보내는 결과 : " + result);
+		
+		return result;
+	}
+
 	
 
 }

@@ -17,16 +17,18 @@ import com.baekgu.silvertown.user.model.service.UserService;
 /**
  * Servlet implementation class UserSignupServlet
  */
-@WebServlet("/user/sign")
+@WebServlet("/user/signup")
 public class UserSignupServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 아이디 중복 체크
+		String userPhone = request.getParameter("userPhone");
 		
-		// 나중에
-		System.out.println("안녕");
-		String userCode = request.getParameter("userCode");
+		System.out.println("userPhone : " + userPhone);
 		
-		System.out.println("userCode : " + userCode);
+		UserService userService = new UserService();
+		
+		String result = userService.checkId(userPhone); 
 		
 	}
 	
@@ -79,7 +81,7 @@ public class UserSignupServlet extends HttpServlet {
         	 System.out.println("경축 하산함");
 //        	 path = "/WEB-INF/views/customer/main/main.jsp";
 //        	 request.setAttribute("newUser", newUser);
-        	 response.sendRedirect(request.getContextPath() + "/user/result");
+        	 response.sendRedirect(request.getContextPath() + "/user/signupResult");
         	 // do get으로 포워드 해주기
         	 //request.getContextPath()
          } else {

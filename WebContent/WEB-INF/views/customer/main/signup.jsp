@@ -13,14 +13,15 @@
 $(function(){
 	
 	$("#duplicationCheck").click(function(){
-		var userCode = $('#userCode').val();
+		var userPhone = $('#userPhone').val();
 		
 		$.ajax({
-			url: "baekgu/customer/signup",
+			url: "/baekgu/user/signup",
 			type: "get",
+			data:{ userPhone : userPhone },
 			success: function(data,textStatus,xhr){
 				console.log(data);
-				if (data == 1){
+				if (data == "success"){
 				$("#checkMessage").html("사용할 수 있는 아이디입니다.");
 				alert("사용가능아이디");
 				} else {
