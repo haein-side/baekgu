@@ -17,7 +17,9 @@ public class EncryptReqeustWrapper extends HttpServletRequestWrapper{
 		
 		String value = "";
 		
-		if("memberPwd".equals(key)) {
+		/* 각 페이지 별 비밀번호 name값을 정해야한다. */
+		
+		if("enteredPwd".equals(key)) {
 			/* 스프링 시큐리티 중 BCrypt암호화를 제공해주는 라이브러리*/
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			value = passwordEncoder.encode(super.getParameter(key)); // memberPwd에 입력된 값
