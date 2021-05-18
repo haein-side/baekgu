@@ -68,7 +68,7 @@ public class UserSignupServlet extends HttpServlet {
          
          
          /* 비즈니스 로직 실행 결과에 따른 뷰 연결(forward) */
-         String page = "";
+         String path = "";
          
          if(newUser != 0) {
 //        	 page="/WEB-INF/views/customer/common/successPage.jsp";
@@ -77,16 +77,22 @@ public class UserSignupServlet extends HttpServlet {
         	 // 이 부분 보완해야 함
         	 System.out.println("request.getContextPath() : " + request.getContextPath());
         	 System.out.println("경축 하산함");
-        	 page = "/WEB-INF/views/customer/main/main.jsp";
-        	 response.sendRedirect(page);
+//        	 path = "/WEB-INF/views/customer/main/main.jsp";
+//        	 request.setAttribute("newUser", newUser);
+        	 response.sendRedirect(request.getContextPath() + "/customer/main/main.jsp");
         	 //request.getContextPath()
          } else {
-        	 page = "/WEB-INF/views/customer/common/errorPage.jsp";
+        	 path = "/WEB-INF/views/customer/common/errorPage.jsp";
         	 // 회원가입 실패 시 어떻게 action해줘야 할 지 모르겠음
         	 request.setAttribute("errorMessage", "회원가입을 실패했습니다.");
         	 System.out.println("하산했으나 실패함");
-        	 request.getRequestDispatcher(page).forward(request, response);
+        	 request.getRequestDispatcher(path).forward(request, response);
          }
+         
+        
+ 		
+// 		request.getRequestDispatcher(path).forward(request, response);
+ 		
          
          
 		
