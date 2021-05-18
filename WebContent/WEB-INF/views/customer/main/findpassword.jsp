@@ -29,8 +29,23 @@
         
         <div class="form-group">
           <input class="form-control" type="text" name="phone" placeholder="(예 : 01012345678)" style="width: 62%; float: left;" required=""> </input>
-          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">인증번호 요청
+          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" data-toggle="modal" data-target="#myModal" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">인증번호 요청
+<!--           	모달
+          	<div class="modal-content">
+        		<div class="modal-header">
+          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+          		<h4 class="modal-title">Modal Header</h4>
+        		</div>
+        		<div class="modal-body">
+          		<p>Some text in the modal.</p>
+        		</div>
+        		<div class="modal-footer">
+          		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+      		</div> -->
           </button><br><br>
+          
+          
           <p style="margin-bottom: 35px;"><small>특수문자(-)를 제외한 숫자만 입력하세요.</small></p>
         </div>
           <lable class="text-label"><b>인증번호</b></lable><br>
