@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> 
 
 
  	<!-- 강현우 테스트 -->
