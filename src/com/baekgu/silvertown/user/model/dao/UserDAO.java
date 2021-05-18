@@ -117,4 +117,27 @@ public class UserDAO {
 		return loginUser;
 	}
 
+	
+	
+	
+	/**
+	 * USER TABLE 신규 회원 insert용 메소드
+	 * @param con
+	 * @param requestUser
+	 * @return newUser (insert된 회원 수)
+	 */
+	public int insertNewUser(Connection con, UserDTO requestUser) {
+		
+		PreparedStatement pstmt = null;
+		
+		int newUser = 0;
+		
+		String query = prop.getProperty("insertNewUser");
+		
+		
+		return 0;
+	}
+
+	
+
 }

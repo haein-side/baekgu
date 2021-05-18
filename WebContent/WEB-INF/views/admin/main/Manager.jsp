@@ -17,17 +17,17 @@
         <title>백구 관리자페이지</title>
 
         
-        <link href="RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
 
  
         <!-- owl carousel -->
-        <link rel="stylesheet" href="RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
         <!-- Custom styles -->
-        <link href="RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
         <!-- ======================================================= Theme Name:
         NiceAdmin Theme URL:
         https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
@@ -50,100 +50,87 @@
                 </div>
 
                 <!--logo start-->
-                <a href="index.html" class="logo">백구
+                <a href="${ pageContext.servletContext.contextPath }/admin/main" class="logo">백구
                     <span class="lite">관리자</span></a>
                 <!--logo end-->
 
                   <!-- 사용자 프로필 -->
-                <div class="top-nav notification-row">
-                    <span class="profile-ava">
-                        <img alt="" src="img/avatar1_small.jpg">
-                    </span>
-                    <span class="username">정주영</span>
-                </div>
+  
+                <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4>
+                
             </header>
             <!--header end-->
 
-             <!--sidebar start-->
-             <aside>
+            <!--sidebar start-->
+            <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a class="" href="index.html">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
                                 <i class="icon_house_alt"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                          <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_document_alt"></i>
-                                <span>백구관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                          <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>홈페이지 정보</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="HomepageInfo.html">홈페이지 정보</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Manager.html">관리자 및 직원관리
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_desktop"></i>
-                                <span>회원관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
+                                <i class="icon_house_alt"></i>
+                                <span>관리자 및 직원관리</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="MemberInfo.html">회원정보</a>
-                                </li>
-                                <li>
-                                    <a class="" href="CompanyInfo.html">기업정보</a>
-                                </li>
-                            </ul>
                         </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_documents_alt"></i>
-                                <span>콘텐츠관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>회원 정보</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="PostApprove.html">
-                                        <span>공고심사관리</span></a>
-                                   </li>
-                                <li>
-                                    <a class="" href="Post.html">
-                                        <span>공고관리</span></a>
-                                </li>
-                                <li>
-                                    <a class="" href="Sign-up.html">
-                                        <span>가입승인</span></a>
-                                </li>
-                                <li>
-                                    <a class="" href="Advert.html">광고상품관리</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Payment.html">재무관리</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Report.html">신고관리</a>
-                                </li>
-                            </ul>
                         </li>
-
-                    </ul>
+                         <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>기업 정보</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>공고승인</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>공고관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>가입승인</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>광고상품관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>신고관리</span>
+                            </a>
+                        </li>
+                     </ul>
                     <!-- sidebar menu end-->
                 </div>
             </aside>
             <!--sidebar end-->
-
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">

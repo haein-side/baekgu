@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment/>
+    <entry key="selectEncryptedPwd">
+        SELECT 
+               ADMIN_PWD
+          FROM ADMIN
+         WHERE ADMIN_ID = ?
+    </entry>
+    <entry key="selectLoginAdmin">
+        SELECT 
+               ADMIN_ID
+             , ADMIN_NAME
+             , ADMIN_EMAIL
+             , ADMIN_DATE
+             , ADMIN_ROLE
+          FROM ADMIN
+         WHERE ADMIN_ID = ? 
+    </entry>
+	
+</properties>
+
+
+
+
+
+
+
+
+
+

@@ -13,14 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.baekgu.silvertown.common.wrapper.EncryptReqeustWrapper;
 
-
 /**
  * mapping expected
  * 1. /user/signup
  * 2. /business/signup
  * 3. /admin/signup
  * 
- * -> 아래 맵핑 방식을 통해 signup에 대해서만 encrypt작업을 하게 만듦.
+ * -> 3 page의 signup url에 대해 아래 필터를 거쳐 암호화를 진행한다.
  */
 @WebFilter("/*/signup")
 public class PasswordEncryptFilter implements Filter {
@@ -34,7 +33,7 @@ public class PasswordEncryptFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest hrequest = (HttpServletRequest) request;
-		
+//		
 //		String uri = hrequest.getRequestURI();
 //		System.out.println("uri : " + uri);
 //		
@@ -53,5 +52,4 @@ public class PasswordEncryptFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {}
-
 }

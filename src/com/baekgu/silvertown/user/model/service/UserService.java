@@ -1,7 +1,9 @@
 package com.baekgu.silvertown.user.model.service;
 
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 
@@ -61,4 +63,33 @@ public class UserService {
 
 		return loginUser;
 	}
+	
+	
+
+	/**
+	 * 회원가입용 메소드
+	 * @param requestUser
+	 * @return int newUser
+	 */
+	public int insertNewUser(UserDTO requestUser) {
+		
+		Connection con = getConnection();
+		
+		int newUser = userDAO.insertNewUser(con, requestUser);
+		
+		if(newUser > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return newUser;
+		
+	}
+	
+	
+	
+	
 }

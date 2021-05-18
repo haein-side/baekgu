@@ -28,6 +28,43 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        
+        
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+   	$(function(){
+   		
+   		$("#duplicationCheck").click(function(){
+   			var checkId = $("#adminId").val();
+   				
+   			$.ajax({
+   				url:"/baeckgu/adminIdCheck",
+   				type:"post",
+   				data : {
+   						adminId : checkId
+   				},
+   				success: function(data,textStatus,xhr) {
+   					if(data == 'success') {
+   						alert("이용하세요");
+   					}  else {
+   						alert("중복된 아이디입니다.");
+   						$("#adminId").select();
+   					}
+   					
+   				},
+   				error : function(xhr,status,error) {
+   					console.log(error);
+   				}
+   			})
+   		});
+   		
+
+   	});
+   
+   
+   </script>
+   
+   
     </head>
     <body>
         <!-- container section start -->
@@ -45,95 +82,83 @@
                 </div>
 
                 <!--logo start-->
-                <a href="index.html" class="logo">백구
+                <a href="${ pageContext.servletContext.contextPath }/admin/main" class="logo">백구
                     <span class="lite">관리자</span></a>
                 <!--logo end-->
 
                   <!-- 사용자 프로필 -->
-                <div class="top-nav notification-row">
-                    <span class="profile-ava">
-                        <img alt="" src="img/avatar1_small.jpg">
-                    </span>
-                    <span class="username">정주영</span>
-                </div>
+  
+                <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4>
+                
             </header>
             <!--header end-->
 
-             <!--sidebar start-->
-             <aside>
+            <!--sidebar start-->
+            <aside>
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a class="" href="index.html">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
                                 <i class="icon_house_alt"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                         <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_document_alt"></i>
-                                <span>백구관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                          <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>홈페이지 정보</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="HomepageInfo.html">홈페이지 정보</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Manager.html">관리자 및 직원관리
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_desktop"></i>
-                                <span>회원관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
+                                <i class="icon_house_alt"></i>
+                                <span>관리자 및 직원관리</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="MemberInfo.html">회원정보</a>
-                                </li>
-                                <li>
-                                    <a class="" href="CompanyInfo.html">기업정보</a>
-                                </li>
-                            </ul>
                         </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_documents_alt"></i>
-                                <span>콘텐츠관리</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>회원 정보</span>
                             </a>
-                            <ul class="sub">
-                                <li>
-                                    <a class="" href="PostApprove.html">
-                                        <span>공고심사관리</span></a>
-                                   </li>
-                                <li>
-                                    <a class="" href="Post.html">
-                                        <span>공고관리</span></a>
-                                </li>
-                                <li>
-                                    <a class="" href="Sign-up.html">
-                                        <span>가입승인</span></a>
-                                </li>
-                                <li>
-                                    <a class="" href="Advert.html">광고상품관리</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Payment.html">재무관리</a>
-                                </li>
-                                <li>
-                                    <a class="" href="Report.html">신고관리</a>
-                                </li>
-                            </ul>
                         </li>
-
-                    </ul>
+                         <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>기업 정보</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>공고승인</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>공고관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>가입승인</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>광고상품관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>신고관리</span>
+                            </a>
+                        </li>
+                     </ul>
                     <!-- sidebar menu end-->
                 </div>
             </aside>
@@ -167,42 +192,44 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakname" name="name"  type="text" value=""/>
+                                  <input class="form-control" id="adminName" name="adminName"  type="text" required/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="baekid" type="id" name="id" value="">
+                                  <input class="form-control " id="adminId" name="adminId" type="id" required/>
+                       
+                                  <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakpassword" type="password" name="password" value="" >
+                                  <input class="form-control " id="adminPwd"  name="adminPwd" type="password" required/>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이메일 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakemail" name="email" type="text" value="">
+                                  <input class="form-control" id="adminEmail" name="adminEmail" type="text" required/>
                                 </div>
                               </div>
-                              <div class="form-group ">
+                              <!-- <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">등록일</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakconfirm" name="confirm" value="">
+                                  <input class="form-control " id="adminDate" name="adminDate" required/>
                                 </div>
-                              </div>
+                              </div> -->
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beak" name="beakre" type="text" value="">
+                                  <input class="form-control" id="adminRole" name="adminRole" type="text" required/>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="button" onClick="location.href='Manager.html'">등록</button>
+                                  <button class="btn btn-primary" type="submit" >등록</button>
                                 </div>
                               </div>
                             </form>
