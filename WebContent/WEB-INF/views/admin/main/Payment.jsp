@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,6 +121,12 @@
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
                                 <i class="icon_house_alt"></i>
                                 <span>신고관리</span>
+                            </a>
+                        </li>
+                         <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                                <i class="icon_house_alt"></i>
+                                <span>재무관리</span>
                             </a>
                         </li>
                      </ul>
