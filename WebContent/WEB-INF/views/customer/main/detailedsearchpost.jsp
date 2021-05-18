@@ -175,15 +175,6 @@
             </div>
         </div>
     </div>
-    <script>
-    
-    let btn1Elem = document.querySelector("#btn_1")
-    btn1Elem.addEventListener("click", function)
-    let btnClick = (e) => {
-       console.log(e.target);
-    }
-
-    </script>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
