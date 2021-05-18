@@ -28,11 +28,6 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
     </head>
     <body>
         <!-- container section start -->
@@ -75,7 +70,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
+                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_document_alt"></i>
                                 <span>백구관리</span>
@@ -94,13 +89,10 @@
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_desktop"></i>
-                                <span>회원 관리</span>
+                                <span>회원관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li>
-                                    <a class="" href="Resume.html">이력서</a>
-                                </li>
                                 <li>
                                     <a class="" href="MemberInfo.html">회원정보</a>
                                 </li>
@@ -110,18 +102,17 @@
                             </ul>
                         </li>
 
-     
-
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_documents_alt"></i>
-                                <span>콘텐츠 관리</span>
+                                <span>콘텐츠관리</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
                                 <li>
-                                    <a class="" href="inquiry.html">기업문의</a>
-                                </li>
+                                    <a class="" href="PostApprove.html">
+                                        <span>공고심사관리</span></a>
+                                   </li>
                                 <li>
                                     <a class="" href="Post.html">
                                         <span>공고관리</span></a>
@@ -132,6 +123,9 @@
                                 </li>
                                 <li>
                                     <a class="" href="Advert.html">광고상품관리</a>
+                                </li>
+                                <li>
+                                    <a class="" href="Payment.html">재무관리</a>
                                 </li>
                                 <li>
                                     <a class="" href="Report.html">신고관리</a>
@@ -168,7 +162,8 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                            <form class="form-validate form-horizontal" id="feedback_form" 
+                                  action="${ pageContext.servletContext.contextPath }/admin/regist" method="post" >
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">

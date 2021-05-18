@@ -3,11 +3,13 @@ package com.baekgu.silvertown.user.model.dao;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import com.baekgu.silvertown.common.config.ConfigLocation;
@@ -16,72 +18,101 @@ import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
 public class UserDAO {
-
-	/*
-	 * Properties 객체를 이용해서 쿼리문을 조회해서 사용한다.
-	 * 기본생성자를 통해서 쿼리문을 조회해 온다.
-	 * */
-	private Properties prop = new Properties();
+	
+	// 해당 클래스에서 사용할 Properties 선언
+	private final Properties prop;
 	
 	public UserDAO() {
+		prop = new Properties();
+		
 		try {
-			
-			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "employee-mapper.xml"));
-			
-		}catch(IOException e) {
+			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION));
+		
+		} catch (InvalidPropertiesFormatException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public UserDTO selectOneEmpById(Connection con, String empId) {
-
-		/* 생각 무엇을 쓸지? 
-		 * Statement - 속도빠르지만 안정성이 좋지않다 
-		 * PreparedStatement -  속도저하, sql injection의 위험이 낮다
-		 * */
-		PreparedStatement psmt = null;
+	/**
+	 * 암호화된 비밀번호와 유저 차단 여부를 리턴하는 메소드
+	 * @param con
+	 * @param requestUser
+	 * @return encPwdBlock
+	 */
+	public String selectEnCryptedPwd(Connection con, UserDTO requestUser) {
 		
-		/*
-		 * 생각 sql query의 결과값은 무엇으로 받을지?
-		 * 1. select문 -> ResultSet
-		 * 2. insert, update, delete문 -> int
-		 * */
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		/*
-		 * 생각 select문의 결과값은 몇행으로 나오는가?
-		 * 1개의 행 -> EmployeeDTO로 결과값 저장
-		 * 여러 행 -> List<EmployeeDTO> 결과값 저장
-		 * */
-		UserDTO selectedEmp = null;
+		String encPwdBlock = null;
 		
-		String query = prop.getProperty("selectEmpById");
+		String query = prop.getProperty("selectBlockEncryptedPwd");
 		
 		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, empId);
-			
-			rset = psmt.executeQuery();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestUser.getUserPhone());
 			
 			if(rset.next()) {
-				selectedEmp = new UserDTO();
-//				selectedEmp.setEmpId(rset.getString("EMP_ID"));
-//				selectedEmp.setEmpName(rset.getString("EMP_NAME"));
-//				selectedEmp.setDeptCode(rset.getString("DEPT_CODE"));
-//				selectedEmp.setJobCode(rset.getString("JOB_CODE"));
-//				selectedEmp.setSalary(rset.getInt("SALARY")); 
+				encPwdBlock = rset.getString("USER_PWD");
+				encPwdBlock = rset.getString("USER_BLOCK");
 			}
-			// 확인용
-			System.out.println(selectedEmp);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(psmt);
+			close(pstmt);
 		}
 		
-		
-		return selectedEmp;
+		return encPwdBlock;
 	}
+
+	/**
+	 * 비밀번호 일치 시 정보 조회용 메소드
+	 * @param con
+	 * @param requestUser
+	 * @return 회원 정보
+	 */
+	public UserDTO selectLoginMember(Connection con, UserDTO requestUser) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		UserDTO loginUser = null;
+		System.out.println(requestUser);
+		String query = prop.getProperty("selectLoginUser");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, requestUser.getUserPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				loginUser = new UserDTO();
+				
+				loginUser.setUserCode(rset.getInt("USER_CODE"));
+				loginUser.setUserName(rset.getString("USER_NAME"));
+				loginUser.setUserBday(rset.getDate("USER_BDAY"));
+				loginUser.setUserGender(rset.getString("USER_GENDER"));
+				loginUser.setUserAddress(rset.getString("USER_ADDRESS"));
+				loginUser.setUserRegisterDate(rset.getDate("USER_REGISTER_DATE"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("DAO : " + loginUser);
+
+		return loginUser;
+	}
+
 }

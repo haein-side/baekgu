@@ -5,41 +5,55 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.baekgu.silvertown.user.model.dao.UserDAO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
-
-/*
- * 1. connection 객체 생성
- * 2. 결과에 따른 transaction(commit, rollback) 처리
- * 3. connection 객체 소멸
- * 4. 결과 리턴
- * 
- * */
-
 public class UserService {
 
-	/* EmployeeDAO와 연결할 필드 변수 */
-	private UserDAO empDAO = new UserDAO();
-	
+	/* DAO와 연결할 필드 변수 */
+	private UserDAO userDAO = new UserDAO();
+		
 	/**
-	 * 사원번호를 이용해서 사용자 정보 조회
-	 * 
-	 * @param empId 사원번호
-	 * @return 사원정보
+	 * 로그인용 메소드
+	 * @param requestUser
+	 * @return loginUser
 	 */
-	public UserDTO selectOneEmpById(String empId) {
+	public UserDTO loginCheck(UserDTO requestUser) {
 		
-		/* Connection 생성 ->common.jdbc.JDBCTemplate */
 		Connection con = getConnection();
+		UserDTO loginUser = null;
 		
-		/* Connection과 함께 정보를 전달하여 조회를 한다. */
-		UserDTO selectedEmp = empDAO.selectOneEmpById(con, empId);
+		// 비밀번호, 유저 차단 여부 조회
+		String encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
+		// TODO int 형으로 처리해줘야 하나>
 		
-		/* 생각 : transaction(rollback or commit)이 필요한 상황인가? */
+		// TODO 2개의 값을 하나씩 출력하는 방법?
+		System.out.println("암호화된 비밀번호 : " + encPwdBlock.indexOf(0));
 		
-		/* Connection 소멸 */
-		close(con);
-		return selectedEmp;
+		// 비밀번호, 차단 값이 있는지 확인하기
+		if(!encPwdBlock.isEmpty()) {
+			
+			// 라이브러리를 사용해 객체 생성
+			BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+			
+			// 비밀번호 대조
+			if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock)) {
+				
+				loginUser = userDAO.selectLoginMember(con, requestUser);
+			}
+			
+			loginUser = userDAO.selectLoginMember(con, requestUser);
+			System.out.println("service : " + loginUser);
+			
+		} else {
+			
+			// 팝업 띄워주기: 입력하신 회원정보가 없습니다. 확인 -> 회원가입 페이지
+		}
+		
+		return loginUser;
 	}
+	
+	
 }
