@@ -2,14 +2,26 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="insertNewUser">
-		SELECT
-               HR_ID
-             , HR_PWD
-             , HR_NAME
-             , HR_PHONE
-             , HR_EMAIL
-             , B_CODE
-          FROM HR
-         WHERE HR_ID = ?   
+		INSERT 
+		  INTO USER
+             ( 
+               USER_PHONE
+             , USER_PWD
+             , USER_NAME
+             , USER_BDAY
+             , USER_GENDER
+             , USER_ADDRESS 
+             , USER_REGISTER_DATE
+             )
+        VALUES
+             (
+               ?
+             , ?
+             , ?
+             , ?
+             , ?
+             , ?
+             , NOW()
+             )
 	</entry>
 </properties>

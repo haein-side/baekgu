@@ -26,7 +26,7 @@ public class UserDAO {
 		prop = new Properties();
 		
 		try {
-			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION));
+			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "customer/customer-mapper.xml"));
 		
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
@@ -134,8 +134,29 @@ public class UserDAO {
 		
 		String query = prop.getProperty("insertNewUser");
 		
-		
-		return 0;
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			System.out.println(requestUser.getUserBday());
+			
+			pstmt.setString(1, requestUser.getUserPhone());
+			pstmt.setString(2, requestUser.getUserPwd());
+			pstmt.setString(3, requestUser.getUserName());
+			pstmt.setDate(4, requestUser.getUserBday());
+			pstmt.setString(5, requestUser.getUserGender());
+			pstmt.setString(6, requestUser.getUserAddress());
+			
+			newUser = pstmt.executeUpdate();
+			
+			System.out.println("dao에 왔음");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return newUser;
 	}
 
 	

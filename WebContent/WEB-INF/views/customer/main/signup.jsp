@@ -112,7 +112,7 @@ $(function(){
                <div class="form-group">
                   <label for="password" class="basiclabel">비밀번호</label> 
                   
-                  <input type="password" class="form-control" id="userPwd" name ="userPwd" placeholder="(예 : hgd610405)"  value = "hb2qp5555" required>
+                  <input type="password" class="form-control" id="userPwd" name ="enteredPwd" placeholder="(예 : hgd610405)"  value = "hb2qp5555" required>
                   
                   <small id="passwordHelp" class="form-text text-muted">
                   영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)
@@ -287,7 +287,7 @@ $(function(){
        function validate(){
        
           var userPhone = document.getElementById("userPhone");
-          var userPwd = document.getElementById("userPwd");
+          var enteredPwd = document.getElementById("enteredPwd");
           var userPwd1 = document.getElementById("userPwd1");
           var userName = document.getElementById("userName");
           var userBday1 = document.getElementById("userBday1");
@@ -303,25 +303,25 @@ $(function(){
             return false;
          }
          
-          // userPwd 유효성 검사
-         if(!chk(/^[a-zA-Z0-9]{8,15}$/,userPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
+          // enteredPwd 유효성 검사
+         if(!chk(/^[a-zA-Z0-9]{8,15}$/,enteredPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
             return false;
          }
          
-         var checkNum = document.getElementById("userPwd").value.search(/[0-9]/g);
-         var checkEng = document.getElementById("userPwd").value.search(/[a-z]/ig);
+         var checkNum = document.getElementById("enteredPwd").value.search(/[0-9]/g);
+         var checkEng = document.getElementById("enteredPwd").value.search(/[a-z]/ig);
          // i: case insensitive, 대소문자 구별 안함
          
          
          if(checkNum < 0 || checkEng < 0){
             alert("비밀번호는 숫자와 영문자를 혼용하여야 합니다.");
-            userPwd.value="";
-            userPwd.focus();
+            enteredPwd.value="";
+            enteredPwd.focus();
             return false;
          }
          
-         // userPwd와 userPwd1 일치하는지 확인
-         if(userPwd.value != userPwd1.value){
+         // enteredPwd와 userPwd1 일치하는지 확인
+         if(enteredPwd.value != userPwd1.value){
             alert("비밀번호가 다릅니다. 다시 확인해주세요.");
             userPwd1.value="";
             userPwd1.focus();
