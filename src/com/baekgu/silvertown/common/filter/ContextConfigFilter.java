@@ -44,9 +44,11 @@ public class ContextConfigFilter implements Filter {
 		if(ConfigLocation.MAPPER_LOCATION == null) {
 			
 			String root = request.getServletContext().getRealPath("/");
+			
 			String mapperInfoPath = request.getServletContext().getInitParameter("mapper-location");
 			
 			System.out.println("mapper 경로 설정 완료");
+			
 			System.out.println("경로확인 : " + root + "/" + mapperInfoPath);
 			
 			ConfigLocation.MAPPER_LOCATION = root + "/" + mapperInfoPath;
