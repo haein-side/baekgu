@@ -9,7 +9,7 @@
 <body>
 
  	<!-- 강현우 테스트 -->
-	<jsp:forward page="/WEB-INF/views/customer/main/signin.jsp"/>
+	<%--<jsp:forward page="/WEB-INF/views/customer/main/signin.jsp"/>--%>
 
 
 	<!-- 차진서 테스트 -->
