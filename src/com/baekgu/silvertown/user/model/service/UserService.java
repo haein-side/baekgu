@@ -31,34 +31,21 @@ public class UserService {
 		UserDTO loginUser = null;
 		
 		// 비밀번호, 유저 차단 여부 조회
-		UserDTO encPwdBlock = null;
-		encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
+		//UserDTO encPwdBlock = null;
+		loginUser = userDAO.selectEnCryptedPwd(con,requestUser);
 		
-		// 비밀번호 값이 있는지 확인
-		if(!encPwdBlock.getUserPwd().isEmpty()) {
-			
-			if(encPwdBlock.getUserBlock() != 0) {
-				
-				BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-				
-				// 비밀번호 대조
-				if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock.getUserPwd())) {
-					
-					loginUser = userDAO.selectLoginMember(con, requestUser);
-				}
-				
-				loginUser = userDAO.selectLoginMember(con, requestUser);
-				System.out.println("service : " + loginUser);
-			
-			} else {
-				
-				// 고객 차단 알림
-			}
-		} else {
-			
-			// 회원가입 안함: 알림		
-		}
-
+		System.out.println("Service 유저 차단 조회 : " + loginUser.getUserBlock());
+		
 		return loginUser;
+	}
+
+	public UserDTO loginInfo(UserDTO requestUser) {
+		
+		Connection con = getConnection();
+		UserDTO loginUserInfo = null;
+		
+		loginUserInfo = userDAO.selectLoginUser(con, requestUser);
+
+		return loginUserInfo;
 	}
 }
