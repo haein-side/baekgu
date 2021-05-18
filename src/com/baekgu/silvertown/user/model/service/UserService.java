@@ -12,9 +12,14 @@ import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class UserService {
 
-	/* DAO와 연결할 필드 변수 */
-	private UserDAO userDAO = new UserDAO();
-		
+	// DAO와 연결할 필드 변수 선언 (private 선언 후 내부에서만 사용)
+	private final UserDAO userDAO; 
+	
+	// DAO 연결할 생성자 생성
+	public UserService() {
+		userDAO = new UserDAO();
+	}
+	
 	/**
 	 * 로그인용 메소드
 	 * @param requestUser
@@ -26,34 +31,34 @@ public class UserService {
 		UserDTO loginUser = null;
 		
 		// 비밀번호, 유저 차단 여부 조회
-		String encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
-		// TODO int 형으로 처리해줘야 하나>
+		UserDTO encPwdBlock = null;
+		encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
 		
-		// TODO 2개의 값을 하나씩 출력하는 방법?
-		System.out.println("암호화된 비밀번호 : " + encPwdBlock.indexOf(0));
-		
-		// 비밀번호, 차단 값이 있는지 확인하기
-		if(!encPwdBlock.isEmpty()) {
+		// 비밀번호 값이 있는지 확인
+		if(!encPwdBlock.getUserPwd().isEmpty()) {
 			
-			// 라이브러리를 사용해 객체 생성
-			BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-			
-			// 비밀번호 대조
-			if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock)) {
+			if(encPwdBlock.getUserBlock() != 0) {
+				
+				BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+				
+				// 비밀번호 대조
+				if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock.getUserPwd())) {
+					
+					loginUser = userDAO.selectLoginMember(con, requestUser);
+				}
 				
 				loginUser = userDAO.selectLoginMember(con, requestUser);
+				System.out.println("service : " + loginUser);
+			
+			} else {
+				
+				// 고객 차단 알림
 			}
-			
-			loginUser = userDAO.selectLoginMember(con, requestUser);
-			System.out.println("service : " + loginUser);
-			
 		} else {
 			
-			// 팝업 띄워주기: 입력하신 회원정보가 없습니다. 확인 -> 회원가입 페이지
+			// 회원가입 안함: 알림		
 		}
-		
+
 		return loginUser;
 	}
-	
-	
 }

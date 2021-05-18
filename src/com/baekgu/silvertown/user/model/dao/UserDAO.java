@@ -43,22 +43,24 @@ public class UserDAO {
 	 * @param requestUser
 	 * @return encPwdBlock
 	 */
-	public String selectEnCryptedPwd(Connection con, UserDTO requestUser) {
+	public UserDTO selectEnCryptedPwd(Connection con, UserDTO requestUser) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String encPwdBlock = null;
+		UserDTO encPwdBlock = null;
 		
 		String query = prop.getProperty("selectBlockEncryptedPwd");
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, requestUser.getUserPhone());
-			
+			encPwdBlock = new UserDTO();
 			if(rset.next()) {
-				encPwdBlock = rset.getString("USER_PWD");
-				encPwdBlock = rset.getString("USER_BLOCK");
+				rset.getString("USER_PWD");
+				rset.getInt("USER_BLOCK");
+				
+				encPwdBlock = (UserDTO) rset;
 			}
 			
 		} catch (SQLException e) {

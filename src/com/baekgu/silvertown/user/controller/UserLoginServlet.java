@@ -36,6 +36,7 @@ public class UserLoginServlet extends HttpServlet {
 		
 		// 서비스에서 주는 값을 DTO형태로 받기
 		UserDTO loginUser = userService.loginCheck(requestUser);
+		System.out.println(requestUser);
 		
 		// 뷰 분기처리, 로그인 정보는 session에 담기
 		if(loginUser != null) {
@@ -43,6 +44,7 @@ public class UserLoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 			
 			// 서버 연결 후 출력 확인해보기
+			System.out.println(loginUser);
 			
 			/*
 			 * 로그인 성공 시, 메인 화면에서 다른 header를 적용하는 법을 고민해보자 (메뉴 변경) 
@@ -55,7 +57,6 @@ public class UserLoginServlet extends HttpServlet {
 			//request.setAttribute("message", "로그인 실패!"); // error 페이지를 보여줄 경우 설정하기
 			request.getRequestDispatcher("/WEB-INF/views/main/signin.jsp");
 		}
-		
 		
 	}
 
