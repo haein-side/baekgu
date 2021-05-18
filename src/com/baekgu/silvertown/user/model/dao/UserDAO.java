@@ -26,7 +26,7 @@ public class UserDAO {
 		prop = new Properties();
 		
 		try {
-			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "user/user-mapper.xml"));
+			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "customer/customer-mapper.xml"));
 		
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
@@ -123,5 +123,27 @@ public class UserDAO {
 
 		return loginUser;
 	}
+
+
+	
+	/**
+	 * USER TABLE 신규 회원 insert용 메소드
+	 * @param con
+	 * @param requestUser
+	 * @return newUser (insert된 회원 수)
+	 */
+	public int insertNewUser(Connection con, UserDTO requestUser) {
+		
+		PreparedStatement pstmt = null;
+		
+		int newUser = 0;
+		
+		String query = prop.getProperty("insertNewUser");
+		
+		
+		return 0;
+	}
+
+	
 
 }

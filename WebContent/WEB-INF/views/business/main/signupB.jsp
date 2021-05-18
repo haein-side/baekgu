@@ -134,16 +134,15 @@
         
         제1장 총칙
         제1조 (목적)
-        본 약관은 ㈜사람인에이치알(이하 "회사"라 합니다)이 운영하는 웹사이트(이하 "사이트"라 합니다) 및 모바일 어플리케이션(이하 "어플리케이션"이라 하며, 사이트와 어플리케이션을 총칭하여 "사이트 등"이라 합니다)을 통해 서비스를 제공함에 있어 회사와 이용자의 이용조건 및 제반 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.
+        본 약관은 ㈜백세구직(이하 "회사"라 합니다)이 운영하는 웹사이트(이하 "사이트"라 합니다)을 통해 서비스를 제공함에 있어 회사와 이용자의 이용조건 및 제반 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.
         
         제2조 (용어의 정의)
         본 약관에서 사용하는 용어의 정의는 아래와 같습니다.
         
         ① "사이트"라 함은 회사와 계열사가 서비스를 이용자에게 제공하기 위하여 제작, 운영하는 사이트를 말합니다. 현재 회사가 운영하는 사이트의 접속 주소는 아래와 같습니다.
-        - www.saramin.co.kr
-        - m.saramin.co.kr
+        - www.baekgu.com
         ② "어플리케이션"이라 함은 회사와 계열사가 서비스를 이용자에게 제공하기 위하여 IOS, 안드로이드 등 운영체제와 관계없이 스마트폰 또는 기타 휴대용 단말기에서 이용할 수 있도록 제작, 운영하는 프로그램을 말합니다. 현재 회사가 운영하는 어플리케이션의 이름은 아래와 같습니다.
-        - 사람인 등
+        - 백구 등
         ③ "서비스"라 함은 채용정보, 이력서 및 기업정보 제공 기타의 서비스를 통하여 구직·채용시장에서 구직자와 기업의 연결을 돕는 플랫폼 서비스입니다. 구체적으로는 회사가 기업 또는 구직자가 구인, 구직과 교육을 목적으로 등록하는 각종 자료를 DB화하여 각각의 목적에 맞게 분류 가공, 집계하여 정보를 제공하는 서비스 및 기타 구인 및 구직이 원활히 이루어지도록 하기 위하여 사이트 등에서 제공하는 모든 서비스를 말합니다. 서비스는 원칙적으로 무료로 제공되나, 일부 서비스는 유료로 제공될 수 있습니다. 서비스의 자세한 내용은 제10조에서 정하는 바에 따릅니다.
         ④ "이용자"라 함은 사이트 등에 접속하여 본 약관에 따라 회사가 제공하는 서비스를 이용하는 회원(기업회원 및 개인회원을 포함) 및 비회원을 말합니다.
         ⑤ "기업회원"이라 함은 채용을 희망하는 기업으로서 본 서비스를 이용하기 위하여 본 약관에 동의하고 회사와 이용계약을 체결하여 기업회원 ID를 부여받은 이용자를 말합니다. 기업회원은 고용 목적 및 형태에 따라 "일반 기업회원", "파견 및 도급 기업회원", "헤드헌팅(서칭펌) 기업회원" 및 "교육 기업회원"으로 구분됩니다. 회사는 유료 서비스 구매계약 등에 있어서 기업회원의 분류에 따라 권리의무를 다르게 설정할 수 있습니다.
@@ -391,7 +390,7 @@
         ① 회사와 기업회원은 서비스와 관련하여 발생한 분쟁을 원만하게 해결하기 위하여 필요한 모든 노력을 하여야 합니다.
         ② 제1항에도 불구하고 회사와 기업회원 간에 발생한 분쟁에 관한 소송이 제기될 경우, 민사소송법에 따른 관할법원을 제1심 관할법원으로 지정합니다.
         2021. 05. 08
-        (주)사람인에이치알
+        (주)백세구직
       </textarea>
         <p style="padding-top: 30px;"><input type="checkbox" value=""><b> </b>개인정보 수집 이용 동의 (필수)</p>
         <table class="table table-bordered">
@@ -408,7 +407,7 @@
                 본인 확인 및 부정 이용방지
               </td>
               <td>
-                아이디, 비밀번호, 기업구분, 상호명, 사업자등록번호, 이메일, 본인인증, 이름, 생년월일, 성별, 휴대폰 전화번호
+                아이디, 비밀번호, 기업구분, 상호명, 사업자등록번호, 이메일, 이름, 생년월일, 성별, 휴대폰 전화번호
               </td>
               <td>
                 회원 탈퇴시까지 또는 고객 요청시</td>
@@ -441,95 +440,110 @@
         <hr>
       </div>
       <hr>
-      <div class="col-sm-9 text-left">
-      </div>
     </div>
   </div>
   <div class="container-fluid text-center">
     <div class="row content">
-      <div class="col-sm-3 sidenav">
+      <div class="col-sm-4 sidenav">
       </div>
-      <div class="col-sm-6 text-left">
-        <form action="" method="POST">
+      <div class="col-sm-4 text-left">
+          <form action="${ pageContext.servletContext.contextPath }/business/signup" method="POST">
           <h2 style="padding-top: 30px; padding-bottom: 20px;">기업정보</h2>
           <div class="form-group">
             <label for="buser">기업/상호명 (필수)</label>
-            <input type="text" class="form-control" id="buser" placeholder="기업/상호명 입력" required="">
+            <input type="text" class="form-control" id="buser" placeholder="기업/상호명 입력" name="bName">
           </div>
           <div class="form-group">
             <label for="regnum">사업자번호 (필수)</label>
             <div class="form-group row">
+              <div class="col-xs-3">
+                <input class="form-control" id="ex1" type="text" required="" name="bNo1">
+              </div>
               <div class="col-xs-2">
-                <input class="form-control" id="ex1" type="text" required="">
+                <input class="form-control" id="ex2" type="text" required="" name="bNo2">
               </div>
-              <div class="col-xs-1">
-                <input class="form-control" id="ex2" type="text" required="">
-              </div>
-              <div class="col-xs-4">
-                <input class="form-control" id="ex3" type="text" required="">
+              <div class="col-xs-5">
+                <input class="form-control" id="ex3" type="text" required="" name="bNo3">
               </div>
             </div>
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
             <label for="owner">대표자명</label>
-            <input type="text" class="form-control" id="owner" placeholder="대표자 명 입력">
+            <input type="text" class="form-control" id="owner" placeholder="대표자 명 입력" required="" name="owerName">
           </div>
+                    <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">근무 요일</label>
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">기업 분류
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">미분류</a></li>
+                <li><a href="#">일반기업</a></li>
+                <li><a href="#">공기업</a></li>
+                <li><a href="#">사회적기업</a></li>
+                <li><a href="#">공공기관</a></li>
+              </ul>
+
+            </div>
           <div class="form-group">
             <label for="regnum">연 매출액 </label>
             <div class="form-group row">
               <div class="col-xs-10">
-                <input class="form-control" id="ex1" type="text" placeholder="연 매출액 입력 (백만원 단위)" required="">
-              </div>
-              <div class="col-xs-2">
-                <label>백만원</label>
+                <input class="form-control" id="ex1" type="text" placeholder="연 매출액 입력 (백만원 단위)" required="" name="profit">
               </div>
             </div>
             <small>백만원 단위로 입력해주세요.</small>
           </div>
           <div class="form-group">
             <label for="bphone">기업 전화번호 (필수)</label>
-            <input type="text" class="form-control" id="bphone" placeholder="기업 전화번호" required="">
+            <input type="text" class="form-control" id="bphone" placeholder="기업 전화번호" required="" name="bPhone">
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
             <label for="bsaddress">기업 주소</label>
-            <input type="text" class="form-control" id="bsaddress" placeholder="기업 주소 입력">
-            <input type="text" class="form-control" id="bsaddress" placeholder="기업 상세주소 입력">
+            <br>
+            <label>우편 번호</label>
+            <input type="text" name="zipCode" id="zipCode" readonly>
+            <br>
+            <label>주소</label>
+            <input type="text" name="address1" id="address1" readonly>
+            <br>
+            <label>상세주소</label>
+            <input type="text" name="address2" id="address2">
           </div>
-          </form>
           <hr>
           <!-- 이름, 휴대폰 번호, 이메일 -->
           <h2 style="padding-top: 30px;">담당자 정보</h2>
-          <div class="form-group" style="padding-top: 30px;">
+          <div class="form-group">
+            <label for="bid">아이디(필수)</label>
+            <input type="text" class="form-control" id="bid" placeholder="아이디 번호" required="" name="hrId">
+          </div>
+          <div class="form-group">
+            <label for="bpwd">비밀 번호 (필수)</label>
+            <input type="text" class="form-control" id="bpwd" placeholder="비밀 번호 입력" required="" name="enteredPwd">
+          </div>
+          <div class="form-group" style="padding-top: 10px;">
             <label for="user">이름 (필수)</label>
-            <input type="text" class="form-control" id="user" placeholder="담당자 이름" required="">
+            <input type="text" class="form-control" id="user" placeholder="담당자 이름" required="" name="hrName">
           </div>
           <div class="form-group">
             <label for="buphone">휴대폰 번호 (필수)</label>
-            <input type="text" class="form-control" id="buphone" placeholder="휴대폰 번호" required="">
+            <input type="text" class="form-control" id="buphone" placeholder="휴대폰 번호" required="" name="hrPhone">
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
             <label for="">이메일 (필수)</label>
             <div class="form-group row">
               <div class="col-xs-6">
-                <input class="form-control" id="emailid" type="text" required="">
-              </div>
-              <div class="col-xs-1">
-                <label>@</label>
-              </div>
-              <div class="col-xs-5">
-                <input class="form-control" id="emaildomain" type="text" required="">
+                <input class="form-control" id="emailid" type="text" required="" name="hrEmail">
               </div>
             </div>
-            <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group" style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
             <input type="submit" id="bregsubmit" class="btn btn-info btn-submit" value="확인">
           </div>
-      </div>
       </form>
+      </div>
       <div class="col-sm-1 sidenav">
       </div>
     </div>
@@ -537,5 +551,31 @@
   <footer class="container-fluid text-center">
     <p>Footer Text</p>
   </footer>
+  	<!-- 다음 우편번호 api -->
+	<!-- key 발급 없이 무제한으로 이용이 가능하다. -->
+	<!-- 아래 스크립트를 불러온 후 사용해야 한다. -->
+	<!-- 참고 링크 : http://postcode.map.daum.net/guide -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		const $searchZipCode = document.getElementById("searchZipCode");
+		const $goMain = document.getElementById("goMain");
+		
+		$searchZipCode.onclick = function() {
+		
+			//다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다.
+			new daum.Postcode({
+				oncomplete: function(data){
+					//팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분
+					document.getElementById("zipCode").value = data.zonecode;
+					document.getElementById("address1").value = data.address;
+					document.getElementById("address2").focus();
+				}
+			}).open();
+		}
+		
+		$goMain.onclick = function() {
+			location.href = "${ pageContext.servletContext.contextPath }";
+		}
+	</script>
 </body>
 </html>

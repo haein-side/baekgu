@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertNewUser">
+		SELECT
+               HR_ID
+             , HR_PWD
+             , HR_NAME
+             , HR_PHONE
+             , HR_EMAIL
+             , B_CODE
+          FROM HR
+         WHERE HR_ID = ?   
+	</entry>
+	
+	<entry key="selectBlockEncryptedPwd">
+		SELECT
+		       A.USER_PWD
+		     , A.USER_BLOCK
+		  FROM USER A
+		 WHERE A.USER_PHONE = ?
+	</entry>
+	<entry key="selectLoginUser">
+		SELECT
+		       A.USER_CODE
+		     , A.USER_NAME
+		     , A.USER_PHONE
+		     , A.USER_PWD
+		     , A.USER_BDAY
+		     , A.USER_GENDER
+		     , A.USER_ADDRESS
+		     , A.USER_REGISTER_DATE
+		     , A.USER_BLOCK
+		  FROM USER A
+		 WHERE A.USER_PHONE = ?			
+	</entry>
+	
+</properties>

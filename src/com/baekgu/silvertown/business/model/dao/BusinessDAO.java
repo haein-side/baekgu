@@ -10,8 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
+import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
-import com.baekgu.silvertown.user.model.dto.BusinessDTO;
 
 public class BusinessDAO {
 	
@@ -28,13 +29,19 @@ public class BusinessDAO {
 		}
 	}
 
-	public BusinessDTO selectLoginMember(Connection con, BusinessDTO bMember) {
+	/**
+	 * 기업 로그인 멤버 정보 가져오느 메소드
+	 * @param con
+	 * @param bMember
+	 * @return
+	 */
+	public BusinessMemberDTO selectLoginMember(Connection con, BusinessMemberDTO bMember) {
 		
 		PreparedStatement pstmt = null;
 		
 		ResultSet rset = null;
 		
-		BusinessDTO businessLoginMember = null;
+		BusinessMemberDTO businessLoginMember = null;
 		
 		String query = prop.getProperty("selectLoginBusinessMember");
 		
@@ -43,7 +50,7 @@ public class BusinessDAO {
 			pstmt.setString(1, bMember.getbId());
 			rset = pstmt.executeQuery();
 			
-			businessLoginMember = new BusinessDTO();
+			businessLoginMember = new BusinessMemberDTO();
 			
 			if(rset.next()) {
 				
@@ -53,11 +60,12 @@ public class BusinessDAO {
 				businessLoginMember.setbPhone(rset.getString("HR_PHONE"));
 				businessLoginMember.setbEmail(rset.getString("HR_EMAIL"));
 				businessLoginMember.setbCode(rset.getInt("B_CODE"));
+				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
+				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
+				businessLoginMember.setCName(rset.getString("B_NAME"));
 				
 				
-				
-			}
-			
+			}	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,5 +78,6 @@ public class BusinessDAO {
 		
 		return businessLoginMember;
 	}
+
 
 }

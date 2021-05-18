@@ -1,5 +1,6 @@
 package com.baekgu.silvertown.admin.model.dto;
 
+import java.sql.Connection;
 import java.util.Date;
 
 public class AdminDTO {
@@ -81,7 +82,8 @@ public class AdminDTO {
 		return "AdminDTO [adminId=" + adminId + ", adminPwd=" + adminPwd + ", adminName=" + adminName + ", adminEmail="
 				+ adminEmail + ", adminDate=" + adminDate + ", adminRole=" + adminRole + "]";
 	}
-	
+
+
 	
 	
 	
