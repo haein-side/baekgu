@@ -41,10 +41,12 @@ public class PasswordEncryptFilter implements Filter {
 //		System.out.println("intent : " + intent);
 //		
 //		if(!"/login".equals(intent)) {
+		
+		System.out.println("Encrypt test");
+		
+		EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
 			
-			EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
-			
-			chain.doFilter(wrapper, response);
+		chain.doFilter(wrapper, response);
 //		} else {
 //			chain.doFilter(request, response);
 //		}
