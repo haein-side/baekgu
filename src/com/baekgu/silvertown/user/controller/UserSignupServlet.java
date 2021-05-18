@@ -99,9 +99,17 @@ public class UserSignupServlet extends HttpServlet {
          } else {
         	 path = "/WEB-INF/views/customer/common/errorPage.jsp";
         	 // 회원가입 실패 시 어떻게 action해줘야 할 지 모르겠음
+        	 
+        	 
         	 request.setAttribute("errorMessage", "회원가입을 실패했습니다.");
+
         	 System.out.println("하산했으나 실패함");
         	 request.getRequestDispatcher(path).forward(request, response);
+
+        	 // 현우 추가 (에러 페이지 공통 사용을 위해)
+        	 // request.setAttribute("errorMessage", "failSignup");
+        	// request.getRequestDispatcher(page).forward(request, response);
+
          }
          
         

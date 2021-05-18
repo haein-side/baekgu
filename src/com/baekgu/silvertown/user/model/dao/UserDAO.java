@@ -55,12 +55,15 @@ public class UserDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, requestUser.getUserPhone());
+			
+			rset = pstmt.executeQuery();
+			
 			encPwdBlock = new UserDTO();
+			
 			if(rset.next()) {
-				rset.getString("USER_PWD");
-				rset.getInt("USER_BLOCK");
 				
-				encPwdBlock = (UserDTO) rset;
+				encPwdBlock.setUserPwd(rset.getString("USER_PWD"));
+				encPwdBlock.setUserBlock(rset.getInt("USER_BLOCK"));
 			}
 			
 		} catch (SQLException e) {
@@ -69,6 +72,8 @@ public class UserDAO {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println("DAO 비밀번호 가져오기 : " + encPwdBlock.getUserPwd());
 		
 		return encPwdBlock;
 	}
@@ -79,7 +84,7 @@ public class UserDAO {
 	 * @param requestUser
 	 * @return 회원 정보
 	 */
-	public UserDTO selectLoginMember(Connection con, UserDTO requestUser) {
+	public UserDTO selectLoginUser(Connection con, UserDTO requestUser) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -99,11 +104,14 @@ public class UserDAO {
 				
 				loginUser.setUserCode(rset.getInt("USER_CODE"));
 				loginUser.setUserName(rset.getString("USER_NAME"));
+				loginUser.setUserPhone(rset.getString("USER_PHONE"));
+				loginUser.setUserPwd(rset.getString("USER_PWD"));
 				loginUser.setUserBday(rset.getDate("USER_BDAY"));
 				loginUser.setUserGender(rset.getString("USER_GENDER"));
 				loginUser.setUserAddress(rset.getString("USER_ADDRESS"));
 				loginUser.setUserRegisterDate(rset.getDate("USER_REGISTER_DATE"));
-				
+				loginUser.setUserBlock(rset.getInt("USER_BLOCK"));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,14 +119,12 @@ public class UserDAO {
 			close(rset);
 			close(pstmt);
 		}
-		
-		System.out.println("DAO : " + loginUser);
+		System.out.println("DAO 모든 유저값 가져오기: " + loginUser);
 
 		return loginUser;
 	}
 
-	
-	
+
 	
 	/**
 	 * USER TABLE 신규 회원 insert용 메소드
