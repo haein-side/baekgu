@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
-	
+	// ajax 필수로 하게 어떻게 하나..?
 	$("#duplicationCheck").click(function(){
 		var userPhone = $('#userPhone').val();
 		
@@ -21,12 +21,13 @@ $(function(){
 			data:{ userPhone : userPhone },
 			success: function(data,textStatus,xhr){
 				console.log(data);
-				if (data == "success"){
-				$("#checkMessage").html("사용할 수 있는 아이디입니다.");
-				alert("사용가능아이디");
-				} else {
-				$("#checkMessage").html("사용할 수 없는 아이디입니다.");
-				alert("사용불가아이디")
+				if (data == "fail"){
+					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+					alert("사용불가아이디")
+				} else if(data == "success") {
+				    $("#checkMessage").html("사용할 수 있는 아이디입니다.");
+				    $("#duplicationCheck").attr("checkResult","success");
+				    alert("사용가능아이디");
 				}
 			},
 			error: function(xhr, status, error){
@@ -96,7 +97,7 @@ $(function(){
                   
                   <br>
                 
-                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck">
+                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck" required>
                 
 					<div id="checkMessage">
 					</div>     
@@ -278,6 +279,7 @@ $(function(){
    </form>  
    <!-- form 끝남 -->      
   
+  
 
   <!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 --> 
    <script type="text/javascript">
@@ -285,6 +287,13 @@ $(function(){
     	validate();
     });
     
+    window.onload = function(){	    
+	    var $item = document.getElementById("duplicationCheck");
+		  // 요소의 data-value 속성에 hello world를 설정한다.
+		  $item.setAttribute("checkResult", "fail");
+		  // 요소의 value 속성에 test를 설정한다.
+	};
+	
        function validate(){
        
           var userPhone = document.getElementById("userPhone");
@@ -297,7 +306,10 @@ $(function(){
           var userGender = document.getElementById("userGender");
           var userAddress1 = document.getElementById("userAddress1");
           var userAddress2 = document.getElementById("userAddress2");
+          var checkMessage = document.getElementById("checkMessage");
+          var duplicationCheck = document.getElementById("duplicationCheck");
           
+          userPhone.setAttribute("checkresult", "fail");
           
           // userPhone 유효성 검사
           if(!chk(/^[0-9]{10,11}$/,userPhone,"휴대폰번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
@@ -378,6 +390,11 @@ $(function(){
 			 return false;
           }
          
+         if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
+        	 duplicationCheck.focus();
+        	 alert("휴대폰번호 중복확인을 해주세요.")
+        	 return false;
+         }
        
         // 유효성 검사 alert 창 띄워주는 것
         function chk(re, ele, msg){

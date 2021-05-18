@@ -174,15 +174,18 @@ public class UserDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 			
+			System.out.println("왜 안돼..");
+			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				int userCode = rset.getInt("USER_CODE");
-				
-				if(userCode >= 1) {
-					result = "fail";
-				} else {
+				System.out.println("하이");
+				int userCode = rset.getInt("COUNT(USER_CODE)");
+				System.out.println("DAO에서 본 userCode : " + userCode);
+				if(userCode == 0) {
 					result = "success";
+				} else {
+					result = "fail";
 				}
 				
 			}
@@ -196,6 +199,7 @@ public class UserDAO {
 		System.out.println("DAO에서 보내는 결과 : " + result);
 		
 		return result;
+		
 	}
 
 	

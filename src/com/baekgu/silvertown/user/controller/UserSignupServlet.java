@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +30,17 @@ public class UserSignupServlet extends HttpServlet {
 		UserService userService = new UserService();
 		
 		String result = userService.checkId(userPhone); 
+		
+		
+		System.out.println("서블릿 결과 : " + result);
+		
+		response.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		
+		out.flush();
+		out.close();
 		
 	}
 	

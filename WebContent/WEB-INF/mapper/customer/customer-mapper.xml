@@ -26,9 +26,9 @@
 	</entry>
 	
 	<entry key="checkId">
-	    SELECT
-	           USER_CODE
-	      FROM USER
+        SELECT
+               COUNT(USER_CODE)
+          FROM USER
 	     WHERE USER_PHONE = ?
 	</entry>
 </properties>
