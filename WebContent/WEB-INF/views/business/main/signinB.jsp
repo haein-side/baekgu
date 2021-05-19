@@ -123,7 +123,7 @@
       </div>
     </div>
 
-    <div class="col-sm-6 text-left">\
+    <div class="col-sm-6 text-left">
     
     <form id="login" action="${ pageContext.servletContext.contextPath }/business/login" method="POST">
       <div class="form-group" style="padding-top: 30px;">
