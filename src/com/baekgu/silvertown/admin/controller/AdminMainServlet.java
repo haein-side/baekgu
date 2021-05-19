@@ -1,4 +1,4 @@
-package com.baekgu.silvertown.admin.model.controller;
+package com.baekgu.silvertown.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AdminDTO {
 
-	/* 관리자 등록 시 사용 */
+	/* 관리자 등록 시 사용 ,  리스트 갖고올 때 사용  */
 	
 	private String adminId; // 아이디
 	private String adminPwd; // 비번
