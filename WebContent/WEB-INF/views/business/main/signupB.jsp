@@ -92,33 +92,10 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">백구</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="home.html">홈</a></li>
-          <li><a href="#">공고등록</a></li>
-          <li><a href="#">지원자관리</a></li>
-          <li><a href="#">공고관리</a></li>
-          <li><a href="payment.html">결제관리</a></li>
-          <li><a href="ad.html">상품안내</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">회사명</a></li>
-          <li><a href="#">담당자명</a></li>
-          <li><a href="#">로그아웃</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+ 
+ <jsp:include page="../common/header.jsp"/>
+ 
+ 
   <div class="container-fluid text-center">
     <div class="row content">
       <div class="col-sm-3 sidenav">
@@ -548,9 +525,9 @@
       </div>
     </div>
   </div>
-  <footer class="container-fluid text-center">
-    <p>Footer Text</p>
-  </footer>
+  
+  <jsp:include page="../common/footer.jsp"/>
+
   	<!-- 다음 우편번호 api -->
 	<!-- key 발급 없이 무제한으로 이용이 가능하다. -->
 	<!-- 아래 스크립트를 불러온 후 사용해야 한다. -->
