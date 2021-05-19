@@ -1,40 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.baekgu.silvertown.admin.model.dto.*"%>
+<%@ page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta
-            name="description"
-            content="Creative - Bootstrap 3 Responsive Admin Template">
-        <meta name="author" content="GeeksLabs">
-        <meta
-            name="keyword"
-            content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-
-        <title>백구 관리자페이지</title>
-
-        
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
-
- 
-        <!-- owl carousel -->
-        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-        <!-- Custom styles -->
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta
+        name="keyword"
+        content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    
+    <title>백구 관리자페이지</title>
+    
+    
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+    
+     
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+          <%
+          	
+          AdminDTO newInfo = new AdminDTO();
+          
+          
+           
+          String baekguName = request.getParameter("baekguName");
+          String baekguPhone = request.getParameter("baekguPhone");
+          String fax = request.getParameter("fax");
+          String addresss = request.getParameter("addresss");
+          String baekguNum = request.getParameter("baekguNum");
+          String ownerName = request.getParameter("ownerName");
+          
+          
+          %>
 	
 	    <body>
         <!-- container section start -->
@@ -161,7 +172,7 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사명</label>
                                 <div class="col-lg-10">
-                                  <td>백구</td>
+                                  <td><p><c:out value="<%=baekguName %>"/></p></td>
                                 </div>
                               </div>
                               <div class="form-group ">
@@ -194,14 +205,14 @@
                                   <td>미정 </td>
                                 </div>
                               </div>
+                              <!-- 관리자인 경우에만 수정 버튼이 보인다 -->
+                              <c:if test="${ sessionScope.loginAdmin.adminRole eq '대표관리자' }">
                               <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
+                               <div class="col-lg-offset-2 col-lg-10">
                                <button class="btn btn-primary" type="button" name=btn id=btn onclick="location='homedetail'">
                                   수정 
                                </button>
-                              <%--     <a class="btn btn-primary" name=btn id=btn href="${ pageContext.servletContext.contextPath }/admin/main">
-                                  수정
-                                  </a> --%>
+                               </c:if>
                                 </div>
                               </div>
                             </form>

@@ -29,11 +29,15 @@
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+       
+       <%
+       	String baekguName = request.getParameter("baekguName");
+       	String baekguPhone = request.getParameter("baekguPhone");
+       	String fax = request.getParameter("fax");
+       	String addresss = request.getParameter("addresss");
+       	String baekguNum = request.getParameter("baekguNum");
+       	String ownerName = request.getParameter("ownerName");
+       %>
     </head>
 
     <body>
@@ -167,42 +171,44 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사명 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="cname" name="baekguName"  type="text" value="백구">
+                                  <input class="form-control" id="baekguName" name="baekguName"  type="text" value="<%=baekguName %>">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">회사 전화번호 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="cphone" type="baekguPhone" name="phone" value="02-109-1009">
+                                  <input class="form-control " id="baekguPhone" type="text" name="baekguPhone" value="<%=baekguPhone %>">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">회사 팩스번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="cfax" type="fax" name="fax" value="02-6000-1314">
+                                  <input class="form-control " id="fax" type="text" name="fax" value="<%=fax %>">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사주소 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="subject" name="addresss"  type="text" value="서울시 강남구">
+                                  <input class="form-control" id="addresss" name="addresss"  type="text" value="<%=addresss %>">
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">사업자 등록번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="ccomment" name="baekguNum" value="1237-121-146545">
+                                  <input class="form-control " type="text" id="baekguNum" name="baekguNum" value="<%=baekguNum %>">
                                 </div>
                               </div>
                               <div class="form-group ">
-                                <label for="cname" class="control-label col-lg-2">대표자명 </label>
+                                <label for="ccomment" class="control-label col-lg-2">대표자명</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="representation" name="ownerName" type="text" value="미정">
+                                  <input class="form-control " type="text" id="ownerName" name="ownerName" value="<%=ownerName %>">
                                 </div>
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-primary" type="button" onClick="location.href='HomepageInfo.html'">등록</button>
+                                    <button class="btn btn-primary" name=btn id=btn type="submit" onclick="location='homepage'">
+                                    등록
+                                    </button>
                                 </div>
                               </div>
                             </form>

@@ -19,7 +19,7 @@
 		    <input type="text" class="form-control" name="adminId" placeholder="아이디" required="" autofocus=""/>
 		   	<br>
 		    <lable class="text-label"><b>비밀번호</b></lable>
-		    <input type="password" class="form-control" name="enteredPwd" placeholder="비밀번호" required=""/>
+		    <input type="password" class="form-control" name="adminPwd" placeholder="비밀번호" required=""/>
 		   
 	<%
 	String message = (String)request.getAttribute("message");
