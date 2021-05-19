@@ -19,8 +19,27 @@ public class BusinessMainServlet extends HttpServlet {
 		
 //		String path = "";
 //		request.setAttribute("transfer", "login");
-		request.getRequestDispatcher("/WEB-INF/views/business/main/BusinessMainPage.jsp").forward(request, response);
-				
+		
+		HttpSession session = request.getSession();
+		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+		
+		String path = "";
+		
+		if(loggedInUser != null) {
+			
+			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+
+		}else {
+
+			/* 로그인이 안된 상태에서 홈버튼을 눌렀을시 회원가입페이지로 보낸다. */
+			/* 추후 모달창으로 업데이트 예정. */
+			path = "/WEB-INF/views/business/main/signupB.jsp";
+
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
+		
+						
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
