@@ -206,7 +206,7 @@
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn btn-primary" name=btn id=btn type="submit" onclick="location='homepage'">
+                                    <button class="btn btn-primary" name=btn id=btn type="submit" onclick="location='homepageinfo'">
                                     등록
                                     </button>
                                 </div>

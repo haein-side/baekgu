@@ -11,7 +11,7 @@
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -19,17 +19,17 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/animate.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/animate.css">
 	<!-- Flexslider -->
 	<!-- <link rel="stylesheet" href="css/flexslider.css"> -->
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/icomoon.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/icomoon.css">
 	<!-- Magnific Popup -->
 	<!-- <link rel="stylesheet" href="css/magnific-popup.css"> -->
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/bootstrap.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/bootstrap.css">
 
-	<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/style.css">
 
 
 	<!-- 오렌지 색상
@@ -53,7 +53,7 @@
 					</ul>
 					<h1 id="fh5co-logo">
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
-						<a href="index.html"><img src="RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+						<a href="index.html"><img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 					</h1>
 					<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
@@ -65,7 +65,7 @@
 		</section>
 		<!-- #fh5co-header -->
 
-		<section id="fh5co-hero" class="js-fullheight" style="background-image: url(RESOURCES/IMAGES/grass.jpg); height:561px;" data-next="yes">
+		<section id="fh5co-hero" class="js-fullheight" style="background-image: url(${pageContext.request.contextPath}/RESOURCES/IMAGES/grass.jpg); height:561px;" data-next="yes">
 			<div class="fh5co-overlay"></div>
 			<div class="container">
 				<div class="fh5co-intro js-fullheight"  >
@@ -96,7 +96,7 @@
 				<div class="row text-center row-bottom-padded-md">
 					<div class="col-md-8 col-md-offset-2">
 						<!-- 이미지 수정해야 -->
-						<figure class="fh5co-devices animate-box"><img src="RESOURCES/IMAGES/baekgu3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></figure>
+						<figure class="fh5co-devices animate-box"><img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/baekgu3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></figure>
 						<!-- 백구 설명 타이틀 -->
 						<h2 class="fh5co-lead animate-box" style="font-family: BME; font-size: 70px;">단순하지만 똑똑한 백구</h2>
 						<!-- 백구 설명 타이틀 하단 내용 -->
@@ -193,7 +193,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">차진서</h4>
@@ -217,7 +217,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.1s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">강현우</h4>
@@ -235,7 +235,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.2s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김현빈</h4>
@@ -251,7 +251,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김유진</h4>
@@ -267,7 +267,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 						<div class="member">
 							<!-- 프로필 이미지 수정해야-->
-						  <img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						  <div class="member-info">
 							<div class="member-info-content">
 							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">정주영</h4>
@@ -283,7 +283,7 @@
 					  <div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 						<div class="member">
 							<!-- 프로필 이미지 수정해야-->
-						  <img src="RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
 						  <div class="member-info">
 							<div class="member-info-content">
 							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김해인</h4>

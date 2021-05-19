@@ -26,7 +26,7 @@ public class UserDAO {
 		prop = new Properties();
 		
 		try {
-			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION));
+			prop.loadFromXML(new FileInputStream(ConfigLocation.MAPPER_LOCATION + "customer/customer-mapper.xml"));
 		
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
@@ -55,12 +55,15 @@ public class UserDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, requestUser.getUserPhone());
+			
+			rset = pstmt.executeQuery();
+			
 			encPwdBlock = new UserDTO();
+			
 			if(rset.next()) {
-				rset.getString("USER_PWD");
-				rset.getInt("USER_BLOCK");
 				
-				encPwdBlock = (UserDTO) rset;
+				encPwdBlock.setUserPwd(rset.getString("USER_PWD"));
+				encPwdBlock.setUserBlock(rset.getInt("USER_BLOCK"));
 			}
 			
 		} catch (SQLException e) {
@@ -69,6 +72,8 @@ public class UserDAO {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println("DAO 비밀번호 가져오기 : " + encPwdBlock.getUserPwd());
 		
 		return encPwdBlock;
 	}
@@ -79,7 +84,7 @@ public class UserDAO {
 	 * @param requestUser
 	 * @return 회원 정보
 	 */
-	public UserDTO selectLoginMember(Connection con, UserDTO requestUser) {
+	public UserDTO selectLoginUser(Connection con, UserDTO requestUser) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -99,11 +104,14 @@ public class UserDAO {
 				
 				loginUser.setUserCode(rset.getInt("USER_CODE"));
 				loginUser.setUserName(rset.getString("USER_NAME"));
+				loginUser.setUserPhone(rset.getString("USER_PHONE"));
+				loginUser.setUserPwd(rset.getString("USER_PWD"));
 				loginUser.setUserBday(rset.getDate("USER_BDAY"));
 				loginUser.setUserGender(rset.getString("USER_GENDER"));
 				loginUser.setUserAddress(rset.getString("USER_ADDRESS"));
 				loginUser.setUserRegisterDate(rset.getDate("USER_REGISTER_DATE"));
-				
+				loginUser.setUserBlock(rset.getInt("USER_BLOCK"));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,14 +119,12 @@ public class UserDAO {
 			close(rset);
 			close(pstmt);
 		}
-		
-		System.out.println("DAO : " + loginUser);
+		System.out.println("DAO 모든 유저값 가져오기: " + loginUser);
 
 		return loginUser;
 	}
 
-	
-	
+
 	
 	/**
 	 * USER TABLE 신규 회원 insert용 메소드
@@ -134,8 +140,72 @@ public class UserDAO {
 		
 		String query = prop.getProperty("insertNewUser");
 		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			System.out.println(requestUser.getUserBday());
+			
+			pstmt.setString(1, requestUser.getUserPhone());
+			pstmt.setString(2, requestUser.getUserPwd());
+			pstmt.setString(3, requestUser.getUserName());
+			pstmt.setDate(4, requestUser.getUserBday());
+			pstmt.setString(5, requestUser.getUserGender());
+			pstmt.setString(6, requestUser.getUserAddress());
+			
+			newUser = pstmt.executeUpdate();
+			
+			System.out.println("dao에 왔음");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return newUser;
+	}
+
+	public String checkId(Connection con, String userPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
-		return 0;
+		String userId = userPhone;
+		String result = "";
+		
+		System.out.println("DAO에 들어온 userPhone : " + userId);
+		
+		String query = prop.getProperty("checkId");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			System.out.println("왜 안돼..");
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				System.out.println("하이");
+				int userCode = rset.getInt("COUNT(USER_CODE)");
+				System.out.println("DAO에서 본 userCode : " + userCode);
+				if(userCode == 0) {
+					result = "success";
+				} else {
+					result = "fail";
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("DAO에서 보내는 결과 : " + result);
+		
+		return result;
+		
 	}
 
 	

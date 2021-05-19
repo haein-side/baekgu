@@ -1,13 +1,14 @@
 package com.baekgu.silvertown.admin.model.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.baekgu.silvertown.admin.model.dto.AdminDTO;
+import com.baekgu.silvertown.admin.model.dto.BaekguDTO;
 
 /**
  * Servlet implementation class HomeDetailServlet
@@ -32,23 +33,15 @@ public class HomeDetailServlet extends HttpServlet {
 		String ownerName = request.getParameter("ownerName");
 		
 		
+		BaekguDTO baekgudto = new BaekguDTO();
+		baekgudto.setBaekguName(baekguName);
+		baekgudto.setBaekguPhone(baekguPhone);
+		baekgudto.setFax(fax);
+		baekgudto.setBaekguAdd(baekguAdd);
+		baekgudto.setBaekguNum(baekguNum);
+		baekgudto.setOwnerName(ownerName);
 		
-		System.out.println("회사명 : " + baekguName);
-		System.out.println("회사 전화번호 : " + baekguPhone);
-		System.out.println("회사 팩스번호 : " + fax);
-		System.out.println("회사 주소 : " + baekguAdd);
-		System.out.println("사업자 등록번호 : " + baekguNum);
-		System.out.println("대표자명 : " + ownerName);
-		
-		AdminDTO newInfo = new AdminDTO();
-		newInfo.setBaekguName(baekguName);
-		newInfo.setBaekguPhone(baekguPhone);
-		newInfo.setFax(fax);
-		newInfo.setBaekguAdd(baekguAdd);
-		newInfo.setBaekguNum(baekguNum);
-		newInfo.setOwnerName(ownerName);
-		
-		
+		System.out.println("디테일에서 들어온 dto : " + baekgudto.getBaekguName());
 		
 		
 	}

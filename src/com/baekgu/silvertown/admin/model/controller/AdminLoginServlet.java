@@ -44,9 +44,7 @@ public class AdminLoginServlet extends HttpServlet {
 			
 			System.out.println("request.getContextPath() : " + request.getContextPath());
 			response.sendRedirect(request.getContextPath()+"/admin/main");
-			
-			
-		} else {
+		} else{
 			request.setAttribute("message", "아이디 또는 비밀번호에 오류가 있습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/admin/main/signin.jsp").forward(request, response);
 			

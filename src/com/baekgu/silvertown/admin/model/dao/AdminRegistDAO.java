@@ -92,6 +92,8 @@ public class AdminRegistDAO {
 			
 
 			if (rset.next()) {
+			
+				/* count처리 하는 이유는 ? 아이디가 있는지 없는지만 0/1로 처리하면 됨. */
 				result = rset.getInt("COUNT(*)");
 			}
 			

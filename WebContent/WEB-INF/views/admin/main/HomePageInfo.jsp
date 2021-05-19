@@ -33,17 +33,18 @@
     <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
           <%
           	
-          AdminDTO newInfo = new AdminDTO();
+          BaekguDTO baekgudto = new BaekguDTO();
           
           
            
-          String baekguName = request.getParameter("baekguName");
-          String baekguPhone = request.getParameter("baekguPhone");
-          String fax = request.getParameter("fax");
-          String addresss = request.getParameter("addresss");
-          String baekguNum = request.getParameter("baekguNum");
-          String ownerName = request.getParameter("ownerName");
+          String baekguName = baekgudto.getBaekguName();
+          String baekguPhone = baekgudto.getBaekguPhone();
+          String fax = baekgudto.getFax();
+          String addresss = baekgudto.getBaekguAdd();
+          String baekguNum = baekgudto.getBaekguNum();
+          String ownerName = baekgudto.getOwnerName();
           
+          System.out.println("회사명 : " + baekguName);
           
           %>
 	

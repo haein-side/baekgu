@@ -195,7 +195,7 @@
                         <div class="panel-body">
                           <div class="form">
                             <form class="form-validate form-horizontal" id="feedback_form" 
-                                  action="${ pageContext.servletContext.contextPath }/admin/regist" method="post" >
+                                  action="${ pageContext.servletContext.contextPath }/admin/signup" method="post" >
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
@@ -213,7 +213,7 @@
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="adminPwd"  name="adminPwd" type="password" required/>
+                                  <input class="form-control " id="adminPwd"  name="enteredPwd" type="password" required/>
                                 </div>
                               </div>
                               <div class="form-group ">

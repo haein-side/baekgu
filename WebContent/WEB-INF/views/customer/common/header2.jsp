@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 	
     <!-- 헤더 영역 -->   
@@ -62,17 +62,33 @@
 
 		
 	<!-- 메뉴 영역 -->
-	
-	<div class="menu-area">
-		<div class="nav-area">
+	<c:if test="${ !empty sessionScope.loginUser }">
+		<div class="menu-area">
+			<div class="nav-area">
 				<ul>
 					<li><a href="">이력서 관리</a></li>
 					<li><a href="">입사지원 관리</a></li>
 					<li><a href="">일자리 모음</a></li>
 					<li><a href="">고객문의</a></li>
-					<li><a href="">들어가기</a></li>
-					<li><a href="">회원가입</a></li>
+					<li><a href=""></a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
 				</ul>
-		</div>	<!-- nav-area end -->
-	</div>	<!-- menu-area end -->
-	</div>	<!-- header end -->
+			</div>	<!-- nav-area end -->
+		</div>	<!-- menu-area end -->
+	</c:if>
+	
+	<c:if test="${ empty sessionScope.loginUser }">
+		<div class="menu-area">
+			<div class="nav-area">
+				<ul>
+					<li><a href="">고객문의</a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href="">회원가입</a></li>
+					<li><a href="">로그인</a></li>
+				</ul>
+			</div>	<!-- nav-area end -->
+		</div>	<!-- menu-area end -->
+	</c:if>
+</div>	<!-- header end -->
