@@ -76,7 +76,9 @@ public class UserLoginServlet extends HttpServlet {
 					System.out.println("로그인 성공");
 					
 					/* 로그인 성공 시 메인으로 */
-					response.sendRedirect(request.getContextPath());
+					System.out.println(request.getContextPath());
+					// doPost 방식 사용
+					response.sendRedirect(request.getContextPath() + "/user/signinResult");
 				}
 
 			} else {
