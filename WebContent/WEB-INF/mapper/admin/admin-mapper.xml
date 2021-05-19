@@ -30,5 +30,16 @@
 	      WHERE admin_id = ?
 	</entry>
 	
-
+	<entry key="selectAdminList">
+	    SELECT 
+	         *
+	      FROM ADMIN
+	      LIMIT ?,?
+	</entry>
+	
+		<entry key="selectTotalCount">
+        SELECT 
+               COUNT(*)
+          FROM ADMIN
+	</entry>
 </properties>

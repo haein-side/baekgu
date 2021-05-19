@@ -18,7 +18,22 @@ public class BusinessLoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+//		String transfer = (String)request.getAttribute("transfer");
+		
+		HttpSession session = request.getSession();
+		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+		
+		String path = "";
+		
+		if(loggedInUser != null) {
+			
+			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+
+		}else {
+
+			path = "/WEB-INF/views/business/main/signinB.jsp";
+
+		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 		
@@ -54,6 +69,7 @@ public class BusinessLoginServlet extends HttpServlet {
 					
 					/* 아이디 비번 매칭 성공 */
 					System.out.println("로그인이 되셨습니다.");
+										
 					/* Session이 없으면 생성 */
 					HttpSession session = request.getSession();
 					session.setAttribute("loginBusinessMember", loginBusinessMember);			
