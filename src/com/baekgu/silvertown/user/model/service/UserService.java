@@ -23,7 +23,7 @@ public class UserService {
 	}
 	
 	/**
-	 * 로그인용 메소드
+	 * 로그인시 1차 검증용 메소드
 	 * @param requestUser
 	 * @return loginUser
 	 */
@@ -33,39 +33,31 @@ public class UserService {
 		UserDTO loginUser = null;
 		
 		// 비밀번호, 유저 차단 여부 조회
-		UserDTO encPwdBlock = null;
-		encPwdBlock = userDAO.selectEnCryptedPwd(con,requestUser);
+		//UserDTO encPwdBlock = null;
+		loginUser = userDAO.selectEnCryptedPwd(con,requestUser);
 		
-		// 비밀번호 값이 있는지 확인
-		if(!encPwdBlock.getUserPwd().isEmpty()) {
-			
-			if(encPwdBlock.getUserBlock() != 0) {
-				
-				BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-				
-				// 비밀번호 대조
-				if(pwdEncoder.matches(requestUser.getUserPwd(), encPwdBlock.getUserPwd())) {
-					
-					loginUser = userDAO.selectLoginMember(con, requestUser);
-				}
-				
-				loginUser = userDAO.selectLoginMember(con, requestUser);
-				System.out.println("service : " + loginUser);
-			
-			} else {
-				
-				// 고객 차단 알림
-			}
-		} else {
-			
-			// 회원가입 안함: 알림		
-		}
-
+		System.out.println("Service 유저 차단 조회 : " + loginUser.getUserBlock());
+		
 		return loginUser;
 	}
-	
-	
 
+
+	/**
+	 * 로그인시 고객 정보를 가져오는 메소드
+	 * @param requestUser
+	 * @return loginUserInfo
+	 */
+	public UserDTO loginInfo(UserDTO requestUser) {
+		
+		Connection con = getConnection();
+		UserDTO loginUserInfo = null;
+		
+		loginUserInfo = userDAO.selectLoginUser(con, requestUser);
+
+		return loginUserInfo;
+	}
+
+	
 	/**
 	 * 회원가입용 메소드
 	 * @param requestUser
@@ -88,8 +80,14 @@ public class UserService {
 		return newUser;
 		
 	}
+
+	public String checkId(String userPhone) {
+		Connection con = getConnection();
+		
+		String result = userDAO.checkId(con, userPhone);
+		
+		return result;
+	}
 	
-	
-	
-	
+
 }

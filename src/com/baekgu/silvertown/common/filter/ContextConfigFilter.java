@@ -54,8 +54,7 @@ public class ContextConfigFilter implements Filter {
 			ConfigLocation.MAPPER_LOCATION = root + "/" + mapperInfoPath;
 		}
 		
-		
-		
+
 		chain.doFilter(request, response);
 	}
 
