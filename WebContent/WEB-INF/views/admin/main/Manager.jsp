@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  --%>
+<jsp:directive.page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +41,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css"
 	rel="stylesheet">
-<!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+
 </head>
 <body>
 	<!-- container section start -->
@@ -163,58 +159,16 @@
 								</thead>
 								<tbody>
 								<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
-									<c:forEach var="adminList" item="${ requestScope.Manager }">
+									<c:forEach var="admin" items="${ requestScope.adminList }">
 										<tr>
-											<td><c:out value="${ adminList.adminId }" /></td>
-											<td><c:out value="${ adminList.adminPwd }" /></td>
-											<td><c:out value="${ adminList.adminName }" /></td>
-											<td><c:out value="${ adminList.adminEmail }" /></td>
-											<td><c:out value="${ adminList.adminDate }" /></td>
-											<td><c:out value="${ adminList.adminRole }" /></td>
+											<td><c:out value="${ admin.adminId }" /></td>
+											<td><c:out value="${ admin.adminPwd }" /></td>
+											<td><c:out value="${ admin.adminName }" /></td>
+											<td><c:out value="${ admin.adminEmail }" /></td>
+											<td><c:out value="${ admin.adminDate }" /></td>
+											<td><c:out value="${ admin.adminRole }" /></td>
 										</tr>
 									</c:forEach>
-									<tr>
-										<td><a href="ManagerDetail.html">강현우</a></td>
-										<td>kang</td>
-										<td>kang@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">차진서</a></td>
-										<td>cha</td>
-										<td>cha@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김현빈</a></td>
-										<td>kim</td>
-										<td>kim@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><a href="">김유진</a></td>
-										<td>jin</td>
-										<td>jin@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김해인</a></td>
-										<td>hae</td>
-										<td>hae@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">정주영</a></td>
-										<td>jung</td>
-										<td>jung@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
 
 								</tbody>
 							</table>
@@ -243,23 +197,13 @@
 										</form>
 									</li>
 								</ul>
-								<!--  search form end -->
+								
 						</section>
-
-
-
-
 					</section>
-
-
-
-
-
-					<!--main content end-->
 		</section>
-		<!-- container section start -->
+	
 
-		<!-- javascripts -->
+	
 		<script src="RESOURCES/JS/ADMIN/jquery.js"></script>
 		<script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
 		<script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
