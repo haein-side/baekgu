@@ -14,7 +14,7 @@ import com.baekgu.silvertown.user.model.service.UserService;
 
 
 @WebServlet("/user/login")
-public class UserLoginServlet extends HttpServlet {
+public class UserLogininServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -78,7 +78,7 @@ public class UserLoginServlet extends HttpServlet {
 					/* 로그인 성공 시 메인으로 */
 					System.out.println(request.getContextPath());
 					// doPost 방식 사용
-					response.sendRedirect(request.getContextPath() + "/user/signinResult");
+					response.sendRedirect(request.getContextPath() + "/user/toMain");
 				}
 
 			} else {

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>백구 개인회원 로그인</title>
-<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
-<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/signin.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/signin.css" type="text/css">
 
 </head>
 
