@@ -17,6 +17,7 @@ public class UserSignupResultServlet extends HttpServlet {
 		
 		System.out.println("signupResult 서블릿 도착");
 		String path = "/WEB-INF/views/customer/main/main.jsp";
+		
 		request.getRequestDispatcher(path).forward(request, response);
 	
 	}
