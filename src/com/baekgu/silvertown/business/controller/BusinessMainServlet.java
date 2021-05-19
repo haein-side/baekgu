@@ -18,16 +18,9 @@ public class BusinessMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 //		String path = "";
+//		request.setAttribute("transfer", "login");
 		request.getRequestDispatcher("/WEB-INF/views/business/main/BusinessMainPage.jsp").forward(request, response);
-		
-		HttpSession session = request.getSession();
-		BusinessMemberDTO bDTO = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
-		
-		
-		
-		
-		System.out.println(bDTO.getbName() + " 멍청이 과자 그만먹어라 살찐다.");
-		
+				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
