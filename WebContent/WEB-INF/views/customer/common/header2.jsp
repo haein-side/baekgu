@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type=‘text/javascript’ src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	
+<%-- a 태그 속성값 제거하기 --%>
+<%-- <% $("#nolink").removeAttr("href"); %> --%>
+
     <!-- 헤더 영역 -->   
 	<div class="header" style="z-index: 10000;">
 	
@@ -70,7 +73,7 @@
 					<li><a href="">입사지원 관리</a></li>
 					<li><a href="">일자리 모음</a></li>
 					<li><a href="">고객문의</a></li>
-					<li><a href=""></a></li>
+					<li><a id="nolink" href=""></a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
 				</ul>
 			</div>	<!-- nav-area end -->
@@ -82,11 +85,11 @@
 			<div class="nav-area">
 				<ul>
 					<li><a href="">고객문의</a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
+					<li><a id="nolink" href=""></a></li>
+					<li><a id="nolink" href=""></a></li>
+					<li><a id="nolink" href=""></a></li>
 					<li><a href="">회원가입</a></li>
-					<li><a href="">로그인</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/login">로그인</a></li>
 				</ul>
 			</div>	<!-- nav-area end -->
 		</div>	<!-- menu-area end -->

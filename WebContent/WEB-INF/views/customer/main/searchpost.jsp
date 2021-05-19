@@ -17,6 +17,7 @@
 
 <body>
 <%@ include file="../common/header2.jsp" %>
+<form>
     <div style="z-index:1;">
         <div class="container-fluid text-center"  style="margin-top: 13%;">
             <div class="row content">
@@ -43,12 +44,11 @@
                             <br><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">식당/서빙</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">매장관리</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">상담/영업</button>
+                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;"
+                                    	id="restaurant">식당/서빙</button>
+                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;"
+                                        id="storemanagement">매장관리</button>
+                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">상담/영업</button>
                                     <button class="btn1"
                                         style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">건설/생산/기술</button>
                                     <button class="btn1"
@@ -76,15 +76,17 @@
                                     <button class="btn1"
                                         style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">일주일&nbsp;&nbsp;이하</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">한달&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">일주일&nbsp;&nbsp;이상</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">3개월&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">1개월&nbsp;&nbsp;이상</button>
                                     <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">6개월&nbsp;&nbsp;이하</button>
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">3개월&nbsp;&nbsp;이상</button>
+                                    <button class="btn1"
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">6개월&nbsp;&nbsp;이상</button>
                                     <button class="btn1"
                                         style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">1년&nbsp;&nbsp;이상</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">기&nbsp;&nbsp;타</button>
+                                	<button class="btn1"
+                                        style=" margin: 15px; width:200pt;height: 60pt;font-size:x-large;">무&nbsp;&nbsp;관</button>                                     
                                 </div>
                             </div>
                         </div>
@@ -99,6 +101,7 @@
             </div>
         </div>
       </div>
+</form>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
