@@ -140,8 +140,72 @@ public class UserDAO {
 		
 		String query = prop.getProperty("insertNewUser");
 		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			System.out.println(requestUser.getUserBday());
+			
+			pstmt.setString(1, requestUser.getUserPhone());
+			pstmt.setString(2, requestUser.getUserPwd());
+			pstmt.setString(3, requestUser.getUserName());
+			pstmt.setDate(4, requestUser.getUserBday());
+			pstmt.setString(5, requestUser.getUserGender());
+			pstmt.setString(6, requestUser.getUserAddress());
+			
+			newUser = pstmt.executeUpdate();
+			
+			System.out.println("dao에 왔음");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return newUser;
+	}
+
+	public String checkId(Connection con, String userPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
-		return 0;
+		String userId = userPhone;
+		String result = "";
+		
+		System.out.println("DAO에 들어온 userPhone : " + userId);
+		
+		String query = prop.getProperty("checkId");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			System.out.println("왜 안돼..");
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				System.out.println("하이");
+				int userCode = rset.getInt("COUNT(USER_CODE)");
+				System.out.println("DAO에서 본 userCode : " + userCode);
+				if(userCode == 0) {
+					result = "success";
+				} else {
+					result = "fail";
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("DAO에서 보내는 결과 : " + result);
+		
+		return result;
+		
 	}
 
 	

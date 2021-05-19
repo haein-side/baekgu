@@ -11,21 +11,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
-	
+	// ajax 필수로 하게 어떻게 하나..?
 	$("#duplicationCheck").click(function(){
-		var userCode = $('#userCode').val();
+		var userPhone = $('#userPhone').val();
 		
 		$.ajax({
-			url: "baekgu/customer/signup",
+			url: "/baekgu/user/signup",
 			type: "get",
+			data:{ userPhone : userPhone },
 			success: function(data,textStatus,xhr){
 				console.log(data);
-				if (data == 1){
-				$("#checkMessage").html("사용할 수 있는 아이디입니다.");
-				alert("사용가능아이디");
-				} else {
-				$("#checkMessage").html("사용할 수 없는 아이디입니다.");
-				alert("사용불가아이디")
+				if (data == "fail"){
+					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+					alert("사용불가아이디")
+				} else if(data == "success") {
+				    $("#checkMessage").html("사용할 수 있는 아이디입니다.");
+				    $("#duplicationCheck").attr("checkResult","success");
+				    alert("사용가능아이디");
 				}
 			},
 			error: function(xhr, status, error){
@@ -95,7 +97,7 @@ $(function(){
                   
                   <br>
                 
-                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck">
+                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck" required>
                 
 					<div id="checkMessage">
 					</div>     
@@ -112,7 +114,7 @@ $(function(){
                <div class="form-group">
                   <label for="password" class="basiclabel">비밀번호</label> 
                   
-                  <input type="password" class="form-control" id="userPwd" name ="userPwd" placeholder="(예 : hgd610405)"  value = "hb2qp5555" required>
+                  <input type="password" class="form-control" id="userPwd" name ="enteredPwd" placeholder="(예 : hgd610405)"  value = "hb2qp5555" required>
                   
                   <small id="passwordHelp" class="form-text text-muted">
                   영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)
@@ -277,6 +279,7 @@ $(function(){
    </form>  
    <!-- form 끝남 -->      
   
+  
 
   <!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 --> 
    <script type="text/javascript">
@@ -284,10 +287,17 @@ $(function(){
     	validate();
     });
     
+    window.onload = function(){	    
+	    var $item = document.getElementById("duplicationCheck");
+		  // 요소의 data-value 속성에 hello world를 설정한다.
+		  $item.setAttribute("checkResult", "fail");
+		  // 요소의 value 속성에 test를 설정한다.
+	};
+	
        function validate(){
        
           var userPhone = document.getElementById("userPhone");
-          var userPwd = document.getElementById("userPwd");
+          var enteredPwd = document.getElementById("enteredPwd");
           var userPwd1 = document.getElementById("userPwd1");
           var userName = document.getElementById("userName");
           var userBday1 = document.getElementById("userBday1");
@@ -296,32 +306,35 @@ $(function(){
           var userGender = document.getElementById("userGender");
           var userAddress1 = document.getElementById("userAddress1");
           var userAddress2 = document.getElementById("userAddress2");
+          var checkMessage = document.getElementById("checkMessage");
+          var duplicationCheck = document.getElementById("duplicationCheck");
           
+          userPhone.setAttribute("checkresult", "fail");
           
           // userPhone 유효성 검사
           if(!chk(/^[0-9]{10,11}$/,userPhone,"휴대폰번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
             return false;
          }
          
-          // userPwd 유효성 검사
-         if(!chk(/^[a-zA-Z0-9]{8,15}$/,userPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
+          // enteredPwd 유효성 검사
+         if(!chk(/^[a-zA-Z0-9]{8,15}$/,enteredPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
             return false;
          }
          
-         var checkNum = document.getElementById("userPwd").value.search(/[0-9]/g);
-         var checkEng = document.getElementById("userPwd").value.search(/[a-z]/ig);
+         var checkNum = document.getElementById("enteredPwd").value.search(/[0-9]/g);
+         var checkEng = document.getElementById("enteredPwd").value.search(/[a-z]/ig);
          // i: case insensitive, 대소문자 구별 안함
          
          
          if(checkNum < 0 || checkEng < 0){
             alert("비밀번호는 숫자와 영문자를 혼용하여야 합니다.");
-            userPwd.value="";
-            userPwd.focus();
+            enteredPwd.value="";
+            enteredPwd.focus();
             return false;
          }
          
-         // userPwd와 userPwd1 일치하는지 확인
-         if(userPwd.value != userPwd1.value){
+         // enteredPwd와 userPwd1 일치하는지 확인
+         if(enteredPwd.value != userPwd1.value){
             alert("비밀번호가 다릅니다. 다시 확인해주세요.");
             userPwd1.value="";
             userPwd1.focus();
@@ -377,6 +390,11 @@ $(function(){
 			 return false;
           }
          
+         if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
+        	 duplicationCheck.focus();
+        	 alert("휴대폰번호 중복확인을 해주세요.")
+        	 return false;
+         }
        
         // 유효성 검사 alert 창 띄워주는 것
         function chk(re, ele, msg){

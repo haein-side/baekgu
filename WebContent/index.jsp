@@ -14,8 +14,8 @@
 	<jsp:forward page="/WEB-INF/views/customer/main/signin.jsp"/>
 
 	<!-- 차진서 테스트 -->
-<%-- 	<jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/>
- --%>	
+	<%--<jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> --%>
+	
 	<!-- 김현빈 테스트 -->
     <%--<jsp:forward page="/WEB-INF/views/business/main/signinB.jsp"/>--%>
 

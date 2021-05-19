@@ -80,6 +80,14 @@ public class UserService {
 		return newUser;
 		
 	}
+
+	public String checkId(String userPhone) {
+		Connection con = getConnection();
+		
+		String result = userDAO.checkId(con, userPhone);
+		
+		return result;
+	}
 	
 
 }

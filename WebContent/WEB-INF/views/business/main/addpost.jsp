@@ -46,33 +46,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">백구</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="home.html">홈</a></li>
-        <li class="active"><a href="">공고등록</a></li>
-        <li><a href="#">지원자관리</a></li>
-        <li><a href="#">공고관리</a></li>
-        <li><a href="payment.html">결제관리</a></li>
-        <li><a href="ad.html">상품안내</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">회사명</a></li>
-        <li><a href="#">담당자명</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<jsp:include page="../common/header.jsp"/>
+
   
 <div class="container-fluid text-center">    
   <div class="row content">
@@ -224,9 +199,8 @@
     <br><br>
     <br><br>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+	<jsp:include page="../common/footer.jsp"/>
+
 
 </body>
 </html>

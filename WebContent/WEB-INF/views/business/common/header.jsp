@@ -11,6 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
+	<script src="../RESOURCES/JS/BUSINESS/event.js"></script>
+	
 	<style>
 		.navbar {
       	margin-bottom: 0;
@@ -51,9 +53,8 @@
 		  	<c:if test="${ empty sessionScope.loginBusinessMember }">
 		  	
 		      <ul class="nav navbar-nav navbar-right"> 
-		        <li><a href="#">회사명</a></li>
-		        <li><a href="#">담당자명</a></li>
-		        <li><a href="#">로그아웃</a></li>
+		        <li><a href="#" id="login">로그인</a></li>
+		        <li><a href="#" id="signup">회원가입</a></li>
 		      </ul>
 		  	
 		  	</c:if>
@@ -62,8 +63,8 @@
 		  	
 		      <ul class="nav navbar-nav navbar-right"> 
 		        <li><a href="#">${ sessionScope.loginBusinessMember.bName }</a></li>
-		        <li><a href="#">담당자명</a></li>
-		        <li><a href="#">로그아웃</a></li>
+		        <li><a href="#">${ sessionScope.loginBusinessMember.CName }</a></li>
+		        <li><a href="#" id="logout">로그아웃</a></li>
 		      </ul>
 		  	
 		  	</c:if>
