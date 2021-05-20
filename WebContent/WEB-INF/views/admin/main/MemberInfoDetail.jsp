@@ -104,20 +104,16 @@
                               <h2>이력서 </h2>
                             <div class="row">
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>이력서코드 </span>: 1 </p>
+                                <p><span>이력서코드 </span>: <c:out value="${ requestScope.member.rCode }"/></p>
                               </div>
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>비상연락망 </span>: </p>
+                                <p><span>비상연락망 </span>: <c:out value="${ requestScope.member.rPhone }"/></p>
                               </div>
                               <div class="bio-row">
-                                <p><span>자기소개 : </span>
-                                    안녕하세요 저는 김홍길입니다. 제 주특기는 밥먹기입니다.
-                                    뽑아주신다면 열심히 하겠습니다. 
-                                    커피를 좋아해서 이 일을 지원하게 됐습니다. 열심히 하겠습니다.
-                                </p>
+                                <p><span>자기소개 : </span>: <c:out value="${ requestScope.member.rLetter }"/></p>
                               </div>
                               <div class="bio-row">
-                                <p><span>우대조건 </span>: 자차 출퇴 가능 </p>
+                                <p><span>우대조건 </span>: <c:out value="${ requestScope.member.rAdvan }"/></p>
                               </div>
                           </div>
                           <a class="btn btn-danger" href="#">

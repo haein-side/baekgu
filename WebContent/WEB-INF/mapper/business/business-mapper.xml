@@ -17,7 +17,6 @@ select
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
  WHERE HR_ID = ?
 	</entry>
-<<<<<<< HEAD
 	<entry key="insertDecisionList">
        insert
          into decision_list 
@@ -66,7 +65,7 @@ select
        , LAST_INSERT_ID()
        )
 	</entry>
-	<entry key="insertHr">
+<!-- 	<entry key="insertHr">
        insert
          into HR
        (
@@ -114,5 +113,5 @@ select
  		WHERE HR_ID = ?
  		GROUP BY a.POST_CODE, c.DECISION_STATUS, a.POST_DATE, a.POST_TITLE, e.AD_NAME, a.POST_START, a.POST_END
  		ORDER BY a.POST_DATE
-	</entry>
+	</entry> -->
 </properties>

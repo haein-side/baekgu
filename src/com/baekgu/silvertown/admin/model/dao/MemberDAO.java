@@ -155,7 +155,12 @@ public class MemberDAO {
 				memberDetail.setGender(rset.getString("USER_GENDER"));
 				memberDetail.setAddress(rset.getString("USER_ADDRESS"));
 				memberDetail.setRday(rset.getDate("USER_REGISTER_DATE"));
-				memberDetail.setBlock(rset.getInt("USER_BLOCK"));
+				memberDetail.setrCode(rset.getInt("RESUME_CODE"));
+				memberDetail.setRwday(rset.getDate("RESUME_WRITE_DATE"));
+				memberDetail.setrPhone(rset.getString("RESUME_SUBPHONE"));
+				memberDetail.setrLetter(rset.getString("RESUME_LETTER"));
+				memberDetail.setrAdvan(rset.getString("RESUME_ADVANTAGE"));
+				
 				
 				System.out.println("회원 정보 : " + memberDetail);
 			}
@@ -174,6 +179,185 @@ public class MemberDAO {
 		
 		return memberDetail;
 	}
+
+	public int selectBlockTotalCount(Connection con) {
+		
+
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = prop.getProperty("selectBlockTotalCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		
+		System.out.println("블락 멤버 수 : " + totalCount);
+		
+		return totalCount;
+		
+	}
+
+	public List<MemberDTO> selectBlockMemberList(Connection con, PageInfoDTO pageInfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> blockMemberList = null;
+		
+		String query = prop.getProperty("selectBlockMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, 10);
+			
+			System.out.println("getStartRow : " + pageInfo.getStartRow());
+			
+			
+			rset = pstmt.executeQuery();
+			
+			blockMemberList = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				
+				member.setCode(rset.getInt("USER_CODE"));
+				member.setName(rset.getString("USER_NAME"));
+				member.setPhone(rset.getString("USER_PHONE"));
+				member.setBday(rset.getDate("USER_BDAY"));
+				member.setBlock(rset.getInt("USER_BLOCK"));
+				
+				blockMemberList.add(member);
+				
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("memberList : " + blockMemberList);
+		
+		
+		return blockMemberList;
+		
+		
+		
+		
+	}
+
+	/**
+	 * 정상유저를 카운팅 한다
+	 * @param con
+	 * @return 정상유저의 Count
+	 */
+	public int selectNomalMemberCount(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = prop.getProperty("selectNomalTotalCount");
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		
+		System.out.println("정상 회원 수 : " + totalCount);
+		
+		return totalCount;
+	}
+
+	/**
+	 * 정상유저의 정보들을 List에 담아 가져온다
+	 * @param con
+	 * @param pageInfo
+	 * @return List<MemberDTO>8
+	 */
+	public List<MemberDTO> selectNomalMemberList(Connection con, PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<MemberDTO> nomalMemberList = null;
+		
+		String query = prop.getProperty("selectNomalMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, 10);
+			
+			System.out.println("getStartRow : " + pageInfo.getStartRow());
+			
+			
+			rset = pstmt.executeQuery();
+			
+			nomalMemberList = new ArrayList<>();
+			
+			while(rset.next()) {
+				MemberDTO member = new MemberDTO();
+				
+				member.setCode(rset.getInt("USER_CODE"));
+				member.setName(rset.getString("USER_NAME"));
+				member.setPhone(rset.getString("USER_PHONE"));
+				member.setBday(rset.getDate("USER_BDAY"));
+				member.setBlock(rset.getInt("USER_BLOCK"));
+				
+				nomalMemberList.add(member);
+				
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("memberList : " + nomalMemberList);
+		
+		
+		return nomalMemberList;
+	}
+
+
 
 }
 

@@ -15,10 +15,10 @@ import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.paging.PageNation;
 
 /**
- * Servlet implementation class AdminMemberListServlet
+ * Servlet implementation class AdminNomalMemberList
  */
-@WebServlet("/admin/memberList")
-public class AdminMemberListServlet extends HttpServlet {
+@WebServlet("/admin/nomalmember")
+public class AdminNomalMemberList extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -36,31 +36,27 @@ public class AdminMemberListServlet extends HttpServlet {
 		System.out.println("currentPage : "+currentPage);
 		System.out.println("pageNo : " + pageNo);
 		
-		/* 전체 게시물의 갯수가 필요하다 */
-		/* DB에서 먼저 전체 게시물의 갯수를 조회한다 */
-		AdminMemberService listService = new AdminMemberService();
-		int totalCount = listService.selectTotalCount();
+		/* 전체 게시물의 갯수가 필요 */
+		/* DB에서 전체 게시물의 수를 조회 */
+		AdminMemberService nomalListService = new AdminMemberService();
+		nomalListService.searchNomalMemberList();
 		
-		System.out.println("totalCount : " + totalCount);
-		
-		/* 한 페이지에서 보여 줄 게시물의 수 */
+		/* 한 페이지에서 보여주는 게시물의 수 */
 		int limit = 10;
 		
-		/* 한 번에 보여질 페이징 버튼 수 */
+		/* 한번에 보여지는 페이징 버튼 수 */
 		int buttonAmount = 5;
 		
 		/* 페이징 처리를 위한 로직 호출 후, 페이징 처리에 관한 정보를 담고 있는 인스턴스 리턴 */
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, pageNo, limit, buttonAmount);
 		
-		System.out.println("pageInfo : " + pageInfo);
-		
-		/* 조회한다 */
-		List<MemberDTO> memberList = listService.searchMemberList(pageInfo);
+		/* 조회 */
+		List<MemberDTO> nomalList = nomalListService.searchNomalMemberList(pageInfo);
 		
 		String path = "";
-		if(memberList != null) {
+		if(nomalList != null) {
 			path = "/WEB-INF/views/admin/main/MemberInfo.jsp";
-			request.setAttribute("memberList", memberList);
+			request.setAttribute("memberList", nomalList);
 			request.setAttribute("pageInfo", pageInfo);
 		} else {
 			path = "/WEB-INF/views/admin/common/errorPage.jsp";
@@ -70,14 +66,14 @@ public class AdminMemberListServlet extends HttpServlet {
 		request.getRequestDispatcher(path).forward(request, response);
 		
 		
-		
-		
-		
-		
 	}
 
 
 }
+
+
+
+
 
 
 

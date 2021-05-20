@@ -60,14 +60,82 @@ public class AdminMemberService {
 	public MemberDTO selectMemberDetail(int no) {
 		
 		Connection con = getConnection();
+		
 		MemberDTO memberDetail = null;
 		
 		memberDetail = memberDAO.selectMemberDetail(con, no);
-		
+	
 		close(con);
 		
 		return memberDetail;
 	}
+
+	/**
+	 * 블락회원 카운팅 매소드
+	 * @return 블락된 회원의 수
+	 */
+	public int selectBlockTotalCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = memberDAO.selectBlockTotalCount(con);
+		
+		close(con);
+		
+		System.out.println("블락 회원 수 : " + totalCount);
+		
+		return totalCount;
+	}
+
+	/**
+	 * 블락회원 전체 조회 매소드
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<MemberDTO> searchBlockMemberList(PageInfoDTO pageInfo) {
+
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> blockMemberList = memberDAO.selectBlockMemberList(con, pageInfo);
+		
+		close(con);
+		
+		return blockMemberList;
+		
+	}
+
+	/**
+	 * 정상유저 카운팅
+	 * @return
+	 */
+	public int searchNomalMemberList() {
+		
+
+		Connection con = getConnection();
+		
+		int totalCount = memberDAO.selectNomalMemberCount(con);
+		
+		close(con);
+		
+		return totalCount;
+		
+		
+	}
+
+	public List<MemberDTO> searchNomalMemberList(PageInfoDTO pageInfo) {
+		
+
+		Connection con = getConnection();
+		
+		List<MemberDTO> nomalMemberList = memberDAO.selectNomalMemberList(con, pageInfo);
+		
+		close(con);
+		
+		return nomalMemberList;
+	}
+
+	
 
 }
 
