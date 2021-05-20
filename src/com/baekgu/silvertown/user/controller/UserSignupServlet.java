@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 import com.baekgu.silvertown.user.model.service.UserService;
 
@@ -54,7 +56,15 @@ public class UserSignupServlet extends HttpServlet {
 		
 		 /* 회원가입 폼 작성 후 post 요청할 때 처리하는 역할 */
 		 String userPhone = request.getParameter("userPhone");
+		 
 		 String enteredPwd = request.getParameter("enteredPwd");
+		 
+		 // 비밀번호 암호화
+			/*
+			 * BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
+			 * String enteredPwd = passwordEncoder.encode(enteredPwd2);
+			 */
+		 
 		 String userName = request.getParameter("userName");
 		 java.sql.Date userBday = java.sql.Date.valueOf(request.getParameter("userBday1") + "-" + request.getParameter("userBday2") + "-"+ request.getParameter("userBday3"));
 		 String userGender = request.getParameter("userGender");

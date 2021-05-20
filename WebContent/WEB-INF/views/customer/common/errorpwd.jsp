@@ -9,7 +9,7 @@
 <body>
 	<script>
 		var errorMessage = "${ requestScope.errorMessage }";
-		movePath = "${ pageContext.servletContext.contextPath }";
+		movePath = "${ pageContext.servletContext.contextPath }/user/toSignin";
 
 		alert(errorMessage);
 		location.replace(movePath);

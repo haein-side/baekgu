@@ -4,16 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-   type="text/css">
-<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 <script>
 $(function(){
 	// ajax 필수로 하게 어떻게 하나..?
 	$("#duplicationCheck").click(function(){
 		var userPhone = $('#userPhone').val();
+		
+		 if (userPhone == '') {
+		      alert('휴대폰번호를 입력해주세요.')
+		      return;
+		    }
 		
 		$.ajax({
 			url: "/baekgu/user/signup",
@@ -22,12 +25,21 @@ $(function(){
 			success: function(data,textStatus,xhr){
 				console.log(data);
 				if (data == "fail"){
+
 					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
-					alert("사용불가아이디");
+					alert("사용불가아이디");=======
+					$("#checkMessage").html("사용할 수 없는 휴대폰번호입니다.");
+					$("#idCheck").value("fail");
+					return;
+
 				} else if(data == "success") {
-				    $("#checkMessage").html("사용할 수 있는 아이디입니다.");
-				    $("#duplicationCheck").attr("checkResult","success");
-				    alert("사용가능아이디");
+				    $("#checkMessage").html("사용할 수 있는 휴대폰번호입니다.");
+				    /* $("#duplicationCheck").attr("checkResult","success"); */
+				   /*  $("#idCheck").value == "success";
+				    $("#idCheck").value("success"); */
+				    $("#idCheck").attr("value", "success");
+				    console.log(idCheck);
+				    return;
 				}
 			},
 			error: function(xhr, status, error){
@@ -97,18 +109,15 @@ $(function(){
                   
                   <br>
                 
-                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck" required>
+                   <input type="button" value="중복확인" class="btn btn-or" id="duplicationCheck" style="height: 34px; font-size: 23px; float: right;" required>
                 
-					<div id="checkMessage">
+                  <br>
+                  <br>
+					<div id="checkMessage" style="font-size : 23px; color: red; text-align: center;">
 					</div>     
-                
-                 <button onclick="test1();">실행확인</button>
-                   <script>
-                       function test1(){
-                           alert("다시 입력바랍니다.");
-                       }
-               
-                    </script>
+                	
+                	 <input type="hidden" id="idCheck" name="idCheck" value="fail">
+                 
                </div>
                <br>
                <div class="form-group">
@@ -206,7 +215,7 @@ $(function(){
             <label for="gender" class="basiclabel">성별</label><br>
             <br> 
             
-            <input type="radio" name="userGender" value="남" style="font-size: 30px;">
+            <input type="radio" name="userGender" value="남" style="font-size: 30px;" required>
                <label class="genderlabel">남</label> 
    
             <input type="radio" name="userGender" value="여">
@@ -295,9 +304,11 @@ $(function(){
 	};
 	
        function validate(){
+    	   
+    	
        
           var userPhone = document.getElementById("userPhone");
-          var enteredPwd = document.getElementById("enteredPwd");
+          var enteredPwd = document.getElementById("userPwd");
           var userPwd1 = document.getElementById("userPwd1");
           var userName = document.getElementById("userName");
           var userBday1 = document.getElementById("userBday1");
@@ -308,8 +319,48 @@ $(function(){
           var userAddress2 = document.getElementById("userAddress2");
           var checkMessage = document.getElementById("checkMessage");
           var duplicationCheck = document.getElementById("duplicationCheck");
+          var checkMessage = document.getElementById("checkMessage");
+          var idCheck = document.getElementById("idCheck");
           
           userPhone.setAttribute("checkresult", "fail");
+          
+          console.log(checkMessage);
+          console.log(idCheck);
+          
+          /* if ($("#checkMessage").html("사용할 수 있는 휴대폰번호입니다.")){
+    			return true;  
+    		} else if ($("#checkMessage").html("사용할 수 없는 휴대폰번호입니다.") || $("#checkMessage").html("")) {
+    			alert("아이디 중복체크를 완료해주시기 바랍니다.");
+    			return false;
+    		} */
+          
+        /*  if($("#idCheck").attr("value", "fail")){
+        	 alert("아이디 중복체크를 완료해주시기 바랍니다.");
+        	 userPhone.focus();
+        	 userPhone.value = "";
+ 			return false;
+         } */
+    		
+    	
+    	  if(idCheck.value != "success"){
+    		  alert("아이디 중복체크를 완료해주시기 바랍니다.");
+    		    console.log(idCheck);
+    		    userPhone.focus();
+    		    userPhone.value = "";
+    		    console.log(userPhone);
+    		    return false;
+    	  }
+    		 
+          
+          /* if (idCheck.value == "fail"){
+        	alert("아이디 중복체크를 완료해주시기 바랍니다.");
+  		    console.log(idCheck);
+  		    userPhone.focus();
+  		    userPhone.value = "";
+  		    console.log(userPhone);
+  		    return false;
+  		  }  */
+          
           
           // userPhone 유효성 검사
           if(!chk(/^[0-9]{10,11}$/,userPhone,"휴대폰번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
@@ -321,8 +372,8 @@ $(function(){
             return false;
          }
          
-         var checkNum = document.getElementById("enteredPwd").value.search(/[0-9]/g);
-         var checkEng = document.getElementById("enteredPwd").value.search(/[a-z]/ig);
+         var checkNum = document.getElementById("userPwd").value.search(/[0-9]/g);
+         var checkEng = document.getElementById("userPwd").value.search(/[a-z]/ig);
          // i: case insensitive, 대소문자 구별 안함
          
          

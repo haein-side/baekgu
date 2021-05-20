@@ -14,7 +14,7 @@ import com.baekgu.silvertown.user.model.service.UserService;
 
 
 @WebServlet("/user/login")
-public class UserLoginServlet extends HttpServlet {
+public class UserSigninServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -54,7 +54,7 @@ public class UserLoginServlet extends HttpServlet {
 			System.out.println("컨트롤러 유저 값 조회 : " + loginUserInfo);
 		} else {
 			// 회원가입 안내 alert
-			System.out.println("잘못된 아이디 입력. 다시 입력 또는 회원가입");
+			System.out.println("잘못된 아이디");
 			
 			errorPage="/WEB-INF/views/customer/common/errorAgain.jsp";
        	 	request.setAttribute("errorMessage", "입력하신 정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
@@ -74,14 +74,15 @@ public class UserLoginServlet extends HttpServlet {
 					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");
-					
 					/* 로그인 성공 시 메인으로 */
-					response.sendRedirect(request.getContextPath());
+					System.out.println(request.getContextPath());
+					// doGet 방식 사용
+					response.sendRedirect(request.getContextPath() + "/user/toMain");
 				}
 
 			} else {
 				// 비밀번호 틀렸습니다.
-				System.out.println("비밀번호가 틀렸습니다.");
+				System.out.println("잘못된 비밀번호");
 				
 				errorPage="/WEB-INF/views/customer/common/errorpwd.jsp";
 	        	request.setAttribute("errorMessage", "비밀번호가 틀렸습니다.");
@@ -90,8 +91,8 @@ public class UserLoginServlet extends HttpServlet {
 		} else {
 			// 차단된 유저입니다.
 			errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
-			System.out.println("고객님은 사용이 제한되었습니다. (차단)");
-       	 	request.setAttribute("errorMessage", "고객님은 백구 사이트 사용이 제한되었습니다.");
+			System.out.println("차단 유저");
+       	 	request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
        	 	request.getRequestDispatcher(errorPage).forward(request, response);
 		}
 

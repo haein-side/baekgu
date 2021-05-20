@@ -17,18 +17,18 @@
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> --%>
 	
 	<!-- 김현빈 테스트 -->
-    <jsp:forward page="/WEB-INF/views/business/main/signupB.jsp"/>
+    <%--<jsp:forward page="/WEB-INF/views/business/main/signinB.jsp"/>--%>
 
 	<!-- 정주영 테스트 -->
-	<%-- <jsp:forward page="/WEB-INF/views/admin/main/MemberInfoDetail.jsp"/> --%>
+	<%--  <jsp:forward page="/WEB-INF/views/admin/main/main.jsp"/>  --%>
 
 	<!-- 김유진 테스트 -->
-	<%--<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/>--%>
+	<%--<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp"/>--%>
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/> --%>
 
 	<!-- 김해인 테스트 -->
-<%--  	<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/> --%>
+	<%--<jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/>--%>
 </body>
 </html>

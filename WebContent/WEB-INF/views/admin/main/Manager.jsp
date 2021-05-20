@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  --%>
+<jsp:directive.page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,90 +41,12 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css"
 	rel="stylesheet">
-<!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+
 </head>
 <body>
-	<!-- container section start -->
-	<section id="container" class="">
+<jsp:include page="../common/header.jsp"/>
 
-		<!-- 맨 위 다크 헤더 (백구 관리자 있는 곳) -->
-		<header class="header dark-bg">
-			<div class="toggle-nav">
-				<div class="icon-reorder tooltips"
-					data-original-title="Toggle Navigation" data-placement="bottom">
-					<i class="icon_menu"></i>
-				</div>
-			</div>
 
-			<!--logo start-->
-			<a href="${ pageContext.servletContext.contextPath }/admin/main"
-				class="logo">백구 <span class="lite">관리자</span></a>
-			<!--logo end-->
-
-			<!-- 사용자 프로필 -->
-
-			<h4 align="right" style="margin-top: 1%;">
-				관리자 :
-				<c:out value="${ sessionScope.loginAdmin.adminName }" />
-			</h4>
-
-		</header>
-		<!--header end-->
-
-		<!--sidebar start-->
-		<aside>
-			<div id="sidebar" class="nav-collapse ">
-				<!-- sidebar menu start-->
-				<ul class="sidebar-menu">
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/main">
-							<i class="icon_house_alt"></i> <span>Dashboard</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>홈페이지 정보</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/main">
-							<i class="icon_house_alt"></i> <span>관리자 및 직원관리</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>회원 정보</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>기업 정보</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>공고승인</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>공고관리</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>가입승인</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>광고상품관리</span>
-					</a></li>
-					<li class="active"><a class=""
-						href="${ pageContext.servletContext.contextPath }/admin/manager">
-							<i class="icon_house_alt"></i> <span>신고관리</span>
-					</a></li>
-				</ul>
-				<!-- sidebar menu end-->
-			</div>
-		</aside>
-		<!--sidebar end-->
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
@@ -154,68 +76,31 @@
 							<table align="center" class="table">
 								<thead>
 									<tr>
-										<th>이름</th>
+										<th></th>
 										<th>아이디</th>
+										<th>비밀번호</th>
+										<th>이름</th>
 										<th>이메일</th>
 										<th>등록일</th>
 										<th>권한</th>
 									</tr>
 								</thead>
 								<tbody>
-								<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
-									<c:forEach var="adminList" item="${ requestScope.Manager }">
-										<tr>
-											<td><c:out value="${ adminList.adminId }" /></td>
-											<td><c:out value="${ adminList.adminPwd }" /></td>
-											<td><c:out value="${ adminList.adminName }" /></td>
-											<td><c:out value="${ adminList.adminEmail }" /></td>
-											<td><c:out value="${ adminList.adminDate }" /></td>
-											<td><c:out value="${ adminList.adminRole }" /></td>
-										</tr>
-									</c:forEach>
-									<tr>
-										<td><a href="ManagerDetail.html">강현우</a></td>
-										<td>kang</td>
-										<td>kang@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">차진서</a></td>
-										<td>cha</td>
-										<td>cha@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김현빈</a></td>
-										<td>kim</td>
-										<td>kim@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><a href="">김유진</a></td>
-										<td>jin</td>
-										<td>jin@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김해인</a></td>
-										<td>hae</td>
-										<td>hae@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">정주영</a></td>
-										<td>jung</td>
-										<td>jung@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
 
+
+						<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
+                           <c:forEach var="admin" items="${ requestScope.adminList }">
+                              <tr>
+                              	  <th><input type="checkbox" id="checkAll"></th>
+                                 <td><c:out value="${ admin.adminId }"  /></td>
+                                 <td><c:out value="${ admin.adminPwd }" /></td>
+                                 <td><c:out value="${ admin.adminName }" /></td>
+                                 <td><c:out value="${ admin.adminEmail }" /></td>
+                                 <td><c:out value="${ admin.adminDate }" /></td>
+                                 <td><c:out value="${ admin.adminRole }" /></td>
+                              </tr>
+                           </c:forEach>
+								
 								</tbody>
 							</table>
 						</div>
@@ -224,42 +109,192 @@
 						<section class="panel">
 							<div class="panel-body">
 								<div class="text-center">
-									<ul class="pagination">
-										<li><a href="#">«</a></li>
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">»</a></li>
+									<%-- 페이지 처리 (분기처리한 것) --%>
+									<div class="pagingArea" align="center">
+										<c:choose>
+											<c:when test="${ empty requestScope.searchValue }">
+												<button id="startPage"><<</button>
+
+												<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+													<button disabled><</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+													<button id="prevPage"><</button>
+												</c:if>
+
+												<!-- 반복 start페이지, end페이지 12345 하고 678910 넘어가게하려고 ->
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<!-- 분기처리한 이유는 버튼 페이지 색깔 바꿀려고 한거임.  -->
+												<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+													<button onclick="pageButtonAction(this.innerText);">
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+												</c:forEach>
+
+												<!-- max페이지에 대한 내용  -->
+												<c:if
+													test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+													<button disabled>></button>
+												</c:if>
+												<c:if
+													test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+													<button id="nextPage">></button>
+												</c:if>
+
+												<button id="maxPage">>></button>
+											</c:when>
+											<c:otherwise>
+												<button id="searchStartPage"><<</button>
+
+												<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+													<button disabled><</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+													<button id="searchPrevPage"><</button>
+												</c:if>
+
+												<c:forEach var="p"
+													begin="${ requestScope.pageInfo.startPage }"
+													end="${ requestScope.pageInfo.endPage }" step="1">
+													<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+														<button disabled>
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+													<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+														<button onclick="seachPageButtonAction(this.innerText);">
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+												</c:forEach>
+
+												<c:if
+													test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+													<button disabled>></button>
+												</c:if>
+												<c:if
+													test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+													<button id="searchNextPage">></button>
+												</c:if>
+
+												<button id="searchMaxPage">>></button>
+											</c:otherwise>
+										</c:choose>
+									</div>
+										</div>
+									<!--  검색창  -->
+									<ul class="nav top-menu" style="float: right;">
+										<li>
+											<form class="navbar-form">
+												<input class="form-control" placeholder="Search" type="text">
+												<button type="submit" class="btn btn-primary">검색하기</button>
+											</form>
+										</li>
 									</ul>
-								</div>
-								<!--  검색창  -->
-								<ul class="nav top-menu" style="float: right;">
-									<li>
-										<form class="navbar-form">
-											<input class="form-control" placeholder="Search" type="text">
-											<button type="submit" class="btn btn-primary">검색하기</button>
-										</form>
-									</li>
-								</ul>
-								<!--  search form end -->
 						</section>
-
-
-
-
 					</section>
-
-
-
-
-
-					<!--main content end-->
 		</section>
-		<!-- container section start -->
 
-		<!-- javascripts -->
+
+		<script>
+		const link = "${ pageContext.servletContext.contextPath }/admin/search";
+	
+
+		if (document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+
+		if (document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link
+						+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+
+		if (document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link
+						+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+
+		if (document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link
+						+ "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+
+		if (document.getElementById("searchStartPage")) {
+			const $searchStartPage = document.getElementById("searchStartPage");
+			$searchStartPage.onclick = function() {
+				location.href = searchLink
+						+ "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+
+		if (document.getElementById("searchPrevPage")) {
+			const $searchPrevPage = document.getElementById("searchPrevPage");
+			$searchPrevPage.onclick = function() {
+				location.href = searchLink
+						+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+
+		if (document.getElementById("searchNextPage")) {
+			const $searchNextPage = document.getElementById("searchNextPage");
+			$searchNextPage.onclick = function() {
+				location.href = searchLink
+						+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+
+		if (document.getElementById("searchMaxPage")) {
+			const $searchMaxPage = document.getElementById("searchMaxPage");
+			$searchMaxPage.onclick = function() {
+				location.href = searchLink
+						+ "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+
+		
+		if (document.getElementsByTagName("td")) {
+
+			const $tds = document.getElementsByTagName("td");
+			for (let i = 0; i < $tds.length; i++) {
+
+				$tds[i].onclick = function() {
+					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
+					alert(this.parentNode.children[0].innerText);
+				}
+
+			}
+
+		}
+		
+		
+
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
+		function seachPageButtonAction(text) {
+			location.href = searchLink
+					+ "?currentPage="
+					+ text
+					+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		}
+	</script>
+
 		<script src="RESOURCES/JS/ADMIN/jquery.js"></script>
 		<script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
 		<script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>

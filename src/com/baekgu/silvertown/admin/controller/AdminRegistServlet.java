@@ -1,4 +1,4 @@
-package com.baekgu.silvertown.admin.model.controller;
+package com.baekgu.silvertown.admin.controller;
 
 import java.io.IOException;
 
@@ -17,12 +17,6 @@ import com.baekgu.silvertown.admin.model.service.AdminRegistService;
 @WebServlet("/admin/signup")
 public class AdminRegistServlet extends HttpServlet {
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-	}
-	
 	/**
 	 * 관리자 등록용
 	 */
