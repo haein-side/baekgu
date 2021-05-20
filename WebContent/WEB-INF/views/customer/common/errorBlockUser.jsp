@@ -9,8 +9,9 @@
 <body>
 	<script>
 		var errorMessage = "${ requestScope.errorMessage }";
-		movePath = "${ pageContext.servletContext.contextPath }";
-
+		movePath = "{ageContext.servletContext.contextPath}/WEB-INF/views/customer/common/main.jsp"
+		<%-- movePath = "${ pageContext.servletContext.contextPath }"; --%>
+		
 		alert(errorMessage);
 		location.replace(movePath);
 	</script>
