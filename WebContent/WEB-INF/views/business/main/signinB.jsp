@@ -133,7 +133,7 @@
 
         <div class="form-group">
           <label for="pwd">비밀번호</label>
-          <input type="text" class="form-control" id="pwd" placeholder="비밀번호" name="bPwd">
+          <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="bPwd">
           <small id="passwordHelp" class="form-text text-muted">영어와 숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)</small>
         </div>
      
@@ -141,7 +141,7 @@
           <input type="submit" id="bregsubmit" class="btn btn-info btn-submit" value="확인">
         </div>
 
-        <div class="buttontype">
+        <div class="buttontype" align="right">
           <input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick=""/>
             <a href=""></a>
         </div>

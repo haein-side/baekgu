@@ -69,8 +69,19 @@ public class UserService {
 		
 		int newUser = userDAO.insertNewUser(con, requestUser);
 		
+		
 		if(newUser > 0) {
 			commit(con);
+			
+			/* 기본이력서 생성 */
+			int newResume = userDAO.insertNewResume(con);
+			
+			if (newResume > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+			
 		} else {
 			rollback(con);
 		}

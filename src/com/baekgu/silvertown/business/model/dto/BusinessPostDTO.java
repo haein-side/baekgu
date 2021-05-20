@@ -4,15 +4,13 @@ import java.sql.Date;
 
 public class BusinessPostDTO {
 
-	private int postCode;
-	
+	private int postCode; // 해당 직종
 	private String decisionStatus; // 심사 상태 
 	private Date postDate; // 공고 등록일
 	private String postTitle; // 공고 제목
 	private String adName; // 구매한 광고이름 (없을수 있음)
 	private Date postStart; // 공고 시작일
 	private Date postEnd; // 공고 마감일
-	private String jobName; // 해당 직종
 	private int countOfApplicants; // 해당 공고에 대한 지원자수 
 	
 	public BusinessPostDTO() {
@@ -29,7 +27,6 @@ public class BusinessPostDTO {
 		this.adName = adName;
 		this.postStart = postStart;
 		this.postEnd = postEnd;
-		this.jobName = jobName;
 		this.countOfApplicants = countOfApplicants;
 	}
 
@@ -89,13 +86,6 @@ public class BusinessPostDTO {
 		this.postEnd = postEnd;
 	}
 
-	public String getJobName() {
-		return jobName;
-	}
-
-	public void setJobName(String jobName) {
-		this.jobName = jobName;
-	}
 
 	public int getCountOfApplicants() {
 		return countOfApplicants;
@@ -109,7 +99,7 @@ public class BusinessPostDTO {
 	public String toString() {
 		return "BusinessPostDTO [postCode=" + postCode + ", decisionStatus=" + decisionStatus + ", postDate=" + postDate
 				+ ", postTitle=" + postTitle + ", adName=" + adName + ", postStart=" + postStart + ", postEnd="
-				+ postEnd + ", jobName=" + jobName + ", countOfApplicants=" + countOfApplicants + "]";
+				+ postEnd + ", countOfApplicants=" + countOfApplicants + "]";
 	}
 	
 	
