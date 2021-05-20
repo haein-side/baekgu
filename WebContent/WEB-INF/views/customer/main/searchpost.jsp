@@ -17,7 +17,7 @@
     <script type="text/javascript">
     	$(function(){
     		
-			$("#industry").click(function(){
+			$(".industry").click(function(){
 				this.style.backgroundColor="orange";
 			});    		
     	});
@@ -53,23 +53,23 @@
                             <br><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="식당/서빙"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                         id="industry"value="매장관리"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="상담/영업"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="건설/생산/기술"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="간호/요양"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="교사/강사"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="운전/배달"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="사무/경리"></input>
-                                    <input type="button"class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
                                     	id="industry" value="기   타"></input>
                                 </div>
                             </div>

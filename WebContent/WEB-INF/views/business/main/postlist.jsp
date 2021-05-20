@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,28 +80,29 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>공고제목</th>
-              <th>상품구매</th>
-              <th>공고기간</th>
+              <th>공고심사결과</th>
               <th>공고등록일</th>
-              <th>공고업종</th>
+              <th>공고제목</th>
+              <th>광고위치(상품)</th>
+              <th>공고시작일</th>
+              <th>공고마감일</th>
               <th>지원자수</th>
-              <th>승인여부</th>
             </tr>
           </thead>
 
           <!-- for-loop 을 이용하여 공고 리스트 출력 -->
           <tbody>
-            <tr>
-              <td>백앤드 자바 개발자를 구합니다</td>
-              <td style="text-align: center;"> 미구매 <input type="button" value="구매하러가기"/></td>
-              <td>시작일 : 2021-02-10<br>마감일 : 2021-02-20</td>
-              <td>2021-02-08</td>
-              <td>IT</td>
-              <td style="text-align: center;">12 <input type="button" value="상세보기"/></td>
-              <td><a href="#">반려</a></td>
-
-            </tr>
+           <c:forEach var="post" items="${ requestScope.postList }">
+			<tr> 
+				<td><c:out value="${ post.decisionStatus }"/></td>
+				<td><c:out value="${ post.postDate }"/></td>
+				<td><c:out value="${ post.postTitle }"/></td>
+				<td><c:out value="${ post.adName }"/></td>
+				<td><c:out value="${ post.postStart }"/></td>
+				<td><c:out value="${ post.postEnd }"/></td>
+				<td><c:out value="${ post.countOfApplicants }"/></td>
+			</tr>
+			</c:forEach>
           </tbody>
           <!-- for loop 끝-->
         </table>
@@ -108,7 +110,7 @@
 
       <br>
       <br>
-      <div class="text-center">
+      <!-- <div class="text-center">
         <ul class="pagination"  align="center">
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -116,17 +118,170 @@
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
         </ul>
-      </div>
-
-   
-
+      </div> -->
+		
+	 <%-- 페이지 처리 --%>
+		<div class="pagination" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
+		</div>
   </div>
+</div>
 
 
 
   <div class="col-sm-1 sidenav">
   </div>
 </div>
+	<script>
+		const link = "${ pageContext.servletContext.contextPath }/business/postlist";
+		const searchLink = "${ pageContext.servletContext.contextPath }/business/postlist";
+			
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+		
+		if(document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+		
+		if(document.getElementById("searchStartPage")) {
+			const $searchStartPage = document.getElementById("searchStartPage");
+			$searchStartPage.onclick = function() {
+				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchPrevPage")) {
+			const $searchPrevPage = document.getElementById("searchPrevPage");
+			$searchPrevPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchNextPage")) {
+			const $searchNextPage = document.getElementById("searchNextPage");
+			$searchNextPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchMaxPage")) {
+			const $searchMaxPage = document.getElementById("searchMaxPage");
+			$searchMaxPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementsByTagName("td")) {
+			
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.backgroundColor = "green";
+					this.parentNode.style.cursor = "pointer";
+				}
+				
+				$tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "white";
+				}
+				
+				$tds[i].onclick = function() {
+					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
+					alert(this.parentNode.children[0].innerText);
+				}
+				
+			}
+			
+		}
+		
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
+		function seachPageButtonAction(text) {
+			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		}
+	</script>
+	
+
+
 
 <jsp:include page="../common/footer.jsp"/>
 
