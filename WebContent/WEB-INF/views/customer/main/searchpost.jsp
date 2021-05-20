@@ -8,11 +8,21 @@
     <title>단순 검색</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
-    <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/styleSP.css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/styleSP.css">
+    <script type="text/javascript">
+    	$(function(){
+    		
+			$(".industry").click(function(){
+				this.style.backgroundColor="orange";
+			});    		
+    	});
+/* for문으로 횟수 설정 */
+    </script>
 </head>
 
 <body>
@@ -31,11 +41,10 @@
                         </div>
                     </div>
                     <div align="center" id="btn_group" style="padding:50px;">
-                        <button class="btn1"
-                            style="width:200pt;height:60pt;font-size:x-large;">단순&nbsp;검색</button>
-                        <button class="btn1"
-                            style="width:200pt;height:60pt;font-size:x-large; margin-left: 160px;"
-                            disabled>상세&nbsp;검색</button>
+                        <input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+							x-large;text-align:center;" value="단순 검색"></input>
+                        <input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+                        x-large; margin-left: 160px;x-large;text-align:center;"value="상세 검색" onclick="location.href='${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost'"></input>
                     </div>
                     <div class="container">
                         <div class="section_title text-center">
@@ -44,23 +53,24 @@
                             <br><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
-                                    <input class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large; text-align:center;"
-                                    	id="restaurant" value="식당/서빙">
-                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;"
-                                        id="storemanagement">매장관리</button>
-                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">상담/영업</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">건설/생산/기술</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">간호/요양</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">교사/강사</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">운전/배달</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">사무/경리</button>
-                                    <button class="btn1"
-                                        style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">기&nbsp;타</button>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="식당/서빙"></input>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                        id="industry"value="매장관리"></input>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="상담/영업"></input>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="건설/생산/기술"></input>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="간호/요양"></input>
+                                    <input type="button"class="btn1" name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="교사/강사"></input>
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="운전/배달"></input>
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="사무/경리"></input>
+                                    <input type="button"class="btn1"  name="industry" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;text-align:center;"
+                                    	id="industry" value="기   타"></input>
                                 </div>
                             </div>
                         </div><hr>
@@ -101,7 +111,53 @@
             </div>
         </div>
       </div>
+      <script>
+/* 		winddow.onload=funcion(){
+			buttoncolor().onclick(){
+				this.style.backgroundColor="orange";
+			}	
+		} */
+		
+			
+			
+			
+			/*var color = ['black', 'orange'];*/
+			
+
+/* 		select().onclick = function(e){
+			
+			this.style.backgroundColor = "orange";
+		}
+ */
+/* 		function select() {
+			
+			var industy = document.getElementsById("industry")
+			
+			this.style.backgroundColor = "orange";
+		} */
+
+		
+/*          var industry = document.getElementById("industry");
+			
+         test3.onclick = function(e){
+
+            this.style.backgroundColor = "red";
+            this.style.color = "white";
+
+            // 넘어노느 값이 있으면 e값을 대입, 없으면 window.event값을 대입(IE는 e값이 안넘어옴)
+            var event = e || window.event;
+
+            var area2 = document.getElementById("area2");
+
+            for(var key in event){
+                area2.innerHTML += key + " : " + event[key] + "<br>";
+            } */
+
+</script>
+      
+      
 </form>
 <%@ include file="../common/footer.jsp" %>
+
 </body>
 </html>

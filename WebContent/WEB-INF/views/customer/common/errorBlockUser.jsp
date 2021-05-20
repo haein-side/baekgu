@@ -9,7 +9,7 @@
 <body>
 	<script>
 		var errorMessage = "${ requestScope.errorMessage }";
-		movePath = "{ageContext.servletContext.contextPath}/WEB-INF/views/customer/common/main.jsp"
+		movePath = "${ pageContext.servletContext.contextPath }/user/toMain";
 		<%-- movePath = "${ pageContext.servletContext.contextPath }"; --%>
 		
 		alert(errorMessage);

@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/logout")
-public class UserLogoutServlet extends HttpServlet {
+@WebServlet("/user/toSignup")
+public class ToSignupServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 로그아웃 = session을 종료 처리하고 redirect로 메인 페이지 가기
-		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath()); // ContectPath는 /baekgu
-		
+		System.out.println("회원가입으로 가는 서블릿 도착");
+		String path = "/WEB-INF/views/customer/main/signup.jsp";
+		request.getRequestDispatcher(path).forward(request, response);
+
 	}
 
 }

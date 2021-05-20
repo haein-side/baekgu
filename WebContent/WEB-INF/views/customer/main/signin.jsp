@@ -32,13 +32,13 @@
 		    <button class="btn btn-lg btn-primary btn-block" type="submit" style="height: 50px; margin-left: 110px; margin-top: 30px;">들어가기</button><br><br>
         </div>
         <div class="atag">
-            <p style="padding-right: 5px;">아직 백구 회원이 아니세요?&nbsp;<a href="">백구 회원가입하러 가기</a></p>
-            <p style="padding-right: 5px;">비밀번호가 기억나지 않으시나요?&nbsp;<a href="">비밀번호 찾으러 가기</a></p>
-            <p style="padding-right: 5px;">기업회원이세요?&nbsp;<a href="">기업회원 로그인하러 가기</a></p><br>            
+            <p style="padding-right: 5px;">아직 백구 회원이 아니세요?&nbsp;<a href="${ pageContext.servletContext.contextPath }/user/toSignup">백구 회원가입하러 가기</a></p>
+            <p style="padding-right: 5px;">비밀번호가 기억나지 않으시나요?&nbsp;<a href="${ pageContext.servletContext.contextPath }/user/toFindpassword">비밀번호 찾으러 가기</a></p>
+            <p style="padding-right: 5px;">기업회원이세요?&nbsp;<a href="${ pageContext.servletContext.contextPath }/business/login">기업회원 로그인하러 가기</a></p><br>            
 
         </div><br><br><br>
         <div class="buttontype">
-        	<input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick="">
+        	<input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick="location.href='${ pageContext.servletContext.contextPath }/admin/login'">
         </div>
       </form>
     </div>
