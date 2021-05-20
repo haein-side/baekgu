@@ -44,8 +44,8 @@
                             <br><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
-                                    <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;"
-                                    	id="restaurant">식당/서빙</button>
+                                    <input class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large; text-align:center;"
+                                    	id="restaurant" value="식당/서빙">
                                     <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;"
                                         id="storemanagement">매장관리</button>
                                     <button class="btn1" style=" margin: 15px; width : 200pt;height: 60pt;font-size:x-large;">상담/영업</button>
