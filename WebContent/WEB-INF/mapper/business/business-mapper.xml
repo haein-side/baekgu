@@ -85,6 +85,7 @@ select
        , ?
        , LAST_INSERT_ID()
        )
+    </entry>
 	<entry key="selectTotalCount">
 		select
 		       COUNT(*)
