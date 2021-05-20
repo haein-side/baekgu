@@ -37,11 +37,8 @@ public class PageNation {
 		
 		/* 조회할 시작 번호와 마지막 행 번호를 계산 */
 		startRow = (pageNo - 1) * limit; // 4페이지 (4-1) * 10  31 1 1
-<<<<<<< HEAD
 		endRow = startRow + limit -1;
-=======
 		endRow = 10;
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 		
 		PageInfoDTO pageInfo = new PageInfoDTO(pageNo,totalCount,limit,buttonAmount,maxPage,startPage,endPage,startRow,endRow);
 		
