@@ -71,7 +71,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/member">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/memberList">
                                 <i class="icon_house_alt"></i>
                                 <span>회원 정보</span>
                             </a>

@@ -2,11 +2,9 @@
 <jsp:directive.page language="java"
    contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
 <jsp:directive.page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,7 +141,6 @@
 										<td>2021/05/02</td>
 										<td>1</td>
 									</tr>
-=======
 									<c:forEach var="admin" items="${ requestScope.adminList }">
 										<tr>
 											<td><c:out value="${ admin.adminId }" /></td>
@@ -154,7 +151,6 @@
 											<td><c:out value="${ admin.adminRole }" /></td>
 										</tr>
 									</c:forEach>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 
 								</tbody>
 							</table>

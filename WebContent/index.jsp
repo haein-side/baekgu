@@ -23,7 +23,7 @@
 	 <%-- <jsp:forward page="/WEB-INF/views/business/main/main.jsp"/> --%>
 
 	<!-- 김유진 테스트 -->
-	<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp"/>
+	<jsp:forward page="/WEB-INF/views/admin/main/MemberInfo.jsp"/>
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/> --%>

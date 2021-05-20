@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM USER
+	</entry>
+	<entry key="selectMemberList">
+		SELECT
+		       USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_GENDER
+		     , USER_ADDRESS
+		     , USER_REGISTER_DATE
+		     , USER_BLOCK
+		  FROM USER
+		 LIMIT ?,?
+	</entry>
+
+</properties>
