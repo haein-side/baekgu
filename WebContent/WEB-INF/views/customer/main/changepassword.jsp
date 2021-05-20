@@ -21,7 +21,7 @@
 	
 	<div class="wrapper">
     <form class="form-signin" style="margin-top: 15%; height: 650px;">        
-      <h1 class="form-signin-heading" style="height: 100px; margin-top: 100px; color: orange;">비밀번호 변경하기</h1>
+      <h1 class="form-signin-heading" style="height: 100px; margin-top: 100px; color: orange;">비밀번호 재설정</h1>
         <div style="margin-bottom: 25px;">
 			<lable class="text-label"><b>변경할 비밀번호</b></lable>
         	<input type="text" class="form-control" name="changepassword" placeholder="" required="" autofocus=""/>

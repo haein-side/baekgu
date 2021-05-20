@@ -165,6 +165,13 @@ public class UserDAO {
 		return newUser;
 	}
 
+	
+	/**
+	 * 아이디 중복체크
+	 * @param con
+	 * @param userPhone
+	 * @return
+	 */
 	public String checkId(Connection con, String userPhone) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -206,6 +213,29 @@ public class UserDAO {
 		
 		return result;
 		
+	}
+
+	public int insertNewResume(Connection con) {
+		PreparedStatement pstmt = null;
+		
+		int newResume = 0;
+		
+		String query = prop.getProperty("insertNewResume");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			newResume = pstmt.executeUpdate();
+			
+			System.out.println("newResumeDAO에 왔음");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return newResume;
 	}
 
 	

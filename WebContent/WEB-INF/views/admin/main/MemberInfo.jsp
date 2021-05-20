@@ -75,7 +75,16 @@
 										<td><c:out value="${ member.name }" /></td>
 										<td><c:out value="${ member.phone }" /></td>
 										<td><c:out value="${ member.bday }" /></td>
-										<td><c:out value="${ member.block }" /></td>
+										<td>
+										<c:choose>
+			                              <c:when test="${ member.block eq 0 }">
+			                              <c:out value="미차단"/>
+			                              </c:when>
+			                              <c:when test="${ member.block eq 1 }">
+			                              <c:out value="차단"/>
+			                              </c:when>
+			                            </c:choose>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -245,7 +254,10 @@
 				
 				$tds[i].onclick = function() {
 					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
-					alert(this.parentNode.children[0].innerText);
+					/* alert(this.parentNode.children[0].innerText); */ //유저코드를 알럿으로 띄워 알 수 있다.
+					const no = this.parentNode.children[0].innerText;
+					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
+					
 				}
 				
 			}

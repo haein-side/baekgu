@@ -31,6 +31,11 @@ public class MemberDAO {
 		}
 	}
 
+	/**
+	 * 전체 회원 수를 조회하고 리턴
+	 * @param con
+	 * @return
+	 */
 	public int selectTotalCount(Connection con) {
 		
 		Statement stmt = null;
@@ -61,6 +66,12 @@ public class MemberDAO {
 		return totalCount;
 	}
 
+	/**
+	 * 전체 회원의 정보를 조회하고 리턴
+	 * @param con
+	 * @param pageInfo
+	 * @return
+	 */
 	public List<MemberDTO> selectMemberList(Connection con, PageInfoDTO pageInfo) {
 		
 		PreparedStatement pstmt = null;
@@ -73,10 +84,10 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pageInfo.getStartRow());
-			pstmt.setInt(2, pageInfo.getEndRow());
+			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
-			System.out.println("getEndRow : " + pageInfo.getEndRow());
+			
 			
 			rset = pstmt.executeQuery();
 			
@@ -89,9 +100,6 @@ public class MemberDAO {
 				member.setName(rset.getString("USER_NAME"));
 				member.setPhone(rset.getString("USER_PHONE"));
 				member.setBday(rset.getDate("USER_BDAY"));
-				member.setGender(rset.getString("USER_GENDER"));
-				member.setAddress(rset.getString("USER_ADDRESS"));
-				member.setRday(rset.getDate("USER_REGISTER_DATE"));
 				member.setBlock(rset.getInt("USER_BLOCK"));
 				
 				memberList.add(member);
@@ -113,6 +121,58 @@ public class MemberDAO {
 		
 		
 		return memberList;
+	}
+
+	/**
+	 * 선택한 회원의 정보를 리턴
+	 * @param con
+	 * @param no
+	 * @return
+	 */
+	public MemberDTO selectMemberDetail(Connection con, int no) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		MemberDTO memberDetail = null;
+		
+		String query = prop.getProperty("selectMemberDetail");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				memberDetail = new MemberDTO();
+				
+				memberDetail.setCode(rset.getInt("USER_CODE"));
+				memberDetail.setName(rset.getString("USER_NAME"));
+				memberDetail.setPhone(rset.getString("USER_PHONE"));
+				memberDetail.setBday(rset.getDate("USER_BDAY"));
+				memberDetail.setGender(rset.getString("USER_GENDER"));
+				memberDetail.setAddress(rset.getString("USER_ADDRESS"));
+				memberDetail.setRday(rset.getDate("USER_REGISTER_DATE"));
+				memberDetail.setBlock(rset.getInt("USER_BLOCK"));
+				
+				System.out.println("회원 정보 : " + memberDetail);
+			}
+			
+			
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		
+		return memberDetail;
 	}
 
 }

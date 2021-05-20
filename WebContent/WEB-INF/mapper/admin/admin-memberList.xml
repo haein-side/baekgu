@@ -17,7 +17,21 @@
 		     , USER_REGISTER_DATE
 		     , USER_BLOCK
 		  FROM USER
+	  ORDER BY USER_CODE
 		 LIMIT ?,?
+	</entry>
+	<entry key="selectMemberDetail">
+		SELECT
+		       USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_GENDER
+		     , USER_ADDRESS
+		     , USER_REGISTER_DATE
+		     , USER_BLOCK
+		  FROM USER
+		 WHERE USER_CODE = ? 
 	</entry>
 
 </properties>

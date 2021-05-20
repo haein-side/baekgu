@@ -1,7 +1,6 @@
 package com.baekgu.silvertown.admin.model.dto;
 
 import java.sql.Date;
-import java.util.List;
 
 public class MemberDTO implements java.io.Serializable{
 	

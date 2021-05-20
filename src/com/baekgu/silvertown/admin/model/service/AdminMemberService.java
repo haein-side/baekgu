@@ -1,7 +1,9 @@
 package com.baekgu.silvertown.admin.model.service;
 
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -10,12 +12,12 @@ import com.baekgu.silvertown.admin.model.dao.MemberDAO;
 import com.baekgu.silvertown.admin.model.dto.MemberDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
-public class AdminMemberListService {
+public class AdminMemberService {
 	
-	private final MemberDAO listDAO;
+	private final MemberDAO memberDAO;
 	
-	public AdminMemberListService() {
-		listDAO = new MemberDAO();
+	public AdminMemberService() {
+		memberDAO = new MemberDAO();
 	}
 
 	/** 
@@ -26,7 +28,7 @@ public class AdminMemberListService {
 		
 		Connection con = getConnection();
 		
-		int totalCount = listDAO.selectTotalCount(con);
+		int totalCount = memberDAO.selectTotalCount(con);
 		
 		close(con);
 		
@@ -42,9 +44,29 @@ public class AdminMemberListService {
 		
 		Connection con = getConnection();
 		
-		List<MemberDTO> memberList = listDAO.selectMemberList(con, pageInfo);
+		List<MemberDTO> memberList = memberDAO.selectMemberList(con, pageInfo);
+		
+		close(con);
 		
 		return memberList;
+	}
+	
+
+	/**
+	 * 회원 상세보기(이력서) 보기용 메소드
+	 * @param no
+	 * @return
+	 */
+	public MemberDTO selectMemberDetail(int no) {
+		
+		Connection con = getConnection();
+		MemberDTO memberDetail = null;
+		
+		memberDetail = memberDAO.selectMemberDetail(con, no);
+		
+		close(con);
+		
+		return memberDetail;
 	}
 
 }

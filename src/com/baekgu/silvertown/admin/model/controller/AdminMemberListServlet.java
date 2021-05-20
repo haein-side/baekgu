@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.baekgu.silvertown.admin.model.dto.AdminDTO;
 import com.baekgu.silvertown.admin.model.dto.MemberDTO;
-import com.baekgu.silvertown.admin.model.service.AdminMemberListService;
+import com.baekgu.silvertown.admin.model.service.AdminMemberService;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.paging.PageNation;
 
@@ -24,7 +24,7 @@ public class AdminMemberListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String currentPage = request.getParameter("currentPage");
-		int pageNo = 1;
+		int pageNo = 0;
 		
 		if(currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
@@ -39,13 +39,13 @@ public class AdminMemberListServlet extends HttpServlet {
 		
 		/* 전체 게시물의 갯수가 필요하다 */
 		/* DB에서 먼저 전체 게시물의 갯수를 조회한다 */
-		AdminMemberListService listService = new AdminMemberListService();
+		AdminMemberService listService = new AdminMemberService();
 		int totalCount = listService.selectTotalCount();
 		
 		System.out.println("totalCount : " + totalCount);
 		
 		/* 한 페이지에서 보여 줄 게시물의 수 */
-		int limit = 2;
+		int limit = 10;
 		
 		/* 한 번에 보여질 페이징 버튼 수 */
 		int buttonAmount = 5;

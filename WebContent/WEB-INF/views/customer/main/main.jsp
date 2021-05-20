@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+	<meta name="author" content="FREEHTML5.CO"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -43,27 +44,48 @@
 	<!-- 로딩 중일 때 이미지 -->
 	<!-- <div class="fh5co-loader"></div> -->
 	
-	
+
 	<div id="fh5co-page">
-		<section id="fh5co-header">
-			<div class="container">
-				<nav role="navigation">
-					<ul class="pull-left left-menu">
-						
-					</ul>
-					<h1 id="fh5co-logo">
+		<c:if test="${ empty sessionScope.loginUser }">	
+			<section id="fh5co-header">
+				<div class="container">
+					<nav role="navigation">
+						<ul class="pull-left left-menu">		
+						</ul>
+						<h1 id="fh5co-logo">
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
-						<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
-					</h1>
-					<ul class="pull-right right-menu">
+							<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+						</h1>
+					
+						<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
-						<li><a href="${ pageContext.servletContext.contextPath }/user/tologin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
-						<li class="fh5co-cta-btn"><a href="#"style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
+							<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
+							<li class="fh5co-cta-btn"><a href="${ pageContext.servletContext.contextPath }/user/toSignup" style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+		</c:if>
 		<!-- #fh5co-header -->
+		<c:if test="${ !empty sessionScope.loginUser }">
+			<section id="fh5co-header">
+				<div class="container">
+					<nav role="navigation">
+						<ul class="pull-left left-menu">		
+						</ul>
+						<h1 id="fh5co-logo">
+						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
+							<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+						</h1>
+					
+						<ul class="pull-right right-menu" style="align:left;">
+						<!-- 로그인, 회원가입 -->
+							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
+						</ul>	
+					</nav>
+				</div>
+			</section>
+		</c:if>
 
 		<section id="fh5co-hero" class="js-fullheight" style="background-image: url(${pageContext.request.contextPath}/RESOURCES/IMAGES/grass.jpg); height:561px;" data-next="yes">
 			<div class="fh5co-overlay"></div>
@@ -75,7 +97,7 @@
 							<h2 class="animate-box" style="font-family: BME; font-size: 90px;">백세 구인구직, 백구</h2>
 							<p class="animate-box"></a> 
 								<!-- 채용공고 검색 버튼 / a 태그 뒤에 채용공고 검색 페이지로 이동하게 링크 수정해야 -->
-								<a href="http://freehtml5.co" target="_blank" class="btn btn-primary" style="font-family: icomoon; font-size: 40px;">채용공고 검색</a></p>
+								<a href="${ pageContext.servletContext.contextPath }/user/toSearchPost" class="btn btn-primary" style="font-family: icomoon; font-size: 40px;">채용공고 검색</a></p>
 						</div>
 					</div>
 				</div>
