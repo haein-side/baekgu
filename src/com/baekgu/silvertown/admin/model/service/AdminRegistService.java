@@ -1,7 +1,8 @@
 package com.baekgu.silvertown.admin.model.service;
 
-import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import com.baekgu.silvertown.admin.model.dto.AdminDTO;
 public class AdminRegistService {
 
 	/**
-	 * 관리자 등록용
+	 * 새관리자 등록용
 	 * 
 	 * @param requestadmin
 	 * @return
@@ -30,6 +31,8 @@ public class AdminRegistService {
 			rollback(con);
 			System.out.println("insert 실패(롤백)");
 		}
+		
+		close(con);
 
 		return result;
 	}
@@ -44,6 +47,22 @@ public class AdminRegistService {
 		Connection con = getConnection();
 		int result = new AdminRegistDAO().adminIdSelect(con, adminId);
 		
+		close(con);
+		
+		return result;
+	}
+
+	/**
+	 * 관리자 아이디를 통한 상세보기용 
+	 * @param adminId
+	 * @return
+	 */
+	public AdminDTO selectOneAdminId(String adminId) {
+		
+		Connection con = getConnection();
+		AdminDTO result = new AdminRegistDAO().selectOndAdminId(con, adminId);
+		
+		close(con);
 		
 		return result;
 	}

@@ -43,6 +43,7 @@
 	rel="stylesheet">
 
 </head>
+
 <body>
 <jsp:include page="../common/header.jsp"/>
 
@@ -67,8 +68,7 @@
 						<header class="panel-heading">
 							관리자 및 직원 관리
 							<button class="btn btn-success" style="margin-left: 30px;"
-								type="button" onClick="location.href='Registration.html'">
-								등록하기</button>
+								type="button" onClick="Registration()">등록하기</button>
 							<a class="btn btn-warning" data-toggle="modal" href="#myModal2"
 								style="margin-left: 30px;"> 삭제하기 </a>
 						</header>
@@ -91,8 +91,8 @@
 						<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
                            <c:forEach var="admin" items="${ requestScope.adminList }">
                               <tr>
-                              	  <th><input type="checkbox" id="checkAll"></th>
-                                 <td><c:out value="${ admin.adminId }"  /></td>
+                              	 <th><input type="checkbox" id="checkAll"></th>
+                                 <td><c:out value="${ admin.adminId }"/></td>
                                  <td><c:out value="${ admin.adminPwd }" /></td>
                                  <td><c:out value="${ admin.adminName }" /></td>
                                  <td><c:out value="${ admin.adminEmail }" /></td>
@@ -199,8 +199,16 @@
 					</section>
 		</section>
 
+<!--  등록하기 버튼 클릭 시  -->
+      <script>
+           function Registration(){
+                const link = "${ pageContext.servletContext.contextPath }/admin/signup";
+                location.href = link;
+          }
+     </script>
 
-		<script>
+
+	<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/search";
 	
 
@@ -268,14 +276,15 @@
 		}
 
 		
+		/* td태그 안에 상세 보기 용 '/admin/adminid?id' 경로 지정  */
 		if (document.getElementsByTagName("td")) {
 
 			const $tds = document.getElementsByTagName("td");
 			for (let i = 0; i < $tds.length; i++) {
 
 				$tds[i].onclick = function() {
-					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
-					alert(this.parentNode.children[0].innerText);
+	
+					location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id=" + this.parentNode.children[1].innerText;
 				}
 
 			}
