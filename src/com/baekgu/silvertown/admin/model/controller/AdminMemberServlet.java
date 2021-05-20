@@ -8,17 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HomePageInfoServlet
+ * Servlet implementation class AdminMemberServlet
  */
-@WebServlet("/admin/homepageinfo")
-public class HomePageInfoServlet extends HttpServlet {
-	
+@WebServlet("/admin/member")
+public class AdminMemberServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "/WEB-INF/views/admin/main/HomePageInfo.jsp";
+		
+		String path = "/WEB-INF/views/admin/main/MemberInfo.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		
 	}
 
