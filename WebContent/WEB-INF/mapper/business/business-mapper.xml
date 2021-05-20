@@ -17,4 +17,73 @@ select
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
  WHERE HR_ID = ?
 	</entry>
+	<entry key="insertDecisionList">
+       insert
+         into decision_list 
+       (
+         D_LIST_REASON
+       , D_LIST_DATE
+       , ADMIN_ID
+       , DECISION_CODE
+       , D_LIST_TYPE_CODE
+       )
+       values
+      (
+        null
+      , null
+      , null
+      , 1
+      , 3
+ 	  )
+	</entry>
+	<entry key="insertBusiness">
+       insert
+         into business 
+       (
+         B_NAME
+       , B_OWNER
+       , B_NUMBER 
+       , B_ADDRESS  
+       , B_PHONE 
+       , B_BLOCK 
+       , B_PROFIT 
+       , B_LOGO 
+       , B_CATEGORY_CODE 
+       , D_LIST_CODE 
+       )
+       values
+       (
+         ?
+       , ? 
+       , ?  
+       , ?
+       , ?
+       , 0
+       , ?
+       , ?
+       , ?
+       , LAST_INSERT_ID()
+       )
+	</entry>
+	<entry key="insertHr">
+       insert
+         into HR
+       (
+         hr_id
+       , HR_PWD 
+       , HR_NAME 
+       , HR_PHONE 
+       , HR_EMAIL 
+       , B_CODE 
+       )
+       values
+       (
+         ?
+       , ?
+       , ?
+       , ?	
+       , ?
+       , LAST_INSERT_ID()
+       )
+	</entry>
 </properties>

@@ -1,12 +1,25 @@
 package com.baekgu.silvertown.business.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.baekgu.silvertown.business.model.dto.BusinessDTO;
+import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.serivce.BusinessService;
 
 
 
@@ -23,34 +36,139 @@ public class BusinessSignUpServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setCharacterEncoding("utf-8");
 		
-		String businessName = request.getParameter("bName");
-		String businessNum = request.getParameter("bNo1") + request.getParameter("bNo2") + request.getParameter("bNo3");
-		String ownerName = request.getParameter("ownerName");
-		int profit = Integer.parseInt(request.getParameter("profit"));
-		String businessPhone = request.getParameter("bPhone");
-		String businessAddress = request.getParameter("address1") + request.getParameter("address2");
-		String hrId = request.getParameter("hrId");
-		String hrPwd = request.getParameter("enteredPwd");
-		String hrName = request.getParameter("hrName");
-		String hrPhone = request.getParameter("hrPhone");
-		String hrEmail = request.getParameter("hrEmail");
-		
-		System.out.println(businessName);
-		System.out.println(businessNum);
-		System.out.println(ownerName);
-		System.out.println(profit);
-		System.out.println(businessPhone);
-		System.out.println(businessAddress);
-		System.out.println(hrId);
-		System.out.println(hrPwd);
-		System.out.println(hrName);
-		System.out.println(hrPhone);
-		System.out.println(hrEmail);
-		
+		String imageRoot = "";
+		if(ServletFileUpload.isMultipartContent(request)) {
 			
+			/* 이미지 경로 설정하기 */
+			// WebContent 경로 설정하기
+			String rootContext =  getServletContext().getRealPath("/");
+			// 이미지 크기 설정
+			int maxFileSize = 1024 * 1024 * 10;
+			
+			System.out.println("rootContext : "  + rootContext);
+			// 파일 저장 경로 설정하기
+			String imageFilesDirectory = rootContext + "RESOURCES/IMAGES/bLogos/";
+			
+			BusinessDTO business = null;
+			HrDTO hr = null;
+			
+			Map<String, String> parameter = new HashMap<>();
+			
+			/* 파일을 업로드할 시 최대 크기나 임시 저장할 폴더의 경로 등을 포함하기 위한 인스턴스이다. */
+			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+	        fileItemFactory.setRepository(new File(imageFilesDirectory));
+	        fileItemFactory.setSizeThreshold(maxFileSize);		
+	        
+	        /* 서블릿에서 기본 제공하는거 말고 꼭 commons fileupload 라이브러이에 있는 클래스로 임포트 해야 한다. */
+	        ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
+	        
+	        
+	        try {
+	        	// request 를 파싱해서 FileIte으로 변환
+				List<FileItem> fileItems = fileUpload.parseRequest(request);
+					
+				// fileItems 리스트안에 파일 꺼내오기
+				for(int i = 0; i < fileItems.size(); i++) {
+					FileItem item = fileItems.get(i);
+				
+					// 폼 데이터 이면 true 파일 데이터면 false 를 반환
+					if(!item.isFormField()) {
+						
+						// 파일의 크기가 0이상일 시에만 파일을 저장한다.
+						if(item.getSize() > 0) {
+							
+							String fileName = item.getFieldName();
+							String originFileName = item.getName();
+							
+							System.out.println("fileName : " + fileName);
+							System.out.println("originName : " + originFileName);
+							
+							// . 의 위치를 변수에 담는다
+							int dot = originFileName.lastIndexOf(".");
+							System.out.println("dot : " + dot);
+							
+							// . 이후의 확장자 명을 변수에 담는다
+							String ext = originFileName.substring(dot);
+							System.out.println("ext : " + ext);
+							
+							// 파일 이름들을 랜덤으로 만든다 (중복을 피하게 위해) 
+							String randomFileName = UUID.randomUUID().toString().replace("-","")+ ext;
+							
+							/* 저장할 파일의 경로와 이름을 담을 객체를 생성 */
+							File storeFile = new File(imageFilesDirectory + "/" + randomFileName);
+							
+							item.write(storeFile);
+							System.out.println("오셨어요???");
+							
+							imageRoot = imageFilesDirectory + "/" + randomFileName;
+						}
+						
+					} else {
+						/* 폼 데이터인 경우 */
+						/* 전송된 폼의 name은 getFiledName()으로 받아오고, 해당 필드의 value는 getString()으로 받아온다. 
+						 * 하지만 인코딩 설정을 하더라도 전송되는 파라미터는 ISO-8859-1로 처리된다.
+						 * 별도로 ISO-8859-1로 해석된 한글을 UTF-8로 변경해주어야 한다.
+						 * */
+//						parameter.put(item.getFieldName(), item.getString());
+						parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
+						
+					}
+					
+				}
+				
+				// map에 담긴 기업 값 가져오기
+				String bName =  parameter.get("bName");
+				String bNumber = parameter.get("bNo1") + parameter.get("bNo2") + parameter.get("bNo3");
+				String bPhone = parameter.get("bPhone");
+				String bOwner = parameter.get("ownerName");
+				int bType = Integer.parseInt(parameter.get("BC"));
+				Long profit = Long.parseLong(parameter.get("profit"));
+				String bAddress = parameter.get("zipCode") + "&" + parameter.get("address1") + "&" + parameter.get("address2").replace(" ", "");
+				
+				
+				business = new BusinessDTO();
+				
+				business.setbName(bName);
+				business.setbNumber(bNumber);
+				business.setbPhone(bPhone);
+				business.setbOwner(bOwner);
+				business.setProfit(profit);
+				business.setbLogo(imageRoot);
+				business.setbCategoryCode(bType);
+				business.setbAddress(bAddress);
+				
+				// map 에 담긴 담당자 값 가져오기
+								
+				String hrId = parameter.get("hrId");
+				String hrPwd = parameter.get("enteredPwd");
+				String hrName = parameter.get("hrName");
+				String hrPhone = parameter.get("hrPhone");
+				String hrEmail = parameter.get("hrEmail");
+				
+				hr = new HrDTO();
+				
+				hr.setHrId(hrId);
+				hr.setHrPwd(hrPwd);
+				hr.setHrName(hrName);
+				hr.setHrPhone(hrPhone);
+				hr.setHrEmail(hrEmail);
+				
+				
+
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	        
 		
+
+		
+		BusinessService service = new BusinessService();
+		
+		int result = service.insertNewBusiness(business, hr);
+		
+		}
 
 	}
 
