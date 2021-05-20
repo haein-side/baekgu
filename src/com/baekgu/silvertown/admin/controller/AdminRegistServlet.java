@@ -18,6 +18,15 @@ import com.baekgu.silvertown.admin.model.service.AdminRegistService;
 public class AdminRegistServlet extends HttpServlet {
 
 	/**
+	 * 등록하기를 눌렀을 때 넘어가게하려고 ! 
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String path = "/WEB-INF/views/admin/main/Registration.jsp";
+		request.getRequestDispatcher(path).forward(request, response);
+		
+	}
+	/**
 	 * 관리자 등록용
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

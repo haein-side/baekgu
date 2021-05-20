@@ -29,6 +29,11 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+        <!-- ======================================================= Theme Name:
+        NiceAdmin Theme URL:
+        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
+        BootstrapMade Author URL: https://bootstrapmade.com
+        ======================================================= -->
     </head>
   <body>
   <jsp:include page="../common/header.jsp"/>
@@ -60,40 +65,32 @@
                             <h2>개인정보</h2>
                           <div class="row">
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>고객코드 </span>:  <c:out value="${ requestScope.member.code }"/></p>
+                              <p><span>고객코드 </span>: 1 </p>
                             </div>
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>이름 </span>: <c:out value="${ requestScope.member.name }"/></p>
+                              <p><span>이름 </span>: 김홍길</p>
                             </div>
                             <div class="bio-row">
-                              <p><span>전화번호</span>: <c:out value="${ requestScope.member.phone }"/></p>
+                              <p><span>전화번호</span>: 010-1234-2222</p>
                             </div>
                             <div class="bio-row">
-                              <p><span>생년월일 </span>: <c:out value="${ requestScope.member.bday }"/></p>
+                              <p><span>생년월일 </span>: 1965/11/11</p>
                             </div>
                             <div class="bio-row">
-                              <p><span>성별 </span>: <c:out value="${ requestScope.member.gender }"/></p>
+                              <p><span>성별 </span>: 남</p>
                             </div>
                             <div class="bio-row">
-                              <p><span>주소 </span>: <c:out value="${ requestScope.member.address }"/></p>
+                              <p><span>주소 </span>: 서울특별시 어쩌구 저쩌동</p>
                             </div>
                             <div class="bio-row">
-                              <c:set var="block" value="${ requestScope.member.block }"/>
-                              <c:choose>
-                              <c:when test="${ block eq 0 }">
-                              <p><span>차단여부 </span>: <c:out value="미차단"/></p>
-                              </c:when>
-                              <c:when test="${ block eq 1 }">
-                              <p><span>차단여부 </span>: <c:out value="차단"/></p>
-                              </c:when>
-                              </c:choose>
+                              <p><span>차단여부 </span>: Y</p>
                             </div>
-                           <!--  <div class="bio-row">
+                            <div class="bio-row">
                               <p><span>차단코드 </span>: R1</p>
-                            </div> -->
-                            <!-- <div class="bio-row">
+                            </div>
+                            <div class="bio-row">
                                 <p><span>관리자명 </span>: 김사원</p>
-                              </div> -->
+                              </div>
                         </div>
                       </section>
                     </div>
@@ -104,16 +101,20 @@
                               <h2>이력서 </h2>
                             <div class="row">
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>이력서코드 </span>: <c:out value="${ requestScope.member.rCode }"/></p>
+                                <p><span>이력서코드 </span>: 1 </p>
                               </div>
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>비상연락망 </span>: <c:out value="${ requestScope.member.rPhone }"/></p>
+                                <p><span>비상연락망 </span>: </p>
                               </div>
                               <div class="bio-row">
-                                <p><span>자기소개 : </span>: <c:out value="${ requestScope.member.rLetter }"/></p>
+                                <p><span>자기소개 : </span>
+                                    안녕하세요 저는 김홍길입니다. 제 주특기는 밥먹기입니다.
+                                    뽑아주신다면 열심히 하겠습니다. 
+                                    커피를 좋아해서 이 일을 지원하게 됐습니다. 열심히 하겠습니다.
+                                </p>
                               </div>
                               <div class="bio-row">
-                                <p><span>우대조건 </span>: <c:out value="${ requestScope.member.rAdvan }"/></p>
+                                <p><span>우대조건 </span>: 자차 출퇴 가능 </p>
                               </div>
                           </div>
                           <a class="btn btn-danger" href="#">

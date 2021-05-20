@@ -14,20 +14,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/styleSP.css">
+    
     <script type="text/javascript">
-/*     	jQuery(document).ready(function() {
-        	$('.btn1').click(function() {
-          /*  $('.btn1').removeClass("btnSelected");
-            $(this).addClass("btnSelected") */; 
-/* 
-             jQuery(this).toggleClass("active");
-             
-       	});    
-        
-        
-        	$("#btnSubmit").click(function(){
+
+        	/*$("#btnSubmit").click(function(){
           
-           		/* var location =  */
+           		/* var location =  
            		// for문 + if문으로 .getElementById("ln") = true
            		var result = document.getElementById("l1").value;
            		console.log(result);
@@ -38,25 +30,7 @@
            
       		}); 
    		});   */
-     */
-    
-    
-    
-/*     	$(function(){
-    		
-			$(".btn1").click(function(){
-				this.style.backgroundColor="orange";
-				
-	            // 넘어노느 값이 있으면 e값을 대입, 없으면 window.event값을 대입(IE는 e값이 안넘어옴)
-	            var event = e || window.event;
 
-	            var btn1 = document.getElementById("btn1");
-
-	            for(var key in event){
-	                area2.innerHTML += key + " : " + event[key] + "<br>";
-	                Console.log(event[key]);
-			});    		
-    	}); */
 /* for문으로 횟수 설정 */
     </script>
 </head>
@@ -198,7 +172,6 @@
                            			<input type="checkbox" id="i8" name = "industry1" style="display: none" value="사무/경리">  
 									<label for="i9" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">기타</p></label> 
                            			<input type="checkbox" id="i9" name = "industry1" style="display: none" value="기타">  
-
                                 </div>
                             </div>
                         </div><hr>
@@ -253,7 +226,6 @@
     					console.log(data);
     					var jobArray = "";
     					
-    					
     				},
     				error: function(xhr, status, message){
     					console.log(message);
@@ -262,52 +234,6 @@
     			});
             });
     </script>
-
-<script>
-/* 		winddow.onload=funcion(){
-			buttoncolor().onclick(){
-				this.style.backgroundColor="orange";
-			}	
-		} */
-		
-			
-			
-			
-			/*var color = ['black', 'orange'];*/
-			
-
-/* 		select().onclick = function(e){
-			
-			this.style.backgroundColor = "orange";
-		}
- */
-/* 		function select() {
-			
-			var industy = document.getElementsById("industry")
-			
-			this.style.backgroundColor = "orange";
-		} */
-
-		
-/*          var industry = document.getElementById("industry");
-			
-         test3.onclick = function(e){
-
-            this.style.backgroundColor = "red";
-            this.style.color = "white";
-
-            // 넘어노느 값이 있으면 e값을 대입, 없으면 window.event값을 대입(IE는 e값이 안넘어옴)
-            var event = e || window.event;
-
-            var area2 = document.getElementById("area2");
-
-            for(var key in event){
-                area2.innerHTML += key + " : " + event[key] + "<br>";
-            } */
-
-</script>
-      
-      
 </form>
 <%@ include file="../common/footer.jsp" %>
 

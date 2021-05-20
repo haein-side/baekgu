@@ -8,11 +8,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+
+import com.baekgu.silvertown.business.model.dto.BusinessDTO;
+
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
@@ -81,6 +86,35 @@ public class BusinessDAO {
 		return businessLoginMember;
 	}
 
+	/**
+	 * 기업 회원가입 시 필요한 심사상태 테이블 값 insert하는 메소드
+	 * @param con
+	 * @return
+	 */
+	public int insertNewDecisionList(Connection con) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertDecisionList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	public int selectTotalCount(Connection con, String loggedId) {
 		
 		PreparedStatement psmt = null;
@@ -93,6 +127,8 @@ public class BusinessDAO {
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, loggedId);
+			
+			rset = psmt.executeQuery();
 			
 			if(rset.next()) {
 				totalCount = rset.getInt("COUNT(*)");
@@ -120,8 +156,28 @@ public class BusinessDAO {
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, loggedId);
+			psmt.setInt(2, pageInfo.getStartRow());
+			psmt.setInt(3, pageInfo.getEndRow());
+						
+			rset = psmt.executeQuery();
 			
+			postList = new ArrayList<>();
 			
+			while(rset.next()) {
+				BusinessPostDTO aPost = new BusinessPostDTO();
+				
+				aPost.setPostCode(rset.getInt("POST_CODE"));
+				aPost.setDecisionStatus(rset.getString("DECISION_STATUS"));
+				aPost.setPostDate(rset.getDate("POST_DATE"));
+				aPost.setPostTitle(rset.getString("POST_TITLE"));
+				aPost.setAdName(rset.getString("AD_NAME"));
+				aPost.setPostStart(rset.getDate("POST_START"));
+				aPost.setPostEnd(rset.getDate("POST_END"));
+				aPost.setCountOfApplicants(rset.getInt("APPLICANTS"));
+				
+				postList.add(aPost);
+				
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -134,4 +190,65 @@ public class BusinessDAO {
 	}
 
 
+
+	/**
+	 * 기업 회원 가입시 필요한 기업정보 insert하는 메소드
+	 * @param con
+	 * @param business
+	 * @return
+	 */
+	public int insertNewBusiness(Connection con, BusinessDTO business) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertBusiness");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, business.getbName());
+			pstmt.setString(2, business.getbOwner());
+			pstmt.setString(3, business.getbNumber());
+			pstmt.setString(4, business.getbAddress());
+			pstmt.setString(5, business.getbPhone());
+			pstmt.setLong(6, business.getProfit());
+			pstmt.setString(7, business.getbLogo());
+			pstmt.setInt(8, business.getbCategoryCode());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+
+		
+		return result;
+	}
+
+	public int insertNewHr(Connection con, HrDTO hr) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertHr");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, hr.getHrId());
+			pstmt.setString(2, hr.getHrPwd());
+			pstmt.setString(3, hr.getHrName());
+			pstmt.setString(4, hr.getHrPhone());
+			pstmt.setString(5, hr.getHrEmail());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();	
+		}
+		return result;
+	}
 }

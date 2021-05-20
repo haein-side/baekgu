@@ -25,9 +25,13 @@ $(function(){
 			success: function(data,textStatus,xhr){
 				console.log(data);
 				if (data == "fail"){
+
+					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+					alert("사용불가아이디");=======
 					$("#checkMessage").html("사용할 수 없는 휴대폰번호입니다.");
 					$("#idCheck").value("fail");
 					return;
+
 				} else if(data == "success") {
 				    $("#checkMessage").html("사용할 수 있는 휴대폰번호입니다.");
 				    /* $("#duplicationCheck").attr("checkResult","success"); */

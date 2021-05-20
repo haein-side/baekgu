@@ -1,4 +1,4 @@
-package com.baekgu.silvertown.admin.model.controller;
+package com.baekgu.silvertown.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,23 +8,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminMemberServlet
+ * Servlet implementation class UpdateOneAdminIdServlet
  */
-@WebServlet("/admin/member")
-public class AdminMemberServlet extends HttpServlet {
+@WebServlet("/admin/updateId")
+public class UpdateOneAdminIdServlet extends HttpServlet {
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/views/admin/main/MemberInfo.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
 		
+		
+			
 	}
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+
 	}
 
 }
