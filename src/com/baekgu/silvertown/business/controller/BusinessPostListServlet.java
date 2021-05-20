@@ -63,14 +63,16 @@ public class BusinessPostListServlet extends HttpServlet {
 		System.out.println("postList : " + postList);
 		
 		String path = "";
+		
 		if(postList != null) {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
 			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
-		} else {
-			path = "/WEB-INF/views/common/failed.jsp";
-			request.setAttribute("message", "게시물 목록 조회 실패!");
-		}
+		} 
+//			else {
+//			path = "/WEB-INF/views/common/failed.jsp";
+//			request.setAttribute("message", "게시물 목록 조회 실패!");
+//		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 		

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -94,6 +95,8 @@ public class BusinessDAO {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, loggedId);
 			
+			rset = psmt.executeQuery();
+			
 			if(rset.next()) {
 				totalCount = rset.getInt("COUNT(*)");
 			}
@@ -120,8 +123,28 @@ public class BusinessDAO {
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, loggedId);
+			psmt.setInt(2, pageInfo.getStartRow());
+			psmt.setInt(3, pageInfo.getEndRow());
+						
+			rset = psmt.executeQuery();
 			
+			postList = new ArrayList<>();
 			
+			while(rset.next()) {
+				BusinessPostDTO aPost = new BusinessPostDTO();
+				
+				aPost.setPostCode(rset.getInt("POST_CODE"));
+				aPost.setDecisionStatus(rset.getString("DECISION_STATUS"));
+				aPost.setPostDate(rset.getDate("POST_DATE"));
+				aPost.setPostTitle(rset.getString("POST_TITLE"));
+				aPost.setAdName(rset.getString("AD_NAME"));
+				aPost.setPostStart(rset.getDate("POST_START"));
+				aPost.setPostEnd(rset.getDate("POST_END"));
+				aPost.setCountOfApplicants(rset.getInt("APPLICANTS"));
+				
+				postList.add(aPost);
+				
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -132,6 +155,4 @@ public class BusinessDAO {
 		
 		return postList;
 	}
-
-
 }
