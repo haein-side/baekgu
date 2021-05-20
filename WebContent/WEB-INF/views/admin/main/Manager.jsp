@@ -1,18 +1,6 @@
-<<<<<<< HEAD
-<jsp:directive.page language="java"
-	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
-<<<<<<< HEAD
-<jsp:directive.page language="java"
-   contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
 <jsp:directive.page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,13 +86,13 @@
 									</tr>
 								</thead>
 								<tbody>
-<<<<<<< HEAD
-									<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
-=======
+
+
 						<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
                            <c:forEach var="admin" items="${ requestScope.adminList }">
                               <tr>
-                                 <td><c:out value="${ admin.adminId }" /></td>
+                              	  <th><input type="checkbox" id="checkAll"></th>
+                                 <td><c:out value="${ admin.adminId }"  /></td>
                                  <td><c:out value="${ admin.adminPwd }" /></td>
                                  <td><c:out value="${ admin.adminName }" /></td>
                                  <td><c:out value="${ admin.adminEmail }" /></td>
@@ -112,63 +100,7 @@
                                  <td><c:out value="${ admin.adminRole }" /></td>
                               </tr>
                            </c:forEach>
-									<tr>
-										<td><a href="ManagerDetail.html">강현우</a></td>
-										<td>kang</td>
-										<td>kang@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">차진서</a></td>
-										<td>cha</td>
-										<td>cha@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김현빈</a></td>
-										<td>kim</td>
-										<td>kim@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><a href="">김유진</a></td>
-										<td>jin</td>
-										<td>jin@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">김해인</a></td>
-										<td>hae</td>
-										<td>hae@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td><a href="">정주영</a></td>
-										<td>jung</td>
-										<td>jung@beakgu.com</td>
-										<td>2021/05/02</td>
-										<td>1</td>
-									</tr>
-=======
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
-									<c:forEach var="admin" items="${ requestScope.adminList }">
-										<tr>
-										    <th><input type="checkbox" id="checkAll"></th>
-											<td><c:out value="${ admin.adminId }" /></td>
-											<td><c:out value="${ admin.adminPwd }" /></td>
-											<td><c:out value="${ admin.adminName }" /></td>
-											<td><c:out value="${ admin.adminEmail }" /></td>
-											<td><c:out value="${ admin.adminDate }" /></td>
-											<td><c:out value="${ admin.adminRole }" /></td>
-										</tr>
-									</c:forEach>
->>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
-
+								
 								</tbody>
 							</table>
 						</div>
@@ -335,6 +267,21 @@
 			}
 		}
 
+		
+		if (document.getElementsByTagName("td")) {
+
+			const $tds = document.getElementsByTagName("td");
+			for (let i = 0; i < $tds.length; i++) {
+
+				$tds[i].onclick = function() {
+					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
+					alert(this.parentNode.children[0].innerText);
+				}
+
+			}
+
+		}
+		
 		
 
 		function pageButtonAction(text) {

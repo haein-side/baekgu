@@ -41,6 +41,7 @@ public class AdminDAO {
 
 		try {
 			pstmt = con.prepareStatement(query);
+			
 			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, pageInfo.getEndRow());
 

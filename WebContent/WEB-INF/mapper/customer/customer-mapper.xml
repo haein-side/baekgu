@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<entry key="checkId">
+        SELECT
+               COUNT(USER_CODE)
+          FROM USER
+	     WHERE USER_PHONE = ?
+	</entry>
+	
 	<entry key="insertNewUser">
 		INSERT 
 		  INTO USER
@@ -25,11 +32,19 @@
              )
 	</entry>
 	
-	<entry key="checkId">
-        SELECT
-               COUNT(USER_CODE)
-          FROM USER
-	     WHERE USER_PHONE = ?
+	
+	<entry key ="insertNewResume">
+	    INSERT
+	      INTO RESUME
+	         (
+	           RESUME_WRITE_DATE
+	         , USER_CODE
+	         )
+	    VALUES
+	         (
+	           NOW()
+	         , LAST_INSERT_ID()
+	         )
 	</entry>
 	
 	<entry key="selectBlockEncryptedPwd">
@@ -39,6 +54,7 @@
 		  FROM USER A
 		 WHERE A.USER_PHONE = ?
 	</entry>
+	
 	<entry key="selectLoginUser">
 		SELECT
 		       A.USER_CODE
