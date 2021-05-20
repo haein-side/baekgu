@@ -13,10 +13,12 @@ public class AdminDTO {
 	private String adminEmail; // 이메일
 	private Date adminDate; // 등록날짜
 	private String adminRole; // 관리자 권한
+
 	
 	public AdminDTO() {
-
+		
 	}
+
 
 	public AdminDTO(String adminId, String adminPwd, String adminName, String adminEmail, Date adminDate,
 			String adminRole) {
@@ -29,59 +31,77 @@ public class AdminDTO {
 		this.adminRole = adminRole;
 	}
 
+
 	public String getAdminId() {
 		return adminId;
 	}
+
 
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
 
+
 	public String getAdminPwd() {
 		return adminPwd;
 	}
+
 
 	public void setAdminPwd(String adminPwd) {
 		this.adminPwd = adminPwd;
 	}
 
+
 	public String getAdminName() {
 		return adminName;
 	}
+
 
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
 
+
 	public String getAdminEmail() {
 		return adminEmail;
 	}
+
 
 	public void setAdminEmail(String adminEmail) {
 		this.adminEmail = adminEmail;
 	}
 
+
 	public Date getAdminDate() {
 		return adminDate;
 	}
+
 
 	public void setAdminDate(Date adminDate) {
 		this.adminDate = adminDate;
 	}
 
+
 	public String getAdminRole() {
 		return adminRole;
 	}
 
+
 	public void setAdminRole(String adminRole) {
 		this.adminRole = adminRole;
 	}
+
 
 	@Override
 	public String toString() {
 		return "AdminDTO [adminId=" + adminId + ", adminPwd=" + adminPwd + ", adminName=" + adminName + ", adminEmail="
 				+ adminEmail + ", adminDate=" + adminDate + ", adminRole=" + adminRole + "]";
 	}
+
+	
+	
+	
+	
 
 
 	

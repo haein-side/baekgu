@@ -8,10 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
-
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
 public class BusinessDAO {
@@ -77,6 +79,58 @@ public class BusinessDAO {
 		}
 		
 		return businessLoginMember;
+	}
+
+	public int selectTotalCount(Connection con, String loggedId) {
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		int totalCount = 0;
+		
+		String query = prop.getProperty("selectTotalCount");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, loggedId);
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return totalCount;
+	}
+
+	public List<BusinessPostDTO> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {
+
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		List<BusinessPostDTO> postList = null;
+		
+		String query = prop.getProperty("selectPostList");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, loggedId);
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return postList;
 	}
 
 

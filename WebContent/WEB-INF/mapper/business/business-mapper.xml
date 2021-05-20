@@ -17,4 +17,35 @@ select
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
  WHERE HR_ID = ?
 	</entry>
+	
+	<entry key="selectTotalCount">
+		select
+		       COUNT(*)
+		  from POST
+		 where HR_ID = ?
+	</entry>
+	
+	<entry key="selectPostList">
+		SELECT
+               a.POST_CODE
+             , c.DECISION_STATUS
+     		 , a.POST_DATE
+     		 , a.POST_TITLE
+     		 , e.AD_NAME
+     		 , a.POST_START
+     		 , a.POST_END
+     		 , (SELECT 
+               			COUNT(*) as "countOfApplicants"
+                  FROM APPLY ap
+                 WHERE a.POST_CODE = ap.POST_CODE
+       		    ) AS "APPLICANTS"
+  		 FROM POST a
+  		 JOIN DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
+  		 JOIN DECISION c on(b.DECISION_CODE = c.DECISION_CODE)
+  		 JOIN POST_AD_PAYMENT d on(a.POST_CODE = d.POST_CODE)
+  		 JOIN AD e on(d.AD_CODE = e.AD_CODE)
+ 		WHERE HR_ID = ?
+ 		GROUP BY a.POST_CODE, c.DECISION_STATUS, a.POST_DATE, a.POST_TITLE, e.AD_NAME, a.POST_START, a.POST_END
+ 		ORDER BY a.POST_DATE;
+	</entry>
 </properties>
