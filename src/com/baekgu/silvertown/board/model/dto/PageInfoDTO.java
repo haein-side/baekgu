@@ -12,6 +12,7 @@ public class PageInfoDTO {
 	private int startRow;    // DB 조회 시 최신 글 부터 조회해야하는 행의 시작수
 	private int endRow;      // DB 조회시 최신글부터 조회해야 하는 행의 마지막 수
 	
+	
 	public PageInfoDTO() {}
 
 	public PageInfoDTO(int pageNo, int totalCount, int limit, int buttonAmount, int maxPage, int startPage, int endPage,

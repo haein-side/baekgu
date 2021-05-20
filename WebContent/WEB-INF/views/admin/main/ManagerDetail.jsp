@@ -56,41 +56,41 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="${ pageContext.servletContext.contextPath }/admin/adminid">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakname" name="name"  type="text" value="강현우"/>
+                                  <input class="form-control" id="beakname" name="name"  type="text"  value=<c:out value="${ selectId.adminName}"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="baekid" type="id" name="id" value="kang">
+                                  <input class="form-control " id="baekid" type="id" name="id"  value=<c:out value="${ selectId.adminId }"/>>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakpassword" type="password" name="password" value="1234" >
+                                  <input class="form-control " id="beakpassword" type="password" name="password" value=<c:out value="${ selectId.adminPwd }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이메일 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakemail" name="email" type="text" value="kang@gmail.com">
+                                  <input class="form-control" id="beakemail" name="email" type="text" value=<c:out value="${ selectId.adminEmail }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">등록일</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakconfirm" name="confirm" value="2021/05/08">
+                                  <input class="form-control " id="beakconfirm" name="confirm" value=<c:out value="${ selectId.adminDate }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beak" name="beakre" type="text" value="1">
+                                  <input class="form-control" id="beak" name="beakre" type="text"value=<c:out value="${ selectId.adminRole }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group">

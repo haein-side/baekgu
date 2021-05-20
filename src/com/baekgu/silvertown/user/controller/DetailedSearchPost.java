@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/user/detailedSearchPost")
 public class DetailedSearchPost extends HttpServlet {
   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String location = request.getParameter("location");
 		
 		System.out.println("locationGet : " + location);

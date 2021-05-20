@@ -13,18 +13,16 @@
 <body>
 	<%@ include file="../common/header2.jsp" %>
 
- 	
 <div class="container">
 	<div class="wrapper">
     	<form class="form-signin" action="${ pageContext.servletContext.contextPath }/user/login" method="post" style="margin-top:10%;">
         	<h1 class="form-signin-heading">개인회원 로그인</h1>
         	
-  
         <div>
-		    <lable class="text-label"><b>휴대폰 번호 (아이디로 사용됩니다.)</b></lable>
+		    <label class="text-label"><b>휴대폰 번호 (아이디로 사용됩니다.)</b></lable>
 		    <input type="text" class="form-control" name="USER_PHONE" placeholder="(예 : 01012345678)" required="" autofocus=""/>
 		    <small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자만 10자리 혹은 11자리를 입력하세요.</small><br><br><br>
-		    <lable class="text-label"><b>비밀번호</b></lable>
+		    <label class="text-label"><b>비밀번호</b></lable>
 		    <input type="password" class="form-control" name="USER_PWD" placeholder="비밀번호" required=""/>
 		    <small id="passwordHelp" class="form-text text-muted" style="margin-bottom: 10px">영어와 숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)</small><br><br>
 

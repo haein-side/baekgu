@@ -20,7 +20,7 @@ public class PageNation {
 		
 		/* 현재 페이지에 보여줄 시작 페이지 수 */
 		//startPage = ((int)((double)pageNo / buttonAmount + 0.9) -1) * buttonAmount + 1;
-	    startPage = (int)(Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount + 1;
+	    startPage = (int)(Math.ceil((double) pageNo / buttonAmount) - 1) * buttonAmount +1;
 	    
 	    /* 목록 아래쪽에 보여질 마지막 페이지 수 */
 	    endPage = startPage + buttonAmount - 1;
@@ -37,6 +37,7 @@ public class PageNation {
 		
 		/* 조회할 시작 번호와 마지막 행 번호를 계산 */
 		startRow = (pageNo - 1) * limit; // 4페이지 (4-1) * 10  31 1 1
+		endRow = startRow + limit -1;
 		endRow = 10;
 		
 		PageInfoDTO pageInfo = new PageInfoDTO(pageNo,totalCount,limit,buttonAmount,maxPage,startPage,endPage,startRow,endRow);

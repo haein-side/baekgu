@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/member">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/memberList">
                                 <i class="icon_house_alt"></i>
                                 <span>회원 정보</span>
                             </a>
