@@ -199,7 +199,7 @@
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
                                   <input class="form-control " id="adminId" name="adminId" type="id" required/>
-                       
+                       	<!-- 중복확인 -->
                                   <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
@@ -224,7 +224,7 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="adminRole" name="adminRole" type="text" required/>
+                                  <input class="form-control" id="adminRole" name="adminRole" type="text" placeholder="예시)서브관리자" required/>
                                 </div>
                               </div>
                               <div class="form-group">

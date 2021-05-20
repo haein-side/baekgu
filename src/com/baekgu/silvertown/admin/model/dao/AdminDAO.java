@@ -55,9 +55,11 @@ public class AdminDAO {
 				admin.setAdminName(rset.getString("admin_name"));
 				admin.setAdminEmail(rset.getString("admin_email"));
 				admin.setAdminDate(rset.getDate("admin_date"));
-
+				admin.setAdminRole(rset.getString("admin_role"));
+				
 				adminList.add(admin);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
