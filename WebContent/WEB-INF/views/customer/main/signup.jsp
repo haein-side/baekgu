@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-   type="text/css">
-<link href="RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/signupbootstrap.css" rel="stylesheet">
 <script>
 $(function(){
 	// ajax 필수로 하게 어떻게 하나..?
