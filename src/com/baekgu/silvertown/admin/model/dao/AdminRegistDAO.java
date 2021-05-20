@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
 
 import com.baekgu.silvertown.admin.model.dto.AdminDTO;
@@ -30,7 +29,7 @@ public class AdminRegistDAO {
 	}
 
 	/**
-	 * 관리자 등록용
+	 * 새관리자 등록용
 	 * 
 	 * @param con
 	 * @param requestadmin
@@ -86,25 +85,70 @@ public class AdminRegistDAO {
 
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, adminId);
-			
-			
+
 			rset = psmt.executeQuery();
-			
 
 			if (rset.next()) {
-			
+
 				/* count처리 하는 이유는 ? 아이디가 있는지 없는지만 0/1로 처리하면 됨. */
 				result = rset.getInt("COUNT(*)");
 			}
-			
+
 			System.out.println(result + "checkDAO");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			close(rset);
 			close(psmt);
+		}
+
+		return result;
+	}
+
+	/**
+	 * 관리자 아이디를 통한 상세보기용
+	 * 
+	 * @param con
+	 * @param adminId
+	 * @return
+	 */
+	public AdminDTO selectOndAdminId(Connection con, String adminId) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		AdminDTO result = null;
+
+		String query = prop.getProperty("selectOneAdminId");
+		System.out.println(query);
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, adminId);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = new AdminDTO();
+				result.setAdminId(rset.getString("admin_id"));
+				result.setAdminPwd(rset.getString("admin_pwd"));
+				result.setAdminName(rset.getString("admin_name"));
+				result.setAdminEmail(rset.getString("admin_email"));
+				result.setAdminDate(rset.getDate("admin_date"));
+				result.setAdminRole(rset.getString("admin_role"));
+
+			}
+
+			System.out.println(result);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 
 		return result;

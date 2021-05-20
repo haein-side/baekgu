@@ -13,7 +13,7 @@
 		<div style="text-align: center;">
 			<!-- 의도 : 백구 네임을 클릭하면 메인 화면으로 넘어간다 -->
 			<br>
-			<h1 style="font-size: 100px; height:100%;"><a href="" style="color: black; text-decoration:none; margin-bottom: 1%;">
+			<h1 style="font-size: 100px; height:100%;"><a href="${ pageContext.servletContext.contextPath }/user/toMain" style="color: black; text-decoration:none; margin-bottom: 1%;">
 			<img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="180">
 			</a></h1>
 		</div>
@@ -86,8 +86,8 @@
 				<ul>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSearchPost">공고 검색</a></li>
 					<li><a href="">고객문의</a></li>
-					<li><a id="nolink" href=""></a></li>
-					<li><a id="nolink" href=""></a></li>
+					<li><a id="nolink" href="" style="background:coral;"></a></li>
+					<li><a id="nolink" href="" style="background:coral;"></a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSignup">회원가입</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin">로그인</a></li>
 				</ul>

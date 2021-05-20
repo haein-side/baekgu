@@ -37,9 +37,19 @@
 	      LIMIT ?,?
 	</entry>
 	
-		<entry key="selectTotalCount">
+	<entry key="selectTotalCount">
         SELECT 
                COUNT(*)
           FROM ADMIN
 	</entry>
+	<entry key="selectOneAdminId">
+		SELECT 
+		       *
+		  FROM ADMIN
+		 WHERE ADMIN_ID = ?
+		
+	</entry>
+	
+	
+	
 </properties>

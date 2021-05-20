@@ -4,19 +4,16 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>상세 검색</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/styleSP.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <title>상세 검색</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/styleSP.css">
 
 <style>
 .btn1 {
@@ -191,9 +188,6 @@
 <!-- script 끝남 -->
 
 
-
-</head>
-<body>
 	<%@ include file="../common/header2.jsp"%>
 	<div style="z-index: 1;">
 		<div class="container-fluid text-center" style="margin-top: 15%;">
@@ -455,8 +449,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 	<%@ include file="../common/footer.jsp"%>
 </body>
