@@ -21,6 +21,8 @@ import com.baekgu.silvertown.common.paging.PageNation;
 public class AdminSearchListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
 		
@@ -60,10 +62,8 @@ public class AdminSearchListServlet extends HttpServlet {
 			path = "/WEB-INF/views/common/errorPage.jsp";
 			request.setAttribute("message", "게시물 목록 조회 실패!");
 		}
-		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

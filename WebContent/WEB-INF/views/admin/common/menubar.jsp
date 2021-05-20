@@ -1,10 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<html lang="en">
+	
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta
+            name="description"
+            content="Creative - Bootstrap 3 Responsive Admin Template">
+        <meta name="author" content="GeeksLabs">
+        <meta
+            name="keyword"
+            content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+	
+        <title>백구 관리자페이지</title>
+
         
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
 
@@ -17,10 +29,11 @@
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+       
+    </head>
 
-</head>
-<body>
-	        <!-- container section start -->
+    <body>
+        <!-- container section start -->
         <section id="container" class="">
 
           <!-- 맨 위 다크 헤더 (백구 관리자 있는 곳) -->
@@ -41,8 +54,8 @@
 
                   <!-- 사용자 프로필 -->
   
-                <%-- <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4> --%>
                 <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4>
+                
             </header>
             <!--header end-->
 
@@ -58,20 +71,19 @@
                             </a>
                         </li>
                           <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/homepage">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
                                 <i class="icon_house_alt"></i>
                                 <span>홈페이지 정보</span>
                             </a>
                         </li>
                         <li class="active">
-                          <%--   <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager"> --%>
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/search">
                                 <i class="icon_house_alt"></i>
                                 <span>관리자 및 직원관리</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/member">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
                                 <i class="icon_house_alt"></i>
                                 <span>회원 정보</span>
                             </a>
@@ -112,16 +124,8 @@
                                 <span>신고관리</span>
                             </a>
                         </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>재무관리</span>
-                            </a>
-                        </li>
                      </ul>
                     <!-- sidebar menu end-->
                 </div>
             </aside>
             <!--sidebar end-->
-</body>
-</html>

@@ -14,7 +14,7 @@ import com.baekgu.silvertown.user.model.service.UserService;
 
 
 @WebServlet("/user/login")
-public class UserLoginServlet extends HttpServlet {
+public class UserLogininServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -76,7 +76,9 @@ public class UserLoginServlet extends HttpServlet {
 					System.out.println("로그인 성공");
 					
 					/* 로그인 성공 시 메인으로 */
-					response.sendRedirect(request.getContextPath());
+					System.out.println(request.getContextPath());
+					// doPost 방식 사용
+					response.sendRedirect(request.getContextPath() + "/user/toMain");
 				}
 
 			} else {
@@ -91,7 +93,7 @@ public class UserLoginServlet extends HttpServlet {
 			// 차단된 유저입니다.
 			errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
 			System.out.println("고객님은 사용이 제한되었습니다. (차단)");
-       	 	request.setAttribute("errorMessage", "고객님은 백구 사이트 사용이 제한되었습니다.");
+       	 	request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
        	 	request.getRequestDispatcher(errorPage).forward(request, response);
 		}
 

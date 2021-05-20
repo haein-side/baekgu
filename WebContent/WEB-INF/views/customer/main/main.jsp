@@ -19,17 +19,17 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/animate.css">
+	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/animate.css">
 	<!-- Flexslider -->
 	<!-- <link rel="stylesheet" href="css/flexslider.css"> -->
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/icomoon.css">
+	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }}/RESOURCES/CSS/CUSTOMER/icomoon.css">
 	<!-- Magnific Popup -->
 	<!-- <link rel="stylesheet" href="css/magnific-popup.css"> -->
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/bootstrap.css">
+	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/bootstrap.css">
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/RESOURCES/CSS/CUSTOMER/style.css">
+	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/style.css">
 
 
 	<!-- 오렌지 색상
@@ -53,11 +53,11 @@
 					</ul>
 					<h1 id="fh5co-logo">
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
-						<a href="index.html"><img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+						<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 					</h1>
 					<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
-						<li><a href="#" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
+						<li><a href="${ pageContext.servletContext.contextPath }/user/tologin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
 						<li class="fh5co-cta-btn"><a href="#"style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
 					</ul>
 				</nav>

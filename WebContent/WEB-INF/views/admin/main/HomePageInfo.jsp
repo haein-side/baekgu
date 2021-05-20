@@ -1,138 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@ page import="com.baekgu.silvertown.admin.model.dto.*"%> --%>
+<%-- <%@ page import="java.util.*"%> --%>
+
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta
-            name="description"
-            content="Creative - Bootstrap 3 Responsive Admin Template">
-        <meta name="author" content="GeeksLabs">
-        <meta
-            name="keyword"
-            content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-
-        <title>백구 관리자페이지</title>
-
-        
-        <link href="RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
-
- 
-        <!-- owl carousel -->
-        <link rel="stylesheet" href="RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
-        <link href="RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-        <!-- Custom styles -->
-        <link href="RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
-        <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
-        <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
-    </head>
-	
-	    <body>
-        <!-- container section start -->
-        <section id="container" class="">
-
-          <!-- 맨 위 다크 헤더 (백구 관리자 있는 곳) -->
-            <header class="header dark-bg">
-                <div class="toggle-nav">
-                    <div
-                        class="icon-reorder tooltips"
-                        data-original-title="Toggle Navigation"
-                        data-placement="bottom">
-                        <i class="icon_menu"></i>
-                    </div>
-                </div>
-
-                <!--logo start-->
-                <a href="${ pageContext.servletContext.contextPath }/admin/main" class="logo">백구
-                    <span class="lite">관리자</span></a>
-                <!--logo end-->
-
-                  <!-- 사용자 프로필 -->
-  
-                <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4>
-                
-            </header>
-            <!--header end-->
-
-            <!--sidebar start-->
-            <aside>
-                <div id="sidebar" class="nav-collapse ">
-                    <!-- sidebar menu start-->
-                    <ul class="sidebar-menu">
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
-                                <i class="icon_house_alt"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                          <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>홈페이지 정보</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
-                                <i class="icon_house_alt"></i>
-                                <span>관리자 및 직원관리</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>회원 정보</span>
-                            </a>
-                        </li>
-                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>기업 정보</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>공고승인</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>공고관리</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>가입승인</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>광고상품관리</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
-                                <i class="icon_house_alt"></i>
-                                <span>신고관리</span>
-                            </a>
-                        </li>
-                     </ul>
-                    <!-- sidebar menu end-->
-                </div>
-            </aside>
-            <!--sidebar end-->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta
+        name="keyword"
+        content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    
+    <title>백구 관리자페이지</title>
+    
+    
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/bootstrap-theme.css" rel="stylesheet">
+    
+     
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/owl.carousel.css" type="text/css">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/widgets.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
+    <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
+<%--           <%
+          	
+          BaekguDTO baekgudto = new BaekguDTO();
+          
+          
+           
+          String baekguName = baekgudto.getBaekguName();
+          String baekguPhone = baekgudto.getBaekguPhone();
+          String fax = baekgudto.getFax();
+          String addresss = baekgudto.getBaekguAdd();
+          String baekguNum = baekgudto.getBaekguNum();
+          String ownerName = baekgudto.getOwnerName();
+          
+          System.out.println("회사명 : " + baekguName);
+          
+          %>
+	 --%>
+<body>
+	<jsp:include page="../common/header.jsp"/>
+     
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -160,7 +78,7 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사명</label>
                                 <div class="col-lg-10">
-                                  <td>백구</td>
+                                  <td><p>백구</p></td>
                                 </div>
                               </div>
                               <div class="form-group ">
@@ -172,13 +90,13 @@
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">회사 팩스번호</label>
                                 <div class="col-lg-10">
-                                  <td>02-6000-1314</td>
+                                  <td>021-6000-1314</td>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">회사주소 </label>
                                 <div class="col-lg-10">
-                                  <td>서울시 강남구 </td>
+                                  <td>서울시 강남구 실버타운 1204호</td>
                                 </div>
                               </div>
                               <div class="form-group ">
@@ -190,12 +108,17 @@
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">대표자명</label>
                                 <div class="col-lg-10">
-                                  <td>미정 </td>
+                                  <td>황백구</td>
                                 </div>
                               </div>
+                             <%--  <!-- 관리자인 경우에만 수정 버튼이 보인다 -->
+                              <c:if test="${ sessionScope.loginAdmin.adminRole eq '대표관리자' }">
                               <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="button" onClick="location.href='HomeDetail.html'">수정</button>
+                               <div class="col-lg-offset-2 col-lg-10">
+                               <button class="btn btn-primary" type="button" name=btn id=btn onclick="location='homedetail'">
+                                  수정 
+                               </button>
+                               </c:if> --%>
                                 </div>
                               </div>
                             </form>
