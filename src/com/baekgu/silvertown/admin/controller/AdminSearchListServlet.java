@@ -40,7 +40,7 @@ public class AdminSearchListServlet extends HttpServlet {
 		int totalCount = adminService.selectTotalCount();
 		
 		/* 한 페이지에 보여 줄 게시물 수 */
-		int limit = 5;
+		int limit = 10;
 		/* 한 번에 보여질 페이징 버튼의 수*/
 		int buttonAmount = 5;
 		
@@ -63,6 +63,11 @@ public class AdminSearchListServlet extends HttpServlet {
 			request.setAttribute("message", "게시물 목록 조회 실패!");
 		}
 		request.getRequestDispatcher(path).forward(request, response);
+		
+		
+		
+		
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
