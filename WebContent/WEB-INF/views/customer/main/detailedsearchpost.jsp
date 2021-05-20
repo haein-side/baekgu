@@ -100,6 +100,7 @@
 	        			if(document.getElementById("l" + i).checked == true){
 	        				location += document.getElementById("l" + i).value + "&";
 	        			}
+						location += "$";	        		
 	        		}
 	        	}
 	        	
