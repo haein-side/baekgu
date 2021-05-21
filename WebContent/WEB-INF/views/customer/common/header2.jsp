@@ -69,7 +69,7 @@
 		<div class="menu-area">
 			<div class="nav-area">
 				<ul>
-					<li><a href="${ pageContext.servletContext.contextPath }toSearchPost">공고 검색</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/toSearchPost">공고 검색</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }">이력서 관리</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/manageApply">입사지원 관리</a></li>
 					<li><a href="">일자리 모음</a></li>
