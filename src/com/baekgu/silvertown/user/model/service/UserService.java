@@ -93,11 +93,26 @@ public class UserService {
 	}
 
 	public String checkId(String userPhone) {
+		
 		Connection con = getConnection();
 		
 		String result = userDAO.checkId(con, userPhone);
 		
 		return result;
+	}
+
+
+	/**
+	 * 업종에 따라 직종 정보를 받아오는 메소드
+	 * @param industryInfo
+	 * @return
+	 */
+	public UserDTO jobInfo(UserDTO industryInfo) {
+		
+		Connection con = getConnection();
+		UserDTO jobInfo = null;//UserDAO.selectJobByIndustry(con, industryInfo);
+		
+		return jobInfo;
 	}
 	
 
