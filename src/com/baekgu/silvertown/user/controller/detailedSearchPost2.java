@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class detailedSearchPost2
  */
-@WebServlet("user/detailedSearchPost2")
+@WebServlet("/user/detailedSearchPost2")
 public class detailedSearchPost2 extends HttpServlet {
 	
 

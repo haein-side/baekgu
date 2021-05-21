@@ -70,4 +70,58 @@
 		 WHERE A.USER_PHONE = ?			
 	</entry>
 	
+	<!-- 상세검색에서 업종명으로 직종명을 검색해오는 쿼리 -->
+	<entry key="selectJobByIndustry">
+		SELECT
+		       JOB.JOB_CODE
+		     , JOB.JOB_NAME
+		  FROM JOB
+		  JOIN INDUSTRY ON INDUSTRY.INDUSTRY_CODE = JOB.INDUSTRY_CODE
+		 WHERE JOB.INDUSTRY_CODE = ?		       
+	</entry>
+	
+	<!-- 입사지원관리 조회해오는 쿼리 -->
+	<entry key="selectApply">
+		SELECT
+		       A.APPLY_DATE
+		     , B.B_NAME
+		     , P.POST_TITLE
+		     , A.APPLY_CANCEL
+		     , A.APPLY_READ
+		  FROM APPLY A
+	 LEFT JOIN RESUME R
+	        ON A.RESUME_CODE = R.RESUME_CODE
+	 LEFT JOIN USER U
+	        ON R.USER_CODE = U.USER_CODE
+	 LEFT JOIN POST P
+	        ON A.POST_CODE = P.POST_CODE
+	 LEFT JOIN HR H
+	        ON P.HR_ID = H.HR_ID
+	 LEFT JOIN BUSINESS B
+	        ON H.B_CODE = B.B_CODE
+	     WHERE U.USER_CODE = ?              	  
+		 
+	</entry>
+	
+	<!-- 지원취소 업데이트 해주는 쿼리 -->
+	<!-- 아직 미완 -->
+	
+	<!-- 신고내역관리 조회해오는 쿼리 -->
+	<entry key="selectReport">
+		SELECT 
+	           R.REPORT_DATE
+	         , P.POST_TITLE
+	         , D.DECISION_CODE
+	      FROM REPORT R
+	 LEFT JOIN USER U
+	        ON R.USER_CODE = U.USER_CODE
+	 LEFT JOIN POST P 
+	        ON R.POST_CODE = P.POST_CODE
+	 LEFT JOIN DECISION_LIST D
+	        ON R.D_LIST_CODE = D.D_LIST_CODE
+	     WHERE U.USER_CODE = ?
+	       AND D.D_LIST_TYPE_CODE = 2;
+	</entry>
+	
+	
 </properties>

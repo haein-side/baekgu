@@ -6,10 +6,13 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.baekgu.silvertown.user.model.dao.UserDAO;
+import com.baekgu.silvertown.user.model.dto.ApplyDTO;
+import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class UserService {
@@ -93,11 +96,61 @@ public class UserService {
 	}
 
 	public String checkId(String userPhone) {
+		
 		Connection con = getConnection();
 		
 		String result = userDAO.checkId(con, userPhone);
 		
 		return result;
+	}
+
+
+	/**
+	 * 업종에 따라 직종 정보를 받아오는 메소드
+	 * @param industryInfo
+	 * @return
+	 */
+	public UserDTO jobInfo(UserDTO industryInfo) {
+		
+		Connection con = getConnection();
+		UserDTO jobInfo = null;//UserDAO.selectJobByIndustry(con, industryInfo);
+		
+		return jobInfo;
+	}
+
+	
+	
+	/**
+	 * 유저코드를 가지고 지원관리내역을 받아오는 메소드
+	 * @param userCode
+	 * @return 지원관리내역
+	 */
+	public List<ApplyDTO> selectApply(int userCode) {
+		
+		Connection con = getConnection();
+		
+		List<ApplyDTO> allApply = userDAO.selectApply(con, userCode);
+		
+		close(con);
+		
+		return allApply;
+	}
+
+	/**
+	 * 유저코드를 가지고 신고내역관리를 받아오는 메소드
+	 * @param userCode
+	 * @return 신고내역관리
+	 */
+	public List<ReportDTO> selectReport(int userCode) {
+		
+		Connection con = getConnection();
+		
+		List<ReportDTO> allReport = userDAO.selectReport(con, userCode);
+		
+		close(con);
+		
+		return allReport;
+		
 	}
 	
 

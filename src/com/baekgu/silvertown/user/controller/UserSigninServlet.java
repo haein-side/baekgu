@@ -42,6 +42,7 @@ public class UserSigninServlet extends HttpServlet {
 		UserService userServiceInfo = new UserService();
 		UserDTO loginUserInfo = null;
 		
+	
 		
 		String errorPage = "";
 		
@@ -71,7 +72,10 @@ public class UserSigninServlet extends HttpServlet {
 				if(loginUser != null) {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", loginUser);
-					
+					session.setAttribute("loginUserInfo", loginUserInfo);
+					session.setAttribute("loginUserCode", loginUserInfo.getUserCode());
+					System.out.println("loginUser.getUserCode() : " + session.getAttribute("loginUserCode"));
+					//UserDTO user = (UserDTO) session.getAttribute("loginUser");
 					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");

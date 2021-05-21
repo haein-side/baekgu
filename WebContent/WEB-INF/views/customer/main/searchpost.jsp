@@ -17,21 +17,28 @@
     
     <script type="text/javascript">
 
-        	/*$("#btnSubmit").click(function(){
-          
-           		/* var location =  
-           		// for문 + if문으로 .getElementById("ln") = true
-           		var result = document.getElementById("l1").value;
-           		console.log(result);
-           
-           		// 서블릿으로 보내기
-           		var path = '${ pageContext.servletContext.contextPath }';
-            	$("#fm1").attr("action",path+"/user/detailedSearchPost").submit();
-           
-      		}); 
-   		});   */
+    jQuery(document).ready(function() {
+        $('.btn1').click(function() {
+          /*  $('.btn1').removeClass("btnSelected");
+            $(this).addClass("btnSelected") */; 
 
-/* for문으로 횟수 설정 */
+             jQuery(this).toggleClass("active");
+             
+       });    
+        
+        
+        $("#btnSubmit").click(function(){
+          
+           /* var location =  */
+           var result = document.getElementById("l1").value;
+           console.log(result);
+           
+           // 서블릿으로 보내기
+           var path = '${ pageContext.servletContext.contextPath }';
+            $("#fm1").attr("action",path+"/user/detailedSearchPost").submit();
+           
+      }); 
+   });  
     </script>
 </head>
 
@@ -212,28 +219,220 @@
             </div>
         </div>
       </div>
-    <script>
-    		$(".btn1").click(function() {
-				const industry = $(".btn1").val();
+	<script>
+	
+	<!-- 상세 검색에서 업종을 누르면 직종명을 가져오는 function-->
+	
+    $("#i1").click(function() {
+    	
+    	const industry1 = $("#i1").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry1);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ 
+    			industry1 : industry1
+    		},
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
     			
-    			console.log("aa");
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+	
+      $("#i2").click(function() {
+    	
+    	const industry2 = $("#i2").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry2);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry2 : industry2 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
     			
-    			$.ajax({
-    				url: "/baekgu/jobSearch",
-    				type: "get",
-    				data:{ industry : industry },
-    				success: function(data,textStatus,xhr){
-    					console.log(data);
-    					var jobArray = "";
-    					
-    				},
-    				error: function(xhr, status, message){
-    					console.log(message);
-    				}
-    				
-    			});
-            });
-    </script>
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i3").click(function() {
+    	
+    	const industry3 = $("#i3").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry3);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry3 : industry3 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i4").click(function() {
+    	
+    	const industry4 = $("#i4").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry4);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry4 : industry4 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i5").click(function() {
+    	
+    	const industry5 = $("#i5").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry5);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry5 : industry5 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			alert("저장되셨습니다");
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i6").click(function() {
+    	
+    	const industry6 = $("#i6").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry6);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry6 : industry6 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i7").click(function() {
+    	
+    	const industry7 = $("#i7").val();
+    	console.log(industry7);
+    	
+    	console.log("button 동작");
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry7 : industry7 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i8").click(function() {
+    	
+    	const industry8 = $("#i8").val();
+    	console.log(industry8);
+    	
+    	console.log("button 동작");
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry8 : industry8 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i9").click(function() {
+    	
+    	const industry = $("#i9").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry9);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry9 : industry9 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	}); 
+	</script>
+
 </form>
 <%@ include file="../common/footer.jsp" %>
 
