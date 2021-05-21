@@ -9,16 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
-
-import com.baekgu.silvertown.business.model.dto.BusinessDTO;
-
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
+import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
 public class BusinessDAO {
@@ -115,12 +115,12 @@ public class BusinessDAO {
 		return result;
 	}
 	
-	public int selectTotalCount(Connection con, String loggedId) {
+	public Map<Integer, Integer> selectTotalCount(Connection con, String loggedId) {
 		
 		PreparedStatement psmt = null;
 		ResultSet rset = null;
 		
-		int totalCount = 0;
+		Map<Integer, Integer> counts = new HashMap<>();
 		
 		String query = prop.getProperty("selectTotalCount");
 		
@@ -130,8 +130,12 @@ public class BusinessDAO {
 			
 			rset = psmt.executeQuery();
 			
-			if(rset.next()) {
-				totalCount = rset.getInt("COUNT(*)");
+			counts.put(1, 0); // 접수 - 코드 1
+			counts.put(2, 0); // 승인 - 코드 2
+			counts.put(3, 0); // 거절 - 코드 3
+			
+			while(rset.next()) {
+				counts.put(rset.getInt("DECISION_CODE"), rset.getInt("COUNT"));
 			}
 			
 		} catch (SQLException e) {
@@ -141,7 +145,7 @@ public class BusinessDAO {
 			close(psmt);
 		}
 		
-		return totalCount;
+		return counts;
 	}
 
 	public List<BusinessPostDTO> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {

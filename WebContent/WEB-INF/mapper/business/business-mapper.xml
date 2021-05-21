@@ -87,10 +87,15 @@ select
        )
     </entry>
 	<entry key="selectTotalCount">
-		select
-		       COUNT(*)
-		  from POST
-		 where HR_ID = ?
+		SELECT 
+	   		   c.DECISION_CODE
+	  		 , IFNULL(COUNT(a.POST_CODE), 0) as 'COUNT'
+  		  FROM post a
+  		  JOIN DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
+  		  JOIN DECISION c on(b.DECISION_CODE = c.DECISION_CODE)
+ 		 WHERE a.HR_ID = ?
+ 		 GROUP BY c.DECISION_CODE
+         ORDER BY c.DECISION_CODE
 	</entry>
 	<entry key="selectPostList">
 		SELECT

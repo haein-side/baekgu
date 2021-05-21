@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -66,10 +66,10 @@
       <!-- <h3>Test</h3>
       <p>Lorem ipsum...</p> -->
       <div class="btn-group btn-group-justified">
-        <a href="#" class="btn btn-primary active">전체 (${ requestScope.total }건)</a>
-        <a href="#" class="btn btn-primary">접수 (${ requestScope.hold }건)</a>
-        <a href="#" class="btn btn-primary">거절 (${ requestScope.rejected }건)</a>
-        <a href="#" class="btn btn-primary">진행 (${ requestScope.approved }건)</a>
+        <a href="#" class="btn btn-primary active">전체 ( ${ requestScope.total }건 )</a>
+        <a href="#" class="btn btn-primary">접수 ( ${ requestScope.hold }건 )</a>
+        <a href="#" class="btn btn-primary">거절 ( ${ requestScope.rejected }건 )</a>
+        <a href="#" class="btn btn-primary">승인 ( ${ requestScope.approved }건 )</a>
       </div>
        
       <br>

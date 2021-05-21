@@ -5,43 +5,43 @@ import java.sql.Date;
 public class UserDTO {
 	
 	/* 고객 엔티티 */
-	int userCode;
-	String userName;
-	String userPhone;
-	String userPwd;
-	Date userBday;
-	String userGender;
-	String userAddress;
-	Date userRegisterDate;
-	int userBlock;
-	String verifiedNum;
+	private int userCode;
+	private String userName;
+	private String userPhone;
+	private String userPwd;
+	private Date userBday;
+	private String userGender;
+	private String userAddress;
+	private Date userRegisterDate;
+	private int userBlock;
+	private String verifiedNum;
 	
-	/* 이력서 엔티티 */
-	int resumeCode;
-	Date resumeWriteDate;
-	String resumeSubphone;
-	String resumeLetter;
-	String resumeAdvantage;
-	// 아래 2건은 FK
-	int expCode;
-	int degreeCode;
+	 /* 이력서 엔티티 */
+	private int resumeCode;
+	private Date resumeWriteDate;
+	private String resumeSubphone;
+	private String resumeLetter;
+	private String resumeAdvantage;
+	 // 아래 2건은 FK
+	private int expCode;
+	private int degreeCode;
 	
-	/* 지원자관리 */
-	int applyCode;
-	Date applyDate;
-	String applyYn;
-	int applyRead;
-	// 아래 1건은 FK
-	int postCode;
-	int applyCancel;
-	
-	/* 직종 테이블 */
-	int jobCode;
-	String jobName;
+	 /* 지원자관리 */
+	private int applyCode;
+	private Date applyDate;
+	private String applyYn;
+	private int applyRead;
+	 // 아래 1건은 FK
+	private int postCode;
+	private int applyCancel;
+	 
+	 /* 직종 테이블 */
+	private int jobCode;
+	private String jobName;
 	
 	/* 업종 테이블 */
-	int industryCode;
-	String industryName;
+	private int industryCode;
+	private String industryName;
 	
 	/* 공고 */
 	
