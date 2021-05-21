@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.baekgu.silvertown.common.config.ConfigLocation;
@@ -236,6 +237,47 @@ public class UserDAO {
 			close(pstmt);
 		}
 		return newResume;
+	}
+
+	/**
+	 * 상세검색에서 업종 정보로 직종 정보를 조회하는 메소드
+	 * @param con
+	 * @param industryInfo
+	 * @return jobInfo
+	 */
+	public UserDTO selectJobByIndustry(Connection con, UserDTO industryInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<UserDTO> jobInfo = null;
+		
+		String query = prop.getProperty("selectJobByIndustry");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, industryInfo.getJobName());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				for(int i = 0; i < (industryInfo.getJobName()).length(); i++) {
+					
+					//jobInfo.setJobName();
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("DAO job Info 값 : " + jobInfo);
+
+		
+		return (UserDTO) jobInfo;
 	}
 
 	

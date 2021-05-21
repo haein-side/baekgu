@@ -70,4 +70,14 @@
 		 WHERE A.USER_PHONE = ?			
 	</entry>
 	
+	<!-- 상세검색에서 업종명으로 직종명을 검색해오는 쿼리 -->
+	<entry key="selectJobByIndustry">
+		SELECT
+		       JOB.JOB_CODE
+		     , JOB.JOB_NAME
+		  FROM JOB
+		  JOIN INDUSTRY ON INDUSTRY.INDUSTRY_CODE = JOB.INDUSTRY_CODE
+		 WHERE JOB.INDUSTRY_CODE = ?		       
+	</entry>
+	
 </properties>

@@ -12,7 +12,7 @@ public class ToDetailedSearchPostServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("main으로 가는 서블릿 도착");
+		System.out.println("상세검색으로 가는 서블릿 도착");
 		String path = "/WEB-INF/views/customer/main/detailedsearchpost.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}

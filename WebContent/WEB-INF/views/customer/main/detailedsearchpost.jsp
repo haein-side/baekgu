@@ -179,7 +179,31 @@
 
 	        
 
-	       
+
+    $(".btn1 in").click(function() {
+		
+    	(this).attr
+    	
+    	const industry = $(".btn1 in").val();
+    	
+    	console.log("button 동작");
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry : industry },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
     
  
 	 
@@ -218,64 +242,83 @@
 							<div align="center" style="margin-bottom: 70px;">
 								<div style="width: 1000px;">
 
-									<label for="l1" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;" value="강남구">강남구</label> 
+									<label for="l1" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">강남구</p></label> 
+                           			<input type="checkbox" id="l1" name = "location1" style="display: none" value="강남구"> 
 									
-									<input type="checkbox" id="l1" name = "location1" style="display: none" value="강남구"> 
+									<label for="l2" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">강동구</p></label> 
+                           			<input type="checkbox" id="l2" name = "location1" style="display: none" value="강동구">                                 	
 									
-									<label for="l2" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;" value="강동구">강동구</label> 
+									<label for="l3" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">강북구</p></label> 
+                           			<input type="checkbox" id="l3" name = "location1" style="display: none" value="강북구">                                 	
 									
-									<input type="checkbox" id="l2" name = "location1" style="display: none" value="강동구"> 
+									<label for="l4" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">강서구</p></label> 
+                           			<input type="checkbox" id="l4" name = "location1" style="display: none" value="강서구">                                 	
 									
-									<input type="button" class="btn1 l1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="강동구"></input>                                       
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="강북구"></input> 
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="강서구"></input>    
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="관악구"></input>    
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="광진구"></input>                        
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="구로구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="금천구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="노원구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="도봉구"></input> 
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="동대문구"></input>
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="동작구"></input>                
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="마포구"></input>                                       
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="서대문구"></input> 
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="서초구"></input>    
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="성동구"></input>    
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="성북구"></input>                        
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="송파구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="양천구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="영등포구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="용산구"></input>                           
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="은평구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="종로구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="중구"></input> 
-                           <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="중랑구"></input>   
-                                    <input type="button"class="btn1" name="location" style=" margin: 15px; width : 120pt;height: 60pt;font-size:x-large;text-align:center;"
-                                        value="무관"></input>                           
+									<label for="l5" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">관악구</p></label> 
+                           			<input type="checkbox" id="l5" name = "location1" style="display: none" value="관악구">                                 	
+									
+									<label for="l6" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">광진구</p></label> 
+                           			<input type="checkbox" id="l6" name = "location1" style="display: none" value="광진구">                                 	
+									
+									<label for="l7" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">구로구</p></label> 
+                           			<input type="checkbox" id="l7" name = "location1" style="display: none" value="구로구">                                 	
+									
+									<label for="l8" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">금천구</p></label> 
+                           			<input type="checkbox" id="l8" name = "location1" style="display: none" value="금천구">                                 	
+									
+									<label for="l9" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">노원구</p></label> 
+                           			<input type="checkbox" id="l9" name = "location1" style="display: none" value="노원구">                                 	
+									
+									<label for="l10" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">도봉구</p></label> 
+                           			<input type="checkbox" id="l10" name = "location1" style="display: none" value="도봉구">                                 	
+									
+									<label for="l11" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">동대문구</p></label> 
+                           			<input type="checkbox" id="l11" name = "location1" style="display: none" value="동대문구">   
+
+									<label for="l12" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">동작구</p></label> 
+                           			<input type="checkbox" id="l12" name = "location1" style="display: none" value="동작구">                           			                              	
+									
+									<label for="l13" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">마포구</p></label> 
+                           			<input type="checkbox" id="l13" name = "location1" style="display: none" value="마포구">                                 	
+									
+									<label for="l14" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서대문구</p></label> 
+                           			<input type="checkbox" id="l14" name = "location1" style="display: none" value="서대문구">                                 	
+									
+									<label for="l15" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서초구</p></label> 
+                           			<input type="checkbox" id="l15" name = "location1" style="display: none" value="서초구">                                 	
+									
+									<label for="l16" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">성동구</p></label> 
+                           			<input type="checkbox" id="l16" name = "location1" style="display: none" value="성동구">                                 	
+									
+									<label for="l17" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">성북구</p></label> 
+                           			<input type="checkbox" id="l17" name = "location1" style="display: none" value="성북구">                                 	
+									
+									<label for="l18" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">송파구</p></label> 
+                           			<input type="checkbox" id="l18" name = "location1" style="display: none" value="송파구">                                 	
+									
+									<label for="l19" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">양천구</p></label> 
+                           			<input type="checkbox" id="l19" name = "location1" style="display: none" value="양천구">                                 	
+									
+									<label for="l20" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">영등포구</p></label> 
+                           			<input type="checkbox" id="l20" name = "location1" style="display: none" value="영등포구">                                 	
+									
+									<label for="l21" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">용산구</p></label> 
+                           			<input type="checkbox" id="l21" name = "location1" style="display: none" value="용산구">                                 	
+									
+									<label for="l22" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">은평구</p></label> 
+                           			<input type="checkbox" id="l22" name = "location1" style="display: none" value="은평구">                                 	
+									
+									<label for="l23" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">종로구</p></label> 
+                           			<input type="checkbox" id="l23" name = "location1" style="display: none" value="종로구">                                 	
+									
+									<label for="l24" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">중구</p></label> 
+                           			<input type="checkbox" id="l24" name = "location1" style="display: none" value="중구">                                 	
+									
+									<label for="l25" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">중랑구</p></label> 
+                           			<input type="checkbox" id="l25" name = "location1" style="display: none" value="중랑구">                                 	
+									
+									<label for="l26" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
+                           			<input type="checkbox" id="l26" name = "location1" style="display: none" value="무관">                              
 
 								</div>
 							</div>
@@ -292,33 +335,24 @@
 								<br>
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
-										<input type="button" class="btn1 ind" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="restaurant" value="식당/서빙"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="storemanagement" value="매장관리"></input> <input
-											type="button" class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="sales" value="상담/영업"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="construction" value="건설/생산/기술"></input> <input
-											type="button" class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="nursing" value="간호/요양"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="teaching" value="교사/강사"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="delivery" value="운전/배달"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="admin" value="사무/경리"></input> <input type="button"
-											class="btn1" name="industry"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"
-											id="etc" value="기   타"></input>
+										<input type="checkbox" id="i1" name = "industry1" style="display: none" value="식당/서빙">  
+                           				<label for="i2" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">매장관리</p></label> 
+                                    	<input type="checkbox" id="i2" name = "industry1" style="display: none" value="매장관리">  
+                           				<label for="i3" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">상담/엉업</p></label> 
+                                    	<input type="checkbox" id="i3" name = "industry1" style="display: none" value="상담/엉업">  
+                           				<label for="i4" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">건설/생산/기술</p></label> 
+                                    	<input type="checkbox" id="i4" name = "industry1" style="display: none" value="건설/생산/기술">  
+                           				<label for="i5" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">간호/요양</p></label> 
+                                    	<input type="checkbox" id="i5" name = "industry1" style="display: none" value="간호/요양">  
+                           				<label for="i6" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">교사/강사</p></label> 
+                                    	<input type="checkbox" id="i6" name = "industry1" style="display: none" value="교사/강사">  
+                           				<label for="i7" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">운전/배달</p></label> 
+                                    	<input type="checkbox" id="i7" name = "industry1" style="display: none" value="운전/배달">  
+                           				<label for="i8" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">사무/경리</p></label> 
+                                    	<input type="checkbox" id="i8" name = "industry1" style="display: none" value="사무/경리">  
+                           				<label for="i9" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">기타</p></label> 
+                                    	<input type="checkbox" id="i9" name = "industry1" style="display: none" value="기타"> 
+
 									</div>
 								</div>
 							</div>
@@ -333,17 +367,16 @@
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
 										<!-- for loop 으로 직종에대한 상세 카테고리 -->
-										<input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="주방장"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="서빙"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="설거지"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="계산"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="찬모"></input>
+										<label for="j1" class="btn1 in" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
+	                                    <input type="checkbox" id="j1" name = "job1" style="display: none" value="주방장"> 
+	                                    <label for="j2" class="btn1 in" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
+	                                    <input type="checkbox" id="j2" name = "job1" style="display: none" value="주방장"> 
+	                                    <label for="j3" class="btn1 in" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
+	                                    <input type="checkbox" id="j3" name = "job1" style="display: none" value="주방장"> 
+	                                    <label for="j4" class="btn1 in" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
+	                                    <input type="checkbox" id="j4" name = "job1" style="display: none" value="주방장"> 
+	                                    <label for="j5" class="btn1 in" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
+	                                    <input type="checkbox" id="j5" name = "job1" style="display: none" value="주방장">   
 									</div>
 								</div>
 							</div>
@@ -358,21 +391,34 @@
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
 										<!-- for loop 으로 직종에대한 상세 카테고리 -->
-										<input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="경력 없음"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="1년 이하"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="1년 이상"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="2년 이상"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="3년 이상"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="4년 이상"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="5년 이상"></input>
+										<label for="e1" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">경력 없음</p></label> 
+                                    	<input type="checkbox" id="e1" name = "exp1" style="display: none" value="경력 없음">  
+
+                           				<label for="e2" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1년 이하</p></label> 
+                                    	<input type="checkbox" id="e2" name = "exp1" style="display: none" value="1년 이하">  
+
+                           				<label for="e3" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1년 이상</p></label> 
+                                    	<input type="checkbox" id="e3" name = "exp1" style="display: none" value="1년 이상">  
+                                    
+                           				<label for="p7" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">2년 이상</p></label> 
+                                    	<input type="checkbox" id="p7" name = "exp1" style="display: none" value="2년 이상">  
+
+                           				<label for="p7" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">3년 이상</p></label> 
+                                    	<input type="checkbox" id="p7" name = "exp1" style="display: none" value="3년 이상">  
+
+                           				<label for="p7" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">4년 이상</p></label> 
+                                    	<input type="checkbox" id="p7" name = "exp1" style="display: none" value="4년 이상"> 
+
+                           				<label for="p7" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+                           				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">5년 이상</p></label> 
+                                    	<input type="checkbox" id="p7" name = "exp1" style="display: none" value="5년 이상"> 
+
 									</div>
 								</div>
 							</div>
@@ -386,19 +432,21 @@
 								<br>
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
-										<input type="button" id="btn_1" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="일주일 이하"></input> <input type="button" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="한달 이하"></input> <input type="button" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="3개월 이하"></input> <input type="button" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="6개월 이하"></input> <input type="button" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="1년 이상"></input> <input type="button" class="btn1"
-											style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large;"
-											value="무   관"></input>
+										<label for="p1" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이하</p></label> 
+                                    	<input type="checkbox" id="p1" name = "perioid1" style="display: none" value="일주일 이하">  
+                           				<label for="p2" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이상</p></label> 
+                                    	<input type="checkbox" id="p2" name = "perioid1" style="display: none" value="일주일 이상">  
+                           				<label for="p3" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1개월 이상</p></label> 
+                                    	<input type="checkbox" id="p3" name = "perioid1" style="display: none" value="1개월 이상">  
+                           				<label for="p4" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">3개월 이상</p></label> 
+                                    	<input type="checkbox" id="p4" name = "perioid1" style="display: none" value="3개월 이상">                                      
+                            			<label for="p5" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">6개월 이상</p></label> 
+                                    	<input type="checkbox" id="p5" name = "period1" style="display: none" value="6개월 이상">                                     
+                           				<label for="p6" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1년 이상</p></label> 
+                                    	<input type="checkbox" id="p6" name = "period1" style="display: none" value="1년 이상">  
+                           				<label for="p7" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
+                                    	<input type="checkbox" id="p7" name = "period1" style="display: none" value="무관">  
+
 									</div>
 								</div>
 							</div>
@@ -413,19 +461,19 @@
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
 										<!-- for loop 으로 직종에대한 상세 카테고리 -->
-										<input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="시간 협의"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="종 일"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="새 벽"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="오 전"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="오 후"></input> <input type="button" class="btn1"
-											style="margin: 8px; width: 150pt; height: 60pt; font-size: x-large;"
-											value="저 녁"></input>
+									<label for="h1" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">시간 협의</p></label> 
+                                    <input type="checkbox" id="h1" name = "hour1" style="display: none" value="시간 협의">  
+                           			<label for="h2" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">풀타임</p></label> 
+                                    <input type="checkbox" id="h2" name = "hour1" style="display: none" value="풀타임">                                      
+                                    <label for="h3" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">새 벽</p></label> 
+                                    <input type="checkbox" id="h3" name = "hour1" style="display: none" value="새 벽">   
+                                    <label for="h4" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">오 전</p></label> 
+                                    <input type="checkbox" id="h4" name = "hour1" style="display: none" value="오 전">   
+                                    <label for="h5" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">오 후</p></label> 
+                                    <input type="checkbox" id="h5" name = "hour1" style="display: none" value="오 후">   
+                                    <label for="h6" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">저 녁</p></label> 
+                                    <input type="checkbox" id="h6" name = "hour1" style="display: none" value="저 녁">   
+
 									</div>
 								</div>
 							</div>
@@ -448,6 +496,8 @@
 			</div>
 		</div>
 	</div>
+
+
 
 	<%@ include file="../common/footer.jsp"%>
 </body>
