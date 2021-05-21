@@ -2,6 +2,7 @@ package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,8 +43,31 @@ public class BusinessPostListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 		
+		/* 공고 심사 상태별 갯수 구하기 + 전체 게시물 수 구하기  */
 		BusinessService businessService = new BusinessService();
-		int totalCount = businessService.selectTotalCount(loggedInUser.getbId());
+		Map<Integer, Integer> counts = businessService.selectTotalCount(loggedInUser.getbId());
+		
+		
+		int hold = 0; // 접수
+		int approved = 0; // 승인 
+		int rejected = 0; // 거절
+		
+		for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            switch(entry.getKey()) {
+                case 1: 
+                	hold = entry.getValue();
+                	break;
+                case 2:
+                	approved = entry.getValue();
+                	break;
+                case 3:
+                	rejected = entry.getValue();
+                	break;
+            }
+        }
+		
+		int totalCount = hold + approved + rejected; // 전체 공고 수 
+
 		
 		System.out.println("totalCount 체크 : " + totalCount);
 		
@@ -57,24 +81,8 @@ public class BusinessPostListServlet extends HttpServlet {
 		
 		System.out.println(pageInfo);		
 				
-		/* JDBC 시작 - 조회 */
+		/* JDBC 시작 - 공고 조회 */
 		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
-		
-		// 심사 상태에 따른 공고 개수
-		
-		int hold = 0; // 대기 
-		int approved = 0; // 승인 
-		int rejected = 0; // 거절
-		int done = 0; // 마감 
-		
-		for(int i = 0; i < postList.size(); i++) {
-			switch(postList.get(i).getDecisionStatus()) {
-			    case "승인" : approved++; break;
-			    case "거절" : rejected++; break;
-			    case "접수" : hold++; break;			    
-			}
-		}
-		
 		
 		
 		System.out.println("postList : " + postList);
@@ -85,7 +93,7 @@ public class BusinessPostListServlet extends HttpServlet {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
 			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
-			request.setAttribute("total", postList.size());
+			request.setAttribute("total", totalCount);
 			request.setAttribute("hold", hold);
 			request.setAttribute("approved", approved);
 			request.setAttribute("rejected", rejected);
