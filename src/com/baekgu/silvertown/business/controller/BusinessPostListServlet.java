@@ -60,6 +60,23 @@ public class BusinessPostListServlet extends HttpServlet {
 		/* JDBC 시작 - 조회 */
 		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
 		
+		// 심사 상태에 따른 공고 개수
+		
+		int hold = 0; // 대기 
+		int approved = 0; // 승인 
+		int rejected = 0; // 거절
+		int done = 0; // 마감 
+		
+		for(int i = 0; i < postList.size(); i++) {
+			switch(postList.get(i).getDecisionStatus()) {
+			    case "승인" : approved++; break;
+			    case "거절" : rejected++; break;
+			    case "접수" : hold++; break;			    
+			}
+		}
+		
+		
+		
 		System.out.println("postList : " + postList);
 		
 		String path = "";
@@ -68,6 +85,10 @@ public class BusinessPostListServlet extends HttpServlet {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
 			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("total", postList.size());
+			request.setAttribute("hold", hold);
+			request.setAttribute("approved", approved);
+			request.setAttribute("rejected", rejected);
 		} 
 //			else {
 //			path = "/WEB-INF/views/common/failed.jsp";

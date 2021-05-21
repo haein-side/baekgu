@@ -66,11 +66,10 @@
       <!-- <h3>Test</h3>
       <p>Lorem ipsum...</p> -->
       <div class="btn-group btn-group-justified">
-        <a href="#" class="btn btn-primary active">전체 (n건)</a>
-        <a href="#" class="btn btn-primary">대기 (n건)</a>
-        <a href="#" class="btn btn-primary">반려 (n건)</a>
-        <a href="#" class="btn btn-primary">진행 (n건)</a>
-        <a href="#" class="btn btn-primary">마감 (n건)</a>
+        <a href="#" class="btn btn-primary active">전체 (${ requestScope.total }건)</a>
+        <a href="#" class="btn btn-primary">접수 (${ requestScope.hold }건)</a>
+        <a href="#" class="btn btn-primary">거절 (${ requestScope.rejected }건)</a>
+        <a href="#" class="btn btn-primary">진행 (${ requestScope.approved }건)</a>
       </div>
        
       <br>
