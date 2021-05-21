@@ -72,6 +72,7 @@ public class UserSigninServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", loginUser);
 					
+					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");
 					/* 로그인 성공 시 메인으로 */
