@@ -155,14 +155,29 @@ public class BusinessDAO {
 		
 		List<BusinessPostDTO> postList = null;
 		
-		String query = prop.getProperty("selectPostList");
+		String query;
+		boolean flag = true;
+		if(pageInfo.getCategory().equals("전체")) {
+			query = prop.getProperty("selectPostList");
+		}else {
+			query = prop.getProperty("selectPostListCategory");
+			flag = false;
+		}
 		
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, loggedId);
-			psmt.setInt(2, pageInfo.getStartRow());
-			psmt.setInt(3, pageInfo.getEndRow());
-						
+			
+			if(flag) {
+				psmt.setString(1, loggedId);
+				psmt.setInt(2, pageInfo.getStartRow());
+				psmt.setInt(3, pageInfo.getEndRow());
+			}else {
+				psmt.setString(1, loggedId);
+				psmt.setString(2, pageInfo.getCategory());
+				psmt.setInt(3, pageInfo.getStartRow());
+				psmt.setInt(4, pageInfo.getEndRow());
+			}
+			
 			rset = psmt.executeQuery();
 			
 			postList = new ArrayList<>();

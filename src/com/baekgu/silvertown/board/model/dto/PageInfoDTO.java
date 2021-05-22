@@ -11,7 +11,7 @@ public class PageInfoDTO {
 	private int endPage;     // 한번에 보여줄 페이징 버튼의 마지막 페이지 수
 	private int startRow;    // DB 조회 시 최신 글 부터 조회해야하는 행의 시작수
 	private int endRow;      // DB 조회시 최신글부터 조회해야 하는 행의 마지막 수
-	
+	private String category;
 	
 	public PageInfoDTO() {}
 
@@ -27,6 +27,22 @@ public class PageInfoDTO {
 		this.endPage = endPage;
 		this.startRow = startRow;
 		this.endRow = endRow;
+	}
+
+	public PageInfoDTO(int pageNo, int totalCount, int limit, int buttonAmount, int maxPage, int startPage, int endPage,
+			int startRow, int endRow, String pageCategory) {
+
+		super();
+		this.pageNo = pageNo;
+		this.totalCount = totalCount;
+		this.limit = limit;
+		this.buttonAmount = buttonAmount;
+		this.maxPage = maxPage;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.category = pageCategory;
 	}
 
 	public int getPageNo() {
@@ -99,6 +115,14 @@ public class PageInfoDTO {
 
 	public void setEndRow(int endRow) {
 		this.endRow = endRow;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	@Override
