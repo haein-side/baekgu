@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM USER
+	</entry>
+	<entry key="selectMemberList">
+		SELECT
+		       USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_GENDER
+		     , USER_ADDRESS
+		     , USER_REGISTER_DATE
+		     , USER_BLOCK
+		  FROM USER
+	  ORDER BY USER_CODE
+		 LIMIT ?,?
+	</entry>
+	<entry key="selectMemberDetail">
+		select 
+		       user.USER_CODE
+		     , user.USER_NAME
+			 , user.USER_PHONE
+			 , user.USER_BDAY
+			 , user.USER_GENDER
+			 , user.USER_ADDRESS
+			 , user.USER_REGISTER_DATE
+			 , user.USER_BLOCK
+		     , RESUME.RESUME_CODE 
+		     , RESUME.RESUME_WRITE_DATE
+		     , RESUME.RESUME_SUBPHONE
+		     , RESUME.RESUME_LETTER
+		     , RESUME.RESUME_ADVANTAGE
+		  from user, resume
+		 where user.USER_CODE = RESUME.USER_CODE
+ 		   and user.USER_CODE = ?
+	</entry>
+	<entry key="selectBlockTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM USER
+		 WHERE USER_BLOCK = 1;
+	</entry>
+	<entry key="selectBlockMember">
+	 	SELECT
+		       USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_GENDER
+		     , USER_ADDRESS
+		     , USER_REGISTER_DATE
+		     , USER_BLOCK
+		  FROM USER
+		 WHERE USER_BLOCK = 1
+		 LIMIT ?,?
+	</entry>
+	<entry key="selectNomalTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM USER
+		 WHERE USER_BLOCK = 0;
+	</entry>
+	<entry key="selectNomalMember">
+	 	SELECT
+		       USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_GENDER
+		     , USER_ADDRESS
+		     , USER_REGISTER_DATE
+		     , USER_BLOCK
+		  FROM USER
+		 WHERE USER_BLOCK = 0
+		 LIMIT ?,?
+	</entry>
+	<entry key="searchNameMemberCount">
+	    SELECT
+	           COUNT(*)
+	      FROM USER
+	     WHERE USER.USER_NAME LIKE '%' ? '%'
+	</entry>
+	<entry key="searchCodeMemberCount">
+	    SELECT
+	           COUNT(*)
+	      FROM USER
+	     WHERE USER.USER_CODE LIKE '%' ? '%'
+	</entry>
+	<entry key="searchYearMemberCount">
+	    SELECT
+	           COUNT(*)
+	      FROM USER
+	     WHERE USER.USER_BDAY LIKE '%' ? '%'
+	</entry>
+	<entry key="searchNameMemberList">
+	    SELECT
+	           USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_BLOCK
+	      FROM USER
+	     WHERE USER.USER_NAME LIKE '%' ? '%'
+	</entry>
+	<entry key="searchCodeMemberList">
+	    SELECT
+	           USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_BLOCK
+	      FROM USER
+	     WHERE USER.USER_CODE LIKE '%' ? '%'
+	</entry>
+	<entry key="searchYearMemberList">
+	    SELECT
+	           USER_CODE
+		     , USER_NAME
+		     , USER_PHONE
+		     , USER_BDAY
+		     , USER_BLOCK
+	      FROM USER
+	     WHERE USER.USER_BDAY LIKE '%' ? '%'
+	</entry>
+	<entry key="updataBlockMember">
+	   UPDATE DECISION_LIST 
+          SET D_LIST_REASON = ?
+            , D_LIST_DATE = now()
+            , DECISION_CODE = 2
+            , ADMIN_ID = ?
+        WHERE D_LIST_CODE = ?
+	</entry>
+	<entry key="selectReportCode">
+	    SELECT A.D_LIST_CODE
+          FROM DECISION_LIST A, REPORT B
+         WHERE A.D_LIST_CODE = B.D_LIST_CODE
+           AND B.USER_CODE = ?
+           AND A.D_LIST_TYPE_CODE = ?
+	</entry>
+	<entry key="updateBlock">
+	    UPDATE USER
+	       SET USER_BLOCK = 1
+	     WHERE USER_CODE = ?
+	</entry>
+
+</properties>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="RESOURCES/CSS/CUSTOMER/styleMa.css" rel="stylesheet">
+<link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/styleMa.css" rel="stylesheet">
 </head>
 <body>
 <div class="footer">

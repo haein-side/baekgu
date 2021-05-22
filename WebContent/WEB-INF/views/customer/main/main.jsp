@@ -16,9 +16,8 @@
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
-
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/animate.css">
 	<!-- Flexslider -->
@@ -32,19 +31,15 @@
 
 	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/style.css">
 
-
 	<!-- 오렌지 색상
 	FF7844 -->
-	
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 
-	
 	<!-- 로딩 중일 때 이미지 -->
 	<!-- <div class="fh5co-loader"></div> -->
 	
-
 	<div id="fh5co-page">
 		<c:if test="${ empty sessionScope.loginUser }">	
 			<section id="fh5co-header">
@@ -56,7 +51,6 @@
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
 							<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 						</h1>
-					
 						<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
 							<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
@@ -315,8 +309,6 @@
 						  </div>
 						</div>
 					  </div> 
-
-	  
 				  </div>
 				</div>
 			  </div>

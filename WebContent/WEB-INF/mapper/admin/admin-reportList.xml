@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM REPORT
+	</entry>
+	<entry key="selectReportList">
+		SELECT
+		       REPORT.REPORT_CODE
+		     , REPORT.REPORT_REASON
+		     , REPORT.REPORT_DATE
+		     , REPORT.POST_CODE
+		     , REPORT.USER_CODE
+		     , REPORT.D_LIST_CODE
+		     , DECISION_LIST.D_LIST_CODE
+		     , DECISION_LIST.D_LIST_REASON
+		     , DECISION_LIST.D_LIST_DATE 
+		     , DECISION_LIST.DECISION_CODE 
+		     , DECISION_LIST.D_LIST_TYPE_CODE 
+		     , DECISION_LIST.ADMIN_ID 
+		  FROM REPORT, DECISION_LIST
+		 WHERE REPORT.D_LIST_CODE = DECISION_LIST.D_LIST_CODE
+		 LIMIT ?,?
+	</entry>
+
+	
+
+</properties>

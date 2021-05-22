@@ -6,6 +6,7 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dao.BusinessDAO;
@@ -87,15 +88,15 @@ public class BusinessService {
 		return decisionList+insertBusiness+insertHr;
 
 	}
-	public int selectTotalCount(String loggedId) {
+	public Map<Integer, Integer> selectTotalCount(String loggedId) {
 		
 		Connection con = getConnection();
 		
-		int totalCount = businessDAO.selectTotalCount(con, loggedId);
+		Map<Integer, Integer> counts = businessDAO.selectTotalCount(con, loggedId);
 		
 		close(con);
 		
-		return totalCount;
+		return counts;
 		
 	}
 
