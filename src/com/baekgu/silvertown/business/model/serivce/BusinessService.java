@@ -13,6 +13,7 @@ import com.baekgu.silvertown.business.model.dao.BusinessDAO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 
 public class BusinessService {
@@ -108,6 +109,37 @@ public class BusinessService {
 		close(con);
 		
 		return postList;
+	}
+
+	public int insertNewPost(PostInsertDTO post) {
+		
+		Connection con = getConnection();
+		
+		int decisionList = businessDAO.insertNewDecisionListpost(con);
+		int insertPost = 0;
+		
+		if(decisionList > 0) {
+			commit(con);
+			
+			insertPost = businessDAO.insertNewPost(con, post);
+			commit(con);
+		}
+		
+		
+		close(con);
+		return insertPost + insertPost;
+	}
+
+	public String chekId(String hrId_1) {
+		
+		Connection  con = getConnection();
+		
+		String result = businessDAO.chekId(con, hrId_1);
+		
+		close(con);
+		
+		
+		return result;
 	}
 
 

@@ -110,35 +110,49 @@ public class BusinessPostListServlet extends HttpServlet {
 		int buttonAmount = 5;
 		
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount);
-		
-		System.out.println(pageInfo);		
-				
 		/* JDBC 시작 - 공고 조회 */
+		/* page category 분기 처리 */
+		
+//		PageInfoDTO pageInfo;
+//		List<BusinessPostDTO> postList;
+		
+//		if(pageCategory.equals("전체")) {
+//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount);
+//		}else {
+//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
+//		}
+		
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
+
 		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
-		
+
 				
+		
+		
+		
+//		List<BusinessPostDTO> postSelections = new ArrayList<>();
+		
+//		if(!pageCategory.equals("전체")) {
+//			for(int i = 0; i < postList.size(); i++) {
+//				System.out.println(postList.get(i));
+//
+//				if(postList.get(i).getDecisionStatus().equals(pageCategory)) {
+//					postSelections.add(postList.get(i));
+//				}
+//			}
+//		} else {
+//			// clone list to another list
+//			postSelections = postList.stream().collect(Collectors.toList());
+//		}
+		
 		String path = "";
-		
-		List<BusinessPostDTO> postSelections = new ArrayList<>();
-		
-		if( !pageCategory.equals("전체")) {
-			for(int i = 0; i < postList.size(); i++) {
-				if(!postList.get(i).getDecisionStatus().equals(pageCategory)) {
-					postSelections.add(postList.get(i));
-				}
-			}
-		} else {
-			// clone list to another list
-			postSelections = postList.stream().collect(Collectors.toList());
-		}
-				
+
 		if(postList != null) {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
 			
-			request.setAttribute("pageCategory", pageCategory);
+//			request.setAttribute("pageCategory", pageCategory);
 			
-			request.setAttribute("postList", postSelections);
+			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("total", totalCount);
 			request.setAttribute("hold", hold);
@@ -155,8 +169,6 @@ public class BusinessPostListServlet extends HttpServlet {
 //		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-		
 		
 	}
 
