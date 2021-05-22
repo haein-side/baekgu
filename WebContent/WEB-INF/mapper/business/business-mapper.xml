@@ -139,5 +139,93 @@ select
  		  GROUP BY a.POST_CODE, c.DECISION_STATUS , a.POST_DATE , a.POST_TITLE , e.AD_NAME ,a.POST_START , a.POST_END 
  		  ORDER BY a.POST_DATE DESC
  		  LIMIT ?, ?
+ 	</entry>
+	<entry key="insertnewpost">
+		insert
+	      into post
+	    (
+    	  POST_TITLE
+	    , POST_CONTENT 
+	    , POST_TO
+    	, POST_START 
+	    , POST_END 
+    	, POST_ONLINE
+    	, POST_DATE 
+    	, POST_ADDRESS 
+	    , POST_DAY
+	    , PAYMENT 
+    	, GENDER 
+    	, ADVANTAGE 
+    	, BENEFIT 
+    	, FULLTIME_YN 
+    	, POST_M_NAME 
+     	, POST_M_EMAIL 
+    	, POST_M_PHONE 
+    	, EXP_CODE 
+     	, JOB_CODE 
+    	, PERIOD_CODE 
+     	, HOUR_CODE 
+    	, LOCATION_CODE 
+    	, PAY_CODE 
+    	, AGE_CODE 
+    	, HR_ID 
+	    , DEGREE_CODE 
+    	, D_LIST_CODE 
+    	 )
+    	 values
+    	 (
+     	  ?
+    	, ?
+     	, ?
+     	, ?
+	    , ?
+    	, ?
+    	, NOW()
+    	, ?
+    	, ?
+	    , ?
+    	, ?
+	    , ?
+    	, ?
+    	, ?
+    	, ?
+	    , ?
+	    , ?
+    	, ?
+    	, ?
+	    , ?
+    	, ?
+	    , ?
+	    , ?
+	    , ?
+    	, ?
+    	, ?
+    	, LAST_INSERT_ID()
+	     )
+	</entry>
+	<entry key="insertDecisionListpost">
+       insert
+         into decision_list 
+       (
+         D_LIST_REASON
+       , D_LIST_DATE
+       , ADMIN_ID
+       , DECISION_CODE
+       , D_LIST_TYPE_CODE
+       )
+       values
+      (
+        null
+      , null
+      , null
+      , 1
+      , 4
+ 	  )
+	</entry>
+	<entry key="checkDuplicationId">
+		SELECT
+		       COUNT(HR_ID)
+		  FROM HR
+		 WHERE HR_id = ?
 	</entry>
 </properties>

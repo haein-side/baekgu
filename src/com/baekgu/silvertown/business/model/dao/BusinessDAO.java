@@ -17,6 +17,9 @@ import java.util.Properties;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
+
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
@@ -267,7 +270,137 @@ public class BusinessDAO {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();	
+		} finally {
+			close(pstmt);
 		}
+		
+		return result;
+	}
+
+	/**
+	 * 공고 등록 메소드
+	 * @param con
+	 * @param post
+	 * @return
+	 */
+	public int insertNewPost(Connection con, PostInsertDTO post) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertnewpost");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, post.getPostTitle());
+			pstmt.setString(2, post.getPostContent());
+			pstmt.setInt(3, post.getPostTo());
+			pstmt.setDate(4, post.getStartDate());
+			pstmt.setDate(5, post.getEndDate());
+			pstmt.setInt(6, post.getOnline());
+			pstmt.setString(7, post.getAddress());
+			pstmt.setString(8, post.getDays());
+			pstmt.setLong(9, post.getPayment());
+			pstmt.setString(10, post.getGender());
+			pstmt.setString(11, post.getPriority());
+			pstmt.setString(12, post.getBenefit());
+			pstmt.setString(13, post.getFullTimeYn());
+			pstmt.setString(14,  post.getName());
+			pstmt.setString(15, post.getEmail());
+			pstmt.setString(16, post.getPhone());
+			pstmt.setInt(17, post.getExp());
+			pstmt.setInt(18,  post.getJob());
+			pstmt.setInt(19, post.getPeriodCode());
+			pstmt.setInt(20, post.getHours());
+			pstmt.setString(21, null);
+			pstmt.setInt(22, post.getPay());
+			pstmt.setInt(23, post.getAge());
+			pstmt.setString(24, post.getHrId());
+			pstmt.setInt(25, post.getDegree());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
+
+	/**
+	 * 심사 테이블에 새로운 공고 심사 추가 메소드
+	 * @param con
+	 * @return
+	 */
+	public int insertNewDecisionListpost(Connection con) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertDecisionListpost");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public String chekId(Connection con, String hrId_1) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet  rset = null;
+		
+		String result = "";
+		
+		String query = prop.getProperty("checkDuplicationId");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, hrId_1);
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset.next()) {
+				
+				int checkDuplId = rset.getInt("COUNT(HR_ID)");
+				
+				if(checkDuplId == 0) {
+					
+					result = "success";
+				} else if(checkDuplId > 0){
+					
+					result = "fail";
+				}
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
 		return result;
 	}
 }
