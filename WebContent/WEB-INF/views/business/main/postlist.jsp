@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -60,23 +60,20 @@
         <li> 해당 공고의 지원자 정보를 보시려면 '상세보기' 버튼을 눌러주세요</li>
         <li> 대기 목록에는 미승인 공고 또는 게시되지 않은 공고가 표시됩니다 </li>
         <li> 진행중인 공고는 수정이 불가능합니다</li>
-        <li> 마감된 공고는 연장버튼을 통해 재등록 할 수 있습니다</li>
       </ul>
+      
       <hr>
-      <!-- <h3>Test</h3>
-      <p>Lorem ipsum...</p> -->
+      
       <div class="btn-group btn-group-justified">
-        <a href="#" class="btn btn-primary active">전체 (n건)</a>
-        <a href="#" class="btn btn-primary">대기 (n건)</a>
-        <a href="#" class="btn btn-primary">반려 (n건)</a>
-        <a href="#" class="btn btn-primary">진행 (n건)</a>
-        <a href="#" class="btn btn-primary">마감 (n건)</a>
+        <a id="totalCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">전체 ( ${ requestScope.total }건 )</a>
+        <a id="holdCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">접수 ( ${ requestScope.hold }건 )</a>
+        <a id="approveCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">승인 ( ${ requestScope.approved }건 )</a>
+        <a id="rejectCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">거절 ( ${ requestScope.rejected }건 )</a>
       </div>
        
       <br>
       <br>
 
-        
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -110,15 +107,6 @@
 
       <br>
       <br>
-      <!-- <div class="text-center">
-        <ul class="pagination"  align="center">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div> -->
 		
 	 <%-- 페이지 처리 --%>
 		<div class="pagination" align="center">
@@ -191,7 +179,7 @@
 </div>
 	<script>
 		const link = "${ pageContext.servletContext.contextPath }/business/postlist";
-		const searchLink = "${ pageContext.servletContext.contextPath }/business/postlist";
+		const categoryLink = "${ pageContext.servletContext.contextPath }/business/postlist";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -221,33 +209,38 @@
 			}
 		}
 		
-		if(document.getElementById("searchStartPage")) {
-			const $searchStartPage = document.getElementById("searchStartPage");
-			$searchStartPage.onclick = function() {
-				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		// category paging - 전체
+		if(document.getElementById("totalCategory")) {
+			const $totalCategory = document.getElementById("totalCategory");
+			$totalCategory.onclick = function() {
+				location.href = categoryLink;
 			}
 		}
 		
-		if(document.getElementById("searchPrevPage")) {
-			const $searchPrevPage = document.getElementById("searchPrevPage");
-			$searchPrevPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		// category paging - 접수
+		if(document.getElementById("holdCategory")) {
+			const $holdCategory = document.getElementById("holdCategory");
+			$holdCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=접수";
 			}
 		}
 		
-		if(document.getElementById("searchNextPage")) {
-			const $searchNextPage = document.getElementById("searchNextPage");
-			$searchNextPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		// category paging - 승인
+		if(document.getElementById("approveCategory")) {
+			const $approveCategory = document.getElementById("approveCategory");
+			$approveCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=승인";
 			}
 		}
 		
-		if(document.getElementById("searchMaxPage")) {
-			const $searchMaxPage = document.getElementById("searchMaxPage");
-			$searchMaxPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		// category paging - 거절 
+		if(document.getElementById("rejectCategory")) {
+			const $rejectCategory = document.getElementById("rejectCategory");
+			$rejectCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=거절";
 			}
 		}
+
 		
 		if(document.getElementsByTagName("td")) {
 			
@@ -262,16 +255,11 @@
 				$tds[i].onmouseout = function() {
 					this.parentNode.style.backgroundColor = "white";
 				}
-				
-				$tds[i].onclick = function() {
-					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
-					alert(this.parentNode.children[0].innerText);
-				}
-				
 			}
 			
 		}
 		
+		/* 고쳐야하는부분  */
 		function pageButtonAction(text) {
 			location.href = link + "?currentPage=" + text;
 		}
@@ -283,7 +271,7 @@
 
 
 
-<jsp:include page="../common/footer.jsp"/>
+	<jsp:include page="../common/footer.jsp"/>
 
 
 </body>
