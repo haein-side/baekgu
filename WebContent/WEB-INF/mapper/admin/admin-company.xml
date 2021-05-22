@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectTotalCount">
+		SELECT
+		       COUNT(*)
+		  FROM BUSINESS a, DECISION_LIST b
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+	       AND b.D_LIST_REASON is not null
+	</entry>
+	<entry key="selectCompanyList">
+		SELECT
+		       a.B_CODE
+		     , a.B_NAME
+		     , a.B_OWNER
+		     , a.B_NUMBER
+		     , a.B_ADDRESS
+		     , a.B_PHONE
+		     , a.B_BLOCK
+		     , a.B_CATEGORY_CODE
+		     , a.D_LIST_CODE
+		     , b.DECISION_CODE
+		     , b.D_LIST_TYPE_CODE
+		     from business a, decision_list b
+  			where a.D_LIST_CODE = b.D_LIST_CODE
+              and b.D_LIST_REASON is not null
+            LIMIT ?,?
+	</entry>
+	<entry key="selectCompanyDetail">
+		SELECT
+		       a.B_CODE
+		     , a.B_NAME
+		     , a.B_OWNER
+		     , a.B_NUMBER
+		     , a.B_ADDRESS
+		     , a.B_PHONE
+		     , a.B_BLOCK
+		     , a.B_PROFIT
+		     , a.B_CATEGORY_CODE
+		     , a.D_LIST_CODE
+		     , b.DECISION_CODE
+		     , b.D_LIST_TYPE_CODE
+		     , c.HR_ID
+		     , c.HR_NAME
+		     , c.HR_PHONE
+		     , c.HR_EMAIL
+		  FROM BUSINESS a, DECISION_LIST b, HR c
+  		 where a.D_LIST_CODE = b.D_LIST_CODE
+  		   AND a.B_CODE = c.B_CODE
+  		   AND a.B_CODE = ?
+	</entry>
+	<entry key="selectHrList">
+	    SELECT
+		       b.HR_ID
+		     , b.HR_NAME
+		     , b.HR_PHONE
+		     , b.HR_EMAIL
+		  FROM BUSINESS a, HR b
+  		 where a.B_CODE = b.B_CODE
+  		   AND a.B_CODE = ?
+	
+	</entry>
+	
+
+	
+
+</properties>
