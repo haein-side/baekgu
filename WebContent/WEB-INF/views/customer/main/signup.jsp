@@ -27,7 +27,7 @@ $(function(){
 				if (data == "fail"){
 
 					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
-					alert("사용불가아이디");=======
+					alert("사용불가아이디");
 					$("#checkMessage").html("사용할 수 없는 휴대폰번호입니다.");
 					$("#idCheck").value("fail");
 					return;

@@ -2,6 +2,7 @@ package com.baekgu.silvertown.business.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,8 @@ import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 
+import net.coobird.thumbnailator.Thumbnails;
+
 
 
 
@@ -30,7 +33,20 @@ public class BusinessSignUpServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/WEB-INF/views/business/main/signupB.jsp").forward(request, response);
+		
+		String hrId_1 = request.getParameter("hrId_1");
+		System.out.println(hrId_1);
+		
+		BusinessService service = new BusinessService();
+		
+		String result = service.chekId(hrId_1);
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		
+		out.flush();
+		out.close();
+		
 		
 	}
 
@@ -38,7 +54,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String imageRoot = "";
+//		String imageRoot = "";
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			/* 이미지 경로 설정하기 */
@@ -55,6 +71,8 @@ public class BusinessSignUpServlet extends HttpServlet {
 			HrDTO hr = null;
 			
 			Map<String, String> parameter = new HashMap<>();
+			
+			Map<String, String> fileMap = null;
 			
 			/* 파일을 업로드할 시 최대 크기나 임시 저장할 폴더의 경로 등을 포함하기 위한 인스턴스이다. */
 			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
@@ -102,7 +120,32 @@ public class BusinessSignUpServlet extends HttpServlet {
 							item.write(storeFile);
 							System.out.println("오셨어요???");
 							
-							imageRoot = imageFilesDirectory + "/" + randomFileName;
+							
+							/* 필요한 정보를 Map에 담는다. */
+							fileMap = new HashMap<>();
+							fileMap.put("filedName", fileName);
+							fileMap.put("originFileName", originFileName);
+							fileMap.put("savedFileName", randomFileName);
+							fileMap.put("savePath", imageFilesDirectory);
+							
+							/* 제목 사진과 나머지 사진을 구분하고 썸네일도 생성한다. */
+							int width = 0;
+							int height = 0;
+			
+								
+							/* 썸네일로 변환 할 사이즈를 지정한다. */
+														
+							width = 120;
+							height = 100;
+							
+							/* 썸네일로 변환 후 저장한다. */
+							Thumbnails.of(imageFilesDirectory + randomFileName)
+									.size(width, height)
+									.toFile(rootContext + "RESOURCES/UPLOAD/THUMBNAIL/" + "thumbnail_" + randomFileName);
+							
+							/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
+							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/thumbnail_" + randomFileName);
+							
 						}
 						
 					} else {
@@ -120,12 +163,13 @@ public class BusinessSignUpServlet extends HttpServlet {
 				
 				// map에 담긴 기업 값 가져오기
 				String bName =  parameter.get("bName");
-				String bNumber = parameter.get("bNo1") + parameter.get("bNo2") + parameter.get("bNo3");
+				String bNumber = parameter.get("businessNo");
 				String bPhone = parameter.get("bPhone");
 				String bOwner = parameter.get("ownerName");
+				String bLogo = fileMap.get("thumbnailPath");
 				int bType = Integer.parseInt(parameter.get("BC"));
 				Long profit = Long.parseLong(parameter.get("profit"));
-				String bAddress = parameter.get("zipCode") + "&" + parameter.get("address1") + "&" + parameter.get("address2").replace(" ", "");
+				String bAddress = parameter.get("zipCode").replace(" ", "") + "&" + parameter.get("address1").replace(" ", "") + "&" + parameter.get("address2").replace(" ", "");
 				
 				
 				business = new BusinessDTO();
@@ -135,7 +179,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 				business.setbPhone(bPhone);
 				business.setbOwner(bOwner);
 				business.setProfit(profit);
-				business.setbLogo(imageRoot);
+				business.setbLogo(bLogo);
 				business.setbCategoryCode(bType);
 				business.setbAddress(bAddress);
 				
@@ -160,7 +204,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} 
 	        
 		
 
@@ -168,6 +212,12 @@ public class BusinessSignUpServlet extends HttpServlet {
 		BusinessService service = new BusinessService();
 		
 		int result = service.insertNewBusiness(business, hr);
+		
+		if(result > 0 ) {
+			
+			response.sendRedirect(request.getContextPath() + "/business/login");
+			
+		}
 		
 		}
 
