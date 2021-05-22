@@ -23,12 +23,12 @@
 	<%--  <jsp:forward page="/WEB-INF/views/admin/main/main.jsp"/>  --%>
 
 	<!-- 김유진 테스트 -->
-	<%--<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp"/>--%>
+	<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp"/>
 
 	<!-- 김유진 테스트 -->
 	<%-- <jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/> --%>
 
 	<!-- 김해인 테스트 -->
-	<jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/>
+	<%-- <jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
 </body>
 </html>

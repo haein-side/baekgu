@@ -2,12 +2,15 @@ package com.baekgu.silvertown.admin.model.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.MemberDTO;
 import com.baekgu.silvertown.admin.model.service.AdminMemberService;
 
@@ -40,15 +43,48 @@ public class AdminMemberDetailServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(path).forward(request, response);
 		
-		
-		
-		
-		
-		
+
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int userCode = Integer.parseInt(request.getParameter("no"));
+		String reason = request.getParameter("blockReason");
+		//loginAdmin에 담겨있는 세션값을 가져온다. (관리자 이름)
+		HttpSession session = request.getSession();
+		String adminId = (String)session.getAttribute("loginAdminId");
+		
+		BlockDTO block = new BlockDTO();
+		block.setbReason(reason);
+		block.setAdmin(adminId);
+		block.setUserCode(userCode);
+		
+		System.out.println("유저코드 : " + userCode);
+		System.out.println("block : " + block);
+		System.out.println("차단 사유 : " + block.getbReason());
+		System.out.println("관리자ID : " + block.getAdmin());
+		
+		//1. 고객코드와 일치하는 신고내역 조회
+		AdminMemberService memberService = new AdminMemberService();
+		int searchResult = memberService.selectReportCode(block);
+		
+		//2. 가져온 신고코드를 이용하여 블락 업데이트 실행
+		int result = memberService.updateBlockMember(block);
+	
+		if(result > 0) {
+			
+			
+			response.sendRedirect(request.getContextPath() + "/admin/reportlist");
+
+			
+		} else {
+			String path ="/WEB-INF/views/admin/common/errorPage.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+		}
+		
+		
+		
 		
 	}
 
