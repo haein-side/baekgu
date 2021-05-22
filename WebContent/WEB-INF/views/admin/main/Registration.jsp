@@ -32,39 +32,8 @@
         
         
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script>
-   	$(function(){
-   		
-   		$("#duplicationCheck").click(function(){
-   			var checkId = $("#adminId").val();
-   				
-   			$.ajax({
-   				url:"/baeckgu/adminIdCheck",
-   				type:"post",
-   				data : {
-   						adminId : checkId
-   				},
-   				success: function(data,textStatus,xhr) {
-   					if(data == 'success') {
-   						alert("이용하세요");
-   					}  else {
-   						alert("중복된 아이디입니다.");
-   						$("#adminId").select();
-   					}
-   					
-   				},
-   				error : function(xhr,status,error) {
-   					console.log(error);
-   				}
-   			})
-   		});
-   		
+ 
 
-   	});
-   
-   
-   </script>
-   
    
     </head>
     <body>
@@ -108,7 +77,7 @@
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
                                   <input class="form-control " id="adminId" name="adminId" type="id" required/>
-                       	<!-- 중복확인 -->
+                       	           <!-- 중복확인 -->
                                   <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
@@ -138,7 +107,7 @@
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="submit" >등록</button>
+                                  <button class="btn btn-primary" type="submit"  onClick="ManagerList()">등록</button>
                                 </div>
                               </div>
                             </form>
@@ -151,7 +120,50 @@
                    <!-- 관리자 및 직원 등록   -->
             </section>
             <!--main content end-->
+            
+   <!--  등록하기 버튼 클릭 시  리스트로 넘어감. -->
+      <script>
+           function ManagerList(){
+                const link = "${ pageContext.servletContext.contextPath }/admin/search";
+                location.href = link;
+          }
+     </script>
+   
+   <!-- 아이디 중복확인용  -->
+  <script>
+   	$(function(){
+   		
+   		$("#duplicationCheck").click(function(){
+   			var checkId = $("#adminId").val();
+   				
+   			$.ajax({
+   				url:"/baeckgu/adminIdCheck",
+   				type:"post",
+   				data : {
+   						adminId : checkId
+   				},
+   				success: function(data,textStatus,xhr) {
+   					if(data == 'success') {
+   						alert("이용하세요");
+   					}  else {
+   						alert("중복된 아이디입니다.");
+   						$("#adminId").select();
+   					}
+   					
+   				},
+   				error : function(xhr,status,error) {
+   					console.log(error);
+   				}
+   			})
+   		});
+   		
 
+   	});
+   
+
+   </script>
+   
+ 
         <!-- javascripts -->
         <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
         <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
