@@ -56,46 +56,47 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                            <form class="form-validate form-horizontal" id="feedback_form" method="get" action="${ pageContext.servletContext.contextPath }/admin/adminid">
+                            <form class="form-validate form-horizontal" id="feedback_form" method="post" action="${ pageContext.servletContext.contextPath }/admin/adminid">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakname" name="name"  type="text"  value=<c:out value="${ selectId.adminName}"/>></input>
+                                  <input class="form-control" id="beakname" name="name"  type="text"  value=<c:out value="${ adminDTO.adminName}"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="baekid" type="id" name="id"  value=<c:out value="${ selectId.adminId }"/>>
+                                  <input class="form-control " id="baekid" type="id" name="id"  value=<c:out value="${ adminDTO.adminId }"/>>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakpassword" type="password" name="password" value=<c:out value="${ selectId.adminPwd }"/>></input>
+                                  <input class="form-control " id="beakpassword" type="password" name="password" value=<c:out value="${ adminDTO.adminPwd }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이메일 </label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beakemail" name="email" type="text" value=<c:out value="${ selectId.adminEmail }"/>></input>
+                                  <input class="form-control" id="beakemail" name="email" type="text"  value=<c:out value="${ adminDTO.adminEmail }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">등록일</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="beakconfirm" name="confirm" value=<c:out value="${ selectId.adminDate }"/>></input>
+                                  <input class="form-control " id="beakconfirm" name="confirm" value=<c:out value="${ adminDTO.adminDate }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control" id="beak" name="beakre" type="text"value=<c:out value="${ selectId.adminRole }"/>></input>
+                                  <input class="form-control" id="beak" name="beakre" type="text"  value=<c:out value="${ adminDTO.adminRole }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" class="btn btn-primary" type="submit" >등록</button>
+                                  <button class="btn btn-primary" class="btn btn-primary" type="submit">등록</button>
+                                  
                                 </div>
                               </div>
                             </form>
@@ -108,6 +109,7 @@
                    <!-- 백구 홈페이지 정보 끝   -->
             </section>
             <!--main content end-->
+
 
 
 
