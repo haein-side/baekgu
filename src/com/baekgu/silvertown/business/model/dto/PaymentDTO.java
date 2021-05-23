@@ -20,7 +20,7 @@ public class PaymentDTO {
 	public PaymentDTO(String DListStatus, String postTitle, String adName, int adWeek, int totalPrice, Date postadDate,
 			int methodCode, int adPaid) {
 		super();
-		DListStatus = DListStatus;
+		this.DListStatus = DListStatus;
 		this.postTitle = postTitle;
 		this.adName = adName;
 		this.adWeek = adWeek;
