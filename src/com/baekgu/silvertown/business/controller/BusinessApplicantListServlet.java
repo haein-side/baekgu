@@ -17,6 +17,8 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		
 		String path = "";
 		
+		System.out.println(request.getParameter("postCode"));
+		
 		path = "/WEB-INF/views/business/main/applicantlist.jsp";
 
 		request.getRequestDispatcher(path).forward(request, response);

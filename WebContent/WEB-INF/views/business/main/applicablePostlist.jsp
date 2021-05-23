@@ -58,7 +58,7 @@
     <div class="col-sm-1 sidenav">
     </div>
     <div class="col-sm-10 text-left"> 
-      <h1>지원자관리</h1>
+      <h1>지원자관리 - 공고</h1>
       <ul style="padding-left: 25px;">
       	<li>등록하신 공고 중, 지원자가 있는 공고만 표시됩니다</li>
         <li>공고를 누르면 지원자 조회가 가능합니다</li>
@@ -70,6 +70,7 @@
         <table class="table table-bordered">
           <thead>
             <tr>
+              <th style="display:none">공고코드</th>
               <th>공고담당자</th>
               <th>공고제목</th>
               <th>모집인원</th>
@@ -81,15 +82,13 @@
           <tbody>
             <c:forEach var="post" items="${ requestScope.postList }">
 			<tr> 
-<%-- 				<td><c:out value="${ post.postCode }"/></td>			
- --%>				
+ 				<td style = "display:none"><c:out value="${ post.postCode }"/></td>
  				<td><c:out value="${ post.managerName }"/></td>
 				<td><c:out value="${ post.postTitle }"/></td>
 				<td><c:out value="${ post.postTO }"/></td>
 				<td><c:out value="${ post.countOfApplicants }"/></td>
 				<td><c:out value="${ post.countOfUnreadResume }"/></td>
 				<td><c:out value="${ post.postEnd }"/></td>
-				
 			</tr>
 			</c:forEach> 
           </tbody>
@@ -212,6 +211,11 @@
 				
 				$tds[i].onmouseout = function() {
 					this.parentNode.style.backgroundColor = "white";
+				}
+				
+				$tds[i].onclick = function() {
+					location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="
+							         +  this.parentNode.children[0].innerText;
 				}
 			}
 			
