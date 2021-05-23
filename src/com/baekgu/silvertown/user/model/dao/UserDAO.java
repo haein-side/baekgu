@@ -283,6 +283,13 @@ public class UserDAO {
 		return (UserDTO) jobInfo;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 입사지원내역 조회
+	 * @param con
+	 * @param userCode
+	 * @param applyPageInfo
+	 * @return
+	 */
 	public List<ApplyDTO> selectApply(Connection con, int userCode, PageInfoDTO applyPageInfo) {
 		PreparedStatement pstmt = null;
 		
@@ -306,6 +313,7 @@ public class UserDAO {
 				
 				ApplyDTO app = new ApplyDTO();
 				app.setUserCode(userCode);
+				app.setApplyCode(rset.getInt("APPLY_CODE"));
 				app.setApplyDate(rset.getDate("APPLY_DATE"));
 				app.setbName(rset.getString("B_NAME"));
 				app.setPostTitle(rset.getString("POST_TITLE"));
@@ -328,6 +336,13 @@ public class UserDAO {
 		return allApply;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 신고내역 조회
+	 * @param con
+	 * @param userCode
+	 * @param blockPageInfo
+	 * @return
+	 */
 	public List<ReportDTO> selectReport(Connection con, int userCode, PageInfoDTO blockPageInfo) {
 		PreparedStatement pstmt = null;
 		
@@ -370,6 +385,12 @@ public class UserDAO {
 		return allReport;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 지원내역 수 조회
+	 * @param con
+	 * @param userCode
+	 * @return
+	 */
 	public int applySelectTotalCount(Connection con, int userCode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -398,6 +419,12 @@ public class UserDAO {
 		return applytotalCount;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 신고내역 수 조회
+	 * @param con
+	 * @param userCode
+	 * @return
+	 */
 	public int blockSelectTotalCount(Connection con, int userCode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -424,6 +451,37 @@ public class UserDAO {
 		}
 		
 		return blocktotalCount;
+	}
+
+	/**
+	 * 유저코드와 지원코드를 이용한 지원취소
+	 * @param con
+	 * @param applycode
+	 * @param userCode
+	 * @return
+	 */
+	public int deleteApply(Connection con, int applycode) {
+		int cancelApply = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("cancelApply");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, applycode);
+			
+			cancelApply = pstmt.executeUpdate();
+			
+			System.out.println("cancelApply의 결과 : " + cancelApply);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return cancelApply;
+		
 	}
 
 	

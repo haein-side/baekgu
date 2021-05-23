@@ -84,7 +84,8 @@
 	<!-- 입사지원관리 조회해오는 쿼리 -->
 	<entry key="selectApply">
 		SELECT
-		       A.APPLY_DATE
+	           A.APPLY_CODE 
+		     , A.APPLY_DATE
 		     , B.B_NAME
 		     , P.POST_TITLE
 		     , A.APPLY_CANCEL
@@ -101,13 +102,18 @@
 	 LEFT JOIN BUSINESS B
 	        ON H.B_CODE = B.B_CODE
 	     WHERE U.USER_CODE = ?
+	       AND A.APPLY_CANCEL = 0
 	    ORDER BY A.APPLY_DATE DESC
-	    LIMIT ?,?              	  
+	    LIMIT ?,?                         	  
 		 
 	</entry>
 	
 	<!-- 지원취소 업데이트 해주는 쿼리 -->
-	<!-- 아직 미완 -->
+	<entry key = "cancelApply">
+	    UPDATE APPLY
+	       SET APPLY_CANCEL = 1
+	     WHERE APPLY_CODE = ?
+	</entry>
 	
 	<!-- 신고내역관리 조회해오는 쿼리 -->
 	<entry key="selectReport">
@@ -130,7 +136,7 @@
 
 	<!-- 입사지원내역 총 개수 -->	
 	<entry key="applySelectTotalCount">
-        SELECT
+         SELECT
 		       COUNT(*)
 		  FROM APPLY A
      LEFT JOIN RESUME R
@@ -138,6 +144,7 @@
 	 LEFT JOIN USER U
 	        ON R.USER_CODE = U.USER_CODE
 	     WHERE U.USER_CODE = ? 
+	       AND A.APPLY_CANCEL = 0
 	</entry>
 	
 	<!-- 신고내역 총 개수 -->	
