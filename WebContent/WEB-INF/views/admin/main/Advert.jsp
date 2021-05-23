@@ -29,11 +29,7 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     
     <body>
@@ -54,119 +50,210 @@
                           <section class="panel">
                             <header class="panel-heading">
                               광고 리스트
+                                <button class="btn btn-success" type="button" onClick="advertadd()" style="margin-left: 30px;">추가하기</button>
+                               	<button class="btn btn-warning" id="btnDelete" data-toggle="modal" type="button" onClick="deleteClick()"
+							        style="margin-left: 30px;"> 삭제하기 </button>
                             </header>
                             <div class="table-responsive">
                               <table class="table">
                                 <thead>
                                   <tr>
-                                    <th><input type="checkbox" id="checkAll" ></th>
-                                    <th >광고코드</th>
+                                    <th></th>
+                                    <th>광고코드</th>
                                     <th>광고명</th>
                                     <th>광고비용</th>
-                                    <th>광고기간</th>
                                   </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="advert" items="${ requestScope.advertList }" >
                                   <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td>1</td>
-                                    <td><a href="AdvertDetail.html">광고 상단</a></td>
-                                    <td>300000원</td>
-                                    <td>30일</td>
+                                    <th><input class="check" type="checkbox" id="${ advert.code }" onClick = "checkClick(this)"></th>
+                                    <td><c:out value="${ advert.code }" /></td>
+                                    <td><c:out value="${ advert.advertName}" /></td>
+                                    <td><c:out value="${ advert.advertPrice }" /></td>
                                   </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td>2</td>
-                                    <td><a href="">광고 반짝임 A</a></td>
-                                    <td>300000원</td>
-                                    <td>30일</td>
-                                  </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td>3</td>
-                                    <td><a href="">프리미엄 상단배치 A</a></td>
-                                    <td>500000원</td>
-                                    <td>30일</td>
-                                  </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td>4</td>
-                                    <td><a href="">프리미엄 반짝임 A</a></td>
-                                    <td>500000원</td>
-                                    <td>30일</td>
-                                  </tr>
+                                  </c:forEach>
                                 </tbody>
                               </table>
                             </div>
     
-                    <!--하단 페이지 넘기기-->
-                    <section class="panel">
-                    <div class="panel-body">
-                      <div class="text-center">
-                        <ul class="pagination">
-                          <li><a href="#">«</a></li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#">»</a></li>
-                        </ul>
-                      </div>
-                      <a class="btn btn-success btn-lg" href="AdvertAdd.html" title="Bootstrap 3 themes generator">
-                        추가하기
-                      </a>
-                       <!--  search form start -->
-                        <ul class="nav top-menu" style="float: right;">
-                            <li>
-                            <form class="navbar-form">
-                                <input class="form-control" placeholder="Search" type="text">
-                                <button type="submit" class="btn btn-primary">검색하기</button>
-                            </form>
-                            </li>
-                        </ul>
-                        <!--  search form end -->
+       		<!--하단 페이지 넘기기-->
+					<section class="panel">
+						<div class="panel-body">
+							<div class="text-center">
+								<%-- 페이지 처리 (분기처리한 것) --%>
+								<div class="pagingArea" align="center">
+									<c:choose>
+										<c:when test="${ empty requestScope.searchValue }">
+											<button id="startPage"><<</button>
+
+											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+												<button disabled><</button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+												<button id="prevPage"><</button>
+											</c:if>
+
+											<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+												<button onclick="pageButtonAction(this.innerText);">
+													<c:out value="${ p }" />
+												</button>
+											</c:if>
+
+
+											<!-- max페이지에 대한 내용  -->
+											<c:if
+												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+												<button disabled>></button>
+											</c:if>
+											<c:if
+												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+												<button id="nextPage">></button>
+											</c:if>
+
+											<button id="maxPage">>></button>
+										</c:when>
+										<c:otherwise>
+											<button id="searchStartPage"><<</button>
+
+											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+												<button disabled><</button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+												<button id="searchPrevPage"><</button>
+											</c:if>
+
+											<c:forEach var="p"
+												begin="${ requestScope.pageInfo.startPage }"
+												end="${ requestScope.pageInfo.endPage }" step="1">
+												<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+													<button disabled>
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+													<button onclick="seachPageButtonAction(this.innerText);">
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+											</c:forEach>
+
+											<c:if
+												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+												<button disabled>></button>
+											</c:if>
+											<c:if
+												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+												<button id="searchNextPage">></button>
+											</c:if>
+
+											<button id="searchMaxPage">>></button>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+							<!--  검색창  -->
+							<ul class="nav top-menu" style="float: right;">
+								<li>
+									<form class="navbar-form">
+										<input class="form-control" placeholder="Search" type="text">
+										<button type="submit" class="btn btn-primary">검색하기</button>
+									</form>
+								</li>
+							</ul>
+					</section>
                 </section>
-            <!--main content end-->
+      
         </section>
-        <!-- container section start -->
+    
+	<script>
+	/*  추가하기 클릭 시  */
+           function advertadd(){
+                const link = "${ pageContext.servletContext.contextPath }/admin/advertadd";
+                location.href = link;
+          }
+    </script>
+    
+     <script>
+           /* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
+           function deleteClick(){
+   	    	$.ajax({
+				url: "/baeckgu/admin/advertdelete",
+				data: { isDelete : true },
+				type: "post",
+				success: function(data,textStatus,xhr){
+					console.log(xhr);
+					if(xhr.responseText == "refresh"){
+						location.reload(true)	
+					} else if(xhr.responseText == "error") {
+						console.log("error")
+						location.reload(true)
+					}
+					
+				},
+				error : function(xhr,status,error) {
+   					console.log(error);
+   				}
+			
+			});
+           }
+     </script>
+    
+    
+    
+     <script>
+           /*  체크박스 클릭 했을 시  */
+   	    function checkClick(checkBox){
+	    	$.ajax({
+				url: "/baeckgu/admin/advertdelete",
+				data: { sendData : checkBox.checked , code : checkBox.id , isDelete:false },
+				type: "post",
+				success: function(data,textStatus,xhr){
+					console.log(data);
+				},
+				error : function(xhr,status,error) {
+   					console.log(error);
+   				}
+			
+			});
+	    }
 
+   	 </script>
+    
+    
+    
+    
+    
+    
+   <script>
+   
+   		/* td태그 안에 상세 보기 용 '/admin/detail?code' 경로 지정  */
+	if (document.getElementsByTagName("td")) {
 
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+			const $tds = document.getElementsByTagName("td");
+			for (let i = 0; i < $tds.length; i++) {
+
+				 $tds[i].onmouseenter = function() {
+				 	/* this.parentNode.style.backgroundColor = "orangered";
+				 	this.parentNode.style.cursor = "pointer"; */
+				}
+
+			/* 	$tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "gray";
+				} */
+
+				$tds[i].onclick = function() {
+					location.href = "${ pageContext.servletContext.contextPath }/admin/detail?code=" + this.parentNode.children[1].innerText;
+					
+				}
+
+			}
+
+		}
+
+   
+  </script>
+    
+  </body>
+  </html> 

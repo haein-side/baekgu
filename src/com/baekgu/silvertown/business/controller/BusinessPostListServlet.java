@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
@@ -114,7 +115,7 @@ public class BusinessPostListServlet extends HttpServlet {
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
 
-		List<?> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		List<?> postList = (List<BusinessPostDTO>)businessService.selectPostList(loggedInUser.getbId(), pageInfo);
 		
 		String path = "";
 

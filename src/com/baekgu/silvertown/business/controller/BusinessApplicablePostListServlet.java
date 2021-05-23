@@ -72,22 +72,22 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
 		/* JDBC 시작 - 공고 조회 */
 		
+		// 승인된 공고 갯수를 기준으로 리스트를 시작한다 - 최댓값 
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, approved, limit, buttonAmount);
-
-		List<BusinessApplicablePostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
-
+		
+		List<BusinessApplicablePostDTO> postList = (List<BusinessApplicablePostDTO>) businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		
+		// 실제 리스트의 갯수를 가지고 페이징 처리를 한다.
+		pageInfo = PageNation.getPageInfo(pageNo, postList.size(), limit, buttonAmount);
 		
 		String path = "";
 
 		if(postList != null) {
 			path = "/WEB-INF/views/business/main/applicablePostlist.jsp";
 						
-//			request.setAttribute("postList", postList);
-//			request.setAttribute("pageInfo", pageInfo); // page category도 담겨있다.
-//			request.setAttribute("total", totalCount);
-//			request.setAttribute("hold", hold);
-//			request.setAttribute("approved", approved);
-//			request.setAttribute("rejected", rejected);
+			request.setAttribute("postList", postList);
+			request.setAttribute("pageInfo", pageInfo); 
+			request.setAttribute("approved", approved);
 		} 
 	
 

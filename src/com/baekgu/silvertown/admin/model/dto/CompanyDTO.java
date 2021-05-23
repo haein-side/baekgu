@@ -9,7 +9,7 @@ public class CompanyDTO {
 	private String address;
 	private String phone;
 	private int block;
-	private double profit;
+	private String profit;
 	private int category;
 	private int dListCode;
 	private int dCode;
@@ -25,7 +25,7 @@ public class CompanyDTO {
 
 
 	public CompanyDTO(int code, String name, String owner, String companyNumber, String address, String phone,
-			int block, double profit, int category, int dListCode, int dCode, int dtypeCode, String hrId, String hrName,
+			int block, String profit, int category, int dListCode, int dCode, int dtypeCode, String hrId, String hrName,
 			String hrPhone, String hrEmail) {
 		super();
 		this.code = code;
@@ -117,12 +117,12 @@ public class CompanyDTO {
 	}
 
 
-	public double getProfit() {
+	public String getProfit() {
 		return profit;
 	}
 
 
-	public void setProfit(double profit) {
+	public void setProfit(String profit) {
 		this.profit = profit;
 	}
 
@@ -217,6 +217,7 @@ public class CompanyDTO {
 	}
 
 
+	
 	
 
 	

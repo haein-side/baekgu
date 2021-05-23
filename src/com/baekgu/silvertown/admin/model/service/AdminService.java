@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.baekgu.silvertown.admin.model.dao.AdminDAO;
 import com.baekgu.silvertown.admin.model.dto.AdminDTO;
+import com.baekgu.silvertown.admin.model.dto.AdvertDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
 public class AdminService {
@@ -18,7 +19,7 @@ public class AdminService {
 	}
 
 	/**
-	 * 게시물 전체 조회용 메소드
+	 * 관리자 게시물 전체 조회용 메소드 
 	 * @param pageInfo
 	 * @return
 	 */
@@ -33,7 +34,7 @@ public class AdminService {
 		return adminList;
 	}
 	/**
-	 * 페이징 처리를 위한 전체 게시물 수 조회용 메소드
+	 * 관리자 페이징 처리를 위한 전체 게시물 수 조회용 메소드
 	 * @return
 	 */
 	public int selectTotalCount() {
@@ -45,5 +46,42 @@ public class AdminService {
 		close(con);
 		
 		return totalCount;
+	}
+
+	/**
+	 * 광고 전체 조회용 
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<AdvertDTO> selectAdvertList(PageInfoDTO pageInfo) {
+		
+	Connection con = getConnection();
+		
+		List<AdvertDTO> advertList = adminDAO.selectAdvertList(con,pageInfo);
+		
+		close(con);
+		
+		return advertList;
+		
+		
+		
+	}
+
+	/**
+	 * 광고 페이징 처리를 위한 전체 게시물 수 조회용 메소드
+	 * @return
+	 */
+	public int advertTotalCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.advertTotalCount(con);
+		
+		close(con);
+		
+		return totalCount;
+		
+		
+
 	}
 }
