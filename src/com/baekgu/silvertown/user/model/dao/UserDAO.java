@@ -296,7 +296,7 @@ public class UserDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, userCode);
 			pstmt.setInt(2, applyPageInfo.getStartRow());
-			pstmt.setInt(3, applyPageInfo.getEndRow());
+			pstmt.setInt(3, 3);
 			
 			rset = pstmt.executeQuery();
 			
@@ -341,7 +341,7 @@ public class UserDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, userCode);
 			pstmt.setInt(2, blockPageInfo.getStartRow());
-			pstmt.setInt(3, blockPageInfo.getEndRow());
+			pstmt.setInt(3, 3);
 			
 			rset = pstmt.executeQuery();
 			allReport = new ArrayList<>();
