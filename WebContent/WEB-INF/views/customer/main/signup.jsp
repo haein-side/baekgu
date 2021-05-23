@@ -441,6 +441,7 @@ $(function(){
 			 return false;
           }
          
+         // 아이디 중복체크 필수로 함
          if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
         	 duplicationCheck.focus();
         	 alert("휴대폰번호 중복확인을 해주세요.")

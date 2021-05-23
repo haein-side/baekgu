@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -158,6 +158,7 @@
 
 <div class="container-fluid text-center">    
   <div class="row content">
+  <form action="${ pageContext.servletContext.contextPath }/business/editInfo" method="POST" onsubmit="return validate();">
     <div class="col-sm-3 sidenav">
     </div>
     <div class="col-sm-6 text-left" style="padding-top: 30px;">
@@ -169,16 +170,16 @@
               <th class="th">
                 기업 회원 ID</th>
               <td>
-                <input style="border: 0px" value="">
+                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bId }" readonly>
               </td>
             </tr>
             <tr>
               <th class="th">사업자등록번호</th>
               <td>
-                <input style="border: 0px" value="">
+                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bName }"readonly>
               </td>        
             </tr>
-            <tr>
+<!--             <tr>
               <th class="th">개인 정보 보유 기간</th>
               <td>
                 <label class="radio-inline" style="margin-left: 15px;"><input type="radio" name="radio1y" checked >1년</label>
@@ -187,35 +188,26 @@
                 <label class="radio-inline"><input type="radio" name="radio">탈퇴시삭제</label>
                 <button type="button" class="btn-change">변경하기</button>
               </td>
-            </tr>
+            </tr> -->
             <tr>
               <th class="th">인사 담당자 이름</th>
               <td>
-                <input style="border: 0px" value="">
-                <button type="button" class="btn-change">변경하기</button>
+                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bName }" id="name" name="name">
+<!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>
             <tr>
               <th class="th">인사 담당자 연락처</th>
               <td>
-                <input style="border: 0px" value="">
-                <button type="button" class="btn-change">변경하기</button>
+                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bPhone }" id="phone" name="phone">
+<!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>
             <tr>
               <th class="th">인사 담당자 이메일</th>
               <td>
-                <div class="col-xs-4">
-                  <input class="form-control" id="emailid" type="text" required="">
-                  
-                </div>
-                <div class="col-xs-1">
-                  <label>@</label>
-                </div>
-                <div class="col-xs-4">
-                  <input class="form-control" id="emaildomain" type="text" required="">
-                </div>
-                <button type="button" class="btn-change">변경하기</button>
+                  <input id="email" name="email" type="text" style="border: 0px" value="${ sessionScope.loginBusinessMember.bEmail }">
+<!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>
         </table>
@@ -283,14 +275,52 @@
        </div>
       
       </div>
+      
+      </form>
       <div class="col-sm-1 sidenav">
       </div>
     </div>
   </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+  <jsp:include page="../common/footer.jsp"/>
+  
+  <!-- 유효성 검사 -->
+ <script>
+ 	
+ function validate(){
+	 
+	 var name = document.getElementById("name");
+	 var phone = document.getElementById("phone");
+	 var email = document.getElementById("email");
+	 
+	 if(!chk(/^[가-힣]{1,}$/,name,"성함은 한글로 한글자 이상 입력하세요.")){
+		 return false;
+	 }
+	 
+	 if(!chk(/^[0-9]{10,11}$/,phone,"휴대폰 번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
+		 return false;
+	 }
+	 
+	 if(!chk(/^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/,email,"이메일 형식에 맞춰 입력하세요.")){
+		 return false;
+	 }
+	 
+     // 유효성 검사 alert 창 띄워주는 것
+     function chk(re, ele, msg){
+         if(!re.test(ele.value)){
+            alert(msg);
+            ele.value="";
+            ele.focus();   
+            return false;
+         }
+         
+         return true;
+      }
+	 
+ }
+ </script>
+ 
+
 
 </body>
 </html>

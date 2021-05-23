@@ -84,7 +84,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(1, (pageInfo.getStartPage()-1));
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -127,7 +127,7 @@ public class MemberDAO {
 	/**
 	 * 선택한 회원의 정보를 리턴
 	 * @param con
-	 * @param no
+	 * @param no 유저코드
 	 * @return
 	 */
 	public MemberDTO selectMemberDetail(Connection con, int no) {
@@ -225,7 +225,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(1, (pageInfo.getStartPage()-1));
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -320,7 +320,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(1, (pageInfo.getStartPage()-1));
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -567,6 +567,35 @@ public class MemberDAO {
 			
 			result = pstmt.executeUpdate();
 			System.out.println("사용 쿼리 : " + query);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateNoBlock(Connection con, BlockDTO block) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateNoBlock");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, block.getbReason());
+			pstmt.setString(2, block.getAdmin());
+			pstmt.setInt(3, block.getrCode());
+			
+			result = pstmt.executeUpdate();
+			
+			System.out.println("사용쿼리 : " + query);
 			
 			
 		} catch (SQLException e) {

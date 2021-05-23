@@ -49,7 +49,23 @@
 		 WHERE ADMIN_ID = ?
 		
 	</entry>
+	<entry key="updateAdmin">
+	    UPDATE 
+	            ADMIN
+	       SET  ADMIN_PWD = ? 
+	           ,ADMIN_NAME = ? 
+	           ,ADMIN_EMAIL = ? 
+	           ,ADMIN_DATE = ? 
+	           ,ADMIN_ROLE = ? 
+	      WHERE ADMIN_ID = ?
 	
+	</entry>
+	
+	<entry key="adminDelete">
+		DELETE 
+		  FROM ADMIN
+		  WHERE ADMIN_ID = ?	
+	</entry>
 	
 	
 </properties>

@@ -10,15 +10,15 @@ public class PostDTO {
 	private int postTo;
 	private Date postStart;
 	private Date postEnd;
-	private boolean postOnline;
+	private int postOnline;
 	private Date postDate;
 	private String postAddress;
-	private Date postDay;
+	private String postDay;
 	private int payment;
 	private String gender;
 	private String advantage;
 	private String benefit;
-	private boolean fulltime_yn;
+	private int fulltime_yn;
 	private String postMName;
 	private String postMEmail;
 	private String postMPhone;
@@ -33,7 +33,7 @@ public class PostDTO {
 	private int degreeCode;
 	private int dListCode;
 
-	private int degreeLevel;
+	private String degreeLevel;
 
 	private String expName;
 
@@ -59,8 +59,8 @@ public class PostDTO {
 	private String bAddress; 
 	private String bPhone; 
 	private String bType; 
-	private boolean bBlock; 
-	private int bProfit; 
+	private int bBlock; 
+	private long bProfit; 
 	private int bCategoryCode; 
   
 	private int categoryCode; 
@@ -202,13 +202,13 @@ public class PostDTO {
 	 * @param industryName
 	 */
 	public PostDTO(int postCode, String postTitle, String postContent, int postTo, Date postStart, Date postEnd,
-			boolean postOnline, Date postDate, String postAddress, Date postDay, int payment, String gender,
-			String advantage, String benefit, boolean fulltime_yn, String postMName, String postMEmail,
-			String postMPhone, int expCode, int jobCode, int periodCode, int hourCode, int locationCode, int payCode,
-			int ageCode, int hrId, int degreeCode, int dListCode, int degreeLevel, String expName, String periodName,
+			int postOnline, Date postDate, String postAddress, String postDay, int payment, String gender,
+			String advantage, String benefit, int fulltime_yn, String postMName, String postMEmail, String postMPhone,
+			int expCode, int jobCode, int periodCode, int hourCode, int locationCode, int payCode, int ageCode,
+			int hrId, int degreeCode, int dListCode, String degreeLevel, String expName, String periodName,
 			String hourName, String locationName, String ageName, String payName, String hrName, String hrPhone,
 			String hrEmail, String bCode, String bName, String bOwner, String bNumber, String bAddress, String bPhone,
-			String bType, boolean bBlock, int bProfit, int bCategoryCode, int categoryCode, String categoryLevel,
+			String bType, int bBlock, long bProfit, int bCategoryCode, int categoryCode, String categoryLevel,
 			String dListReason, Date dListdate, int decisionCode, int dListTypeCode, int reportCode,
 			String reportReason, Date reportDate, String dListTarget, String decisionStatus, int userCode,
 			String userName, String userPhone, String userPwd, Date userBday, String userGender, String userAddress,
@@ -348,11 +348,11 @@ public class PostDTO {
 		this.postEnd = postEnd;
 	}
 
-	public boolean isPostOnline() {
+	public int getPostOnline() {
 		return postOnline;
 	}
 
-	public void setPostOnline(boolean postOnline) {
+	public void setPostOnline(int postOnline) {
 		this.postOnline = postOnline;
 	}
 
@@ -372,11 +372,11 @@ public class PostDTO {
 		this.postAddress = postAddress;
 	}
 
-	public Date getPostDay() {
+	public String getPostDay() {
 		return postDay;
 	}
 
-	public void setPostDay(Date postDay) {
+	public void setPostDay(String postDay) {
 		this.postDay = postDay;
 	}
 
@@ -412,11 +412,11 @@ public class PostDTO {
 		this.benefit = benefit;
 	}
 
-	public boolean isFulltime_yn() {
+	public int getFulltime_yn() {
 		return fulltime_yn;
 	}
 
-	public void setFulltime_yn(boolean fulltime_yn) {
+	public void setFulltime_yn(int fulltime_yn) {
 		this.fulltime_yn = fulltime_yn;
 	}
 
@@ -524,11 +524,11 @@ public class PostDTO {
 		this.dListCode = dListCode;
 	}
 
-	public int getDegreeLevel() {
+	public String getDegreeLevel() {
 		return degreeLevel;
 	}
 
-	public void setDegreeLevel(int degreeLevel) {
+	public void setDegreeLevel(String degreeLevel) {
 		this.degreeLevel = degreeLevel;
 	}
 
@@ -660,19 +660,19 @@ public class PostDTO {
 		this.bType = bType;
 	}
 
-	public boolean isbBlock() {
+	public int getbBlock() {
 		return bBlock;
 	}
 
-	public void setbBlock(boolean bBlock) {
+	public void setbBlock(int bBlock) {
 		this.bBlock = bBlock;
 	}
 
-	public int getbProfit() {
+	public long getbProfit() {
 		return bProfit;
 	}
 
-	public void setbProfit(int bProfit) {
+	public void setbProfit(long bProfit) {
 		this.bProfit = bProfit;
 	}
 
@@ -958,7 +958,7 @@ public class PostDTO {
 
 	@Override
 	public String toString() {
-		return "ApplyDTO [postCode=" + postCode + ", postTitle=" + postTitle + ", postContent=" + postContent
+		return "PostDTO [postCode=" + postCode + ", postTitle=" + postTitle + ", postContent=" + postContent
 				+ ", postTo=" + postTo + ", postStart=" + postStart + ", postEnd=" + postEnd + ", postOnline="
 				+ postOnline + ", postDate=" + postDate + ", postAddress=" + postAddress + ", postDay=" + postDay
 				+ ", payment=" + payment + ", gender=" + gender + ", advantage=" + advantage + ", benefit=" + benefit
@@ -985,5 +985,4 @@ public class PostDTO {
 				+ ", industryCode=" + industryCode + ", industryName=" + industryName + "]";
 	}
 
-	
 }

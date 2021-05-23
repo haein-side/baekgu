@@ -58,7 +58,7 @@
                                     <th>공고코드</th>
                                     <th>유저코드</th>
                                     <th>접수상태</th>
-                                    <th>관리자</th>
+                                    <th>신고 처리 관리자</th>
                                   </tr>
                                 </thead>
                                 <tbody>

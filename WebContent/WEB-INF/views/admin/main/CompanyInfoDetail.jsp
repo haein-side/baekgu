@@ -29,11 +29,7 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+    
     </head>
     <body>
     <jsp:include page="../common/header.jsp"/>
@@ -65,105 +61,110 @@
                             <h2>기업</h2>
                           <div class="row">
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>회사명 </span>: 김씨네 식당 </p>
+                              <p>
+                              <span>기업코드 </span>:    
+                              <c:out value="${ requestScope.company.code }"/>
+                              </p>
                             </div>
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>대표자명 </span>: 김김씨</p>
+                              <p>
+                              <span>기업명 :   </span>    
+                              <c:out value="${ requestScope.company.name }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>기업코드</span>: 1</p>
+                              <p>
+                              <span>대표명 </span>:    
+                              <c:out value="${ requestScope.company.owner }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>사업자등록번호 </span>: 123-45-12345</p>
+                              <p>
+                              <span>사업자등록번호 </span>:    
+                              <c:out value="${ requestScope.company.companyNumber }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>주소 </span>: 서울특별시 강남구 어쩌동</p>
+                              <p>
+                              <span>주소 </span>:    
+                              <c:out value="${ requestScope.company.address }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>회사전화번호 </span>: 02-2222-3333</p>
+                              <p>
+                              <span>전화번호 </span>:    
+                              <c:out value="${ requestScope.company.phone }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>연매출액 </span>: </p>
+                              <p>
+                              <span>차단여부 </span>:    
+                              <c:choose>
+			                    <c:when test="${ company.block eq 0 }">
+			                    <c:out value="미차단"/>
+			                    </c:when>
+			                    <c:when test="${ company.block eq 1 }">
+			                    <c:out value="차단"/>
+			                    </c:when>
+			                  </c:choose>
+                              </p>
                             </div>
-                            <div class="bio-row">
-                              <p><span>차단여부 </span>: N</p>
-                            </div>
-                            <div class="bio-row">
-                              <p><span>차단코드 </span>: N</p>
-                            </div>
-                        </div>
-                      </section>
-                    </div>
-                    <!-- 기업정보 -->
-                    <div id="profile" class="tab-pane">
-                        <section class="panel">
-                            <div class="panel-body bio-graph-info">
-                              <h2>담당자 </h2>
-                            <div class="row">
-                              <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>아이디 </span>: kimcine </p>
-                              </div>
-                              <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>이름 </span>: 샘직원</p>
-                              </div>
-                              <div class="bio-row">
-                                <p><span>전화번호</span>: 010-5555-5555</p>
-                              </div>
-                              <div class="bio-row">
-                                <p><span>이메일 </span>: kimcine@greedy.com</p>
-                              </div>
-                          </div>
-                          <a class="btn btn-danger" href="#">
+                           <div class="bio-row">
+                              <p>
+                              <span>연매출 </span>: 
+                              <c:out value="${ requestScope.company.profit }원"/>
+                              </p>
+                           </div>
+                           <div class="bio-row">
+                              <p>
+                              <span>카테고리 </span>: 
+                              <c:out value="${ requestScope.company.category }"/>
+                              </p>
+                           </div>
+                           <div class="bio-row">
+                              <p>
+                              <span></span>
+                              </p>
+                           </div>
+                           <div class="bio-row">
+                           <a class="btn btn-danger" href="#">
                             기업 차단하기
                           </a>
+                           </div>
+                        </div>
+                      </section>
+                      
+                    </div>
+                    
+                    <!-- 기업정보 -->
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>담당자 ID</th>
+                                <th>담당자 이름</th>
+                                <th>담당자 연락처</th>
+                                <th>담당자 이메일</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="hrList" items="${ requestScope.hrList }">
+                              <tr>
+								<td><c:out value="${ hrList.hrId }"/></td>
+								<td><c:out value="${ hrList.hrName }"/></td>
+								<td><c:out value="${ hrList.hrPhone }"/></td>
+								<td><c:out value="${ hrList.hrEmail }"/></td>
+							  </tr>	
+                            </c:forEach>
+                            </tbody>
+                          </table>
+                          </div>
                         </section>
                       </div>
                   </div>
-                </div>
               </section>
-            </div>
-          </div>
   
           <!-- page end-->
         </section>
-      </section>
-
-
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+ </body> 
+</html> 

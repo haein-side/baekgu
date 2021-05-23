@@ -25,7 +25,7 @@ public class AdminMemberDetailServlet extends HttpServlet {
 				
 		int no = Integer.parseInt(request.getParameter("no"));
 
-		System.out.println("글번호(user code) : " + no);
+		System.out.println("유저코드 : " + no);
 		
 		AdminMemberService memberService = new AdminMemberService();
 		MemberDTO memberDetail = memberService.selectMemberDetail(no);
@@ -50,10 +50,13 @@ public class AdminMemberDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int userCode = Integer.parseInt(request.getParameter("no"));
-		String reason = request.getParameter("blockReason");
+		String reason = request.getParameter("reason");
 		//loginAdmin에 담겨있는 세션값을 가져온다. (관리자 이름)
 		HttpSession session = request.getSession();
 		String adminId = (String)session.getAttribute("loginAdminId");
+		
+		//들어온 버튼의 value를 확인해서 조건문으로 승인, 거절을 판별한다
+		String state = request.getParameter("blockButton");
 		
 		BlockDTO block = new BlockDTO();
 		block.setbReason(reason);
@@ -64,23 +67,57 @@ public class AdminMemberDetailServlet extends HttpServlet {
 		System.out.println("block : " + block);
 		System.out.println("차단 사유 : " + block.getbReason());
 		System.out.println("관리자ID : " + block.getAdmin());
+		System.out.println("눌린 버튼 : " + state);
+		
+		int result = 0;
 		
 		//1. 고객코드와 일치하는 신고내역 조회
 		AdminMemberService memberService = new AdminMemberService();
 		int searchResult = memberService.selectReportCode(block);
 		
-		//2. 가져온 신고코드를 이용하여 블락 업데이트 실행
-		int result = memberService.updateBlockMember(block);
-	
-		if(result > 0) {
+		if(searchResult > 0) {
 			
+			//버튼의 값이 승인일시
+			if(state.equals("사용자 신고 승인")) {
+				
+				System.out.println("신고 승인 시작합니다");
+				
+				//2. 가져온 신고코드를 이용하여 블락 업데이트 실행
+				result = memberService.updateBlockMember(block);
+				
+				if(result > 0) {
+					
+					
+					response.sendRedirect(request.getContextPath() + "/admin/reportlist");
+					
+					
+				} else {
+					String path ="/WEB-INF/views/admin/common/errorPage.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				}
+				
+			}
 			
-			response.sendRedirect(request.getContextPath() + "/admin/reportlist");
-
+			//버튼의 값이 거절일시
+			if(state.equals("사용자 신고 거절")) {
+				
+				System.out.println("신고 거절 실행합니다");
+				//2. 가져온 신고코드를 이용하여 신고 거절 실행
+				result = memberService.updateNoBlock(block);
+				
+				if(result > 0) {
+					
+					response.sendRedirect(request.getContextPath() + "/admin/reportlist");
+					
+				} else {
+					String path = "/WEB-INF/views/admin/common/errorPage.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				}
+				
+				
+				
+			}
 			
-		} else {
-			String path ="/WEB-INF/views/admin/common/errorPage.jsp";
-			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
 		

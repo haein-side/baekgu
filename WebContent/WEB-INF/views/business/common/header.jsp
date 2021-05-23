@@ -63,7 +63,7 @@
 		  	<c:if test="${ !empty sessionScope.loginBusinessMember }">
 		  	
 		      <ul class="nav navbar-nav navbar-right"> 
-		        <li><a href="#">${ sessionScope.loginBusinessMember.bName }</a></li>
+		        <li><a href="${ pageContext.servletContext.contextPath }/business/editInfo">${ sessionScope.loginBusinessMember.bName }</a></li>
 		        <li><a href="#">${ sessionScope.loginBusinessMember.CName }</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/logout">로그아웃</a></li>
 		      </ul>

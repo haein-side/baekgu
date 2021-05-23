@@ -9,7 +9,7 @@
     <!-- 헤더 영역 -->   
 	<div class="header" style="z-index: 10000;">
 	
-		<!-- 헤드라인 -->`
+		<!-- 헤드라인 -->
 		<div style="text-align: center;">
 			<!-- 의도 : 백구 네임을 클릭하면 메인 화면으로 넘어간다 -->
 			<br>
@@ -65,31 +65,31 @@
 
 		
 	<!-- 메뉴 영역 -->
-	<c:if test="${ !empty sessionScope.loginUser }">
+	<c:if test="${ !empty sessionScope.loginUserInfo }">
 		<div class="menu-area">
 			<div class="nav-area">
 				<ul>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSearchPost">공고 검색</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }">이력서 관리</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/user/manageApply">입사지원 관리</a></li>
-					<li><a href="">일자리 모음</a></li>
-					<li><a href="">고객문의</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/manageApply">나의 공간</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/FAQ">고객문의</a></li>
+					<li><a id="nolink" href="" style="background:coral;"></a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/logout">나가기</a></li>
 				</ul>
 			</div>	<!-- nav-area end -->
 		</div>	<!-- menu-area end -->
 	</c:if>
 	
-	<c:if test="${ empty sessionScope.loginUser }">
+	<c:if test="${ empty sessionScope.loginUserInfo }">
 		<div class="menu-area">
 			<div class="nav-area">
 				<ul>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSearchPost">공고 검색</a></li>
-					<li><a href="">고객문의</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/FAQ">고객문의</a></li>
 					<li><a id="nolink" href="" style="background:coral;"></a></li>
 					<li><a id="nolink" href="" style="background:coral;"></a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSignup">회원가입</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin">로그인</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin">들어가기</a></li>
 				</ul>
 			</div>	<!-- nav-area end -->
 		</div>	<!-- menu-area end -->

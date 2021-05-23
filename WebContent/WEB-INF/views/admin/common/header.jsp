@@ -77,7 +77,7 @@
                             </a>
                         </li>
                          <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/companyList">
                                 <i class="icon_house_alt"></i>
                                 <span>기업 정보</span>
                             </a>
