@@ -150,64 +150,78 @@ public class BusinessDAO {
 		return counts;
 	}
 
-	public List<BusinessPostDTO> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {
+	public List<?> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {
 
 		PreparedStatement psmt = null;
 		ResultSet rset = null;
 		
-		List<BusinessPostDTO> postList = null;
-		
 		String query;
-		boolean flag = true;
-		if(pageInfo.getCategory().equals("전체")) {
-			query = prop.getProperty("selectPostList");
-		}else {
-			query = prop.getProperty("selectPostListCategory");
-			flag = false;
-		}
 		
-		try {
-			psmt = con.prepareStatement(query);
+		if(pageInfo.getCategory() != null) {
+			List<BusinessPostDTO> postList = null;
 			
-			if(flag) {
-				psmt.setString(1, loggedId);
-				psmt.setInt(2, pageInfo.getStartRow());
-				psmt.setInt(3, pageInfo.getEndRow());
+			/* 페이지 카테고리에 따른 분기처리 */
+			boolean flag = true;
+			if(pageInfo.getCategory().equals("전체")) {
+				query = prop.getProperty("selectPostList");
 			}else {
-				psmt.setString(1, loggedId);
-				psmt.setString(2, pageInfo.getCategory());
-				psmt.setInt(3, pageInfo.getStartRow());
-				psmt.setInt(4, pageInfo.getEndRow());
+				query = prop.getProperty("selectPostListCategory");
+				flag = false;
 			}
 			
-			rset = psmt.executeQuery();
-			
-			postList = new ArrayList<>();
-			
-			while(rset.next()) {
-				BusinessPostDTO aPost = new BusinessPostDTO();
+			try {
+				psmt = con.prepareStatement(query);
 				
-				aPost.setPostCode(rset.getInt("POST_CODE"));
-				aPost.setDecisionStatus(rset.getString("DECISION_STATUS"));
-				aPost.setPostDate(rset.getDate("POST_DATE"));
-				aPost.setPostTitle(rset.getString("POST_TITLE"));
-				aPost.setAdName(rset.getString("AD_NAME"));
-				aPost.setPostStart(rset.getDate("POST_START"));
-				aPost.setPostEnd(rset.getDate("POST_END"));
-				aPost.setCountOfApplicants(rset.getInt("APPLICANTS"));
+				if(flag) {
+					psmt.setString(1, loggedId);
+					psmt.setInt(2, pageInfo.getStartRow());
+					psmt.setInt(3, pageInfo.getEndRow());
+				}else {
+					psmt.setString(1, loggedId);
+					psmt.setString(2, pageInfo.getCategory());
+					psmt.setInt(3, pageInfo.getStartRow());
+					psmt.setInt(4, pageInfo.getEndRow());
+				}
 				
-				postList.add(aPost);
+				rset = psmt.executeQuery();
 				
+				postList = new ArrayList<>();
+				
+				while(rset.next()) {
+					BusinessPostDTO aPost = new BusinessPostDTO();
+					
+					aPost.setPostCode(rset.getInt("POST_CODE"));
+					aPost.setDecisionStatus(rset.getString("DECISION_STATUS"));
+					aPost.setPostDate(rset.getDate("POST_DATE"));
+					aPost.setPostTitle(rset.getString("POST_TITLE"));
+					aPost.setAdName(rset.getString("AD_NAME"));
+					aPost.setPostStart(rset.getDate("POST_START"));
+					aPost.setPostEnd(rset.getDate("POST_END"));
+					aPost.setCountOfApplicants(rset.getInt("APPLICANTS"));
+					
+					postList.add(aPost);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(psmt);
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(psmt);
+			return postList;
+
+			
+		}else {
+			List<BusinessDTO> postList = null;
+			System.out.println("another DTO");
+			
+			
+			
 		}
 		
-		return postList;
+		return null;
 	}
 
 

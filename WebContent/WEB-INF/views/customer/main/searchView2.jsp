@@ -32,69 +32,26 @@
 					<div class="product__details__text ">
 						<h1 style="font-size: 40 px;">${ requestScope.postInfo.postTitle }</h1>
 						<hr>
-						<table class="table">
-							<thead>
-								<th style="font-size: 40px;">${ requestScope.postInfo.bName }</th>
-							</thead>
-							<tbody>
-								<th style="font-size: 20px; width: 100%;">${ requestScope.postInfo.postContent }<br></th>
-							</tbody>
-						</table>						
-						
-	<%-- 					<div class="company__title" style="font-size: 40px;">${ requestScope.postInfo.bName }
-						</div>
+						<div class="company__title" style="font-size: 40px;">${ requestScope.postInfo.bName }</div>
 						<p style="font-size: 20px; width: 100%;">
 							${ requestScope.postInfo.postContent }<br>
-						</p> --%>
+						</p>
 						<div align="right">
-							<input type="hidden" id="postCode" value="${ loginUserInfo.userCode }"/>
 							<button class="jione_button" onclick=apply();>
-							<!-- <input type="button" value="${ requestScope.postInfo.postCode } }"> -->
-							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
-                                        
-										var userCode = document.getElementById("postCode").value;
-								
-										function apply(){
-											if(userCode != null && userCode != "") {
-												// 로그인한 경우 지원하기 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/toApply", "a", "width=400, height=500, left=500, top=250");
-												
-											} else {
-												// 로그인 하지 않은 경우 로그인 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/popupsignin", "a", "width=400, height=500, left=500, top=250");
-												
-											}
-
+								<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
+                                        function apply(){
+                                           	
+                                            //로그인 회원일 경우 바로 지원하기로 넘어간다
+                                            window.open("${ pageContext.servletContext.contextPath }/toApply", "a", "width=400, height=500, left=500, top=250");
+                                            //비회원일 경우 로그인하라는 페이지를 띄운다
+                                            // window.open("login_plz.jsp", "a", "width=600, height=300, left=500, top=250");
                                         }
                                     </script>
 								<h2>지원하기</h2>
 							</button>
 						</div>
-						<hr><br><br>
-						<table>
-							<tr>
-								<th>지원자격</th>
-								<td>${ requestScope.postInfo.ageName }</td>
-							</tr>			
-							<tr>
-								<th>급여</th>
-								<td>${ requestScope.postInfo.payment } 원</td>
-							</tr>
-							<tr>
-								<th>근무기간</th>
-								<td>${ requestScope.postInfo.periodName }</td>
-							</tr>
-							<tr>
-								<th>근무시간</th>
-								<td>${ requestScope.postInfo.hourName }</td>
-							</tr>
-							<tr>
-								<th>근무지역</th>
-								<td>${ requestScope.postInfo.locationName }</td>
-							</tr>
-						</table>
 
-<%-- 						<ul>
+						<ul>
 							<li style="font-size: 25px;"><b>지원자격</b> <span> ${ requestScope.postInfo.ageName } </span>
 							</li>
 							<br>
@@ -108,7 +65,8 @@
 							</li>
 							<br>
 							<li style="font-size: 25px;"><b>근무지역</b> <span> ${ requestScope.postInfo.locationName } </span></li>
-						</ul> --%>
+
+						</ul>
 					</div>
 				</div><br><br><br>
 				
@@ -121,22 +79,11 @@
 	 									<div class="product__details__tab__desc"
 											style="margin-bottom: 50px; margin-top: 100px;" align="center">
 											<h2 align="center">상세 근무 지역</h2>
-											<hr>
-	 										<table>
-	 											<tr>
-	 												<th>근무 지역</th>
-	 												<td> ${ requestScope.postInfo.bAddress } </td>
-	 											</tr>
-	 										</table>
-	 									</div>
-	 									<%-- <div class="product__details__tab__desc"
-											style="margin-bottom: 50px; margin-top: 100px;" align="center">
-											<h2 align="center">상세 근무 지역</h2>
 											<div>
 												<ul style="margin-top: 20px; margin-bottom: 50px;">
 													<li style="font-size: 30px;"><b>근무지역</b> ${ requestScope.postInfo.bAddress } </li>
 												</ul>
-											</div> --%>
+											</div>
 											<br><br><br>
 											<div id="map" style="width: 500px; height: 400px;">
 <!-- 											<script type="text/javascript"
@@ -169,15 +116,6 @@
 								<h2 align="center">모집부분</h2>
 								<hr><br>
 								<table class="table" style="text-align: center;">
-									<tr>
-										<th> 모집 분야 </th>
-										<td> ${ requestScope.postInfo.industryName } </td>
-									</tr>
-										<th> 담당 업무 </th>
-										<td> ${ requestScope.postInfo.jobName } </td>
-								
-								</table>
-<%-- 								<table class="table" style="text-align: center;">
 									<thead>
 										<tr style="font-size: 25px;">
 											<th scope="col">모집분야</th>
@@ -196,7 +134,7 @@
 											</th>
 										</tr>
 									</tbody>
-								</table> --%>
+								</table>
 							</div>
 						</div>
 
@@ -206,38 +144,8 @@
 									<div>
 										<h2>근무조건 및 급여</h2>
 										<hr>
-										<div id="">
-											<table>
-												<tr>
-													<th>근무유형</th>
-													<td></td>
-												</tr>
-												<tr>
-													<th>근무기간</th>
-													<td> ${ requestScope.postInfo.periodName } </td>
-												</tr>
-												<tr>
-													<th>근무시간</th>
-													<td> ${ requestScope.postInfo.hourName } </td>
-												</tr>
-												<tr>
-													<th>우대조건</th>
-													<td> ${ requestScope.postInfo.advantage } </td>
-												</tr>
-												<tr>
-													<th>복리후생</th>
-													<td> ${ requestScope.postInfo.benefit } </td>
-												</tr>
-												<tr>
-													<th>급여형태</th>
-													<td> ${ requestScope.postInfo.payName } </td>
-												</tr>
-												<tr>
-													<th>급여</th>
-													<td> ${ requestScope.postInfo.payment } 원 </td>
-												</tr>
-											</table>
-<%-- 											<div>
+										<div id="working">
+											<div>
 											<div
 													style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
 													<b style="font-size: 30px;">근무유형</b>
@@ -290,7 +198,7 @@
 												<span
 													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">
 													${ requestScope.postInfo.payment } 원</span>
-											</div> --%>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -301,35 +209,7 @@
 									<div>
 										<h2>지원조건</h2>
 										<hr>
-										<table>
-											<tr>
-												<th> 성별 </th>
-												<td> ${ requestScope.postInfo.gender } </td>
-											</tr>
-											<tr>
-												<th> 연령 </th>
-												<td> ${ requestScope.postInfo.ageName } </td>
-											</tr>
-											<tr>
-												<th> 학력 </th>
-												<td> ${ requestScope.postInfo.degreeLevel } </td>
-											</tr>
-											<tr>
-												<th> 경력 </th>
-												<td> ${ requestScope.postInfo.expName } </td>
-											</tr>
-											<tr>
-												<th> 우대조건 </th>
-												<td> ${ requestScope.postInfo.advantage } </td>
-											</tr>
-											<tr>
-												<th> 급여 </th>
-												<td> ${ requestScope.postInfo.payment } </td>
-											</tr>
-										</table>
-										
-										
-<%-- 										<div id="working">
+										<div id="working">
 											<div
 												style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
 												<b style="font-size: 30px;">성별</b>
@@ -373,7 +253,7 @@
 											</div>
 											<span
 												style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">${ requestScope.postInfo.payment } 원</span>
-										</div> --%>
+										</div>
 									</div>
 								</div>
 
@@ -386,15 +266,11 @@
 											<h2>접수방법</h2>
 											<hr>
 											<div id="how">
-											<table>
-											
-											</table>
-<!-- 												<div
+												<div
 													style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
 													<b style="font-size: 30px;">접수방법</b>
 												</div>
-												 -->
-<%-- 												<span
+												<span
 													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">
 													<c:if test="${ requestScope.postInfo.postOnline eq '0' }"> 전화 지원 </c:if>
 													<c:if test="${ requestScope.postInfo.postOnline eq '1' }"> 온라인 지원 </c:if>
@@ -405,13 +281,21 @@
 												</div>
 												<span
 													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">${ requestScope.postInfo.hrPhone } </span><br>
+												
+<!-- 												<div
+ 													style="width: 250px; height: 36px; float: right; margin-left: 50px; margin-bottom: 20px;">
+													<b style="font-size: 30px;">연락 가능 시간</b>
+												</div>
+												<span
+													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">오후
+													9시까지</span> -->
 
 												<div
 													style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
 													<b style="font-size: 30px;">채용 담당자</b>
 												</div>
 												<span
-													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">${ requestScope.postInfo.hrName } </span> --%>
+													style="float: left; font-size: 30px; margin-left: 50px; margin-bottom: 20px;">${ requestScope.postInfo.hrName } </span>
 											</div>
 										</div>
 									</div>
@@ -443,8 +327,7 @@
 										<p style="font-size: 25px; text-align: center;">혹시 이 공고가
 											수상한가요?
 										<h2>
-											<a href="${ pageContext.servletContext.contextPath }/user/report"
-											onclick="window.open(this.href, '공고 신고하기', 'width=400, height=500, left=500, top=250';)" style="color: red;">신고하기</a>
+											<a href="" style="color: red;">신고하기</a>
 										</h2>
 										</p>
 									</div>

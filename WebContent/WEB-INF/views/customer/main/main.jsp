@@ -41,7 +41,7 @@
 	<!-- <div class="fh5co-loader"></div> -->
 	
 	<div id="fh5co-page">
-		<c:if test="${ empty sessionScope.loginUser }">	
+		<c:if test="${ empty sessionScope.loginUserInfo }">	
 			<section id="fh5co-header">
 				<div class="container">
 					<nav role="navigation">
@@ -61,7 +61,7 @@
 			</section>
 		</c:if>
 		<!-- #fh5co-header -->
-		<c:if test="${ !empty sessionScope.loginUser }">
+		<c:if test="${ !empty sessionScope.loginUserInfo }">
 			<section id="fh5co-header">
 				<div class="container">
 					<nav role="navigation">
@@ -74,6 +74,7 @@
 					
 						<ul class="pull-right right-menu" style="align:left;">
 						<!-- 로그인, 회원가입 -->
+							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName }님 반갑습니다! </a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
 						</ul>	
 					</nav>
