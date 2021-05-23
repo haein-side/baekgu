@@ -7,7 +7,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
@@ -91,6 +90,50 @@
       font-size: 25px;
     }
   </style>
+  <script>
+  	$(function(){
+  		
+  		$('#duplicationCheck').click(function(){
+  			var hrId_1 = $('#hrId_1').val();
+  			
+  			if(hrId_1 == ""){
+  				return;
+  			}
+  			
+  			$.ajax({
+  				url:"/baekgu/business/signup",
+  				type:"GET",
+  				data:{ hrId_1 : hrId_1 },
+  				success:function(data, textStatus,xhr){
+  					console.log(data);
+  					if(data == "success"){
+  						$("#checkMessage").html("사용할 수 있는 아이디입니다.");
+  						alert("사용가능한 아이디입니다.!");
+  						
+  						$('#checkId').attr("value","success");
+
+  						
+  						return;
+  						
+  					} else {
+  						$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+  						alert("사용 불가능한 아이디입니다.");
+  						return;
+  					}
+  					
+  				},
+  				error:function(xhr, status, error){
+  					console.log(xhr);
+  					console.log(status);
+  					console.log(error);
+  				}
+  				
+  			});
+  			
+  		});
+  		
+  	});
+  </script>
 </head>
 <body>
  
@@ -429,30 +472,24 @@
           <h2 style="padding-top: 30px; padding-bottom: 20px;">기업정보</h2>
           <div class="form-group">
             <label for="buser">기업/상호명 (필수)</label>
-            <input type="text" class="form-control" id="bname" placeholder="기업/상호명 입력" name="bName" value="123">
+            <input type="text" class="form-control" id="bname" placeholder="기업/상호명 입력" name="bName" required>
           </div>
           <div class="form-group">
             <label for="regnum">사업자번호 (필수)</label>
             <div class="form-group row">
-              <div class="col-xs-3">
-                <input class="form-control" id="bNo1" type="text" required="" name="bNo1"  value="123">
-              </div>
-              <div class="col-xs-2">
-                <input class="form-control" id="bNo2" type="text" required="" name="bNo2"  value="123">
-              </div>
-              <div class="col-xs-5">
-                <input class="form-control" id="bNo3" type="text" required="" name="bNo3"  value="123">
+              <div class="col-xs-12">
+                <input class="form-control" id="businessNo" type="text"  name="businessNo" required>
               </div>
             </div>
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
             <label for="owner">대표자명</label>
-            <input type="text" class="form-control" id="owner" placeholder="대표자 명 입력" required="" name="ownerName" value="123">
+            <input type="text" class="form-control" id="ownerName" placeholder="대표자 명 입력" name="ownerName">
           </div>
           <div class="form-group">
             <label for="business_categroy">기업 분류</label>
-				<select name="BC" id="BC_select" required="" class= "form-control">
+				<select name="BC" id="BC_select" class= "form-control">
 				    <option>----선택-----</option>
 				    <option value="1">미분류</option>
 				    <option value="2">일반기업</option>
@@ -466,14 +503,14 @@
             <label for="regnum">연 매출액 </label>
             <div class="form-group row">
               <div class="col-xs-10">
-                <input class="form-control" id="profit" type="text" placeholder="숫자로만 입력해주세요 단위 : 원" required="" name="profit" value="123" >
+                <input class="form-control" id="profit" type="text" placeholder="숫자로만 입력해주세요 단위 : 원"  name="profit">
               </div>
             </div>
             <small>백만원 단위로 입력해주세요.</small>
           </div>
           <div class="form-group">
             <label for="bphone">기업 전화번호 (필수)</label>
-            <input type="text" class="form-control" id="bPhone" placeholder="기업 전화번호" required="" name="bPhone" value="123">
+            <input type="text" class="form-control" id="bPhone" placeholder="기업 전화번호" name="bPhone">
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
@@ -482,14 +519,14 @@
             <br>
             <small>우편 번호</small>
             <input type="button" value="검색" class="btn btn-yg" id="searchZipCode">
-            <input type="text" name="zipCode" id="zipCode" readonly class= "form-control" value="123">
+            <input type="text" name="zipCode" id="zipCode" readonly class= "form-control">
            
             <br>
             <small>주소</small>
-            <input type="text" name="address1" id="address1" readonly class= "form-control" value="123" >
+            <input type="text" name="address1" id="address1" readonly class= "form-control">
             <br>
             <small>상세주소</small>
-            <input type="text" name="address2" id="address2" class= "form-control" value="123">
+            <input type="text" name="address2" id="address2" class= "form-control" required>
           </div>
           
           <!-- 기업 로고  -->
@@ -504,32 +541,32 @@
           <h2 style="padding-top: 30px;">담당자 정보</h2>
           <div class="form-group">
             <label for="bid">아이디(필수)</label>
-            <input type="text" class="form-control" id="hrId" placeholder="아이디 번호" required="" name="hrId" value="123" >
+            <input type="text" class="form-control" id="hrId_1" placeholder="아이디" name="hrId">
+            <div id="checkMessage" style="font-size : 23px; color: red; text-align: center;">
+			</div>   
+            <input type="button" id="duplicationCheck" class="btn-btn-or" value="중복 확인" required>
+            <input type="hidden" id="checkId" name="checkId" value="fail">
           </div>
           <div class="form-group">
             <label for="bpwd">비밀 번호 (필수)</label>
-            <input type="password" class="form-control" id="enteredPwd" placeholder="비밀 번호 입력" required="" name="enteredPwd" value="123" >
+            <input type="password" class="form-control" id="enteredPwd" placeholder="비밀 번호 입력"  name="enteredPwd" required>
           </div>
           <div class="form-group">
             <label for="bpwd">비밀 번호 확인(필수)</label>
-            <input type="password" class="form-control" id="userPwd1" placeholder="비밀 번호 입력 확인" required="" name="enteredPwd2" value="123" >
+            <input type="password" class="form-control" id="checkPwd" placeholder="비밀 번호 확인" name="checkPwd" required>
           </div>
           <div class="form-group" style="padding-top: 10px;">
             <label for="user">이름 (필수)</label>
-            <input type="text" class="form-control" id="userName" placeholder="담당자 이름" required="" name="hrName" value="123" >
+            <input type="text" class="form-control" id="userName" placeholder="담당자 이름" name="hrName" required>
           </div>
           <div class="form-group">
             <label for="buphone">휴대폰 번호 (필수)</label>
-            <input type="text" class="form-control" id="userPhone" placeholder="휴대폰 번호" required="" name="hrPhone" value="123" >
+            <input type="text" class="form-control" id="hrPhone" placeholder="휴대폰 번호" name="hrPhone" required>
             <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
           </div>
           <div class="form-group">
             <label for="">이메일 (필수)</label>
-            <div class="form-group row">
-              <div class="col-xs-6">
-                <input class="form-control" id="hrEmail" type="text" required="" name="hrEmail" value="123" >
-              </div>
-            </div>
+                <input class="form-control" id="hrEmail" type="text" name="hrEmail">
           </div>
           <div class="form-group" style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
             <input type="submit" id="btnSubmit" class="btn btn-info btn-submit" value="확인">
@@ -572,7 +609,6 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		const $searchZipCode = document.getElementById("searchZipCode");
-		const $goMain = document.getElementById("goMain");
 		
 		$searchZipCode.onclick = function() {
 		
@@ -586,154 +622,126 @@
 				}
 			}).open();
 		}
-		
-		$goMain.onclick = function() {
-			location.href = "${ pageContext.servletContext.contextPath }";
-		}
 	</script>
 
  <!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 --> 
-   <script type="text/javascript">
-    $("#btnSubmit").click(function(){
-    	validate();
-    });
-    
-    window.onload = function(){	    
-	    var $item = document.getElementById("duplicationCheck");
-		  // 요소의 data-value 속성에 hello world를 설정한다.
-		  $item.setAttribute("checkResult", "fail");
-		  // 요소의 value 속성에 test를 설정한다.
-	};  -->
-	
+    <script>
+
        function validate(){
        
-          var bName = document.getElementById("bName").value;
-          var bNo1 = document.getElementById("bNo1").value; 
-          var bNo2 = document.getElementById("bNo2").value; 
-          var bNo3 = document.getElementById("bNo3").value; 
-          var owner = document.getElementById("owner").value;
-          var bPhone = document.getElementById("bPhone").value;
-          var hrId = document.getElementById("hrId").value;
-          var enteredPwd = document.getElementById("enteredPwd").value;
-          var userPwd1 = document.getElementById("userPwd1").value;
-          var userName = document.getElementById("userName").value;
-          var userPhone = document.getElementById("userPhone").value;
-          var hrEmail = document.getElementById("hrEmail").value;
-          var checkMessage = document.getElementById("checkMessage").value;
-          var duplicationCheck = document.getElementById("duplicationCheck").value;
+          var bName = document.getElementById("bName");
+          var businessNo = document.getElementById("businessNo"); 
+          var owner = document.getElementById("owner");
+          var profit = document.getElementById("profit");
+          var bPhone = document.getElementById("bPhone");
+          var hrId_1 = document.getElementById("hrId_1");
+          var enteredPwd = document.getElementById("enteredPwd");
+          var checkPwd = document.getElementById("checkPwd");
+          var userName = document.getElementById("userName");
+          var hrPhone = document.getElementById("hrPhone");
+          var hrEmail = document.getElementById("hrEmail");
           
-          userPhone.setAttribute("checkresult", "fail");
           
+          /*==================================기업 정보 =============================================================*/
           // bName 유효성 검사는 필요 없어
           
-          // bNo1 bNo2 bNo3 유효성 검사
-          if(!chk(/^[0-9]{3,3}$/,bNo1,"숫자 3자리만 입력해주세요.")){
-        	  return false;
+          // bNo1 유효성 검사
+           if(!chk(/^[0-9]{10}$/,businessNo,"특수문자(-) 없이 숫자로만 사업자 번호를 입력하세요.")){/^\d{3}\d{3,4}\d{4}$/
+        	  return false;	
           }
-          if(!chk(/^[0-9]{2,2}$/,bNo2,"숫자 2자리만 입력해주세요.")){
-        	  return false;
-          }         
-          if(!chk(/^[0-9]{5,5}$/,bNo3,"숫자 5자리만 입력해주세요.")){
+          // bPhone 유효성 검사
+           if(!chk(/^[0-9]{10,11}$/,bPhone,"기업 전화번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
+            return false;
+         } 
+          
+          // 연매출액 유효성 검사
+          if(!chk(/[0-9]{1,}$/,profit,"숫자만 입력해주세요.")){
         	  return false;
           }
           
-          // userPhone 유효성 검사
-          if(!chk(/^[0-9]{10,11}$/,userPhone,"휴대폰번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
-            return false;
+          /*========================================   담당자 정보  ==================================================*/
+          
+         // 담당자 아이디 유효성 검사
+         if(!chk(/^[a-zA-Z0-9]{6,}$/,hrId_1,"아이디는 영어와 숫자를 혼합하여 5글자 이상 입력하세요.")){
+        	 return false;
          }
-         
+          
           // enteredPwd 유효성 검사
-         if(!chk(/^[a-zA-Z0-9]{8,15}$/,enteredPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
+           if(!chk(/^[a-zA-Z0-9]{8,15}$/,enteredPwd,"비밀번호는 영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.")){
             return false;
-         }
+         }  
          
          var checkNum = document.getElementById("enteredPwd").value.search(/[0-9]/g);
          var checkEng = document.getElementById("enteredPwd").value.search(/[a-z]/ig);
          // i: case insensitive, 대소문자 구별 안함
          
-         
-         if(checkNum < 0 || checkEng < 0){
+          if(checkNum < 0 || checkEng < 0){
             alert("비밀번호는 숫자와 영문자를 혼용하여야 합니다.");
             enteredPwd.value="";
             enteredPwd.focus();
             return false;
-         }
-         
-         // enteredPwd와 userPwd1 일치하는지 확인
-         if(enteredPwd.value != userPwd1.value){
-            alert("비밀번호가 다릅니다. 다시 확인해주세요.");
-            userPwd1.value="";
-            userPwd1.focus();
+         } 
+        
+          // enteredPwd와 userPwd1 일치하는지 확인
+          if(enteredPwd.value != checkPwd.value){
+             alert("비밀번호가 다릅니다. 다시 확인해주세요.");
+             checkPwd.value="";
+             checkPwd.focus();
              return false;
-         }
-       
+          }
+          
+         
          // userName 유효성 검사
-          if(!chk(/^[가-힣]{1,}$/,userName,"이름은 한글로 1글자 이상 입력하세요")){
+            if(!chk(/^[가-힣]{1,}$/,userName,"이름은 한글로 1글자 이상 입력하세요")){
             return false;
-         }
+         } 
          
-         // userBday1 유효성 검사 (4개인지 추가 검증 필요)
-/*           if(isNaN(userBday1.value)){
-				alert("년도는 숫자만 입력가능합니다.");
-				userBday1.value="";
-				userBday1.focus();
-				return false; */
-			}
-         
-         // userBday3 유효성 검사 (1자리 이상 2자리 이하인지 추가 검증 필요)
-/*           if(isNaN(userBday3.value)){
-				alert("날짜는 숫자만 입력가능합니다.");
-				userBday3.value="";
-				userBday3.focus();
-				return false; */
-			}
-         
-         
-         // 만 50세 이상인지 유효성 검사
-/*          let today = new Date();
-         let untilDay = new Date(today.getFullYear()-50, today.getMonth(), today.getDate());
-         
-         let fullUserBday = new Date(userBday1.value, userBday2.value-1, userBday3.value);
-         
-         console.log(fullUserBday);
-         
-         if(fullUserBday > untilDay){
-      	   alert("백구는 만 50세 이상만 회원가입이 가능합니다.");
-      	   userBday1.value="";
-      	   userBday1.focus();
-      	   return false;
-         } else {
-        	 return true; */
-         }
-         
-         // userAddress1 유효성 검사
-/*          if(!chk(/^[가-힣0-9\s]{6,}$/,userAddress1,"주소를 시, 구, 동까지 입력해주세요.")){
-        	 return false;
-          } */
-         
-         // userAddress2 유효성 검사
-/*          if(!chk(/^[가-힣0-9\s]{3,}$/,userAddress2,"세부 주소(번지, 건물명, 호수)를 입력해주세요.")){
-			 return false;
-          } */
-         
-         if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
-        	 duplicationCheck.focus();
-        	 alert("휴대폰번호 중복확인을 해주세요.")
-        	 return false;
-         }
-       
-        // 유효성 검사 alert 창 띄워주는 것
-        function chk(re, ele, msg){
-            if(!re.test(ele)){
-               alert(msg);
-               ele.value="";
-               ele.focus();   
+          // 담당자 번호 유효성 검사
+           if(!chk(/^[0-9]{10,11}$/,hrPhone,"휴대폰 번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
                return false;
-            }
-            
-            return true;
+            } 
+         
+         // hrEmail 유효성 검사
+         if(!chk(/^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/,hrEmail,"이메일 형식에 맞춰 입력하세요.")){
+        	 return false;
          }
-    
+         
+         if(idCheck.value != "success"){
+        	 alert("아이디 중복 확인을 완료해주세요.");
+        	 hrId_1.focus();
+        	 hrId_1.value = "";
+        	 return false;
+         }
+         
+   	  if(checkId.value != "success"){
+		  alert("아이디 중복체크를 완료해주시기 바랍니다.");
+		    console.log(checkId);
+		    hrId_1.focus();
+		    hrId_1.value = "";
+		    console.log(hrId_1);
+		    return false;
+	  }
+       
+         
+        // 유효성 검사 alert 창 띄워주는 것
+          function chk(re, ele, msg){
+              if(!re.test(ele.value)){
+                 alert(msg);
+                 ele.value="";
+                 ele.focus();   
+                 return false;
+              }
+              
+              return true;
+           }
+         
+         // 아이디 중복 체크
+          if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
+         	 duplicationCheck.focus();
+         	 alert("휴대폰번호 중복확인을 해주세요.")
+         	 return false;
+          }
+     
        
        }
        </script>

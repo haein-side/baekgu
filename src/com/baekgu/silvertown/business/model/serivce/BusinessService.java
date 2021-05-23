@@ -3,6 +3,7 @@ package com.baekgu.silvertown.business.model.serivce;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -12,8 +13,9 @@ import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dao.BusinessDAO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
+import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 
 public class BusinessService {
 
@@ -108,6 +110,63 @@ public class BusinessService {
 		close(con);
 		
 		return postList;
+	}
+
+	public int insertNewPost(PostInsertDTO post) {
+		
+		Connection con = getConnection();
+		
+		int decisionList = businessDAO.insertNewDecisionListpost(con);
+		int insertPost = 0;
+		
+		if(decisionList > 0) {
+			commit(con);
+			
+			insertPost = businessDAO.insertNewPost(con, post);
+			commit(con);
+		}
+		
+		
+		close(con);
+		return insertPost + insertPost;
+	}
+
+	public String chekId(String hrId_1) {
+		
+		Connection  con = getConnection();
+		
+		String result = businessDAO.chekId(con, hrId_1);
+		
+		close(con);
+		
+		
+		return result;
+	}
+
+	public int updateHrInfo(BusinessMemberDTO member) {
+		
+		Connection con = getConnection();
+		
+		System.out.println(member.getbName());
+		
+		int result = businessDAO.updateHrInfo(con, member);
+		
+		if(result > 0) {
+			
+			System.out.println("회원 정보 수정 완료");
+			commit(con);
+		} else {
+			System.out.println("회원 정보 수정 실패");
+			rollback(con);
+			
+		}
+		
+		
+		
+		close(con);
+		
+		
+		return result;
 	}
 
 

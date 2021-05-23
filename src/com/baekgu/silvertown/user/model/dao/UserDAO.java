@@ -9,11 +9,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.ApplyDTO;
+import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
@@ -188,8 +193,6 @@ public class UserDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 			
-			System.out.println("왜 안돼..");
-			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -278,6 +281,149 @@ public class UserDAO {
 
 		
 		return (UserDTO) jobInfo;
+	}
+
+	public List<ApplyDTO> selectApply(Connection con, int userCode, PageInfoDTO applyPageInfo) {
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectApply");
+		
+		List<ApplyDTO> allApply = null;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			pstmt.setInt(2, applyPageInfo.getStartRow());
+			pstmt.setInt(3, 3);
+			
+			rset = pstmt.executeQuery();
+			
+			allApply = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				ApplyDTO app = new ApplyDTO();
+				app.setUserCode(userCode);
+				app.setApplyDate(rset.getDate("APPLY_DATE"));
+				app.setbName(rset.getString("B_NAME"));
+				app.setPostTitle(rset.getString("POST_TITLE"));
+				app.setApplyCancel(rset.getInt("APPLY_CANCEL"));
+				app.setApplyRead(rset.getInt("APPLY_READ"));
+				
+				allApply.add(app);
+				
+				System.out.println(allApply);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return allApply;
+	}
+
+	public List<ReportDTO> selectReport(Connection con, int userCode, PageInfoDTO blockPageInfo) {
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectReport");
+		
+		List<ReportDTO> allReport = null;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			pstmt.setInt(2, blockPageInfo.getStartRow());
+			pstmt.setInt(3, 3);
+			
+			rset = pstmt.executeQuery();
+			allReport = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				ReportDTO rpt = new ReportDTO();
+				rpt.setReportDate(rset.getDate("REPORT_DATE"));
+				rpt.setPostTitle(rset.getString("POST_TITLE"));
+				rpt.setDecisionCode(rset.getInt("DECISION_CODE"));
+				
+				allReport.add(rpt);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println(allReport);
+		
+		return allReport;
+	}
+
+	public int applySelectTotalCount(Connection con, int userCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int applytotalCount = 0;
+		
+		String query = prop.getProperty("applySelectTotalCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				applytotalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return applytotalCount;
+	}
+
+	public int blockSelectTotalCount(Connection con, int userCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int blocktotalCount = 0;
+		
+		String query = prop.getProperty("blockSelectTotalCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				blocktotalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return blocktotalCount;
 	}
 
 	

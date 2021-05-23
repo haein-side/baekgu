@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.baekgu.silvertown.admin.model.dao.MemberDAO;
+import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.MemberDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
@@ -134,6 +135,117 @@ public class AdminMemberService {
 		
 		return nomalMemberList;
 	}
+
+
+	/**
+	 * 게시판 검색 결과 갯수 조회용 메소드
+	 * @param condition 검색조건
+	 * @param value 검색값
+	 * @return
+	 */
+	public int searchMemberListCount(String condition, String value) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = memberDAO.searchMemberListCount(con, condition, value);
+		
+		close(con);
+		
+		
+		return totalCount;
+	}
+
+	/**
+	 * 멤버 검색 결과 조회하고 리턴 받는다
+	 * @param condition 검색조건
+	 * @param value 검색값
+	 * @param pageInfo 페이지정보
+	 * @return
+	 */
+	public List<MemberDTO> searchMemberList(String condition, String value, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<MemberDTO> memberList = memberDAO.searchMemberList(con, pageInfo, condition, value);
+		
+		
+		return memberList;
+	}
+	
+	/**
+	 * 회원 아이디를 이용하여 관련 신고코드를 얻는 매소드
+	 * @param block
+	 * @return
+	 */
+	public int selectReportCode(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int reportCode = memberDAO.selectReportCode(con,block);
+		
+		close(con);
+		
+		return reportCode;
+	}
+
+	/**
+	 * 멤버 블락용 메소드
+	 * @param block
+	 * @return
+	 */
+	public int updateBlockMember(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.updateBlockMember(con, block);
+		int result2 = 0;
+		
+		if(result > 0) {
+			System.out.println("관련 신고내역 업데이트 성공 커밋!");
+			commit(con);
+			
+			result2 = memberDAO.updateBlock(con, block);
+			
+			if(result2 > 0) {
+				System.out.println("회원 블락 성공 커밋!");
+				commit(con);
+			}
+			
+		} else {
+			System.out.println("회원 블락 실패 롤백!");
+			rollback(con);
+		}
+		
+		
+		return result2;
+	}
+
+	/**
+	 * 신고 거절용 메소드
+	 * @param block
+	 * @return
+	 */
+	public int updateNoBlock(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.updateNoBlock(con, block);
+		
+		if(result > 0) {
+			System.out.println("신고 거절 업데이트 성공 커밋!");
+			commit(con);
+		} else {
+			System.out.println("신고 거절 업데이트 실패 롤백!");
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	
+
 
 	
 

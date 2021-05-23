@@ -154,25 +154,22 @@
 			</c:choose>   
 
 							<!-- 검색 폼 -->
-		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/board/search" method="get">		
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>
 				    <c:when test="${ !empty requestScope.searchValue }">
    					    <select id="searchCondition" name="searchCondition">
 							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>이름</option>
 							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>유저코드</option>
-							<option value="yaer" <c:if test="${requestScope.searchCondition eq 'year'}">selected</c:if>>생년월일(년도)</option>
-							<option value="month" <c:if test="${requestScope.searchCondition eq 'month'}">selected</c:if>>생년월일(월)</option>
-							<option value="day" <c:if test="${requestScope.searchCondition eq 'day'}">selected</c:if>>생년월일(일)</option>
+							<option value="yaer" <c:if test="${requestScope.searchCondition eq 'year'}">selected</c:if>>년도</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 				    </c:when>
 				    <c:otherwise>
 					    <select id="searchCondition" name="searchCondition">
-							<option value="category">이름</option>
-							<option value="writer">유저코드</option>
-							<option value="content">생일(년도)</option>
-							<option value="content">생일(월)</option>
+							<option value="name">이름</option>
+							<option value="code">유저코드</option>
+							<option value="year">년도</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" >
 				    </c:otherwise>
@@ -254,8 +251,8 @@
 				
 				
 				$tds[i].onclick = function() {
-					/* 게시물 번호까지 알아왔으니 이제 상세보기는 할 수 있겠지? */
-					/* alert(this.parentNode.children[0].innerText); */ //유저코드를 알럿으로 띄워 알 수 있다.
+					
+					 alert(this.parentNode.children[0].innerText); //유저코드를 알럿으로 띄워 알 수 있다.
 					const no = this.parentNode.children[0].innerText;
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
 					
@@ -276,51 +273,6 @@
 </section>
 
 
-				<!-- javascripts -->
-				<script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-				<script type="text/javascript"
-					src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-				<!-- bootstrap -->
-				<script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-				<!-- nice scroll -->
-				<script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js"
-					type="text/javascript"></script>
-				<!-- charts scripts -->
-				<script src="RESOURCES/JS/ADMIN/jquery.sparkline.js"
-					type="text/javascript"></script>
-				<script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-				<!-- jQuery full calendar -->
-				<script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script>
-				<!-- Full Google Calendar -
-        Calendar -->
-				<script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script>
-				<!-- custom select -->
-				<script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/scripts.js"></script>
-				<!-- custom script for this page-->
-				<script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script>
-				<script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/gdp-data.js"></script>
-				<script src="RESOURCES/JS/ADMIN/morris.min.js"></script>
-				<script src="RESOURCES/JS/ADMIN/sparklines.js"></script>
-				<script src="RESOURCES/JS/ADMIN/charts.js"></script>
-				<script src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script>
-				<script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script>
+			
 </body>
 </html>

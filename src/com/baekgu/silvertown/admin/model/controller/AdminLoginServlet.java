@@ -40,7 +40,8 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		if(loginAdmin != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginAdmin", loginAdmin);
+			session.setAttribute("loginAdminName", loginAdmin.getAdminName());
+			session.setAttribute("loginAdminId", loginAdmin.getAdminId());
 			
 			System.out.println("request.getContextPath() : " + request.getContextPath());
 			response.sendRedirect(request.getContextPath()+"/admin/main");

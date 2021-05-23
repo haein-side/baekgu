@@ -6,10 +6,13 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.baekgu.silvertown.user.model.dao.UserDAO;
+import com.baekgu.silvertown.user.model.dto.ApplyDTO;
+import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class UserService {
@@ -114,6 +117,10 @@ public class UserService {
 		
 		return jobInfo;
 	}
+
+	
+	
+	
 	
 
 }
