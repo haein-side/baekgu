@@ -220,6 +220,30 @@ public class AdminMemberService {
 		return result2;
 	}
 
+	/**
+	 * 신고 거절용 메소드
+	 * @param block
+	 * @return
+	 */
+	public int updateNoBlock(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.updateNoBlock(con, block);
+		
+		if(result > 0) {
+			System.out.println("신고 거절 업데이트 성공 커밋!");
+			commit(con);
+		} else {
+			System.out.println("신고 거절 업데이트 실패 롤백!");
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 	
 
 

@@ -147,5 +147,13 @@
 	       SET USER_BLOCK = 1
 	     WHERE USER_CODE = ?
 	</entry>
+	<entry key="updateNoBlock">
+	    UPDATE DECISION_LIST
+	       SET D_LIST_REASON = ?
+	         , D_LIST_DATE = now()
+	         , DECISION_CODE = 3
+	         , ADMIN_ID = ? 
+	     WHERE D_LIST_CODE = ?
+	</entry>
 
 </properties>

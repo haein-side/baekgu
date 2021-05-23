@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.common.paging.PageNation;
 import com.baekgu.silvertown.user.model.dto.ApplyDTO;
 import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
+import com.baekgu.silvertown.user.model.service.ManageApplyService;
 import com.baekgu.silvertown.user.model.service.UserService;
 
 @WebServlet("/user/manageApply")
@@ -23,21 +27,62 @@ public class ManageApply extends HttpServlet {
 	   // 세션에 담긴 정보를 받아옴
 	   HttpSession session = request.getSession();
 	   
-	   UserDTO requestUser = new UserDTO();
+	   UserDTO requestUser = (UserDTO) session.getAttribute("loginUserInfo");
 	   
-	   // session에 담긴 객체는 Object 타입이므로 UserDTO 형태로 다운캐스팅 시켜줌
-	   int userCode = (int) session.getAttribute("loginUserCode");
-	   session.getAttribute("loginUserCode");
+	   int userCode = requestUser.getUserCode();
 	   
-	   System.out.println("userCode : " + userCode);
+	   System.out.println("manageApply에서 받은 userCode : " + userCode);
 	   
-	   UserService applyService = new UserService();
+	   // 페이징 처리
+	   // 아마 두 페이지의 currentPage를 나눠줘야 할 듯
+	   String currentPage = request.getParameter("currentPage");
+	   int pageNo = 1;
 	   
-	   // 입사지원관리 비즈니스 로직 처리
-	   List<ApplyDTO> allApply = applyService.selectApply(userCode);
+	   if(currentPage != null && !"".equals(currentPage)) {
+			pageNo = Integer.parseInt(currentPage);
+		}
+		
+		if(pageNo <= 0) {
+			pageNo = 1;
+		}
+		
+		// 전체 게시물 수가 필요
+	   ManageApplyService manageApplyService = new ManageApplyService();
 	   
-	   // 신고내역관리 비즈니스 로직 처리
-	   List<ReportDTO> allReport = applyService.selectReport(userCode);
+	   // 입사지원내역 전체
+	   int applytotalCount = manageApplyService.applySelectTotalCount(userCode);
+	   
+	   System.out.println("입사지원내역 totalCount 체크 : " + applytotalCount);
+	   
+	   // 신고내역 전체
+	   int blocktotalCount = manageApplyService.blockSelectTotalCount(userCode);
+	   
+	   System.out.println("신고내역 totalCount 체크 : " + blocktotalCount);
+	   
+	   // 한 페이지에 보여줄 게시물 수
+	   int limit = 2;
+	   
+	   // 한 번에 보여질 페이징 버튼의 수
+	   int buttonAmount = 3;
+	   
+	   // 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받음
+	   
+	   // 입사지원내역
+		PageInfoDTO applyPageInfo = PageNation.getPageInfo(pageNo, applytotalCount, limit, buttonAmount);
+		
+		System.out.println("applypageInfo : " + applyPageInfo);
+	   
+		// 신고내역
+		PageInfoDTO blockPageInfo = PageNation.getPageInfo(pageNo, blocktotalCount, limit, buttonAmount);
+		
+		System.out.println("blockpageInfo : " + blockPageInfo);
+		
+		
+	   /* 입사지원관리 비즈니스 로직 처리*/
+	   List<ApplyDTO> allApply = manageApplyService.selectApply(userCode, applyPageInfo);
+	   
+	   /* 신고내역관리 비즈니스 로직 처리*/
+	   List<ReportDTO> allReport = manageApplyService.selectReport(userCode, blockPageInfo);
 	   
 	   // 응답페이지 처리
 	    String path = "";
@@ -45,8 +90,12 @@ public class ManageApply extends HttpServlet {
 			path = "/WEB-INF/views/customer/main/manageApply.jsp";
 			request.setAttribute("allApply", allApply);
 			request.setAttribute("allReport", allReport);
+			request.setAttribute("applyPageInfo", applyPageInfo);
+			request.setAttribute("blockPageInfo", blockPageInfo);
 			System.out.println(allApply);
 			System.out.println(allReport);
+			System.out.println(applyPageInfo);
+			System.out.println(blockPageInfo);
 			
 		} else {
 			path = "/WEB-INF/views/user/common/errorPage.jsp";

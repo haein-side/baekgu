@@ -71,10 +71,16 @@ public class UserSigninServlet extends HttpServlet {
 				// 뷰 분기처리, 로그인 정보는 session에 담기
 				if(loginUser != null) {
 					HttpSession session = request.getSession();
-
+					// 삭제해야
 					session.setAttribute("loginUser", loginUser);
+					// 받아온 회원정보를 loginUserInfo라는 속성으로 넣어줌
 					session.setAttribute("loginUserInfo", loginUserInfo);
+					// loginUserCode라는 속성으로 해당 유저코드를 넣어줌
 					session.setAttribute("loginUserCode", loginUserInfo.getUserCode());
+					
+					System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
+					
+					// 유저코드가 잘 들어옴
 					System.out.println("loginUser.getUserCode() : " + session.getAttribute("loginUserCode"));
 					//UserDTO user = (UserDTO) session.getAttribute("loginUser");
 

@@ -157,18 +157,33 @@
                           		<c:if test="${ requestScope.member.block eq 0 }">
                           		<br>
 								<form action="${ pageContext.servletContext.contextPath }/admin/memberdetail?no=${ requestScope.member.code }" method="post">
-									<input type="text" class="col-lg-6" name="blockReason" id="blockReason" placeholder="사용자 차단 사유를 명확히 입력해주세요."> 
-									<input type="submit" class="btn btn-danger" onclick="return chk()" value="사용자 신고 승인">
-								</form>
-								<br><br>
-								<form>
-									<input type="text" class="col-lg-6" name="noBlockReason" id="noBlockReason" placeholder="신고 거절 사유를 명확히 입력해주세요."> 
-									<input type="submit" class="btn btn-warning" onclick="return chk()" value="사용자 신고 거절">
+									<input type="text" class="col-lg-6" name="reason" id="blockReason" placeholder="사용자 차단 사유를 명확히 입력해주세요."> 
+									<input type="submit" class="btn btn-danger" name="blockButton" onclick="return chk1()" value="사용자 신고 승인">
+									<br><br>
+									
 								</form>
 								<script>
 								function chk(){
 									
 								if(document.getElementById("blockReason").value == ""){
+	                                alert("사유를 입력해주세요.");
+	                                
+	                                return false;
+                            	  } else{
+                            		  
+                            		 return true;
+                            	  }
+								}
+								</script>
+                          		<form action="${ pageContext.servletContext.contextPath }/admin/memberdetail?no=${ requestScope.member.code }" method="post">
+									<input type="text" class="col-lg-6" name="reason" id="noblockReason" placeholder="신고 거절 사유를 명확히 입력해주세요."> 
+									<input type="submit" class="btn btn-warning" name="blockButton" onclick="return chk2()" value="사용자 신고 거절">
+									
+								</form>
+								<script>
+								function chk2(){
+									
+								if(document.getElementById("noblockReason").value == ""){
 	                                alert("사유를 입력해주세요.");
 	                                
 	                                return false;
