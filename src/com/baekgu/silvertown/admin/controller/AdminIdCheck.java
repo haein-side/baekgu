@@ -30,7 +30,6 @@ public class AdminIdCheck extends HttpServlet {
 	
 		int result = new AdminRegistService().adminIdSelect(adminId);
 		
-		
 		String str = "";
 		
 		if (result > 0) {

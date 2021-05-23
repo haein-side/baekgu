@@ -46,6 +46,7 @@ public class AdminSearchListServlet extends HttpServlet {
 		
 		System.out.println("currentPage : " + currentPage);
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
+		
 		/* 조회해온다 */
 		List<AdminDTO> adminList = adminService.searchAdminList(pageInfo);
 		System.out.println(pageInfo);

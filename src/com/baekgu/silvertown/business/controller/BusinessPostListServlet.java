@@ -1,8 +1,11 @@
 package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +40,19 @@ public class BusinessPostListServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		
+		String category = request.getParameter("category");
+		String pageCategory = "전체";
+		
+		if(category != null && !category.equals("")) {
+			pageCategory = category;
+		}
+		
+		if(!pageCategory.equals("전체") && !pageCategory.equals("접수") && !pageCategory.equals("승인") && !pageCategory.equals("거절")) {
+			pageCategory = "전체";
+		}
+		
+		System.out.println("JAMES CATEGORY NOW : " + pageCategory);
+		
 		/* 해당 기업에 대한 공고의 전체 수 조회하기
 		 * 현재 로그인된 유저의 아이디로 공고의 전체 가져오기.
 		 *   */
@@ -51,6 +67,7 @@ public class BusinessPostListServlet extends HttpServlet {
 		int hold = 0; // 접수
 		int approved = 0; // 승인 
 		int rejected = 0; // 거절
+		
 		
 		for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
             switch(entry.getKey()) {
@@ -67,9 +84,25 @@ public class BusinessPostListServlet extends HttpServlet {
         }
 		
 		int totalCount = hold + approved + rejected; // 전체 공고 수 
-
 		
-		System.out.println("totalCount 체크 : " + totalCount);
+		int selection = 0;
+		switch(pageCategory) {
+		    case "전체":
+		    	selection = totalCount;
+		    	break;
+		    case "접수":
+		    	selection = hold;
+		    	break;
+		    case "승인":
+		    	selection = approved;
+		    	break;
+		    case "거절":
+		    	selection = rejected;
+		    	break;
+		    default :
+		    	System.out.println("error by category selection");
+		    	break;
+		}
 		
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
@@ -77,20 +110,48 @@ public class BusinessPostListServlet extends HttpServlet {
 		int buttonAmount = 5;
 		
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
-		
-		System.out.println(pageInfo);		
-				
 		/* JDBC 시작 - 공고 조회 */
+		/* page category 분기 처리 */
+		
+//		PageInfoDTO pageInfo;
+//		List<BusinessPostDTO> postList;
+		
+//		if(pageCategory.equals("전체")) {
+//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount);
+//		}else {
+//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
+//		}
+		
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
+
 		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+
+				
 		
 		
-		System.out.println("postList : " + postList);
+		
+//		List<BusinessPostDTO> postSelections = new ArrayList<>();
+		
+//		if(!pageCategory.equals("전체")) {
+//			for(int i = 0; i < postList.size(); i++) {
+//				System.out.println(postList.get(i));
+//
+//				if(postList.get(i).getDecisionStatus().equals(pageCategory)) {
+//					postSelections.add(postList.get(i));
+//				}
+//			}
+//		} else {
+//			// clone list to another list
+//			postSelections = postList.stream().collect(Collectors.toList());
+//		}
 		
 		String path = "";
-		
+
 		if(postList != null) {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
+			
+//			request.setAttribute("pageCategory", pageCategory);
+			
 			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("total", totalCount);
@@ -98,14 +159,16 @@ public class BusinessPostListServlet extends HttpServlet {
 			request.setAttribute("approved", approved);
 			request.setAttribute("rejected", rejected);
 		} 
+		
+		
+		
+		
 //			else {
 //			path = "/WEB-INF/views/common/failed.jsp";
 //			request.setAttribute("message", "게시물 목록 조회 실패!");
 //		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-		
 		
 	}
 

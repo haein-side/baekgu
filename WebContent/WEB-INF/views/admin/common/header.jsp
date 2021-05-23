@@ -43,7 +43,7 @@
                   <!-- 사용자 프로필 -->
   
                 <%-- <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4> --%>
-                <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdmin.adminName }"/></h4>
+                <h4 align="right" style="margin-top: 1%;">관리자 : <c:out value="${ sessionScope.loginAdminName }"/></h4>
             </header>
             <!--header end-->
 
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                          <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/companyList">
                                 <i class="icon_house_alt"></i>
                                 <span>기업 정보</span>
                             </a>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/reportlist">
                                 <i class="icon_house_alt"></i>
                                 <span>신고관리</span>
                             </a>
