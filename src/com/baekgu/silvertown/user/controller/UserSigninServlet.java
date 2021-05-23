@@ -70,8 +70,11 @@ public class UserSigninServlet extends HttpServlet {
 				// 뷰 분기처리, 로그인 정보는 session에 담기
 				if(loginUser != null) {
 					HttpSession session = request.getSession();
-					// 필요한 정보를 session에 넣어두기
-					session.setAttribute("loginUserCode", loginUser.getUserCode());
+		               
+		            // 받아온 회원정보를 loginUserInfo라는 속성으로 넣어줌
+		            session.setAttribute("loginUserInfo", loginUserInfo);
+		               
+		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
 					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");

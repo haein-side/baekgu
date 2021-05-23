@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.PostDTO;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 
 public class PostDAO {
 
@@ -51,15 +52,59 @@ public class PostDAO {
 			if(rset.next()) {
 				postInfo = new PostDTO();
 				
-				postInfo.setPostTitle(rset.getString("POST_CODE"));
+				postInfo.setPostCode(rset.getInt("POST_CODE"));
+				postInfo.setPostTitle(rset.getString("POST_TITLE"));
+				postInfo.setPostTo(rset.getInt("POST_TO"));
+				postInfo.setPostStart(rset.getDate("POST_START"));
+				postInfo.setPostEnd(rset.getDate("POST_END"));
+				postInfo.setPostOnline(rset.getInt("POST_ONLINE"));
+				postInfo.setPostDate(rset.getDate("POST_DATE"));
+				postInfo.setPostAddress(rset.getString("POST_ADDRESS"));
+				postInfo.setPostDay(rset.getString("POST_DAY"));
+				postInfo.setPayment(rset.getInt("PAYMENT"));
+				postInfo.setGender(rset.getString("GENDER"));
+				postInfo.setAdvantage(rset.getString("ADVANTAGE"));
+				postInfo.setBenefit(rset.getString("BENEFIT"));
+				postInfo.setFulltime_yn(rset.getInt("FULLTIME_YN"));
+				postInfo.setPostMName(rset.getString("POST_M_NAME"));
+				postInfo.setPostMEmail(rset.getString("POST_M_EMAIL"));
+				postInfo.setPostMPhone(rset.getString("POST_M_PHONE"));
+				postInfo.setReportCode(rset.getInt("REPORT_CODE"));
+				postInfo.setdListCode(rset.getInt("D_LIST_CODE"));
+				postInfo.setdListTarget(rset.getString("D_LIST_TARGET"));
+				postInfo.setExpCode(rset.getInt("EXP_CODE"));
+				postInfo.setExpName(rset.getString("EXP_NAME"));
+				postInfo.setJobCode(rset.getInt("JOB_CODE"));
+				postInfo.setJobName(rset.getString("JOB_NAME"));
+				postInfo.setIndustryName(rset.getString("INDUSTRY_NAME"));
+				postInfo.setPeriodCode(rset.getInt("PERIOD_CODE"));
+				postInfo.setPeriodName(rset.getString("PERIOD_NAME"));
+				postInfo.setHourCode(rset.getInt("HOUR_CODE"));
+				postInfo.setHourName(rset.getString("HOUR_NAME"));
+				postInfo.setLocationCode(rset.getInt("LOCATION_CODE"));
+				postInfo.setLocationName(rset.getString("LOCATION_NAME"));
+				postInfo.setPayCode(rset.getInt("PAY_CODE"));
+				postInfo.setPayName(rset.getString("PAY_NAME"));
+				postInfo.setAgeCode(rset.getInt("AGE_CODE"));
+				postInfo.setAgeName(rset.getString("AGE_NAME"));
+				postInfo.setHrName(rset.getString("HR_NAME"));
+				postInfo.setHrPhone(rset.getString("HR_PHONE"));
+				postInfo.setbName(rset.getString("B_NAME"));
+				postInfo.setbOwner(rset.getString("B_OWNER"));
+				postInfo.setbAddress(rset.getString("B_ADDRESS"));
+				postInfo.setbProfit(rset.getLong("B_PROFIT"));
+				postInfo.setDegreeCode(rset.getInt("DEGREE_CODE"));
+				postInfo.setDegreeLevel(rset.getString("DEGREE_LEVEL"));
 				
-			}
-			
+			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
-		
-		
+		System.out.println("DAO 공고 정보 조회 성공");
+		System.out.println("DAO postInfo : " + postInfo);
 		
 		return postInfo;
 	}
