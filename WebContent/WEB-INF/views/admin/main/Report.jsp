@@ -54,7 +54,9 @@
                                   	<th></th>
                                     <th>신고코드</th>
                                     <th>신고명</th>
+                                    <th>심사사유</th>
                                     <th>신고날짜</th>
+                                    <!-- <th>심사날짜</th> -->
                                     <th>공고코드</th>
                                     <th>유저코드</th>
                                     <th>접수상태</th>
@@ -67,7 +69,9 @@
 										<td><input id="tCode" type="hidden" value="${ report.bdTCode }"></td>
 										<td><c:out value="${ report.rCode }" /></td>
 										<td><c:out value="${ report.rReason }" /></td>
+										<td><c:out value="${ report.bReason }" /></td>
 										<td><c:out value="${ report.rDate }" /></td>
+										<%-- <td><c:out value="${ report.bDate }" /></td> --%>
 										<td><c:out value="${ report.postCode }" /></td>
 										<td><c:out value="${ report.userCode }" /></td>
 										<c:set var="bdCode" value="${ report.bdCode }" />

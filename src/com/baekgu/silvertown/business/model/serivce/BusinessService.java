@@ -6,6 +6,7 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 
 public class BusinessService {
@@ -168,6 +170,18 @@ public class BusinessService {
 		
 		
 		return result;
+	}
+
+
+	public List<PaymentDTO> selectAllpayList(String hrId) {
+		
+		Connection con = getConnection();
+		
+		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
+		
+		payList = businessDAO.selectAllpayList(con, hrId);
+		
+		return payList;
 	}
 
 

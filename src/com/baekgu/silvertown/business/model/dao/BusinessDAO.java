@@ -21,6 +21,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
@@ -479,5 +480,46 @@ public class BusinessDAO {
 		System.out.println("result" + result);
 		
 		return result;
+	}
+
+
+
+	public List<PaymentDTO> selectAllpayList(Connection con, String hrId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectAllPayList");
+		
+		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, hrId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PaymentDTO payment = new PaymentDTO();
+				payment.setDListStatus(rset.getString("DECISION_STATUS"));
+				payment.setPostTitle(rset.getString("post_title"));
+				payment.setAdName(rset.getString("ad_name"));
+				payment.setAdWeek(rset.getInt("POST_AD_WEEK"));
+				payment.setTotalPrice(rset.getInt(5));
+				payment.setPostadDate(rset.getDate("POST_AD_DATE"));
+				payment.setMethodCode(rset.getInt("P_METHOD_CODE"));
+				payment.setAdPaid(rset.getInt("POST_AD_PAID"));
+				
+				payList.add(payment);
+				
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return payList;
 	}
 }
