@@ -7,12 +7,12 @@
         <title>고객문의</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/FAQbootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/FAQbootstrap.css"/>
 
 	
-        <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQjquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
+        <script type="text/javascript" src="${ pageContext.servletContext.contextPath }/RESOURCES/JS/CUSTOMER/FAQjquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="${ pageContext.servletContext.contextPath }/RESOURCES/JS/CUSTOMER/FAQbootstrap.min.js"></script>
+        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
 	        type="text/css"> 
     </head>
     <body>

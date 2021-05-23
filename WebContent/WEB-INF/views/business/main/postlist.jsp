@@ -109,7 +109,8 @@
       <br>
 		
 	 <%-- 페이지 처리 --%>
-		<div class="pagination" align="center">
+	 <div class="text-center">
+	 	<div class="pagination" align="center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
 				    <button id="startPage"><<</button>
