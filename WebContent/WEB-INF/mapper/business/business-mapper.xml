@@ -228,4 +228,25 @@ select
 		  FROM HR
 		 WHERE HR_id = ?
 	</entry>
+	<entry key="selectApplicationList">
+		SELECT
+               a.POST_CODE
+     		 , a.POST_M_NAME
+     		 , a.POST_TITLE
+     		 , a.POST_TO
+     		 , a.POST_DATE
+     		 , (SELECT COUNT(b.APPLY_CODE)
+          		  FROM APPLY b
+         		 WHERE a.POST_CODE = b.POST_CODE 
+       		   ) as 'countOfApplicant'
+     		 , (SELECT COUNT(b.APPLY_CODE)
+          		 FROM APPLY b
+         		WHERE a.POST_CODE = b.POST_CODE
+           		  AND b.APPLY_READ = false
+       		   ) as 'unreadResume'
+  		 FROM POST a
+  		 JOIN DECISION_LIST c on(a.D_LIST_CODE = c.D_LIST_CODE)
+ 		WHERE HR_ID = ?
+ 		  AND c.DECISION_CODE IN (2,3)
+	</entry>
 </properties>
