@@ -9,11 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.ApplyDTO;
 import com.baekgu.silvertown.user.model.dto.ReportDTO;
@@ -191,8 +193,6 @@ public class UserDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 			
-			System.out.println("왜 안돼..");
-			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -283,7 +283,7 @@ public class UserDAO {
 		return (UserDTO) jobInfo;
 	}
 
-	public List<ApplyDTO> selectApply(Connection con, int userCode) {
+	public List<ApplyDTO> selectApply(Connection con, int userCode, PageInfoDTO applyPageInfo) {
 		PreparedStatement pstmt = null;
 		
 		ResultSet rset = null;
@@ -295,6 +295,8 @@ public class UserDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, userCode);
+			pstmt.setInt(2, applyPageInfo.getStartRow());
+			pstmt.setInt(3, applyPageInfo.getEndRow());
 			
 			rset = pstmt.executeQuery();
 			
@@ -326,7 +328,7 @@ public class UserDAO {
 		return allApply;
 	}
 
-	public List<ReportDTO> selectReport(Connection con, int userCode) {
+	public List<ReportDTO> selectReport(Connection con, int userCode, PageInfoDTO blockPageInfo) {
 		PreparedStatement pstmt = null;
 		
 		ResultSet rset = null;
@@ -338,6 +340,8 @@ public class UserDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, userCode);
+			pstmt.setInt(2, blockPageInfo.getStartRow());
+			pstmt.setInt(3, blockPageInfo.getEndRow());
 			
 			rset = pstmt.executeQuery();
 			allReport = new ArrayList<>();
@@ -364,6 +368,62 @@ public class UserDAO {
 		System.out.println(allReport);
 		
 		return allReport;
+	}
+
+	public int applySelectTotalCount(Connection con, int userCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int applytotalCount = 0;
+		
+		String query = prop.getProperty("applySelectTotalCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				applytotalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return applytotalCount;
+	}
+
+	public int blockSelectTotalCount(Connection con, int userCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int blocktotalCount = 0;
+		
+		String query = prop.getProperty("blockSelectTotalCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				blocktotalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return blocktotalCount;
 	}
 
 	
