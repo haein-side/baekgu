@@ -23,7 +23,6 @@ public class PostService {
 		postInfo = postDAO.selectPostInfo(con, postCode);
 		System.out.println("service의 postInfo 값 : " + postInfo);
 		
-		
 		return postInfo;
 	}
 

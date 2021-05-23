@@ -258,10 +258,11 @@
 					</div>
 					<div align="center" id="btn_group" style="padding: 50px;">
 						<button class="btn1"
-							style="width: 200pt; height: 60pt; font-size: x-large;">단순&nbsp;검색</button>
+							style="width: 200pt; height: 60pt; font-size: x-large;"
+							onclick="location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost'">단순&nbsp;검색</button>
 						<button class="btn1"
 							style="width: 200pt; height: 60pt; font-size: x-large; margin-left: 160px;"
-							disabled>상세&nbsp;검색</button>
+							disabled >상세&nbsp;검색</button>
 					</div>
 
 					<!-- 폼 시작 -->

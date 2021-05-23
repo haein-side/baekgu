@@ -1,0 +1,319 @@
+@font-face {
+	font-family: "Nanum";
+	src: url(../../../FONTS/NanumBarunGothic.ttf);
+}
+@font-face {
+	font-family: "BM";
+	src: url(../../../FONTS/BMEuljiro10yearslater.ttf);
+}
+html,
+body {
+	height: 100%;
+	font-family: "Nanum", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	color: #111111;
+	font-weight: 400;
+	font-family: "BM", sans-serif;
+}
+
+h1 {
+	color: orange;
+}
+
+h2 {
+	
+	color: orange;
+}
+
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+}
+
+p {
+	font-size: 16px;
+	font-family: "Nanum", sans-serif;
+	color: #6f6f6f;
+	font-weight: 400;
+	line-height: 26px;
+	margin: 0 0 15px 0;
+}
+
+
+img {
+	max-width: 100%;
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+	outline: none;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
+	outline: none;
+	color: #ffffff;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+}
+
+/*---------------------
+  Helper CSS
+-----------------------*/
+
+.section-title {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.section-title h2 {
+	color: #1c1c1c;
+	font-weight: 700;
+	position: relative;
+}
+
+.section-title h2:after {
+	position: absolute;
+	left: 0;
+	bottom: -15px;
+	right: 0;
+	height: 4px;
+	width: 80px;
+	background: orange;
+	content: "";
+	margin: 0 auto;
+}
+
+
+
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.text-white p,
+.text-white span,
+.text-white li{
+	color: #fff;
+}
+
+/* 버튼 */
+.primary-btn {
+	display: inline-block;
+	font-size: 14px;
+	padding: 10px 28px 10px;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-weight: 700;
+	background: orange;
+	letter-spacing: 2px;
+}
+
+
+/* 백구의 상세정보(큰타이틀) 위치 */
+.breadcrumb-section {
+	display: flex;
+	align-items: center;
+	padding: 45px 0 40px;
+}
+
+/* 백구의 상세정보(큰타이틀) 크기와 색 */
+.breadcrumb__text h2 {
+	font-size: 46px;
+	color: #ffffff;
+	font-weight: 700;
+}
+
+
+/* 백구의 상세정보(큰타이틀)의 span 여긴 어때요? */
+.breadcrumb__option span {
+	display: inline-block;
+	font-size: 16px;
+	color: #ffffff;
+}
+
+.product-details {
+	padding-top: 80px;
+}
+
+/* product__details__text 전체적인 text의 디테일을 잡아준다 */
+
+.product__details__text h3 {
+	color: orange;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+
+
+.product__details__text .company__title {
+	font-size: 30px;
+	color: orange;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.product__details__text p {
+	margin-bottom: 45px;
+}
+
+.product__details__text .primary-btn {
+	padding: 16px 28px 14px;
+	margin-right: 6px;
+	margin-bottom: 5px;
+}
+
+
+
+.product__details__text ul {
+	border-top: 1px solid #ebebeb;
+	padding-top: 40px;
+	margin-top: 50px;
+}
+
+.product__details__text ul li {
+	font-size: 16px;
+	color: #1c1c1c;
+	list-style: none;
+	line-height: 36px;
+}
+
+.product__details__text ul li b {
+	font-weight: 700;
+	width: 170px;
+	display: inline-block;
+	text-align: left;
+}
+
+.product__details__text ul li span samp {
+	color: #dd2222;
+	
+}
+
+
+.product__details__tab {
+	padding-top: 85px;
+}
+
+
+.product__details__tab .product__details__tab__desc {
+	padding-top: 44px;
+}
+
+.product__details__tab .product__details__tab__desc h6 {
+	font-weight: 700;
+	color: #333333;
+	margin-bottom: 26px;
+}
+
+.product__details__tab .product__details__tab__desc p {
+	color: #666666;
+}
+
+.job_details_text div{
+	width:250px; 
+	height: 36px; 
+	float:left; 
+	margin-left: 350px; 
+	margin-bottom: 20px;
+	font-size: large;
+}
+
+.job_details_text{
+	color: black;
+	font-size: 30px;
+}
+
+.job_details_text div{
+	width:250px; 
+	height: 36px; 
+	float:left; 
+	margin-left: 350px;
+}
+
+.job_details_text div b{
+	font-size: 30px;
+}
+
+.job_details_text span{
+	float:left; 
+	font-size: 30px;
+	margin-left: 50px;
+}
+
+.police_button{
+	width: 200px; 
+	height: 100px;
+	background: red; 
+	border: 0px;
+	border-radius: 12px;
+
+}
+
+.police_button h3{
+	color: white; 
+	
+
+}
+
+.jione_button{
+	width: 200px; 
+	height: 100px;
+	background: orange; 
+	border: 0px;
+	border-radius: 12px;
+
+}
+
+.jione_button h2{
+	color: white; 
+	
+
+}
+
+.final_check{
+	margin-top: 50px;
+	
+}
+
+.final_check div{
+	margin-top: 50px;
+	color: black;
+}
+
+.header{
+	position: fixed;
+	top: 0;
+	/* width: 100% */
+	left: 0;
+	right: 0;
+}

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
@@ -111,49 +112,18 @@ public class BusinessPostListServlet extends HttpServlet {
 		
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
 		/* JDBC 시작 - 공고 조회 */
-		/* page category 분기 처리 */
-		
-//		PageInfoDTO pageInfo;
-//		List<BusinessPostDTO> postList;
-		
-//		if(pageCategory.equals("전체")) {
-//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount);
-//		}else {
-//			pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
-//		}
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
 
-		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
-
-				
-		
-		
-		
-//		List<BusinessPostDTO> postSelections = new ArrayList<>();
-		
-//		if(!pageCategory.equals("전체")) {
-//			for(int i = 0; i < postList.size(); i++) {
-//				System.out.println(postList.get(i));
-//
-//				if(postList.get(i).getDecisionStatus().equals(pageCategory)) {
-//					postSelections.add(postList.get(i));
-//				}
-//			}
-//		} else {
-//			// clone list to another list
-//			postSelections = postList.stream().collect(Collectors.toList());
-//		}
+		List<?> postList = (List<BusinessPostDTO>)businessService.selectPostList(loggedInUser.getbId(), pageInfo);
 		
 		String path = "";
 
 		if(postList != null) {
 			path = "/WEB-INF/views/business/main/postlist.jsp";
-			
-//			request.setAttribute("pageCategory", pageCategory);
-			
+						
 			request.setAttribute("postList", postList);
-			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("pageInfo", pageInfo); // page category도 담겨있다.
 			request.setAttribute("total", totalCount);
 			request.setAttribute("hold", hold);
 			request.setAttribute("approved", approved);

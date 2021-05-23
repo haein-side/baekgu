@@ -13,12 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 
@@ -35,11 +37,13 @@ public class BusinessSignUpServlet extends HttpServlet {
 		
 		
 		String hrId_1 = request.getParameter("hrId_1");
-		System.out.println(hrId_1);
+		
+
 		
 		BusinessService service = new BusinessService();
 		
 		String result = service.chekId(hrId_1);
+		
 		
 		PrintWriter out = response.getWriter();
 		out.print(result);
@@ -47,7 +51,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 		out.flush();
 		out.close();
 		
-		
+
 	}
 
 	
