@@ -52,7 +52,7 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<header class="panel-heading">
-						이력서 리스트 <a class="btn btn-success" data-toggle="modal"
+						회원 리스트 <a class="btn btn-success" data-toggle="modal"
 							href="${ pageContext.servletContext.contextPath }/admin/nomalmember" style="margin-left: 30px;"> 정상유저 모아보기 </a> 
 							<a
 							class="btn btn-warning" data-toggle="modal" href="${ pageContext.servletContext.contextPath }/admin/blockmember"
