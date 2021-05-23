@@ -233,4 +233,21 @@ select
 	       SET HR_NAME = ?, HR_PHONE = ? , HR_EMAIL = ?
 	     WHERE HR_ID = ?
 	</entry>
+	<entry key="selectAllPayList">
+		select
+		       e.DECISION_STATUS 
+		     , a.post_title
+		     , c.ad_name
+		     , b.POST_AD_WEEK
+		     , c.AD_PRICE * b.POST_AD_WEEK
+		     , b.POST_AD_DATE
+		     , b.P_METHOD_CODE
+		     , b.POST_AD_PAID
+		  from POST a
+		  join POST_AD_PAYMENT b on (a.POST_CODE = b.POST_CODE)
+		  join ad c on (b.AD_CODE = c.AD_CODE)
+		  join DECISION_LIST d on (a.D_LIST_CODE = d.D_LIST_CODE)
+		  join DECISION e on (d.DECISION_CODE = e.DECISION_CODE)
+		 where a.HR_ID = ? 
+	</entry>
 </properties>
