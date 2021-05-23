@@ -46,6 +46,7 @@
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/main">홈</a></li>
 		        <li><a href="#">공고등록</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/postlist">공고관리</a></li>
+		        <li><a href="${ pageContext.servletContext.contextPath }/business/applicantlist">지원자관리</a></li>
 		        <li><a href="#">결제관리</a></li>
 		        <li><a href="#">상품안내</a></li>
 		      </ul>
