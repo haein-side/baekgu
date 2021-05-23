@@ -231,12 +231,13 @@ select
 	</entry>
 	
 	<entry key="selectApplicationList">
+		<![CDATA[
 		SELECT
                a.POST_CODE
      		 , a.POST_M_NAME
      		 , a.POST_TITLE
      		 , a.POST_TO
-     		 , a.POST_DATE
+     		 , a.POST_END
      		 , (SELECT COUNT(b.APPLY_CODE)
           		  FROM APPLY b
          		 WHERE a.POST_CODE = b.POST_CODE 
@@ -250,6 +251,13 @@ select
   		 JOIN DECISION_LIST c on(a.D_LIST_CODE = c.D_LIST_CODE)
  		WHERE HR_ID = ?
  		  AND c.DECISION_CODE IN (2,3)
+ 		GROUP BY a.POST_CODE, a.POST_M_NAME, a.POST_TITLE, a.POST_TO, a.POST_END
+ 	   HAVING 0 < (SELECT COUNT(b.APPLY_CODE)
+                     FROM APPLY b
+                    WHERE a.POST_CODE = b.POST_CODE 
+                  )
+        LIMIT ?, ?
+        ]]>
  	</entry>
  	
 	<entry key="updatehrInfo">

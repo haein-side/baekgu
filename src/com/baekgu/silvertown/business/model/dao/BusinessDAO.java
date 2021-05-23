@@ -5,6 +5,7 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
@@ -212,16 +214,49 @@ public class BusinessDAO {
 			
 			return postList;
 
-			
+		/* 지원자가 있는 공고 조회 */	
 		}else {
-			List<BusinessDTO> postList = null;
-			System.out.println("another DTO");
+			List<BusinessApplicablePostDTO> postList = null;
+						
+			query = prop.getProperty("selectApplicationList");
 			
+			try {
+				psmt = con.prepareStatement(query);
+				
+				psmt.setString(1, loggedId);
+				psmt.setInt(2, pageInfo.getStartRow());
+				psmt.setInt(3, pageInfo.getEndRow());
+				
+				
+				rset = psmt.executeQuery();
+				
+				postList = new ArrayList<>();
+				
+				while(rset.next()) {
+					BusinessApplicablePostDTO aPost = new BusinessApplicablePostDTO();
+					
+					aPost.setPostCode(rset.getInt("POST_CODE"));
+					aPost.setManagerName(rset.getString("POST_M_NAME"));
+					aPost.setPostTitle(rset.getString("POST_TITLE"));
+					aPost.setPostTO(rset.getInt("POST_TO"));
+					aPost.setPostEnd(rset.getDate("POST_END"));
+					aPost.setCountOfApplicants(rset.getInt("countOfApplicant"));
+					aPost.setCountOfUnreadResume(rset.getInt("unreadResume"));
+					
+					postList.add(aPost);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(psmt);
+			}
 			
+			return postList;
 			
 		}
-		
-		return null;
 	}
 
 

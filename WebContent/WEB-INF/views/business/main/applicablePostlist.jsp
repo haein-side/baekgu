@@ -60,7 +60,8 @@
     <div class="col-sm-10 text-left"> 
       <h1>지원자관리</h1>
       <ul style="padding-left: 25px;">
-        <li>공고를 누르면 이력서 조회가 가능합니다.</li>
+      	<li>등록하신 공고 중, 지원자가 있는 공고만 표시됩니다</li>
+        <li>공고를 누르면 지원자 조회가 가능합니다</li>
       </ul>
        
       <br>
@@ -78,37 +79,150 @@
             </tr>
           </thead>
           <tbody>
-           <%-- <c:forEach var="post" items="${ requestScope.postList }">
+            <c:forEach var="post" items="${ requestScope.postList }">
 			<tr> 
-				<td><c:out value="${ post.decisionStatus }"/></td>
-				<td><c:out value="${ post.postDate }"/></td>
+<%-- 				<td><c:out value="${ post.postCode }"/></td>			
+ --%>				
+ 				<td><c:out value="${ post.managerName }"/></td>
 				<td><c:out value="${ post.postTitle }"/></td>
-				<td><c:out value="${ post.adName }"/></td>
-				<td><c:out value="${ post.postStart }"/></td>
-				<td><c:out value="${ post.postEnd }"/></td>
+				<td><c:out value="${ post.postTO }"/></td>
 				<td><c:out value="${ post.countOfApplicants }"/></td>
+				<td><c:out value="${ post.countOfUnreadResume }"/></td>
+				<td><c:out value="${ post.postEnd }"/></td>
+				
 			</tr>
-			</c:forEach> --%>
+			</c:forEach> 
           </tbody>
         </table>
   
       <br>
       <br>
+      <%-- 페이지 처리 --%>
+	 <div class="text-center">
+	 	<div class="pagination" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
+		</div>
+  </div>
       
-      <div class="text-center">
-        <ul class="pagination" align="center">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div>
     
   </div>
 </div>
-</div>
 
+
+</div>
+	<script>
+		const link = "${ pageContext.servletContext.contextPath }/business/applicablePostlist";
+		const categoryLink = "${ pageContext.servletContext.contextPath }/business/applicablePostlist";
+			
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+		
+		if(document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+		
+		
+		if(document.getElementsByTagName("td")) {
+			
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.backgroundColor = "green";
+					this.parentNode.style.cursor = "pointer";
+				}
+				
+				$tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "white";
+				}
+			}
+			
+		}
+		
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
+
+	</script>
+	
 
   
 
