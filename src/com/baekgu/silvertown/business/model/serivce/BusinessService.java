@@ -100,11 +100,11 @@ public class BusinessService {
 		
 	}
 
-	public List<BusinessPostDTO> selectPostList(String loggedId, PageInfoDTO pageInfo) {
+	public List<?> selectPostList(String loggedId, PageInfoDTO pageInfo) {
 
 		Connection con = getConnection();
 		
-		List<BusinessPostDTO> postList = businessDAO.selectPostList(con, loggedId, pageInfo);
+		List<?> postList = businessDAO.selectPostList(con, loggedId, pageInfo);
 		
 		close(con);
 		
@@ -132,7 +132,7 @@ public class BusinessService {
 
 	public String chekId(String hrId_1) {
 		
-		Connection  con = getConnection();
+		Connection con = getConnection();
 		
 		String result = businessDAO.chekId(con, hrId_1);
 		
@@ -141,8 +141,4 @@ public class BusinessService {
 		
 		return result;
 	}
-
-
-
-	
 }

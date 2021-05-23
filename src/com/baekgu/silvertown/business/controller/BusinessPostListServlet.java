@@ -114,7 +114,7 @@ public class BusinessPostListServlet extends HttpServlet {
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
 
-		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		List<?> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
 		
 		String path = "";
 

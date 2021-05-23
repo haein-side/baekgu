@@ -151,14 +151,23 @@ public class BusinessDAO {
 		return counts;
 	}
 
-	public List<BusinessPostDTO> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {
+	public List<?> selectPostList(Connection con, String loggedId, PageInfoDTO pageInfo) {
 
 		PreparedStatement psmt = null;
 		ResultSet rset = null;
 		
-		List<BusinessPostDTO> postList = null;
-		
 		String query;
+		
+		if(pageInfo.getCategory() != null) {
+			List<BusinessPostDTO> postList = null;
+			
+			
+		}else {
+			List<BusinessDTO> postList = null;
+			System.out.println("another DTO");
+		}
+		
+		/* 페이지 카테고리에 따른 분기처리 */
 		boolean flag = true;
 		if(pageInfo.getCategory().equals("전체")) {
 			query = prop.getProperty("selectPostList");
