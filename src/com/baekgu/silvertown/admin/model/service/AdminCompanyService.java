@@ -88,6 +88,104 @@ public class AdminCompanyService {
 		return hrList;
 	}
 
+	/**
+	 * 블락 기업 리스트 카운트
+	 * @return
+	 */
+	public int selectBlockTotalCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = companyDAO.selectBlockCompanyCount(con);
+		
+		close(con);
+
+		return totalCount;
+	}
+
+	/**
+	 * 블락 기업 전체 리스트 조회
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<CompanyDTO> blockCompanyList(PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<CompanyDTO> companyList = companyDAO.blockCompanyList(con, pageInfo);
+		
+		close(con);
+		
+		return companyList;
+	}
+
+	/**
+	 * 정상 기업 카운트
+	 * @return
+	 */
+	public int selectNomalTotalCount() {
+		
+		Connection con = getConnection();
+		
+		int totalCount = companyDAO.selectNomalCompanyCount(con);
+		
+		close(con);
+
+		return totalCount;
+
+	}
+
+	/**
+	 * 정상기업 리스트 조회
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<CompanyDTO> nomalCompanyList(PageInfoDTO pageInfo) {
+		Connection con = getConnection();
+		
+		List<CompanyDTO> companyList = companyDAO.nomalCompanyList(con, pageInfo);
+		
+		close(con);
+		
+		return companyList;
+	}
+
+	/**
+	 * 게시판 검색 결과 수 카운트
+	 * @param condition 검색조건
+	 * @param value 사용자가 넣은 검색 값
+	 * @return
+	 */
+	public int searchCompanyListCount(String condition, String value) {
+		
+		Connection con = getConnection();
+		
+		int count = companyDAO.searchCompanyCount(con, condition, value);
+		
+		
+		return count;
+	}
+
+	/**
+	 * 기업 검색 결과 리스트 조회
+	 * @param condition
+	 * @param value
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<CompanyDTO> searchCompanyListCount(String condition, String value, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<CompanyDTO> companyList = companyDAO.searchCompanyList(con, pageInfo, condition, value);
+		
+		return companyList;
+	}
+
+
+
+
+
 }
 
 
