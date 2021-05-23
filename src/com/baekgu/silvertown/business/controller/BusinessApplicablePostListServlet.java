@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 import com.baekgu.silvertown.common.paging.PageNation;
 
@@ -74,7 +74,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, approved, limit, buttonAmount);
 
-		List<BusinessPostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		List<BusinessApplicablePostDTO> postList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+
 		
 		String path = "";
 
