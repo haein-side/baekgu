@@ -38,7 +38,7 @@ public class ManageApply extends HttpServlet {
 	   String currentPage1 = request.getParameter("currentPage1");
 	   int pageNo1 = 1;
 	   
-	   String currentPage2 = request.getParameter("currentPage1");
+	   String currentPage2 = request.getParameter("currentPage2");
 	   int pageNo2 = 1;
 	   
 	   if(currentPage1 != null && !"".equals(currentPage1)) {
