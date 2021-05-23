@@ -172,7 +172,7 @@
 		</div>
   </div>
 </div>
-
+</div>
 
 
   <div class="col-sm-1 sidenav">
@@ -222,7 +222,7 @@
 		if(document.getElementById("holdCategory")) {
 			const $holdCategory = document.getElementById("holdCategory");
 			$holdCategory.onclick = function() {
-				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=접수";
+				location.href = categoryLink + "?currentPage=1&category=접수";
 			}
 		}
 		
@@ -230,7 +230,7 @@
 		if(document.getElementById("approveCategory")) {
 			const $approveCategory = document.getElementById("approveCategory");
 			$approveCategory.onclick = function() {
-				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=승인";
+				location.href = categoryLink + "?currentPage=1&category=승인";
 			}
 		}
 		
@@ -238,7 +238,7 @@
 		if(document.getElementById("rejectCategory")) {
 			const $rejectCategory = document.getElementById("rejectCategory");
 			$rejectCategory.onclick = function() {
-				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=거절";
+				location.href = categoryLink + "?currentPage=1&category=거절";
 			}
 		}
 
@@ -260,13 +260,10 @@
 			
 		}
 		
-		/* 고쳐야하는부분  */
 		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text;
+			location.href = link + "?currentPage=" + text + "&category=${ requestScope.pageInfo.category}";
 		}
-		function seachPageButtonAction(text) {
-			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-		}
+
 	</script>
 	
 
