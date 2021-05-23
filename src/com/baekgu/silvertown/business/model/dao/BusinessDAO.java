@@ -388,4 +388,34 @@ public class BusinessDAO {
 		
 		return result;
 	}
+
+	public int updateHrInfo(Connection con, BusinessMemberDTO member) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updatehrInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, member.getbName());
+			pstmt.setString(2, member.getbPhone());
+			pstmt.setString(3, member.getbEmail());
+			pstmt.setString(4, member.getbId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		System.out.println("result" + result);
+		
+		return result;
+	}
 }

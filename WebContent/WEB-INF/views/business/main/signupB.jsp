@@ -107,13 +107,16 @@
   				success:function(data, textStatus,xhr){
   					console.log(data);
   					if(data == "success"){
-  						
+  						$("#checkMessage").html("사용할 수 있는 아이디입니다.");
   						alert("사용가능한 아이디입니다.!");
-  						&('#checkId').attr('value', 'success');
+  						
+  						$('#checkId').attr("value","success");
+
   						
   						return;
   						
   					} else {
+  						$("#checkMessage").html("사용할 수 없는 아이디입니다.");
   						alert("사용 불가능한 아이디입니다.");
   						return;
   					}
@@ -539,6 +542,8 @@
           <div class="form-group">
             <label for="bid">아이디(필수)</label>
             <input type="text" class="form-control" id="hrId_1" placeholder="아이디" name="hrId">
+            <div id="checkMessage" style="font-size : 23px; color: red; text-align: center;">
+			</div>   
             <input type="button" id="duplicationCheck" class="btn-btn-or" value="중복 확인" required>
             <input type="hidden" id="checkId" name="checkId" value="fail">
           </div>
@@ -707,15 +712,17 @@
         	 hrId_1.value = "";
         	 return false;
          }
+         
+   	  if(checkId.value != "success"){
+		  alert("아이디 중복체크를 완료해주시기 바랍니다.");
+		    console.log(checkId);
+		    hrId_1.focus();
+		    hrId_1.value = "";
+		    console.log(hrId_1);
+		    return false;
+	  }
        
          
-           
-/*          if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
-        	 duplicationCheck.focus();
-        	 alert("휴대폰번호 중복확인을 해주세요.")
-        	 return false;
-         } */
-       
         // 유효성 검사 alert 창 띄워주는 것
           function chk(re, ele, msg){
               if(!re.test(ele.value)){
@@ -727,22 +734,16 @@
               
               return true;
            }
+         
+         // 아이디 중복 체크
+          if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
+         	 duplicationCheck.focus();
+         	 alert("휴대폰번호 중복확인을 해주세요.")
+         	 return false;
+          }
      
        
        }
-       </script>
-       <script>
-       		$(function(){
-       			
-       			$(#'submit').click(function(){
-       				var checkId = $("#checkId").val();
-       				
-       				if(checkId == "fail"){
-       					return false;
-       				}
-       			});
-       			
-       		});
        </script>
    <!-- script 끝남 -->
 

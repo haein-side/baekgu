@@ -206,4 +206,9 @@ select
 		  FROM HR
 		 WHERE HR_id = ?
 	</entry>
+	<entry key="updatehrInfo">
+		UPDATE HR
+	       SET HR_NAME = ?, HR_PHONE = ? , HR_EMAIL = ?
+	     WHERE HR_ID = ?
+	</entry>
 </properties>
