@@ -12,10 +12,11 @@ select
      , B.B_BLOCK
      , D.D_LIST_REASON
      , B.B_NAME
+     , B.B_NUMBER
   FROM HR H
   join BUSINESS B on (H.B_CODE = B.B_CODE)
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
- WHERE HR_ID = ?
+ WHERE H.HR_ID = ?
 	</entry>
 	<entry key="insertDecisionList">
        insert
@@ -266,44 +267,76 @@ select
 	     WHERE HR_ID = ?
 	</entry>
 	<entry key="selectAllPayList">
-		  select 
-		         d.DECISION_STATUS 
-		       , a.post_title
-		       , e.ad_name
-		       , c.POST_AD_WEEK
-		       , e.AD_PRICE * c.POST_AD_WEEK
-		       , c.POST_AD_DATE
-		       , c.P_METHOD_CODE
-		       , c.POST_AD_PAID
-		  from post a
-		  join DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
-		  left join POST_AD_PAYMENT c on (a.post_CODE = c.POST_CODE)
-		  join decision d on (b.DECISION_CODE = d.DECISION_CODE)
-		  left join ad e on (c.AD_CODE = e.AD_CODE)
-		 where b.DECISION_CODE in(1,2)
-		   and a.HR_ID =?
-		 ORDER BY c.POST_AD_DATE desc
+select 
+       pap.POST_AD_CODE
+     , p.POST_TITLE 
+     , a.AD_NAME 
+     , p.POST_DATE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , pap.POST_AD_PAID 
+  from post_ad_payment pap
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+ where p.HR_ID = ?
+   and d.DECISION_STATUS = '승인'
+ order by p.POST_DATE desc
 		 limit ? , ?
 	</entry>
 	<entry key="selectPayListByCategory">
-			  select 
-		         d.DECISION_STATUS 
-		       , a.post_title
-		       , e.ad_name
-		       , c.POST_AD_WEEK
-		       , e.AD_PRICE * c.POST_AD_WEEK
-		       , c.POST_AD_DATE
-		       , c.P_METHOD_CODE
-		       , c.POST_AD_PAID
-		  from post a
-		  join DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
-		  left join POST_AD_PAYMENT c on (a.post_CODE = c.POST_CODE)
-		  join decision d on (b.DECISION_CODE = d.DECISION_CODE)
-		  left join ad e on (c.AD_CODE = e.AD_CODE)
-		 where b.DECISION_CODE in(1,2)
-		   and a.HR_ID =?
-		   AND d.DECISION_STATUS = ?
-		 ORDER BY c.POST_AD_DATE desc
+select 
+       pap.POST_AD_CODE
+     , p.POST_TITLE 
+     , a.AD_NAME 
+     , p.POST_DATE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , pap.POST_AD_PAID 
+  from post_ad_payment pap
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+ where p.HR_ID = ?
+   and d.DECISION_STATUS = '승인'
+   and pap.POST_AD_PAID = ?
+ order by p.POST_DATE desc
 		 limit ? , ?
+	</entry>
+	<entry key="selectPaymentDetail">
+select 
+       pap.POST_AD_CODE 
+     , pap.POST_AD_DATE 
+     , pap.P_METHOD_CODE 
+     , pap.POST_AD_PAID 
+     , a.AD_NAME 
+     , pap.POST_AD_WEEK 
+     , a.AD_PRICE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , p.POST_CODE 
+     , p.POST_START 
+     , p.POST_END 
+     , p.POST_M_NAME 
+  from post_ad_payment pap 
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (dl.DECISION_CODE = d.DECISION_CODE)
+ where p.HR_ID = ?
+   and pap.POST_AD_CODE = ?
+   and d.DECISION_STATUS ='승인'
+	</entry>
+	<entry key="selectPayCount">
+  select
+         pap.POST_AD_PAID 
+       , IFNULL(COUNT(pap.POST_AD_CODE), 0) as 'COUNT'
+    from post_ad_payment pap
+    join post p on (pap.POST_CODE = p.POST_CODE)
+    join ad a on (pap.AD_CODE = a.AD_CODE)
+    join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+    join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+   where p.HR_ID = ?
+     and d.DECISION_STATUS = '승인'
+   group by pap.post_ad_Paid;
 	</entry>
 </properties>

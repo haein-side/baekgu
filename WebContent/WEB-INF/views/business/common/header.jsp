@@ -44,7 +44,7 @@
 		  
 		      <ul class="nav navbar-nav">
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/main">홈</a></li>
-		        <li><a href="#">공고등록</a></li>
+		        <li><a href="${ pageContext.servletContext.contextPath }/business/insertpost">공고등록</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/postlist">공고관리</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/paymentlist">결제관리</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/applicablePostlist">지원자관리</a></li>
@@ -63,8 +63,8 @@
 		  	<c:if test="${ !empty sessionScope.loginBusinessMember }">
 		  	
 		      <ul class="nav navbar-nav navbar-right"> 
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/editInfo">${ sessionScope.loginBusinessMember.bName }</a></li>
-		        <li><a href="#">${ sessionScope.loginBusinessMember.CName }</a></li>
+		        <li><a href="${ pageContext.servletContext.contextPath }/business/editInfo">${ sessionScope.loginBusinessMember.CName }</a></li>
+		        <li><a href="#">${ sessionScope.loginBusinessMember.bName }</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/logout">로그아웃</a></li>
 		      </ul>
 		  	
