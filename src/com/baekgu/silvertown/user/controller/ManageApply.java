@@ -35,15 +35,26 @@ public class ManageApply extends HttpServlet {
 	   
 	   // 페이징 처리
 	   // 아마 두 페이지의 currentPage를 나눠줘야 할 듯
-	   String currentPage = request.getParameter("currentPage");
-	   int pageNo = 1;
+	   String currentPage1 = request.getParameter("currentPage1");
+	   int pageNo1 = 1;
 	   
-	   if(currentPage != null && !"".equals(currentPage)) {
-			pageNo = Integer.parseInt(currentPage);
+	   String currentPage2 = request.getParameter("currentPage2");
+	   int pageNo2 = 1;
+	   
+	   if(currentPage1 != null && !"".equals(currentPage1)) {
+			pageNo1 = Integer.parseInt(currentPage1);
 		}
 		
-		if(pageNo <= 0) {
-			pageNo = 1;
+		if(pageNo1 <= 0) {
+			pageNo1 = 1;
+		}
+		
+		if(currentPage2 != null && !"".equals(currentPage2)) {
+				pageNo2 = Integer.parseInt(currentPage2);
+		}
+			
+		if(pageNo2 <= 0) {
+				pageNo2 = 1;
 		}
 		
 		// 전체 게시물 수가 필요
@@ -60,7 +71,7 @@ public class ManageApply extends HttpServlet {
 	   System.out.println("신고내역 totalCount 체크 : " + blocktotalCount);
 	   
 	   // 한 페이지에 보여줄 게시물 수
-	   int limit = 2;
+	   int limit = 3;
 	   
 	   // 한 번에 보여질 페이징 버튼의 수
 	   int buttonAmount = 3;
@@ -68,12 +79,12 @@ public class ManageApply extends HttpServlet {
 	   // 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받음
 	   
 	   // 입사지원내역
-		PageInfoDTO applyPageInfo = PageNation.getPageInfo(pageNo, applytotalCount, limit, buttonAmount);
+		PageInfoDTO applyPageInfo = PageNation.getPageInfo(pageNo1, applytotalCount, limit, buttonAmount);
 		
 		System.out.println("applypageInfo : " + applyPageInfo);
 	   
 		// 신고내역
-		PageInfoDTO blockPageInfo = PageNation.getPageInfo(pageNo, blocktotalCount, limit, buttonAmount);
+		PageInfoDTO blockPageInfo = PageNation.getPageInfo(pageNo2, blocktotalCount, limit, buttonAmount);
 		
 		System.out.println("blockpageInfo : " + blockPageInfo);
 		
@@ -109,8 +120,34 @@ public class ManageApply extends HttpServlet {
 	   
    }
 
+   /* 지원 취소 */
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
+	   int applycode = Integer.parseInt(request.getParameter("cancel"));
+	   
+	   System.out.println("지원취소 : " + applycode); // value인 "applyCode"가 전송됨
+	   
+	   // 서비스 선언
+	   ManageApplyService manageApplyService = new ManageApplyService();
+	   
+	   // 지원 취소 (delete) 비즈니스 로직 처리
+	   int cancelApply = manageApplyService.cancelApply(applycode);
+	   System.out.println(request.getParameter("allApply"));
+	   
+	   // 응답페이지 처리
+	    String path = "";
+		if(cancelApply != 0) {
+			System.out.println("들어옴");
+			path = "/baekgu/user/manageApply";
+			response.sendRedirect(path);
+			
+		} else {
+			path = "/WEB-INF/views/user/common/errorPage.jsp";
+			request.setAttribute("message", "지원취소를 실패했습니다.");
+			request.getRequestDispatcher(path).forward(request, response);
+		}
+		
+	   
       
    }
 

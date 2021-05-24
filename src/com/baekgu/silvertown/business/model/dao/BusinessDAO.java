@@ -486,22 +486,52 @@ public class BusinessDAO {
 
 
 
-	public List<PaymentDTO> selectAllpayList(Connection con, String hrId) {
+	public List<PaymentDTO> selectAllpayList(Connection con, String hrId, PageInfoDTO pageInfo) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = prop.getProperty("selectAllPayList");
-		
 		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
+		
+		
+		String query;
+		
+		boolean flag = true;
+		
+		if(pageInfo.getCategory().equals("전체")) {
+			
+			query = prop.getProperty("selectAllPayList");
+		
+		} else {
+			
+			query = prop.getProperty("selectPayListByCategory");
+			flag = false;
+		}
+		
+		
+		System.out.println("pageInfo : " + pageInfo.getCategory());
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, hrId);
 			
+			if(flag) {
+				
+				pstmt.setString(1, hrId);
+				pstmt.setInt(2, pageInfo.getStartRow());
+				pstmt.setInt(3, pageInfo.getEndRow());
+				
+			} else {
+				
+				pstmt.setString(1, hrId);
+				pstmt.setString(2, pageInfo.getCategory());
+				pstmt.setInt(3, pageInfo.getStartRow());
+				pstmt.setInt(4, pageInfo.getEndRow());
+				
+			}
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
+				
 				PaymentDTO payment = new PaymentDTO();
 				payment.setDListStatus(rset.getString("DECISION_STATUS"));
 				payment.setPostTitle(rset.getString("post_title"));

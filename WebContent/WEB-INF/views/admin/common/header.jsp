@@ -85,7 +85,7 @@
                         <li class="active">
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
                                 <i class="icon_house_alt"></i>
-                                <span>공고승인</span>
+                                <span>공고심사관리</span>
                             </a>
                         </li>
                         <li class="active">
@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/advertlist">
                                 <i class="icon_house_alt"></i>
                                 <span>광고상품관리</span>
                             </a>

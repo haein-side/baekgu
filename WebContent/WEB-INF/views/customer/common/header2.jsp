@@ -70,7 +70,7 @@
 			<div class="nav-area">
 				<ul>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/toSearchPost">공고 검색</a></li>
-					<li><a href="${ pageContext.servletContext.contextPath }">이력서 관리</a></li>
+					<li><a href="${ pageContext.servletContext.contextPath }/user/resumeEnter">이력서 관리</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/manageApply">나의 공간</a></li>
 					<li><a href="${ pageContext.servletContext.contextPath }/user/FAQ">고객문의</a></li>
 					<li><a id="nolink" href="" style="background:coral;"></a></li>

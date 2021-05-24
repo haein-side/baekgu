@@ -175,13 +175,13 @@ public class BusinessService {
 	}
 
 
-	public List<PaymentDTO> selectAllpayList(String hrId) {
+	public List<PaymentDTO> selectAllpayList(String hrId, PageInfoDTO pageInfo) {
 		
 		Connection con = getConnection();
 		
 		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
 		
-		payList = businessDAO.selectAllpayList(con, hrId);
+		payList = businessDAO.selectAllpayList(con, hrId, pageInfo);
 		
 		close(con);
 		
@@ -237,6 +237,8 @@ public class BusinessService {
 		
 		return userInfo;
 	}
+
+
 
 
 
