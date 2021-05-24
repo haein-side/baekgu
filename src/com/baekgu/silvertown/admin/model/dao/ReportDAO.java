@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.baekgu.silvertown.admin.model.dto.BlockDTO;
+import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 
@@ -128,6 +129,103 @@ public class ReportDAO {
 		
 		
 		return reportList;
+	}
+
+	/**
+	 * 접수대기중 카운트 리턴
+	 * @param con
+	 * @return
+	 */
+	public int selectWaitReportCount(Connection con) {
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		int count = 0;
+		
+		String query = prop.getProperty("selectWaitCount");
+		
+		try {
+			
+			stmt = con.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				
+				count = rset.getInt("COUNT(*)");
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+
+		return count;
+	}
+
+	/**
+	 * 접수대기 신고내역 리스트 리턴
+	 * @param con
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BlockDTO> selectWaitReportList(Connection con, PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<BlockDTO> waitList = null;
+		
+		String query = prop.getProperty("selectWaitReport");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			
+			rset = pstmt.executeQuery();
+			
+			waitList = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				CompanyDTO wait = new CompanyDTO();
+				
+				BlockDTO report = new BlockDTO();
+				
+				report.setrCode(rset.getInt("REPORT_CODE"));
+				report.setrReason(rset.getString("REPORT_REASON"));
+				report.setrDate(rset.getDate("REPORT_DATE"));
+				report.setPostCode(rset.getInt("POST_CODE"));
+				report.setUserCode(rset.getInt("USER_CODE"));
+				report.setDlCode(rset.getInt("D_LIST_CODE"));
+				
+				report.setbCode(rset.getInt("D_LIST_CODE"));
+				report.setbReason(rset.getString("D_LIST_REASON"));
+				report.setbDate(rset.getDate("D_LIST_DATE"));
+				report.setBdCode(rset.getInt("DECISION_CODE"));
+				report.setBdTCode(rset.getInt("D_LIST_TYPE_CODE"));
+				report.setAdmin(rset.getString("ADMIN_ID"));
+				
+				waitList.add(report);
+				
+			}
+			
+			System.out.println("정상 기업 리스트 : " + waitList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return waitList;
 	}
 
 }

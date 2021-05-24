@@ -362,6 +362,12 @@ private final Properties prop;
 		return count;
 	}
 
+	/**
+	 * 정상유저 리스트 리턴
+	 * @param con
+	 * @param pageInfo
+	 * @return
+	 */
 	public List<CompanyDTO> nomalCompanyList(Connection con, PageInfoDTO pageInfo) {
 
 		PreparedStatement pstmt = null;

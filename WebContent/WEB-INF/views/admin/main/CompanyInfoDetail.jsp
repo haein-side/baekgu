@@ -126,11 +126,6 @@
                               <span></span>
                               </p>
                            </div>
-                           <div class="bio-row">
-                           <a class="btn btn-danger" href="#">
-                            기업 차단하기
-                          </a>
-                           </div>
                         </div>
                       </section>
                       

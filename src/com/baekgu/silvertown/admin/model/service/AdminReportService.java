@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.baekgu.silvertown.admin.model.dao.ReportDAO;
 import com.baekgu.silvertown.admin.model.dto.BlockDTO;
+import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
 public class AdminReportService {
@@ -49,6 +50,37 @@ public class AdminReportService {
 		
 		
 		return reportList;
+	}
+
+	/**
+	 * 접수대기중인 신고내역 카운트
+	 * @return
+	 */
+	public int selectWaitTotalCount() {
+
+		Connection con = getConnection();
+		
+		int totalCount = reportDAO.selectWaitReportCount(con);
+		
+		close(con);
+
+		return totalCount;
+	}
+
+	/**
+	 * 접수대기 신고내역 리스트 조회
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BlockDTO> waitReportList(PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<BlockDTO> waitList = reportDAO.selectWaitReportList(con, pageInfo);
+		
+		close(con);
+		
+		return waitList;
 	}
 
 }
