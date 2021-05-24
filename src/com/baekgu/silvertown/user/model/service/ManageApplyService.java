@@ -1,7 +1,9 @@
 package com.baekgu.silvertown.user.model.service;
 
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -79,6 +81,22 @@ public class ManageApplyService {
 		close(con);
 	
 		return blocktotalCount;
+	}
+
+	public int cancelApply(int applycode) {
+		Connection con = getConnection();
+		
+		int cancelApply = userDAO.deleteApply(con, applycode);
+		
+		if(cancelApply > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+
+		return cancelApply;
 	}
 
 

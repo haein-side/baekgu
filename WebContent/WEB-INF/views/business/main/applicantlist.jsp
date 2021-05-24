@@ -51,6 +51,8 @@
 </head>
 <body>
 
+	
+
 <jsp:include page="../common/header.jsp"/>
   
 <div class="container-fluid text-center" style="padding-left: 0%;">    
@@ -58,21 +60,28 @@
     <div class="col-sm-1 sidenav">
     </div>
     <div class="col-sm-10 text-left"> 
-      <h1>지원자관리</h1>
-      <h3>더조은학원 강사 모집</h3>
-      <p>21.05.08 ~ 21.05.15</p>
+      <h1>지원자관리 - 이력서</h1>
       <ul style="padding-left: 25px;">
-        <li>(회사명)님의 지원자 관리가 가능합니다.</li>
         <li>지원자 이름을 누르면 이력서 조회가 가능합니다.</li>
+        <li>우대사항 적합성을 통하여 등록하신 공고와 지원자간의 적합성을 비교하실 수 있습니다</li>
+        <li>합격여부를 선택하여 지원자를 관리할 수 있습니다</li>
         <li>지원자의 이력서 내용에 따라 신고하기가 가능합니다. 신고 사항은 접수 후 규정에 따라 처리됩니다.</li>
       </ul>
+      <hr>
        
       <br>
       <br>
       
+      <h3><i><c:out value="${ requestScope.applicationList.get(0).postTitle }"/></i></h3>
+      <p><i><b>공고 시작일</b> <c:out value="${ requestScope.applicationList.get(0).postStart }"/> ~ <b>공고 마감일 </b><c:out value="${ requestScope.applicationList.get(0).postEnd }"/></i></p>
+      
+      
         <table class="table table-bordered">
           <thead>
             <tr>
+              <th style="display:none">지원코드</th>
+              <th style="display:none">이력서코드</th>
+              <th>이력서 열람여부</th>
               <th>이름</th>
               <th>지원일</th>
               <th>우대사항 적합성</th>
@@ -80,101 +89,191 @@
               <th>신고하기</th>
             </tr>
           </thead>
+          
           <tbody>
+            <c:forEach var="application" items="${ requestScope.applicationList }">
             <tr>
-              <td><a href="#">차지민</a></td>
-              <td>2021.04.23</td>
-              <td>77%</td>
-              <td style="width: 250px;">
-                <select class="form-control" name="applicant">
-                    <option value>미분류</option>
-                    <option value="yes">합격</option>
-                    <option value="no">불합격</option>
-                </select>
-              </td>
-              <td>
-              <input type="button" class="btn btn-primary" style="width: 100px;" data-toggle="modal" data-target="#report" value="신고하기"/>
-                    <!-- 지원자 신고하기 모달창 만들어놓았음 -->
-                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">신고하시겠습니까?</h4>
-                            </div>
-                            <div class="modal-body">
-                            신중한 신고 부탁드립니다.
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                            <button type="button" class="btn btn-default"><a href="home.html">신고하기</a></button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-               </td>
-
-            </tr>
-            <tr>
-                <td><a href="#">김가네</a></td>
-                <td>2021.04.20</td>
-                <td>88%</td>
+                <td style = "display:none"><c:out value="${ application.applyCode }"/></td>
+            
+                <td style = "display:none"><c:out value="${ application.resumeCode }"/></td>
+            
+            	<c:if test="${ application.resumeRead eq 0 }">
+            	    <td style="color:red;">미열람</td>
+            	</c:if>
+            	<c:if test="${ application.resumeRead eq 1 }">
+            	    <td style="color:blue;">열람</td>
+            	</c:if>
+            	
+            	<td><c:out value="${ application.applicantName }"/></td>
+            	
+            	<td><c:out value="${ application.applyDate }"/></td>
+            	
+            	<td><c:out value="${ application.postAdvantages }"/></td>
+            	
                 <td style="width: 250px;">
-                  <select class="form-control" name="applicant">
-                      <option value>미분류</option>
-                      <option value="yes">합격</option>
-                      <option value="no">불합격</option>
-                  </select>
-                </td>
-                <td>
-                    <input type="button" class="btn btn-primary" style="width: 100px;" data-toggle="modal" data-target="#report" value="신고하기"/>
-                    <!-- 지원자 신고하기 모달창 만들어놓았음 -->
-                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">신고하시겠습니까?</h4>
-                            </div>
-                            <div class="modal-body">
-                            신중한 신고 부탁드립니다.
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                            <button type="button" class="btn btn-default">신고하기</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                </td>
-
+               		<select class="form-control" name="applicant">
+                    	<option value="none">미분류</option>
+                    	<option value="yes">합격</option>
+                    	<option value="no">불합격</option>
+                	</select>
+              	</td>
+              	
+	            <td>
+	              <input type="button" class="btn btn-primary" style="width: 100px;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    <!-- 지원자 신고하기 모달창 만들어놓았음 -->
+	                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                        <div class="modal-dialog" role="document">
+	                        <div class="modal-content">
+	                            <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                            <h4 class="modal-title" id="myModalLabel">신고하시겠습니까?</h4>
+	                            </div>
+	                            <div class="modal-body">
+	                            신중한 신고 부탁드립니다.
+	                            </div>
+	                            <div class="modal-footer">
+	                            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+	                            <button type="button" class="btn btn-default"><a href="home.html">신고하기</a></button>
+	                            </div>
+	                        </div>
+	                        </div>
+	                    </div>
+                 </td>
               </tr>
+            </c:forEach>
           </tbody>
         </table>
   
         
       <br>
       <br>
-      <div class="text-center">
-        <ul class="pagination"  align="center">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div>
-    
+      
+      <%-- 페이지 처리 --%>
+	 <div class="text-center">
+	 	<div class="pagination" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
+		</div>
+  	  </div>
     </div>
-   
-
   </div>
+</div>
+	<script>
+		const link = "${ pageContext.servletContext.contextPath }/business/postlist";
+		const categoryLink = "${ pageContext.servletContext.contextPath }/business/postlist";
+			
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+		
+		if(document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+		
+		if(document.getElementsByTagName("td")) {
+			
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.backgroundColor = "green";
+					this.parentNode.style.cursor = "pointer";
+				}
+				
+				$tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "white";
+				}
+				
+				$tds[i].onclick = function() {
+					const no = this.parentNode.children[0].innerText;
+					location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+				}
+			}
+			
+		}
+		
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
 
-
-
-  
-
+	</script>
+	
 <jsp:include page="../common/footer.jsp"/>
 
 
