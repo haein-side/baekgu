@@ -7,6 +7,7 @@ public class BusinessApplicationDTO {
 	private int applyCode;
 	private int resumeCode;
 	private int postCode;
+	private String applicantName;
 	private Date applyDate;
 	private int resumeRead;
 	private String applyStatus;
@@ -20,13 +21,14 @@ public class BusinessApplicationDTO {
 		super();
 	}
 
-	public BusinessApplicationDTO(int applyCode, int resumeCode, int postCode, Date applyDate, int resumeRead,
+	public BusinessApplicationDTO(int applyCode, int resumeCode, int postCode, String applicantName, Date applyDate, int resumeRead,
 			String applyStatus, String postTitle, Date postStart, Date postEnd, String postAdvantages,
 			String resumeAdvantages) {
 		super();
 		this.applyCode = applyCode;
 		this.resumeCode = resumeCode;
 		this.postCode = postCode;
+		this.applicantName = applicantName;
 		this.applyDate = applyDate;
 		this.resumeRead = resumeRead;
 		this.applyStatus = applyStatus;
@@ -67,6 +69,14 @@ public class BusinessApplicationDTO {
 
 	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
+	}
+	
+	public String getApplicantName() {
+		return applicantName;
+	}
+	
+	public void setApplicantName(String applicantName) {
+		this.applicantName = applicantName;
 	}
 
 	public int getResumeRead() {

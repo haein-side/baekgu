@@ -25,6 +25,7 @@ import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class BusinessDAO {
 	
@@ -579,6 +580,7 @@ public class BusinessDAO {
 				application.setApplyCode(rset.getInt("APPLY_CODE"));
 				application.setResumeCode(rset.getInt("RESUME_CODE"));
 				application.setPostCode(rset.getInt("POST_CODE"));
+				application.setApplicantName(rset.getString("USER_NAME"));
 				application.setApplyDate(rset.getDate("APPLY_DATE"));
 				application.setResumeRead(rset.getInt("APPLY_READ"));
 				application.setApplyStatus(rset.getString("APPLY_YN"));
@@ -603,6 +605,60 @@ public class BusinessDAO {
 		return applicationList;
 	
 	
+	}
+
+	public int updateResumeRead(Connection con, String loggedId, int applyCode) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateApplyRead");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, applyCode);
+			psmt.setString(2, loggedId);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result;
+	}
+
+	public UserDTO lookResume(Connection con, int applyCode) {
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		UserDTO userInfo = null;
+		
+		String query = prop.getProperty("lookResume");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, applyCode);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				userInfo = new UserDTO();
+				userInfo.setUserCode(rset.getInt("USER_CODE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return userInfo;
 	}
 	
 	
