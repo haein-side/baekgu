@@ -183,4 +183,51 @@ public class AdminDAO {
 		}
 
 	}
+
+	public int searchAdminCount(Connection con, String condition, String value) {
+		
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		
+		String query = null;
+		int boardCount = 0;
+		
+		if(condition.equals("category")) {
+			
+			query = prop.getProperty("seacrchCategoryBoardCount");
+		}else if(condition.equals("writer")) {
+			
+			query = prop.getProperty("writerBoardCount");
+		}else if(condition.equals("title")) {
+			
+			query = prop.getProperty("titleBoardCount");
+		}else if(condition.equals("content")) {
+			
+			query = prop.getProperty("contentBoardCount");
+		}
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, value);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				boardCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return boardCount;
+		
+		
+	}
 }

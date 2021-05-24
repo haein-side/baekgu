@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import com.baekgu.silvertown.admin.model.dto.BusinessJoinDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
@@ -522,4 +523,6 @@ public class BusinessDAO {
 		
 		return payList;
 	}
-}
+
+
+	}
