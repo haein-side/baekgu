@@ -162,6 +162,47 @@
 	       AND D.D_LIST_TYPE_CODE = 2
 	</entry>
 
+	<!-- resumeenter에 쓸 이력서 전체 내용 조회 -->
+	<entry key="selectResumeInfo">
+	    SELECT
+               R.RESUME_CODE
+             , U.USER_NAME
+             , U.USER_PHONE
+             , R.RESUME_SUBPHONE
+             , U.USER_GENDER
+             , U.USER_BDAY
+             , U.USER_ADDRESS
+             , R.RESUME_LETTER
+             , R.RESUME_ADVANTAGE
+             , D.DEGREE_CODE
+             , E.EXP_CODE
+             , R.RESUME_WRITE_DATE
+          FROM RESUME R
+     LEFT JOIN USER U on R.USER_CODE = U.USER_CODE
+     LEFT JOIN DEGREE D on R.DEGREE_CODE = D.DEGREE_CODE
+     LEFT JOIN EXP E on R.EXP_CODE = E.EXP_CODE
+         where U.USER_CODE = ?
+	</entry>
+	
+	<entry key = "updateResume">
+	   UPDATE
+              RESUME R
+   INNER JOIN USER U ON R.USER_CODE = U.USER_CODE
+		  SET
+		      U.USER_PHONE = ?
+		    , R.RESUME_SUBPHONE = ?
+		    , U.USER_GENDER = ?
+		    , U.USER_BDAY = ?
+		    , U.USER_ADDRESS = ?
+		    , R.RESUME_LETTER = ?
+	        , R.RESUME_ADVANTAGE = ?
+	        , R.DEGREE_CODE = ?
+	        , R.EXP_CODE = ?
+	        , R.RESUME_WRITE_DATE = NOW()
+		WHERE R.USER_CODE = ?
+	</entry>
+	
+
 	<!-- 공고 상세보기 쿼리문 -->
 	<!-- 차단 여부에 대한 FILTERING CODE 넣기 -->
 	<entry key="postContent">
