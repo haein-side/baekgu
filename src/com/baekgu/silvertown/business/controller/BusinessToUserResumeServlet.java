@@ -2,6 +2,7 @@ package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,14 +35,29 @@ public class BusinessToUserResumeServlet extends HttpServlet {
 		System.out.println("RESULT UPDATE : " + result);
 		
 		
+		
 		/* 2. 세션에 해당 유저의 정보를 담아서(applycode이용) 해당 resume로 포워드 시킨다.  */
+		String path = "";
+		
 		if(result > 0 ) {
 			UserDTO userInfo = businessService.lookResume(applyCode);
 			
-			session.setAttribute("loginUserInfo", userInfo);
+			if( userInfo != null) {
+				session.setAttribute("loginUserInfo", userInfo);
+				path = "/user/resumeEnter";
+				
+				request.getRequestDispatcher(path).forward(request, response);
+			
+			} else {
+				System.out.println("유저코드 조회 불가");
+			}
 		} else {
 			System.out.println("잘못된 접근");
+			request.getRequestDispatcher(path).forward(request, response);
 		}
+		
+
+		
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
