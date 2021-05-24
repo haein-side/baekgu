@@ -1,9 +1,12 @@
 package com.baekgu.silvertown.user.model.dto;
 
+import java.util.Arrays;
+
 /**
  * 공고 검색하고 목록 리스트 조회해줄 때 필요한 DTO
  *
  */
+
 public class SearchPostDTO {
 	
 	private int dListTypeCode;
@@ -14,8 +17,8 @@ public class SearchPostDTO {
 	
 	private String postTitle;
 	
-	private int locationCode;
-	private String locationName;
+	private int[] locationCode;
+	private String[] locationName;
 	
 	private int industryCode;
 	private String industryName;
@@ -39,8 +42,8 @@ public class SearchPostDTO {
 		super();
 	}
 
-	public SearchPostDTO(int dListTypeCode, int decisionCode, int postCode, String postTitle, int locationCode,
-			String locationName, int industryCode, String industryName, int jobCode, String jobName, int payment,
+	public SearchPostDTO(int dListTypeCode, int decisionCode, int postCode, String postTitle, int[] locationCode,
+			String[] locationName, int industryCode, String industryName, int jobCode, String jobName, int payment,
 			int payCode, String payName, String benefit, int periodCode, String periodName, int adCode) {
 		super();
 		this.dListTypeCode = dListTypeCode;
@@ -94,19 +97,19 @@ public class SearchPostDTO {
 		this.postTitle = postTitle;
 	}
 
-	public int getLocationCode() {
+	public int[] getLocationCode() {
 		return locationCode;
 	}
 
-	public void setLocationCode(int locationCode) {
+	public void setLocationCode(int[] locationCode) {
 		this.locationCode = locationCode;
 	}
 
-	public String getLocationName() {
+	public String[] getLocationName() {
 		return locationName;
 	}
 
-	public void setLocationName(String locationName) {
+	public void setLocationName(String[] locationName) {
 		this.locationName = locationName;
 	}
 
@@ -201,12 +204,12 @@ public class SearchPostDTO {
 	@Override
 	public String toString() {
 		return "SearchPostDTO [dListTypeCode=" + dListTypeCode + ", decisionCode=" + decisionCode + ", postCode="
-				+ postCode + ", postTitle=" + postTitle + ", locationCode=" + locationCode + ", locationName="
-				+ locationName + ", industryCode=" + industryCode + ", industryName=" + industryName + ", jobCode="
-				+ jobCode + ", jobName=" + jobName + ", payment=" + payment + ", payCode=" + payCode + ", payName="
-				+ payName + ", benefit=" + benefit + ", periodCode=" + periodCode + ", periodName=" + periodName
-				+ ", adCode=" + adCode + "]";
+				+ postCode + ", postTitle=" + postTitle + ", locationCode=" + Arrays.toString(locationCode)
+				+ ", locationName=" + Arrays.toString(locationName) + ", industryCode=" + industryCode
+				+ ", industryName=" + industryName + ", jobCode=" + jobCode + ", jobName=" + jobName + ", payment="
+				+ payment + ", payCode=" + payCode + ", payName=" + payName + ", benefit=" + benefit + ", periodCode="
+				+ periodCode + ", periodName=" + periodName + ", adCode=" + adCode + "]";
 	}
-	
+
 
 }

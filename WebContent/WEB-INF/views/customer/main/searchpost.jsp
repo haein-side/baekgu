@@ -88,6 +88,8 @@
 	        			console.log(document.getElementById("l" + i));
 	        			if(document.getElementById("l" + i).checked == true){
 	        				location += document.getElementById("l" + i).value + "&";
+	        			} else {
+	        				location += "";
 	        			}
 							        		
 	        		}
@@ -103,6 +105,8 @@
 	        			if(document.getElementById("i" + i).checked == true){
 	        				location += document.getElementById("i" + i).value + "&";
 	        				console.log(location);
+	        			} else {
+	        				location += "";
 	        			}
 							        		
 	        		}
@@ -118,6 +122,8 @@
 	        			if(document.getElementById("p" + i).checked == true){
 	        				location += document.getElementById("p" + i).value + "&";
 	        				console.log(location);
+	        			} else {
+	        				location += "";
 	        			}
 							        		
 	        		}
