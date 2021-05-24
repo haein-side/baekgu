@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -62,11 +63,23 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		List<BusinessApplicationDTO> applicationList =  businessService.selectApplicationList(loggedInUser.getbId(), postCode , pageInfo);
 		
 		/* 우대사항 적합성 작업 */
-		
-		String[] postAdvanges = applicationList.get(0).getPostAdvantages().split("&");
+		String[] postAdvantages = applicationList.get(0).getPostAdvantages().split("&");
 		
 		for(int i = 0; i < applicationList.size(); i++) {
 			
+			String[] resumeAdvantages = applicationList.get(i).getResumeAdvantages().split("&");
+			applicationList.get(i).setCorrectAdvantages(new ArrayList<>());
+			
+			for(int j = 0; j < resumeAdvantages.length; j++) {
+				for(int k = 0; k < postAdvantages.length; k++) {
+					if(resumeAdvantages[j].equals(postAdvantages[k])) {
+						/* 적합성 일치 저장 */
+						applicationList.get(i).getCorrectAdvantages().add(resumeAdvantages[j]);
+					}
+				}
+			}
+			/* 적합성 % 생성 */
+			applicationList.get(i).setCorrection((int)(((float)applicationList.get(i).getCorrectAdvantages().size() / postAdvantages.length)*100));
 		}
 		
 		String path = "";

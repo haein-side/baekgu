@@ -108,8 +108,20 @@
             	
             	<td><c:out value="${ application.applyDate }"/></td>
             	
-            	<td><c:out value="${ application.postAdvantages }"/></td>
-            	
+            	<c:choose>
+	            	<c:when test="${ application.correction gt 60 }">
+	            		<td><span style="color:green;"><c:out value="${ application.correction }"/>% </span><c:out value="${ application.correctAdvantages }"/></td>
+	            	</c:when>
+	            	<c:when test="${ application.correction gt 30 }">
+	            		<td><span style="color:blue;"><c:out value="${ application.correction }"/>% </span><c:out value="${ application.correctAdvantages }"/></td>
+	            	</c:when>
+	            	<c:when test="${ application.correction eq 0 }">
+	            		<td><span style="color:red;"><c:out value="${ application.correction }"/>% </span></td>
+	            	</c:when>
+	            	<c:otherwise>
+	            		<td><span><c:out value="${ application.correction }"/>% </span><c:out value="${ application.correctAdvantages }"/></td>
+	            	</c:otherwise>
+            	</c:choose>
                 <td style="width: 250px;">
                		<select class="form-control" name="applicant">
                     	<option value="none">미분류</option>
@@ -252,7 +264,6 @@
 			for(let i = 0; i < $tds.length; i++) {
 				
 				$tds[i].onmouseenter = function() {
-					this.parentNode.style.backgroundColor = "green";
 					this.parentNode.style.cursor = "pointer";
 				}
 				
