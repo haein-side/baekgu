@@ -8,7 +8,7 @@ public class BusinessApplicablePostDTO {
 	private String managerName;
 	private String postTitle;
 	private int postTO;
-	private Date postDate;
+	private Date postEnd;
 	private int countOfApplicants;
 	private int countOfUnreadResume;
 	
@@ -18,14 +18,14 @@ public class BusinessApplicablePostDTO {
 		super();
 	}
 	
-	public BusinessApplicablePostDTO(int postCode, String managerName, String postTitle, int postTO, Date postDate,
+	public BusinessApplicablePostDTO(int postCode, String managerName, String postTitle, int postTO, Date postEnd,
 			int countOfApplicants, int countOfUnreadResume) {
 		super();
 		this.postCode = postCode;
 		this.managerName = managerName;
 		this.postTitle = postTitle;
 		this.postTO = postTO;
-		this.postDate = postDate;
+		this.postEnd = postEnd;
 		this.countOfApplicants = countOfApplicants;
 		this.countOfUnreadResume = countOfUnreadResume;
 	}
@@ -62,12 +62,12 @@ public class BusinessApplicablePostDTO {
 		this.postTO = postTO;
 	}
 
-	public Date getPostDate() {
-		return postDate;
+	public Date getPostEnd() {
+		return postEnd;
 	}
 
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
+	public void setPostEnd(Date postEnd) {
+		this.postEnd = postEnd;
 	}
 
 	public int getCountOfApplicants() {
@@ -89,7 +89,7 @@ public class BusinessApplicablePostDTO {
 	@Override
 	public String toString() {
 		return "BusinessAppliacablePostDTO [postCode=" + postCode + ", managerName=" + managerName + ", postTitle="
-				+ postTitle + ", postTO=" + postTO + ", postDate=" + postDate + ", countOfApplicants="
+				+ postTitle + ", postTO=" + postTO + ", postEnd=" + postEnd + ", countOfApplicants="
 				+ countOfApplicants + ", countOfUnreadResume=" + countOfUnreadResume + "]";
 	}
 	

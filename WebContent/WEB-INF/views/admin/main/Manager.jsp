@@ -86,8 +86,6 @@
 								</tr>
 							</thead>
 							<tbody>
-
-
 								<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
 								<c:forEach var="admin" items="${ requestScope.adminList }" >
 									<tr>
@@ -100,9 +98,11 @@
 										<td><c:out value="${ admin.adminRole }" /></td>
 									</tr>
 								</c:forEach>
+							 </tbody>
 						</table>
 					</div>
-
+				
+			
 
 
 					<!--하단 페이지 넘기기-->
@@ -180,6 +180,7 @@
 									</c:choose>
 								</div>
 							</div>
+						</div>
 							<!--  검색창  -->
 							<ul class="nav top-menu" style="float: right;">
 								<li>
@@ -203,14 +204,21 @@
     </script>
     
      <script>
-           /* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도delete컨트롤러로 가는게 맞나 ?*/
+           /* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
            function deleteClick(){
    	    	$.ajax({
 				url: "/baeckgu/admin/admindelete",
-				data: { isDelete = true },
+				data: { isDelete : true },
 				type: "post",
 				success: function(data,textStatus,xhr){
-					console.log(data);
+					console.log(xhr);
+					if(xhr.responseText == "refresh"){
+						location.reload(true)	
+					} else if(xhr.responseText == "error") {
+						console.log("error")
+						location.reload(true)
+					}
+					
 				},
 				error : function(xhr,status,error) {
    					console.log(error);
@@ -225,7 +233,7 @@
    	    function checkClick(checkBox){
 	    	$.ajax({
 				url: "/baeckgu/admin/admindelete",
-				data: { sendData : checkBox.checked , adminId : checkBox.id },
+				data: { sendData : checkBox.checked , adminId : checkBox.id , isDelete:false },
 				type: "post",
 				success: function(data,textStatus,xhr){
 					console.log(data);
@@ -238,7 +246,47 @@
 	    }
 
    	 </script>
-
+   	 
+   	 
+   	 		
+<!--  	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
+	/*	window.onload = function() {
+			var deleteManager = document.getElementById("btnDelete");
+			deleteManager.onclick = function() {
+				// 1. check박스 중에 체크된 값을 일단 찾아온다
+				var chkBtn = document.getElementsByClassName("check");
+				// 여기서부터 체크된값을 뭘로 구분할지 일단 찾자
+				// htmlColloction[0] -> length 
+				var adminDelete = '';
+				// 배열로 하려다가 복잡해져서 다른 방향으로감.   var adminDelete = new Array(); , adminDelete[i] = 
+				for (var i = 0; i < chkBtn.length; i++) {
+					if (chkBtn[i].checked) {
+						// 체크됐을 때 삭제되게 할거고, 필요한 값이 무엇 ? -> id 
+						// id가 체크되었을 때 체크가되
+						어있으면 체크되어있는 값 중에서 같은 위치에 있는 id를 가져오려면 어떻게 해야돼 ? 
+					    // += 를 넣었을까 ? ',' 왜 ?? 
+						adminDelete +=  chkBtn[i].parentElement.parentElement.children[1].innerText + ",";
+					}
+				}
+				///////////////////////////////////////////
+				// 2. 그리고 필요한 값을 보내준다. 
+				// AJAX하자
+				$.ajax({
+					url: "/baeckgu/admin/admindelete",
+					data: { sendData : adminDelete },
+					type: "post",
+					success: function(data,textStatus,xhr){
+						console.log(data);
+					},
+					error : function(xhr,status,error) {
+	   					console.log(error);
+	   				}
+				
+				});
+		    
+			};
+		}; */ -->
+   	 
 	<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/search";
 	
@@ -313,14 +361,24 @@
 			const $tds = document.getElementsByTagName("td");
 			for (let i = 0; i < $tds.length; i++) {
 
+				 $tds[i].onmouseenter = function() {
+				 /* 	this.parentNode.style.backgroundColor = "orangered";
+				 	this.parentNode.style.cursor = "pointer";  */
+				}
+
+			 	/* $tds[i].onmouseout = function() {
+				 	this.parentNode.style.backgroundColor = "gray"; 
+				}  */
+
 				$tds[i].onclick = function() {
-	
 					location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id=" + this.parentNode.children[1].innerText;
+					
 				}
 
 			}
 
 		}
+
 		
 		
 
@@ -334,44 +392,7 @@
 					+ text
 					+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 		}
-		
- 	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
-	/*	window.onload = function() {
-			var deleteManager = document.getElementById("btnDelete");
-			deleteManager.onclick = function() {
-				// 1. check박스 중에 체크된 값을 일단 찾아온다
-				var chkBtn = document.getElementsByClassName("check");
-				// 여기서부터 체크된값을 뭘로 구분할지 일단 찾자
-				// htmlColloction[0] -> length 
-				var adminDelete = '';
-				// 배열로 하려다가 복잡해져서 다른 방향으로감.   var adminDelete = new Array(); , adminDelete[i] = 
-				for (var i = 0; i < chkBtn.length; i++) {
-					if (chkBtn[i].checked) {
-						// 체크됐을 때 삭제되게 할거고, 필요한 값이 무엇 ? -> id 
-						// id가 체크되었을 때 체크가되
-						어있으면 체크되어있는 값 중에서 같은 위치에 있는 id를 가져오려면 어떻게 해야돼 ? 
-					    // += 를 넣었을까 ? ',' 왜 ?? 
-						adminDelete +=  chkBtn[i].parentElement.parentElement.children[1].innerText + ",";
-					}
-				}
-				///////////////////////////////////////////
-				// 2. 그리고 필요한 값을 보내준다. 
-				// AJAX하자
-				$.ajax({
-					url: "/baeckgu/admin/admindelete",
-					data: { sendData : adminDelete },
-					type: "post",
-					success: function(data,textStatus,xhr){
-						console.log(data);
-					},
-					error : function(xhr,status,error) {
-	   					console.log(error);
-	   				}
-				
-				});
-		    
-			};
-		}; */
+
 		
 		
 		</script>

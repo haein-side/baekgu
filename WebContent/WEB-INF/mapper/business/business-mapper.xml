@@ -231,12 +231,13 @@ select
 	</entry>
 	
 	<entry key="selectApplicationList">
+		<![CDATA[
 		SELECT
                a.POST_CODE
      		 , a.POST_M_NAME
      		 , a.POST_TITLE
      		 , a.POST_TO
-     		 , a.POST_DATE
+     		 , a.POST_END
      		 , (SELECT COUNT(b.APPLY_CODE)
           		  FROM APPLY b
          		 WHERE a.POST_CODE = b.POST_CODE 
@@ -250,6 +251,13 @@ select
   		 JOIN DECISION_LIST c on(a.D_LIST_CODE = c.D_LIST_CODE)
  		WHERE HR_ID = ?
  		  AND c.DECISION_CODE IN (2,3)
+ 		GROUP BY a.POST_CODE, a.POST_M_NAME, a.POST_TITLE, a.POST_TO, a.POST_END
+ 	   HAVING 0 < (SELECT COUNT(b.APPLY_CODE)
+                     FROM APPLY b
+                    WHERE a.POST_CODE = b.POST_CODE 
+                  )
+        LIMIT ?, ?
+        ]]>
  	</entry>
  	
 	<entry key="updatehrInfo">
@@ -258,20 +266,44 @@ select
 	     WHERE HR_ID = ?
 	</entry>
 	<entry key="selectAllPayList">
-		select
-		       e.DECISION_STATUS 
-		     , a.post_title
-		     , c.ad_name
-		     , b.POST_AD_WEEK
-		     , c.AD_PRICE * b.POST_AD_WEEK
-		     , b.POST_AD_DATE
-		     , b.P_METHOD_CODE
-		     , b.POST_AD_PAID
-		  from POST a
-		  join POST_AD_PAYMENT b on (a.POST_CODE = b.POST_CODE)
-		  join ad c on (b.AD_CODE = c.AD_CODE)
-		  join DECISION_LIST d on (a.D_LIST_CODE = d.D_LIST_CODE)
-		  join DECISION e on (d.DECISION_CODE = e.DECISION_CODE)
-		 where a.HR_ID = ? 
+		  select 
+		         d.DECISION_STATUS 
+		       , a.post_title
+		       , e.ad_name
+		       , c.POST_AD_WEEK
+		       , e.AD_PRICE * c.POST_AD_WEEK
+		       , c.POST_AD_DATE
+		       , c.P_METHOD_CODE
+		       , c.POST_AD_PAID
+		  from post a
+		  join DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
+		  left join POST_AD_PAYMENT c on (a.post_CODE = c.POST_CODE)
+		  join decision d on (b.DECISION_CODE = d.DECISION_CODE)
+		  left join ad e on (c.AD_CODE = e.AD_CODE)
+		 where b.DECISION_CODE in(1,2)
+		   and a.HR_ID =?
+		 ORDER BY c.POST_AD_DATE desc
+		 limit ? , ?
+	</entry>
+	<entry key="selectPayListByCategory">
+			  select 
+		         d.DECISION_STATUS 
+		       , a.post_title
+		       , e.ad_name
+		       , c.POST_AD_WEEK
+		       , e.AD_PRICE * c.POST_AD_WEEK
+		       , c.POST_AD_DATE
+		       , c.P_METHOD_CODE
+		       , c.POST_AD_PAID
+		  from post a
+		  join DECISION_LIST b on(a.D_LIST_CODE = b.D_LIST_CODE)
+		  left join POST_AD_PAYMENT c on (a.post_CODE = c.POST_CODE)
+		  join decision d on (b.DECISION_CODE = d.DECISION_CODE)
+		  left join ad e on (c.AD_CODE = e.AD_CODE)
+		 where b.DECISION_CODE in(1,2)
+		   and a.HR_ID =?
+		   AND d.DECISION_STATUS = ?
+		 ORDER BY c.POST_AD_DATE desc
+		 limit ? , ?
 	</entry>
 </properties>

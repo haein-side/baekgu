@@ -90,10 +90,9 @@
       <!-- <h3>Test</h3>
       <p>Lorem ipsum...</p> -->
       <div class="btn-group btn-group-justified">
-        <a href="payment.html" class="btn btn-primary active">전체 (n건)</a>
-        <a href="paymentReady.html" class="btn btn-primary">결제 대기 (n건)</a>
-        <a href="paymentComplete.html" class="btn btn-primary">결제 완료 (n건)</a>
-        <a href="paymentCancel.html" class="btn btn-primary">결제 취소 (n건)</a>
+        <a id="totalCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">전체 ( ${ requestScope.total }건 )</a>
+        <a id="holdCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">접수 ( ${ requestScope.hold }건 )</a>
+        <a id="approveCategory" onclick="MyFunction(); return false;" href="#" class="btn btn-primary">승인 ( ${ requestScope.accepted }건 )</a>
       </div>
        
       <br>
@@ -104,7 +103,7 @@
             <tr>
               <th>심사 결과</th>
               <th>공고 제목</th>
-              <th>삼품 이름</th>
+              <th>상품 이름</th>
               <th>결제 총금액</th>
               <th>광고 기간</th>
               <th>결제 날짜</th>
@@ -117,9 +116,9 @@
 			<tr> 
 				<td><c:out value="${ pay.DListStatus }"/></td>
 				<td><c:out value="${ pay.postTitle }"/></td>
-				<td><c:out value="${ pay.adWeek }"/>주</td>
 				<td><c:out value="${ pay.adName }"/></td>
 				<td><c:out value="${ pay.totalPrice }"/></td>
+				<td><c:out value="${ pay.adWeek }"/>주</td>
 				<td><c:out value="${ pay.postadDate }"/></td>
 				<td><c:out value="${ pay.methodCode }"/></td>
 				<td><c:out value="${ pay.adPaid }"/></td>
@@ -131,33 +130,168 @@
         
       <br>
       <br>
-      <div class="text-center">
-        <ul class="pagination"  align="center">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div>
-
-   
 
   </div>
 
+</div>
 
-
+	 <%-- 페이지 처리 --%>
+	 <div class="text-center">
+	 	<div class="pagination" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
+		</div>
+  </div>
+</div>
   <div class="col-sm-1 sidenav">
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <!-- <footer class="footer navbar-fixed-bottom text-center"> -->
-  <!-- <div class="footer fixed-bottom"> -->
-    <p>Footer Text</p>
+	<script>
+		const link = "${ pageContext.servletContext.contextPath }/business/paymentlist";
+		const categoryLink = "${ pageContext.servletContext.contextPath }/business/paymentlist";
+			
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+		
+		if(document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+		
+		// category paging - 전체
+		if(document.getElementById("totalCategory")) {
+			const $totalCategory = document.getElementById("totalCategory");
+			$totalCategory.onclick = function() {
+				location.href = categoryLink;
+			}
+		}
+		
+		// category paging - 접수
+		if(document.getElementById("holdCategory")) {
+			const $holdCategory = document.getElementById("holdCategory");
+			$holdCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=hold";
+			}
+		}
+		
+		// category paging - 승인
+		if(document.getElementById("approveCategory")) {
+			const $approveCategory = document.getElementById("approveCategory");
+			$approveCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=accept";
+			}
+		}
+		
+		// category paging - 거절 
+		if(document.getElementById("rejectCategory")) {
+			const $rejectCategory = document.getElementById("rejectCategory");
+			$rejectCategory.onclick = function() {
+				location.href = categoryLink + "?currentPage=${requestScope.pageInfo.pageNo}&category=reject";
+			}
+		}
 
-  <!-- </div> -->
-</footer>
-
+		
+		if(document.getElementsByTagName("td")) {
+			
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.backgroundColor = "green";
+					this.parentNode.style.cursor = "pointer";
+				}
+				
+				$tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "white";
+				}
+			}
+			
+		}
+		
+		/* 고쳐야하는부분  */
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
+		function seachPageButtonAction(text) {
+			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		}
+	</script>
 </body>
 </html>
