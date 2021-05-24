@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dao.BusinessDAO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
@@ -181,7 +182,31 @@ public class BusinessService {
 		
 		payList = businessDAO.selectAllpayList(con, hrId);
 		
+		close(con);
+		
 		return payList;
+	}
+
+	public int selectTotalApplicants(String loggedId, int postCode) {
+		
+		Connection con = getConnection();
+		
+		int count = businessDAO.selectTotalApplicants(con, loggedId, postCode);
+		
+		close(con);
+		
+		return count;
+	}
+
+	public List<BusinessApplicationDTO> selectApplicationList(String loggedId, int postCode, PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<BusinessApplicationDTO> applicationList = businessDAO.selectApplicationList(con, postCode ,loggedId, pageInfo);
+		
+		close(con);
+		
+		return applicationList;
 	}
 
 

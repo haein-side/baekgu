@@ -282,4 +282,35 @@ select
 		  join DECISION e on (d.DECISION_CODE = e.DECISION_CODE)
 		 where a.HR_ID = ? 
 	</entry>
+	<entry key="selectTotalApplicant">
+		SELECT
+       		   COUNT(a.APPLY_CODE) as "COUNT"
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+ 		 WHERE a.POST_CODE = ?
+   		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE;
+	</entry>
+	
+	<entry key="applicants">
+		SELECT
+       		   a.APPLY_CODE
+     		 , a.RESUME_CODE
+     		 , a.POST_CODE
+     		 , a.APPLY_DATE
+     		 , a.APPLY_READ
+     		 , a.APPLY_YN  
+     		 , b.POST_TITLE
+     		 , b.POST_START
+     		 , b.POST_END
+     		 , b.ADVANTAGE as 'POST_ADVANTAGE'
+     		 , c.RESUME_ADVANTAGE as 'RESUME_ADVANTAGE'
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+ 		 WHERE a.POST_CODE = ?
+ 		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE
+	</entry>
 </properties>

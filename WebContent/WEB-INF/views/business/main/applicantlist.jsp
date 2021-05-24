@@ -51,6 +51,8 @@
 </head>
 <body>
 
+	
+
 <jsp:include page="../common/header.jsp"/>
   
 <div class="container-fluid text-center" style="padding-left: 0%;">    
@@ -59,7 +61,6 @@
     </div>
     <div class="col-sm-10 text-left"> 
       <h1>지원자관리 - 이력서</h1>
-      
       <ul style="padding-left: 25px;">
         <li>지원자 이름을 누르면 이력서 조회가 가능합니다.</li>
         <li>우대사항 적합성을 통하여 등록하신 공고와 지원자간의 적합성을 비교하실 수 있습니다</li>
@@ -71,8 +72,8 @@
       <br>
       <br>
       
-      <h3><i>더조은학원 강사 모집</i></h3>
-      <p><i>21.05.08 ~ 21.05.15</i></p>
+      <h3><i><c:out value="${ requestScope.applicationList.get(0).postTitle }"/></i></h3>
+      <p><i><b>공고 시작일</b> <c:out value="${ requestScope.applicationList.get(0).postStart }"/> ~ <b>공고 마감일 </b><c:out value="${ requestScope.applicationList.get(0).postEnd }"/></i></p>
       
       
         <table class="table table-bordered">
@@ -86,6 +87,18 @@
               <th>신고하기</th>
             </tr>
           </thead>
+          
+          <!-- private int applyCode;
+	private int resumeCode;
+	private int postCode;
+	private Date applyDate;
+	private int resumeRead;
+	private String applyStatus;
+	private String postTitle;
+	private Date postStart;
+	private Date postEnd;
+	private String postAdvantages;
+	private String resumeAdvantages; -->
           <tbody>
             <tr>
 <%--               <td style = "display:none"><c:out value="${ post.resume_code }"/></td>
