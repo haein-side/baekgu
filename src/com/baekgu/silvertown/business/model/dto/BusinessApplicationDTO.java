@@ -16,6 +16,7 @@ public class BusinessApplicationDTO {
 	private Date postEnd;
 	private String postAdvantages;
 	private String resumeAdvantages;
+	private int correction;
 	
 	public BusinessApplicationDTO() {
 		super();
@@ -37,6 +38,14 @@ public class BusinessApplicationDTO {
 		this.postEnd = postEnd;
 		this.postAdvantages = postAdvantages;
 		this.resumeAdvantages = resumeAdvantages;
+	}
+	
+	public int getCorrection() {
+		return correction;
+	}
+
+	public void setCorrection(int correction) {
+		this.correction = correction;
 	}
 
 	public int getApplyCode() {

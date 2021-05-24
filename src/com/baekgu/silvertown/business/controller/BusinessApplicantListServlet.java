@@ -61,6 +61,13 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		
 		List<BusinessApplicationDTO> applicationList =  businessService.selectApplicationList(loggedInUser.getbId(), postCode , pageInfo);
 		
+		/* 우대사항 적합성 작업 */
+		
+		String[] postAdvanges = applicationList.get(0).getPostAdvantages().split("&");
+		
+		for(int i = 0; i < applicationList.size(); i++) {
+			
+		}
 		
 		String path = "";
 		
