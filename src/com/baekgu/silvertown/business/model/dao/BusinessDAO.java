@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import com.baekgu.silvertown.admin.model.dto.BusinessJoinDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessApplicablePostDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
@@ -24,6 +26,7 @@ import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class BusinessDAO {
 	
@@ -558,7 +561,6 @@ public class BusinessDAO {
 			
 			e.printStackTrace();
 		} finally {
-			
 			close(rset);
 			close(pstmt);
 		}
@@ -648,4 +650,145 @@ public class BusinessDAO {
 		
 		return counts;
 	}
+
+
+	
+
+	public int selectTotalApplicants(Connection con, String loggedId, int postCode) {
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		int count = 0;
+		
+		String query = prop.getProperty("selectTotalApplicant");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, postCode);
+			psmt.setString(2, loggedId);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		return count;
+	}
+
+	public List<BusinessApplicationDTO> selectApplicationList(Connection con, int postCode, String loggedId, PageInfoDTO pageInfo) {
+
+		PreparedStatement psmt = null;	
+		ResultSet rset = null;
+		
+		List<BusinessApplicationDTO> applicationList = null;
+		
+		String query = prop.getProperty("applicants");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, postCode);
+			psmt.setString(2, loggedId);
+			
+			rset = psmt.executeQuery();
+			
+			applicationList = new ArrayList<>();
+			
+			while(rset.next()) {
+				BusinessApplicationDTO application = new BusinessApplicationDTO();
+				
+				application.setApplyCode(rset.getInt("APPLY_CODE"));
+				application.setResumeCode(rset.getInt("RESUME_CODE"));
+				application.setPostCode(rset.getInt("POST_CODE"));
+				application.setApplicantName(rset.getString("USER_NAME"));
+				application.setApplyDate(rset.getDate("APPLY_DATE"));
+				application.setResumeRead(rset.getInt("APPLY_READ"));
+				application.setApplyStatus(rset.getString("APPLY_YN"));
+				application.setPostTitle(rset.getString("POST_TITLE"));
+				application.setPostStart(rset.getDate("POST_START"));
+				application.setPostEnd(rset.getDate("POST_END"));
+				application.setPostAdvantages(rset.getString("POST_ADVANTAGE"));
+				application.setResumeAdvantages(rset.getString("RESUME_ADVANTAGE"));
+				
+				applicationList.add(application);
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(psmt);
+		}
+		
+		return applicationList;
+	
+	
+	}
+
+	public int updateResumeRead(Connection con, String loggedId, int applyCode) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateApplyRead");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, applyCode);
+			psmt.setString(2, loggedId);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result;
+	}
+
+	public UserDTO lookResume(Connection con, int applyCode) {
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		UserDTO userInfo = null;
+		
+		String query = prop.getProperty("lookResume");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, applyCode);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				userInfo = new UserDTO();
+				userInfo.setUserCode(rset.getInt("USER_CODE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return userInfo;
+	}
+	
+	
+	
+	
 }
+

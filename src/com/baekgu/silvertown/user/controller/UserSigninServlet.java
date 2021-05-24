@@ -76,7 +76,7 @@ public class UserSigninServlet extends HttpServlet {
 		            session.setAttribute("loginUserInfo", loginUserInfo);
 		               
 		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
-
+		            System.out.println("세션에 저장해둔 loginUserInfo 의 값들 : " + loginUserInfo );
 					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");

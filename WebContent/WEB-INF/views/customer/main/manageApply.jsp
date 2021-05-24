@@ -24,7 +24,8 @@
     </div>
     
     <div class="col-sm-6 text-left"> 
-    <h1 style="text-align: center; color : orange;">나의 공간</h1>
+    <h1 style="text-align: center; color : black; margin-top: 43px;">나의 공간</h1>
+    <hr>
       <h2 style="font-family:BME; color : orange;">입사지원관리</h1>
         <table border="1" width="950" style="margin:auto;">
           <br>
@@ -46,34 +47,27 @@
                 <tr height="40">
                     <td>${ app.applyDate }</td> 
                     <td>${ app.bName }</td>
-                    <td><a href="https://www.naver.com/"/>${ app.postTitle }</td>
+                    <td>${ app.postTitle }</td>
                     <td>
-                        </a><form>
-                        <%-- <c:if test="${ app.applyRead eq 0 }">
-                            <!-- <input type="button" name="cancel" onclick="alert('정말 지원을 취소하시겠습니까?');" value="지원취소"
-                           style="height:32px; width: 110px; font-size: 22px; background: orange; color: white;"/> -->
-                               <button style="height:32px; width: 110px; font-size: 22px; background: orange; color: white;">
-                               지원취소</button>
-                           </c:if> --%>
                            <c:choose>
 							    <c:when test="${app.applyRead eq 0 }">
-							    <!-- 지원취소는 나중에 해보자.. -->
-							      <input type="button" value="지원취소" id="btn1" name="cancel" style="height:32px; width: 110px; font-size: 22px; background: orange; color: white;">
-                               
+							    <!-- 지원취소 클릭시 value인 "applyCode"가 서블릿에 post 방식으로 전송됨 -->
+							      <form action="${ pageContext.servletContext.contextPath }/user/manageApply" method="post">
+								      <input type="hidden" name="cancel" value="${ app.applyCode }"> 
+								      <input type="submit" value="지원취소" name="cancel" id="btn1"  style="height:32px; width: 110px; font-size: 22px; background: orange; color: white;">
+							      </form>
 							    </c:when>
 							    <c:when test="${app.applyRead eq 1 }">
 							        <input type="text" value="취소불가" name="cancel" style="height:32px; width: 110px; font-size: 22px; background: gray; color: white; text-align: center;">
 							    </c:when>
 							</c:choose>
-                           
-                        </form>
                     </td>
                     <td>
                      <c:choose>
 					    <c:when test="${app.applyRead eq 0 }">
 					       미열람
 					    </c:when>
-					    <c:when test="${app.applyRead eq 1 }">
+					    <c:when test="${app.applyRead eq 1}">
 					        열람
 					    </c:when>
 					</c:choose>
@@ -87,7 +81,7 @@
        <!--  </div> -->
         <br>
         <br>
-        <div class="text-center">
+        <!-- <div class="text-center">
         <ul class="pagination">
 		  <li><a href="#">1</a></li>
 		  <li><a href="#">2</a></li>
@@ -95,19 +89,19 @@
 		  <li><a href="#">4</a></li>
 		  <li><a href="#">5</a></li>
 		</ul> 
-		</div>
+		</div> -->
 		
-		<%-- 페이지 처리 --%>
-		<div class="pagination" align="center">
+		<%-- 입사지원내역 페이지 처리 --%>
+		<div class= "text-center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
-				    <button id="startPage"><<</button>
+				    <button id="startPage1"><<</button>
 	
 					<c:if test="${ requestScope.applyPageInfo.pageNo <= 1 }">
 						<button disabled><</button>
 					</c:if>
 					<c:if test="${ requestScope.applyPageInfo.pageNo > 1 }">
-						<button id="prevPage"><</button>
+						<button id="prevPage1"><</button>
 					</c:if>
 		
 					<c:forEach var="p" begin="${ requestScope.applyPageInfo.startPage }" end="${ requestScope.applyPageInfo.endPage }" step="1">
@@ -115,7 +109,7 @@
 							<button disabled><c:out value="${ p }"/></button>
 						</c:if>
 						<c:if test="${ requestScope.applyPageInfo.pageNo ne p }">
-							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							<button onclick="pageButtonAction1(this.innerText);"><c:out value="${ p }"/></button>
 						</c:if>
 					</c:forEach>
 					
@@ -123,19 +117,19 @@
 						<button disabled>></button>
 					</c:if>
 					<c:if test="${ requestScope.applyPageInfo.pageNo < requestScope.applyPageInfo.maxPage }">
-						<button id="nextPage">></button>
+						<button id="nextPage1">></button>
 					</c:if>
 					
-					<button id="maxPage">>></button> 
+					<button id="maxPage1">>></button> 
 			     </c:when>
 			    <c:otherwise>
-   				    <button id="searchStartPage"><<</button>
+   				    <button id="searchStartPage1"><<</button>
 	
 					<c:if test="${ requestScope.applyPageInfo.pageNo <= 1 }">
 						<button disabled><</button>
 					</c:if>
 					<c:if test="${ requestScope.applyPageInfo.pageNo > 1 }">
-						<button id="searchPrevPage"><</button>
+						<button id="searchPrevPage1"><</button>
 					</c:if>
 		
 					<c:forEach var="p" begin="${ requestScope.applyPageInfo.startPage }" end="${ requestScope.applyPageInfo.endPage }" step="1">
@@ -143,7 +137,7 @@
 							<button disabled><c:out value="${ p }"/></button>
 						</c:if>
 						<c:if test="${ requestScope.applyPageInfo.pageNo ne p }">
-							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							<button onclick="seachPageButtonAction1(this.innerText);"><c:out value="${ p }"/></button>
 						</c:if>
 					</c:forEach>
 					
@@ -151,10 +145,10 @@
 						<button disabled>></button>
 					</c:if>
 					<c:if test="${ requestScope.applyPageInfo.pageNo < requestScope.applyPageInfo.maxPage }">
-						<button id="searchNextPage">></button>
+						<button id="searchNextPage1">></button>
 					</c:if>
 					
-					<button id="searchMaxPage">>></button> 
+					<button id="searchMaxPage1">>></button> 
 			    </c:otherwise>
 			</c:choose>   
 		</div>
@@ -198,9 +192,7 @@
              </c:forEach>
             </tbody>
         </table>
-        <br>
-        <br>
-        <div class="text-center" >
+       <!--  <div class="text-center" >
         <ul class="pagination">
 		  <li><a href="#">1</a></li>
 		  <li><a href="#">2</a></li>
@@ -208,23 +200,22 @@
 		  <li><a href="#">4</a></li>
 		  <li><a href="#">5</a></li>
 		</ul>
-		</div>
+		</div> -->
     <br>
 	<br>
-	<br>
-	<br>
+	
 	
 	<%-- 페이지 처리 --%>
-		<div class="pagination" align="center">
+		<div class="text-center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
-				    <button id="startPage"><<</button>
+				    <button id="startPage2"><<</button>
 	
 					<c:if test="${ requestScope.blockPageInfo.pageNo <= 1 }">
 						<button disabled><</button>
 					</c:if>
 					<c:if test="${ requestScope.blockPageInfo.pageNo > 1 }">
-						<button id="prevPage"><</button>
+						<button id="prevPage2"><</button>
 					</c:if>
 		
 					<c:forEach var="p" begin="${ requestScope.blockPageInfo.startPage }" end="${ requestScope.blockPageInfo.endPage }" step="1">
@@ -232,7 +223,7 @@
 							<button disabled><c:out value="${ p }"/></button>
 						</c:if>
 						<c:if test="${ requestScope.blockPageInfo.pageNo ne p }">
-							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							<button onclick="pageButtonAction2(this.innerText);"><c:out value="${ p }"/></button>
 						</c:if>
 					</c:forEach>
 					
@@ -240,19 +231,19 @@
 						<button disabled>></button>
 					</c:if>
 					<c:if test="${ requestScope.blockPageInfo.pageNo < requestScope.blockPageInfo.maxPage }">
-						<button id="nextPage">></button>
+						<button id="nextPage2">></button>
 					</c:if>
 					
-					<button id="maxPage">>></button> 
+					<button id="maxPage2">>></button> 
 			     </c:when>
 			    <c:otherwise>
-   				    <button id="searchStartPage"><<</button>
+   				    <button id="searchStartPage2"><<</button>
 	
 					<c:if test="${ requestScope.blockPageInfo.pageNo <= 1 }">
 						<button disabled><</button>
 					</c:if>
 					<c:if test="${ requestScope.blockPageInfo.pageNo > 1 }">
-						<button id="searchPrevPage"><</button>
+						<button id="searchPrevPage2"><</button>
 					</c:if>
 		
 					<c:forEach var="p" begin="${ requestScope.blockPageInfo.startPage }" end="${ requestScope.blockPageInfo.endPage }" step="1">
@@ -260,7 +251,7 @@
 							<button disabled><c:out value="${ p }"/></button>
 						</c:if>
 						<c:if test="${ requestScope.blockPageInfo.pageNo ne p }">
-							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+							<button onclick="seachPageButtonAction2(this.innerText);"><c:out value="${ p }"/></button>
 						</c:if>
 					</c:forEach>
 					
@@ -268,87 +259,162 @@
 						<button disabled>></button>
 					</c:if>
 					<c:if test="${ requestScope.blockPageInfo.pageNo < requestScope.blockPageInfo.maxPage }">
-						<button id="searchNextPage">></button>
+						<button id="searchNextPage2">></button>
 					</c:if>
 					
-					<button id="searchMaxPage">>></button> 
+					<button id="searchMaxPage2">>></button> 
 			    </c:otherwise>
 			</c:choose>   
 		</div>
-		
+		<br>
+		<br>
+		<br>
+		<br>
     </div>
     <div class="col-sm-3 sidenav">
     </div>
   </div>
 </div>
 
-
+<!-- 스크립트 시작 -->
 	<script>
+	/* 지원 취소를 위한 스크립트 시작 */
+	
+	
+	/* 페이징처리를 위한 스크립트 시작 */
 		const link = "${ pageContext.servletContext.contextPath }/user/manageApply";
 		/* const searchLink = "${ pageContext.servletContext.contextPath }/board/search"; */
-			
-		if(document.getElementById("startPage")) {
-			const $startPage = document.getElementById("startPage");
-			$startPage.onclick = function() {
-				location.href = link + "?currentPage=1";
-			}
-		}
 		
-		if(document.getElementById("prevPage")) {
-			const $prevPage = document.getElementById("prevPage");
+		// 분리되게 움직이려면 여기서 무언가 대책이 필요할 듯
+		 if(document.getElementById("startPage1")) {
+         const $startPage = document.getElementById("startPage1");
+         $startPage.onclick = function() {
+            location.href = link + "?currentPage1=1";
+         }
+      }
+
+		 if(document.getElementById("startPage2")) {
+	         const $startPage = document.getElementById("startPage2");
+	         $startPage.onclick = function() {
+	            location.href = link + "?currentPage2=1";
+	         }
+	      }
+
+		 if(document.getElementById("prevPage1")) {
+	         const $prevPage = document.getElementById("prevPage1");
+	         $prevPage.onclick = function() {
+	            location.href = link + "?currentPage1=${ requestScope.pageInfo.pageNo - 1 }";
+	         }
+	      }
+		
+		if(document.getElementById("prevPage2")) {
+			const $prevPage = document.getElementById("prevPage2");
 			$prevPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.blockPageInfo.pageNo - 1 }";
+				location.href = link + "?currentPage2=${ requestScope.blockPageInfo.pageNo - 1 }";
 			}
 		}
 		
-		if(document.getElementById("nextPage")) {
-			const $nextPage = document.getElementById("nextPage");
+		if(document.getElementById("nextPage1")) {
+			const $nextPage = document.getElementById("nextPage1");
 			$nextPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.blockPageInfo.pageNo + 1 }";
+				location.href = link + "?currentPage1=${ requestScope.applyPageInfo.pageNo + 1 }";
 			}
 		}
 		
-		if(document.getElementById("maxPage")) {
-			const $maxPage = document.getElementById("maxPage");
+		if(document.getElementById("nextPage2")) {
+			const $nextPage = document.getElementById("nextPage2");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage2=${ requestScope.blockPageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage1")) {
+			const $maxPage = document.getElementById("maxPage1");
 			$maxPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.blockPageInfo.maxPage }";
+				location.href = link + "?currentPage1=${ requestScope.applyPageInfo.maxPage }";
 			}
 		}
 		
-		if(document.getElementById("searchStartPage")) {
-			const $searchStartPage = document.getElementById("searchStartPage");
+		if(document.getElementById("maxPage2")) {
+			const $maxPage = document.getElementById("maxPage2");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage2=${ requestScope.blockPageInfo.maxPage }";
+			}
+		}
+		
+		if(document.getElementById("searchStartPage1")) {
+			const $searchStartPage = document.getElementById("searchStartPage1");
 			$searchStartPage.onclick = function() {
-				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				location.href = searchLink + "?currentPage1=1&searchCondition1=${ requestScope.searchCondition}&searchValue1=${ requestScope.searchValue}";
 			}
 		}
 		
-		if(document.getElementById("searchPrevPage")) {
-			const $searchPrevPage = document.getElementById("searchPrevPage");
+		if(document.getElementById("searchStartPage2")) {
+			const $searchStartPage = document.getElementById("searchStartPage2");
+			$searchStartPage.onclick = function() {
+				location.href = searchLink + "?currentPage2=1&searchCondition2=${ requestScope.searchCondition}&searchValue2=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchPrevPage1")) {
+			const $searchPrevPage = document.getElementById("searchPrevPage1");
 			$searchPrevPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.blockPageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				location.href = searchLink + "?currentPage1=${ requestScope.pageInfo.pageNo - 1 }&searchCondition1=${ requestScope.searchCondition}&searchValue1=${ requestScope.searchValue}";
 			}
 		}
 		
-		if(document.getElementById("searchNextPage")) {
-			const $searchNextPage = document.getElementById("searchNextPage");
+		if(document.getElementById("searchPrevPage2")) {
+			const $searchPrevPage = document.getElementById("searchPrevPage2");
+			$searchPrevPage.onclick = function() {
+				location.href = searchLink + "?currentPage2=${ requestScope.pageInfo.pageNo - 1 }&searchCondition2=${ requestScope.searchCondition}&searchValue2=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchNextPage1")) {
+			const $searchNextPage = document.getElementById("searchNextPage1");
 			$searchNextPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.blockPageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				location.href = searchLink + "?currentPage1=${ requestScope.pageInfo.pageNo + 1 }&searchCondition1=${ requestScope.searchCondition}&searchValue1=${ requestScope.searchValue}";
+
 			}
 		}
 		
-		if(document.getElementById("searchMaxPage")) {
-			const $searchMaxPage = document.getElementById("searchMaxPage");
+		if(document.getElementById("searchNextPage2")) {
+			const $searchNextPage = document.getElementById("searchNextPage2");
+			$searchNextPage.onclick = function() {
+				location.href = searchLink + "?currentPage2=${ requestScope.pageInfo.pageNo + 1 }&searchCondition2=${ requestScope.searchCondition}&searchValue2=${ requestScope.searchValue}";
+
+			}
+		}
+		
+		if(document.getElementById("searchMaxPage1")) {
+			const $searchMaxPage = document.getElementById("searchMaxPage1");
 			$searchMaxPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.blockPageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				 location.href = searchLink + "?currentPage1=${ requestScope.pageInfo.maxPage }&searchCondition1=${ requestScope.searchCondition}&searchValue1=${ requestScope.searchValue}";
 			}
 		}
 		
-		
-		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text;
+		if(document.getElementById("searchMaxPage2")) {
+			const $searchMaxPage = document.getElementById("searchMaxPage2");
+			$searchMaxPage.onclick = function() {
+				 location.href = searchLink + "?currentPage2=${ requestScope.pageInfo.maxPage }&searchCondition2=${ requestScope.searchCondition}&searchValue2=${ requestScope.searchValue}";
+
+			}
 		}
-		function seachPageButtonAction(text) {
-			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		
+		function pageButtonAction1(text) {
+			location.href = link + "?currentPage1=" + text;
+		}
+		function seachPageButtonAction1(text) {
+	         location.href = searchLink + "?currentPage1=" + text + "&searchCondition1=${ requestScope.searchCondition}&searchValue1=${ requestScope.searchValue}";
+
+		}
+		
+		function pageButtonAction2(text) {
+			location.href = link + "?currentPage2=" + text;
+		}
+		function seachPageButtonAction2(text) {
+	         location.href = searchLink + "?currentPage2=" + text + "&searchCondition2=${ requestScope.searchCondition}&searchValue2=${ requestScope.searchValue}";
+
 		}
 	</script>
 

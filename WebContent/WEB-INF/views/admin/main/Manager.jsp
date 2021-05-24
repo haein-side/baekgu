@@ -66,11 +66,15 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<header class="panel-heading">
-						관리자 및 직원 관리
-						<button class="btn btn-success" style="margin-left: 30px;"
+						관리자 및 직원관리
+						 <c:if test="${ sessionScope.loginAdmin.adminRole eq '대표관리자' }"> 
+						<button class="btn btn-success" id="btnsubmit" style="margin-left: 30px;"
 							type="button" onClick="Registration()">등록하기</button>
-						<button class="btn btn-warning" id="btnDelete" data-toggle="modal" type="button" onClick="deleteClick()"
-							style="margin-left: 30px;"> 삭제하기 </button>
+						 </c:if> 				
+						<button class="btn btn-warning" id="btnDelete" data-toggle="modal"
+							type="button" onClick="deleteClick()" style="margin-left: 30px;">
+							삭제하기</button>
+					   
 					</header>
 					<div class="table-responsive">
 						<table align="center" class="table">
@@ -87,9 +91,10 @@
 							</thead>
 							<tbody>
 								<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
-								<c:forEach var="admin" items="${ requestScope.adminList }" >
+								<c:forEach var="admin" items="${ requestScope.adminList }">
 									<tr>
-										<th><input class="check" type="checkbox" id="${admin.adminId }" onClick = "checkClick(this)"></th>
+										<th><input class="check" type="checkbox"
+											id="${admin.adminId }" onClick="checkClick(this)"></th>
 										<td><c:out value="${ admin.adminId }" /></td>
 										<td><c:out value="${ admin.adminPwd }" /></td>
 										<td><c:out value="${ admin.adminName }" /></td>
@@ -98,11 +103,11 @@
 										<td><c:out value="${ admin.adminRole }" /></td>
 									</tr>
 								</c:forEach>
-							 </tbody>
+							</tbody>
 						</table>
 					</div>
-				
-			
+
+
 
 
 					<!--하단 페이지 넘기기-->
@@ -180,76 +185,115 @@
 									</c:choose>
 								</div>
 							</div>
+
+							<!-- 검색 폼 -->
+							<form id="loginForm"
+								action="${ pageContext.servletContext.contextPath }/admin/search"
+								method="get">
+								<div class="search-area" align="center">
+									<c:choose>
+										<c:when test="${ !empty requestScope.searchValue }">
+										<!-- 검색 카테고리  -->
+											<select id="searchCondition" name="searchCondition">
+												<option value="adminId"
+													<c:if test="${requestScope.searchCondition eq 'adminId'}">selected</c:if>>아이디</option>
+												<option value="adminName"
+													<c:if test="${requestScope.searchCondition eq 'adminName'}">selected</c:if>>이름</option>
+											</select>
+											<!-- 입력한 값   -->
+											<input type="search" id="searchValue" name="searchValue"
+												value="${ requestScope.searchValue }">
+										</c:when>
+										<c:otherwise>
+											<select id="searchCondition" name="searchCondition">
+												<option value="adminId">아이디</option>
+												<option value="adminName">이름</option>
+											</select>
+												<!-- 어떤 검색을 했는지 넘겨주는 것   -->
+											<input type="search" id="searchValue" name="searchValue">
+										</c:otherwise>
+									</c:choose>
+									<button type="submit">검색하기</button>
+									<c:if test="${ !empty requestScope.loginMember }">
+										<button id="writeBoard">작성하기</button>
+									</c:if>
+								</div>
+							</form>
 						</div>
-							<!--  검색창  -->
-							<ul class="nav top-menu" style="float: right;">
-								<li>
-									<form class="navbar-form">
-										<input class="form-control" placeholder="Search" type="text">
-										<button type="submit" class="btn btn-primary">검색하기</button>
-									</form>
-								</li>
-							</ul>
 					</section>
 				</section>
-	</section>
-
+        	</section>
+<script>
 	
+	// 버튼 비활성화
+/*  $("#btnsubmit").button({disabled:false});
+ $("#btnDelete").button({disabled:false}); */
+	
+</script>
+
+
+
+
 	<script>
-	/*  등록하기 버튼 클릭 시  */
-           function Registration(){
-                const link = "${ pageContext.servletContext.contextPath }/admin/signup";
-                location.href = link;
-          }
-    </script>
-    
-     <script>
-           /* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
-           function deleteClick(){
-   	    	$.ajax({
-				url: "/baeckgu/admin/admindelete",
-				data: { isDelete : true },
-				type: "post",
-				success: function(data,textStatus,xhr){
+		/*  등록하기 버튼 클릭 시  */
+		function Registration() {
+			const link = "${ pageContext.servletContext.contextPath }/admin/signup";
+			location.href = link;
+		}
+	</script>
+
+	<script>
+		/* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
+		function deleteClick() {
+			$.ajax({
+				url : "/baeckgu/admin/admindelete",
+				data : {
+					isDelete : true
+				},
+				type : "post",
+				success : function(data, textStatus, xhr) {
 					console.log(xhr);
-					if(xhr.responseText == "refresh"){
-						location.reload(true)	
-					} else if(xhr.responseText == "error") {
+					if (xhr.responseText == "refresh") {
+						location.reload(true)
+					} else if (xhr.responseText == "error") {
 						console.log("error")
 						location.reload(true)
 					}
-					
+
 				},
-				error : function(xhr,status,error) {
-   					console.log(error);
-   				}
-			
+				error : function(xhr, status, error) {
+					console.log(error);
+				}
+
 			});
-           }
-     </script>
-           
-     <script>
-           /*  체크박스 클릭 했을 시  */
-   	    function checkClick(checkBox){
-	    	$.ajax({
-				url: "/baeckgu/admin/admindelete",
-				data: { sendData : checkBox.checked , adminId : checkBox.id , isDelete:false },
-				type: "post",
-				success: function(data,textStatus,xhr){
+		}
+	</script>
+
+	<script>
+		/*  체크박스 클릭 했을 시  */
+		function checkClick(checkBox) {
+			$.ajax({
+				url : "/baeckgu/admin/admindelete",
+				data : {
+					sendData : checkBox.checked,
+					adminId : checkBox.id,
+					isDelete : false
+				},
+				type : "post",
+				success : function(data, textStatus, xhr) {
 					console.log(data);
 				},
-				error : function(xhr,status,error) {
-   					console.log(error);
-   				}
-			
-			});
-	    }
+				error : function(xhr, status, error) {
+					console.log(error);
+				}
 
-   	 </script>
-   	 
-   	 
-   	 		
-<!--  	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
+			});
+		}
+	</script>
+
+
+
+	<!--  	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
 	/*	window.onload = function() {
 			var deleteManager = document.getElementById("btnDelete");
 			deleteManager.onclick = function() {
@@ -286,11 +330,13 @@
 		    
 			};
 		}; */ -->
-   	 
-	<script>
-		const link = "${ pageContext.servletContext.contextPath }/admin/search";
-	
 
+	<script>
+		const link = "${ pageContext.servletContext.contextPath }/admin/list";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/search";
+		
+		
+		
 		if (document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
 			$startPage.onclick = function() {
@@ -354,49 +400,43 @@
 			}
 		}
 
-		
 		/* td태그 안에 상세 보기 용 '/admin/adminid?id' 경로 지정  */
 		if (document.getElementsByTagName("td")) {
 
 			const $tds = document.getElementsByTagName("td");
 			for (let i = 0; i < $tds.length; i++) {
 
-				 $tds[i].onmouseenter = function() {
-				 /* 	this.parentNode.style.backgroundColor = "orangered";
-				 	this.parentNode.style.cursor = "pointer";  */
+				$tds[i].onmouseenter = function() {
+					/*  	this.parentNode.style.backgroundColor = "orangered";
+						this.parentNode.style.cursor = "pointer";   */
 				}
 
-			 	/* $tds[i].onmouseout = function() {
-				 	this.parentNode.style.backgroundColor = "gray"; 
+			/* 	 $tds[i].onmouseout = function() {
+					this.parentNode.style.backgroundColor = "gray"; 
 				}  */
 
 				$tds[i].onclick = function() {
-					location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id=" + this.parentNode.children[1].innerText;
-					
+					location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id="
+							+ this.parentNode.children[1].innerText;
+
 				}
 
 			}
 
 		}
 
-		
-		
-
 		function pageButtonAction(text) {
 			location.href = link + "?currentPage=" + text;
 		}
-		
+
 		function seachPageButtonAction(text) {
 			location.href = searchLink
 					+ "?currentPage="
 					+ text
 					+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 		}
+	</script>
 
-		
-		
-		</script>
-			
- 
+
 </body>
 </html>
