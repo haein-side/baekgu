@@ -306,4 +306,55 @@ select
 		 ORDER BY c.POST_AD_DATE desc
 		 limit ? , ?
 	</entry>
+	<entry key="selectTotalApplicant">
+		SELECT
+       		   COUNT(a.APPLY_CODE) as "COUNT"
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+ 		 WHERE a.POST_CODE = ?
+   		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE;
+	</entry>
+	
+	<entry key="applicants">
+		SELECT
+       		   a.APPLY_CODE
+     		 , a.RESUME_CODE
+     		 , a.POST_CODE
+     		 , d.USER_NAME
+     		 , a.APPLY_DATE
+     		 , a.APPLY_READ
+     		 , a.APPLY_YN  
+     		 , b.POST_TITLE
+     		 , b.POST_START
+     		 , b.POST_END
+     		 , b.ADVANTAGE as 'POST_ADVANTAGE'
+     		 , c.RESUME_ADVANTAGE as 'RESUME_ADVANTAGE'
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+  		  JOIN USER d on(c.USER_CODE = d.USER_CODE)
+ 		 WHERE a.POST_CODE = ?
+ 		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE
+	</entry>
+	
+	<entry key="updateApplyRead">
+	     UPDATE APPLY a, POST b
+		   SET APPLY_READ = 1
+ 		 WHERE APPLY_CODE = ?
+   		   AND a.POST_CODE in (SELECT b.POST_CODE 
+   			   		             FROM POST b
+   			  		            WHERE b.HR_ID = ?
+   					          )
+	</entry>
+	
+	<entry key="lookResume">
+		SELECT 
+       		   b.USER_CODE 
+  		  FROM APPLY a
+  		  JOIN RESUME b ON(a.RESUME_CODE = b.RESUME_CODE)
+ 		 WHERE a.APPLY_CODE = ?
+	</entry>
 </properties>

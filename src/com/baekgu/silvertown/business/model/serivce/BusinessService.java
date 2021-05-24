@@ -12,12 +12,14 @@ import java.util.Map;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dao.BusinessDAO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 public class BusinessService {
 
@@ -181,7 +183,59 @@ public class BusinessService {
 		
 		payList = businessDAO.selectAllpayList(con, hrId, pageInfo);
 		
+		close(con);
+		
 		return payList;
+	}
+
+	public int selectTotalApplicants(String loggedId, int postCode) {
+		
+		Connection con = getConnection();
+		
+		int count = businessDAO.selectTotalApplicants(con, loggedId, postCode);
+		
+		close(con);
+		
+		return count;
+	}
+
+	public List<BusinessApplicationDTO> selectApplicationList(String loggedId, int postCode, PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<BusinessApplicationDTO> applicationList = businessDAO.selectApplicationList(con, postCode ,loggedId, pageInfo);
+		
+		close(con);
+		
+		return applicationList;
+	}
+
+	public int updateResumeRead(String loggedId, int applyCode) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateResumeRead(con, loggedId, applyCode);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public UserDTO lookResume(int applyCode) {
+
+		Connection con = getConnection();
+		
+		UserDTO userInfo = businessDAO.lookResume(con, applyCode);
+		
+		close(con);
+		
+		return userInfo;
 	}
 
 
