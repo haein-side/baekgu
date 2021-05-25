@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.business.model.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BusinessApplicationDTO {
 
@@ -16,6 +17,8 @@ public class BusinessApplicationDTO {
 	private Date postEnd;
 	private String postAdvantages;
 	private String resumeAdvantages;
+	private int correction;
+	private List<String> correctAdvantages;
 	
 	public BusinessApplicationDTO() {
 		super();
@@ -134,7 +137,23 @@ public class BusinessApplicationDTO {
 	public void setResumeAdvantages(String resumeAdvantages) {
 		this.resumeAdvantages = resumeAdvantages;
 	}
+	
+	public int getCorrection() {
+		return correction;
+	}
 
+	public void setCorrection(int correction) {
+		this.correction = correction;
+	}
+
+	public List<String> getCorrectAdvantages() {
+		return correctAdvantages;
+	}
+
+	public void setCorrectAdvantages(List<String> correctAdvantages) {
+		this.correctAdvantages = correctAdvantages;
+	}
+	
 	@Override
 	public String toString() {
 		return "BusinessApplicationDTO [applyCode=" + applyCode + ", resumeCode=" + resumeCode + ", postCode="

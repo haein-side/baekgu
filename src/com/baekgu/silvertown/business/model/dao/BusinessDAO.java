@@ -786,6 +786,31 @@ public class BusinessDAO {
 		
 		return userInfo;
 	}
+
+	public int updateApplyYN(Connection con, int applyCode, String decision) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateApplyYN");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, decision);
+			psmt.setInt(2, applyCode);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		System.out.println(result + " result value in dao");
+		
+		return result;
+	}
 	
 	
 	
