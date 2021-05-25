@@ -70,7 +70,6 @@
       <hr>
        
       <br>
-      <br>
       
       <h3><i><c:out value="${ requestScope.applicationList.get(0).postTitle }"/></i></h3>
       <p><i><b>공고 시작일</b> <c:out value="${ requestScope.applicationList.get(0).postStart }"/> ~ <b>공고 마감일 </b><c:out value="${ requestScope.applicationList.get(0).postEnd }"/></i></p>
@@ -272,8 +271,14 @@
 				}
 				
 				$tds[i].onclick = function() {
-					const no = this.parentNode.children[0].innerText;
-					location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+					
+					if(!this.parentNode.children[5]){
+						const no = this.parentNode.children[0].innerText;
+						location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+					}else if{
+						
+					}
+					
 				}
 			}
 			
