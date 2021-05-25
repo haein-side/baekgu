@@ -84,7 +84,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -225,7 +225,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -320,7 +320,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, 10);
 			
 			System.out.println("getStartRow : " + pageInfo.getStartRow());
@@ -479,40 +479,7 @@ public class MemberDAO {
 		return memberList;
 		
 	}
-
-	/**
-	 * 멤버 블락 업데이트용 메소드
-	 * @param con
-	 * @param block
-	 * @return
-	 */
-	public int updateBlockMember(Connection con, BlockDTO block) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("updataBlockMember");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, block.getbReason());
-			pstmt.setString(2, block.getAdmin());
-			pstmt.setInt(3, block.getrCode());
-			
-			result = pstmt.executeUpdate();
-			System.out.println("사용쿼리 : " + query);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		System.out.println("result : " + result);
-		
-		return result;
-	}
-
+	
 	/**
 	 * 신고내역 코드 조회
 	 * @param con
@@ -552,6 +519,47 @@ public class MemberDAO {
 		return reportCode;
 	}
 
+	/**
+	 * DECISION_LIST에서 유저 차단 처리
+	 * @param con
+	 * @param block
+	 * @return
+	 */
+	public int updateBlockMember(Connection con, BlockDTO block) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updataBlockMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, block.getbReason());
+			pstmt.setString(2, block.getAdmin());
+			pstmt.setInt(3, block.getrCode());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("사용쿼리 : " + query);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
+	
+
+	/**
+	 * USER_BLOCK = 1 업데이트
+	 * @param con
+	 * @param block
+	 * @return
+	 */
 	public int updateBlock(Connection con, BlockDTO block) {
 		
 		PreparedStatement pstmt = null;

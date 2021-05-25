@@ -5,7 +5,6 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +23,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
@@ -77,6 +77,7 @@ public class BusinessDAO {
 				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
 				businessLoginMember.setCName(rset.getString("B_NAME"));
+				businessLoginMember.setbNumber(rset.getInt("B_NUMBER"));
 				
 				
 			}	
@@ -89,6 +90,8 @@ public class BusinessDAO {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println(businessLoginMember.getbNumber());
+		
 		
 		return businessLoginMember;
 	}
@@ -512,6 +515,16 @@ public class BusinessDAO {
 		
 		System.out.println("pageInfo : " + pageInfo.getCategory());
 		
+		int payStatus = 0;
+		if(pageInfo.getCategory().equals("미결제")) {
+			payStatus = 0;
+			
+		} else {
+			
+			payStatus = 1;
+		}
+		System.out.println("asdsada : " + payStatus);
+		
 		try {
 			pstmt = con.prepareStatement(query);
 			
@@ -524,7 +537,7 @@ public class BusinessDAO {
 			} else {
 				
 				pstmt.setString(1, hrId);
-				pstmt.setString(2, pageInfo.getCategory());
+				pstmt.setInt(2, payStatus);
 				pstmt.setInt(3, pageInfo.getStartRow());
 				pstmt.setInt(4, pageInfo.getEndRow());
 				
@@ -534,14 +547,12 @@ public class BusinessDAO {
 			while(rset.next()) {
 				
 				PaymentDTO payment = new PaymentDTO();
-				payment.setDListStatus(rset.getString("DECISION_STATUS"));
-				payment.setPostTitle(rset.getString("post_title"));
-				payment.setAdName(rset.getString("ad_name"));
-				payment.setAdWeek(rset.getInt("POST_AD_WEEK"));
+				payment.setPostAdCode(rset.getInt(1));
+				payment.setPostTitle(rset.getString(2));
+				payment.setAdName(rset.getString(3));
+				payment.setPostDate(rset.getDate(4));
 				payment.setTotalPrice(rset.getInt(5));
-				payment.setPostadDate(rset.getDate("POST_AD_DATE"));
-				payment.setMethodCode(rset.getInt("P_METHOD_CODE"));
-				payment.setAdPaid(rset.getInt("POST_AD_PAID"));
+				payment.setPostAdPaid(rset.getInt(6));
 				
 				payList.add(payment);
 				
@@ -559,6 +570,86 @@ public class BusinessDAO {
 		return payList;
 	}
 
+	public PaymentDetailDTO selectPaymentDetail(Connection con, String getbId, int postAdCode) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		PaymentDetailDTO paymentDetail = null;
+		
+		String query = prop.getProperty("selectPaymentDetail");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, getbId);
+			pstmt.setInt(2, postAdCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				paymentDetail = new PaymentDetailDTO();
+				paymentDetail.setPostAdCode(rset.getInt(1));
+				paymentDetail.setPostAdDate(rset.getDate(2));
+				paymentDetail.setpMethodCode(rset.getInt(3));
+				paymentDetail.setPostAdPaid(rset.getInt(4));
+				paymentDetail.setAdName(rset.getString(5));
+				paymentDetail.setPostAdWeek(rset.getInt(6));
+				paymentDetail.setAdPrice(rset.getInt(7));
+				paymentDetail.setTotalPrice(rset.getInt(8));
+				paymentDetail.setPostCode(rset.getInt(9));
+				paymentDetail.setPostStart(rset.getDate(10));
+				paymentDetail.setPostEnd(rset.getDate(11));
+				paymentDetail.setPostMName(rset.getString(12));
+				
+
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return paymentDetail;
+	}
+
+	public Map<Integer, Integer> selectPayCount(Connection con, String getbId) {
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		Map<Integer, Integer> counts = new HashMap<>();
+		
+		String query = prop.getProperty("selectPayCount");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, getbId);
+			
+			rset = psmt.executeQuery();
+			
+			counts.put(1, 0); // 접수 - 코드 1
+			counts.put(2, 0); // 승인 - 코드 2
+			
+			while(rset.next()) {
+				counts.put(rset.getInt("POST_AD_PAID"), rset.getInt("COUNT"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return counts;
+	}
 
 
 	

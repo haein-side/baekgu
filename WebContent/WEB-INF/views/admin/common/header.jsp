@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/postList">
                                 <i class="icon_house_alt"></i>
                                 <span>공고관리</span>
                             </a>
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/payment">
                                 <i class="icon_house_alt"></i>
                                 <span>재무관리</span>
                             </a>

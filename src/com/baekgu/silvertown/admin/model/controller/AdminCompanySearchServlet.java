@@ -33,7 +33,7 @@ public class AdminCompanySearchServlet extends HttpServlet {
 		System.out.println("사용자 입력 값 : " + value);
 		System.out.println("------------------------------");
 	
-		/* 셀렉트 옵션이 기업분류라면 value의 값을 정제한다 */
+		/* 셀렉트 옵션이 기업분류라면 value의 값을 기업분류 코드로 정제한다 */
 		if(condition.equals("category")) {
 			
 			//contains로 문자열과 문자를 매치해서 기업분류 코드 값을 얻는다

@@ -21,6 +21,7 @@ import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.ApplyDTO;
 import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.ResumeDTO;
+import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
@@ -580,6 +581,95 @@ public class UserDAO {
 		return reviseResume;
 		
 		
+	}
+
+	/**
+	 * 검색 조건 값을 가지고 공고를 받아오는 메소드
+	 * @param con
+	 * @param searchPost
+	 * @return 공고목록에 쓸 것들
+	 */
+	public List<SearchPostDTO> searchPost(Connection con, SearchPostDTO searchPost) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		
+		List<SearchPostDTO> selectedPost = null;
+		
+		String query = "";
+		
+		try {
+			
+			selectedPost = new ArrayList<>();
+			
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, J.job_name, J.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2";
+			
+			if(searchPost.getLocationCode() != null) {
+				String locationCode = "";
+				for (int i=0; i < searchPost.getLocationCode().length; i++ ) {
+					locationCode += searchPost.getLocationCode()[i];
+					if(i < searchPost.getLocationCode().length - 1) {
+						locationCode += ", ";
+					}
+				}
+				
+				query += " and l.location_code IN (" + locationCode + ")";
+			}
+			
+			if(searchPost.getIndustryCode() > 0) {
+				query += " and I.industry_code = " + searchPost.getIndustryCode();
+			}
+			
+			if(searchPost.getPeriodCode() > 0) {
+				query += " and wp.period_code = " + searchPost.getPeriodCode();
+			}
+			
+			System.out.println(query);
+			
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+//			rset = stmt.executeQuery(query);
+			
+			while (rset.next()) {
+				SearchPostDTO selectPost = new SearchPostDTO();
+				
+				selectPost.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
+				selectPost.setDecisionCode(rset.getInt("DECISION_CODE"));
+				selectPost.setPostCode(rset.getInt("post_code"));
+				selectPost.setPostTitle(rset.getString("post_title"));
+				selectPost.setLocationName(rset.getString("location_name"));
+				//selectPost.setLocationCode(rset.getInt("LOCATION_CODE"));
+				selectPost.setIndustryName(rset.getString("industry_name"));
+				selectPost.setIndustryCode(rset.getInt("industry_code"));
+				selectPost.setJobName(rset.getString("job_name"));
+				selectPost.setJobCode(rset.getInt("job_code"));
+				selectPost.setPayment(rset.getInt("payment"));
+				selectPost.setPayCode(rset.getInt("PAY_CODE"));
+				selectPost.setPayName(rset.getString("pay_name"));
+				selectPost.setBenefit(rset.getString("benefit"));
+				selectPost.setPeriodCode(rset.getInt("PERIOD_CODE"));
+				selectPost.setPeriodName(rset.getString("PERIOD_NAME"));
+				selectPost.setAdCode(rset.getInt("AD_CODE"));
+				
+				System.out.println("selectPost : " + selectPost);
+				
+				selectedPost.add(selectPost);
+				
+				System.out.println("selectedPost의 길이 : " + selectedPost.size());
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("selectPost from DAO : " + selectedPost);
+		
+		return selectedPost;
 	}
 
 	

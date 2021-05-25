@@ -202,7 +202,6 @@
 		WHERE R.USER_CODE = ?
 	</entry>
 	
-
 	<!-- 공고 상세보기 쿼리문 -->
 	<!-- 차단 여부에 대한 FILTERING CODE 넣기 -->
 	<entry key="postContent">
