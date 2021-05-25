@@ -202,6 +202,74 @@
 		WHERE R.USER_CODE = ?
 	</entry>
 	
+	<!-- 업종광고공고 조회 -->
+	<entry key = "selectInAdPost">
+	   select
+		       dl.D_LIST_TYPE_CODE
+		     , dl.DECISION_CODE
+		     , p.post_code
+		     , p.post_title
+		     , l.location_name
+		     , l.LOCATION_CODE 
+		     , I.industry_name
+		     , I.industry_code
+		     , J.job_name
+		     , J.job_code
+		     , p.payment
+		     , f.PAY_CODE 
+		     , f.pay_name
+		     , p.benefit
+		     , p.PERIOD_CODE 
+		     , wp.PERIOD_NAME 
+		     , pap.AD_CODE 
+		  from post p
+		  left join location l on p.location_code = l.LOCATION_CODE 
+		  left join job j on p.JOB_CODE = j.JOB_CODE
+		  left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
+		  left join pay f on p.PAY_CODE = f.PAY_CODE 
+		  left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE
+		  left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE 
+		  left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE 
+		 where dl.D_LIST_TYPE_CODE = 4
+		   and dl.DECISION_CODE = 2
+		   and pap.ad_code IN (1, 2)
+		   and I.industry_code = ?	
+	</entry>
+	
+	<!-- 직종광고공고 조회 -->
+	<entry key = "selectJobAdPost">
+	   select
+		       dl.D_LIST_TYPE_CODE
+		     , dl.DECISION_CODE
+		     , p.post_code
+		     , p.post_title
+		     , l.location_name
+		     , l.LOCATION_CODE 
+		     , I.industry_name
+		     , I.industry_code
+		     , J.job_name
+		     , J.job_code
+		     , p.payment
+		     , f.PAY_CODE 
+		     , f.pay_name
+		     , p.benefit
+		     , p.PERIOD_CODE 
+		     , wp.PERIOD_NAME 
+		     , pap.AD_CODE 
+		  from post p
+		  left join location l on p.location_code = l.LOCATION_CODE 
+		  left join job j on p.JOB_CODE = j.JOB_CODE
+		  left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
+		  left join pay f on p.PAY_CODE = f.PAY_CODE 
+		  left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE
+		  left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE 
+		  left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE 
+		 where dl.D_LIST_TYPE_CODE = 4
+		   and dl.DECISION_CODE = 2
+		   and pap.ad_code IN (3, 4)
+		   and J.job_code = ?	
+	</entry>
+	
 	<!-- 공고 상세보기 쿼리문 -->
 	<!-- 차단 여부에 대한 FILTERING CODE 넣기 -->
 	<entry key="postContent">

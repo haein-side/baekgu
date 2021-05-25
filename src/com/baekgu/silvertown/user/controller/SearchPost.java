@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.service.SearchPostService;
+import com.google.gson.Gson;
 
 @WebServlet("/user/searchPost")
 public class SearchPost extends HttpServlet {
@@ -91,9 +93,11 @@ public class SearchPost extends HttpServlet {
       
       // location 문자열 배열을 int 배열로 만들어줌
       locationCode = Arrays.stream(location).mapToInt(Integer::parseInt).toArray();
+      // 업종 String을 int로 바꿔줌
+      int industryCode = Integer.parseInt(industry);
       
       searchPost.setLocationCode(locationCode); 
-      searchPost.setIndustryCode(Integer.parseInt(industry));
+      searchPost.setIndustryCode(industryCode);
       searchPost.setPeriodCode(Integer.parseInt(period));
    
       // 서비스로 넘기기
@@ -102,19 +106,49 @@ public class SearchPost extends HttpServlet {
       // 단순검색 비즈니스 로직 처리
       List<SearchPostDTO> selectPost = searchService.selectPost(searchPost);
       
+      // 업종광고 공고 비즈니스 로직 처리
+      List<SearchPostDTO> selectInAdPost = searchService.selectInAdPost(industryCode);
+      
+      System.out.println("컨트롤러에서 받은 업종광고 공고 : " + selectInAdPost);
+      
       // 응답페이지 처리
 	  String path = "";
 	    if(selectPost != null) {
-			path = "/WEB-INF/views/customer/main/postlist.jsp";
-			request.setAttribute("selectPost", selectPost);
-			System.out.println("서블렛에서 받은 공고들 : " + selectPost);
+	    	System.out.println("서블렛에서 받은 공고들 : " + selectPost);
 			
+			
+			
+			 path = "/WEB-INF/views/customer/main/postlist.jsp";
+			 request.setAttribute("selectPost", selectPost);
+			 request.setAttribute("selectInAdPost", selectInAdPost);
+			 
+			 
+			 
+			
+			
+				/*
+				 * String jsonString = new Gson().toJson(selectPost);
+				 * 
+				 * System.out.println(jsonString);
+				 * 
+				 * response.setContentType("application/json; charset=utf-8");
+				 * 
+				 * PrintWriter out = response.getWriter();
+				 * 
+				 * out.print(jsonString);
+				 * 
+				 * out.flush(); out.close();
+				 */
+			 
+			 
+	    	
+	    	
 		} else {
 			path = "/WEB-INF/views/user/common/errorPage.jsp";
 			request.setAttribute("message", "공고조회를 실패했습니다.");
 		}
 		
-		request.getRequestDispatcher(path).forward(request, response);
+	    request.getRequestDispatcher(path).forward(request, response);
    
    
    }

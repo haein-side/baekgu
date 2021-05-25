@@ -34,6 +34,16 @@ public class SearchPostService {
 		return selectPost;
 	}
 
+	public List<SearchPostDTO> selectInAdPost(int industryCode) {
+		Connection con = getConnection();
+		
+		List<SearchPostDTO> selectInAdPost = userDAO.selectInAdPost(con, industryCode);
+		
+		close(con);
+		
+		return selectInAdPost;
+	}
+
 	
 	
 	

@@ -686,6 +686,70 @@ public class UserDAO {
 		return selectedPost;
 	}
 
+	 
+	/**
+	 * 업종 코드를 가지고 업종광고공고를 조회
+	 * @param con
+	 * @param industryCode
+	 * @return
+	 */
+	public List<SearchPostDTO> selectInAdPost(Connection con, int industryCode) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<SearchPostDTO> selectInAdPost = null;
+		
+		String query = prop.getProperty("selectInAdPost");
+		
+		try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, industryCode);
+			
+				rset = pstmt.executeQuery();
+			
+				selectInAdPost = new ArrayList<>();
+			
+				while(rset.next()) {
+					SearchPostDTO inAdPost = new SearchPostDTO();
+
+					inAdPost.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
+					inAdPost.setDecisionCode(rset.getInt("DECISION_CODE"));
+					inAdPost.setPostCode(rset.getInt("post_code"));
+					inAdPost.setPostTitle(rset.getString("post_title"));
+					inAdPost.setLocationName(rset.getString("location_name"));
+					inAdPost.setIndustryName(rset.getString("industry_name"));
+					inAdPost.setIndustryCode(rset.getInt("industry_code"));
+					inAdPost.setJobName(rset.getString("job_name"));
+					inAdPost.setJobCode(rset.getInt("job_code"));
+					inAdPost.setPayment(rset.getInt("payment"));
+					inAdPost.setPayCode(rset.getInt("PAY_CODE"));
+					inAdPost.setPayName(rset.getString("pay_name"));
+					inAdPost.setBenefit(rset.getString("benefit"));
+					inAdPost.setPeriodCode(rset.getInt("PERIOD_CODE"));
+					inAdPost.setPeriodName(rset.getString("PERIOD_NAME"));
+					inAdPost.setAdCode(rset.getInt("AD_CODE"));
+					
+					System.out.println("inAdPost : " + inAdPost);
+					
+					selectInAdPost.add(inAdPost);
+					
+					System.out.println("selectInAdPost의 길이 : " + selectInAdPost.size());
+			
+				}
+				
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			System.out.println("selectInAdPost from DAO : " + selectInAdPost);
+		
+		return selectInAdPost;
+	}
+
 	
 
 }
