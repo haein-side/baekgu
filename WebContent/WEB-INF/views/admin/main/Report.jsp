@@ -287,7 +287,7 @@
 					 const no = this.parentNode.children[6].innerText;
 				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
-											
+							
 					
 					
 				}

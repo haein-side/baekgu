@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="totalCount">
+        SELECT
+               COUNT(*)
+          FROM POST_AD_PAYMENT 
+         WHERE POST_AD_PAID = 1
+    </entry>
+    <entry key="selectPaymentList">
+        SELECT distinct
+               a.POST_AD_CODE
+             , a.POST_AD_DATE
+             , a.AD_CODE
+             , e.ad_name
+             , e.ad_price * POST_AD_WEEK as ad_price
+             , a.POST_CODE
+             , a.P_METHOD_CODE
+             , F.P_METHOD_NAME
+             , c.b_code
+             , d.b_name
+             , d.b_address
+             , d.b_address
+             , d.b_Number
+          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+         WHERE a.POST_CODE = b.POST_CODE
+           and b.HR_ID = c.HR_ID
+           and c.B_CODE = d.B_CODE
+           and a.AD_CODE = e.AD_CODE
+           and a.P_METHOD_CODE = f.P_METHOD_CODE
+           and POST_AD_PAID = 1
+      group by post_ad_date     
+      order by POST_CODE asc
+         LIMIT ?, 10
+    </entry>
+    <entry key="selectTax">
+        SELECT distinct
+               a.POST_AD_CODE
+             , a.POST_AD_DATE
+             , a.AD_CODE
+             , e.ad_name
+             , e.ad_price * POST_AD_WEEK as ad_price
+             , a.POST_CODE
+             , a.P_METHOD_CODE
+             , F.P_METHOD_NAME
+             , c.b_code
+             , d.b_name
+             , d.b_address
+             , d.b_address
+             , d.b_Number
+             , g.B_CATEGORY_LEVEL
+             , d.b_owner
+             , now()
+             , a.POST_AD_WEEK 
+             , e.ad_price
+          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f, business_category g
+         WHERE a.POST_CODE = b.POST_CODE
+           and b.HR_ID = c.HR_ID
+           and c.B_CODE = d.B_CODE
+           and a.AD_CODE = e.AD_CODE
+           and a.P_METHOD_CODE = f.P_METHOD_CODE
+           and d.B_CATEGORY_CODE = g.B_CATEGORY_CODE
+           and a.post_ad_paid = 1
+           and a.post_code = ?
+    </entry>
+
+</properties>
+
+
+
+
+

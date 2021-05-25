@@ -25,7 +25,7 @@ public class AdminCompanyBlockList extends HttpServlet {
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 0;
 		
-		if(currentPage != null & !"".equals(currentPage)) {
+		if(currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
 		}
 		
