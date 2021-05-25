@@ -82,10 +82,10 @@ public class BusinessJoinService {
 		
 		if(result > 0) {
 			commit(con);
-			System.out.println(" 가입 승인 성공  ");
+			System.out.println("가입 승인 성공");
 		} else {
 			rollback(con);
-			System.out.println(" 가입 승인 실패 ");
+			System.out.println("가입 승인 실패");
 		}
 		
 		close(con);
@@ -101,16 +101,16 @@ public class BusinessJoinService {
 	public int joinBlockUpdate(BusinessJoinDTO joinDTO) {
 		
 		
-	Connection con = getConnection();
+	   Connection con = getConnection();
 		
 		int result = new BusinessJoinDAO().joinBlockUpdate(con,joinDTO);
 		
 		if(result > 0) {
 			commit(con);
-			System.out.println(" 가입 거절 성공  ");
+			System.out.println("가입 거절 성공 ");
 		} else {
 			rollback(con);
-			System.out.println(" 가입 거절 실패 ");
+			System.out.println("가입 거절 실패");
 		}
 		
 		close(con);
