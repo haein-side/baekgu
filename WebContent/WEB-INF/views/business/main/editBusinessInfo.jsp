@@ -128,34 +128,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">백구</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="home.html">홈</a></li>
-        <li><a href="#">공고등록</a></li>
-        <li><a href="#">지원자관리</a></li>
-        <li><a href="#">공고관리</a></li>
-        <li><a href="payment.html">결제관리</a></li>
-        <li><a href="ad.html">상품안내</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">회사명</a></li>
-        <li><a href="#">담당자명</a></li>
-        <li><a href="#">로그아웃</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> 
 
+	<jsp:include page="../common/header.jsp" />
 <div class="container-fluid text-center">    
   <div class="row content">
   <form action="${ pageContext.servletContext.contextPath }/business/editInfo" method="POST" onsubmit="return validate();">
@@ -176,7 +150,7 @@
             <tr>
               <th class="th">사업자등록번호</th>
               <td>
-                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bName }"readonly>
+                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bNumber }"readonly>
               </td>        
             </tr>
 <!--             <tr>
@@ -192,21 +166,21 @@
             <tr>
               <th class="th">인사 담당자 이름</th>
               <td>
-                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bName }" id="name" name="name">
+                <input style="border: 1px" value="${ sessionScope.loginBusinessMember.bName }" id="name" name="name">
 <!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>
             <tr>
               <th class="th">인사 담당자 연락처</th>
               <td>
-                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bPhone }" id="phone" name="phone">
+                <input style="border: 1px" value="${ sessionScope.loginBusinessMember.bPhone }" id="phone" name="phone">
 <!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>
             <tr>
               <th class="th">인사 담당자 이메일</th>
               <td>
-                  <input id="email" name="email" type="text" style="border: 0px" value="${ sessionScope.loginBusinessMember.bEmail }">
+                  <input id="email" name="email" type="text" style="border: 1px" value="${ sessionScope.loginBusinessMember.bEmail }">
 <!--                 <button type="button" class="btn-change">변경하기</button> -->
               </td>
             </tr>

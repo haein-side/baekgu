@@ -4,87 +4,83 @@ import java.sql.Date;
 
 public class PaymentDTO {
 
-	private String DListStatus;
 	private String postTitle;
 	private String adName;
-	private int adWeek;
+	private java.sql.Date postDate;
 	private int totalPrice;
-	private java.sql.Date postadDate;
-	private int methodCode;
-	private int adPaid;
+	private int postAdPaid;
+	private int postAdCode;
 	
 	public PaymentDTO() {
 		super();
 	}
-	
-	public PaymentDTO(String DListStatus, String postTitle, String adName, int adWeek, int totalPrice, Date postadDate,
-			int methodCode, int adPaid) {
+
+	public PaymentDTO(String postTitle, String adName, Date postDate, int totalPrice, int postAdPaid, int postAdCode) {
 		super();
-		DListStatus = DListStatus;
 		this.postTitle = postTitle;
 		this.adName = adName;
-		this.adWeek = adWeek;
+		this.postDate = postDate;
 		this.totalPrice = totalPrice;
-		this.postadDate = postadDate;
-		this.methodCode = methodCode;
-		this.adPaid = adPaid;
+		this.postAdPaid = postAdPaid;
+		this.postAdCode = postAdCode;
+		
 	}
-	
-	public String getDListStatus() {
-		return DListStatus;
+
+	public int getPostAdCode() {
+		return postAdCode;
 	}
-	public void setDListStatus(String DListStatus) {
-		this.DListStatus = DListStatus;
+
+	public void setPostAdCode(int postAdCode) {
+		this.postAdCode = postAdCode;
 	}
+
 	public String getPostTitle() {
 		return postTitle;
 	}
+
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
+
 	public String getAdName() {
 		return adName;
 	}
+
 	public void setAdName(String adName) {
 		this.adName = adName;
 	}
-	public int getAdWeek() {
-		return adWeek;
+
+	public java.sql.Date getPostDate() {
+		return postDate;
 	}
-	public void setAdWeek(int adWeek) {
-		this.adWeek = adWeek;
+
+	public void setPostDate(java.sql.Date postDate) {
+		this.postDate = postDate;
 	}
+
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public java.sql.Date getPostadDate() {
-		return postadDate;
+
+	public int getPostAdPaid() {
+		return postAdPaid;
 	}
-	public void setPostadDate(java.sql.Date postadDate) {
-		this.postadDate = postadDate;
+
+	public void setPostAdPaid(int postAdPaid) {
+		this.postAdPaid = postAdPaid;
 	}
-	public int getMethodCode() {
-		return methodCode;
-	}
-	public void setMethodCode(int methodCode) {
-		this.methodCode = methodCode;
-	}
-	public int getAdPaid() {
-		return adPaid;
-	}
-	public void setAdPaid(int adPaid) {
-		this.adPaid = adPaid;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "PaymentDTO [DListCode=" + DListStatus + ", postTitle=" + postTitle + ", adName=" + adName + ", adWeek="
-				+ adWeek + ", totalPrice=" + totalPrice + ", postadDate=" + postadDate + ", methodCode=" + methodCode
-				+ ", adPaid=" + adPaid + "]";
+		return "PaymentDTO [postTitle=" + postTitle + ", adName=" + adName + ", postDate=" + postDate + ", totalPrice="
+				+ totalPrice + ", postAdPaid=" + postAdPaid + ", postAdCode=" + postAdCode + "]";
 	}
+
+	
 	
 	
 

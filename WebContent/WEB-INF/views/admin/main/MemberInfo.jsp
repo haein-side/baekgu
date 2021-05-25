@@ -153,7 +153,7 @@
 			    </c:otherwise>
 			</c:choose>   
 
-							<!-- 검색 폼 -->
+			<!-- 검색 폼 -->
 		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>

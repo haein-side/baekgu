@@ -30,8 +30,7 @@ public class AdminRegistServlet extends HttpServlet {
 	 * 관리자 등록용
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
+	
 		
 		String adminId = request.getParameter("adminId");
 		String adminPwd = request.getParameter("enteredPwd");
@@ -55,14 +54,14 @@ public class AdminRegistServlet extends HttpServlet {
 		
 		String path = "";
 		if(result > 0) {
-			path = "/WEB-INF/views/admin/main/Manager.jsp";
-			request.setAttribute("result", result);
+			path = "/baeckgu/admin/list";
+			response.sendRedirect(path);
 		} else {
 			path = "/WEB-INF/views/admin/common/erroPage.jsp";
 			request.setAttribute("message", "등록 실패!");
+			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
-		request.getRequestDispatcher(path).forward(request, response);
 		
 		
 	}

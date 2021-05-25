@@ -5,6 +5,7 @@ import java.sql.Date;
 public class ApplyDTO {
 	/* 나의 공간 중 입사지원내역 가져올 때 사용 */
 	private int userCode;
+	private int applyCode;
 	private Date applyDate;
 	private String bName;
 	private String postTitle;
@@ -15,9 +16,10 @@ public class ApplyDTO {
 		super();
 	}
 
-	public ApplyDTO(int userCode, Date applyDate, String bName, String postTitle, int applyCancel, int applyRead) {
+	public ApplyDTO(int userCode, int applyCode, Date applyDate, String bName, String postTitle, int applyCancel, int applyRead) {
 		super();
 		this.userCode = userCode;
+		this.applyCode = applyCode;
 		this.applyDate = applyDate;
 		this.bName = bName;
 		this.postTitle = postTitle;
@@ -31,6 +33,14 @@ public class ApplyDTO {
 
 	public void setUserCode(int userCode) {
 		this.userCode = userCode;
+	}
+	
+	public int getApplyCode() {
+		return applyCode;
+	}
+
+	public void setApplyCode(int applyCode) {
+		this.applyCode = applyCode;
 	}
 
 	public Date getApplyDate() {
@@ -75,7 +85,7 @@ public class ApplyDTO {
 
 	@Override
 	public String toString() {
-		return "ApplyDTO [userCode=" + userCode + ", applyDate=" + applyDate + ", bName=" + bName + ", postTitle="
+		return "ApplyDTO [userCode=" + userCode + ", applyCode = " + applyCode + ", applyDate=" + applyDate + ", bName=" + bName + ", postTitle="
 				+ postTitle + ", applyCancel=" + applyCancel + ", applyRead=" + applyRead + "]";
 	}
 	

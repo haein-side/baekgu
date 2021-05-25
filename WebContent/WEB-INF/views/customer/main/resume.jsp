@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
-
-        
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>백구</title>
-        <link rel="stylesheet" type="text/css" href="RESOURCES/CSS/CUSTOMER/resume.css">
-        <link rel="stylesheet" href="RESOURCES/CSS/CUSTOMER/YJCSS/header2.css">
+        <link rel="stylesheet" type="text/css" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/resume.css">
+        <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css">
         
         <!-- <script type="text/javascript"
         src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
@@ -21,7 +22,7 @@
 
 
 
-	<form style="margin:100px; padding:0; ">
+	<form style="margin:100px; padding:0; " action="${ pageContext.servletContext.contextPath }/user/resume" method="get">
         <!-- 개인정보 입력 폼 -->
         <div class="tblst mt10">
             <fieldset>
@@ -41,7 +42,7 @@
                             <td rowspan="7" class="userinfo" style=" padding-left: 10px; padding-right: 10px;">
                                 <div class="picbx">
                                     <div id="div" class="pic" style="display:block;">
-                                        <span class="img"><img src="RESOURCES/IMAGES/백구로고.png" width="150" height="300"></span><br>
+                                        <span class="img"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="150" height="300"></span><br>
                                   
                                     </div>
                                 </div>
@@ -49,7 +50,7 @@
 
                             <!--1. 회원가입시 DB입력받는 부분(이름,성별,생년월일)-->
                             <th scope="row" colspan="2" class="name">
-                                <b style= "font-size: 30px;" >정주영</b>
+                                <b style= "font-size: 30px;" ><c:out value="${ sessionScope.loginUserInfo.userName }"/></b>
                             </th>
                         </tr>
 
@@ -76,7 +77,7 @@
                             		<b> - </b>
                                     <input
                                         type="text"
-                                        name="txtPhone"
+                                        name="txtPhone1"
                                         id="res_txt1"
                                         title="연락처"
                                         value="0000"
@@ -85,7 +86,7 @@
                                      	<b> - </b>   
                                     <input
                                         type="text"
-                                        name="txtPhone"
+                                        name="txtPhone2"
                                         id="res_txt2"
                                         title="연락처2"
                                         value="0000"
@@ -105,7 +106,7 @@
                         <span class="txt">비상연락망</span></th>
                        <td> 
                             	  <select
-                                    name="HPhone1"
+                                    name="HPhone2"
                                     id="HPhone1"
                                     class="select"
                                     style="width:90px;"
@@ -120,7 +121,7 @@
                             		<b> - </b>
                                     <input
                                         type="text"
-                                        name="txtPhone"
+                                        name="txtSubPhone1"
                                         id="res_txt1"
                                         title="연락처"
                                         value="0000"
@@ -129,7 +130,7 @@
                                      	<b> - </b>   
                                     <input
                                         type="text"
-                                        name="txtPhone"
+                                        name="txtSubPhone2"
                                         id="res_txt2"
                                         title="연락처2"
                                         value="0000"
@@ -145,8 +146,8 @@
                     <th scope="row">
                         <span class="txt">성별</span></th>
                         <td class="vamfix">
-                          <input type="radio" name="chk_info" value="W"> 여성
-                           <input type="radio" name="chk_info" value="M"> 남성	
+                          <input type="radio" name="gender" value="여"> 여성
+                           <input type="radio" name="gender" value="남"> 남성	
                         </td>
                 </tr>
                 
@@ -158,27 +159,28 @@
                     <td class="vamfix">
                    <div class="row">
             	<div class="col-md-3 mb-3" style="float:left;">
-              		<input type="number" class="birthinfo" id="birthyear" min="1900" max="2021" step="1" value="1"  style="width:80px;" required>
+              		<input type="number" name = "userBday1" class="birthinfo" id="birthyear" min="1900" max="2021" step="1" value="1"  style="width:80px;" required>
               			<label>년</label>
             
             	</div>
             	
             	<div class="col-md-3 mb-3" style="float:left;">
               		     <select
-                                    name="Month"
+                                    name = "userBday2"
                                     id="Month"
                                     class="select"
+                                    type="number"
                                     style="width:90px;"
                                     title="월">
-                                    <option value="1" selected="">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                     <option value="7">7</option>
-                                      <option value="8">8</option>
-                                       <option value="9">9</option>
+                                    <option value="01" selected="">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                     <option value="07">7</option>
+                                      <option value="08">8</option>
+                                       <option value="09">9</option>
                                         <option value="10">10</option>
                                          <option value="11">11</option>
                                           <option value="12">12</option>
@@ -187,25 +189,7 @@
           
            		</div>
             	<div class="col-md-3 mb-3" style="float:left;">
-                	     <select
-                                    name="Day"
-                                    id="Day"
-                                    class="select"
-                                    style="width:90px;"
-                                    title="일">
-                                    <option value="1" selected="">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                     <option value="7">7</option>
-                                      <option value="8">8</option>
-                                       <option value="9">9</option>
-                                        <option value="10">10</option>
-                                         <option value="11">11</option>
-                                          <option value="12">12</option>
-                                </select>
+                	     <input type="number" name = "userBday3" class="birthinfo" id="birthyear" min="1" max="31" step="1" value="1"  style="width:80px;" required>
                 	<label>일</label>
             	</div>
             </div>
@@ -219,7 +203,7 @@
                     <td class="vamfix">
                         <input
                             type="text"
-                            name="textarea"
+                            name="userAddress"
                             id="res_txt4"
                             title="거주지"
                             value="서울시 송파구 "
@@ -257,7 +241,7 @@
                     <td>
                         <input
                             type="text"
-                            name="txtSimpleSelfIntro"
+                            name="resumeLetter"
                             id="txtSimpleSelfIntro"
                             value=""
                             class="inp4"
@@ -280,51 +264,51 @@
                         <ul class="resume__forte-list">
 
                         
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_16" value="44">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_16" value="장비보유">
                                 <label for="res_chk6_16">장비 보유</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_17" value="5">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_17" value="원동기면허소지">
                                 <label for="res_chk6_17">원동기면허 소지</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_18" value="3">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_18" value="운전능숙">
                                 <label for="res_chk6_18">운전 능숙</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_19" value="7">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_19" value="즉시근무가능">
                                 <label for="res_chk6_19">즉시 근무 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_20" value="8">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_20" value="야간근무가능">
                                 <label for="res_chk6_20">야간 근무 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_21" value="12">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_21" value="주말근무가능">
                                 <label for="res_chk6_21">주말 근무 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_22" value="9">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_22" value="교대근무가능">
                                 <label for="res_chk6_22">교대 근무 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_23" value="11">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_23" value="지방근무가능">
                                 <label for="res_chk6_23">지방 근무 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_24" value="10">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_24" value="기숙사생활가능">
                                 <label for="res_chk6_24">기숙사 생활 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_25" value="13">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_25" value="인근거주가능">
                                 <label for="res_chk6_25">인근 거주 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_26" value="46">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_26" value="파트타임가능">
                                 <label for="res_chk6_26">파트타임 가능</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_27" value="4">
+                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_27" value="자차출퇴근가능">
                                 <label for="res_chk6_27">자차 출퇴근 가능</label>
                             </li>
 
@@ -345,31 +329,31 @@
                     <td>
                         <ul class="resume__forte-list">
 
-                            <li><input type="radio" name="radio1" id="radio1" value="22">
+                            <li><input type="radio" name="degree" id="radio1" value="1">
                                 <label for="res_chk6_1">학력사항 없음</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="16">
+                            <li><input type="radio" name="degree" id="radio1" value="2">
                                 <label for="res_chk6_2">초등학교 졸업</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="25">
+                            <li><input type="radio" name="degree" id="radio1" value="3">
                                 <label for="res_chk6_3">중학교 졸업</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="27">
+                            <li><input type="radio" name="degree" id="radio1" value="4">
                                 <label for="res_chk6_4">고등학교 졸업</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="29">
+                            <li><input type="radio" name="degree" id="radio1" value="5">
                                 <label for="res_chk6_5">대학교 2-3년제 졸업</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="31">
+                            <li><input type="radio" name="degree" id="radio1" value="6">
                                 <label for="res_chk6_6">대학교 4년제 졸업</label>
                             </li>
 
-                            <li><input type="radio" name="radio1" id="radio1" value="35">
+                            <li><input type="radio" name="degree" id="radio1" value="7">
                                 <label for="res_chk6_7">대학원 이상</label>
                             </li>
                         </ul>
@@ -385,38 +369,32 @@
                     <td>
                         <ul class="resume__forte-list">
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_1" value="22">
-                                <label for="res_chk6_1">식당/서빙</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_1" value="1">
+                                <label for="res_chk6_1">경력 없음</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_2" value="16">
-                                <label for="res_chk6_2">매장관리</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_2" value="2">
+                                <label for="res_chk6_2">1년 이하</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_3" value="25">
-                                <label for="res_chk6_3">상담/영업</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_3" value="3">
+                                <label for="res_chk6_3">1년 이상</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_4" value="27">
-                                <label for="res_chk6_4">건설/생산/기술</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_4" value="4">
+                                <label for="res_chk6_4">2년 이상</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_5" value="29">
-                                <label for="res_chk6_5">간호/요양</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_5" value="5">
+                                <label for="res_chk6_5">3년 이상</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_6" value="31">
-                                <label for="res_chk6_6">교사/강사</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_6" value="6">
+                                <label for="res_chk6_6">4년 이상</label>
                             </li>
 
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_7" value="35">
-                                <label for="res_chk6_7">운전/배달</label>
-                            </li>
-                            <li><input type="checkbox" name="chkAdvantage" id="res_chk6_8" value="36">
-                                <label for="res_chk6_7">사무/경리</label>
-                            </li>
-                             <li><input type="checkbox" name="chkAdvantage" id="res_chk6_9" value="37">
-                                <label for="res_chk6_7">기타</label>
+                            <li><input type="checkbox" name="exp" id="res_chk6_7" value="7">
+                                <label for="res_chk6_7">5년 이상</label>
                             </li>
 
                         </ul>
@@ -459,16 +437,28 @@
 
 <!-- 날짜 및 이름은 DB에서 넘어와야함. -->
 <div class="res_dateEnd" style="text-align:center ">
+<c:set var="today" value="<%=new java.util.Date()%>" />
+<!-- 현재년도 -->
+<c:set var="year"><fmt:formatDate value="${today}" pattern="yyyy" /></c:set> 
+<!-- 현재월 -->
+<c:set var="month"><fmt:formatDate value="${today}" pattern="MM" /></c:set> 
+<!-- 현재일 -->
+<c:set var="day"><fmt:formatDate value="${today}" pattern="dd" /></c:set> 
     <p>작성일 :
-        <b>2021년 4월 30일</b>
+        <b>
+		<c:out value="${year}" />년
+		<c:out value="${month}" />월
+        <c:out value="${day}" />일
+        
+        </b>
         <span>작성자 :
-            <b>정주영</b></span></p>
+            <b><c:out value="${ sessionScope.loginUserInfo.userName }"/></b></span></p>
 </div>
 <!-- 작성일 및 이름 끝 -->
 
 <!-- 이력서 등록 버튼 -->
 <div class="tc.mt40" style="text-align:center;">
-    <a href="enter.html" class="button2" style="margin-top:10px; width:200px; height:50px; text-align:center; line-height: 50px; font-size: 20px;">이력서 등록하기</a>
+    <button class="button2" type="submit" style="margin-top:10px; width:200px; height:50px; text-align:center; line-height: 50px; font-size: 20px;">이력서 등록하기</button>
 </div>
 
 
