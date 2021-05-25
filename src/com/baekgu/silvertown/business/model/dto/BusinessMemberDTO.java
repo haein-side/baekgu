@@ -11,12 +11,13 @@ public class BusinessMemberDTO {
 	private int blockStatus;
 	private String bReason;
 	private String CName;
+	private int bNumber;
 	
 	public BusinessMemberDTO() {
 		super();
 	}
 	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode, int blockStatus,
-			String bReason, String CName) {
+			String bReason, String CName, int bNumber) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -27,8 +28,16 @@ public class BusinessMemberDTO {
 		this.blockStatus = blockStatus;
 		this.bReason = bReason;
 		this.CName = CName;
+		this.bNumber = bNumber;
 	}
 	
+	
+	public int getbNumber() {
+		return bNumber;
+	}
+	public void setbNumber(int bNumber) {
+		this.bNumber = bNumber;
+	}
 	public String getCName() {
 		return CName;
 	}
@@ -87,8 +96,9 @@ public class BusinessMemberDTO {
 	public String toString() {
 		return "BusinessMemberDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone
 				+ ", bEmail=" + bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason
-				+ ", CName=" + CName + "]";
+				+ ", CName=" + CName + ", bNumber=" + bNumber + "]";
 	}
+
 	
 
 	 

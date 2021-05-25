@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 
@@ -16,10 +18,32 @@ public class BusinessInsertPostServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+		
+		String path = "";
+		
+		if(loggedInUser != null) {
+			
+			path = "/WEB-INF/views/business/main/addpost.jsp";
+
+		}else {
+
+			path = "/WEB-INF/views/business/main/signinB.jsp";
+
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
+		
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// 로그인 유저 세션 가져오기
+		HttpSession session = request.getSession();
+		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 
 		// 인사담당자님의 정보를 입력해주세요
 		String name = request.getParameter("name");
@@ -97,6 +121,7 @@ public class BusinessInsertPostServlet extends HttpServlet {
 		post.setHours(hours);
 		post.setFullTimeYn(fulltime);
 		post.setDegree(degree);
+		post.setHrId(loggedInUser.getbId());
 
 		BusinessService service = new BusinessService();
 

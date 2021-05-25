@@ -20,7 +20,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
-import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 

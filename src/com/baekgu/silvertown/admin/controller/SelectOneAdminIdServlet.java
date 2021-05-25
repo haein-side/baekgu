@@ -92,7 +92,7 @@ public class SelectOneAdminIdServlet extends HttpServlet {
 	   String path = "";
 		if (result > 0) {
 			// 보여주려는 곳으로 경로 지정.
-			path = "/baeckgu/admin/search";
+			path = "/baeckgu/admin/list";
 			response.sendRedirect(path);
 			
 		} else {

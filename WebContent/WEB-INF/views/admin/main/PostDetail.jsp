@@ -29,7 +29,14 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    </head>
+
+	 <style>
+      .total td {
+        font-size : 30px;
+      }
+    </style>
+  </head>
+  </head>
     <body style="overflow-x:hidden">
   <jsp:include page="../common/header.jsp"/>
                <!--main content start-->
@@ -54,117 +61,260 @@
                     <div id="profile" class="tab-pane">
                       <section class="panel">
                         <div class="panel-body bio-graph-info">
-                            <h2>공고정보</h2>
+                          <h2>공고정보</h2>
                           <div class="row">
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>공고코드 </span>: 1 </p>
+                              <p>
+                              <span>담당자 ID </span>:    
+                              <c:out value="${ requestScope.post.hrId }"/>
+                              </p>
                             </div>
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>제목 </span>: [주5일]홀서빙 모집하고 있습니다</p>
+                              <p>
+                              <span>공고코드 </span>:    
+                              <c:out value="${ requestScope.post.postCode }"/>
+                              </p>
+                            </div>
+                             <div class="bio-row">
+                              <p>
+                              <span>심사코드 </span>:    
+                              <c:out value="${ requestScope.post.dListCode }"/>
+                              </p>
+                            </div>
+                             <div class="bio-row">
+                              <p>
+                              <span>기업코드 </span>:    
+                              <c:out value="${ requestScope.post.bCode }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>근무지역</span>: 서울특별시 어쩌구 저쩌동</p>
+                              <p>
+                              <span>공고제목   </span>: 
+                              <c:out value="${ requestScope.post.postTitle }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>모집인원 </span>: 0명</p>
+                              <p>
+                              <span>공고내용 </span>:    
+                              <c:out value="${ requestScope.post.postContent }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>모집시작일 </span>: 21/05/05</p>
+                              <p>
+                              <span>공고 등록일 </span>:    
+                              <c:out value="${ requestScope.post.postDate }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>온라인접수여부 </span>: Y</p>
+                              <p>
+                              <span>월급 </span>:    
+                              <c:out value="${ requestScope.post.payment } 원"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>급여 </span>: 3000000원</p>
+                              <p>
+                              <span>공고 마감일 </span>:    
+                              <c:out value="${ requestScope.post.endDate }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>성별 </span>: 누구나</p>
+                              <p>
+                              <span>월급형태 </span>:    
+                              <c:out value="${ requestScope.post.payName }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>우대조건 </span>: 노예우대</p>
+                              <p>
+                              <span>근무지 </span>:    
+                              <c:out value="${ requestScope.post.address }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>복리후생 </span>: 퇴직금</p>
+                              <p>
+                              <span>공고TO </span>:    
+                              <c:out value="${ requestScope.post.postTo } 명"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>정규직여부 </span>: Y</p>
+                              <p>
+                              <span>온라인 여부</span>: 
+                              <c:choose>
+                              	<c:when test="${ requestScope.post.online eq 0 }">
+									<c:out value="N"/>                              	
+                              	</c:when>
+                              	<c:when test="${ requestScope.post.online eq 1 }">
+									<c:out value="Y"/>                              	
+                              	</c:when>
+                              </c:choose>  
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>경력기간 </span>: 경력무관</p>
+                              <p>
+                              <span>근무요일 </span>:    
+                              <c:out value="${ requestScope.post.days }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>직종 </span>: 서빙</p>
+                              <p>
+                              <span>성별 </span>:    
+                              <c:out value="${ requestScope.post.gender }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>업종 </span>: 서비스업</p>
+                              <p>
+                              <span>우대사항 </span>:    
+                              <c:out value="${ requestScope.post.advantage }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>근무기간 </span>: 3개월이상</p>
+                              <p>
+                              <span>복지 </span>:    
+                              <c:out value="${ requestScope.post.benefit }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>근무시간 </span>: 10시~1시</p>
+                              <p>
+                              <span>정규직 여부 </span>:    
+                              <c:choose>
+                              	<c:when test="${ requestScope.post.fullTimeYn eq 0 }">
+									<c:out value="N"/>                              	
+                              	</c:when>
+                              	<c:when test="${ requestScope.post.fullTimeYn eq 1 }">
+									<c:out value="Y"/>                              	
+                              	</c:when>
+                              </c:choose>  
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>급여형태 </span>: 월급</p>
+                              <p>
+                              <span>근무시간 </span>:    
+                              <c:out value="${ requestScope.post.hourName }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                                <p><span>경력기간 </span>: 경력무관</p>
+                              <p>
+                              <span>연령 </span>:    
+                              <c:out value="${ requestScope.post.ageName }"/>
+                              </p>
                             </div>
-                            <a class="btn btn-danger" href="#">
-                                기업 차단하기
-                            </a>
-                        </div>   
+                            <div class="bio-row">
+                              <p>
+                              <span>학력 </span>:    
+                              <c:out value="${ requestScope.post.degreeLevel }"/>
+                              </p>
+                            </div>
+                            <div class="bio-row">
+                              <p>
+                              <span>근무시간 </span>:    
+                              <c:out value="${ requestScope.post.periodName }"/>
+                              </p>
+                            </div>
+                            <div class="bio-row">
+                              <p>
+                              <span>근무지역 </span>:    
+                              <c:out value="${ requestScope.post.locationName }"/>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- 사용자를 차단할때 알럿을 하나 띄워서 간단하게 차단사유를 적는다
+                          				 ex. 사용자 약관 nnn조 nn항에 의거하여 차단당하였습니다 -->
+                          		<!-- 차단여부가 미차단일때만 나온다 -->
+                          		<c:if test="${ requestScope.post.block eq 0 }">
+                          		<br>
+								<form action="${ pageContext.servletContext.contextPath }/admin/postDetail?no=${ requestScope.post.postCode }&bCode=${ requestScope.post.bCode }" method="post">
+									<input type="text" class="col-lg-6" name="reason" id="blockReason" placeholder="사용자 차단 사유를 명확히 입력해주세요."> 
+									<input type="submit" class="btn btn-danger" name="blockButton" onclick="return chk1()" value="기업 신고 승인">
+									<br><br>
+									
+								</form>
+								<script>
+								function chk1(){
+									
+								if(document.getElementById("blockReason").value == ""){
+	                                alert("사유를 입력해주세요.");
+	                                
+	                                return false;
+                            	  } else{
+                            		  
+                            		 return true;
+                            	  }
+								}
+								</script>
+                          		<form action="${ pageContext.servletContext.contextPath }/admin/postDetail?no=${ requestScope.post.postCode }&bCode=${ requestScope.post.bCode }" method="post">
+									<input type="text" class="col-lg-6" name="reason" id="noblockReason" placeholder="신고 거절 사유를 명확히 입력해주세요."> 
+									<input type="submit" class="btn btn-warning" name="blockButton" onclick="return chk2()" value="기업 신고 거절">
+									
+								</form>
+								<script>
+								function chk2(){
+									
+								if(document.getElementById("noblockReason").value == ""){
+	                                alert("사유를 입력해주세요.");
+	                                
+	                                return false;
+                            	  } else{
+                            		  
+                            		 return true;
+                            	  }
+								}
+								</script>
+                          		</c:if>
+                          		<!-- 이미 차단된 기업일시 -->
+                          		<c:if test="${ requestScope.post.block eq 1 }">
+                          		<p style="color:red; font-size: 20px;">
+                          		<c:out value="차단 된 기업입니다."/>
+                          		</p>
+                          		</c:if>   
                       </section>
+                      <!-- 광고정보 -->
                       <div class="table-responsive">
-                        <!--
-                           구상:한 공고를 재등록이 가능하여 하나의 공고에 여러 광고가 붙을 수 있으니 이력을 페이징 처리한다
-                                한 페이지당 10개의 리스트를 보여주며 버튼 수는 5개씩으로 지정한다.
-                        -->
                         <table class="table">
                           <thead>
-                            <tr>
-                              <th>사용광고</th>
-                              <th>결제번호</th>
-                              <th>결제일시</th>
-                              <th>서비스 시작일</th>
-                              <th>서비스 만료일</th>
-                              <th>사용상태</th>
-                              <th>결제수단</th>
-                              <th>결제상태</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>광고상단 A</td>
-                              <td>3131310</td>
-                              <td>2021-04-05</td>
-                              <td>2021-04-06</td>
-                              <td>2021-05-06</td>
-                              <td>사용만료</td>
-                              <td>신용카드</td>
-                              <td>승인완료</td>
-                            </tr>
-                            <tr>
-                              <td>광고상단 A, 프리미엄 이모티콘 A, 광고 반짝임A, 프리미엄 상단배치 A</td>
-                              <td>3131313</td>
-                              <td>2021-05-05</td>
-                              <td>2021-05-06</td>
-                              <td>2021-06-06</td>
-                              <td>취소</td>
-                              <td>신용카드</td>
-                              <td>승인취소</td>
-                            </tr>
-                            <tr>
-                              <td>프리미엄 이모티콘 A, 광고 반짝임A</td>
-                              <td>3131312</td>
-                              <td>2021-05-05</td>
-                              <td>2021-05-06</td>
-                              <td>2021-06-06</td>
-                              <td>사용중</td>
-                              <td>신용카드</td>
-                              <td>승인완료</td>
-                            </tr>
-                          </tbody>
+                              <tr>
+                                <th>코드</th>
+                                <th>날짜</th>
+                                <th>결제여부</th>
+                                <th>사용기간</th>
+                                <th>광고이름</th>
+                                <th>가격</th>
+                                <th>결제방법</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+							<c:set var = "total" value = "0" />
+                            <c:forEach var="ad" items="${ requestScope.adList }">
+                              <tr>
+								<td><c:out value="${ ad.postAdCode }"/></td>
+								<td><c:out value="${ ad.adDate }"/></td>
+								<c:choose>
+									<c:when test="${ ad.adPaid eq 0 }">
+										<td><c:out value="결제대기"/></td>
+									</c:when>
+									<c:when test="${ ad.adPaid eq 1 }">
+										<td><c:out value="결제완료"/></td>
+									</c:when>
+								</c:choose>
+								<td><c:out value="${ ad.adWeek } 주"/></td>
+								<td><c:out value="${ ad.adName }"/></td>
+								<td><c:out value="${ ad.adPrice }"/></td>
+								<c:set var= "total" value="${total + ad.adPrice}"/>
+								<td><c:out value="${ ad.methodName }"/></td>
+							  </tr>	
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <table class="total">
+                        	<thead>
+                        		<tr>
+                        		<th>총 결제 금액</th>
+                        		</tr>
+                        	</thead>
+                        	<tbody>
+                        		<tr>
+                        		<td><c:out value="${ total } 원"/></td>
+                        		</tr>
+                        	</tbody>
                         </table>
                       </div>
                   </div>

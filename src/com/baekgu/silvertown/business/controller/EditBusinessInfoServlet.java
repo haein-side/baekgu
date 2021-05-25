@@ -46,8 +46,9 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		member.setbName(name);
 		member.setbPhone(phone);
 		member.setbEmail(email);
+		member.setbNumber(loggedInUser.getbNumber());
 		
-		System.out.println(member);
+		System.out.println(loggedInUser.getbNumber());
 		
 		
 		BusinessService service = new BusinessService();

@@ -39,14 +39,14 @@ public class BusinessPaymentAdServlet extends HttpServlet {
 		}
 		
 		String category = request.getParameter("category");
-		String pageCategory = "total";
+		String pageCategory = "전체";
 		
 		if(category != null && !category.equals("")) {
 			pageCategory = category;
 		}
 		
-		if(!pageCategory.equals("total") && !pageCategory.equals("hold") && !pageCategory.equals("accept") && !pageCategory.equals("reject")) {
-			pageCategory = "total";
+		if(!pageCategory.equals("전체") && !pageCategory.equals("결제완료") && !pageCategory.equals("미결제") && !pageCategory.equals("거절")) {
+			pageCategory = "전체";
 		}
 		
 		
@@ -58,53 +58,49 @@ public class BusinessPaymentAdServlet extends HttpServlet {
 		BusinessService service = new BusinessService();
 		
 		// 심사 상태에 따른 값 가져오기
-		Map<Integer, Integer> counts = service.selectTotalCount(loginMember.getbId());
+		Map<Integer, Integer> counts = service.selectpayCount(loginMember.getbId());
 		
-		int hold = 0;
-		int accepted = 0;
-		int rejected = 0;
+		int paid = 0;
+		int nonepaid = 0;
+		
+
 		
 		for(Map.Entry<Integer, Integer> entry : counts.entrySet()) {
 			switch(entry.getKey()){
 			case 1 :
-				hold = entry.getValue(); break;
-			case 2 :
-				accepted = entry.getValue(); break;
-			case 3 : 
-				rejected = entry.getValue(); break;
+				paid = entry.getValue(); break;
+			case 0 :
+				nonepaid = entry.getValue(); break;
 		    default :
 		    	System.out.println("error by category selection"); break;	
 			}			
 			
 		}
 		
-		int totalCount = hold + accepted;
+		int totalCount = paid + nonepaid;
 		
 		int selection = 0;
 		switch(pageCategory) {
-		    case "total":
+		    case "전체":
 		    	selection = totalCount;
-		    	pageCategory = "전체";
 		    	break;
-		    case "hold":
-		    	selection = hold;
-		    	pageCategory = "접수";
+		    case "결제완료":
+		    	selection = paid;
 		    	break;
-		    case "accept":
-		    	selection = accepted;
-		    	pageCategory = "승인";
-		    	break;
-		    case "reject":
-		    	selection = rejected;
+		    case "미결제":
+		    	selection = nonepaid;
 		    	break;
 		    default :
 		    	System.out.println("error by category selection");
 		    	break;
 		}
+		
 		System.out.println("pageCategory : " + pageCategory);
 		System.out.println("selection : " + selection);
+		
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
+		
 		/* 한 번에 보여질 페이징 버튼의 수*/
 		int buttonAmount = 5;
 		
@@ -114,6 +110,28 @@ public class BusinessPaymentAdServlet extends HttpServlet {
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, selection, limit, buttonAmount, pageCategory);
 
 		List<PaymentDTO> payList = service.selectAllpayList(loginMember.getbId(), pageInfo);
+	
+		
+		
+		
+		// 결제 미결제 조건
+		int payStatus = 0;
+		
+		for(int i = 0; i < payList.size(); i++) {
+			
+			
+			if(payList.get(i).getPostAdPaid() == 0) {
+				payStatus = 0;
+			}
+			
+			if(payList.get(i).getPostAdPaid() == 1) {
+				payStatus = 1;
+			}
+			
+			request.setAttribute("payStatus", payStatus);
+			
+		}
+		
 		
 		String path = "";
 
@@ -123,8 +141,8 @@ public class BusinessPaymentAdServlet extends HttpServlet {
 			request.setAttribute("payList", payList);
 			request.setAttribute("pageInfo", pageInfo); // page category도 담겨있다.
 			request.setAttribute("total", totalCount);
-			request.setAttribute("hold", hold);
-			request.setAttribute("accepted", accepted);
+			request.setAttribute("paid", paid);
+			request.setAttribute("nonepaid", nonepaid);
 		} 
 		
 		

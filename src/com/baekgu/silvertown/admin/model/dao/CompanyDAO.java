@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
@@ -82,7 +83,7 @@ private final Properties prop;
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, 10);
 			
 			rset = pstmt.executeQuery();
@@ -185,6 +186,12 @@ private final Properties prop;
 		return company;
 	}
 
+	/**
+	 * 기업에 따른 담당자 조회
+	 * @param con
+	 * @param no
+	 * @return
+	 */
 	public List<CompanyDTO> selectHrList(Connection con, int no) {
 		
 		PreparedStatement pstmt = null;
@@ -287,7 +294,7 @@ private final Properties prop;
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
 			
@@ -362,6 +369,12 @@ private final Properties prop;
 		return count;
 	}
 
+	/**
+	 * 정상유저 리스트 리턴
+	 * @param con
+	 * @param pageInfo
+	 * @return
+	 */
 	public List<CompanyDTO> nomalCompanyList(Connection con, PageInfoDTO pageInfo) {
 
 		PreparedStatement pstmt = null;
@@ -374,7 +387,7 @@ private final Properties prop;
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
 			
@@ -548,7 +561,7 @@ private final Properties prop;
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
 			
@@ -578,7 +591,7 @@ private final Properties prop;
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, value);
-			pstmt.setInt(2, (pageInfo.getStartPage()-1));
+			pstmt.setInt(2, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
 			companyList = new ArrayList<>();
@@ -621,6 +634,139 @@ private final Properties prop;
 		
 		return companyList;
 	}
+	
+	/**
+	 * d_list_code 조회
+	 * @param con
+	 * @param block
+	 * @return
+	 */
+	public int selectDecisionCode(Connection con, BlockDTO block) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int reportCode = 0;
+		
+		String query = prop.getProperty("selectReportCode");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, block.getPostCode());
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				block.setrCode(rset.getInt("D_LIST_CODE"));
+				reportCode = block.getrCode();
+				
+			}
+			System.out.println("신고내역 코드 : " + reportCode);
+			System.out.println("사용쿼리 : " + query);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return reportCode;
+	}
+
+	/**
+	 * 기업 블락 업데이트
+	 * @param con
+	 * @param block
+	 * @return
+	 */
+	public int updateBlockCompany(Connection con, BlockDTO block) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateBlockDecisionList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, block.getbReason());
+			pstmt.setString(2, block.getAdmin());
+			pstmt.setInt(3, block.getrCode());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
+	/**
+	 * B_BLOCK = 1 업데이트	
+	 * @param con
+	 * @param block
+	 * @return
+	 */
+	public int updateBlock(Connection con, BlockDTO block) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateBlockCompany");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, block.getCompanyCode());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("사용 쿼리 : " + query);
+			System.out.println("블락처리 결과 : " + result);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateNoBlockCompany(Connection con, BlockDTO block) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateNoBlockDecisionList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, block.getbReason());
+			pstmt.setString(2, block.getAdmin());
+			pstmt.setInt(3, block.getrCode());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
+
 
 }
 

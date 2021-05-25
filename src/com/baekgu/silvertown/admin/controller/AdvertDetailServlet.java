@@ -22,7 +22,7 @@ public class AdvertDetailServlet extends HttpServlet {
 	       
 		/* 파라미터 꺼내기  -> 여기서 code는 Advert.jsp에 있음. */
 			int code = Integer.parseInt(request.getParameter("code"));
-			System.out.println("adminId : " + code);
+			System.out.println("code : " + code);
 			
 			AdvertDTO advertDTO = new AdvertService().advertDetail(code);
 		
