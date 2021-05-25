@@ -25,13 +25,13 @@ public class SearchPost extends HttpServlet {
       System.out.println("selectedList : " + select);   
    
       // 카테고리별 스플릿 - String[] array에 담아줌
-      String[] array = select.split("!"); // 반드시 3을 확인
+      String[] array = select.split("!"); // 반드시 3이 아님
+      
+      System.out.println("array의 크기 : " + array.length);
       
       for(int i=0; i<array.length;i++) {
         
-    	  System.out.println("array[" + i + "] : " + array[i]);
-      
-    	  
+    	  System.out.println("array[" + i + "] : " + array[i]);  
     	  
       }
               
@@ -77,6 +77,7 @@ public class SearchPost extends HttpServlet {
       
          period = array[2].replace("&", "");
          System.out.println("period : " + period);
+         
       }
       
       // DTO에 입력받은 값들을 set해줌
@@ -95,7 +96,19 @@ public class SearchPost extends HttpServlet {
       // 단순검색 비즈니스 로직 처리
       List<SearchPostDTO> selectPost = searchService.selectPost(searchPost);
       
-   
+      // 응답페이지 처리
+	  String path = "";
+	    if(selectPost != null) {
+			path = "/WEB-INF/views/customer/main/postlist.jsp";
+			request.setAttribute("selectPost", selectPost);
+			System.out.println("서블렛에서 받은 공고들 : " + selectPost);
+			
+		} else {
+			path = "/WEB-INF/views/user/common/errorPage.jsp";
+			request.setAttribute("message", "공고조회를 실패했습니다.");
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
    
    
    }

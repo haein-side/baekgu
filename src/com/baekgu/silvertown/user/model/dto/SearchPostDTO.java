@@ -18,7 +18,7 @@ public class SearchPostDTO {
 	private String postTitle;
 	
 	private int[] locationCode;
-	private String[] locationName;
+	private String locationName;
 	
 	private int industryCode;
 	private String industryName;
@@ -43,7 +43,7 @@ public class SearchPostDTO {
 	}
 
 	public SearchPostDTO(int dListTypeCode, int decisionCode, int postCode, String postTitle, int[] locationCode,
-			String[] locationName, int industryCode, String industryName, int jobCode, String jobName, int payment,
+			String locationName, int industryCode, String industryName, int jobCode, String jobName, int payment,
 			int payCode, String payName, String benefit, int periodCode, String periodName, int adCode) {
 		super();
 		this.dListTypeCode = dListTypeCode;
@@ -105,11 +105,11 @@ public class SearchPostDTO {
 		this.locationCode = locationCode;
 	}
 
-	public String[] getLocationName() {
+	public String getLocationName() {
 		return locationName;
 	}
 
-	public void setLocationName(String[] locationName) {
+	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
 
@@ -205,11 +205,13 @@ public class SearchPostDTO {
 	public String toString() {
 		return "SearchPostDTO [dListTypeCode=" + dListTypeCode + ", decisionCode=" + decisionCode + ", postCode="
 				+ postCode + ", postTitle=" + postTitle + ", locationCode=" + Arrays.toString(locationCode)
-				+ ", locationName=" + Arrays.toString(locationName) + ", industryCode=" + industryCode
+				+ ", locationName=" + locationName + ", industryCode=" + industryCode
 				+ ", industryName=" + industryName + ", jobCode=" + jobCode + ", jobName=" + jobName + ", payment="
 				+ payment + ", payCode=" + payCode + ", payName=" + payName + ", benefit=" + benefit + ", periodCode="
 				+ periodCode + ", periodName=" + periodName + ", adCode=" + adCode + "]";
 	}
+
+
 
 
 }
