@@ -107,7 +107,7 @@
                             </tbody>
                           </table>
                         </div>
-<%-- 페이지 처리 --%>
+	<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
