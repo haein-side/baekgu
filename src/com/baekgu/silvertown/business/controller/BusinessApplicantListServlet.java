@@ -25,6 +25,37 @@ public class BusinessApplicantListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println(request.getParameter("applyCode")); // 합격여부 판단시 필요한 파마미터1
+		System.out.println(request.getParameter("decision")); // 합격여부 판단시 필요한 파마미터2
+
+		if(request.getParameter("applyCode") != null && request.getParameter("decision") != null) {
+			
+			int applyCode = Integer.parseInt(request.getParameter("applyCode"));
+			
+			int decision = Integer.parseInt(request.getParameter("decision"));
+			
+			String selection = "";
+			switch(decision) {
+				case 1:
+					selection = "미분류";
+					break;
+				case 2:
+					selection = "합격";
+					break;
+				case 3:
+					selection = "불합격";
+					break;
+			}
+			
+			int result = new BusinessService().updateApplyYN(applyCode, selection);
+			
+			if( result > 0) {
+				System.out.println("update done !!");
+			}
+			
+		}
+		
+		
 		/* paging 처리 */
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;

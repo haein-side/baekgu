@@ -261,6 +261,23 @@ public class BusinessService {
 		return userInfo;
 	}
 
+	public int updateApplyYN(int applyCode, String decision) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateApplyYN(con, applyCode, decision);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 
 
 

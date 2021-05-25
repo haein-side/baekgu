@@ -70,6 +70,7 @@
       <hr>
        
       <br>
+      <br>
       
       <h3><i><c:out value="${ requestScope.applicationList.get(0).postTitle }"/></i></h3>
       <p><i><b>공고 시작일</b> <c:out value="${ requestScope.applicationList.get(0).postStart }"/> ~ <b>공고 마감일 </b><c:out value="${ requestScope.applicationList.get(0).postEnd }"/></i></p>
@@ -86,7 +87,7 @@
               <th>우대사항 적합성</th>
               <th>합격여부</th>
               <th>신고하기</th>
-            </tr>
+             </tr>
           </thead>
           
           <tbody>
@@ -122,15 +123,24 @@
 	            	</c:otherwise>
             	</c:choose>
                 <td style="width: 250px;">
-               		<select class="form-control" name="applicant">
-                    	<option value="none">미분류</option>
-                    	<option value="yes">합격</option>
-                    	<option value="no">불합격</option>
-                	</select>
+<!--                 	<form action="business/applicantlist" method="post">
+ -->	               	<select class="form-control" id="decision" name="decision" style="width: 250px; float:left;">
+	                    	<option value="미분류" <c:if test="${ application.applyStatus eq '미분류' }">
+            	    								selected
+            									</c:if>>미분류</option>
+	                    	<option value="합격" <c:if test="${ application.applyStatus eq '합격' }">
+            	    								selected
+            									</c:if>>합격</option>
+	                    	<option value="불합격" <c:if test="${ application.applyStatus eq '불합격' }">
+            	    								selected
+            									</c:if>>불합격</option>
+	                	</select>
+<!-- 	                	<button type="submit" style="float:right;">심사저장하기</button>
+<!--                  	</form>-->
               	</td>
               	
-	            <td>
-	              <input type="button" class="btn btn-primary" style="width: 100px;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	            <td style="width: 117.73913049697876px !important;">
+	              <input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
 	                    <!-- 지원자 신고하기 모달창 만들어놓았음 -->
 	                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	                        <div class="modal-dialog" role="document">
@@ -226,67 +236,116 @@
   </div>
 </div>
 	<script>
-		const link = "${ pageContext.servletContext.contextPath }/business/postlist";
-		const categoryLink = "${ pageContext.servletContext.contextPath }/business/postlist";
-			
-		if(document.getElementById("startPage")) {
-			const $startPage = document.getElementById("startPage");
-			$startPage.onclick = function() {
-				location.href = link + "?currentPage=1";
-			}
-		}
-		
-		if(document.getElementById("prevPage")) {
-			const $prevPage = document.getElementById("prevPage");
-			$prevPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
-			}
-		}
-		
-		if(document.getElementById("nextPage")) {
-			const $nextPage = document.getElementById("nextPage");
-			$nextPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
-			}
-		}
-		
-		if(document.getElementById("maxPage")) {
-			const $maxPage = document.getElementById("maxPage");
-			$maxPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
-			}
-		}
-		
-		if(document.getElementsByTagName("td")) {
-			
-			const $tds = document.getElementsByTagName("td");
-			for(let i = 0; i < $tds.length; i++) {
+		window.onload = function(){
+			const link = "${ pageContext.servletContext.contextPath }/business/postlist";
+			const categoryLink = "${ pageContext.servletContext.contextPath }/business/postlist";
 				
-				$tds[i].onmouseenter = function() {
-					this.parentNode.style.cursor = "pointer";
+			if(document.getElementById("startPage")) {
+				const $startPage = document.getElementById("startPage");
+				$startPage.onclick = function() {
+					location.href = link + "?currentPage=1";
 				}
-				
-				$tds[i].onmouseout = function() {
-					this.parentNode.style.backgroundColor = "white";
+			}
+			
+			if(document.getElementById("prevPage")) {
+				const $prevPage = document.getElementById("prevPage");
+				$prevPage.onclick = function() {
+					location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
 				}
+			}
+			
+			if(document.getElementById("nextPage")) {
+				const $nextPage = document.getElementById("nextPage");
+				$nextPage.onclick = function() {
+					location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+				}
+			}
+			
+			if(document.getElementById("maxPage")) {
+				const $maxPage = document.getElementById("maxPage");
+				$maxPage.onclick = function() {
+					location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+				}
+			}
+			
+			if(document.getElementsByTagName("td")) {
 				
-				$tds[i].onclick = function() {
+				const $tds = document.getElementsByTagName("td");
+				for(let i = 3; i < $tds.length; i+=8) {
 					
-					if(!this.parentNode.children[5]){
-						const no = this.parentNode.children[0].innerText;
-						location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
-					}else if{
+					$tds[i].onmouseenter = function() {
+						this.style.cursor = "pointer";
+						this.style.color = "green";
+					}
+					
+					$tds[i].onmouseout = function() {
+						this.style.color = "black";
+					}
+					
+					$tds[i].onclick = function() {
+							const no = this.parentNode.children[0].innerText;
+							location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+					}
+				}
+				
+				for(let j = 6; j < $tds.length; j+=8){
+					
+					$tds[j].onchange = function(event){
+						/* console.log(event)
+						const no = this.parentNode.children[j]; */
+						alert("해당 지원자의 합격여부를 \"" + event.target.value + "\"(으)로 변경하였습니다.");
+  						const no = this.parentNode.children[0].innerText; // row별 applycode를 가져온다.
 						
+  						let decision = 0;
+ 						switch(event.target.value){
+ 						case "미분류":
+ 							decision = 1;
+ 							break;
+ 						case "합격":
+ 							decision = 2;
+ 							break;
+ 						case "불합격":
+ 							decision += 3;
+ 							break;
+ 						}
+ 						
+ 						const postCode = ${ requestScope.applicationList.get(0).postCode };
+						location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="+postCode+"&applyCode="+no+"&decision="+decision;
 					}
 					
 				}
+				
 			}
 			
+			/* if(document.getElementsByTagName("td")) {
+				
+				const $tds = document.getElementsByTagName("td");
+				for(let i = 6; i < $tds.length; i+=8) {
+					
+					$tds[i].onchange = function(){
+						const dec = this.value;
+						alert("해당 지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
+						location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+					}
+				}
+			} */
+			
+			
+			
+			/* if(document.getElementById("decision")){
+				const $dcs = document.getElementById("decision");
+				$dcs.onchange = function(){
+					const dec = this.value;
+					alert("지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
+					location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+				}
+			} */
+			
+			function pageButtonAction(text) {
+				location.href = link + "?currentPage=" + text;
+			}
 		}
 		
-		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text;
-		}
 
 	</script>
 	
