@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,13 +36,19 @@ public class BusinessPaymentDetailServlet extends HttpServlet {
 		PaymentDetailDTO  paymentdetail = service.selectPaymentDetail(loginMember.getbId(), postAdCode);
 		
 
+		// 결제가능 일수 구하기
+		
+		int dday = (int)(paymentdetail.getPostStart().getTime() - System.currentTimeMillis()) / 1000/ 60 /60 / 24;
 		
 		
+		
+		System.out.println("이 공고의 남은 날"  + dday);
 	
 		
 
 		
 		request.setAttribute("paymentdetail", paymentdetail);
+		request.setAttribute("dday", dday);
 		
 		String path = "/WEB-INF/views/business/main/paymentdetail.jsp";
 		
@@ -54,6 +61,7 @@ public class BusinessPaymentDetailServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		
 	}
 

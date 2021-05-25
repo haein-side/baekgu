@@ -359,7 +359,7 @@ public class BusinessDAO {
 			pstmt.setString(10, post.getGender());
 			pstmt.setString(11, post.getPriority());
 			pstmt.setString(12, post.getBenefit());
-			pstmt.setString(13, post.getFullTimeYn());
+			pstmt.setInt(13, post.getFullTimeYn());
 			pstmt.setString(14,  post.getName());
 			pstmt.setString(15, post.getEmail());
 			pstmt.setString(16, post.getPhone());
