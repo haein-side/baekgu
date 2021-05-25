@@ -606,15 +606,29 @@ public class UserDAO {
 			
 			if(searchPost.getLocationCode() != null) {
 				String locationCode = "";
-				for (int i=0; i < searchPost.getLocationCode().length; i++ ) {
-					locationCode += searchPost.getLocationCode()[i];
-					if(i < searchPost.getLocationCode().length - 1) {
-						locationCode += ", ";
+				
+				// "무관"을 선택하여 첫번째 locationCode가 30일 때 2부터 26까지 위치코드를 넣어줌
+				if(searchPost.getLocationCode()[0] == 30) {
+					for (int j = 2; j < 27; j++) {
+						locationCode += j;
+						if (j < 26){
+							locationCode += ", "; 
+						} 
+					} 
+				// "무관"을 선택하지 않은 경우
+				} else {
+				
+					for (int i=0; i < searchPost.getLocationCode().length; i++ ) {
+						locationCode += searchPost.getLocationCode()[i];
+						if(i < searchPost.getLocationCode().length - 1) {
+							locationCode += ", ";
+						}
 					}
 				}
 				
 				query += " and l.location_code IN (" + locationCode + ")";
 			}
+
 			
 			if(searchPost.getIndustryCode() > 0) {
 				query += " and I.industry_code = " + searchPost.getIndustryCode();
@@ -659,7 +673,7 @@ public class UserDAO {
 				System.out.println("selectedPost의 길이 : " + selectedPost.size());
 				
 			}
-			
+		  
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {

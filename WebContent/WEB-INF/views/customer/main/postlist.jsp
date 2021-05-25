@@ -199,7 +199,7 @@
                 </div>
                 
                 <hr>
-                <!-- 일반 광고 -->
+                <!-- 일반 공고 -->
                 <div class="text-left">
                     <h2 style="font-family: BM;">검색 결과</h2>
                 </div>

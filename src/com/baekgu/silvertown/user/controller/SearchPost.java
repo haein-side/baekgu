@@ -41,6 +41,7 @@ public class SearchPost extends HttpServlet {
       
       // 지역별 스플릿 - array[0]을 스플릿해서 각각 String[] location에 담아줌
       String[] location = null;
+      int[] locationCode = null;
       
       if (array[0] != null && array[0].length() > 0) {
     	  
@@ -50,13 +51,18 @@ public class SearchPost extends HttpServlet {
     		  System.out.println("location[" + i +"] : " + location[i]);
     	  }
     	  
+    	  
     	  // 마지막 선택 값이 "무관"일 때 location을 null로 만들어줌 (위치 조건 삭제를 위해)
     	  if (location[location.length - 1].equals("1")) {
     		  
-    		  for(int i=0 ; i < location.length;i++) { 
-    			  location[i] = null; 
-    		  }
-    		  System.out.println("비워진 location : " + location);
+    		   
+    			  System.out.println("마지막 선택값이 무관인 경우");
+    			  
+    			  for(int i=0 ; i < location.length;i++) { 
+    	    		 location[0] = "30";
+    	    	  }
+    		
+    			  System.out.println("location[0]이 바뀌었는지 보기 : " + location[0]);
     	  }
       }  
       
@@ -84,7 +90,7 @@ public class SearchPost extends HttpServlet {
       SearchPostDTO searchPost = new SearchPostDTO();
       
       // location 문자열 배열을 int 배열로 만들어줌
-      int[] locationCode = Arrays.stream(location).mapToInt(Integer::parseInt).toArray();
+      locationCode = Arrays.stream(location).mapToInt(Integer::parseInt).toArray();
       
       searchPost.setLocationCode(locationCode); 
       searchPost.setIndustryCode(Integer.parseInt(industry));
@@ -118,4 +124,3 @@ public class SearchPost extends HttpServlet {
  }
 
    
-
