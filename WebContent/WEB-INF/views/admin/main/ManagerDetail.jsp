@@ -56,6 +56,7 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
+                           <c:if test="${ sessionScope.adminRole eq '대표관리자' }"> 
                             <form class="form-validate form-horizontal" id="feedback_form" method="post" action="${ pageContext.servletContext.contextPath }/admin/adminid">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
@@ -96,10 +97,11 @@
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
                                   <button class="btn btn-primary" class="btn btn-primary" type="submit">등록</button>
-                                  
+                                 
                                 </div>
                               </div>
                             </form>
+                            </c:if>
                           </div>
           
                         </div>
