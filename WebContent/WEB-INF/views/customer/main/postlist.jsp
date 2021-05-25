@@ -207,6 +207,7 @@
                 <!--  데이터 베이스 결과값으로 div를 생성하여 공고 출력 -->
                 <div class="row">
                     <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
+                     <c:forEach var="app" items="${ selectPost }">
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="card h-100">
                             <h4 class="card-header">일자리 타이틀1</h4>
@@ -214,6 +215,8 @@
                             <div class="card-footer"><a class="btn btn-primary" href="#!" style="background-color: orange;">자세히 보기</a></div>
                         </div>
                     </div>
+                    </c:forEach>
+                    
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="card h-100">
                             <h4 class="card-header">일자리 타이틀2</h4>
