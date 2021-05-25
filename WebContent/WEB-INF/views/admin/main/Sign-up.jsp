@@ -29,12 +29,8 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
     </head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <body>
   <jsp:include page="../common/header.jsp"/>
             <!--main content start-->
@@ -58,7 +54,7 @@
                               <table class="table">
                                 <thead>
                                   <tr>
-                                    <th><input type="checkbox" id="checkAll"></th>
+                                  	<th>기업코드</th>
                                     <th>기업명</th>
                                     <th>대표자명</th>
                                     <th>사업자등록번호</th>
@@ -67,109 +63,206 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td><a href="Sign-upDetail.html">자바칩프라푸치노식당</a></td>
-                                    <td>자대표</td>
-                                    <td>202-10-507</td>
-                                    <td>서울특별시 자바구 푸치동</td>
-                                    <td>02-2134-5567</td>
-                                  </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td><a href="">말린바나나</a></td>
-                                    <td>말대표</td>
-                                    <td>202-10-508</td>
-                                    <td>서울특별시 말린구 나나동</td>
-                                    <td>02-2134-5562</td>
-                                  </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td><a href="">닝뎅도전문악세</a></td>
-                                    <td>닝대표</td>
-                                    <td>202-10-509</td>
-                                    <td>서울특별시 닝뎅구 악세동</td>
-                                    <td>02-2134-5561</td>
-                                  </tr>
-                                  <tr>
-                                    <th><input type="checkbox"></th>
-                                    <td><a href="">휴지롤롤돌돌</a></td>
-                                    <td>휴대표</td>
-                                    <td>202-10-500</td>
-                                    <td>서울특별시 휴지구 롤롤동</td>
-                                    <td>02-2124-5567</td>
-                                  </tr>
+                             	<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
+								<c:forEach var="businessjoin" items="${ requestScope.businessList }">
+									<tr>
+										<td><c:out value="${ businessjoin.bCode }" /></td>
+										<td><c:out value="${ businessjoin.bName }" /></td>
+										<td><c:out value="${ businessjoin.bOwner }" /></td>
+										<td><c:out value="${ businessjoin.bNumber }" /></td>
+										<td><c:out value="${ businessjoin.bAddress }" /></td>
+										<td><c:out value="${ businessjoin.bPhone }" /></td>
+									</tr>
+								</c:forEach>
                                 </tbody>
                               </table>
                             </div>
     
-                    <!--하단 페이지 넘기기-->
-                    <section class="panel">
-                    <div class="panel-body">
-                      <div class="text-center">
-                        <ul class="pagination">
-                          <li><a href="#">«</a></li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#">»</a></li>
-                        </ul>
-                      </div>
-                    <!--하단 페이지 넘기기-->
-                    <a class="btn btn-success btn-lg" href="" title="Bootstrap 3 themes generator">
-                        승인하기
-                    </a>
-                  <!--  search form start -->
-                  <ul class="nav top-menu" style="float: right;">
-                    <li>
-                      <form class="navbar-form">
-                        <input class="form-control" placeholder="Search" type="text">
-                        <button type="submit" class="btn btn-primary">검색하기</button>
-                      </form>
-                    </li>
-                  </ul>
-                  <!--  search form end -->
+            <!--하단 페이지 넘기기-->
+					<section class="panel">
+						<div class="panel-body">
+							<div class="text-center">
+								<%-- 페이지 처리 (분기처리한 것) --%>
+								<div class="pagingArea" align="center">
+									<c:choose>
+										<c:when test="${ empty requestScope.searchValue }">
+											<button id="startPage"><<</button>
+
+											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+												<button disabled><</button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+												<button id="prevPage"><</button>
+											</c:if>
+
+											<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+												<button onclick="pageButtonAction(this.innerText);">
+													<c:out value="${ p }" />
+												</button>
+											</c:if>
+
+
+											<!-- max페이지에 대한 내용  -->
+											<c:if
+												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+												<button disabled>></button>
+											</c:if>
+											<c:if
+												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+												<button id="nextPage">></button>
+											</c:if>
+
+											<button id="maxPage">>></button>
+										</c:when>
+										<c:otherwise>
+											<button id="searchStartPage"><<</button>
+
+											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+												<button disabled><</button>
+											</c:if>
+											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+												<button id="searchPrevPage"><</button>
+											</c:if>
+
+											<c:forEach var="p"
+												begin="${ requestScope.pageInfo.startPage }"
+												end="${ requestScope.pageInfo.endPage }" step="1">
+												<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+													<button disabled>
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+													<button onclick="seachPageButtonAction(this.innerText);">
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+											</c:forEach>
+
+											<c:if
+												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+												<button disabled>></button>
+											</c:if>
+											<c:if
+												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+												<button id="searchNextPage">></button>
+											</c:if>
+
+											<button id="searchMaxPage">>></button>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
                 </section>
             </section>
             <!--main content end-->
+					<script>
+						const link = "${ pageContext.servletContext.contextPath }/admin/businessjoinList";
+					/* 	const searchLink = "${ pageContext.servletContext.contextPath }/admin/search"; */
 
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+						if (document.getElementById("startPage")) {
+							const $startPage = document
+									.getElementById("startPage");
+							$startPage.onclick = function() {
+								location.href = link + "?currentPage=1";
+							}
+						}
+
+						if (document.getElementById("prevPage")) {
+							const $prevPage = document
+									.getElementById("prevPage");
+							$prevPage.onclick = function() {
+								location.href = link
+										+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+							}
+						}
+
+						if (document.getElementById("nextPage")) {
+							const $nextPage = document
+									.getElementById("nextPage");
+							$nextPage.onclick = function() {
+								location.href = link
+										+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+							}
+						}
+
+						if (document.getElementById("maxPage")) {
+							const $maxPage = document.getElementById("maxPage");
+							$maxPage.onclick = function() {
+								location.href = link
+										+ "?currentPage=${ requestScope.pageInfo.maxPage }";
+							}
+						}
+
+						if (document.getElementById("searchStartPage")) {
+							const $searchStartPage = document
+									.getElementById("searchStartPage");
+							$searchStartPage.onclick = function() {
+								location.href = searchLink
+										+ "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+							}
+						}
+
+						if (document.getElementById("searchPrevPage")) {
+							const $searchPrevPage = document
+									.getElementById("searchPrevPage");
+							$searchPrevPage.onclick = function() {
+								location.href = searchLink
+										+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+							}
+						}
+
+						if (document.getElementById("searchNextPage")) {
+							const $searchNextPage = document
+									.getElementById("searchNextPage");
+							$searchNextPage.onclick = function() {
+								location.href = searchLink
+										+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+							}
+						}
+
+						if (document.getElementById("searchMaxPage")) {
+							const $searchMaxPage = document
+									.getElementById("searchMaxPage");
+							$searchMaxPage.onclick = function() {
+								location.href = searchLink
+										+ "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+							}
+						}
+
+						/* td태그 안에 상세 보기 용 '/admin/adminid?id' 경로 지정  */
+						if (document.getElementsByTagName("td")) {
+
+							const $tds = document.getElementsByTagName("td");
+							for (let i = 0; i < $tds.length; i++) {
+
+								$tds[i].onmouseenter = function() {
+									/*  	this.parentNode.style.backgroundColor = "orangered";
+										this.parentNode.style.cursor = "pointer";   */
+								}
+
+								/* 	 $tds[i].onmouseout = function() {
+										this.parentNode.style.backgroundColor = "gray"; 
+									}  */
+
+								$tds[i].onclick = function() {
+										const bCode =  this.parentNode.children[0].innerText;
+									location.href = "${ pageContext.servletContext.contextPath }/admin/businesscode?bCode=" + bCode;
+
+								}
+
+							}
+
+						}
+
+						function pageButtonAction(text) {
+							location.href = link + "?currentPage=" + text;
+						}
+
+						function seachPageButtonAction(text) {
+							location.href = searchLink
+									+ "?currentPage="
+									+ text
+									+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+						}
+					</script></body> </html> 

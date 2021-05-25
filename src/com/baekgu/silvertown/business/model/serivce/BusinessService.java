@@ -15,11 +15,12 @@ import com.baekgu.silvertown.business.model.dao.BusinessDAO;
 import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
+
 
 public class BusinessService {
 
@@ -188,6 +189,28 @@ public class BusinessService {
 		return payList;
 	}
 
+
+	public PaymentDetailDTO selectPaymentDetail(String getbId, int postAdCode) {
+		
+		Connection con = getConnection();
+		
+		PaymentDetailDTO paymentDetail = businessDAO.selectPaymentDetail(con, getbId, postAdCode);
+		
+		
+		close(con);
+		return paymentDetail;
+	}
+
+	public Map<Integer, Integer> selectpayCount(String getbId) {
+		
+	Connection con = getConnection();
+		
+		Map<Integer, Integer> counts = businessDAO.selectPayCount(con, getbId);
+		
+		close(con);
+		
+		return counts;
+	}
 	public int selectTotalApplicants(String loggedId, int postCode) {
 		
 		Connection con = getConnection();
@@ -241,6 +264,8 @@ public class BusinessService {
 
 
 
+
+	
 
 	
 }

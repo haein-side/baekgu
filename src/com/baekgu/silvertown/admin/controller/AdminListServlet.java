@@ -17,8 +17,8 @@ import com.baekgu.silvertown.common.paging.PageNation;
 /**
  * Servlet implementation class AdminSearchListServletr
  */
-@WebServlet("/admin/search")
-public class AdminSearchListServlet extends HttpServlet {
+@WebServlet("/admin/list")
+public class AdminListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

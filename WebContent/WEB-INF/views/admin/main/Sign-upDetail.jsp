@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
++<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -29,11 +29,6 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
     </head>
     <body>
   <jsp:include page="../common/header.jsp"/>
@@ -53,7 +48,6 @@
                         기업정보
                       </a>
                     </li>
-                    </li>
                   </ul>
                 </header>
                
@@ -64,19 +58,39 @@
                             <h2>기업</h2>
                           <div class="row">
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>회사명 </span>: 자바칩프라푸치노식당</p>
+                              <p><span>기업코드 :</span>
+							  <c:out value="${requestScope.bJoinDTO.bCode }"/>	                              
+                              </p>
                             </div>
                             <div class="bio-row" style="margin-top: 50px;">
-                              <p><span>대표자명 </span>: 자대표</p>
+                              <p><span>회사명 :</span> 
+                              <c:out value="${requestScope.bJoinDTO.bName }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>사업자등록번호 </span>: 123-45-12345</p>
+                              <p><span>대표자명 :</span>
+                              <c:out value="${requestScope.bJoinDTO.bOwner }"/>
+                              </p>
+                            </div>
+                            <div class="bio-row" >
+                              <p><span>사업자등록번호 :</span>
+                              <c:out value="${requestScope.bJoinDTO.bNumber }"/> 
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>주소 </span>: 서울특별시 자바구 푸치동</p>
+                              <p><span>회사주소 :</span>
+                              <c:out value="${requestScope.bJoinDTO.bAddress }"/>
+                              </p>
                             </div>
                             <div class="bio-row">
-                              <p><span>회사전화번호 </span>: 02-2134-5567</p>
+                              <p><span>회사번호 :</span>
+                              <c:out value="${requestScope.bJoinDTO.bPhone }"/>
+                              </p>
+                            </div>
+                            <div class="bio-row">
+                              <p><span>회사연매출액 :</span>
+                              <c:out value="${requestScope.bJoinDTO.bProfit }"/>
+                              </p>
                             </div>
                         </div>
                       </section>
@@ -88,21 +102,37 @@
                               <h2>담당자 </h2>
                             <div class="row">
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>아이디 </span>: javapu </p>
+                                <p><span>아이디 :</span>
+                                <c:out value="${requestScope.bJoinDTO.hrId }"/>
+                                 </p>
                               </div>
                               <div class="bio-row" style="margin-top: 50px;">
-                                <p><span>이름 </span>: 김푸치</p>
+                                <p><span>이름 :</span>
+                                <c:out value="${requestScope.bJoinDTO.hrName }"/>
+                                </p>
                               </div>
                               <div class="bio-row">
-                                <p><span>전화번호</span>: 010-7777-7575</p>
+                                <p><span>전화번호 :</span>
+                                <c:out value="${requestScope.bJoinDTO.hrPhone }"/>
+                                </p>
                               </div>
                               <div class="bio-row">
-                                <p><span>이메일 </span>: javapu@greedy.com</p>
+                                <p><span>이메일 :</span>
+                                <c:out value="${requestScope.bJoinDTO.hrEmail }"/>
+                                </p>
                               </div>
                           </div>
-                          <a class="btn btn-success btn-lg" href="" title="Bootstrap 3 themes generator">
-                            승인하기
-                        </a>
+                        <form action="${ pageContext.servletContext.contextPath }/admin/businesscode?bCode=${ requestScope.bJoinDTO.bCode }" method="post">
+								<!-- 	<input type="text" class="col-lg-6" name="reason" id="joinSubmit" placeholder="가입 승인 사유를 입력해주세요.">  -->
+									<input type="submit" class="btn btn-success" name="Button" onclick="joinButton()" value="가입 승인">
+									<br><br>
+					    </form>
+					    
+					    <form action="${ pageContext.servletContext.contextPath }/admin/businesscode?bCode=${ requestScope.bJoinDTO.bCode }" method="post">
+									<input type="text" class="col-lg-6" name="reason" id="joinBlock" placeholder="가입 거절 사유를 입력해주세요."> 
+									<input type="submit" class="btn btn-warning" name="Button" onclick="joinBlock()" value="가입 거절">
+									
+						 </form>
                         </section>
                       </div>
                   </div>
@@ -114,42 +144,9 @@
           <!-- page end-->
         </section>
       </section>
+      
 
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+
+
+
+</body> </html> 

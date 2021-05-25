@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,11 +30,7 @@
         <link href="RESOURCES/CSS/ADMIN/style.css" rel="stylesheet">
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
-        <!-- ======================================================= Theme Name:
-        NiceAdmin Theme URL:
-        https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ Author:
-        BootstrapMade Author URL: https://bootstrapmade.com
-        ======================================================= -->
+
     </head>
    <body>
    <jsp:include page="../common/header.jsp"/>
@@ -56,133 +53,244 @@
                     <div class="col-lg-12">
                       <section class="panel">
                         <header class="panel-heading">
-                          기업 리스트
-                          <a class="btn btn-success" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
-                            정상기업 모아보기
-                        </a>
-                        <a class="btn btn-warning" data-toggle="modal" href="#myModal2" style="margin-left: 30px;">
-                            차단기업 모아보기
-                        </a>
+                          공고 리스트
                         </header>
                         <div class="table-responsive">
                           <table class="table">
                             <thead>
                               <tr>
-                                <th><input type="checkbox" id="checkAll"></th>
-                                <th>제목</th>
-                                <th>지역</th>
-                                <th>모집시작일</th>
-                                <th>모집마감일</th>
-                                <th>등록일</th>
+                                <th>공고코드</th>
+                                <th>공고제목</th>
+                                <th>공고업로드 시작일</th>
+                                <th>공고업로드 종료일</th>
+                                <th>공고종료 여부</th>
+                                <th>온라인 접수 여부</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th><input type="checkbox"></th>
-                                <td><a href="PostDetail.html">[주5일]홀서빙 모집하고 있습니다</a></td>
-                                <td>강남구</td>
-                                <td>2021/05/07</td>
-                                <td>2021/05/30</td>
-                                <td>2021/05/05</td>
-                              </tr>
-                              <tr>
-                                <th><input type="checkbox"></th>
-                                <td><a href="">[재택근무/주5일]소형용달이사 기사배차팀 직원모집</a></td>
-                                <td>관악구</td>
-                                <td>2021/05/07</td>
-                                <td>2021/05/30</td>
-                                <td>2021/05/05</td>
-                              </tr>
-                              <tr>
-                                <th><input type="checkbox"></th>
-                                <td><a href="">반도체 생산직 모집공고</a></td>
-                                <td>구로구</td>
-                                <td>2021/05/07</td>
-                                <td>2021/05/30</td>
-                                <td>2021/05/05</td>
-                              </tr>
-                              <tr>
-                                <th><input type="checkbox"></th>
-                                <td><a href="">주방업무외/월 250만원</a></td>
-                                <td>서초구</td>
-                                <td>2021/05/07</td>
-                                <td>2021/05/30</td>
-                                <td>2021/05/05</td>
-                              </tr>
+                              <c:forEach var="post" items="${ requestScope.postList }">
+                              	<tr>
+                              		<td><c:out value="${ post.postCode }"/></td>
+                              		<td><c:out value="${ post.postTitle }"/></td>
+                              		<td><c:out value="${ post.startDate }"/></td>
+                              		<td><c:out value="${ post.endDate }"/></td>
+                              		<jsp:useBean id="now" class="java.util.Date" /> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+									<fmt:formatDate value="${ post.endDate }" pattern="yyyy-MM-dd" var="endday"/>
+									<c:choose>
+										<c:when test="${today <= endday }">
+											<td>
+											<c:out value="게시중"/>
+											</td>
+										</c:when>
+										<c:when test="${today >  endday}">
+											<td>
+											<c:out value="게시종료"/>
+											</td>
+										</c:when>
+									</c:choose>
+                              		
+                              		<c:choose>
+                              			<c:when test="${ post.online eq 0 }">
+                              				<td>
+                              					<c:out value="N"/>
+                              				</td>
+                              			</c:when>
+                              			<c:when test="${ post.online eq 1 }">
+                              				<td>
+                              					<c:out value="Y"/>
+                              				</td>
+                              			</c:when>
+                              		</c:choose>
+                              	</tr>
+                              </c:forEach>
                             </tbody>
                           </table>
                         </div>
+<%-- 페이지 처리 --%>
+		<div class="pagingArea" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
 
-                <!--하단 페이지 넘기기-->
-                <section class="panel">
-                <div class="panel-body">
-                  <div class="text-center">
-                    <ul class="pagination">
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#">»</a></li>
-                    </ul>
-                  </div>
-                <!--하단 페이지 넘기기-->
-              <a class="btn btn-danger" data-toggle="modal" href="#myModal3">
-                차단하기
-              </a>
-              <!--  search form start -->
-              <ul class="nav top-menu" style="float: right;">
-                <li>
-                  <form class="navbar-form">
-                    <input class="form-control" placeholder="Search" type="text">
-                    <button type="submit" class="btn btn-primary">검색하기</button>
-                  </form>
-                </li>
-              </ul>
-              <!--  search form end -->
+							<!-- 검색 폼 -->
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/postSearch" method="get">		
+			<div class="search-area" align="center">
+				<c:choose>
+				    <c:when test="${ !empty requestScope.searchValue }">
+   					    <select id="searchCondition" name="searchCondition">
+							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>기업명</option>
+							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>기업코드</option>
+							<option value="category" <c:if test="${requestScope.searchCondition eq 'category'}">selected</c:if>>기업분류</option>
+							<option value="state" <c:if test="${requestScope.searchCondition eq 'state'}">selected</c:if>>승인여부</option>
+						</select>
+				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
+				    </c:when>
+				    <c:otherwise>
+					    <select id="searchCondition" name="searchCondition">
+							<option value="name">기업명</option>
+							<option value="code">기업코드</option>
+							<option value="category">기업분류</option>
+							<option value="state">승인여부</option>
+						</select>
+				        <input type="search" id="searchValue" name="searchValue" >
+				    </c:otherwise>
+				</c:choose>
+				<button type="submit">검색하기</button>
+				<c:if test="${ !empty requestScope.loginMember }">
+					<button id="writeBoard">작성하기</button>
+				</c:if>
+			</div>
+		</form>
+		<script>
+		const link = "${ pageContext.servletContext.contextPath }/admin/postList";
+		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+			
+		if(document.getElementById("startPage")) {
+			const $startPage = document.getElementById("startPage");
+			$startPage.onclick = function() {
+				location.href = link + "?currentPage=1";
+			}
+		}
+		
+		if(document.getElementById("prevPage")) {
+			const $prevPage = document.getElementById("prevPage");
+			$prevPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+			}
+		}
+		
+		if(document.getElementById("nextPage")) {
+			const $nextPage = document.getElementById("nextPage");
+			$nextPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+			}
+		}
+		
+		if(document.getElementById("maxPage")) {
+			const $maxPage = document.getElementById("maxPage");
+			$maxPage.onclick = function() {
+				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+			}
+		}
+		
+		if(document.getElementById("searchStartPage")) {
+			const $searchStartPage = document.getElementById("searchStartPage");
+			$searchStartPage.onclick = function() {
+				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchPrevPage")) {
+			const $searchPrevPage = document.getElementById("searchPrevPage");
+			$searchPrevPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchNextPage")) {
+			const $searchNextPage = document.getElementById("searchNextPage");
+			$searchNextPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementById("searchMaxPage")) {
+			const $searchMaxPage = document.getElementById("searchMaxPage");
+			$searchMaxPage.onclick = function() {
+				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		}
+		
+		if(document.getElementsByTagName("td")) {
+			
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.cursor = "pointer";
+				}
+				
+				
+				$tds[i].onclick = function() {
+					
+					/* alert(this.parentNode.children[0].innerText); */ //유저코드를 알럿으로 띄워 알 수 있다.
+					const no = this.parentNode.children[0].innerText;
+					location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
+					
+				}
+				
+			}
+			
+		} 
+		
+		function pageButtonAction(text) {
+			location.href = link + "?currentPage=" + text;
+		}
+		function seachPageButtonAction(text) {
+			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+		}
+	</script>
 
             </section>
             <!--main content end-->
         </section>
         <!-- container section start -->
 
-
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+</body> 
+</html> 

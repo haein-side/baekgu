@@ -72,19 +72,19 @@ footer {
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">담당자 성함(필수)</label>
 						<div class="col-sm-3">
-							<input type="" class="form-control" name="name" placeholder="담당자명 입력" value="김현빈">
+							<input type="" class="form-control" name="name" placeholder="담당자명 입력">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">전화번호(필수)</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="phone" placeholder="ex) 010-xxxx-xxxx" value="01091823376">
+							<input type="text" class="form-control" name="phone" placeholder="ex) 010-xxxx-xxxx">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">이메일 주소(필수)</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="email" placeholder="이메일 주소" value="doqntlrdl123@gmail.com">
+							<input type="text" class="form-control" name="email" placeholder="이메일 주소">
 						</div>
 					</div>
 
@@ -134,11 +134,11 @@ footer {
 						<label for="inputPassword3" class="col-sm-2 control-label">기업
 							주소</label> <small>우편번호</small> <input type="button" value="검색" class="btn btn-yg" id="searchZipCode">
 							<br>
-							<input type="text" name="zipCode" id="zipCode" readonly class="" value="123456">
+							<input type="text" name="zipCode" id="zipCode" readonly class="">
 							<small>주소</small>
-							<input type="text" name="address1" id="address1" readonly class="" value="힐스테이즈중앙">
+							<input type="text" name="address1" id="address1" readonly class="">
 							<small>상세주소</small>
-							<input type="text" name="address2" id="address2" class="l" value="105동 2005호">
+							<input type="text" name="address2" id="address2" class="l">
 					</div>
 					<div class="col-sm-0 sidenav"></div>
 					<br> <br> <br> <br> <br>
@@ -149,7 +149,7 @@ footer {
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">모집분야명(업종)</label>
 						<div class="col-sm-1">
-							<select name="industry" id="" required="" class="">
+							<select name="industry" id="" required class="">
 								<option>----선택-----</option>
 								<option value="1">식당/서빙</option>
 								<option value="2">매장관리</option>
@@ -167,7 +167,7 @@ footer {
 						<label for="inputPassword3" class="col-sm-2 control-label">담당엄무(직종)</label>
 						<div class="col-sm-1">
 
-							<select name="job" id="" required="" class="">
+							<select name="job" id="" required class="">
 								<option>----선택-----</option>
 								<option value="1">식당/서빙</option>
 								<option value="2">매장관리</option>
@@ -200,7 +200,7 @@ footer {
 						<label for="inputPassword3" class="col-sm-2 control-label">경력 기간</label>
 						<div class="col-sm-1">
 
-							<select name="exp" id="" required="" class="">
+							<select name="exp" id="" required class="">
 								<option>----선택-----</option>
 								<option value="1">경력 없음</option>
 								<option value="2">1년 이하</option>
@@ -216,7 +216,7 @@ footer {
 						<label for="inputPassword3" class="col-sm-2 control-label">학력</label>
 						<div class="col-sm-1">
 
-							<select name="degree" id="" required="" class="">
+							<select name="degree" id="" required class="">
 								<option>----선택-----</option>
 								<option value="1">무관</option>
 								<option value="2">초등학교 졸업</option>

@@ -5,26 +5,26 @@
 		SELECT
 		       COUNT(*)
 		  FROM BUSINESS a, DECISION_LIST b
-         WHERE a.D_LIST_CODE = b.D_LIST_CODE
-	       AND b.D_LIST_REASON is not null
+         where a.D_LIST_CODE = b.D_LIST_CODE
+           and ((b.DECISION_CODE = 2 and b.D_LIST_TYPE_CODE = 3) or (b.DECISION_CODE = 3 and b.D_LIST_TYPE_CODE = 3))
 	</entry>
 	<entry key="selectCompanyList">
-		SELECT
-		       a.B_CODE
-		     , a.B_NAME
-		     , a.B_OWNER
-		     , a.B_NUMBER
-		     , a.B_ADDRESS
-		     , a.B_PHONE
-		     , a.B_BLOCK
-		     , a.B_CATEGORY_CODE
-		     , a.D_LIST_CODE
-		     , b.DECISION_CODE
-		     , b.D_LIST_TYPE_CODE
-		     from business a, decision_list b
-  			where a.D_LIST_CODE = b.D_LIST_CODE
-              and b.D_LIST_REASON is not null
-            LIMIT ?,?
+	    SELECT
+		      a.B_CODE
+		    , a.B_NAME
+		    , a.B_OWNER
+		    , a.B_NUMBER
+		    , a.B_ADDRESS
+		    , a.B_PHONE
+		    , a.B_BLOCK
+		    , a.B_CATEGORY_CODE
+		    , a.D_LIST_CODE
+		    , b.DECISION_CODE
+		    , b.D_LIST_TYPE_CODE
+		 from business a, decision_list b
+  	    where a.D_LIST_CODE = b.D_LIST_CODE
+          and ((b.DECISION_CODE = 2 and b.D_LIST_TYPE_CODE = 3) or (b.DECISION_CODE = 3 and b.D_LIST_TYPE_CODE = 3))
+        LIMIT ?,?
 	</entry>
 	<entry key="selectCompanyDetail">
 		SELECT
@@ -82,7 +82,7 @@
 		     , b.D_LIST_TYPE_CODE
 		  FROM BUSINESS a, DECISION_LIST b
   	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
-           AND b.D_LIST_REASON is not null
+           and ((b.DECISION_CODE = 2 and b.D_LIST_TYPE_CODE = 3) or (b.DECISION_CODE = 3 and b.D_LIST_TYPE_CODE = 3))
            AND a.B_BLOCK = 1
          LIMIT ?,10
 	</entry>
@@ -118,18 +118,21 @@
 	           COUNT(*)
 	      FROM BUSINESS
 	     WHERE BUSINESS.B_NAME LIKE '%' ? '%'
+	     AND B.D_LIST_REASON is not null
 	</entry>
 	<entry key="searchCodeCompanyCount">
 	    SELECT
 	           COUNT(*)
 	      FROM BUSINESS
 	     WHERE BUSINESS.B_CODE LIKE '%' ? '%'
+	     AND B.D_LIST_REASON is not null
 	</entry>
 	<entry key="searchCategoryCompanyCount">
 	    SELECT
 	           COUNT(*)
 	      FROM BUSINESS
 	     WHERE BUSINESS.B_CATEGORY_CODE LIKE '%' ? '%'
+	     AND B.D_LIST_REASON is not null
 	</entry>
 	<entry key="searchReturnStateCompanyCount">
 	    SELECT
@@ -138,15 +141,16 @@
 	     WHERE A.D_LIST_CODE = B.D_LIST_CODE
 	       and B.DECISION_CODE = 3
 	       and B.D_LIST_TYPE_CODE = 3
+	       AND B.D_LIST_REASON is not null
 	</entry>
 	<entry key="searchStateCompanyCount">
-		SELECT
+	    SELECT
 		       COUNT(*)
 		  FROM BUSINESS A, DECISION_LIST B
   	     WHERE A.D_LIST_CODE = B.D_LIST_CODE
-      <![CDATA[and B.DECISION_CODE < 3 ]]>
-	       and B.D_LIST_TYPE_CODE = 3
-	       and B.D_LIST_REASON is not null
+  	   AND NOT (B.DECISION_CODE = 3  <![CDATA[&&]]> B.D_LIST_TYPE_CODE = 3 )
+	       AND B.D_LIST_REASON is not null
+	       
 	</entry>
 	<entry key="searchNameCompanyList">
 	    SELECT
@@ -164,6 +168,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_NAME LIKE '%' ? '%'
+	       AND B.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchCodeCompanyList">
@@ -182,6 +187,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_CODE LIKE '%' ? '%'
+	       AND B.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchCategoryCompanyList">
@@ -200,6 +206,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_CATEGORY_CODE LIKE '%' ? '%'
+	       AND B.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchReturnStateCompanyList">
@@ -219,6 +226,7 @@
 	     WHERE A.D_LIST_CODE = B.D_LIST_CODE
 	       and B.DECISION_CODE = 3
 	       and B.D_LIST_TYPE_CODE = 3
+	       AND B.D_LIST_REASON is not null
 	     LIMIT ?,10
 	</entry>
 	<entry key="searchStateCompanyList">
@@ -235,11 +243,38 @@
 		     , b.DECISION_CODE
 		     , b.D_LIST_TYPE_CODE
 		  FROM BUSINESS a, DECISION_LIST b
-	     WHERE A.D_LIST_CODE = B.D_LIST_CODE
-  <![CDATA[and B.DECISION_CODE < 3 ]]>
-	       and B.D_LIST_TYPE_CODE = 3
-	       and B.D_LIST_REASON is not null
+	  	 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+  	   AND NOT (B.DECISION_CODE = 3  <![CDATA[&&]]> B.D_LIST_TYPE_CODE = 3 )
+	       AND B.D_LIST_REASON is not null
 	     LIMIT ?,10
+	</entry>
+	<entry key="selectReportCode">
+	   	SELECT A.D_LIST_CODE
+          FROM DECISION_LIST A, REPORT B
+         WHERE A.D_LIST_CODE = B.D_LIST_CODE
+           AND B.POST_CODE = ?
+           AND A.D_LIST_TYPE_CODE = 2
+	</entry>
+	<entry key="updateBlockDecisionList">
+        UPDATE DECISION_LIST 
+          SET D_LIST_REASON = ?
+            , D_LIST_DATE = now()
+            , DECISION_CODE = 2
+            , ADMIN_ID = ?
+        WHERE D_LIST_CODE = ?
+	</entry>
+	<entry key="updateBlockCompany">
+		UPDATE BUSINESS 
+	       SET B_BLOCK = 1
+	     WHERE B_CODE = ?
+	</entry>
+	<entry key="updateNoBlockDecisionList">
+        UPDATE DECISION_LIST 
+          SET D_LIST_REASON = ?
+            , D_LIST_DATE = now()
+            , DECISION_CODE = 2
+            , ADMIN_ID = ?
+        WHERE D_LIST_CODE = ?
 	</entry>
 
 </properties>

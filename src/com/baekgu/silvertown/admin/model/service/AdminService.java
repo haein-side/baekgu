@@ -84,4 +84,27 @@ public class AdminService {
 		
 
 	}
-}
+
+	/**
+	 * 관리자 검색 결과 개수 조회용 메소드
+	 * @param condition 검색조건
+	 * @param value 값 
+	 * @return
+	 */
+	public int searchAdminCount(String condition, String value) {
+		
+		/* Connection 생성 */
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.searchAdminCount(con, condition, value);
+		
+		close(con);
+		
+		return totalCount;
+		
+		
+	}
+
+
+	}
+

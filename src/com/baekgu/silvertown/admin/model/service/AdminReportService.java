@@ -51,6 +51,75 @@ public class AdminReportService {
 		return reportList;
 	}
 
+	/**
+	 * 접수대기중인 신고내역 카운트
+	 * @return
+	 */
+	public int selectWaitTotalCount() {
+
+		Connection con = getConnection();
+		
+		int totalCount = reportDAO.selectWaitReportCount(con);
+		
+		close(con);
+
+		return totalCount;
+	}
+
+	/**
+	 * 접수대기 신고내역 리스트 조회
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BlockDTO> waitReportList(PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<BlockDTO> waitList = reportDAO.selectWaitReportList(con, pageInfo);
+		
+		close(con);
+		
+		return waitList;
+	}
+
+	/**
+	 * 검색결과 리스트
+	 * @param condition
+	 * @param value
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BlockDTO> selectSearchReport(String condition, String value, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		System.out.println("서비스 condition : " + condition);
+		List<BlockDTO> searhList = reportDAO.selectSearchReportList(con, pageInfo,value,condition);
+		
+		close(con);
+		
+		return searhList;
+	}
+
+	/**
+	 * 서치할 수 카운트
+	 * @param condition
+	 * @param value
+	 * @return
+	 */
+	public int SearhCount(String condition, String value) {
+		
+		Connection con = getConnection();
+		
+		int count = reportDAO.searchReportCount(con, condition, value);
+		
+		close(con);
+		
+		return count;
+	}
+
+
+
+
 }
 
 
