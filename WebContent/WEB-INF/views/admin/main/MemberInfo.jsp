@@ -175,9 +175,6 @@
 				    </c:otherwise>
 				</c:choose>
 				<button type="submit">검색하기</button>
-				<c:if test="${ !empty requestScope.loginMember }">
-					<button id="writeBoard">작성하기</button>
-				</c:if>
 			</div>
 		</form>
 		<script>

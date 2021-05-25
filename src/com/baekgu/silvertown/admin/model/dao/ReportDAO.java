@@ -17,6 +17,7 @@ import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.ReportDTO;
 
 public class ReportDAO {
 	
@@ -186,7 +187,7 @@ public class ReportDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setInt(1, (pageInfo.getStartPage()-1));
+			pstmt.setInt(1, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
 			
@@ -216,7 +217,7 @@ public class ReportDAO {
 				
 			}
 			
-			System.out.println("정상 기업 리스트 : " + waitList);
+			System.out.println("대기 리스트 : " + waitList);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -227,6 +228,129 @@ public class ReportDAO {
 
 		return waitList;
 	}
+
+	/**
+	 * 검색결과 리스트 
+	 * @param con
+	 * @param pageInfo
+	 * @param value
+	 * @param condition
+	 * @return
+	 */
+	public List<BlockDTO> selectSearchReportList(Connection con, PageInfoDTO pageInfo, String value, String condition) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+			
+		List<BlockDTO> searchList = null;
+		
+		String query = null;
+		
+		System.out.println("condition : " + condition);
+		
+		if(condition.equals("userCode")) {
+			
+			query = prop.getProperty("searchUserCodeReport");
+			
+		} else if(condition.equals("postCode")) {
+			
+			query = prop.getProperty("searchPostCodeReport");
+			
+		} 	
+		
+		System.out.println("사용 쿼리 : " + query);
+			
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, value);
+			pstmt.setInt(2, pageInfo.getStartRow());
+			
+			rset = pstmt.executeQuery();
+			
+			searchList = new ArrayList<>();
+			
+			while(rset.next()) {
+				
+				
+				BlockDTO report = new BlockDTO();
+				
+				report.setrCode(rset.getInt("REPORT_CODE"));
+				report.setrReason(rset.getString("REPORT_REASON"));
+				report.setrDate(rset.getDate("REPORT_DATE"));
+				report.setPostCode(rset.getInt("POST_CODE"));
+				report.setUserCode(rset.getInt("USER_CODE"));
+				report.setDlCode(rset.getInt("D_LIST_CODE"));
+				
+				report.setbCode(rset.getInt("D_LIST_CODE"));
+				report.setbReason(rset.getString("D_LIST_REASON"));
+				report.setbDate(rset.getDate("D_LIST_DATE"));
+				report.setBdCode(rset.getInt("DECISION_CODE"));
+				report.setBdTCode(rset.getInt("D_LIST_TYPE_CODE"));
+				report.setAdmin(rset.getString("ADMIN_ID"));
+				
+				searchList.add(report);
+				
+			}
+			System.out.println("검색 리스트 : " + searchList);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return searchList;
+	}
+
+	public int searchReportCount(Connection con, String condition, String value) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		//쿼리문이 셀렉트 옵션의 갯수에 따라 나온다. 따라서 null로 선언을 해주고 후에 if문으로 값을 준다
+		String query = null;
+		int count = 0;
+		
+		if(condition.equals("userCode")) {
+			
+			query = prop.getProperty("searchUserCodeCount");
+			
+		} else if(condition.equals("postCode")) {
+			
+			query = prop.getProperty("searchPostCodeCount");
+			
+		} 
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, value);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("사용 쿼리 : " + query);
+		System.out.println("count : " + count);
+		
+		return count;
+		
+		
+	}
+
+
+	
+	
 
 }
 

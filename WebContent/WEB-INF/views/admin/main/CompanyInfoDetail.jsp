@@ -131,7 +131,7 @@
                       
                     </div>
                     
-                    <!-- 기업정보 -->
+                    <!-- 담당자정보 -->
                         <div class="table-responsive">
                           <table class="table">
                             <thead>

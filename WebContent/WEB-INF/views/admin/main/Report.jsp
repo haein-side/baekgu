@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -118,7 +118,7 @@
                                 </tbody>
                               </table>
                             </div>
-<%-- 페이지 처리 --%>
+		<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
@@ -180,20 +180,20 @@
 			</c:choose>   
 
 							<!-- 검색 폼 -->
-		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/reportSearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>
 				    <c:when test="${ !empty requestScope.searchValue }">
    					    <select id="searchCondition" name="searchCondition">
-							<option value="code" <c:if test="${requestScope.searchCondition eq 'userCode'}">selected</c:if>>유저코드</option>
-							<option value="yaer" <c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
+							<option value="userCode" <c:if test="${requestScope.searchCondition eq 'userCode'}">selected</c:if>>유저코드</option>
+							<option value="postCode" <c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 				    </c:when>
 				    <c:otherwise>
 					    <select id="searchCondition" name="searchCondition">
-							<option value="code">유저코드</option>
-							<option value="name">공고코드</option>
+							<option value="userCode">유저코드</option>
+							<option value="postCode">공고코드</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" >
 				    </c:otherwise>
@@ -226,7 +226,7 @@
 			const $nextPage = document.getElementById("nextPage");
 			$nextPage.onclick = function() {
 				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
-			}3
+			}
 		}
 		
 		if(document.getElementById("maxPage")) {
@@ -276,17 +276,16 @@
 				
 				$tds[i].onclick = function() {
 
-				  /* alert(target); */
+				/* alert(target); */
 				  
-				  //0번째 히든처리 되어 있는 값이 1일경우는 고객을 신고하는 것이고 2일경우는 기업을 신고하는 것이다.
-				  //그에 따라 1일경우 신고당한 고객의 상세정보로, 아닐경우 기업의 공고 정보로 넘긴다. 
 				  if(this.parentElement.children[0].children[0].value == 1){
+
 					const no = this.parentNode.children[7].innerText;
+					
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
 				  } else{
-					 //현재 기업코드로 넘어가게 설정되어 있다. 공고승인 완성시, 공고코드로 넘어가도록 바꿔줘야 한다. 
 					 const no = this.parentNode.children[6].innerText;
-				     location.href = "${ pageContext.servletContext.contextPath }/admin/companydetail?no=" + no;
+				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
 											
 					

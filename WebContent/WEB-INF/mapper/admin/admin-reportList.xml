@@ -50,6 +50,56 @@
 		   AND DECISION_LIST.DECISION_CODE = 1
 		 LIMIT ?,10
 	</entry>
+	<entry key="searchUserCodeReport">
+		SELECT
+		       A.REPORT_CODE
+		     , A.REPORT_REASON
+		     , A.REPORT_DATE
+		     , A.POST_CODE
+		     , A.USER_CODE
+		     , A.D_LIST_CODE
+		     , B.D_LIST_CODE
+		     , B.D_LIST_REASON
+		     , B.D_LIST_DATE 
+		     , B.DECISION_CODE 
+		     , B.D_LIST_TYPE_CODE 
+		     , B.ADMIN_ID 
+		  FROM REPORT A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.USER_CODE LIKE '%' ? '%'
+		 LIMIT ?,10
+	</entry>
+	<entry key="searchPostCodeReport">
+		SELECT
+		       A.REPORT_CODE
+		     , A.REPORT_REASON
+		     , A.REPORT_DATE
+		     , A.POST_CODE
+		     , A.USER_CODE
+		     , A.D_LIST_CODE
+		     , B.D_LIST_CODE
+		     , B.D_LIST_REASON
+		     , B.D_LIST_DATE 
+		     , B.DECISION_CODE 
+		     , B.D_LIST_TYPE_CODE 
+		     , B.ADMIN_ID 
+		  FROM REPORT A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.POST_CODE LIKE '%' ? '%'
+		 LIMIT ?,10
+	</entry>
+	<entry key="searchUserCodeCount">
+   SELECT
+	      COUNT(*)
+	 FROM REPORT
+	WHERE REPORT.USER_CODE LIKE '%' ? '%'
+	</entry>
+	<entry key="searchPostCodeCount">
+   SELECT
+	      COUNT(*)
+	 FROM REPORT
+	WHERE REPORT.POST_CODE LIKE '%' ? '%'
+	</entry>
 
 	
 

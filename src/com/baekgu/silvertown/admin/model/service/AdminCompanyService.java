@@ -1,12 +1,15 @@
 package com.baekgu.silvertown.admin.model.service;
 
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.close;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.commit;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
+import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.baekgu.silvertown.admin.model.dao.CompanyDAO;
+import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
@@ -181,7 +184,75 @@ public class AdminCompanyService {
 		
 		return companyList;
 	}
+	
 
+	/**
+	 * 기업코드와 일치하는 d_list_code 조회
+	 * @return
+	 */
+	public int selectDecisionCode(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int result = companyDAO.selectDecisionCode(con, block);
+		
+
+		return result;
+	}
+
+
+
+	/**
+	 * 기업 블락
+	 * @param block
+	 * @return
+	 */
+	public int updateBlockCompany(BlockDTO block) {
+		
+		Connection con = getConnection();
+		
+		int result = companyDAO.updateBlockCompany(con, block);
+		int result2 = 0;
+		
+		if(result > 0) {
+			
+			System.out.println("관련 신고내역 업데이트 성공 커밋!");
+			commit(con);
+			
+			result2 = companyDAO.updateBlock(con, block);
+			
+			if(result2 > 0) {
+				System.out.println("기업 차단 성공 커밋!");
+				commit(con);
+			}
+			
+			
+		}else {
+			System.out.println("회원 블락 실패 롤백!");
+			rollback(con);
+		}
+		
+		return result2;
+	}
+
+	public int updateNoBlockCompany(BlockDTO block) {
+		
+Connection con = getConnection();
+		
+		int result = companyDAO.updateNoBlockCompany(con, block);
+		
+		if(result > 0) {
+			
+			System.out.println("관련 신고거절내역 업데이트 성공 커밋!");
+			commit(con);
+
+		}else {
+			System.out.println("관련 신고거절내역 업데이트 실패 롤백!");
+			rollback(con);
+		}
+		
+		return result;
+	}
 
 
 
