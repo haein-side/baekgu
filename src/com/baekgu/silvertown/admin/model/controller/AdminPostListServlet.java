@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
-import com.baekgu.silvertown.admin.model.service.AdminCompanyService;
+import com.baekgu.silvertown.admin.model.dto.PostDTO;
+import com.baekgu.silvertown.admin.model.service.AdminPostService;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.paging.PageNation;
 
 /**
- * Servlet implementation class AdminCompanyBlockList
+ * Servlet implementation class AdminPostListServlet
  */
-@WebServlet("/admin/blockCompany")
-public class AdminCompanyBlockList extends HttpServlet {
+@WebServlet("/admin/postList")
+public class AdminPostListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -35,52 +35,33 @@ public class AdminCompanyBlockList extends HttpServlet {
 		
 		System.out.println("currentPage : " + currentPage);
 		System.out.println("pageNo : " + pageNo);
+
+		AdminPostService postService = new AdminPostService();
+		int count = postService.selectTotalCount();
 		
-		AdminCompanyService blockListService = new AdminCompanyService();
-		int totalCount = blockListService.selectBlockTotalCount();
-		
-		int limit = 1;
+
+		int limit = 10;
 		int buttonAmount = 5;
 		
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, pageNo, limit, buttonAmount);
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, count, limit, buttonAmount);
 		
-		List<CompanyDTO> companyList = blockListService.blockCompanyList(pageInfo);
+		List<PostDTO> postList = postService.selectPostList(pageInfo);
 		
 		String path = "";
-		if(companyList != null) {
-			path = "/WEB-INF/views/admin/main/CompanyInfo.jsp";
-			request.setAttribute("companyList", companyList);
+		
+		if(postList != null) {
+			path = "/WEB-INF/views/admin/main/Post.jsp";
+			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
 		} else {
 			path = "/WEB-INF/views/admin/common/errorPage.jsp";
-			request.setAttribute("message", "기업 목록 조회를 실패했습니다. 관련 오류는 개발자에게 문의해주세요.");
+			request.setAttribute("message", "공고 목록 조회를 실패했습니다. 관련 오류는 개발자에게 문의해주세요.");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

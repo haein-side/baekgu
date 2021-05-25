@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectPostTotalCount">
+	    SELECT
+		       COUNT(*)
+		  FROM POST A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+	       AND B.D_LIST_REASON is not null
+	</entry>
+	<entry key="selectPostList">
+	  	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+		  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+	       AND B.D_LIST_REASON is not null
+	     LIMIT ?, 10
+	</entry>
+	<entry key="selectPostDetail">
+	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+	    	 , K.B_CODE
+	    	 , L.B_BLOCK
+			  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J, HR K, BUSINESS L
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+		   AND A.HR_ID = K.HR_ID
+		   AND K.B_CODE = L.B_CODE
+	       AND B.D_LIST_REASON is not null
+	       AND A.POST_CODE = ?
+	</entry>
+	<entry key="selectAdList">
+	    SELECT
+	           A.POST_AD_CODE
+	         , A.POST_AD_DATE
+	         , A.POST_AD_PAID  
+	         , A.POST_AD_WEEK
+	         , A.AD_CODE
+	         , B.AD_NAME
+	         , B.AD_PRICE
+	         , A.P_METHOD_CODE
+	         , C.P_METHOD_NAME
+	      FROM POST_AD_PAYMENT A, AD B, PAYMENT_METHOD C
+	     WHERE A.AD_CODE = B.AD_CODE
+	       AND A.P_METHOD_CODE = C.P_METHOD_CODE
+	       AND POST_CODE = ?
+	</entry>
+
+</properties>
+
+
+

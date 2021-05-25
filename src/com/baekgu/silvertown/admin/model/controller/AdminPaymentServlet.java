@@ -9,17 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.baekgu.silvertown.admin.model.dto.CompanyDTO;
-import com.baekgu.silvertown.admin.model.service.AdminCompanyService;
+import com.baekgu.silvertown.admin.model.dto.PaymentDTO;
+import com.baekgu.silvertown.admin.model.service.AdminPaymentService;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.paging.PageNation;
 
 /**
- * Servlet implementation class AdminCompanyBlockList
+ * Servlet implementation class AdminPaymentServlet
  */
-@WebServlet("/admin/blockCompany")
-public class AdminCompanyBlockList extends HttpServlet {
-	
+@WebServlet("/admin/payment")
+public class AdminPaymentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String currentPage = request.getParameter("currentPage");
@@ -33,54 +32,40 @@ public class AdminCompanyBlockList extends HttpServlet {
 			pageNo = 1;
 		}
 		
-		System.out.println("currentPage : " + currentPage);
+		System.out.println("currentPage : "+currentPage);
 		System.out.println("pageNo : " + pageNo);
 		
-		AdminCompanyService blockListService = new AdminCompanyService();
-		int totalCount = blockListService.selectBlockTotalCount();
+		AdminPaymentService paymentService = new AdminPaymentService();
 		
-		int limit = 1;
+		int totalCount = paymentService.selectPaymentTotalCount();
+		
+		int limit = 10;
 		int buttonAmount = 5;
 		
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, pageNo, limit, buttonAmount);
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
 		
-		List<CompanyDTO> companyList = blockListService.blockCompanyList(pageInfo);
+		List<PaymentDTO> paymentList = paymentService.SelectpaymentList(pageInfo);
+		
+		System.out.println("servlet paymentList : " + paymentList);
 		
 		String path = "";
-		if(companyList != null) {
-			path = "/WEB-INF/views/admin/main/CompanyInfo.jsp";
-			request.setAttribute("companyList", companyList);
+		if(paymentList != null) {
+			path = "/WEB-INF/views/admin/main/Payment.jsp";
+			request.setAttribute("paymentList", paymentList);
 			request.setAttribute("pageInfo", pageInfo);
 		} else {
 			path = "/WEB-INF/views/admin/common/errorPage.jsp";
-			request.setAttribute("message", "기업 목록 조회를 실패했습니다. 관련 오류는 개발자에게 문의해주세요.");
+			request.setAttribute("message", "결제내역 목록 조회를 실패했습니다. 관련 오류는 개발자에게 문의해주세요.");
 		}
 		
+		
 		request.getRequestDispatcher(path).forward(request, response);
+		
+		
 	}
 
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

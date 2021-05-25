@@ -39,6 +39,15 @@
 
 <!-- script 시작 -->
 <script type="text/javascript">
+
+	window.onload = function(){
+		
+		
+		
+		
+		
+		
+	}
     
          $(".btn1 lo").click(function() {
 		    if ($(this).hasClass("btnSelected")) {
@@ -88,6 +97,8 @@
 	        			console.log(document.getElementById("l" + i));
 	        			if(document.getElementById("l" + i).checked == true){
 	        				location += document.getElementById("l" + i).value + "&";
+	        			} else {
+	        				location += "";
 	        			}
 							        		
 	        		}
@@ -103,6 +114,8 @@
 	        			if(document.getElementById("i" + i).checked == true){
 	        				location += document.getElementById("i" + i).value + "&";
 	        				console.log(location);
+	        			} else {
+	        				location += "";
 	        			}
 							        		
 	        		}
@@ -118,6 +131,8 @@
 	        			if(document.getElementById("p" + i).checked == true){
 	        				location += document.getElementById("p" + i).value + "&";
 	        				console.log(location);
+	        			} else {
+	        			    location += "";
 	        			}
 							        		
 	        		}
@@ -224,7 +239,7 @@
                         <div class="section_title text-center">
                             <hr>                    	
                     		<h2 style="color: orange;">희망 지역을 선택해주세요.</h2>
-							<p>두 지역까지 선택이 가능합니다.</p><br>
+							<p>여러 개 선택이 가능합니다.</p><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
                                 	
@@ -313,7 +328,7 @@
 						</div>		
                         <div class="section_title text-center">
                             <hr>
-                            <h2 style="color: orange;"> 희망 직종을 선택해주세요.</h2>
+                            <h2 style="color: orange;"> 희망 업종을 선택해주세요.</h2>
                             <p>한 가지만 선택이 가능합니다.</p><br>
                             <div align="center" style="margin-bottom: 70px;">
                                 <div style="width: 1000px;">
