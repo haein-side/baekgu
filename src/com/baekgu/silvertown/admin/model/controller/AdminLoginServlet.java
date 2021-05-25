@@ -19,10 +19,6 @@ import com.baekgu.silvertown.admin.model.service.AdminLoginService;
 public class AdminLoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/admin/main/main.jsp").forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String adminId = request.getParameter("adminId");
 		String adminPwd = request.getParameter("adminPwd");
@@ -38,6 +34,7 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		AdminDTO loginAdmin = adminService.loginCheck(requestAdmin);
 		
+		
 		if(loginAdmin != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginAdminName", loginAdmin.getAdminName());
@@ -51,6 +48,15 @@ public class AdminLoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/admin/main/signin.jsp").forward(request, response);
 			
 		}
+		
+	}
+		
+		
+		
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
 		
 		
 	}

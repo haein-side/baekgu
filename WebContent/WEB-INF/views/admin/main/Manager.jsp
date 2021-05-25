@@ -67,14 +67,14 @@
 				<section class="panel">
 					<header class="panel-heading">
 						관리자 및 직원관리
-						 <c:if test="${ sessionScope.loginAdmin.adminRole eq '대표관리자' }"> 
+						 <c:if test="${ sessionScope.adminRole eq '대표관리자' }"> 
 						<button class="btn btn-success" id="btnsubmit" style="margin-left: 30px;"
 							type="button" onClick="Registration()">등록하기</button>
-						 </c:if> 				
+						 				
 						<button class="btn btn-warning" id="btnDelete" data-toggle="modal"
 							type="button" onClick="deleteClick()" style="margin-left: 30px;">
 							삭제하기</button>
-					   
+					   </c:if> 
 					</header>
 					<div class="table-responsive">
 						<table align="center" class="table">
