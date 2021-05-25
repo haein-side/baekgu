@@ -132,6 +132,9 @@ public class BusinessPaymentAdServlet extends HttpServlet {
 			
 		}
 		
+		// 결제 가능 날짜 구하기
+		
+
 		
 		String path = "";
 

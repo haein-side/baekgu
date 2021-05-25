@@ -9,6 +9,8 @@
 
 
 <body>
+	<!-- 통합 테스트 -->
+	<%--<jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/>--%>
 
 	<!-- 강현우 테스트 -->
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/>--%>
@@ -20,7 +22,7 @@
     <%--<jsp:forward page="/WEB-INF/views/business/main/signinB.jsp"/>--%>
 
 	<!-- 정주영 테스트 -->
-	  <jsp:forward page="/WEB-INF/views/customer/main/signin.jsp"/>  
+	<%--  <jsp:forward page="/WEB-INF/views/admin/main/main.jsp"/>  --%>
 
 	<!-- 김유진 테스트 -->
 	<%--<jsp:forward page="/WEB-INF/views/admin/main/signin.jsp"/>--%>

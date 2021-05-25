@@ -116,6 +116,12 @@
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/payment">
                                 <i class="icon_house_alt"></i>
                                 <span>재무관리</span>
+                       		</a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/tax">
+                                <i class="icon_house_alt"></i>
+                                <span>세금계산서발행</span>
                             </a>
                         </li>
                      </ul>
