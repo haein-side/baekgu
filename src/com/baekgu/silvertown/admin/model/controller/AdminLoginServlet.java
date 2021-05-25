@@ -19,8 +19,14 @@ import com.baekgu.silvertown.admin.model.service.AdminLoginService;
 public class AdminLoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/admin/main/main.jsp").forward(request, response);
+		
+		String path = "/WEB-INF/views/admin/main/signin.jsp";
+		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
+		
+		
+		
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -38,6 +44,7 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		AdminDTO loginAdmin = adminService.loginCheck(requestAdmin);
 		
+		
 		if(loginAdmin != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginAdminName", loginAdmin.getAdminName());
@@ -47,6 +54,7 @@ public class AdminLoginServlet extends HttpServlet {
 			System.out.println("request.getContextPath() : " + request.getContextPath());
 			response.sendRedirect(request.getContextPath()+"/admin/main");
 		} else{
+			
 			request.setAttribute("message", "아이디 또는 비밀번호에 오류가 있습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/admin/main/signin.jsp").forward(request, response);
 			
