@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
+import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.service.SearchPostService;
 
 /**
@@ -163,6 +164,14 @@ public class DetailedSearchPost extends HttpServlet {
 			/* selectBestPost - 모든 검색 조건 부합 */
 			List<DetailedSearchPostDTO> selectBestPost = searchService.selectBestPost(dSearchPost);
 			
+			/* selectNormalPost - 경력 제외 조건 부합 */
+			List<DetailedSearchPostDTO> selectNormalPost = searchService.selectNormalPost(dSearchPost);
+			
+			/* selectInAdPost - 업종광고 */
+			List<SearchPostDTO> selectInAdPost = searchService.selectInAdPost(industryCode);
+			
+			/* selectJobAdPost - 직종광고 */
+			List<SearchPostDTO> selectJobAdPost = searchService.selectJobAdPost(jobCode);
 			
 	}
 

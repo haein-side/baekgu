@@ -35,6 +35,11 @@ public class SearchPostService {
 		return selectPost;
 	}
 
+	/**
+	 * 단순검색 - 업종광고 조회
+	 * @param industryCode
+	 * @return
+	 */
 	public List<SearchPostDTO> selectInAdPost(int industryCode) {
 		Connection con = getConnection();
 		
@@ -60,6 +65,38 @@ public class SearchPostService {
 		
 		return selectBestPost;
 	}
+
+	/**
+	 * 상세검색 - 경력을 제외하고 조건을 맞추는 공고를 받아오는 메소드
+	 * @param dSearchPost
+	 * @return selectNormalPost
+	 */
+	public List<DetailedSearchPostDTO> selectNormalPost(DetailedSearchPostDTO dSearchPost) {
+		Connection con = getConnection();
+		
+		List<DetailedSearchPostDTO> selectNormalPost = userDAO.selectNormalPost(con, dSearchPost);
+		
+		close(con);
+		
+		return selectNormalPost;
+	}
+
+	/**
+	 * 상세검색 - 직종 광고 조회
+	 * @param jobCode
+	 * @return
+	 */
+	public List<SearchPostDTO> selectJobAdPost(int jobCode) {
+		Connection con = getConnection();
+		
+		List<SearchPostDTO> selectJobAdPost = userDAO.selectJobAdPost(con, jobCode);
+		
+		close(con);
+		
+		return selectJobAdPost;
+	}
+
+	
 
 	
 	

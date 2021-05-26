@@ -61,10 +61,10 @@
 		  });
 
 
-		$(".btn1").click(function() {
+	/* 	$(".btn1").click(function() {
 		     $(".btn1").removeClass("btnSelected");
 		     $(this).addClass("btnSelected");
-		  });
+		  }); */
 		
 		$(".btn1 lo").click(function() {
 		     $(".btn1 lo").removeClass("active");

@@ -19,19 +19,15 @@
 .btn1 {
 	background-color: black;
 }
-
 .active {
 	background-color: orange;
 }
-
 .btn1.active {
 	background-color: orange;
 }
-
 /* .btn1.active {
       background-color: orange;
     }
-
     .btn1 {
      background-color:black;
     } */
@@ -39,11 +35,8 @@
 
 <!-- script 시작 -->
 <script type="text/javascript">
-
 	
-
 /* btnSubmit 종료 */
-
  
 	   
     /* btnSubmit 종료 */
@@ -62,10 +55,7 @@
 	          document.form1.action = "${ pageContext.servletContext.contextPath }/user/detailedSearchPost?location=" + location;
 	          document.form1.submit();
 	       }  */
-
 	        
-
-
     /* $(".btn1 in").click(function() {
 		
     	(this).attr
@@ -103,22 +93,18 @@
 	   		     $(".btn1").removeClass("btnSelected");
 	   		     $(this).addClass("btnSelected");
 	   		  });
-
 	   		$(".btn1 lo").click(function() {
 	   		     $(".btn1 lo").removeClass("active");
 	   		     $(this).addClass("active");
 	   		  });
-
 	   		jQuery('button.account').click(function() {
 	   		   jQuery(this).toggleClass("btn-success");
 	   		  //  jQuery(this).addClass("btn-success");
 	   		});
-
 	   		jQuery(document).ready(function() {
 	   		    $('.btn1').click(function() {
 	   		       /* $('.btn1').removeClass("btnSelected");
 	   		        $(this).addClass("btnSelected")  */
-
 	   		         jQuery(this).toggleClass("active");
 	   		        
 	   		         
@@ -246,7 +232,6 @@
 	}
 	       
 	       function itemChange() {
-
 	   				 /* var restaurant = ['요리사', '주방보조', '찬모', '설거지', '서빙', '카운터'];5
 	   		 var market = ['편의점', '슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고', '기타/매장'];12
 	   		 var counsel = ['인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매', '부동산상담', '홍보/마켓팅'];19
@@ -256,7 +241,6 @@
 	   		 var driving = ['이사/택배/퀵/배송', '대리운전/승용차/일반', '버스/택시/승합차', '지입/차량용역', '화물/중장비/특수차', '음식점/식음료배달'];45
 	   		 var account = ['경리/회계/인사', '일반사무/내근직', '기획/총무/관리', '구매/자재/물류', '서비스/안내'];50
 	   		 var etc = ['미화/청소/세탁', '생활도우미/파출부', '경비/보안', '주유/세차/광택', '헤어피부/미용/애견', '웨딩/이벤트/스튜디오', '호텔/모텔/숙박', '주차관리/대리주차']; */
-
 	   		var job = [ '요리사', '주방보조', '찬모', '설거지', '서빙', '커운터', '편의점',
 	   				'슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고',
 	   				'기타/매장', '인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매',
@@ -269,59 +253,35 @@
 	   				'구매/자재/물류', '서비스/안내', '미화/청소/세탁', '생활도우미/파출부', '경비/보안',
 	   				'주유/세차/광택', '헤어피부/미용/애견', '웨딩/이벤트/스튜디오', '호텔/모텔/숙박',
 	   				'주차관리/대리주차' ];
-
 	   		$('input[name="industry1"]:checked').val();
 	   		
 	   		console.log($('input[name="industry1"]:checked').val());
 	   		
 	   		var selectItem = $('input[name="industry1"]:checked').val();
-
 	   		var changeItem;
-
 	   		if (selectItem == "1") {
-
 	   			changeItem = job.slice(0, 5);
-
 	   		} else if (selectItem == "2") {
-
 	   			changeItem = job.slice(6, 12);
-
 	   		} else if (selectItem == "3") {
-
 	   			changeItem = job.slice(13, 19);
-
 	   		} else if (selectItem == "4") {
-
 	   			changeItem = job.slice(20, 31);
-
 	   		} else if (selectItem == "5") {
-
 	   			changeItem = job.slice(32, 35);
-
 	   		} else if (selectItem == "6") {
-
 	   			changeItem = job.slice(36, 39);
-
 	   		} else if (selectItem == "7") {
-
 	   			changeItem = job.slice(40, 45);
-
 	   		} else if (selectItem == "8") {
-
 	   			changeItem = job.slice(46, 50);
-
 	   		} else if (selectItem == "9") {
-
 	   			changeItem = job.slice(51, 58);
-
 	   		}
-
 	   		$('#selectJob').empty();
 	   		
 	   		
-
 	   		for (var i = 0; i < changeItem.length; i++) {
-
 	   			var option = $('<label for="j' + (i+1) + '" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">'+changeItem[i]+'</p></label>' 
                         + '<input type="checkbox" id="j'+(i+1)+'" name = "job1" style="display: none" value="'+(i+1)+'">');
 	   			
@@ -351,22 +311,18 @@
 	   		     $(".btn1").removeClass("btnSelected");
 	   		     $(this).addClass("btnSelected");
 	   		  });
-
 	   		$(".btn1 lo").click(function() {
 	   		     $(".btn1 lo").removeClass("active");
 	   		     $(this).addClass("active");
 	   		  });
-
 	   		jQuery('button.account').click(function() {
 	   		   jQuery(this).toggleClass("btn-success");
 	   		  //  jQuery(this).addClass("btn-success");
 	   		});
-
 	   		jQuery(document).ready(function() {
 	   		    $('.btn1').click(function() {
 	   		       /* $('.btn1').removeClass("btnSelected");
 	   		        $(this).addClass("btnSelected")  */
-
 	   		         jQuery(this).toggleClass("active");
 	   		        
 	   		         
@@ -375,7 +331,6 @@
 	   		    
 	   		   
 	   		});  
-
 	   	}
 	       
 	      
@@ -878,8 +833,6 @@
     	});
 	}); */ 
 	</script>
-
-
 	<%@ include file="../common/footer.jsp"%>
 </body>
 </html>
