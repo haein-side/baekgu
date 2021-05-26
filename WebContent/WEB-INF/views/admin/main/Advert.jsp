@@ -34,6 +34,14 @@
     
     <body>
         <jsp:include page="../common/header.jsp"/>
+<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+			</section>
+		</section>
+</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
+
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -254,6 +262,7 @@
 
    
   </script>
+</c:if>
     
   </body>
   </html> 

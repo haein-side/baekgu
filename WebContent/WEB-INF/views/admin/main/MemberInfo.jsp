@@ -33,7 +33,7 @@
 </head>
 <body style="overflow-x: hidden">
 	<jsp:include page="../common/header.jsp" />
-		<c:if test="${ !empty sessionScope.loginAdminName }">
+		<c:if test="${ empty sessionScope.loginAdminName }">
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="row">
