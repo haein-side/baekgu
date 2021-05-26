@@ -1,6 +1,7 @@
 package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +59,10 @@ public class BusinessLoginServlet extends HttpServlet {
 		
 		System.out.println(loginBusinessMember);
 		
+		
+		String path = "";
+		
+		
 		if(bId.equals(loginBusinessMember.getbId())) {
 			
 			/* 차단여부 확인 */
@@ -75,29 +80,38 @@ public class BusinessLoginServlet extends HttpServlet {
 					session.setAttribute("loginBusinessMember", loginBusinessMember);			
 					response.sendRedirect(request.getContextPath() + "/business/main");
 					
-//					request.getRequestDispatcher("/WEB-INF/views/business/main/BusinessMainPage.jsp").forward(request, response);
+					
 					
 				} else if(!bPwd.equals(loginBusinessMember.getbPwd())) {
-					
-					request.setAttribute("message", "로그인 실패!");
-					request.getRequestDispatcher("/WEB-INF/views/business/common/failedLogin.jsp").forward(request, response);
+
 					/* 비밀번호 매칭 실패 */
 					System.out.println("비밀 번호를 잘 못 입렵 하셨습니다.");
+					request.setAttribute("message", "비밀번호를 잘못 입력하셨습니다.");
+					path = "/WEB-INF/views/business/main/signinB.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+		
+					
+
+
 				}
 			} else {
 				
-				request.setAttribute("message", "해당 아이디는 신고에 의해 차단당하셨습니다!!");
-				request.getRequestDispatcher("/WEB-INF/views/business/common/BlockedId.jsp").forward(request, response);
 				/* 차단 상태가 1인경우 */
 				System.out.println("해당 아이디는 신고에 의해 차단 되었습니다.");
+				request.setAttribute("message", "해당 아이디는 신고에 의해 차단당하셨습니다. 관리자에게 문의 하세요 (02-XXX-XXXX)");
+				path = "/WEB-INF/views/business/main/signinB.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
 			}
 		} else {
 			
 			/* 매칭되는 아이디가 없는 경우 */
 			System.out.println("존재 하지 않는 아이디입니다.");
-			request.setAttribute("message", "해당아이디는 존재하지 않습니다.!");
-			request.getRequestDispatcher("/WEB-INF/views/business/common/NoIdinsite.jsp").forward(request, response);
+			request.setAttribute("message", "해당아이디는 존재하지 않습니다.");
+			path = "/WEB-INF/views/business/main/signinB.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+			
 		}
+		
 	}
 
 }

@@ -151,14 +151,14 @@ footer {
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">담당자 성함(필수)</label>
 						<div class="col-sm-3">
-							<input type="" class="form-control" name="name"
+							<input id="name" type="" class="form-control" name="name"
 								placeholder="담당자명 입력">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">전화번호(필수)</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="phone"
+							<input id="phone" type="text" class="form-control" name="phone"
 								placeholder="ex) 010-xxxx-xxxx">
 						</div>
 					</div>
@@ -166,7 +166,7 @@ footer {
 						<label for="inputPassword3" class="col-sm-2 control-label">이메일
 							주소(필수)</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="email"
+							<input id="email" type="text" class="form-control" name="email"
 								placeholder="이메일 주소">
 						</div>
 					</div>
@@ -282,6 +282,44 @@ footer {
 								style="width: 500px; height: 300px;" placeholder="공고 내용">
 						</div>
 					</div>
+								  <div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">근무 지역</label>
+									<div class="col-sm-1">
+						<div class="dropdown">
+							<select name="location" id="" class="selectpicker"
+								data-style="btn-warning">
+								<option>----선택----</option>
+								<option value="1">무관</option>
+								<option value="2">강남구</option>
+								<option value="3">강동구</option>
+								<option value="4">강북구</option>
+								<option value="5">강서구</option>
+								<option value="6">관악구</option>
+								<option value="7">광진구</option>
+								<option value="8">구로구</option>
+								<option value="9">금천구</option>
+								<option value="10">노원구</option>
+								<option value="11">도봉구</option>
+								<option value="12">동대문구</option>
+								<option value="13">동작구</option>
+								<option value="14">마포구</option>
+								<option value="15">서대문구</option>
+								<option value="16">서초구</option>
+								<option value="17">성동구</option>
+								<option value="18">성북구</option>
+								<option value="19">송파구</option>
+								<option value="20">양천구</option>
+								<option value="21">영등포구</option>
+								<option value="22">용산구</option>
+								<option value="23">은평구</option>
+								<option value="24">종로구</option>
+								<option value="25">중구</option>
+								<option value="26">중랑구</option>
+							</select>
+						</div>
+					</div> 
+					</div>
+					
 					<div class="form-group">
 						<br> <label for="inputEmail3" class="col-sm-2 control-label">모집인원</label>
 						<div class="col-sm-10">
@@ -479,6 +517,42 @@ footer {
 			}).open();
 		}
 
+	</script>
+	<script>
+		function validate(){
+			
+			var name = document.getElementById("name");
+			var phone = document.getElementById("phone");
+			var email = document.getElementById("email");
+			
+	         // name 유효성 검사
+            	if(!chk(/^[가-힣]{1,}$/,name,"이름은 한글로 1글자 이상 입력하세요")){
+          		 return false;
+       		 } 
+			
+	          // phone 유효성 검사
+	           if(!chk(/^[0-9]{10,11}$/,phone,"기업 전화번호는 특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.")){
+	            return false;
+	         } 
+	          
+	           // Email 유효성 검사
+	           if(!chk(/^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/,email,"이메일 형식에 맞춰 입력하세요.")){
+	          	 return false;
+	           }
+	           
+	           // 유효성 검사 alert 창 띄워주는 것
+	           function chk(re, ele, msg){
+	               if(!re.test(ele.value)){
+	                  alert(msg);
+	                  ele.value="";
+	                  ele.focus();   
+	                  return false;
+	               }
+	               
+	               return true;
+	            }
+			
+		}
 	</script>
 
 </body>

@@ -65,7 +65,7 @@ public class PostDAO {
 				postInfo.setGender(rset.getString("GENDER"));
 				postInfo.setAdvantage(rset.getString("ADVANTAGE"));
 				postInfo.setBenefit(rset.getString("BENEFIT"));
-				postInfo.setFulltime_yn(rset.getInt("FULLTIME_YN"));
+				postInfo.setFulltimeYn(rset.getInt("FULLTIME_YN"));
 				postInfo.setPostMName(rset.getString("POST_M_NAME"));
 				postInfo.setPostMEmail(rset.getString("POST_M_EMAIL"));
 				postInfo.setPostMPhone(rset.getString("POST_M_PHONE"));
@@ -107,6 +107,73 @@ public class PostDAO {
 		System.out.println("DAO postInfo : " + postInfo);
 		
 		return postInfo;
+	}
+
+	public PostDTO selectResume(Connection con, PostDTO userPostCode) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		PostDTO selectResume = null;
+		
+		String query = prop.getProperty("selectResumeCode");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userPostCode.getUserCode());
+			
+			rset = pstmt.executeQuery();
+			
+			selectResume = new PostDTO();
+			
+			if(rset.next()) {
+				
+				selectResume.setResumeCode(rset.getInt("RESUME_CODE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		System.out.println("DAO resume 출력 : " + selectResume.getResumeCode());
+		
+		return selectResume;
+	}
+
+	/**
+	 * 지원하기(Apply) insert 메소드
+	 * @param con
+	 * @param applyInfo
+	 * @return newApply
+	 */
+	public int insertApply(Connection con, PostDTO applyInfo) {
+		
+		PreparedStatement pstmt = null;
+		
+		int newApply = 0;
+		
+		String query = prop.getProperty("insertApply");
+		
+		try {
+		
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, applyInfo.getResumeCode());
+			pstmt.setInt(2, applyInfo.getPostCode());
+			
+			newApply = pstmt.executeUpdate();
+			
+			System.out.println("DAO 쿼리문 실행 결과 : " + newApply);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return newApply;
 	}
 
 }

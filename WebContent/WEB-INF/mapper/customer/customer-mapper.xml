@@ -267,7 +267,29 @@
      LEFT JOIN DEGREE ON (POST.DEGREE_CODE = DEGREE.DEGREE_CODE)
          WHERE POST.POST_CODE = ?
 	</entry>
-
-
+		
+	<entry key="selectResumeCode">
+		SELECT
+		       RESUME_CODE
+		  FROM RESUME
+		 WHERE USER_CODE = ?
+	</entry>
+	
+	<!-- 공고 지원(APPLY) 쿼리 -->
+	<entry key="insertApply">
+		INSERT
+ 		  INTO APPLY 
+        (
+           APPLY_DATE
+         , RESUME_CODE 
+         , POST_CODE 
+        )
+        VALUES 
+        (
+        NOW()
+        , ?
+        , ?
+        )
+	</entry>
 	
 </properties>

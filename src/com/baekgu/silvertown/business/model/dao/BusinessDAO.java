@@ -367,7 +367,7 @@ public class BusinessDAO {
 			pstmt.setInt(18,  post.getJob());
 			pstmt.setInt(19, post.getPeriodCode());
 			pstmt.setInt(20, post.getHours());
-			pstmt.setString(21, null);
+			pstmt.setInt(21, post.getLocationCode());
 			pstmt.setInt(22, post.getPay());
 			pstmt.setInt(23, post.getAge());
 			pstmt.setString(24, post.getHrId());

@@ -31,6 +31,7 @@ public class AdminRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		request.setCharacterEncoding("UTF-8");
 		
 		String adminId = request.getParameter("adminId");
 		String adminPwd = request.getParameter("enteredPwd");
@@ -62,13 +63,6 @@ public class AdminRegistServlet extends HttpServlet {
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
-		
-		
 	}
-
-
-	
-	
-	
 
 }
