@@ -21,11 +21,11 @@ import com.baekgu.silvertown.common.wrapper.EncryptReqeustWrapper;
  * 
  * -> 3 page의 signup url에 대해 아래 필터를 거쳐 암호화를 진행한다.
  */
-@WebFilter("/admin/*")
-public class PasswordEncryptFilter implements Filter {
+@WebFilter("/business/*")
+public class BusinessPasswordEncryptFilter implements Filter {
 	// 사용자가 입력한 문자를 암호화 처리할려고하는 필터
 	
-    public PasswordEncryptFilter() {}
+    public BusinessPasswordEncryptFilter() {}
 
 	public void destroy() {}
 
