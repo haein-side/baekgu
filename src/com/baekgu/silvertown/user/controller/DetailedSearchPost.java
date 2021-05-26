@@ -1,11 +1,17 @@
 package com.baekgu.silvertown.user.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
+import com.baekgu.silvertown.user.model.service.SearchPostService;
 
 /**
  * Servlet implementation class DetailedSearchPost
@@ -36,7 +42,7 @@ public class DetailedSearchPost extends HttpServlet {
 	      System.out.println("========");
 	      
 	      
-	      // 지역별 스플릿 - array[0]을 스플릿해서 각각 String[] location에 담아줌
+	      // 지역별 스플릿 - array[0]을 스플릿해서 각각 String[] location에 담아줌 (복수선택가능)
 	      String[] location = null;
 	      int[] locationCode = null;
 	      
@@ -84,7 +90,7 @@ public class DetailedSearchPost extends HttpServlet {
 		   }
 			
 		  // 경력
-		  String exp = array[3].replace("&", "");
+		  String exp = "";
 		  
 		  if (array[3] != null && array[3].length() > 0) {
 		      
@@ -103,22 +109,61 @@ public class DetailedSearchPost extends HttpServlet {
 		         
 		   }
 		  
-		   // 시간
-		   String time = array[5].replace("&","");
-		    
+		   // 시간 (복수선택 가능)
+		   String[] time = null;
+		   int[] hourCode = null;
 		   if (array[5] != null && array[5].length() > 0) {
-			      
-			   	 time = array[5].replace("&", "");
-			     System.out.println("time : " + time);
-			         
+			   	
+			   time = array[5].split("&");
+			   
+			   for(int i=0 ; i < time.length;i++) { 
+		    		  System.out.println("time[" + i +"] : " + time[i]);
+		    	  }
 			}
 			
+			System.out.println("locationCode : " + location);
+			System.out.println("industryCode : " + industry);
+			System.out.println("jobCode : " +job);
+			System.out.println("expCode : " +exp);
+			System.out.println("periodCode : " +period);
+			System.out.println("timeCode : " +time);
 			
-			System.out.println(industry);
-			System.out.println(job);
-			System.out.println(exp);
-			System.out.println(period);
-			System.out.println(time);
+			
+			// DTO에 입력받은 값들을 set 해줌
+			DetailedSearchPostDTO dSearchPost = new DetailedSearchPostDTO();
+			
+			// location, time 문자열 배열을 int 배열로 만들어줌
+			locationCode = Arrays.stream(location).mapToInt(Integer::parseInt).toArray();
+			hourCode = Arrays.stream(time).mapToInt(Integer::parseInt).toArray();
+			
+			// industry, job, exp, period String을 int로 바꿔줌
+			int industryCode = Integer.parseInt(industry);
+			int jobCode = Integer.parseInt(job);
+			int expCode = Integer.parseInt(exp);
+			int periodCode = Integer.parseInt(period);
+			
+			dSearchPost.setLocationCode(locationCode);
+			dSearchPost.setIndustryCode(industryCode);
+			dSearchPost.setJobCode(jobCode);
+			dSearchPost.setExpCode(expCode);
+			dSearchPost.setPeriodCode(periodCode);
+			dSearchPost.setHourCode(hourCode);
+			
+			System.out.println(locationCode);
+			System.out.println(industryCode);
+			System.out.println(jobCode);
+			System.out.println(expCode);
+			System.out.println(periodCode);
+			System.out.println(hourCode);
+			
+			// 서비스로 넘기기
+			SearchPostService searchService = new SearchPostService();
+			
+			// 상세검색 비즈니스 로직 처리
+			/* selectBestPost - 모든 검색 조건 부합 */
+			List<DetailedSearchPostDTO> selectBestPost = searchService.selectBestPost(dSearchPost);
+			
+			
 	}
 
 	

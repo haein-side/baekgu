@@ -390,4 +390,10 @@ select
   		  JOIN RESUME b ON(a.RESUME_CODE = b.RESUME_CODE)
  		 WHERE a.APPLY_CODE = ?
 	</entry>
+	
+	<entry key="updateApplyYN">
+		UPDATE APPLY 
+   		   SET APPLY_YN = ?
+ 		 WHERE APPLY_CODE = ?
+	</entry>
 </properties>

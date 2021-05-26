@@ -46,7 +46,6 @@ public class AdminLoginDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, requestAdmin.getAdminId());
-			pstmt.setString(2, requestAdmin.getAdminPwd());
 			
 			rset = pstmt.executeQuery();
 			

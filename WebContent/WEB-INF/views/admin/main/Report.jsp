@@ -33,6 +33,16 @@
     </head>
     <body>
   <jsp:include page="../common/header.jsp"/>
+	<!-- 로그인 세션 값이 비었을시 아무것도 보이지 않는다 -->
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -205,8 +215,8 @@
 			</div>
 		</form>
 		<script>
-		const link = "${ pageContext.servletContext.contextPath }/admin/reportl 6ist";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const link = "${ pageContext.servletContext.contextPath }/admin/reportlist";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/reportSearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -283,11 +293,11 @@
 					const no = this.parentNode.children[7].innerText;
 					
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
-				  } else{
+				  } else if(this.parentElement.children[0].children[0].value == 2){
 					 const no = this.parentNode.children[6].innerText;
 				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
-											
+							
 					
 					
 				}
@@ -303,6 +313,7 @@
 			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 		}
 	</script>
+</c:if>
 
 
 </body>

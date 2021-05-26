@@ -52,7 +52,7 @@ public class SearchPost extends HttpServlet {
     	  for(int i=0 ; i < location.length;i++) { 
     		  System.out.println("location[" + i +"] : " + location[i]);
     	  }
-    	  
+    
     	  
     	  // 마지막 선택 값이 "무관"일 때 location을 null로 만들어줌 (위치 조건 삭제를 위해)
     	  if (location[location.length - 1].equals("1")) {
@@ -95,7 +95,7 @@ public class SearchPost extends HttpServlet {
       locationCode = Arrays.stream(location).mapToInt(Integer::parseInt).toArray();
       // 업종 String을 int로 바꿔줌
       int industryCode = Integer.parseInt(industry);
-      
+      System.out.println("locationCode가 단순검색에선 어떻게 나오나.. : " + locationCode);
       searchPost.setLocationCode(locationCode); 
       searchPost.setIndustryCode(industryCode);
       searchPost.setPeriodCode(Integer.parseInt(period));

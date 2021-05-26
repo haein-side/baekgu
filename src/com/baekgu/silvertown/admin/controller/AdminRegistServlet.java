@@ -31,6 +31,7 @@ public class AdminRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		request.setCharacterEncoding("UTF-8");
 		
 		String adminId = request.getParameter("adminId");
 		String adminPwd = request.getParameter("enteredPwd");
@@ -47,14 +48,14 @@ public class AdminRegistServlet extends HttpServlet {
 		requestadmin.setAdminEmail(adminEmail);
 		requestadmin.setAdminRole(adminRole);
 		
-		System.out.println(requestadmin);
+		System.out.println("값이 잘 왔니? : " + requestadmin);
 
 		int result = new AdminRegistService().adminRegist(requestadmin);	
 		
 		
 		String path = "";
 		if(result > 0) {
-			path = "/baeckgu/admin/list";
+			path = "/baekgu/admin/list";
 			response.sendRedirect(path);
 		} else {
 			path = "/WEB-INF/views/admin/common/erroPage.jsp";
@@ -62,13 +63,6 @@ public class AdminRegistServlet extends HttpServlet {
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
-		
-		
 	}
-
-
-	
-	
-	
 
 }

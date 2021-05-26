@@ -18,7 +18,7 @@ public class PostDTO {
 	private String gender;
 	private String advantage;
 	private String benefit;
-	private int fulltime_yn;
+	private int fulltimeYn;
 	private String postMName;
 	private String postMEmail;
 	private String postMPhone;
@@ -132,7 +132,7 @@ public class PostDTO {
 	 * @param gender
 	 * @param advantage
 	 * @param benefit
-	 * @param fulltime_yn
+	 * @param fulltimeYn
 	 * @param postMName
 	 * @param postMEmail
 	 * @param postMPhone
@@ -203,7 +203,7 @@ public class PostDTO {
 	 */
 	public PostDTO(int postCode, String postTitle, String postContent, int postTo, Date postStart, Date postEnd,
 			int postOnline, Date postDate, String postAddress, String postDay, int payment, String gender,
-			String advantage, String benefit, int fulltime_yn, String postMName, String postMEmail, String postMPhone,
+			String advantage, String benefit, int fulltimeYn, String postMName, String postMEmail, String postMPhone,
 			int expCode, int jobCode, int periodCode, int hourCode, int locationCode, int payCode, int ageCode,
 			int hrId, int degreeCode, int dListCode, String degreeLevel, String expName, String periodName,
 			String hourName, String locationName, String ageName, String payName, String hrName, String hrPhone,
@@ -230,7 +230,7 @@ public class PostDTO {
 		this.gender = gender;
 		this.advantage = advantage;
 		this.benefit = benefit;
-		this.fulltime_yn = fulltime_yn;
+		this.fulltimeYn = fulltimeYn;
 		this.postMName = postMName;
 		this.postMEmail = postMEmail;
 		this.postMPhone = postMPhone;
@@ -412,12 +412,12 @@ public class PostDTO {
 		this.benefit = benefit;
 	}
 
-	public int getFulltime_yn() {
-		return fulltime_yn;
+	public int getFulltimeYn() {
+		return fulltimeYn;
 	}
 
-	public void setFulltime_yn(int fulltime_yn) {
-		this.fulltime_yn = fulltime_yn;
+	public void setFulltimeYn(int fulltimeYn) {
+		this.fulltimeYn = fulltimeYn;
 	}
 
 	public String getPostMName() {
@@ -962,7 +962,7 @@ public class PostDTO {
 				+ ", postTo=" + postTo + ", postStart=" + postStart + ", postEnd=" + postEnd + ", postOnline="
 				+ postOnline + ", postDate=" + postDate + ", postAddress=" + postAddress + ", postDay=" + postDay
 				+ ", payment=" + payment + ", gender=" + gender + ", advantage=" + advantage + ", benefit=" + benefit
-				+ ", fulltime_yn=" + fulltime_yn + ", postMName=" + postMName + ", postMEmail=" + postMEmail
+				+ ", fulltimeYn=" + fulltimeYn + ", postMName=" + postMName + ", postMEmail=" + postMEmail
 				+ ", postMPhone=" + postMPhone + ", expCode=" + expCode + ", jobCode=" + jobCode + ", periodCode="
 				+ periodCode + ", hourCode=" + hourCode + ", locationCode=" + locationCode + ", payCode=" + payCode
 				+ ", ageCode=" + ageCode + ", hrId=" + hrId + ", degreeCode=" + degreeCode + ", dListCode=" + dListCode

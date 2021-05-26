@@ -359,7 +359,7 @@ public class BusinessDAO {
 			pstmt.setString(10, post.getGender());
 			pstmt.setString(11, post.getPriority());
 			pstmt.setString(12, post.getBenefit());
-			pstmt.setString(13, post.getFullTimeYn());
+			pstmt.setInt(13, post.getFullTimeYn());
 			pstmt.setString(14,  post.getName());
 			pstmt.setString(15, post.getEmail());
 			pstmt.setString(16, post.getPhone());
@@ -367,7 +367,7 @@ public class BusinessDAO {
 			pstmt.setInt(18,  post.getJob());
 			pstmt.setInt(19, post.getPeriodCode());
 			pstmt.setInt(20, post.getHours());
-			pstmt.setString(21, null);
+			pstmt.setInt(21, post.getLocationCode());
 			pstmt.setInt(22, post.getPay());
 			pstmt.setInt(23, post.getAge());
 			pstmt.setString(24, post.getHrId());
@@ -785,6 +785,31 @@ public class BusinessDAO {
 		}
 		
 		return userInfo;
+	}
+
+	public int updateApplyYN(Connection con, int applyCode, String decision) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateApplyYN");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, decision);
+			psmt.setInt(2, applyCode);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		System.out.println(result + " result value in dao");
+		
+		return result;
 	}
 	
 	

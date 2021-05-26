@@ -36,7 +36,7 @@
                 </div>
 
                 <!--logo start-->
-                <a href="${ pageContext.servletContext.contextPath }/admin/main" class="logo">백구
+                <a href="${ pageContext.servletContext.contextPath }/admin/homepage" class="logo">백구
                     <span class="lite">관리자</span></a>
                 <!--logo end-->
 
@@ -52,12 +52,6 @@
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
-                                <i class="icon_house_alt"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
                           <li class="active">
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/homepage">
                                 <i class="icon_house_alt"></i>
@@ -83,7 +77,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/postapprove">
                                 <i class="icon_house_alt"></i>
                                 <span>공고심사관리</span>
                             </a>
@@ -116,7 +110,14 @@
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/payment">
                                 <i class="icon_house_alt"></i>
                                 <span>재무관리</span>
-                            </a>
+                       		</a>
+                        </li>
+                        
+                        <li class="active" style="margin-top: 150%;">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/logout">
+                                <i class="icon_house_alt"></i>
+                                <span>로그아웃</span>
+                       		</a>
                         </li>
                      </ul>
                     <!-- sidebar menu end-->

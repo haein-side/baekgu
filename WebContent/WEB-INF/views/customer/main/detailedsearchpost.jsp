@@ -39,179 +39,24 @@
 
 <!-- script 시작 -->
 <script type="text/javascript">
-    
-         $(".btn1 lo").click(function() {
-		    if ($(this).hasClass("btnSelected")) {
-		      $(this).removeClass("btnSelected");
-		    } else {
-		      $(".btn1 lo").removeClass("btnSelected");
-		      $(this).addClass('btnSelected');
-		    }
-		  });
 
+	
 
-		$(".btn1").click(function() {
-		     $(".btn1").removeClass("btnSelected");
-		     $(this).addClass("btnSelected");
-		  });
-		
-		$(".btn1 lo").click(function() {
-		     $(".btn1 lo").removeClass("active");
-		     $(this).addClass("active");
-		  });
-		
-		jQuery('button.account').click(function() {
-		   jQuery(this).toggleClass("btn-success");
-		  //  jQuery(this).addClass("btn-success");
-		});
+/* btnSubmit 종료 */
 
  
-	    jQuery(document).ready(function() {
-	        $('.btn1').click(function() {
-	           /* $('.btn1').removeClass("btnSelected");
-	            $(this).addClass("btnSelected")  */
-	
-	             jQuery(this).toggleClass("active");
-	            
-	             
-	    	});    
-	        
-	        <!-- 검색하기 버튼 클릭 시 -->
-	        $("#btnSubmit").click(function(){
-		    	
-	        	 var location = "";
-	       
-	        	
-	        	    // 지역
-		        	if (document.getElementsByClassName("btn1 lo")) {
-		        		for (var i = 1; i <= 26; i++){
-		        			console.log(document.getElementById("l" + i));
-		        			if(document.getElementById("l" + i).checked == true){
-		        				location += document.getElementById("l" + i).value + "&";
-		        			} else {
-		        				location += "";
-		        			}
-								        		
-		        		}
-		        		location += "!";
-		        	}
-		        	
-		        	console.log(location);
-	        	
-		        	// 업종
-		        	if (document.getElementsByClassName("btn1 in")) {
-		        		for (var i = 1; i <= 9; i++){
-		        			console.log(document.getElementById("i" + i));
-		        			if(document.getElementById("i" + i).checked == true){
-		        				location += document.getElementById("i" + i).value + "&";
-		        				console.log(location);
-		        			} else {
-		        				location += "";
-		        			}
-								        		
-		        		}
-		        		 location += "!";
-		        	}
-		        	
-		        	console.log(location); 
-	        	
-		        	
-		        	// 직종
-		        	if (document.getElementsByClassName("btn1 jb")) {
-		        		for (var i = 1; i <= 5; i++){
-			        			console.log(document.getElementById("j" + i));
-			        			if(document.getElementById("j" + i).checked == true){
-			        				location += document.getElementById("j" + i).value + "&";
-			        				console.log(location);
-		        			}
-		        		}
-		        		 location += "!";
-		        	}
-		        	
-		        	console.log(location); 
-	        	
-		        	// 경력
-		        	 if (document.getElementsByClassName("btn1 exp")) {
-		        		for (var i = 1; i <= 7; i++){
-		        			console.log(document.getElementById("e" + i));
-		        			if(document.getElementById("e" + i).checked == true){
-		        				location += document.getElementById("e" + i).value + "&";
-		        				console.log(location);
-		        			}
-								        		
-		        		}
-		        		 location += "!";
-		        	}
-		        	
-		        	console.log(location); 
-	        	
-	        		// 기간
-	        		if (document.getElementsByClassName("btn1 pe")) {
-	        		for (var i = 1; i <= 7; i++){
-	        			console.log(document.getElementById("p" + i));
-	        			if(document.getElementById("p" + i).checked == true){
-	        				location += document.getElementById("p" + i).value + "&";
-	        				console.log(location);
-	        			} else {
-	        				location += "";
-	        			}
-							        		
-	        		}
-	        		 location += "!";
-	        	}
-	        	
-	        	console.log(location); 
-	        	
-	        	// 시간
-	        	 if (document.getElementsByClassName("btn1 ho")) {
-	        		for (var i = 1; i <= 6; i++){
-	        			console.log(document.getElementById("h" + i));
-	        			if(document.getElementById("h" + i).checked == true){
-	        				location += document.getElementById("h" + i).value + "&";
-	        				console.log(location);
-	        			}else {
-	        				location += "";
-	        			}
-							        		
-	        		}
-	        		 
-	        	}
-	        	
-	        	console.log(location); 
-	        	
-	        	
-				  /*  $.ajax({
-					   
-		                url: "/baekgu/user/detailedSearchPost",
-		                type: "get",
-		                data:{ location : location },
-		                success: function(data,textStatus,xhr){
-		                   console.log(data);
-		                   var jobArray = "";
-		                   
-		                   
-		                },
-		                error: function(xhr, status, message){
-		                   console.log(message);
-		                }
-		                
-		             });  */
-
-	        	document.getElementById("location").value = location;
-				  
-			}); 
-		});  
+	   
     /* btnSubmit 종료 */
 	    
 	    
-       $(".btn1").click(function() {
+       /* $(".btn1").click(function() {
         	  if ($(this).hasClass("active")) {
         	  /*   $(this).removeClass("active");
         	  } else { */
-        	    $(".active").removeClass("active");
+        	  /*   $(".active").removeClass("active");
         	    $(this).addClass('active');
         	  }
-        });
+        });  */
 	        
 	        /* function update(location){
 	          document.form1.action = "${ pageContext.servletContext.contextPath }/user/detailedSearchPost?location=" + location;
@@ -221,7 +66,7 @@
 	        
 
 
-    $(".btn1 in").click(function() {
+    /* $(".btn1 in").click(function() {
 		
     	(this).attr
     	
@@ -243,16 +88,307 @@
     		}
     		
     	});
-	});
+	}); */
     
-    
- 
+	window.onload = function(){
+	       $(".btn1 lo").click(function() {
+	   		    if ($(this).hasClass("btnSelected")) {
+	   		      $(this).removeClass("btnSelected");
+	   		    } else {
+	   		      $(".btn1 lo").removeClass("btnSelected");
+	   		      $(this).addClass('btnSelected');
+	   		    }
+	   		  });
+	   		$(".btn1").click(function() {
+	   		     $(".btn1").removeClass("btnSelected");
+	   		     $(this).addClass("btnSelected");
+	   		  });
+
+	   		$(".btn1 lo").click(function() {
+	   		     $(".btn1 lo").removeClass("active");
+	   		     $(this).addClass("active");
+	   		  });
+
+	   		jQuery('button.account').click(function() {
+	   		   jQuery(this).toggleClass("btn-success");
+	   		  //  jQuery(this).addClass("btn-success");
+	   		});
+
+	   		jQuery(document).ready(function() {
+	   		    $('.btn1').click(function() {
+	   		       /* $('.btn1').removeClass("btnSelected");
+	   		        $(this).addClass("btnSelected")  */
+
+	   		         jQuery(this).toggleClass("active");
+	   		        
+	   		         
+	   			});    
+	   		   
+	   		    
+	   		   
+	   		});  
+	   		
+	   		$("#btnSubmit").click(function(){
+  		    	
+		    	 var location = "";
+		   
+		    	
+		    	// 지역
+		    	if (document.getElementsByClassName("btn1 lo")) {
+		    		for (var i = 1; i <= 26; i++){
+		    			console.log(document.getElementById("l" + i));
+		    			if(document.getElementById("l" + i).checked == true){
+		    				location += document.getElementById("l" + i).value + "&";
+		    			}
+							        		
+		    		}
+		    		location += "!";
+		    	}
+		    	
+		    	console.log(location);
+		    	
+		    	// 업종
+		    	if (document.getElementsByClassName("btn1 in")) {
+		    		for (var i = 1; i <= 9; i++){
+		    			console.log(document.getElementById("i" + i));
+		    			if(document.getElementById("i" + i).checked == true){
+		    				location += document.getElementById("i" + i).value + "&";
+		    				console.log(location);
+		    			}
+							        		
+		    		}
+		    		 location += "!";
+		    	}
+		    	
+		    	console.log(location); 
+		    	
+		    	// 직종
+		    	 if (document.getElementsByClassName("btn1 jb")) {
+		    		for (var i = 1; i <= 5; i++){
+		    			console.log(document.getElementById("j" + i));
+		    			if(document.getElementById("j" + i).checked == true){
+		    				location += document.getElementById("j" + i).value + "&";
+		    				console.log(location);
+		    			}
+							        		
+		    		}
+		    		 location += "!";
+		    	}
+		    	
+		    	console.log(location); 
+		    	
+		    	// 경력
+		    	 if (document.getElementsByClassName("btn1 exp")) {
+		    		for (var i = 1; i <= 7; i++){
+		    			console.log(document.getElementById("e" + i));
+		    			if(document.getElementById("e" + i).checked == true){
+		    				location += document.getElementById("e" + i).value + "&";
+		    				console.log(location);
+		    			}
+							        		
+		    		}
+		    		 location += "!";
+		    	}
+		    	
+		    	console.log(location); 
+		    	
+		    	// 기간
+		    	 if (document.getElementsByClassName("btn1 pe")) {
+		    		for (var i = 1; i <= 7; i++){
+		    			console.log(document.getElementById("p" + i));
+		    			if(document.getElementById("p" + i).checked == true){
+		    				location += document.getElementById("p" + i).value + "&";
+		    				console.log(location);
+		    			}
+							        		
+		    		}
+		    		 location += "!";
+		    	}
+		    	
+		    	console.log(location); 
+		    	
+		    	// 시간
+		    	 if (document.getElementsByClassName("btn1 ho")) {
+		    		for (var i = 1; i <= 6; i++){
+		    			console.log(document.getElementById("h" + i));
+		    			if(document.getElementById("h" + i).checked == true){
+		    				location += document.getElementById("h" + i).value + "&";
+		    				console.log(location);
+		    			}
+							        		
+		    		}
+		    		 
+		    	}
+		    	
+		    	console.log(location); 
+		    	document.getElementById("location").value = location;
+		    	
+				   /* $.ajax({
+					   
+		                url: "/baekgu/user/detailedSearchPost",
+		                type: "get",
+		                data:{ location : location },
+		                success: function(data,textStatus,xhr){
+		                   console.log(data);
+		                   var jobArray = "";
+		                   
+		                   
+		                },
+		                error: function(xhr, status, message){
+		                   console.log(message);
+		                }
+		                
+		             }) ; */ 
+				   
+				  
+			}); 
+		
+	}
+	       
+	       function itemChange() {
+
+	   				 /* var restaurant = ['요리사', '주방보조', '찬모', '설거지', '서빙', '카운터'];5
+	   		 var market = ['편의점', '슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고', '기타/매장'];12
+	   		 var counsel = ['인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매', '부동산상담', '홍보/마켓팅'];19
+	   		 var manufacture = ['제조/조립', '미싱/재단/섬유', '노무현장/조선소', '건설/공사/보수', '전기/시설관리', '배관/용접/머시닝', '식품제조/가공', '자동차정비/튜닝', '설치/수리', '생산/포장/검사', '가구/목공', '금형/프레스/성형'];31
+	   		 var nursing = ['간호사/간호조무사', '간병/요양보호소', '의료기사', '기타의료직'];35
+	   		 var teach = ['어린이집/유치원', '방문/학습지', '외국어', '기타교사/학원관리'];39
+	   		 var driving = ['이사/택배/퀵/배송', '대리운전/승용차/일반', '버스/택시/승합차', '지입/차량용역', '화물/중장비/특수차', '음식점/식음료배달'];45
+	   		 var account = ['경리/회계/인사', '일반사무/내근직', '기획/총무/관리', '구매/자재/물류', '서비스/안내'];50
+	   		 var etc = ['미화/청소/세탁', '생활도우미/파출부', '경비/보안', '주유/세차/광택', '헤어피부/미용/애견', '웨딩/이벤트/스튜디오', '호텔/모텔/숙박', '주차관리/대리주차']; */
+
+	   		var job = [ '요리사', '주방보조', '찬모', '설거지', '서빙', '커운터', '편의점',
+	   				'슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고',
+	   				'기타/매장', '인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매',
+	   				'부동산상담', '홍보/마켓팅', '제조/조립', '미싱/재단/섬유', '노무현장/조선소', '건설/공사/보수',
+	   				'전기/시설관리', '배관/용접/머시닝', '식품제조/가공', '자동차정비/튜닝', '설치/수리',
+	   				'생산/포장/검사', '가구/목공', '금형/프레스/성형', '간호사/간호조무사', '간병/요양보호소',
+	   				'의료기사', '기타의료직', '어린이집/유치원', '방문/학습지', '외국어', '기타교사/학원관리',
+	   				'이사/택배/퀵/배송', '대리운전/승용차/일반', '버스/택시/승합차', '지입/차량용역',
+	   				'화물/중장비/특수차', '음식점/식음료배달', '경리/회계/인사', '일반사무/내근직', '기획/총무/관리',
+	   				'구매/자재/물류', '서비스/안내', '미화/청소/세탁', '생활도우미/파출부', '경비/보안',
+	   				'주유/세차/광택', '헤어피부/미용/애견', '웨딩/이벤트/스튜디오', '호텔/모텔/숙박',
+	   				'주차관리/대리주차' ];
+
+	   		$('input[name="industry1"]:checked').val();
+	   		
+	   		console.log($('input[name="industry1"]:checked').val());
+	   		
+	   		var selectItem = $('input[name="industry1"]:checked').val();
+
+	   		var changeItem;
+
+	   		if (selectItem == "1") {
+
+	   			changeItem = job.slice(0, 5);
+
+	   		} else if (selectItem == "2") {
+
+	   			changeItem = job.slice(6, 12);
+
+	   		} else if (selectItem == "3") {
+
+	   			changeItem = job.slice(13, 19);
+
+	   		} else if (selectItem == "4") {
+
+	   			changeItem = job.slice(20, 31);
+
+	   		} else if (selectItem == "5") {
+
+	   			changeItem = job.slice(32, 35);
+
+	   		} else if (selectItem == "6") {
+
+	   			changeItem = job.slice(36, 39);
+
+	   		} else if (selectItem == "7") {
+
+	   			changeItem = job.slice(40, 45);
+
+	   		} else if (selectItem == "8") {
+
+	   			changeItem = job.slice(46, 50);
+
+	   		} else if (selectItem == "9") {
+
+	   			changeItem = job.slice(51, 58);
+
+	   		}
+
+	   		$('#selectJob').empty();
+	   		
+	   		
+
+	   		for (var i = 0; i < changeItem.length; i++) {
+
+	   			var option = $('<label for="j' + (i+1) + '" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">'+changeItem[i]+'</p></label>' 
+                        + '<input type="checkbox" id="j'+(i+1)+'" name = "job1" style="display: none" value="'+(i+1)+'">');
+	   			
+	   			console.log(option);
+	   			
+	   			$('#selectJob').append(option);
+	   			
+	   			console.log($('#selectJob').innerHTML);
+	   			
+	   			//var option = $("<option>" + changeItem[count] + "</option>");
+	   			
+	   			/* <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">요리사</p></label> 
+                <input type="checkbox" id="j1" name = "job1" style="display: none" value="1">  */
+                
+	   			
+	   		} 
+	   		
+	   		$(".btn1 lo").click(function() {
+	   		    if ($(this).hasClass("btnSelected")) {
+	   		      $(this).removeClass("btnSelected");
+	   		    } else {
+	   		      $(".btn1 lo").removeClass("btnSelected");
+	   		      $(this).addClass('btnSelected');
+	   		    }
+	   		  });
+	   		$(".btn1").click(function() {
+	   		     $(".btn1").removeClass("btnSelected");
+	   		     $(this).addClass("btnSelected");
+	   		  });
+
+	   		$(".btn1 lo").click(function() {
+	   		     $(".btn1 lo").removeClass("active");
+	   		     $(this).addClass("active");
+	   		  });
+
+	   		jQuery('button.account').click(function() {
+	   		   jQuery(this).toggleClass("btn-success");
+	   		  //  jQuery(this).addClass("btn-success");
+	   		});
+
+	   		jQuery(document).ready(function() {
+	   		    $('.btn1').click(function() {
+	   		       /* $('.btn1').removeClass("btnSelected");
+	   		        $(this).addClass("btnSelected")  */
+
+	   		         jQuery(this).toggleClass("active");
+	   		        
+	   		         
+	   			});    
+	   		   
+	   		    
+	   		   
+	   		});  
+
+	   	}
+	       
+	      
+	     
+	       <!-- btnSubmit -->
 	 
     </script>
+ </head>
+    
+<form action = "${ pageContext.servletContext.contextPath}/user/detailedSearchPost" method="get">
 <!-- script 끝남 -->
 
 <!-- 폼 시작 -->
-<form action = "${ pageContext.servletContext.contextPath}/user/detailedSearchPost" method="get">
 	<%@ include file="../common/header2.jsp"%>
 	<div style="z-index: 1;">
 		<div class="container-fluid text-center" style="margin-top: 15%;">
@@ -377,26 +513,26 @@
 								<p>한 가지만 선택이 가능합니다.</p>
 								<br>
 								<br>
-								<div align="center" style="margin-bottom: 70px;">
+								<div align="center" style="margin-bottom: 70px;" id="selectIndustry" onchange="itemChange()">
 									<div style="width: 1000px;">
 										<label for="i1" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">식당/서빙</p></label> 
-	                           			<input type="checkbox" id="i1" name = "industry1" style="display: none" value="1">  
+	                           			<input type="checkbox" id="i1" class="btn1 1n" name = "industry1" style="display: none" value="1">  
 										<label for="i2" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">매장관리</p></label> 
-	                           			<input type="checkbox" id="i2" name = "industry1" style="display: none" value="2">  
+	                           			<input type="checkbox" id="i2" class="btn1 1n" name = "industry1" style="display: none" value="2">  
 										<label for="i3" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">상담/영업</p></label> 
-	                           			<input type="checkbox" id="i3" name = "industry1" style="display: none" value="3">  
+	                           			<input type="checkbox" id="i3" class="btn1 1n" name = "industry1" style="display: none" value="3">  
 										<label for="i4" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">건설/생산/기술</p></label> 
-	                           			<input type="checkbox" id="i4" name = "industry1" style="display: none" value="4">  
+	                           			<input type="checkbox" id="i4" class="btn1 1n" name = "industry1" style="display: none" value="4">  
 										<label for="i5" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">간호/요양</p></label> 
-	                           			<input type="checkbox" id="i5" name = "industry1" style="display: none" value="5">  
+	                           			<input type="checkbox" id="i5" class="btn1 1n" name = "industry1" style="display: none" value="5">  
 										<label for="i6" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">교사/강사</p></label> 
-	                           			<input type="checkbox" id="i6" name = "industry1" style="display: none" value="6">  
+	                           			<input type="checkbox" id="i6" class="btn1 1n" name = "industry1" style="display: none" value="6">  
 										<label for="i7" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">운전/배달</p></label> 
-	                           			<input type="checkbox" id="i7" name = "industry1" style="display: none" value="7">  
+	                           			<input type="checkbox" id="i7" class="btn1 1n" name = "industry1" style="display: none" value="7">  
 										<label for="i8" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">사무/경리</p></label> 
-	                           			<input type="checkbox" id="i8" name = "industry1" style="display: none" value="8">  
+	                           			<input type="checkbox" id="i8" class="btn1 1n" name = "industry1" style="display: none" value="8">  
 										<label for="i9" class="btn1 in" name="industry" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">기타</p></label> 
-	                           			<input type="checkbox" id="i9" name = "industry1" style="display: none" value="9">  
+	                           			<input type="checkbox" id="i9" class="btn1 1n" name = "industry1" style="display: none" value="9">  
 									</div>
 								</div>
 							</div>
@@ -408,19 +544,9 @@
 								<p>한 가지만 선택이 가능합니다.</p>
 								<br>
 								<br>
-								<div align="center" style="margin-bottom: 70px;">
+								<div align="center" id="selectJob" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
-										<!-- for loop 으로 직종에대한 상세 카테고리 -->
-										 <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">요리사</p></label> 
-	                                    <input type="checkbox" id="j1" name = "job1" style="display: none" value="1"> 
-	                                    <label for="j2" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방보조</p></label> 
-	                                    <input type="checkbox" id="j2" name = "job1" style="display: none" value="2"> 
-	                                    <label for="j3" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">찬모</p></label> 
-	                                    <input type="checkbox" id="j3" name = "job1" style="display: none" value="3"> 
-	                                    <label for="j4" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">설거지</p></label> 
-	                                    <input type="checkbox" id="j4" name = "job1" style="display: none" value="4"> 
-	                                    <label for="j5" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서빙</p></label> 
-	                                    <input type="checkbox" id="j5" name = "job1" style="display: none" value="5">           
+										          
 									</div>
 								</div>
 							</div>
@@ -539,7 +665,219 @@
 			</div>
 		</div>
 	</div>
-
+	<script>
+	
+	<!-- 상세 검색에서 업종을 누르면 직종명을 가져오는 function-->
+	
+   /*  $("#i1").click(function() {
+    	
+    	const industry1 = $("#i1").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry1);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ 
+    			industry1 : industry1
+    		},
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+	
+      $("#i2").click(function() {
+    	
+    	const industry2 = $("#i2").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry2);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry2 : industry2 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i3").click(function() {
+    	
+    	const industry3 = $("#i3").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry3);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry3 : industry3 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i4").click(function() {
+    	
+    	const industry4 = $("#i4").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry4);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry4 : industry4 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i5").click(function() {
+    	
+    	const industry5 = $("#i5").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry5);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry5 : industry5 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			alert("저장되셨습니다");
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i6").click(function() {
+    	
+    	const industry6 = $("#i6").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry6);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry6 : industry6 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i7").click(function() {
+    	
+    	const industry7 = $("#i7").val();
+    	console.log(industry7);
+    	
+    	console.log("button 동작");
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry7 : industry7 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i8").click(function() {
+    	
+    	const industry8 = $("#i8").val();
+    	console.log(industry8);
+    	
+    	console.log("button 동작");
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry8 : industry8 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	});
+    
+    $("#i9").click(function() {
+    	
+    	const industry = $("#i9").val();
+    	
+    	console.log("button 동작");
+    	console.log(industry9);
+    	
+    	$.ajax({
+    		url: "/baekgu/jobSearch",
+    		type: "get",
+    		data:{ industry9 : industry9 },
+    		success: function(data,textStatus,xhr){
+    			console.log(data);
+    			var jobArray = "";
+    			
+    		},
+    		error: function(xhr, status, message){
+    			console.log(message);
+    		}
+    		
+    	});
+	}); */ 
+	</script>
 
 
 	<%@ include file="../common/footer.jsp"%>

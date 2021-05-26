@@ -246,7 +246,7 @@
 		/* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
 		function deleteClick() {
 			$.ajax({
-				url : "/baeckgu/admin/admindelete",
+				url : "/baekgu/admin/admindelete",
 				data : {
 					isDelete : true
 				},
@@ -273,7 +273,7 @@
 		/*  체크박스 클릭 했을 시  */
 		function checkClick(checkBox) {
 			$.ajax({
-				url : "/baeckgu/admin/admindelete",
+				url : "/baekgu/admin/admindelete",
 				data : {
 					sendData : checkBox.checked,
 					adminId : checkBox.id,
@@ -316,7 +316,7 @@
 				// 2. 그리고 필요한 값을 보내준다. 
 				// AJAX하자
 				$.ajax({
-					url: "/baeckgu/admin/admindelete",
+					url: "/baekgu/admin/admindelete",
 					data: { sendData : adminDelete },
 					type: "post",
 					success: function(data,textStatus,xhr){

@@ -2,6 +2,14 @@ package com.baekgu.silvertown.admin.model.dto;
 
 import java.sql.Date;
 
+/**
+ * @author JJY
+ *
+ */
+/**
+ * @author JJY
+ *
+ */
 public class PostDTO {
 	
 	
@@ -57,19 +65,11 @@ public class PostDTO {
 	private int adPrice;
 	private int method;
 	private String methodName;
+	private String listReason;
+	private String adminId;
 	
 	
-	
-	
-	
-
-	public PostDTO() {
-	
-	}
-
-
-
-
+	public PostDTO() {}
 
 
 	public PostDTO(String name, String phone, String email, int industry, int job, int exp, String priority,
@@ -79,7 +79,7 @@ public class PostDTO {
 			int dListCode, int periodCode, int locationCode, String expName, String jobName, String periodName,
 			String hourName, String locationName, String payName, String ageName, String degreeLevel, int bCode,
 			int block, int postAdCode, Date adDate, int adPaid, int adWeek, int adCode, String adName, int adPrice,
-			int method, String methodName) {
+			int method, String methodName, String listReason, String adminId) {
 		super();
 		this.name = name;
 		this.phone = phone;
@@ -130,11 +130,9 @@ public class PostDTO {
 		this.adPrice = adPrice;
 		this.method = method;
 		this.methodName = methodName;
+		this.listReason = listReason;
+		this.adminId = adminId;
 	}
-
-
-
-
 
 
 	public String getName() {
@@ -142,17 +140,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-
 
 
 	public String getPhone() {
@@ -160,17 +150,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
-
-
 
 
 	public String getEmail() {
@@ -178,17 +160,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
-
 
 
 	public int getIndustry() {
@@ -196,17 +170,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setIndustry(int industry) {
 		this.industry = industry;
 	}
-
-
-
-
 
 
 	public int getJob() {
@@ -214,17 +180,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setJob(int job) {
 		this.job = job;
 	}
-
-
-
-
 
 
 	public int getExp() {
@@ -232,17 +190,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-
-
-
-
 
 
 	public String getPriority() {
@@ -250,17 +200,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-
-
-
-
 
 
 	public int getPostCode() {
@@ -268,17 +210,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostCode(int postCode) {
 		this.postCode = postCode;
 	}
-
-
-
-
 
 
 	public String getPostTitle() {
@@ -286,17 +220,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
-
-
-
-
 
 
 	public String getPostContent() {
@@ -304,17 +230,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-
-
-
-
 
 
 	public java.sql.Date getStartDate() {
@@ -322,17 +240,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setStartDate(java.sql.Date startDate) {
 		this.startDate = startDate;
 	}
-
-
-
-
 
 
 	public java.sql.Date getEndDate() {
@@ -340,17 +250,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setEndDate(java.sql.Date endDate) {
 		this.endDate = endDate;
 	}
-
-
-
-
 
 
 	public long getPayment() {
@@ -358,17 +260,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPayment(long payment) {
 		this.payment = payment;
 	}
-
-
-
-
 
 
 	public String getAddress() {
@@ -376,17 +270,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-
-
-
 
 
 	public int getPay() {
@@ -394,17 +280,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPay(int pay) {
 		this.pay = pay;
 	}
-
-
-
-
 
 
 	public int getPostTo() {
@@ -412,17 +290,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostTo(int postTo) {
 		this.postTo = postTo;
 	}
-
-
-
-
 
 
 	public int getOnline() {
@@ -430,17 +300,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setOnline(int online) {
 		this.online = online;
 	}
-
-
-
-
 
 
 	public java.sql.Date getPostDate() {
@@ -448,17 +310,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostDate(java.sql.Date postDate) {
 		this.postDate = postDate;
 	}
-
-
-
-
 
 
 	public String getDays() {
@@ -466,17 +320,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setDays(String days) {
 		this.days = days;
 	}
-
-
-
-
 
 
 	public String getGender() {
@@ -484,17 +330,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
-
-
 
 
 	public String getAdvantage() {
@@ -502,17 +340,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdvantage(String advantage) {
 		this.advantage = advantage;
 	}
-
-
-
-
 
 
 	public String getBenefit() {
@@ -520,17 +350,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setBenefit(String benefit) {
 		this.benefit = benefit;
 	}
-
-
-
-
 
 
 	public String getFullTimeYn() {
@@ -538,17 +360,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setFullTimeYn(String fullTimeYn) {
 		this.fullTimeYn = fullTimeYn;
 	}
-
-
-
-
 
 
 	public int getHours() {
@@ -556,17 +370,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setHours(int hours) {
 		this.hours = hours;
 	}
-
-
-
-
 
 
 	public int getAge() {
@@ -574,17 +380,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-
-
-
 
 
 	public int getDegree() {
@@ -592,17 +390,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setDegree(int degree) {
 		this.degree = degree;
 	}
-
-
-
-
 
 
 	public String getHrId() {
@@ -610,17 +400,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setHrId(String hrId) {
 		this.hrId = hrId;
 	}
-
-
-
-
 
 
 	public int getdListCode() {
@@ -628,17 +410,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setdListCode(int dListCode) {
 		this.dListCode = dListCode;
 	}
-
-
-
-
 
 
 	public int getPeriodCode() {
@@ -646,17 +420,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPeriodCode(int periodCode) {
 		this.periodCode = periodCode;
 	}
-
-
-
-
 
 
 	public int getLocationCode() {
@@ -664,17 +430,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setLocationCode(int locationCode) {
 		this.locationCode = locationCode;
 	}
-
-
-
-
 
 
 	public String getExpName() {
@@ -682,17 +440,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setExpName(String expName) {
 		this.expName = expName;
 	}
-
-
-
-
 
 
 	public String getJobName() {
@@ -700,17 +450,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setJobName(String jobName) {
 		this.jobName = jobName;
 	}
-
-
-
-
 
 
 	public String getPeriodName() {
@@ -718,17 +460,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPeriodName(String periodName) {
 		this.periodName = periodName;
 	}
-
-
-
-
 
 
 	public String getHourName() {
@@ -736,17 +470,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setHourName(String hourName) {
 		this.hourName = hourName;
 	}
-
-
-
-
 
 
 	public String getLocationName() {
@@ -754,17 +480,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
-
-
-
-
 
 
 	public String getPayName() {
@@ -772,17 +490,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPayName(String payName) {
 		this.payName = payName;
 	}
-
-
-
-
 
 
 	public String getAgeName() {
@@ -790,17 +500,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAgeName(String ageName) {
 		this.ageName = ageName;
 	}
-
-
-
-
 
 
 	public String getDegreeLevel() {
@@ -808,17 +510,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setDegreeLevel(String degreeLevel) {
 		this.degreeLevel = degreeLevel;
 	}
-
-
-
-
 
 
 	public int getbCode() {
@@ -826,17 +520,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setbCode(int bCode) {
 		this.bCode = bCode;
 	}
-
-
-
-
 
 
 	public int getBlock() {
@@ -844,17 +530,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setBlock(int block) {
 		this.block = block;
 	}
-
-
-
-
 
 
 	public int getPostAdCode() {
@@ -862,17 +540,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setPostAdCode(int postAdCode) {
 		this.postAdCode = postAdCode;
 	}
-
-
-
-
 
 
 	public Date getAdDate() {
@@ -880,17 +550,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdDate(Date adDate) {
 		this.adDate = adDate;
 	}
-
-
-
-
 
 
 	public int getAdPaid() {
@@ -898,17 +560,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdPaid(int adPaid) {
 		this.adPaid = adPaid;
 	}
-
-
-
-
 
 
 	public int getAdWeek() {
@@ -916,17 +570,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdWeek(int adWeek) {
 		this.adWeek = adWeek;
 	}
-
-
-
-
 
 
 	public int getAdCode() {
@@ -934,17 +580,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdCode(int adCode) {
 		this.adCode = adCode;
 	}
-
-
-
-
 
 
 	public String getAdName() {
@@ -952,17 +590,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdName(String adName) {
 		this.adName = adName;
 	}
-
-
-
-
 
 
 	public int getAdPrice() {
@@ -970,17 +600,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setAdPrice(int adPrice) {
 		this.adPrice = adPrice;
 	}
-
-
-
-
 
 
 	public int getMethod() {
@@ -988,17 +610,9 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setMethod(int method) {
 		this.method = method;
 	}
-
-
-
-
 
 
 	public String getMethodName() {
@@ -1006,17 +620,29 @@ public class PostDTO {
 	}
 
 
-
-
-
-
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;
 	}
 
 
+	public String getListReason() {
+		return listReason;
+	}
 
 
+	public void setListReason(String listReason) {
+		this.listReason = listReason;
+	}
+
+
+	public String getAdminId() {
+		return adminId;
+	}
+
+
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
+	}
 
 
 	@Override
@@ -1033,11 +659,12 @@ public class PostDTO {
 				+ ", payName=" + payName + ", ageName=" + ageName + ", degreeLevel=" + degreeLevel + ", bCode=" + bCode
 				+ ", block=" + block + ", postAdCode=" + postAdCode + ", adDate=" + adDate + ", adPaid=" + adPaid
 				+ ", adWeek=" + adWeek + ", adCode=" + adCode + ", adName=" + adName + ", adPrice=" + adPrice
-				+ ", method=" + method + ", methodName=" + methodName + "]";
+				+ ", method=" + method + ", methodName=" + methodName + ", listReason=" + listReason + ", adminId="
+				+ adminId + "]";
 	}
-
-
-
+	
+	
+	
 
 
 }
