@@ -49,22 +49,15 @@
           %>
 	 --%>
 <body>
-<c:if test="${ !empty sessionScope.loginAdminName }">
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                로그인을 먼저 해주세요</h3>
-                            
-                        </div>
-                    </div>
-                </section>
-
+<jsp:include page="../common/header.jsp"/>
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
 	</c:if>
-	<jsp:include page="../common/header.jsp"/>
      
 
 <c:if test="${ !empty sessionScope.loginAdminName }">

@@ -113,7 +113,7 @@
                        		</a>
                         </li>
                         
-                        <li class="active" style="margin-top: 190%;">
+                        <li class="active" style="margin-top: 150%;">
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/logout">
                                 <i class="icon_house_alt"></i>
                                 <span>로그아웃</span>

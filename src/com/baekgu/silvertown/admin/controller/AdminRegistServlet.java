@@ -47,7 +47,7 @@ public class AdminRegistServlet extends HttpServlet {
 		requestadmin.setAdminEmail(adminEmail);
 		requestadmin.setAdminRole(adminRole);
 		
-		System.out.println(requestadmin);
+		System.out.println("값이 잘 왔니? : " + requestadmin);
 
 		int result = new AdminRegistService().adminRegist(requestadmin);	
 		

@@ -16,14 +16,15 @@ public class AdminLogout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//loginAdmin에 담겨있는 세션값을 가져온다. (관리자 이름)
-		HttpSession session = request.getSession();
-		
-		session.invalidate();
-		String path = "/WEB-INF/views/customer/main/main.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
-		
-		
+//		//loginAdmin에 담겨있는 세션값을 가져온다. (관리자 이름)
+//		HttpSession session = request.getSession();
+//		
+//		session.invalidate();
+//		String path = "/WEB-INF/views/customer/main/main.jsp";
+//		request.getRequestDispatcher(path).forward(request, response);
+//		
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath());
 		
 	
 	}
