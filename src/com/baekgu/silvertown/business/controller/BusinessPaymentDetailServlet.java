@@ -44,11 +44,16 @@ public class BusinessPaymentDetailServlet extends HttpServlet {
 		
 		System.out.println("이 공고의 남은 날"  + dday);
 	
+		System.out.println(paymentdetail);
 		
 
 		
 		request.setAttribute("paymentdetail", paymentdetail);
 		request.setAttribute("dday", dday);
+		request.setAttribute("name", paymentdetail.getPostMName());
+		request.setAttribute("total", paymentdetail.getTotalPrice());
+
+		
 		
 		String path = "/WEB-INF/views/business/main/paymentdetail.jsp";
 		
