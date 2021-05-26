@@ -3,6 +3,7 @@ package com.baekgu.silvertown.business.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -215,11 +215,16 @@ public class BusinessSignUpServlet extends HttpServlet {
 			} 
 	        
 		
-
+	        
+	        List<Object> containDTO = new ArrayList<>();
+	        
+	        containDTO.add(business);
+	        containDTO.add(hr);
+	        
 		
 		BusinessService service = new BusinessService();
 		
-		int result = service.insertNewBusiness(business, hr);
+		int result = service.insertDecisionList(3, containDTO);
 		
 		if(result > 0 ) {
 			

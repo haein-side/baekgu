@@ -101,7 +101,7 @@
   			}
   			
   			$.ajax({
-  				url:"/baekgu/business/signup",
+  				url:"/baekgu/business/checkduplicate",
   				type:"GET",
   				data:{ hrId_1 : hrId_1 },
   				success:function(data, textStatus,xhr){

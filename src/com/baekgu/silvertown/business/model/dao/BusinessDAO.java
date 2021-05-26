@@ -102,30 +102,30 @@ public class BusinessDAO {
 	 * @param con
 	 * @return
 	 */
-	public int insertNewDecisionList(Connection con) {
-		
-		PreparedStatement pstmt = null;
-		
-		int result = 0;
-		
-		String query = prop.getProperty("insertDecisionList");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
+//	public int insertNewDecisionList(Connection con) {
+//		
+//		PreparedStatement pstmt = null;
+//		
+//		int result = 0;
+//		
+//		String query = prop.getProperty("insertDecisionList");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			
+//			result = pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			
+//		} finally {
+//			
+//			close(pstmt);
+//		}
+//		
+//		return result;
+//	}
+//	
 	public Map<Integer, Integer> selectTotalCount(Connection con, String loggedId) {
 		
 		PreparedStatement psmt = null;
@@ -524,7 +524,6 @@ public class BusinessDAO {
 			
 			payStatus = 1;
 		}
-		System.out.println("asdsada : " + payStatus);
 		
 		try {
 			pstmt = con.prepareStatement(query);
