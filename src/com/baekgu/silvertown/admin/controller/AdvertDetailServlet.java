@@ -66,7 +66,7 @@ public class AdvertDetailServlet extends HttpServlet {
 		   String path = "";
 			if (result > 0) {
 				// 보여주려는 곳으로 경로 지정.
-				path = "/baeckgu/admin/advertlist";
+				path = "/baekgu/admin/advertlist";
 				response.sendRedirect(path);
 				
 			} else {

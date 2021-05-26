@@ -37,6 +37,10 @@ public class BusinessSignUpServlet extends HttpServlet {
 		
 		String hrId_1 = request.getParameter("hrId_1");
 		
+		String path = "/WEB-INF/views/business/main/signupB.jsp";
+		
+		request.getRequestDispatcher(path).forward(request, response);
+		
 
 		
 		BusinessService service = new BusinessService();
@@ -187,7 +191,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 				business.setbAddress(bAddress);
 				
 				// map 에 담긴 담당자 값 가져오기
-								
+
 				String hrId = parameter.get("hrId");
 				String hrPwd = parameter.get("enteredPwd");
 				String hrName = parameter.get("hrName");

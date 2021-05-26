@@ -26,7 +26,7 @@ public class PostInsertDTO {
 	private String days;              // 근무요일
 	private String gender;           // 성별
 	private String benefit;        // 복지
-	private String  fullTimeYn;         // 정규직 비정규직
+	private int  fullTimeYn;         // 정규직 비정규직
 	private int hours;               // 근무시간
 	private int age;                // 연령
 	private int degree;              // 학력
@@ -44,7 +44,7 @@ public class PostInsertDTO {
 
 	public PostInsertDTO(String name, String phone, String email, int industry, int job, int exp, String priority,
 			String postTitle, String postContent, Date startDate, Date endDate, long payment, String address, int pay,
-			int postTo, int online, Date postDate, String days, String gender, String benefit, String fullTimeYn,
+			int postTo, int online, Date postDate, String days, String gender, String benefit, int fullTimeYn,
 			int hours, int age, int degree, String hrId, int dListCode, int periodCode, int locationCode) {
 		super();
 		this.name = name;
@@ -278,12 +278,12 @@ public class PostInsertDTO {
 	}
 
 
-	public String getFullTimeYn() {
+	public int getFullTimeYn() {
 		return fullTimeYn;
 	}
 
 
-	public void setFullTimeYn(String fullTimeYn) {
+	public void setFullTimeYn(int fullTimeYn) {
 		this.fullTimeYn = fullTimeYn;
 	}
 

@@ -27,12 +27,12 @@ public class AdminLoginService {
 		
 		System.out.println("encPwd : " + encPwd);
 		
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		/* 로그인 요청한 원문 비밀번호와 저장되어 있는 암호화된 비밀번호가 일치하는지 확인(암호버전) */
-//		if(passwordEncoder.matches(requestAdmin.getAdminPwd(), encPwd)) {
-//			/* 비밀번호가 일치하는 경우에만 회원 정보를 조회해온다. */
-//			loginAdmin = adminDAO.selectLoginAdmin(con, requestAdmin);
-//		}
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		/* 로그인 요청한 원문 비밀번호와 저장되어 있는 암호화된 비밀번호가 일치하는지 확인(암호버전) */
+		if(passwordEncoder.matches(requestAdmin.getAdminPwd(), encPwd)) {
+			/* 비밀번호가 일치하는 경우에만 회원 정보를 조회해온다. */
+			loginAdmin = adminDAO.selectLoginAdmin(con, requestAdmin);
+		}
 		
 		if(encPwd != null && encPwd.equals(requestAdmin.getAdminPwd())) {
 			loginAdmin = adminDAO.selectLoginAdmin(con, requestAdmin);

@@ -49,10 +49,11 @@
 						</ul>
 						<h1 id="fh5co-logo">
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
-							<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
+							<a href="${ pageContext.servletContext.contextPath }/user/toMain"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 						</h1>
 						<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
+							<li><a href="${ pageContext.servletContext.contextPath }/testPost" style="font-family: icomoon; font-size: 30px;">상세공고보기</a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
 							<li class="fh5co-cta-btn"><a href="${ pageContext.servletContext.contextPath }/user/toSignup" style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
 						</ul>
@@ -74,6 +75,8 @@
 					
 						<ul class="pull-right right-menu" style="align:left;">
 						<!-- 로그인, 회원가입 -->
+							<!-- 임의로 상세 공고보기 메뉴 생성 -->
+							<li><a href="${ pageContext.servletContext.contextPath }/testPost" style="font-family: icomoon; font-size: 30px;">상세공고보기</a></li>
 							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName }님 반갑습니다! </a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
 						</ul>	

@@ -7,7 +7,6 @@
                ADMIN_PWD
           FROM ADMIN
          WHERE ADMIN_ID = ?
-           AND ADMIN_PWD = ?
     </entry>
     <entry key="selectLoginAdmin">
         SELECT 
