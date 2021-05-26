@@ -74,7 +74,7 @@ public class BusinessJoinCodeServlet extends HttpServlet {
 			result = joinService.joinSubmitUpdate(JoinDTO);
 
 			if (result > 0) {
-				path = "/baeckgu/admin/businessjoinList";
+				path = "/baekgu/admin/businessjoinList";
 				response.sendRedirect(path);
 			} else {
 				path = "/WEB-INF/views/common/errorPage.jsp";
@@ -88,7 +88,7 @@ public class BusinessJoinCodeServlet extends HttpServlet {
 			System.out.println("컨트롤러 가입 거절 ");
 			result = joinService.joinBlockUpdate(JoinDTO);
 			if (result > 0) {
-				path = "/baeckgu/admin/businessjoinList";
+				path = "/baekgu/admin/businessjoinList";
 				response.sendRedirect(path);
 
 			} else {

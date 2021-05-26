@@ -81,8 +81,6 @@ public class PostApproveDetailServlet extends HttpServlet {
 		
 		int postCode = Integer.parseInt(request.getParameter("postCode"));
 		
-
-		
 		// 들어온 버튼의 value를 확인해서 조건문으로 승인, 거절을 판별
 		String button = request.getParameter("Button");
 		// 공고 거절일 때만 사유 적음. 승인일 때는 default처리
@@ -109,7 +107,7 @@ public class PostApproveDetailServlet extends HttpServlet {
 				result = postService.postSubmitUpdate(postDTO);
 
 				if (result > 0) {
-					path = "/baeckgu/admin/postapprove";
+					path = "/baekgu/admin/postapprove";
 					response.sendRedirect(path);
 				} else {
 					path = "/WEB-INF/views/common/errorPage.jsp";
@@ -123,7 +121,7 @@ public class PostApproveDetailServlet extends HttpServlet {
 				System.out.println("컨트롤러 공고 거절 ");
 				result = postService.postBlockUpdate(postDTO);
 				if (result > 0) {
-					path = "/baeckgu/admin/postapprove";
+					path = "/baekgu/admin/postapprove";
 					response.sendRedirect(path);
 
 				} else {
