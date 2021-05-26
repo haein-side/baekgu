@@ -35,7 +35,7 @@
  <jsp:include page="../common/header.jsp"/>
 
 	<!-- 로그인 세션 값이 비었을시 아무것도 보이지 않는다 -->
-	<c:if test="${ !empty sessionScope.loginAdminName }">
+	<c:if test="${ empty sessionScope.loginAdminName }">
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="row">

@@ -67,7 +67,7 @@
 		     , A.USER_REGISTER_DATE
 		     , A.USER_BLOCK
 		  FROM USER A
-		 WHERE A.USER_PHONE = ?			
+		 WHERE A.USER_PHONE = ?	
 	</entry>
 	
 	<!-- 상세검색에서 업종명으로 직종명을 검색해오는 쿼리 -->
@@ -359,5 +359,15 @@
         , ?
         )
 	</entry>
+	
+	<!-- 암호화된 비밀번호 조회 -->
+	<entry key="selectEncryptedPwd">
+        SELECT
+               USER_PWD
+          FROM USER
+         WHERE USER_BLOCK = 0
+           AND USER_PHONE = ?
+	</entry>
+	
 	
 </properties>

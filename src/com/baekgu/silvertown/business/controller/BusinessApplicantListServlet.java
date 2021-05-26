@@ -122,7 +122,11 @@ public class BusinessApplicantListServlet extends HttpServlet {
 			request.setAttribute("pageInfo", pageInfo); 
 			
 			System.out.println(applicationList);
-		} 
+		}
+		if(request.getParameter("resumeCode") != null) {
+			String userName = new BusinessService().selectUsername(Integer.parseInt(request.getParameter("resumeCode")));
+			request.setAttribute("report", userName);
+		}
 		
 
 		request.getRequestDispatcher(path).forward(request, response);

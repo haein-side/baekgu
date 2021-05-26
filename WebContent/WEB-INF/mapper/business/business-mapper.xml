@@ -204,25 +204,6 @@ select
     	, LAST_INSERT_ID()
 	     )
 	</entry>
-	<entry key="insertDecisionListpost">
-       insert
-         into decision_list 
-       (
-         D_LIST_REASON
-       , D_LIST_DATE
-       , ADMIN_ID
-       , DECISION_CODE
-       , D_LIST_TYPE_CODE
-       )
-       values
-      (
-        null
-      , null
-      , null
-      , 1
-      , 4
- 	  )
-	</entry>
 	
 	<entry key="checkDuplicationId">
 		SELECT
@@ -396,4 +377,84 @@ select
    		   SET APPLY_YN = ?
  		 WHERE APPLY_CODE = ?
 	</entry>
+	
+	<entry key="insertApplicantReport">
+		 INSERT
+   		   INTO REPORT
+		(
+  		  REPORT_REASON
+		, REPORT_DATE 
+		, POST_CODE 
+		, USER_CODE 
+		, D_LIST_CODE 
+		)
+		VALUES
+		(
+  		   ?
+		 , NOW()
+		 , ?
+		 , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)
+		 , LAST_INSERT_ID() 
+		)
+	</entry>
+	<entry key="insertDefaultDecisionList">
+       insert
+         into decision_list 
+       (
+         D_LIST_REASON
+       , D_LIST_DATE
+       , ADMIN_ID
+       , DECISION_CODE
+       , D_LIST_TYPE_CODE
+       )
+       values
+      (
+        null
+      , null
+      , null
+      , 1
+      , ?
+ 	  )
+	</entry>
+	
+	<entry key="selectCountReported">
+		SELECT
+       			COUNT(a.REPORT_CODE) AS "COUNT"
+  		  FROM REPORT a
+  		  JOIN DECISION_LIST b ON(a.D_LIST_CODE = b.D_LIST_CODE)
+ 		 WHERE a.POST_CODE IN (SELECT f.POST_CODE
+        		                 FROM POST f 
+                		        WHERE f.HR_ID = ?)
+   		   AND b.D_LIST_TYPE_CODE = 1
+	</entry>
+	
+	<entry key="selectApplicantReported">
+		SELECT
+       		   a.REPORT_DATE
+     		 , a.REPORT_REASON
+     		 , b.POST_M_NAME
+     		 , b.POST_TITLE
+     		 , c.D_LIST_DATE
+     		 , c.D_LIST_REASON
+     		 , d.DECISION_STATUS
+     		 , e.USER_NAME
+  		 FROM REPORT a
+  		 JOIN POST b ON(a.POST_CODE = b.POST_CODE)
+  		 JOIN DECISION_LIST c ON (a.D_LIST_CODE = c.D_LIST_CODE)
+  		 JOIN DECISION d ON(c.DECISION_CODE = d.DECISION_CODE)
+  		 JOIN USER e ON(a.USER_CODE = e.USER_CODE)
+ 		WHERE a.POST_CODE IN (SELECT f.POST_CODE
+                         		FROM POST f 
+                        	   WHERE f.HR_ID = ?)
+   		  AND c.D_LIST_TYPE_CODE = 1
+	</entry>
+	
+	<entry key="selectUsername">
+		 SELECT 
+        		a.USER_NAME
+   		   FROM USER a
+   		   JOIN RESUME b on(a.USER_CODE = b.USER_CODE)
+  		  WHERE b.RESUME_CODE = ?
+	</entry>
+	
 </properties>

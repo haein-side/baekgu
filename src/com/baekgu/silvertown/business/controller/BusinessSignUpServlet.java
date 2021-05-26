@@ -37,6 +37,10 @@ public class BusinessSignUpServlet extends HttpServlet {
 		
 		String hrId_1 = request.getParameter("hrId_1");
 		
+		String path = "/WEB-INF/views/business/main/signupB.jsp";
+		
+		request.getRequestDispatcher(path).forward(request, response);
+		
 
 		
 		BusinessService service = new BusinessService();
