@@ -48,7 +48,7 @@ public class AdvertAddServlet extends HttpServlet {
 		String path = "";
 		
 		if(result > 0) {
-			path = "/baeckgu/admin/advertlist";
+			path = "/baekgu/admin/advertlist";
 			response.sendRedirect(path);
 		} else {
 			path = "/WEB-INF/views/admin/common/erroPage.jsp";

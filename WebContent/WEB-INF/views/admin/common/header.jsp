@@ -83,7 +83,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/postapprove">
                                 <i class="icon_house_alt"></i>
                                 <span>공고심사관리</span>
                             </a>
