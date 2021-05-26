@@ -30,10 +30,16 @@
         <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet"/>
         <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css" rel="stylesheet">
     
-    </head>
-    <body>
+</head>
+<body>
     <jsp:include page="../common/header.jsp"/>
-        
+<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+			</section>
+		</section>
+</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -93,6 +99,7 @@
             <!--main content end-->
 
       
+</c:if>
 
 
         </body> </html> 

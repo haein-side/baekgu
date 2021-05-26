@@ -48,6 +48,7 @@
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/postlist">공고관리</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/paymentlist">결제관리</a></li>
 		        <li><a href="${ pageContext.servletContext.contextPath }/business/applicablePostlist">지원자관리</a></li>
+		        <li><a href="${ pageContext.servletContext.contextPath }/business/report">신고내역</a></li>
 		        <li><a href="#">상품안내</a></li>
 		      </ul>
 		  	

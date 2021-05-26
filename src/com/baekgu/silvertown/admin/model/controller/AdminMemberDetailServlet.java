@@ -86,7 +86,7 @@ public class AdminMemberDetailServlet extends HttpServlet {
 				result = memberService.updateBlockMember(block);
 				
 				if(result > 0) {
-					response.sendRedirect(request.getContextPath() + "/admin/reportlist");
+					response.sendRedirect(request.getContextPath() + "/admin/memberdetail?no="+userCode);
 
 				} else {
 					String path ="/WEB-INF/views/admin/common/errorPage.jsp";
