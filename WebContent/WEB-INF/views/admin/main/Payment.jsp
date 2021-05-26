@@ -33,9 +33,6 @@
                                 재무관리
                             </h3>
                         </div>
-                        <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/reportWait" style="margin-left: 30px;">
-                            세금계산서발행
-                        </a>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

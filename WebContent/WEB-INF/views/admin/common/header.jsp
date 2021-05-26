@@ -36,7 +36,7 @@
                 </div>
 
                 <!--logo start-->
-                <a href="${ pageContext.servletContext.contextPath }/admin/main" class="logo">백구
+                <a href="${ pageContext.servletContext.contextPath }/admin/homepage" class="logo">백구
                     <span class="lite">관리자</span></a>
                 <!--logo end-->
 
@@ -52,12 +52,12 @@
                 <div id="sidebar" class="nav-collapse ">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">
-                        <li class="active">
+<%--                         <li class="active">
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/main">
                                 <i class="icon_house_alt"></i>
                                 <span>Dashboard</span>
                             </a>
-                        </li>
+                        </li> --%>
                           <li class="active">
                             <a class="" href="${ pageContext.servletContext.contextPath }/admin/homepage">
                                 <i class="icon_house_alt"></i>
@@ -117,12 +117,6 @@
                                 <i class="icon_house_alt"></i>
                                 <span>재무관리</span>
                        		</a>
-                        </li>
-                        <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/tax">
-                                <i class="icon_house_alt"></i>
-                                <span>세금계산서발행</span>
-                            </a>
                         </li>
                      </ul>
                     <!-- sidebar menu end-->

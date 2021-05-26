@@ -272,7 +272,7 @@
         UPDATE DECISION_LIST 
           SET D_LIST_REASON = ?
             , D_LIST_DATE = now()
-            , DECISION_CODE = 2
+            , DECISION_CODE = 3
             , ADMIN_ID = ?
         WHERE D_LIST_CODE = ?
 	</entry>

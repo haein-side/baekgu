@@ -739,6 +739,12 @@ private final Properties prop;
 		return result;
 	}
 
+	/**
+	 * 기업 신고 거절 
+	 * @param con
+	 * @param block
+	 * @return
+	 */
 	public int updateNoBlockCompany(Connection con, BlockDTO block) {
 		
 		PreparedStatement pstmt = null;

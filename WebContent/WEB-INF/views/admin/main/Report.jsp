@@ -283,7 +283,7 @@
 					const no = this.parentNode.children[7].innerText;
 					
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
-				  } else{
+				  } else if(this.parentElement.children[0].children[0].value == 2){
 					 const no = this.parentNode.children[6].innerText;
 				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
