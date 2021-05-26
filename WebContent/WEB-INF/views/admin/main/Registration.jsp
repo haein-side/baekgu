@@ -137,7 +137,7 @@
    			var checkId = $("#adminId").val();
    				
    			$.ajax({
-   				url:"/baeckgu/adminIdCheck",
+   				url:"/baekgu/adminIdCheck",
    				type:"post",
    				data : {
    						adminId : checkId

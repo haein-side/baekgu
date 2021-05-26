@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -19,6 +20,8 @@ import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.ApplyDTO;
 import com.baekgu.silvertown.user.model.dto.ReportDTO;
+import com.baekgu.silvertown.user.model.dto.ResumeDTO;
+import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
@@ -219,6 +222,11 @@ public class UserDAO {
 		
 	}
 
+	/**
+	 * 최초 회원가입시 기본 이력서 생성해줌
+	 * @param con
+	 * @return
+	 */
 	public int insertNewResume(Connection con) {
 		PreparedStatement pstmt = null;
 		
@@ -283,6 +291,13 @@ public class UserDAO {
 		return (UserDTO) jobInfo;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 입사지원내역 조회
+	 * @param con
+	 * @param userCode
+	 * @param applyPageInfo
+	 * @return
+	 */
 	public List<ApplyDTO> selectApply(Connection con, int userCode, PageInfoDTO applyPageInfo) {
 		PreparedStatement pstmt = null;
 		
@@ -306,6 +321,7 @@ public class UserDAO {
 				
 				ApplyDTO app = new ApplyDTO();
 				app.setUserCode(userCode);
+				app.setApplyCode(rset.getInt("APPLY_CODE"));
 				app.setApplyDate(rset.getDate("APPLY_DATE"));
 				app.setbName(rset.getString("B_NAME"));
 				app.setPostTitle(rset.getString("POST_TITLE"));
@@ -328,6 +344,13 @@ public class UserDAO {
 		return allApply;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 신고내역 조회
+	 * @param con
+	 * @param userCode
+	 * @param blockPageInfo
+	 * @return
+	 */
 	public List<ReportDTO> selectReport(Connection con, int userCode, PageInfoDTO blockPageInfo) {
 		PreparedStatement pstmt = null;
 		
@@ -370,6 +393,12 @@ public class UserDAO {
 		return allReport;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 지원내역 수 조회
+	 * @param con
+	 * @param userCode
+	 * @return
+	 */
 	public int applySelectTotalCount(Connection con, int userCode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -398,6 +427,12 @@ public class UserDAO {
 		return applytotalCount;
 	}
 
+	/**
+	 * 유저코드를 이용한 전체 신고내역 수 조회
+	 * @param con
+	 * @param userCode
+	 * @return
+	 */
 	public int blockSelectTotalCount(Connection con, int userCode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -424,6 +459,217 @@ public class UserDAO {
 		}
 		
 		return blocktotalCount;
+	}
+
+	/**
+	 * 유저코드와 지원코드를 이용한 지원취소
+	 * @param con
+	 * @param applycode
+	 * @param userCode
+	 * @return
+	 */
+	public int deleteApply(Connection con, int applycode) {
+		int cancelApply = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("cancelApply");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, applycode);
+			
+			cancelApply = pstmt.executeUpdate();
+			
+			System.out.println("cancelApply의 결과 : " + cancelApply);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return cancelApply;
+		
+	}
+
+	/**
+	 * 유저코드를 이용해서 이력서 내용을 조회해옴
+	 * @param con
+	 * @param userCode
+	 * @return 이력서 내용
+	 */
+	public ResumeDTO selectResumeInfo(Connection con, int userCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		ResumeDTO resumeInfo = new ResumeDTO();
+		
+		String query = prop.getProperty("selectResumeInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userCode);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				resumeInfo.setUserName(rset.getString("USER_NAME"));
+				resumeInfo.setUserPhone(rset.getString("USER_PHONE"));
+				resumeInfo.setResumeSubphone(rset.getString("RESUME_SUBPHONE"));
+				resumeInfo.setUserGender(rset.getString("USER_GENDER"));
+				resumeInfo.setUserBday(rset.getDate("USER_BDAY"));
+				resumeInfo.setUserAddress(rset.getString("USER_ADDRESS"));
+				resumeInfo.setResumeLetter(rset.getString("RESUME_LETTER"));
+				resumeInfo.setResumeAdvantage(rset.getString("RESUME_ADVANTAGE"));
+				resumeInfo.setDegreeCode(rset.getInt("DEGREE_CODE"));
+				resumeInfo.setExpCode(rset.getInt("EXP_CODE"));
+				resumeInfo.setResumeWriteDate(rset.getDate("RESUME_WRITE_DATE"));
+		
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("resumeInfo from DAO : " + resumeInfo);
+		
+		return resumeInfo;
+	}
+
+	/**
+	 * 입력받은 값을 이용해 이력서 내용 수정하기
+	 * @param con
+	 * @param updateResume
+	 * @return
+	 */
+	public int updateResume(Connection con, ResumeDTO updateResume) {
+		PreparedStatement pstmt = null;
+		
+		int reviseResume = 0;
+		
+		String query = prop.getProperty("updateResume");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, updateResume.getUserPhone());
+			pstmt.setString(2, updateResume.getResumeSubphone());
+			pstmt.setString(3, updateResume.getUserGender());
+			pstmt.setDate(4, updateResume.getUserBday());
+			pstmt.setString(5, updateResume.getUserAddress());
+			pstmt.setString(6, updateResume.getResumeLetter());
+			pstmt.setString(7, updateResume.getResumeAdvantage());
+			pstmt.setInt(8, updateResume.getDegreeCode());
+			pstmt.setInt(9, updateResume.getExpCode());
+			pstmt.setInt(10, updateResume.getUserCode());
+			
+			reviseResume = pstmt.executeUpdate();
+			
+			System.out.println("reviseResume DAO 도착");
+			System.out.println("dao에서 보낸 reviseResume : " + reviseResume);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return reviseResume;
+		
+		
+	}
+
+	/**
+	 * 검색 조건 값을 가지고 공고를 받아오는 메소드
+	 * @param con
+	 * @param searchPost
+	 * @return 공고목록에 쓸 것들
+	 */
+	public List<SearchPostDTO> searchPost(Connection con, SearchPostDTO searchPost) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		
+		List<SearchPostDTO> selectedPost = null;
+		
+		String query = "";
+		
+		try {
+			
+			selectedPost = new ArrayList<>();
+			
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, J.job_name, J.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2";
+			
+			if(searchPost.getLocationCode() != null) {
+				String locationCode = "";
+				for (int i=0; i < searchPost.getLocationCode().length; i++ ) {
+					locationCode += searchPost.getLocationCode()[i];
+					if(i < searchPost.getLocationCode().length - 1) {
+						locationCode += ", ";
+					}
+				}
+				
+				query += " and l.location_code IN (" + locationCode + ")";
+			}
+			
+			if(searchPost.getIndustryCode() > 0) {
+				query += " and I.industry_code = " + searchPost.getIndustryCode();
+			}
+			
+			if(searchPost.getPeriodCode() > 0) {
+				query += " and wp.period_code = " + searchPost.getPeriodCode();
+			}
+			
+			System.out.println(query);
+			
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+//			rset = stmt.executeQuery(query);
+			
+			while (rset.next()) {
+				SearchPostDTO selectPost = new SearchPostDTO();
+				
+				selectPost.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
+				selectPost.setDecisionCode(rset.getInt("DECISION_CODE"));
+				selectPost.setPostCode(rset.getInt("post_code"));
+				selectPost.setPostTitle(rset.getString("post_title"));
+				selectPost.setLocationName(rset.getString("location_name"));
+				//selectPost.setLocationCode(rset.getInt("LOCATION_CODE"));
+				selectPost.setIndustryName(rset.getString("industry_name"));
+				selectPost.setIndustryCode(rset.getInt("industry_code"));
+				selectPost.setJobName(rset.getString("job_name"));
+				selectPost.setJobCode(rset.getInt("job_code"));
+				selectPost.setPayment(rset.getInt("payment"));
+				selectPost.setPayCode(rset.getInt("PAY_CODE"));
+				selectPost.setPayName(rset.getString("pay_name"));
+				selectPost.setBenefit(rset.getString("benefit"));
+				selectPost.setPeriodCode(rset.getInt("PERIOD_CODE"));
+				selectPost.setPeriodName(rset.getString("PERIOD_NAME"));
+				selectPost.setAdCode(rset.getInt("AD_CODE"));
+				
+				System.out.println("selectPost : " + selectPost);
+				
+				selectedPost.add(selectPost);
+				
+				System.out.println("selectedPost의 길이 : " + selectedPost.size());
+				
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("selectPost from DAO : " + selectedPost);
+		
+		return selectedPost;
 	}
 
 	

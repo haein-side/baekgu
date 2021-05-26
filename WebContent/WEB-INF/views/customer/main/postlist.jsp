@@ -6,7 +6,8 @@
         <meta charset="utf-8" />
         <title>채용공고 리스트</title>
          <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="RESOURCES/CSS/CUSTOMER/postlist.css" rel="stylesheet" />
+        <link href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/postlist.css" rel="stylesheet" />
+            <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"type="text/css">
         
         <style>
         
@@ -62,18 +63,18 @@
 
 	<body>
         <!-- header -->
-        <%@ include file="../common/header.jsp" %> 
+       <%@ include file="../common/header2.jsp" %>
         
 <!-- width 100% 크기 조정, header size needed -->
-        <div class="breadcrumb mb-4" style="height: 60px; position: fixed; width: 100%; z-index: 10000;">
-            <p style="margin: auto; color: orange; font-size: larger;">검색결과 : 지역-강남구 / 직종-서빙 / 기간-한달이하</p>
+        <div class="breadcrumb mb-4" style="height: 60px; position: fixed; width: 100%; z-index: 10000; margin-top : 240px; background-color: skyblue;">
+            <p style="margin: auto; color: black; font-size: larger;">검색결과 : 지역-강남구 / 직종-서빙 / 기간-한달이하</p>
             <!-- 재검색하기 버튼 눌렀을 때, 이전페이지인 검색페이지로 이동하기 -->
-            <a href="#" style=" color: white; position: fixed; z-index: 10000; padding-top: 5px; margin-left: 90%; font-size: large;" >재검색하기</a>
+            <a href="#" style=" color: red; position: fixed; z-index: 10000; padding-top: 5px; margin-left: 90%; font-size: large;" >재검색하기</a>
         </div>
 
         <!-- Page Content-->
         <section class="py-5">
-            <div class="container">
+            <div class="container" style="margin-top : 270px;">
                 <!-- Page Heading/Breadcrumbs-->
                 <h1 style ="font-family:BM; color:orange; margin-top: 5%;">
                     채용 공고                   

@@ -56,6 +56,7 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
+                           <c:if test="${ sessionScope.adminRole eq '대표관리자' }"> 
                             <form class="form-validate form-horizontal" id="feedback_form" method="post" action="${ pageContext.servletContext.contextPath }/admin/adminid">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
@@ -66,7 +67,7 @@
                               <div class="form-group ">
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
-                                  <input class="form-control " id="baekid" type="id" name="id"  value=<c:out value="${ adminDTO.adminId }"/>>
+                                  <input class="form-control " id="baekid" type="id" name="id"  value=<c:out value="${ adminDTO.adminId }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group ">
@@ -96,10 +97,11 @@
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
                                   <button class="btn btn-primary" class="btn btn-primary" type="submit">등록</button>
-                                  
+                                 
                                 </div>
                               </div>
                             </form>
+                            </c:if>
                           </div>
           
                         </div>
@@ -112,42 +114,4 @@
 
 
 
-
-        <!-- javascripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-ui-1.10.4.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="RESOURCES/JS/ADMIN/jquery-ui-1.9.2.custom.min.js"></script>
-        <!-- bootstrap -->
-        <script src="RESOURCES/JS/ADMIN/bootstrap.min.js"></script>
-        <!-- nice scroll -->
-        <script src="RESOURCES/JS/ADMIN/jquery.scrollTo.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="RESOURCES/JS/ADMIN/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="RESOURCES/JS/ADMIN/owl.carousel.js"></script>
-        <!-- jQuery full calendar -->
-        <script src="RESOURCES/JS/ADMIN/fullcalendar.min.js"></script> <!-- Full Google Calendar -
-        Calendar --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.rateit.min.js"></script> 
-        <!-- custom select --> 
-        <script src="RESOURCES/JS/ADMIN/jquery.customSelect.min.js"></script>
-        <script src="RESOURCES/JS/ADMIN/scripts.js"></script> <!-- custom script for this page-->
-        <script src="RESOURCES/JS/ADMIN/sparkline-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/easy-pie-chart.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-1.2.2.min.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery-jvectormap-world-mill-en.js"></script> 
-        <script src="RESOURCES/JS/ADMIN/jquery.autosize.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.placeholder.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/gdp-data.js"></script> <script src="RESOURCES/JS/ADMIN/morris.min.js"></script> <script
-        src="RESOURCES/JS/ADMIN/sparklines.js"></script> <script src="RESOURCES/JS/ADMIN/charts.js"></script> <script
-        src="RESOURCES/JS/ADMIN/jquery.slimscroll.min.js"></script> <script> //knob $(function() {
-        $(".knob").knob({ 'draw': function() { $(this.i).val(this.cv + '%') } }) });
-        //carousel $(document).ready(function() { $("#owl-slider").owlCarousel({
-        navigation: true, slideSpeed: 300, paginationSpeed: 400, singleItem: true });
-        }); //custom select box $(function() { $('select.styled').customSelect(); }); /*
-        ---------- Map ---------- */ $(function() { $('#map').vectorMap({ map:
-        'world_mill_en', series: { regions: [{ values: gdpData, scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial' }] }, backgroundColor: '#eef3f7', onLabelShow:
-        function(e, el, code) { el.html(el.html() + ' (GDP - ' + gdpData[code] + ')'); }
-        }); }); </script> </body> </html> 
+ </body> </html> 

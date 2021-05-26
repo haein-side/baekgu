@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.baekgu.silvertown.admin.model.dto.AdminDTO;
-import com.baekgu.silvertown.admin.model.service.AdminService;
+import com.baekgu.silvertown.admin.model.dto.PostDTO;
+import com.baekgu.silvertown.admin.model.service.PostApproveService;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.paging.PageNation;
 
 /**
- * Servlet implementation class AdminSearchListServletr
+ * Servlet implementation class PostApproveServlet
  */
-@WebServlet("/admin/search")
-public class AdminSearchListServlet extends HttpServlet {
+@WebServlet("/admin/postapprove")
+public class PostApproveListServlet extends HttpServlet {
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
@@ -36,8 +36,8 @@ public class AdminSearchListServlet extends HttpServlet {
 
 		/* 전체 게시물 수가 필요 */
 		/* 데이터베이스에서 먼저 전체 게시물 수를 조회 */
-		AdminService adminService = new AdminService();
-		int totalCount = adminService.selectTotalCount();
+		PostApproveService postService = new PostApproveService();
+		int totalCount = postService.selectTotalCount();
 		
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 5;
@@ -48,16 +48,16 @@ public class AdminSearchListServlet extends HttpServlet {
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
 		
 		/* 조회해온다 */
-		List<AdminDTO> adminList = adminService.searchAdminList(pageInfo);
+		List<PostDTO> postList = postService.selectPostList(pageInfo);
 		System.out.println(pageInfo);
 		
-		System.out.println("adminList : " + adminList);
+		System.out.println("postList 컨트롤러 : " + postList);
 		
 		String path = "";
-		if(adminList != null) {
+		if(postList != null) {
 			
-			path = "/WEB-INF/views/admin/main/Manager.jsp";
-			request.setAttribute("adminList", adminList);
+			path = "/WEB-INF/views/admin/main/PostApprove.jsp";
+			request.setAttribute("postList", postList);
 			request.setAttribute("pageInfo", pageInfo);
 		} else {
 			path = "/WEB-INF/views/common/errorPage.jsp";
@@ -66,11 +66,11 @@ public class AdminSearchListServlet extends HttpServlet {
 		request.getRequestDispatcher(path).forward(request, response);
 		
 		
-		
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
-		doGet(request, response);
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 	}
+
 }

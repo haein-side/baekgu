@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/search">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/list">
                                 <i class="icon_house_alt"></i>
                                 <span>관리자 및 직원관리</span>
                             </a>
@@ -83,25 +83,25 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/postapprove">
                                 <i class="icon_house_alt"></i>
-                                <span>공고승인</span>
+                                <span>공고심사관리</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/postList">
                                 <i class="icon_house_alt"></i>
                                 <span>공고관리</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/businessjoinList">
                                 <i class="icon_house_alt"></i>
                                 <span>가입승인</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/advertlist">
                                 <i class="icon_house_alt"></i>
                                 <span>광고상품관리</span>
                             </a>
@@ -113,9 +113,15 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/manager">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/payment">
                                 <i class="icon_house_alt"></i>
                                 <span>재무관리</span>
+                       		</a>
+                        </li>
+                        <li class="active">
+                            <a class="" href="${ pageContext.servletContext.contextPath }/admin/tax">
+                                <i class="icon_house_alt"></i>
+                                <span>세금계산서발행</span>
                             </a>
                         </li>
                      </ul>

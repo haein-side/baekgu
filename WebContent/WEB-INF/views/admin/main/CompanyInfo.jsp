@@ -45,17 +45,15 @@
                                 기업 정보</h3>           
                         </div>
                     </div>
-
-
                  <div class="row">
                     <div class="col-lg-12">
                       <section class="panel">
                         <header class="panel-heading">
                           기업 리스트
-                          <a class="btn btn-success" data-toggle="modal" href="#myModal" style="margin-left: 30px;">
+                          <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/nomalCompany" style="margin-left: 30px;">
                             정상기업 모아보기
                         </a>
-                        <a class="btn btn-warning" data-toggle="modal" href="#myModal2" style="margin-left: 30px;">
+                        <a class="btn btn-warning" href="${ pageContext.servletContext.contextPath }/admin/blockCompany" style="margin-left: 30px;">
                             차단기업 모아보기
                         </a>
                         </header>
@@ -77,7 +75,25 @@
 										<td><c:out value="${ company.code }" /></td>
 										<td><c:out value="${ company.name }" /></td>
 										<td><c:out value="${ company.phone }" /></td>
-										<td><c:out value="${ company.category }" /></td>
+										<td>
+										<c:choose>
+			                              <c:when test="${ company.category eq 1 }">
+			                              <c:out value="미분류"/>
+			                              </c:when>
+			                              <c:when test="${ company.category eq 2 }">
+			                              <c:out value="일반기업"/>
+			                              </c:when>
+			                              <c:when test="${ company.category eq 3 }">
+			                              <c:out value="공기업"/>
+			                              </c:when>
+			                              <c:when test="${ company.category eq 4 }">
+			                              <c:out value="사회적기업"/>
+			                              </c:when>
+			                              <c:when test="${ company.category eq 5 }">
+			                              <c:out value="공공기관"/>
+			                              </c:when>
+			                             </c:choose>
+										</td>
 										<td>
 										<c:choose>
 			                              <c:when test="${ company.block eq 0 }">
@@ -166,14 +182,15 @@
 			</c:choose>   
 
 							<!-- 검색 폼 -->
-		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/companySearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>
 				    <c:when test="${ !empty requestScope.searchValue }">
    					    <select id="searchCondition" name="searchCondition">
-							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>이름</option>
-							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>유저코드</option>
-							<option value="yaer" <c:if test="${requestScope.searchCondition eq 'year'}">selected</c:if>>년도</option>
+							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>기업명</option>
+							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>기업코드</option>
+							<option value="category" <c:if test="${requestScope.searchCondition eq 'category'}">selected</c:if>>기업분류</option>
+							<option value="state" <c:if test="${requestScope.searchCondition eq 'state'}">selected</c:if>>승인여부</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 				    </c:when>
@@ -182,6 +199,7 @@
 							<option value="name">기업명</option>
 							<option value="code">기업코드</option>
 							<option value="category">기업분류</option>
+							<option value="state">승인여부</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" >
 				    </c:otherwise>

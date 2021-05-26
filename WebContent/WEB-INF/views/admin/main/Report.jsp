@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -41,8 +41,12 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                신고관리</h3>
+                                신고관리
+                            </h3>
                         </div>
+                        <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/reportWait" style="margin-left: 30px;">
+                            접수대기 모아보기
+                        </a>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -52,9 +56,12 @@
                                 <thead>
                                   <tr>
                                   	<th></th>
+                                  	<th>신고대상</th>
                                     <th>신고코드</th>
                                     <th>신고명</th>
+                                    <th>심사사유</th>
                                     <th>신고날짜</th>
+                                    <!-- <th>심사날짜</th> -->
                                     <th>공고코드</th>
                                     <th>유저코드</th>
                                     <th>접수상태</th>
@@ -65,9 +72,24 @@
                                 <c:forEach var="report" items="${ requestScope.reportList }">
 									<tr>
 										<td><input id="tCode" type="hidden" value="${ report.bdTCode }"></td>
+										<c:set var="tCode" value="${ report.bdTCode }"/>
+										<c:choose>
+											<c:when test="${ tCode eq 1 }">
+												<td>
+													<c:out value="일반회원"/>
+												</td>
+											</c:when>
+											<c:when test="${ tCode eq 2 }">
+												<td>
+													<c:out value="기업회원"/>
+												</td>
+											</c:when>
+										</c:choose>
 										<td><c:out value="${ report.rCode }" /></td>
 										<td><c:out value="${ report.rReason }" /></td>
+										<td><c:out value="${ report.bReason }" /></td>
 										<td><c:out value="${ report.rDate }" /></td>
+										<%-- <td><c:out value="${ report.bDate }" /></td> --%>
 										<td><c:out value="${ report.postCode }" /></td>
 										<td><c:out value="${ report.userCode }" /></td>
 										<c:set var="bdCode" value="${ report.bdCode }" />
@@ -96,7 +118,7 @@
                                 </tbody>
                               </table>
                             </div>
-<%-- 페이지 처리 --%>
+		<%-- 페이지 처리 --%>
 		<div class="pagingArea" align="center">
 			<c:choose>
 			    <c:when test="${ empty requestScope.searchValue }">
@@ -158,22 +180,20 @@
 			</c:choose>   
 
 							<!-- 검색 폼 -->
-		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/reportSearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>
 				    <c:when test="${ !empty requestScope.searchValue }">
    					    <select id="searchCondition" name="searchCondition">
-							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>이름</option>
-							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>유저코드</option>
-							<option value="yaer" <c:if test="${requestScope.searchCondition eq 'year'}">selected</c:if>>년도</option>
+							<option value="userCode" <c:if test="${requestScope.searchCondition eq 'userCode'}">selected</c:if>>유저코드</option>
+							<option value="postCode" <c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 				    </c:when>
 				    <c:otherwise>
 					    <select id="searchCondition" name="searchCondition">
-							<option value="state">접수상태</option>
-							<option value="code">유저코드</option>
-							<option value="name">이름</option>
+							<option value="userCode">유저코드</option>
+							<option value="postCode">공고코드</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" >
 				    </c:otherwise>
@@ -185,7 +205,7 @@
 			</div>
 		</form>
 		<script>
-		const link = "${ pageContext.servletContext.contextPath }/admin/memberList";
+		const link = "${ pageContext.servletContext.contextPath }/admin/reportl 6ist";
 		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
 			
 		if(document.getElementById("startPage")) {
@@ -256,15 +276,18 @@
 				
 				$tds[i].onclick = function() {
 
-				  /* alert(target); */
+				/* alert(target); */
 				  
 				  if(this.parentElement.children[0].children[0].value == 1){
-					const no = this.parentNode.children[5].innerText;
+
+					const no = this.parentNode.children[7].innerText;
+					
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
 				  } else{
-					  //기업공고로 연결해주면 된다
+					 const no = this.parentNode.children[6].innerText;
+				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
-											
+							
 					
 					
 				}

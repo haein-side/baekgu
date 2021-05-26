@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectJoinList">
+	     SELECT 
+	            a.B_CODE
+	          , a.B_NAME
+	          , a.B_OWNER
+	          , a.B_NUMBER
+	          , a.B_ADDRESS
+	          , a.B_PHONE
+	      FROM business a, decision_list b
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+           AND b.DECISION_CODE = 1 
+           AND b.D_LIST_TYPE_CODE = 3
+	       AND b.D_LIST_REASON is null
+	      LIMIT ?,?    
+	</entry>
+	
+	<entry key="selectTotalCount">
+	    SELECT
+		       COUNT(*)
+	      FROM BUSINESS a, DECISION_LIST b
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+	       AND b.DECISION_CODE = 1 
+	       AND b.D_LIST_TYPE_CODE = 3
+	       AND b.D_LIST_REASON is null
+	</entry>
+	
+	<entry key="BusinessJoinDetail">
+	    select 
+               a.B_CODE
+	         , a.B_NAME
+	         , a.B_OWNER
+	         , a.B_NUMBER
+	         , a.B_ADDRESS
+	         , a.B_PHONE
+	         , a.B_PROFIT
+	         , b.HR_ID
+	         , b.HR_NAME
+	         , b.HR_PHONE
+	         , b.HR_EMAIL
+        from business a , HR b 
+       where a.B_CODE = b.B_CODE
+         and a.B_CODE = ?
+   </entry>
+   
+   <entry key="joinSubmitUpdate">
+   	    update  DECISION_LIST d,  BUSINESS b
+           SET  d.DECISION_CODE = 2 
+              , d.D_LIST_DATE = now()
+              , d.D_LIST_REASON = ? 
+              , d.ADMIN_ID = ?
+        where  d.D_LIST_CODE = b.D_LIST_CODE
+          and  b.b_CODE = ?
+   </entry>
+   
+   <entry key="joinBlockUpdate">
+       update  DECISION_LIST d,  BUSINESS b
+          SET  d.DECISION_CODE = 3 
+             , d.D_LIST_DATE = now()
+             , d.D_LIST_REASON = ? 
+             , d.ADMIN_ID= ?
+        where  d.D_LIST_CODE = b.D_LIST_CODE
+          and  b.b_CODE = ?
+   </entry>
+   
+   <entry key="selectPostList">
+        SELECT 
+               a.POST_CODE    
+              ,a.POST_TITLE       
+              ,a.HR_ID                                  
+              ,a.POST_M_NAME                 
+              ,a.POST_M_EMAIL                                              
+         FROM  POST a , decision_list b 
+        where  a.D_LIST_CODE = b.D_LIST_CODE
+          and b.DECISION_CODE = 1  
+          and b.D_LIST_TYPE_CODE = 4
+          and b.D_LIST_REASON is null  
+          LIMIT ?,?   
+          
+   </entry>
+   
+   	<entry key="postTotalCount">
+	    SELECT
+		       COUNT(*)
+	      FROM POST a , decision_list b 
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+	       AND b.DECISION_CODE = 1 
+	       AND b.D_LIST_TYPE_CODE = 4
+	       AND b.D_LIST_REASON is null
+	</entry>
+	
+	<entry key="selectPostDetail">
+	    select 
+               a.POST_CODE
+              ,a.POST_TITLE 
+              ,a.POST_CONTENT 
+              ,a.POST_TO 
+              ,a.POST_START 
+              ,a.POST_END 
+              ,a.POST_ONLINE 
+              ,a.POST_DATE 
+              ,a.POST_ADDRESS 
+              ,a.POST_DAY 
+              ,a.PAYMENT 
+              ,a.GENDER 
+              ,a.ADVANTAGE 
+              ,a.BENEFIT 
+              ,a.FULLTIME_YN 
+              ,a.POST_M_NAME 
+              ,a.POST_M_EMAIL 
+              ,a.POST_M_PHONE 
+              ,a.EXP_CODE 
+              ,c.EXP_NAME
+              ,a.JOB_CODE 
+              ,d.JOB_NAME
+              ,a.PERIOD_CODE 
+              ,e.PERIOD_NAME
+              ,a.HOUR_CODE 
+              ,f.HOUR_NAME
+              ,a.LOCATION_CODE 
+              ,g.LOCATION_NAME
+              ,a.PAY_CODE 
+              ,h.PAY_NAME
+              ,a.AGE_CODE 
+              ,i.AGE_NAME
+              ,b.HR_ID 
+              ,a.DEGREE_CODE 
+              ,j.DEGREE_LEVEL
+              ,a.D_LIST_CODE 
+          from POST a , hr b , exp c , job d , work_period e , work_hour f , location g
+               ,PAY h, age i , degree j , decision_list k
+         where a.D_LIST_CODE = k.D_LIST_CODE
+           and a.HR_ID = b.hr_ID
+           and a.EXP_CODE = c.EXP_CODE
+           and a.JOB_CODE = d.JOB_CODE
+           and a.PERIOD_CODE = e.PERIOD_CODE
+           and a.HOUR_CODE = f.HOUR_CODE
+           and a.LOCATION_CODE = g.LOCATION_CODE
+           and a.PAY_CODE = h.PAY_CODE
+           and a.AGE_CODE = i.AGE_CODE
+           and a.DEGREE_CODE = j.DEGREE_CODE
+           and a.POST_CODE = ?
+	</entry>
+	
+	<entry key="selectAdDetail">
+	select 
+	       a.post_code	
+         , a.POST_AD_CODE
+         , a.POST_AD_WEEK
+         , a.AD_CODE
+         , b.AD_NAME
+         , b.AD_PRICE
+     from post_ad_payment a , ad b , post c 
+    where a.AD_CODE = b.AD_CODE
+      and a.post_code = c.post_code
+      and a.POST_AD_PAID = 0
+      and a.POST_CODE = ?
+	</entry>
+	
+	<entry key="postSubmitUpdate">
+	     update  DECISION_LIST d,  post a
+            SET   d.DECISION_CODE = 2 
+                 , d.D_LIST_DATE = now()
+                 , d.D_LIST_REASON = ? 
+                 , d.ADMIN_ID = ?
+           where  d.D_LIST_CODE = a.D_LIST_CODE
+             and  a.post_code = ?     
+	
+	</entry>
+	
+	<entry key="postBlockUpdate">
+	   update  DECISION_LIST d,  post a
+          SET   d.DECISION_CODE = 3 
+                , d.D_LIST_DATE = now()
+                , d.D_LIST_REASON = ? 
+                , d.ADMIN_ID = ?
+        where  d.D_LIST_CODE = a.D_LIST_CODE
+          and  a.post_code = ? 
+	
+	</entry>
+	
+
+</properties>

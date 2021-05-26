@@ -6,16 +6,21 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dao.BusinessDAO;
+import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
+import com.baekgu.silvertown.user.model.dto.UserDTO;
+
 
 public class BusinessService {
 
@@ -101,11 +106,11 @@ public class BusinessService {
 		
 	}
 
-	public List<BusinessPostDTO> selectPostList(String loggedId, PageInfoDTO pageInfo) {
+	public List<?> selectPostList(String loggedId, PageInfoDTO pageInfo) {
 
 		Connection con = getConnection();
 		
-		List<BusinessPostDTO> postList = businessDAO.selectPostList(con, loggedId, pageInfo);
+		List<?> postList = businessDAO.selectPostList(con, loggedId, pageInfo);
 		
 		close(con);
 		
@@ -133,7 +138,7 @@ public class BusinessService {
 
 	public String chekId(String hrId_1) {
 		
-		Connection  con = getConnection();
+		Connection con = getConnection();
 		
 		String result = businessDAO.chekId(con, hrId_1);
 		
@@ -142,6 +147,7 @@ public class BusinessService {
 		
 		return result;
 	}
+
 
 	public int updateHrInfo(BusinessMemberDTO member) {
 		
@@ -170,6 +176,113 @@ public class BusinessService {
 	}
 
 
+	public List<PaymentDTO> selectAllpayList(String hrId, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		
+		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
+		
+		payList = businessDAO.selectAllpayList(con, hrId, pageInfo);
+		
+		close(con);
+		
+		return payList;
+	}
+
+
+	public PaymentDetailDTO selectPaymentDetail(String getbId, int postAdCode) {
+		
+		Connection con = getConnection();
+		
+		PaymentDetailDTO paymentDetail = businessDAO.selectPaymentDetail(con, getbId, postAdCode);
+		
+		
+		close(con);
+		return paymentDetail;
+	}
+
+	public Map<Integer, Integer> selectpayCount(String getbId) {
+		
+	Connection con = getConnection();
+		
+		Map<Integer, Integer> counts = businessDAO.selectPayCount(con, getbId);
+		
+		close(con);
+		
+		return counts;
+	}
+	public int selectTotalApplicants(String loggedId, int postCode) {
+		
+		Connection con = getConnection();
+		
+		int count = businessDAO.selectTotalApplicants(con, loggedId, postCode);
+		
+		close(con);
+		
+		return count;
+	}
+
+	public List<BusinessApplicationDTO> selectApplicationList(String loggedId, int postCode, PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<BusinessApplicationDTO> applicationList = businessDAO.selectApplicationList(con, postCode ,loggedId, pageInfo);
+		
+		close(con);
+		
+		return applicationList;
+	}
+
+	public int updateResumeRead(String loggedId, int applyCode) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateResumeRead(con, loggedId, applyCode);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public UserDTO lookResume(int applyCode) {
+
+		Connection con = getConnection();
+		
+		UserDTO userInfo = businessDAO.lookResume(con, applyCode);
+		
+		close(con);
+		
+		return userInfo;
+	}
+
+	public int updateApplyYN(int applyCode, String decision) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateApplyYN(con, applyCode, decision);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
+
+
+	
 
 	
 }

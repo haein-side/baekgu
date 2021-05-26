@@ -163,12 +163,14 @@
 									
 								</form>
 								<script>
-								function chk(){
+								
+								function chk1(){
 									
 								if(document.getElementById("blockReason").value == ""){
 	                                alert("사유를 입력해주세요.");
 	                                
 	                                return false;
+	                                
                             	  } else{
                             		  
                             		 return true;

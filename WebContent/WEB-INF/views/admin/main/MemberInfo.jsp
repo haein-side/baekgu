@@ -52,7 +52,7 @@
 			<div class="col-lg-12">
 				<section class="panel">
 					<header class="panel-heading">
-						이력서 리스트 <a class="btn btn-success" data-toggle="modal"
+						회원 리스트 <a class="btn btn-success" data-toggle="modal"
 							href="${ pageContext.servletContext.contextPath }/admin/nomalmember" style="margin-left: 30px;"> 정상유저 모아보기 </a> 
 							<a
 							class="btn btn-warning" data-toggle="modal" href="${ pageContext.servletContext.contextPath }/admin/blockmember"
@@ -153,7 +153,7 @@
 			    </c:otherwise>
 			</c:choose>   
 
-							<!-- 검색 폼 -->
+			<!-- 검색 폼 -->
 		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/memberSearch" method="get">		
 			<div class="search-area" align="center">
 				<c:choose>
@@ -175,9 +175,6 @@
 				    </c:otherwise>
 				</c:choose>
 				<button type="submit">검색하기</button>
-				<c:if test="${ !empty requestScope.loginMember }">
-					<button id="writeBoard">작성하기</button>
-				</c:if>
 			</div>
 		</form>
 		<script>
@@ -252,7 +249,7 @@
 				
 				$tds[i].onclick = function() {
 					
-					 alert(this.parentNode.children[0].innerText); //유저코드를 알럿으로 띄워 알 수 있다.
+					/* alert(this.parentNode.children[0].innerText); */ //유저코드를 알럿으로 띄워 알 수 있다.
 					const no = this.parentNode.children[0].innerText;
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
 					

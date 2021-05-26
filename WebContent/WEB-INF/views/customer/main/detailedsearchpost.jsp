@@ -361,71 +361,7 @@
 									
 									<label for="l26" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
                            			<input type="checkbox" id="l26" name = "location1" style="display: none" value="무관">                                 	
-									<label for="l5" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">관악구</p></label> 
-                           			<input type="checkbox" id="l5" name = "location1" style="display: none" value="관악구">                                 	
-									
-									<label for="l6" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">광진구</p></label> 
-                           			<input type="checkbox" id="l6" name = "location1" style="display: none" value="광진구">                                 	
-									
-									<label for="l7" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">구로구</p></label> 
-                           			<input type="checkbox" id="l7" name = "location1" style="display: none" value="구로구">                                 	
-									
-									<label for="l8" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">금천구</p></label> 
-                           			<input type="checkbox" id="l8" name = "location1" style="display: none" value="금천구">                                 	
-									
-									<label for="l9" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">노원구</p></label> 
-                           			<input type="checkbox" id="l9" name = "location1" style="display: none" value="노원구">                                 	
-									
-									<label for="l10" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">도봉구</p></label> 
-                           			<input type="checkbox" id="l10" name = "location1" style="display: none" value="도봉구">                                 	
-									
-									<label for="l11" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">동대문구</p></label> 
-                           			<input type="checkbox" id="l11" name = "location1" style="display: none" value="동대문구">   
-
-									<label for="l12" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">동작구</p></label> 
-                           			<input type="checkbox" id="l12" name = "location1" style="display: none" value="동작구">                           			                              	
-									
-									<label for="l13" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">마포구</p></label> 
-                           			<input type="checkbox" id="l13" name = "location1" style="display: none" value="마포구">                                 	
-									
-									<label for="l14" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서대문구</p></label> 
-                           			<input type="checkbox" id="l14" name = "location1" style="display: none" value="서대문구">                                 	
-									
-									<label for="l15" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서초구</p></label> 
-                           			<input type="checkbox" id="l15" name = "location1" style="display: none" value="서초구">                                 	
-									
-									<label for="l16" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">성동구</p></label> 
-                           			<input type="checkbox" id="l16" name = "location1" style="display: none" value="성동구">                                 	
-									
-									<label for="l17" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">성북구</p></label> 
-                           			<input type="checkbox" id="l17" name = "location1" style="display: none" value="성북구">                                 	
-									
-									<label for="l18" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">송파구</p></label> 
-                           			<input type="checkbox" id="l18" name = "location1" style="display: none" value="송파구">                                 	
-									
-									<label for="l19" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">양천구</p></label> 
-                           			<input type="checkbox" id="l19" name = "location1" style="display: none" value="양천구">                                 	
-									
-									<label for="l20" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">영등포구</p></label> 
-                           			<input type="checkbox" id="l20" name = "location1" style="display: none" value="영등포구">                                 	
-									
-									<label for="l21" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">용산구</p></label> 
-                           			<input type="checkbox" id="l21" name = "location1" style="display: none" value="용산구">                                 	
-									
-									<label for="l22" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">은평구</p></label> 
-                           			<input type="checkbox" id="l22" name = "location1" style="display: none" value="은평구">                                 	
-									
-									<label for="l23" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">종로구</p></label> 
-                           			<input type="checkbox" id="l23" name = "location1" style="display: none" value="종로구">                                 	
-									
-									<label for="l24" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">중구</p></label> 
-                           			<input type="checkbox" id="l24" name = "location1" style="display: none" value="중구">                                 	
-									
-									<label for="l25" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">중랑구</p></label> 
-                           			<input type="checkbox" id="l25" name = "location1" style="display: none" value="중랑구">                                 	
-									
-									<label for="l26" class="btn1 lo" name="location" style="margin: 15px; width: 120pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
-                           			<input type="checkbox" id="l26" name = "location1" style="display: none" value="무관">                              
+									                              
 
 								</div>
 							</div>

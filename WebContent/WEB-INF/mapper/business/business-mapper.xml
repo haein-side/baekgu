@@ -12,10 +12,11 @@ select
      , B.B_BLOCK
      , D.D_LIST_REASON
      , B.B_NAME
+     , B.B_NUMBER
   FROM HR H
   join BUSINESS B on (H.B_CODE = B.B_CODE)
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
- WHERE HR_ID = ?
+ WHERE H.HR_ID = ?
 	</entry>
 	<entry key="insertDecisionList">
        insert
@@ -222,15 +223,177 @@ select
       , 4
  	  )
 	</entry>
+	
 	<entry key="checkDuplicationId">
 		SELECT
 		       COUNT(HR_ID)
 		  FROM HR
 		 WHERE HR_id = ?
 	</entry>
+	
+	<entry key="selectApplicationList">
+		<![CDATA[
+		SELECT
+               a.POST_CODE
+     		 , a.POST_M_NAME
+     		 , a.POST_TITLE
+     		 , a.POST_TO
+     		 , a.POST_END
+     		 , (SELECT COUNT(b.APPLY_CODE)
+          		  FROM APPLY b
+         		 WHERE a.POST_CODE = b.POST_CODE 
+       		   ) as 'countOfApplicant'
+     		 , (SELECT COUNT(b.APPLY_CODE)
+          		 FROM APPLY b
+         		WHERE a.POST_CODE = b.POST_CODE
+           		  AND b.APPLY_READ = false
+       		   ) as 'unreadResume'
+  		 FROM POST a
+  		 JOIN DECISION_LIST c on(a.D_LIST_CODE = c.D_LIST_CODE)
+ 		WHERE HR_ID = ?
+ 		  AND c.DECISION_CODE IN (2,3)
+ 		GROUP BY a.POST_CODE, a.POST_M_NAME, a.POST_TITLE, a.POST_TO, a.POST_END
+ 	   HAVING 0 < (SELECT COUNT(b.APPLY_CODE)
+                     FROM APPLY b
+                    WHERE a.POST_CODE = b.POST_CODE 
+                  )
+        LIMIT ?, ?
+        ]]>
+ 	</entry>
+ 	
 	<entry key="updatehrInfo">
 		UPDATE HR
 	       SET HR_NAME = ?, HR_PHONE = ? , HR_EMAIL = ?
 	     WHERE HR_ID = ?
+	</entry>
+	<entry key="selectAllPayList">
+select 
+       pap.POST_AD_CODE
+     , p.POST_TITLE 
+     , a.AD_NAME 
+     , p.POST_DATE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , pap.POST_AD_PAID 
+  from post_ad_payment pap
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+ where p.HR_ID = ?
+   and d.DECISION_STATUS = '승인'
+ order by p.POST_DATE desc
+		 limit ? , ?
+	</entry>
+	<entry key="selectPayListByCategory">
+select 
+       pap.POST_AD_CODE
+     , p.POST_TITLE 
+     , a.AD_NAME 
+     , p.POST_DATE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , pap.POST_AD_PAID 
+  from post_ad_payment pap
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+ where p.HR_ID = ?
+   and d.DECISION_STATUS = '승인'
+   and pap.POST_AD_PAID = ?
+ order by p.POST_DATE desc
+		 limit ? , ?
+	</entry>
+	<entry key="selectPaymentDetail">
+select 
+       pap.POST_AD_CODE 
+     , pap.POST_AD_DATE 
+     , pap.P_METHOD_CODE 
+     , pap.POST_AD_PAID 
+     , a.AD_NAME 
+     , pap.POST_AD_WEEK 
+     , a.AD_PRICE 
+     , a.AD_PRICE * pap.POST_AD_WEEK 
+     , p.POST_CODE 
+     , p.POST_START 
+     , p.POST_END 
+     , p.POST_M_NAME 
+  from post_ad_payment pap 
+  join post p on (pap.POST_CODE = p.POST_CODE)
+  join ad a on (pap.AD_CODE = a.AD_CODE)
+  join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+  join decision d on (dl.DECISION_CODE = d.DECISION_CODE)
+ where p.HR_ID = ?
+   and pap.POST_AD_CODE = ?
+   and d.DECISION_STATUS ='승인'
+	</entry>
+	<entry key="selectPayCount">
+  select
+         pap.POST_AD_PAID 
+       , IFNULL(COUNT(pap.POST_AD_CODE), 0) as 'COUNT'
+    from post_ad_payment pap
+    join post p on (pap.POST_CODE = p.POST_CODE)
+    join ad a on (pap.AD_CODE = a.AD_CODE)
+    join decision_list dl on (p.D_LIST_CODE = dl.D_LIST_CODE)
+    join decision d on (d.DECISION_CODE = dl.DECISION_CODE)
+   where p.HR_ID = ?
+     and d.DECISION_STATUS = '승인'
+   group by pap.post_ad_Paid;
+</entry>
+	<entry key="selectTotalApplicant">
+		SELECT
+       		   COUNT(a.APPLY_CODE) as "COUNT"
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+ 		 WHERE a.POST_CODE = ?
+   		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE;
+	</entry>
+	
+	<entry key="applicants">
+		SELECT
+       		   a.APPLY_CODE
+     		 , a.RESUME_CODE
+     		 , a.POST_CODE
+     		 , d.USER_NAME
+     		 , a.APPLY_DATE
+     		 , a.APPLY_READ
+     		 , a.APPLY_YN  
+     		 , b.POST_TITLE
+     		 , b.POST_START
+     		 , b.POST_END
+     		 , b.ADVANTAGE as 'POST_ADVANTAGE'
+     		 , c.RESUME_ADVANTAGE as 'RESUME_ADVANTAGE'
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+  		  JOIN USER d on(c.USER_CODE = d.USER_CODE)
+ 		 WHERE a.POST_CODE = ?
+ 		   AND b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE
+	</entry>
+	
+	<entry key="updateApplyRead">
+	     UPDATE APPLY a, POST b
+		   SET APPLY_READ = 1
+ 		 WHERE APPLY_CODE = ?
+   		   AND a.POST_CODE in (SELECT b.POST_CODE 
+   			   		             FROM POST b
+   			  		            WHERE b.HR_ID = ?
+   					          )
+	</entry>
+	
+	<entry key="lookResume">
+		SELECT 
+       		   b.USER_CODE 
+  		  FROM APPLY a
+  		  JOIN RESUME b ON(a.RESUME_CODE = b.RESUME_CODE)
+ 		 WHERE a.APPLY_CODE = ?
+	</entry>
+	
+	<entry key="updateApplyYN">
+		UPDATE APPLY 
+   		   SET APPLY_YN = ?
+ 		 WHERE APPLY_CODE = ?
 	</entry>
 </properties>

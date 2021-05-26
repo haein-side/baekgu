@@ -33,7 +33,7 @@ public class AdminMemberSearchListServlet extends HttpServlet {
 		
 		//검색을하고 처음 나오는 페이지는 1페이지다. 파라미터로 전달되는 페이지가 있는 경우 currentPage는 파라미터로 전달 받은 페이지 수다.
 		String currentPage = request.getParameter("currentPage");
-		int pageNo = 1;
+		int pageNo = 0;
 		
 		if(currentPage != null && "".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);

@@ -63,9 +63,7 @@ public class SelectOneAdminIdServlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	/**
 	 * 관리자 정보 업데이트용 
 	 */
@@ -94,8 +92,7 @@ public class SelectOneAdminIdServlet extends HttpServlet {
 	   String path = "";
 		if (result > 0) {
 			// 보여주려는 곳으로 경로 지정.
-			path = "/baeckgu/admin/search";
-			//request.setAttribute("adminDTO", result);
+			path = "/baekgu/admin/list";
 			response.sendRedirect(path);
 			
 		} else {
