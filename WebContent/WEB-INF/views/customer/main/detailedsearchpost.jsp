@@ -180,7 +180,7 @@
 	        	console.log(location); 
 	        	
 	        	
-				   $.ajax({
+				  /*  $.ajax({
 					   
 		                url: "/baekgu/user/detailedSearchPost",
 		                type: "get",
@@ -195,9 +195,9 @@
 		                   console.log(message);
 		                }
 		                
-		             }); 
+		             });  */
 
-				   
+	        	document.getElementById("location").value = location;
 				  
 			}); 
 		});  
@@ -251,7 +251,8 @@
     </script>
 <!-- script 끝남 -->
 
-
+<!-- 폼 시작 -->
+<form action = "${ pageContext.servletContext.contextPath}/user/detailedSearchPost" method="get">
 	<%@ include file="../common/header2.jsp"%>
 	<div style="z-index: 1;">
 		<div class="container-fluid text-center" style="margin-top: 15%;">
@@ -273,8 +274,8 @@
 							disabled >상세&nbsp;검색</button>
 					</div>
 
-					<!-- 폼 시작 -->
-					<form id="fm1" name="form1" method="post">
+					<!-- hidden -->                               	
+                     <input type="hidden" id="location" name="location" value=""/>
 
 						<div class="section_title text-center">
 							<hr>
@@ -410,16 +411,16 @@
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
 										<!-- for loop 으로 직종에대한 상세 카테고리 -->
-										 <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
-	                                    <input type="checkbox" id="j1" name = "job1" style="display: none" value="주방장"> 
-	                                    <label for="j2" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
-	                                    <input type="checkbox" id="j2" name = "job1" style="display: none" value="주방장"> 
-	                                    <label for="j3" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
-	                                    <input type="checkbox" id="j3" name = "job1" style="display: none" value="주방장"> 
-	                                    <label for="j4" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
-	                                    <input type="checkbox" id="j4" name = "job1" style="display: none" value="주방장"> 
-	                                    <label for="j5" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방장</p></label> 
-	                                    <input type="checkbox" id="j5" name = "job1" style="display: none" value="주방장">           
+										 <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">요리사</p></label> 
+	                                    <input type="checkbox" id="j1" name = "job1" style="display: none" value="1"> 
+	                                    <label for="j2" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">주방보조</p></label> 
+	                                    <input type="checkbox" id="j2" name = "job1" style="display: none" value="2"> 
+	                                    <label for="j3" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">찬모</p></label> 
+	                                    <input type="checkbox" id="j3" name = "job1" style="display: none" value="3"> 
+	                                    <label for="j4" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">설거지</p></label> 
+	                                    <input type="checkbox" id="j4" name = "job1" style="display: none" value="4"> 
+	                                    <label for="j5" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">서빙</p></label> 
+	                                    <input type="checkbox" id="j5" name = "job1" style="display: none" value="5">           
 									</div>
 								</div>
 							</div>
@@ -475,21 +476,20 @@
 								<br>
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
-										 <label for="p1" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이하</p></label> 
-                                  		 <input type="checkbox" id="p1" name = "perioid1" style="display: none" value="일주일 이하">  
-                           				 <label for="p2" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이상</p></label> 
-                                         <input type="checkbox" id="p2" name = "perioid1" style="display: none" value="일주일 이상">  
-                           				 <label for="p3" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1개월 이상</p></label> 
-                                    	 <input type="checkbox" id="p3" name = "perioid1" style="display: none" value="1개월 이상">  
-                           				 <label for="p4" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">3개월 이상</p></label> 
-                                    	 <input type="checkbox" id="p4" name = "perioid1" style="display: none" value="3개월 이상">                                      
-                            			 <label for="p5" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">6개월 이상</p></label> 
-                                    	 <input type="checkbox" id="p5" name = "period1" style="display: none" value="6개월 이상">                                     
-                           				 <label for="p6" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1년 이상</p></label> 
-                                    	 <input type="checkbox" id="p6" name = "period1" style="display: none" value="1년 이상">  
-                           				 <label for="p7" class="btn1 pe" name="perioid" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
-                                    	 <input type="checkbox" id="p7" name = "period1" style="display: none" value="무관">  
-
+										 <label for="p1" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이하</p></label> 
+	                           			<input type="checkbox" id="p1" name = "period1" style="display: none" value="2">  
+										<label for="p2" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">일주일 이상</p></label> 
+	                           			<input type="checkbox" id="p2" name = "period1" style="display: none" value="3">  
+										<label for="p3" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1개월 이상</p></label> 
+	                           			<input type="checkbox" id="p3" name = "period1" style="display: none" value="4">  
+										<label for="p4" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">3개월 이상</p></label> 
+	                           			<input type="checkbox" id="p4" name = "period1" style="display: none" value="5">                             			
+	 									<label for="p5" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">6개월 이상</p></label> 
+	                           			<input type="checkbox" id="p5" name = "period1" style="display: none" value="6">                            			
+										<label for="p6" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">1년 이상</p></label> 
+	                           			<input type="checkbox" id="p6" name = "period1" style="display: none" value="7">  
+										<label for="p7" class="btn1 pe" name="period" style="margin: 15px; width: 200pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">무관</p></label> 
+	                           			<input type="checkbox" id="p7" name = "period1" style="display: none" value="1">
 									</div>
 								</div>
 							</div>
@@ -505,17 +505,17 @@
 									<div style="width: 1000px;">
 										<!-- for loop 으로 직종에대한 상세 카테고리 -->
 										    <label for="h1" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">시간 협의</p></label> 
-                                    	    <input type="checkbox" id="h1" name = "hour1" style="display: none" value="시간 협의">  
+                                    	    <input type="checkbox" id="h1" name = "hour1" style="display: none" value="1">  
 		                           			<label for="h2" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">풀타임</p></label> 
-		                                    <input type="checkbox" id="h2" name = "hour1" style="display: none" value="풀타임">                                      
+		                                    <input type="checkbox" id="h2" name = "hour1" style="display: none" value="2">                                      
 		                                    <label for="h3" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">새 벽</p></label> 
-		                                    <input type="checkbox" id="h3" name = "hour1" style="display: none" value="새 벽">   
+		                                    <input type="checkbox" id="h3" name = "hour1" style="display: none" value="3">   
 		                                    <label for="h4" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">오 전</p></label> 
-		                                    <input type="checkbox" id="h4" name = "hour1" style="display: none" value="오 전">   
+		                                    <input type="checkbox" id="h4" name = "hour1" style="display: none" value="4">   
 		                                    <label for="h5" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">오 후</p></label> 
-		                                    <input type="checkbox" id="h5" name = "hour1" style="display: none" value="오 후">   
+		                                    <input type="checkbox" id="h5" name = "hour1" style="display: none" value="5">   
 		                                    <label for="h6" class="btn1 ho" name="hour" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">저 녁</p></label> 
-		                                    <input type="checkbox" id="h6" name = "hour1" style="display: none" value="저 녁">   
+		                                    <input type="checkbox" id="h6" name = "hour1" style="display: none" value="6">   
 
 									</div>
 								</div>

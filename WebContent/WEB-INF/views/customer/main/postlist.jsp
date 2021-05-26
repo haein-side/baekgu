@@ -67,15 +67,18 @@
         <!-- header -->
        <%@ include file="../common/header2.jsp" %>
         
+        
 <!-- width 100% 크기 조정, header size needed -->
         <div class="breadcrumb mb-4" style="height: 60px; position: fixed; width: 100%; z-index: 10000; margin-top : 240px; background-color: skyblue;">
-            <p style="margin: auto; color: black; font-size: larger;">검색결과 : 지역-강남구 / 직종-서빙 / 기간-한달이하</p>
+           <c:forEach var="title" begin="1" end="1" items="${ requestScope.selectPost }">
+            <p style="margin: auto; color: black; font-size: larger;">검색 조건 : 지역 - <c:forEach var="lo" items="${ requestScope.selectPost }"><c:out value="${ lo.locationName }"/> </c:forEach>  |  업종 - <c:out value="${ title.industryName }"/>  |  기간 - <c:out value="${ title.periodName }"/></p>
+            </c:forEach>
             <!-- 재검색하기 버튼 눌렀을 때, 이전페이지인 검색페이지로 이동하기 -->
-            <a href="#" style=" color: red; position: fixed; z-index: 10000; padding-top: 5px; margin-left: 90%; font-size: large;" >재검색하기</a>
+            <a href="${ pageContext.servletContext.contextPath }/user/toSearchPost" style=" color: red; position: fixed; z-index: 10000; padding-top: 5px; margin-left: 90%; font-size: large;" >재검색하기</a>
         </div>
 
         <!-- Page Content-->
-        <section class="py-5">
+          <section class="py-5">
             <div class="container" style="margin-top : 270px;">
                 <!-- Page Heading/Breadcrumbs-->
                 <h1 style ="font-family:BM; color:orange; margin-top: 5%;">
@@ -85,91 +88,89 @@
                 
                 <!-- premium ads -->
                 <div class="text-left">
-                    <h2 style="font-family: BM;">백구와 함께하는 추천 기업 - 식당업종</h2>
+                <c:forEach var="title" begin="1" end="1" items="${ requestScope.selectPost }">
+                    <h2 style="font-family: BM;">백구와 함께하는 추천 기업 - <c:out value="${ title.industryName }"/> 업종</h2>
+				</c:forEach>
                 </div>
                 <!-- Container  -->
                 <div class="container-fluid">
+                
+                
+                    <!-- 업종광고상단 (adCode = 1) -->
                     <div class="row">
                     <c:forEach var="post" items="${ requestScope.selectInAdPost }">
-                    <div class="col-sm-4 col-xs-12">
-                        <div class="panel panel-default text-center">
-                        <div class="panel-heading">
-                            <h3><c:out value="${ post.jobName }"/></h3>
-                        </div>
-                        <div class="panel-body">
-                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-                        </div>
-                        <div class="panel-footer">
-                            <h3>300만원/월급</h3>
-                            <button class="btn btn-lg">자세히 보기</button>
-                        </div>
-                        </div>      
+                    <%-- <c:set var="ad1" value="${ requestScope.selectInAdPost }"/> --%>
+                   	 <c:if test="${ post.adCode eq 1 }">
+	                    <div class="col-sm-4 col-xs-12">
+	                        <div class="panel panel-default text-center">
+	                        <div class="panel-heading">
+	                            <h3><c:out value="${ post.jobName }"/></h3>
+	                        </div>
+	                        <%-- <div class="panel-body">
+	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
+	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
+	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
+	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
+	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
+	                        </div> --%>
+	                        <div class="card-body" style = "text-align: center">
+                            	<p class="card-text">
+                            	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
+                                <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
+                                <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
+                                <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
+                                <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
+                            </div>
+<!-- 	                        <div class="panel-footer">
+	                            <h3>300만원/월급</h3>
+	                            <button class="btn btn-lg">자세히 보기</button>
+	                        </div> -->
+	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
+	                        </div>      
+	                    </div>
+	                   </c:if>
+	                    </c:forEach>
                     </div>
-                    </c:forEach>     
-                    
 
-                    <!-- 두번째 row -->
+                    <!-- 업종광고하단 (adCode = 2) -->
                     <div class="row">
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="panel panel-default text-center">
-                            <div class="panel-heading">
-                                <h3>premium ad 4</h3>
+                        <c:forEach var="post" items="${ requestScope.selectInAdPost }">
+                        <c:if test="${ post.adCode eq 2 }">
+	                    <div class="col-sm-4 col-xs-12">
+	                        <div class="panel panel-default text-center">
+	                        <div class="panel-heading">
+	                            <h3><c:out value="${ post.jobName }"/></h3>
+	                        </div>
+	                       <%--  <div class="panel-body">
+	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
+	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
+	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
+	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
+	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
+
+	                        </div> --%>
+	                        <div class="card-body" style = "text-align: center">
+                            	<p class="card-text">
+                            	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
+                                <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
+                                <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
+                                <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
+                                <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-                            <div class="panel-body">
-                                <p><strong>지역</strong> 강남구</p>
-                                <p><strong>업종</strong> 식당</p>
-                                <p><strong>직종</strong> 조리</p>
-                                <p><strong>복리후생</strong> 4대보험, 분기별 휴가지급</p>
-                            </div>
-                            <div class="panel-footer">
-                                <h3>300만원/월급</h3>
-                                <button class="btn btn-lg">자세히 보기</button>
-                            </div>
-                            </div>      
-                        </div>     
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="panel panel-default text-center">
-                            <div class="panel-heading">
-                                <h3>premium ad 5</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><strong>지역</strong> 강남구</p>
-                                <p><strong>업종</strong> 식당</p>
-                                <p><strong>직종</strong> 조리</p>
-                                <p><strong>복리후생</strong> 4대보험, 분기별 휴가지급</p>
-                            </div>
-                            <div class="panel-footer">
-                                <h3>70만원/주급</h3>
-                                <button class="btn btn-lg">자세히 보기</button>
-                            </div>
-                            </div>      
-                        </div>       
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="panel panel-default text-center">
-                            <div class="panel-heading">
-                                <h3>premium ad 6</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><strong>지역</strong> 강남구</p>
-                                <p><strong>업종</strong> 식당</p>
-                                <p><strong>직종</strong> 조리</p>
-                                <p><strong>복리후생</strong> 4대보험, 분기별 휴가지급</p>
-                            </div>
-                            <div class="panel-footer">
-                                <h3>10만원/일당</h3>
-                                <button class="btn btn-lg">자세히 보기</button>
-                            </div>
-                            </div>      
-                        </div>    
+	                        <!-- <div class="panel-footer">
+	                            <h3>300만원/월급</h3>
+	                            <button class="btn btn-lg">자세히 보기</button>
+	                        </div> -->
+	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
+	                        </div>      
+	                    </div>
+	                    </c:if>
+	                    </c:forEach>     
                         </div>
                 </div>
                 
                 <hr>
-                <!-- 일반 공고 -->
+                <!-- 일반 광고 -->
                 <div class="text-left">
                     <h2 style="font-family: BM;">검색 결과</h2>
                 </div>
@@ -177,7 +178,8 @@
                 <!--  데이터 베이스 결과값으로 div를 생성하여 공고 출력 -->
                 <div class="row">
                     <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
-                  <c:forEach var="post" items="${ requestScope.selectPost }">
+                   <c:forEach var="post" items="${ requestScope.selectPost }">
+                   <c:if test="${ post.adCode eq 0 }">
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="card h-100">
                             <h4 class="card-header" style = "text-align: center">
@@ -194,15 +196,11 @@
                             <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: orange;">자세히 보기</a></div>
                         </div>
                     </div>
+                    </c:if>
                   </c:forEach>
                 </div>
-                
-                
-				
-            </tbody>
-        </table>
-            
-        </section>        
+            </div>
+        </section>      
         <!-- footer -->
         <%@ include file="../common/footer.jsp" %> 
     </body>
