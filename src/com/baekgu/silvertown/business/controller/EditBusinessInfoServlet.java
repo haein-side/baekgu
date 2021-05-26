@@ -17,6 +17,13 @@ public class EditBusinessInfoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+		
+		String str = String.valueOf(loggedInUser.getbNumber());
+		String  str2 = str.substring(0, 3) + "-" + str.substring(3, 5) + "-" + str.substring(6);
+		
+		request.setAttribute("str2", str2);
 		System.out.println("EditBusinessInfoServlet 서블릿 도착");
 		String path = "/WEB-INF/views/business/main/editBusinessInfo.jsp";
 		
@@ -37,6 +44,8 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 		
+
+		
 		System.out.println(loggedInUser);
 		
 		BusinessMemberDTO member = new BusinessMemberDTO();
@@ -48,7 +57,7 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		member.setbEmail(email);
 		member.setbNumber(loggedInUser.getbNumber());
 		
-		System.out.println(loggedInUser.getbNumber());
+		
 		
 		
 		BusinessService service = new BusinessService();
@@ -57,8 +66,9 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		
 		//System.out.println(result);
 		
-		String path ="";
 		
+		
+		String path ="";
 		if(result > 0 ) {
 		
 			path = "";
