@@ -236,13 +236,13 @@
 							  </tr>	
                             </tbody>
                         </table>
-                       <form action="${ pageContext.servletContext.contextPath }/admin/postapprove?postCode=${ requestScope.postDTO.postCode }" method="post">
+                       <form action="${ pageContext.servletContext.contextPath }/admin/postapprovedetail?postCode=${ requestScope.postDTO.postCode }" method="post">
 								<!-- 	<input type="text" class="col-lg-6" name="reason" id="joinSubmit" placeholder="가입 승인 사유를 입력해주세요.">  -->
 									<input type="submit" class="btn btn-success" name="Button" onclick="approveButton()" value="공고 승인">
 									<br><br>
 					    </form>
 					    
-					    <form action="${ pageContext.servletContext.contextPath }/admin/postapprove?postCode=${ requestScope.postDTO.postCode }" method="post">
+					    <form action="${ pageContext.servletContext.contextPath }/admin/postapprovedetail?postCode=${ requestScope.postDTO.postCode }" method="post">
 									<input type="text" class="col-lg-6" name="reason" id="joinBlock" placeholder="공고 거절 사유를 입력해주세요."> 
 									<input type="submit" class="btn btn-warning" name="Button" onclick="apporveBlock()" value="공고 거절">
 									
