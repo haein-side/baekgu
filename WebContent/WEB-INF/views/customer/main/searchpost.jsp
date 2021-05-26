@@ -218,8 +218,10 @@
                     <div align="center" id="btn_group" style="padding:50px;">
                         <input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
 							x-large;text-align:center;" value="단순 검색"></input>
-                        <input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+                    	<input type="button" class="btn1" id="category1" style="width:200pt;height:60pt;font-size:
                         x-large; margin-left: 160px;x-large;text-align:center;"value="상세 검색" onclick="location.href='${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost'"></input>
+                    	<%--  <a href="${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost" type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+                        x-large; margin-left: 160px;x-large;text-align:center;" >상세 검색</a>  --%>
                     </div>
                     <div class="container">
                         <div class="section_title text-center">

@@ -280,7 +280,7 @@
 						<div class="section_title text-center">
 							<hr>
 							<h2 style="color: orange;">희망 지역을 선택해주세요.</h2>
-							<p>두 지역까지 선택이 가능합니다.</p>
+							<p>여러 개 선택이 가능합니다.</p>
 							<br>
 							<div align="center" style="margin-bottom: 70px;">
 								<div style="width: 1000px;">
@@ -405,7 +405,7 @@
 							<div class="section_title text-center">
 								<hr>
 								<h2 style="color: orange;">희망 직종을 더 상세하게 선택해주세요.</h2>
-								<p>두 가지만 선택이 가능합니다.</p>
+								<p>한 가지만 선택이 가능합니다.</p>
 								<br>
 								<br>
 								<div align="center" style="margin-bottom: 70px;">
@@ -498,7 +498,7 @@
 							<div class="section_title text-center">
 								<hr>
 								<h2 style="color: orange;">원하시는 근무 시간이 있으신가요?</h2>
-								<p>한 가지만 선택이 가능힙니다.</p>
+								<p>여러 개 선택이 가능힙니다.</p>
 								<br>
 								<br>
 								<div align="center" style="margin-bottom: 70px;">
