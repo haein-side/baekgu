@@ -2,7 +2,7 @@ package com.baekgu.silvertown.user.model.dto;
 
 import java.sql.Date;
 
-public class UserDTO {
+public class UserDTO2 {
 	
 	/* 고객 엔티티 */
 	private int userCode;
@@ -44,9 +44,9 @@ public class UserDTO {
 	private String industryName;
 	
 	/* 공고 */
-	public UserDTO() {}
+	public UserDTO2() {}
 
-	public UserDTO(int userCode, String userName, String userPhone, String userPwd, Date userBday, String userGender,
+	public UserDTO2(int userCode, String userName, String userPhone, String userPwd, Date userBday, String userGender,
 			String userAddress, Date userRegisterDate, int userBlock, String verifiedNum, int resumeCode,
 			Date resumeWriteDate, String resumeSubphone, String resumeLetter, String resumeAdvantage, int expCode,
 			int degreeCode, int applyCode, Date applyDate, String applyYn, int applyRead, int postCode, int applyCancel,
