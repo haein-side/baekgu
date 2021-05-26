@@ -15,6 +15,7 @@ import com.baekgu.silvertown.business.model.dao.BusinessDAO;
 import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -276,6 +277,42 @@ public class BusinessService {
 		close(con);
 		
 		return result;
+	}
+
+	public int insertDecisionList(int i, List<Object> containDTO) {
+		
+		Connection con = getConnection();
+		
+		int firstResult = businessDAO.insertDecisionList(con, i);
+		int secondResult = 0;
+		
+		if(firstResult > 0) {
+			
+			commit(con);
+			
+			// 심사내역에 등록한 후, 분기문 매개변수 i를 가지고 판단.
+			// 1일 때 - 기업에서 지원자 신고하는 경우
+			// 2일 때(사용안함) - 고객이 기업의 공고를 신고하는 경우
+			// 3일 때 - 기업에서 가입신청하는 경우
+			// 4일 때 - 기업에서 공고등록을 하는 경우 
+			switch(i) {
+			case 1:
+				// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
+				BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
+				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return secondResult;
 	}
 
 

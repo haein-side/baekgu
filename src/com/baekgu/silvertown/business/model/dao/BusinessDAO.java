@@ -21,6 +21,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -808,6 +809,54 @@ public class BusinessDAO {
 			close(psmt);
 		}
 		System.out.println(result + " result value in dao");
+		
+		return result;
+	}
+
+	public int insertDecisionList(Connection con, int i) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertDefaultDecisionList");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, i);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result;
+	}
+
+	public int insertApplicantReport(Connection con, BusinessReportDTO reportDTO) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertApplicantReport");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, reportDTO.getReportReason());
+			psmt.setInt(2, reportDTO.getPostCode());
+			psmt.setInt(3, reportDTO.getResumeCode());
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
 		
 		return result;
 	}

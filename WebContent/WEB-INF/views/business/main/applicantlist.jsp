@@ -147,15 +147,28 @@
 	                        <div class="modal-content">
 	                            <div class="modal-header">
 	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                            <h4 class="modal-title" id="myModalLabel">신고하시겠습니까?</h4>
+	                            <h4 class="modal-title" id="myModalLabel">지원자 <span style="color:blue;">"<c:out value="${ application.applicantName }"/>"</span> 신고하시겠습니까?</h4>
 	                            </div>
+	                            
+	                            <form action="${ pageContext.servletContext.contextPath }/business/report" method="post">
 	                            <div class="modal-body">
-	                            신중한 신고 부탁드립니다.
+	                            <label>신고 사유 :  </label><br> 
+	                            <textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
+	                            <br><br>
+	                            *신고된 내용을 심사숙고하여 최대한 빠른 결과로 응답해드리겠습니다
+	                            <br>
+	                            *심사결과는 보통 3~5일뒤에 확인하실 수 있습니다
+	                            
 	                            </div>
+	                            
+	                            <input type="hidden" name="resumeCode" value="<c:out value="${ application.resumeCode }"/>">
+	                            <input type="hidden" name="postCode" value="<c:out value="${ application.postCode }"/>">
+	                            
 	                            <div class="modal-footer">
 	                            <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-	                            <button type="button" class="btn btn-default"><a href="home.html">신고하기</a></button>
+	                            <button type="submit" class="btn btn-default">신고하기</button>
 	                            </div>
+	                            </form>
 	                        </div>
 	                        </div>
 	                    </div>

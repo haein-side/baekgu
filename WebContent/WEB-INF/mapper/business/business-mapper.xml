@@ -204,25 +204,6 @@ select
     	, LAST_INSERT_ID()
 	     )
 	</entry>
-	<entry key="insertDecisionListpost">
-       insert
-         into decision_list 
-       (
-         D_LIST_REASON
-       , D_LIST_DATE
-       , ADMIN_ID
-       , DECISION_CODE
-       , D_LIST_TYPE_CODE
-       )
-       values
-      (
-        null
-      , null
-      , null
-      , 1
-      , 4
- 	  )
-	</entry>
 	
 	<entry key="checkDuplicationId">
 		SELECT
@@ -396,4 +377,44 @@ select
    		   SET APPLY_YN = ?
  		 WHERE APPLY_CODE = ?
 	</entry>
+	
+	<entry key="insertApplicantReport">
+		 INSERT
+   		   INTO REPORT
+		(
+  		  REPORT_REASON
+		, REPORT_DATE 
+		, POST_CODE 
+		, USER_CODE 
+		, D_LIST_CODE 
+		)
+		VALUES
+		(
+  		   ?
+		 , NOW()
+		 , ?
+		 , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)
+		 , LAST_INSERT_ID() 
+		)
+	</entry>
+	<entry key="insertDefaultDecisionList">
+       insert
+         into decision_list 
+       (
+         D_LIST_REASON
+       , D_LIST_DATE
+       , ADMIN_ID
+       , DECISION_CODE
+       , D_LIST_TYPE_CODE
+       )
+       values
+      (
+        null
+      , null
+      , null
+      , 1
+      , ?
+ 	  )
+	</entry>
+	
 </properties>
