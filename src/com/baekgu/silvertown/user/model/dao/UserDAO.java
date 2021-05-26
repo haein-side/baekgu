@@ -46,46 +46,46 @@ public class UserDAO {
 		}
 	}
 	
-	/**
-	 * 암호화된 비밀번호와 유저 차단 여부를 리턴하는 메소드
-	 * @param con
-	 * @param requestUser
-	 * @return encPwdBlock
-	 */
-	public UserDTO selectEnCryptedPwd(Connection con, UserDTO requestUser) {
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		UserDTO encPwdBlock = null;
-		
-		String query = prop.getProperty("selectBlockEncryptedPwd");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, requestUser.getUserPhone());
-			
-			rset = pstmt.executeQuery();
-			
-			encPwdBlock = new UserDTO();
-			
-			if(rset.next()) {
-				
-				encPwdBlock.setUserPwd(rset.getString("USER_PWD"));
-				encPwdBlock.setUserBlock(rset.getInt("USER_BLOCK"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		System.out.println("DAO 비밀번호 가져오기 : " + encPwdBlock.getUserPwd());
-		
-		return encPwdBlock;
-	}
+//	/**
+//	 * 암호화된 비밀번호와 유저 차단 여부를 리턴하는 메소드
+//	 * @param con
+//	 * @param requestUser
+//	 * @return encPwdBlock
+//	 */
+//	public UserDTO selectEnCryptedPwd(Connection con, UserDTO requestUser) {
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		
+//		UserDTO encPwdBlock = null;
+//		
+//		String query = prop.getProperty("selectBlockEncryptedPwd");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			pstmt.setString(1, requestUser.getUserPhone());
+//			
+//			rset = pstmt.executeQuery();
+//			
+//			encPwdBlock = new UserDTO();
+//			
+//			if(rset.next()) {
+//				
+//				encPwdBlock.setUserPwd(rset.getString("USER_PWD"));
+//				encPwdBlock.setUserBlock(rset.getInt("USER_BLOCK"));
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		
+//		System.out.println("DAO 비밀번호 가져오기 : " + encPwdBlock.getUserPwd());
+//		
+//		return encPwdBlock;
+//	}
 
 	/**
 	 * 비밀번호 일치 시 정보 조회용 메소드
@@ -99,11 +99,12 @@ public class UserDAO {
 		ResultSet rset = null;
 		
 		UserDTO loginUser = null;
-		System.out.println(requestUser);
+		
 		String query = prop.getProperty("selectLoginUser");
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			System.out.println("dao에서의 유저 폰 : " + requestUser.getUserPhone());
 			pstmt.setString(1, requestUser.getUserPhone());
 			
 			rset = pstmt.executeQuery();
@@ -672,6 +673,52 @@ public class UserDAO {
 		return selectedPost;
 	}
 
+	/**
+	 * 암호화 처리 된 비밀번호 조회용 메소드
+	 * @param con
+	 * @param requestUser
+	 * @return
+	 */
+	public String selectEncryptedPwd(Connection con, UserDTO requestUser) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String encPwd = null;
+		
+		String query = prop.getProperty("selectEncryptedPwd");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, requestUser.getUserPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				encPwd = rset.getString("USER_PWD");
+			}
+			
+			System.out.println("encPwd : " + encPwd);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return encPwd;
+	}
+
+
 	
 
 }
+
+
+
+
+
+
+
+

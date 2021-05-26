@@ -22,6 +22,15 @@
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 	<jsp:include page="../common/header.jsp" />
+	<c:if test="${ !empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
 	  <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -33,9 +42,6 @@
                                 재무관리
                             </h3>
                         </div>
-                        <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/reportWait" style="margin-left: 30px;">
-                            세금계산서발행
-                        </a>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -155,7 +161,7 @@
 		</form>
 		<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/payment";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const searchLink = "${ pageContext.servletContext.contextPath }/amdin/paymentSearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -243,6 +249,7 @@
 			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 		}
 	</script>
+</c:if>
 
 
 </body>

@@ -35,11 +35,29 @@ public class UserService {
 		Connection con = getConnection();
 		UserDTO loginUser = null;
 		
+		//비밀번호를 먼저 매치해서 일치여부 확인
+		String encPwd = userDAO.selectEncryptedPwd(con, requestUser);
+		
+		System.out.println("비밀번호 매치 잘 됐니? : " + encPwd);
+
 		// 비밀번호, 유저 차단 여부 조회
 		//UserDTO encPwdBlock = null;
-		loginUser = userDAO.selectEnCryptedPwd(con,requestUser);
+//		loginUser = userDAO.selectEnCryptedPwd(con,requestUser);
+//		
+//		
+//		System.out.println("Service 유저 차단 조회 : " + loginUser.getUserBlock());
 		
-		System.out.println("Service 유저 차단 조회 : " + loginUser.getUserBlock());
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		/* 로그인 요청한 원문 비밀번호와 저장되어 있는 암호화된 비밀번호가 일치하는지 확인 */
+		if(passwordEncoder.matches(requestUser.getUserPwd(), encPwd)) {
+			/* 비밀번호가 일치하는 경우에만 회원 정보를 조회해온다. */
+			loginUser = userDAO.selectLoginUser(con, requestUser);
+			System.out.println("서비스의 loginUser : " + loginUser);
+		}
+		
+		System.out.println("loginUser : " + loginUser);
+		
+		close(con);
 		
 		return loginUser;
 	}
@@ -57,6 +75,9 @@ public class UserService {
 		
 		loginUserInfo = userDAO.selectLoginUser(con, requestUser);
 
+		
+		close(con);
+		
 		return loginUserInfo;
 	}
 
@@ -114,6 +135,8 @@ public class UserService {
 		
 		Connection con = getConnection();
 		UserDTO jobInfo = null;//UserDAO.selectJobByIndustry(con, industryInfo);
+		
+		close(con);
 		
 		return jobInfo;
 	}

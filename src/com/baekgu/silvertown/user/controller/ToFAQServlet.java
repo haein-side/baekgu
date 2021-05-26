@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/popupsignin")
-public class ToSigninServlet2 extends HttpServlet {
+@WebServlet("/user/FAQ")
+public class ToFAQServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("Login으로 가는 서블릿 도착");
-		String path = "/WEB-INF/views/customer/main/popupsignin.jsp";
+		System.out.println("FAQ로 가는 서블릿 도착");
+		String path = "/WEB-INF/views/customer/main/FAQ.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
-
+		
 	}
 
 }
