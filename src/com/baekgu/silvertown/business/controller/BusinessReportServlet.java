@@ -20,6 +20,8 @@ import com.baekgu.silvertown.business.model.serivce.BusinessService;
 public class BusinessReportServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,17 +43,22 @@ public class BusinessReportServlet extends HttpServlet {
 		/* 심사내역 테이블(부모테이블)에 이력을 남긴다.*/
 		// 매개변수 1은 지원자 신고에 대한 코드
 		int result = new BusinessService().insertDecisionList(1, containDTO);
-		
 		String path = "";
 		
 		if(result > 0) {
+			request.setAttribute("postCode", postCode);
+//			System.out.println("set up the path");
 			
-			path = "/WEB-INF/views/business/main/reportlist.jsp";
-			
-			
-		}else {
-			
+//			path = "/business/applicantlist"; // 다른 서블릿으로 포워드 안됌.
+//			path = "/WEB-INF/views/business/main/applicantlist.jsp";
+		
+			response.sendRedirect(request.getContextPath() + "/business/applicantlist?postCode="+postCode+"&resumeCode="+resumeCode);
 		}
+//		else {
+//			
+//		}
+		
+//		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

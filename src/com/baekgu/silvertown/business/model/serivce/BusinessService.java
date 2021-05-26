@@ -286,6 +286,8 @@ public class BusinessService {
 		int firstResult = businessDAO.insertDecisionList(con, i);
 		int secondResult = 0;
 		
+		System.out.println("1.신고가 안되었을까? " + firstResult);
+
 		if(firstResult > 0) {
 			
 			commit(con);
@@ -300,6 +302,7 @@ public class BusinessService {
 				// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
 				BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
 				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
+				System.out.println("1.신고가 안되었을까? " + secondResult);
 				break;
 			case 3:
 				break;
@@ -310,9 +313,26 @@ public class BusinessService {
 			rollback(con);
 		}
 		
+		if(secondResult > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
 		close(con);
 		
 		return secondResult;
+	}
+
+	public String selectUsername(int resumeCode) {
+
+		Connection con = getConnection();
+		
+		String userName = businessDAO.selectUsername(con, resumeCode);
+		
+		close(con);
+		
+		return userName;
 	}
 
 

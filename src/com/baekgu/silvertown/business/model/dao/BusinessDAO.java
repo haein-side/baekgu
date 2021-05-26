@@ -860,6 +860,36 @@ public class BusinessDAO {
 		
 		return result;
 	}
+
+	public String selectUsername(Connection con, int resumeCode) {
+
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String userName = "";
+		
+		String query = prop.getProperty("selectUsername");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, resumeCode);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				userName = rset.getString("USER_NAME");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		
+		return userName;
+	}
 	
 	
 	

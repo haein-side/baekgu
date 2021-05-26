@@ -50,7 +50,11 @@
   </style>
 </head>
 <body>
-
+<c:choose>
+    <c:when test="${ not empty requestScope.report }">
+          <script>alert('${ requestScope.report }' + '님의 신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다')</script>
+    </c:when>
+</c:choose>
 	
 
 <jsp:include page="../common/header.jsp"/>
