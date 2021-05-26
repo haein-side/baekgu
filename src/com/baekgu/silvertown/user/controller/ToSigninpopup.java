@@ -7,22 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/toApply")
-public class ToApply extends HttpServlet {
+@WebServlet("/signinpopup")
+public class ToSigninpopup extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		System.out.println("지원하기로 가는 서블릿 도착");
-//		request.getSession().invalidate();
-//		response.sendRedirect(request.getContextPath());
+		int postCode = Integer.parseInt(request.getParameter("postCode"));
+		request.setAttribute("postCode", postCode);
 		
-		System.out.println("apply 가는 서블릿 도착");
-		String path = "/WEB-INF/views/customer/main/apply.jsp";
+		System.out.println("Login으로 가는 서블릿 도착");
+		String path = "/WEB-INF/views/customer/main/signinpopup.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

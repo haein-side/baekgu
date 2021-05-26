@@ -20,7 +20,7 @@
 
 <body>
 
-	<%@ include file="../common/header2.jsp"%>
+<%@ include file="../common/header2.jsp"%>
 
 	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
@@ -47,28 +47,34 @@
 							${ requestScope.postInfo.postContent }<br>
 						</p> --%>
 						<div align="right">
-							<input type="hidden" id="postCode" value="${ loginUserInfo.userCode }"/>
-							<button class="jione_button" onclick=apply();>
+							
+							<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
+							<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>
+							
+							<button class="jione_button" type="submit" onclick=apply();>
 							<!-- <input type="button" value="${ requestScope.postInfo.postCode } }"> -->
 							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
                                         
-										var userCode = document.getElementById("postCode").value;
+										var userCode = document.getElementById("userCode").value;
 								
 										function apply(){
 											if(userCode != null && userCode != "") {
 												// 로그인한 경우 지원하기 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/toApply", "a", "width=400, height=500, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
 												
 											} else {
 												// 로그인 하지 않은 경우 로그인 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/popupsignin", "a", "width=400, height=500, left=500, top=250");
-												
+												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
+																								
+												window.opener.location.reload();
+												window.close();
 											}
 
                                         }
-                                    </script>
+                                    </script> 
 								<h2>지원하기</h2>
 							</button>
+							
 						</div>
 						<hr><br><br>
 						<table>
@@ -173,9 +179,10 @@
 										<th> 모집 분야 </th>
 										<td> ${ requestScope.postInfo.industryName } </td>
 									</tr>
+									<tr>
 										<th> 담당 업무 </th>
 										<td> ${ requestScope.postInfo.jobName } </td>
-								
+									</tr>
 								</table>
 <%-- 								<table class="table" style="text-align: center;">
 									<thead>
@@ -210,7 +217,10 @@
 											<table>
 												<tr>
 													<th>근무유형</th>
-													<td></td>
+													<td>
+														<c:if test="${ requestScope.postInfo.fulltimeYn eq '1' }"> 정규직 </c:if>
+													 	<c:if test="${ requestScope.postInfo.fulltimeYn ne '1' }"> 비정규직 </c:if>
+													 </td>
 												</tr>
 												<tr>
 													<th>근무기간</th>
@@ -218,7 +228,29 @@
 												</tr>
 												<tr>
 													<th>근무시간</th>
-													<td> ${ requestScope.postInfo.hourName } </td>
+													<td> 
+														
+														<c:choose>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '시간 협의' }">
+													       		시간 협의
+													    	</c:when>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '풀타임' }">
+													       		종일
+													    	</c:when>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '새벽' }">
+													       		새벽
+													    	</c:when>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '오전' }">
+													       		오전
+													    	</c:when>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '오후' }">
+													       		오후
+													    	</c:when>
+													    	<c:when test="${ requestScope.postInfo.hourName eq '저녁' }">
+													       		저녁
+													    	</c:when>
+														</c:choose>
+													</td>
 												</tr>
 												<tr>
 													<th>우대조건</th>
@@ -236,7 +268,7 @@
 													<th>급여</th>
 													<td> ${ requestScope.postInfo.payment } 원 </td>
 												</tr>
-											</table>
+											</table> <!-- align center -->
 <%-- 											<div>
 											<div
 													style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
@@ -324,7 +356,7 @@
 											</tr>
 											<tr>
 												<th> 급여 </th>
-												<td> ${ requestScope.postInfo.payment } </td>
+												<td> ${ requestScope.postInfo.payment }원</td>
 											</tr>
 										</table>
 										
@@ -387,7 +419,21 @@
 											<hr>
 											<div id="how">
 											<table>
-											
+												<tr>
+													<th>접수방법</th>
+													<td>
+														<c:if test="${ requestScope.postInfo.postOnline eq '0' }"> 전화 지원 </c:if>
+														<c:if test="${ requestScope.postInfo.postOnline eq '1' }"> 온라인 지원 </c:if>													
+													</td>
+												</tr>
+												<tr>
+													<th>연락처</th>
+													<td> ${ requestScope.postInfo.hrPhone } </td>
+												</tr>
+												<tr>
+													<th>채용 담당자</th>
+													<td> ${ requestScope.postInfo.hrName } </td>
+												</tr>																								
 											</table>
 <!-- 												<div
 													style="width: 250px; height: 36px; float: left; margin-left: 350px; margin-bottom: 20px;">
@@ -416,11 +462,11 @@
 										</div>
 									</div>
 									<div
-										style="width: 100%; height: 120px; border: 1px solid grey; margin-top: 30px;">
+										style="width: 100%; height: 200px; border: 1px solid grey; margin-top: 30px;">
 										<p align="center"
-											style="font-size: 30px; line-height: 38px; margin-top: 25px;">
+											style="font-size: 30px; line-height: 38px; margin-top: 25px;"><br>
 											전화 문의 시, <b>'백구에서 채용정보 보고 전화 드렸습니다.'</b><br> 라고 하시면 빠른
-											문의가 가능합니다.
+											문의가 가능합니다.<br>
 										</p>
 									</div>
 								</div>
@@ -443,8 +489,8 @@
 										<p style="font-size: 25px; text-align: center;">혹시 이 공고가
 											수상한가요?
 										<h2>
-											<a href="${ pageContext.servletContext.contextPath }/user/report"
-											onclick="window.open(this.href, '공고 신고하기', 'width=400, height=500, left=500, top=250';)" style="color: red;">신고하기</a>
+											<a href=""
+											onclick="window.open('${ pageContext.servletContext.contextPath }/user/report', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
 										</h2>
 										</p>
 									</div>
@@ -458,13 +504,37 @@
 								<div class="product__details__tab__desc"
 									style="margin-bottom: 50px; text-align: center;">
 									<div>
-										<ul style="margin-top: 20px; margin-bottom: 50px;">
+										<table>
+											<tr>
+												<th>회사명</th>
+												<td>${ requestScope.postInfo.bName }</td>
+											</tr>
+											<tr>
+												<th>대표자</th>
+												<td>${ requestScope.postInfo.bOwner }</td>
+											</tr>
+											<tr>
+												<th>회사주소</th>
+												<td>${ requestScope.postInfo.bAddress }</td>
+											</tr>
+											<tr>
+												<th>사업내용</th>
+												<td>${ requestScope.postInfo.industryName }</td>
+											</tr>
+											<tr>
+												<th>연매출액</th>
+												<td>${ requestScope.postInfo.bProfit } 원</td>
+											</tr>										
+										</table>
+									
+									
+<%-- 										<ul style="margin-top: 20px; margin-bottom: 50px;">
 											<li style="font-size: 20px;"><b>회사명</b>${ requestScope.postInfo.bName }</li>
 											<li style="font-size: 20px;"><b>대표자</b>${ requestScope.postInfo.bOwner }</li>
 											<li style="font-size: 20px;"><b>회사주소</b>${ requestScope.postInfo.bAddress }</li>
 											<li style="font-size: 20px;"><b>사업내용</b>${ requestScope.postInfo.industryName }</li>
 											<li style="font-size: 20px;"><b>연매출액</b>${ requestScope.postInfo.bProfit } 원</li>
-										</ul>
+										</ul> --%>
 									</div>
 								</div>
 							</div>
@@ -494,10 +564,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</section>
-	<%@ include file="../common/footer.jsp"%>
-	
+<%@ include file="../common/footer.jsp"%>
+
 </body>
 
 </html>

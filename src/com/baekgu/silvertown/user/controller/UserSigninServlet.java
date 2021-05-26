@@ -22,9 +22,14 @@ public class UserSigninServlet extends HttpServlet {
 		String userPhone = request.getParameter("USER_PHONE");
 		String userPwd = request.getParameter("USER_PWD");
 		
+		// 공고지원하기에서 로그인한 경우 공고 번호 받아오기
+		//int postCode = Integer.parseInt(request.getParameter("postCode"));
+		
 		// 출력 테스트
 		System.out.println("입력한 고객 전화번호 : " + userPhone);
 		System.out.println("입력한 고객 비밀번호 : " + userPwd);
+		
+		//System.out.println("공고 번호 : " + postCode);
 		
 		// DTO타입의 변수로 값 넣어주기
 		UserDTO requestUser = new UserDTO();
@@ -71,19 +76,16 @@ public class UserSigninServlet extends HttpServlet {
 				// 뷰 분기처리, 로그인 정보는 session에 담기
 				if(loginUser != null) {
 					HttpSession session = request.getSession();
-		               
-		            // 받아온 회원정보를 loginUserInfo라는 속성으로 넣어줌
+		            
+		            // Session에 조회한 회원정보를 loginUserInfo로 넣어줌
 		            session.setAttribute("loginUserInfo", loginUserInfo);
-		               
 		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
-
-					
 					// 서버 연결 후 출력 확인해보기
 					System.out.println("로그인 성공");
+
 					/* 로그인 성공 시 메인으로 */
-					System.out.println(request.getContextPath());
-					// doGet 방식 사용
 					response.sendRedirect(request.getContextPath() + "/user/toMain");
+					
 				}
 
 			} else {
