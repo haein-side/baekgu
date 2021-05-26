@@ -890,6 +890,34 @@ public class BusinessDAO {
 		
 		return userName;
 	}
+
+	public int selectReportCount(Connection con, String loggedId) {
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("selectCountReported");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, loggedId);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		return result;
+	}
 	
 	
 	

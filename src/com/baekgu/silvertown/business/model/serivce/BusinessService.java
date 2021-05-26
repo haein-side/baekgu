@@ -335,6 +335,17 @@ public class BusinessService {
 		return userName;
 	}
 
+	public int selectReportCount(String loggedId) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.selectReportCount(con, loggedId);
+		
+		close(con);
+		
+		return result;
+	}
+
 
 
 
