@@ -107,6 +107,10 @@
 	   		        $(this).addClass("btnSelected")  */
 	   		         jQuery(this).toggleClass("active");
 	   		        
+	   		      if ( $('#category1')){
+		            	window.location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost';
+		            }
+	   		        
 	   		         
 	   			});    
 	   		   
@@ -232,6 +236,8 @@
 	}
 	       
 	       function itemChange() {
+	    	   
+	    	  
 	   				 /* var restaurant = ['요리사', '주방보조', '찬모', '설거지', '서빙', '카운터'];5
 	   		 var market = ['편의점', '슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고', '기타/매장'];12
 	   		 var counsel = ['인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매', '부동산상담', '홍보/마켓팅'];19
@@ -296,41 +302,41 @@
 	   			/* <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">요리사</p></label> 
                 <input type="checkbox" id="j1" name = "job1" style="display: none" value="1">  */
                 
+	   		 /* $(".btn1 lo").click(function() {
+		   		    if ($(this).hasClass("btnSelected")) {
+		   		      $(this).removeClass("btnSelected");
+		   		    } else {
+		   		      $(".btn1 lo").removeClass("btnSelected");
+		   		      $(this).addClass('btnSelected');
+		   		    }
+		   		  }); */
+		   		$(".btn1 jb").click(function() {
+		   		     $(".btn1").removeClass("btnSelected");
+		   		  jQuery(this).toggleClass("active");
+		   		     $(this).addClass("btnSelected");
+		   		  });
+		   		/* $(".btn1 lo").click(function() {
+		   		     $(".btn1 lo").removeClass("active");
+		   		     $(this).addClass("active");
+		   		  }); */
+		   		/* jQuery('button.account').click(function() {
+		   		   jQuery(this).toggleClass("btn-success");
+		   		  //  jQuery(this).addClass("btn-success");
+		   		}); */
+		   		jQuery(document).ready(function() {
+		   		    $('.btn1').click(function() {
+		   		       /* $('.btn1').removeClass("btnSelected");
+		   		        $(this).addClass("btnSelected")  */
+		   		         jQuery(this).toggleClass("active");
+		   		        
+		   			});    
+	
+		   		}); 
+                
 	   			
 	   		} 
 	   		
-	   		$(".btn1 lo").click(function() {
-	   		    if ($(this).hasClass("btnSelected")) {
-	   		      $(this).removeClass("btnSelected");
-	   		    } else {
-	   		      $(".btn1 lo").removeClass("btnSelected");
-	   		      $(this).addClass('btnSelected');
-	   		    }
-	   		  });
-	   		$(".btn1").click(function() {
-	   		     $(".btn1").removeClass("btnSelected");
-	   		     $(this).addClass("btnSelected");
-	   		  });
-	   		$(".btn1 lo").click(function() {
-	   		     $(".btn1 lo").removeClass("active");
-	   		     $(this).addClass("active");
-	   		  });
-	   		jQuery('button.account').click(function() {
-	   		   jQuery(this).toggleClass("btn-success");
-	   		  //  jQuery(this).addClass("btn-success");
-	   		});
-	   		jQuery(document).ready(function() {
-	   		    $('.btn1').click(function() {
-	   		       /* $('.btn1').removeClass("btnSelected");
-	   		        $(this).addClass("btnSelected")  */
-	   		         jQuery(this).toggleClass("active");
-	   		        
-	   		         
-	   			});    
-	   		   
-	   		    
-	   		   
-	   		});  
+	   		
 	   	}
 	       
 	      
@@ -357,12 +363,10 @@
 						</div>
 					</div>
 					<div align="center" id="btn_group" style="padding: 50px;">
-						<button class="btn1"
-							style="width: 200pt; height: 60pt; font-size: x-large;"
-							onclick="location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost'">단순&nbsp;검색</button>
-						<button class="btn1"
-							style="width: 200pt; height: 60pt; font-size: x-large; margin-left: 160px;"
-							disabled >상세&nbsp;검색</button>
+						<input type="button" class="btn1" id="category1" style="width:200pt;height:60pt;font-size:
+							x-large;text-align:center;" onclick= 'move()' value="단순 검색"></input>
+                    	<input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+                        x-large; margin-left: 160px;x-large;text-align:center;"value="상세 검색"></input>
 					</div>
 
 					<!-- hidden -->                               	

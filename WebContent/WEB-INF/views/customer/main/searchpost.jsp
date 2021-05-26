@@ -84,6 +84,10 @@
 	
 	             jQuery(this).toggleClass("active");
 	            
+	            if ( $('#category1')){
+	            	window.location.href='${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost';
+	            }
+	            
 	             
 	    	});    
 	        
@@ -192,7 +196,9 @@
     	});
 	});
     
-    
+    function move(){
+    	window.location.href="${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost";
+    }
  
 	 
     </script>
@@ -219,9 +225,7 @@
                         <input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
 							x-large;text-align:center;" value="단순 검색"></input>
                     	<input type="button" class="btn1" id="category1" style="width:200pt;height:60pt;font-size:
-                        x-large; margin-left: 160px;x-large;text-align:center;"value="상세 검색" onclick="location.href='${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost'"></input>
-                    	<%--  <a href="${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost" type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
-                        x-large; margin-left: 160px;x-large;text-align:center;" >상세 검색</a>  --%>
+							x-large;text-align:center; margin-left: 160px;" onclick= 'move()' value="상세 검색"></input>
                     </div>
                     <div class="container">
                         <div class="section_title text-center">
