@@ -108,7 +108,7 @@
   					console.log(data);
   					if(data == "success"){
   						$("#checkMessage").html("사용할 수 있는 아이디입니다.");
-  						alert("사용가능한 아이디입니다.!");
+  						alert("사용가능한 아이디입니다!");
   						
   						$('#checkId').attr("value","success");
 

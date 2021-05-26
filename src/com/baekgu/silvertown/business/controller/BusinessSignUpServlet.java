@@ -47,6 +47,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 		
 		String result = service.chekId(hrId_1);
 		
+		System.out.println("dsafsdf" + result);
 		
 		PrintWriter out = response.getWriter();
 		out.print(result);
