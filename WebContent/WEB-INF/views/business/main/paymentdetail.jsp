@@ -67,7 +67,7 @@
               <th>결제 번호</th>
               <th>결제 날짜</th>
               <th>결제 수단</th>
-              <th>결제 상태</th>
+              <th>남은 결제 가능 날짜</th>
             </tr>
           </thead>
           <tbody>
@@ -75,7 +75,7 @@
 				<td>${ paymentdetail.postAdCode }</td>
 				<td>${ paymentdetail.postAdDate }</td>
 				<td><c:if test="${ paymentdetail.pMethodCode eq 1 }">신용 카드</c:if></td>
-				<td><c:if test="${ paymentdetail.postAdPaid eq 0 }">미결제 (결제 진행중)</c:if>
+				<td><c:if test="${ paymentdetail.postAdPaid eq 0 }">${ requestScope.dday } 일</c:if>
 				    <c:if test="${ paymentdetail.postAdPaid eq 1 }">결제 완료</c:if>
 				    </td>			
 			</tr>
