@@ -28,6 +28,7 @@ import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
+import com.mysql.cj.xdevapi.Result;
 
 public class BusinessDAO {
 	
@@ -888,6 +889,61 @@ public class BusinessDAO {
 		
 		
 		return userName;
+	}
+
+	public int updatePaymentList(Connection con, String paymentResult) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updatePaymentStatus");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, paymentResult);
+			pstmt.setInt(2, 1);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public int updatePaymentList(Connection con, int success, int postAdCode) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		
+		String query = prop.getProperty("updatePaymentStatus");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, success);
+			pstmt.setInt(2, 1);
+			pstmt.setInt(3, postAdCode);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
+		return result;
 	}
 	
 	

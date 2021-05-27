@@ -347,6 +347,27 @@ public class BusinessService {
 		return userName;
 	}
 
+	public int updatePaymentList(int success, int postAdCode) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updatePaymentList(con, success, postAdCode);
+		
+		
+		System.out.println("");
+		if(result > 0 ) {
+			
+			commit(con);
+		} else {
+			
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 
 
 
