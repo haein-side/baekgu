@@ -18,13 +18,13 @@ public class payComplateServlet extends HttpServlet {
 		
 		BusinessService service = new BusinessService();
 		
-		String paymentResult = request.getParameter("success");
-		String postAdCode = request.getParameter("postadcode");
+//		String paymentResult = request.getParameter("success");
+//		String postAdCode = request.getParameter("postadcode");
 		
 		
-		System.out.println("postAdCode : " + postAdCode);
-		
-		System.out.println("paymentResult : " + paymentResult);
+//		System.out.println("postAdCode : " + postAdCode);
+//		
+//		System.out.println("paymentResult : " + paymentResult);
 
 		int result = service.updatePaymentList(Integer.parseInt(request.getParameter("success")) , Integer.parseInt(request.getParameter("postadcode")));
 	
