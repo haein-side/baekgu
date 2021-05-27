@@ -83,17 +83,17 @@ public class AdminReportService {
 	}
 
 	/**
-	 * 검색결과 리스트
+	 * 신고 관리 검색결과 리스트
 	 * @param condition
 	 * @param value
 	 * @param pageInfo
 	 * @return
 	 */
-	public List<BlockDTO> selectSearchReport(String condition, String value, PageInfoDTO pageInfo) {
-		
+	public List<BlockDTO> selectSearchReport(String searchSelect, String searchInput, PageInfoDTO pageInfo) {
+	
 		Connection con = getConnection();
-		System.out.println("서비스 condition : " + condition);
-		List<BlockDTO> searhList = reportDAO.selectSearchReportList(con, pageInfo,value,condition);
+		System.out.println("서비스 searchSelect : " + searchSelect);
+		List<BlockDTO> searhList = reportDAO.selectSearchReport(con, pageInfo,searchSelect,searchInput);
 		
 		close(con);
 		
@@ -106,15 +106,15 @@ public class AdminReportService {
 	 * @param value
 	 * @return
 	 */
-	public int SearhCount(String condition, String value) {
+	public int SearhCount(String searchSelect, String searchInput) {
 		
 		Connection con = getConnection();
 		
-		int count = reportDAO.searchReportCount(con, condition, value);
+		int totalCount = reportDAO.SearhCount(con, searchSelect, searchInput);
 		
 		close(con);
 		
-		return count;
+		return totalCount;
 	}
 
 

@@ -3,6 +3,7 @@ package com.baekgu.silvertown.business.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -33,35 +33,17 @@ public class BusinessSignUpServlet extends HttpServlet {
 	
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String hrId_1 = request.getParameter("hrId_1");
-		
+
 		String path = "/WEB-INF/views/business/main/signupB.jsp";
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-
-		
-		BusinessService service = new BusinessService();
-		
-		String result = service.chekId(hrId_1);
-		
-		
-		PrintWriter out = response.getWriter();
-		out.print(result);
-		
-		out.flush();
-		out.close();
-		
-
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-//		String imageRoot = "";
+
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			/* 이미지 경로 설정하기 */
@@ -194,6 +176,8 @@ public class BusinessSignUpServlet extends HttpServlet {
 
 				String hrId = parameter.get("hrId");
 				String hrPwd = parameter.get("enteredPwd");
+				
+				// 직접 암호화
 				String hrName = parameter.get("hrName");
 				String hrPhone = parameter.get("hrPhone");
 				String hrEmail = parameter.get("hrEmail");
@@ -214,11 +198,16 @@ public class BusinessSignUpServlet extends HttpServlet {
 			} 
 	        
 		
-
+	        
+	        List<Object> containDTO = new ArrayList<>();
+	        
+	        containDTO.add(business);
+	        containDTO.add(hr);
+	        
 		
 		BusinessService service = new BusinessService();
 		
-		int result = service.insertNewBusiness(business, hr);
+		int result = service.insertDecisionList(3, containDTO);
 		
 		if(result > 0 ) {
 			

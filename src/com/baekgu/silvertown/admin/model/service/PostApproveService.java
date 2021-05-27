@@ -141,7 +141,7 @@ public class PostApproveService {
 			
 			if(result > 0) {
 				commit(con);
-				System.out.println("공고 거절 성공 ");
+				System.out.println("공고 거절 성공");
 			} else {
 				rollback(con);
 				System.out.println("공고 거절 실패");
@@ -151,5 +151,46 @@ public class PostApproveService {
 			
 			return result;
 	}
+	
+	/**
+	 * 검색결과 리스트 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<PostDTO> postApproveSelect(String searchSelect, String searchInput, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		System.out.println("서비스 검색리스트 : " + searchSelect);
+		List<PostDTO> postList = postApproveDAO.postApproveSelect(con,searchSelect,searchInput,pageInfo);
+		
+		close(con);
+		
+		
+		return postList;
+	}
+
+
+
+	/**
+	 * 공고심사 검색 결과 개수 조회용 메소드 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int postApproveSearch(String searchSelect, String searchInput) {
+			
+		Connection con = getConnection();
+		
+		int totalCount = postApproveDAO.postApproveSearch(con, searchSelect,searchInput);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+
+
 
 }

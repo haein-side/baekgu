@@ -176,9 +176,14 @@ public class BusinessInsertPostServlet extends HttpServlet {
 		post.setHrId(loggedInUser.getbId());
 		post.setLocationCode(location);
 
+		
+		List<Object> containDTO = new ArrayList<>();
+		
+		containDTO.add(post);
+		
 		BusinessService service = new BusinessService();
 
-		int result = service.insertNewPost(post);
+		int result = service.insertDecisionList(4, containDTO);
 		
 		
 	}

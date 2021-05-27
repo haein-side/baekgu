@@ -42,12 +42,12 @@ public class BusinessPasswordEncryptFilter implements Filter {
 		
 		if(!"/login".equals(intent)) {
 		
-//		System.out.println("Encrypt test");
-		System.out.println("비밀번호 암호화처리 필터 작동!");
-		
-		EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
+	//		System.out.println("Encrypt test");
+			System.out.println("비밀번호 암호화처리 필터 작동!");
 			
-		chain.doFilter(wrapper, response);
+			EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
+				
+			chain.doFilter(wrapper, response);
 		} else {
 			chain.doFilter(request, response);
 		}
