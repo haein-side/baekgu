@@ -3,7 +3,6 @@ package com.baekgu.silvertown.business.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
-import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 import com.baekgu.silvertown.common.paging.PageNation;
 
@@ -59,7 +58,7 @@ public class BusinessReportServlet extends HttpServlet {
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
 
-		List<?> reportList = businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		List<BusinessReportListDTO> reportList = businessService.selectReportList(loggedInUser.getbId(), pageInfo);
 		
 		String path = "";
 
@@ -97,15 +96,8 @@ public class BusinessReportServlet extends HttpServlet {
 		/* 심사내역 테이블(부모테이블)에 이력을 남긴다.*/
 		// 매개변수 1은 지원자 신고에 대한 코드
 		int result = new BusinessService().insertDecisionList(1, containDTO);
-		String path = "";
 		
 		if(result > 0) {
-			request.setAttribute("postCode", postCode);
-//			System.out.println("set up the path");
-			
-//			path = "/business/applicantlist"; // 다른 서블릿으로 포워드 안됌.
-//			path = "/WEB-INF/views/business/main/applicantlist.jsp";
-		
 			response.sendRedirect(request.getContextPath() + "/business/applicantlist?postCode="+postCode+"&resumeCode="+resumeCode);
 		}
 //		else {
