@@ -233,4 +233,115 @@ public class BusinessJoinDAO {
 		return result;
 	}
 
+	/**
+	 * 가입승인 검색결과 총 개수 메소드 
+	 * @param con
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int joinSearch(Connection con, String searchSelect, String searchInput) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = null;
+		int totalCount = 0;
+		
+		if(searchSelect.equals("bCode")) {
+			query = prop.getProperty("searchbCode");
+			
+		} else {
+			query = prop.getProperty("searchbName");
+		}
+		
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, searchInput);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					totalCount = rset.getInt("COUNT(*)");
+				}
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+		
+			System.out.println("totalCount : " + totalCount);
+		
+		return totalCount;
+	}
+
+	/**
+	 * 가입승인을 위한 검색결과 리스트 
+	 * @param con
+	 * @param searchSelect
+	 * @param searchInput
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BusinessJoinDTO> joinSearchSelect(Connection con, String searchSelect, String searchInput,
+			PageInfoDTO pageInfo) {
+	
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		 List<BusinessJoinDTO> joinDTO = null;
+		 
+		 String query = null;
+		 
+		 System.out.println("searchselect dao : " + searchSelect);
+		
+		 if(searchSelect.equals("bCode")) {
+			 query = prop.getProperty("joinSelectbCode");
+		 } else {
+			 query = prop.getProperty("joinSelectbName");
+		 }
+		 
+		 System.out.println("사용 쿼리 : " + query);
+		 
+		 try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, searchInput);
+			pstmt.setInt(2, pageInfo.getStartRow());
+			pstmt.setInt(3, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+			
+			joinDTO = new ArrayList<>();
+			
+			while(rset.next()) {
+				BusinessJoinDTO business = new BusinessJoinDTO();
+				business.setbCode(rset.getInt("b_code"));
+				business.setbName(rset.getString("b_name"));
+				business.setbOwner(rset.getString("b_owner"));
+				business.setbNumber(rset.getString("b_number"));
+				business.setbAddress(rset.getString("b_address"));
+				business.setbPhone(rset.getString("b_phone"));
+				
+				
+				joinDTO.add(business);
+				
+			}
+				
+			System.out.println("검색결가 리스트 dao : " + joinDTO);
+			
+		 } catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		 
+		return joinDTO;
+	}
+
 }
