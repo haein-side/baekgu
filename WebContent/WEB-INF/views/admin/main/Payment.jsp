@@ -67,6 +67,7 @@
 										<td><c:out value="${ payment.bNumber }" /></td>
 										<td><c:out value="${ payment.postAdDate }" /></td>
 										<td><c:out value="${ payment.adPrice }" /></td>
+										<td><c:out value="" /></td>
 									</tr>
 								</c:forEach>
                                 </tbody>
@@ -159,6 +160,7 @@
 				</c:if>
 			</div>
 		</form>
+		
 		<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/payment";
 		const searchLink = "${ pageContext.servletContext.contextPath }/amdin/paymentSearch";
