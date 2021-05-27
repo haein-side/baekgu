@@ -80,6 +80,37 @@ public class UserSigninServlet extends HttpServlet {
 						// 서버 연결 후 출력 확인해보기
 						System.out.println("로그인 성공");
 
+			// 값을 보내서 조회해오기
+			loginUserInfo = userServiceInfo.loginInfo(requestUser);
+			
+			System.out.println("컨트롤러 유저 값 조회 : " + loginUserInfo);
+		} else {
+			// 회원가입 안내 alert
+			System.out.println("잘못된 아이디");
+			
+			errorPage="/WEB-INF/views/customer/common/errorAgain.jsp";
+       	 	request.setAttribute("errorMessage", "입력하신 정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
+       	 	request.getRequestDispatcher(errorPage).forward(request, response);
+		}
+		
+		// 차단 여부 확인
+		if(loginUserInfo.getUserBlock() != 1) {
+			
+			// 비밀번호 대조
+			if(requestUser.getUserPwd().equals(loginUser.getUserPwd())) {
+				// 로그인 성공
+				// 뷰 분기처리, 로그인 정보는 session에 담기
+				if(loginUser != null) {
+					HttpSession session = request.getSession();
+		            
+		            // Session에 조회한 회원정보를 loginUserInfo로 넣어줌
+		            session.setAttribute("loginUserInfo", loginUserInfo);
+		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
+					// 서버 연결 후 출력 확인해보기
+					System.out.println("로그인 성공");
+
+					/* 로그인 성공 시 메인으로 */
+					response.sendRedirect(request.getContextPath() + "/user/toMain");
 						/* 로그인 성공 시 메인으로 */
 						response.sendRedirect(request.getContextPath() + "/user/toMain");
 		    		
@@ -115,10 +146,10 @@ public class UserSigninServlet extends HttpServlet {
 			    System.out.println("잘못된 회원정보");
 	    		
 	    		
-	    		
 	    	}
-
-	 	
+	    	}
+	    }
+	   
 	}
- 
+		
 }
