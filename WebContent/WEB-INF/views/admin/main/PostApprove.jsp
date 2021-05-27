@@ -46,58 +46,56 @@
 
 <body>
 	<jsp:include page="../common/header.jsp" />
-	
-	 <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper">
-                    <!--overview start-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="page-header">
-                                <i class="fa fa-laptop"></i>
-                                공고 심사 관리</h3>
-                            
-                        </div>
-                    </div>
-                </section>
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                      <section class="panel">
-                        <header class="panel-heading">
-                          기업 리스트
-                        </header>
-                        <div class="table-responsive">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th>공고코드</th>
-                                <th>공고제목</th>
-                                <th>담당자아이디</th>
-                                <th>담당자이름</th>
-                                <th>담당자이메일</th>
-                               <!--  <th>공고등록</th> -->
-                              </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="postapprove" items="${ requestScope.postList }">
-                              <tr>
-                                   <td><c:out value="${ postapprove.postCode }" /></td>
-								   <td><c:out value="${ postapprove.postTitle }" /></td>
-								   <td><c:out value="${ postapprove.hrId }" /></td>
-								   <td><c:out value="${ postapprove.name }" /></td>
-								   <td><c:out value="${ postapprove.email }" /></td>
-							<%-- 	   <td><c:out value="${ postapprove.dday }"/></td> --%>
-                              </tr>
-                            </c:forEach>
-                            </tbody>
-                          </table>
-                        </div>
 
-        	<section class="panel">
+	<!--main content start-->
+	<section id="main-content">
+		<section class="wrapper">
+			<!--overview start-->
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header">
+						<i class="fa fa-laptop"></i> 공고 심사 관리
+					</h3>
+
+				</div>
+			</div>
+		</section>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<section class="panel">
+					<header class="panel-heading"> 기업 리스트 </header>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>공고코드</th>
+									<th>공고제목</th>
+									<th>담당자아이디</th>
+									<th>담당자이름</th>
+									<th>담당자이메일</th>
+									<!--  <th>공고등록</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="postapprove" items="${ requestScope.postList }">
+									<tr>
+										<td><c:out value="${ postapprove.postCode }" /></td>
+										<td><c:out value="${ postapprove.postTitle }" /></td>
+										<td><c:out value="${ postapprove.hrId }" /></td>
+										<td><c:out value="${ postapprove.name }" /></td>
+										<td><c:out value="${ postapprove.email }" /></td>
+										<%-- 	   <td><c:out value="${ postapprove.dday }"/></td> --%>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<!--하단 페이지 넘기기-->
+					<section class="panel">
 						<div class="panel-body">
 							<div class="text-center">
-								<%-- 페이지 처리 (분기처리한 것) --%>
+								<%-- 페이지 처리 --%>
 								<div class="pagingArea" align="center">
 									<c:choose>
 										<c:when test="${ empty requestScope.searchValue }">
@@ -110,14 +108,21 @@
 												<button id="prevPage"><</button>
 											</c:if>
 
-											<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-												<button onclick="pageButtonAction(this.innerText);">
-													<c:out value="${ p }" />
-												</button>
-											</c:if>
+											<c:forEach var="p"
+												begin="${ requestScope.pageInfo.startPage }"
+												end="${ requestScope.pageInfo.endPage }" step="1">
+												<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+													<button disabled>
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+													<button onclick="pageButtonAction(this.innerText);">
+														<c:out value="${ p }" />
+													</button>
+												</c:if>
+											</c:forEach>
 
-
-											<!-- max페이지에 대한 내용  -->
 											<c:if
 												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
 												<button disabled>></button>
@@ -166,83 +171,101 @@
 											<button id="searchMaxPage">>></button>
 										</c:otherwise>
 									</c:choose>
+									<!-- 검색 폼 -->
+									<form id="loginForm"
+										action="${ pageContext.servletContext.contextPath }/admin/postApprovesearch"
+										method="get">
+										<div class="search-area" align="center">
+											<c:choose>
+												<c:when test="${ !empty requestScope.searchValue }">
+													<!-- 검색 카테고리  -->
+													<!-- name으로 키값을 전달한다. -->
+													<select id="searchSelect" name="searchSelect">
+														<option value="postCode"
+															<c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
+														<option value="hrId"
+															<c:if test="${requestScope.searchCondition eq 'hrId'}">selected</c:if>>담당자아이디</option>
+													</select>
+													<!-- 입력한 값 , name으로 키값을 전달한다.  -->
+													<input type="search" id="searchInput" name="searchInput"
+														value="${ requestScope.searchValue }">
+												</c:when>
+												<c:otherwise>
+													<select id="searchSelect" name="searchSelect">
+														<option value="postCode">공고코드</option>
+														<option value="hrId">담당자아이디</option>
+													</select>
+													<!-- 어떤 검색을 했는지 넘겨주는 것   -->
+													<input type="search" id="searchInput" name="searchInput">
+												</c:otherwise>
+											</c:choose>
+											<button type="submit">검색하기</button>
+											<c:if test="${ !empty requestScope.loginMember }">
+												<button id="writeBoard">작성하기</button>
+											</c:if>
+										</div>
+									</form>
 								</div>
-							</div>
-
-            </section>
-         
-        </section>
-                   <script>
+					</section>
+				</section>
+	</section>
+	<script>
 						const link = "${ pageContext.servletContext.contextPath }/admin/postapprove";
-					/* 	const searchLink = "${ pageContext.servletContext.contextPath }/admin/search"; */
+					 	const searchLink = "${ pageContext.servletContext.contextPath }/admin/postApprovesearch"; 
 
-						if (document.getElementById("startPage")) {
-							const $startPage = document
-									.getElementById("startPage");
+					 	if(document.getElementById("startPage")) {
+							const $startPage = document.getElementById("startPage");
 							$startPage.onclick = function() {
 								location.href = link + "?currentPage=1";
 							}
 						}
-
-						if (document.getElementById("prevPage")) {
-							const $prevPage = document
-									.getElementById("prevPage");
+						
+						if(document.getElementById("prevPage")) {
+							const $prevPage = document.getElementById("prevPage");
 							$prevPage.onclick = function() {
-								location.href = link
-										+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+								location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
 							}
 						}
-
-						if (document.getElementById("nextPage")) {
-							const $nextPage = document
-									.getElementById("nextPage");
+						
+						if(document.getElementById("nextPage")) {
+							const $nextPage = document.getElementById("nextPage");
 							$nextPage.onclick = function() {
-								location.href = link
-										+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+								location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
 							}
 						}
-
-						if (document.getElementById("maxPage")) {
+						
+						if(document.getElementById("maxPage")) {
 							const $maxPage = document.getElementById("maxPage");
 							$maxPage.onclick = function() {
-								location.href = link
-										+ "?currentPage=${ requestScope.pageInfo.maxPage }";
+								location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
 							}
 						}
-
-						if (document.getElementById("searchStartPage")) {
-							const $searchStartPage = document
-									.getElementById("searchStartPage");
+						
+						if(document.getElementById("searchStartPage")) {
+							const $searchStartPage = document.getElementById("searchStartPage");
 							$searchStartPage.onclick = function() {
-								location.href = searchLink
-										+ "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+								location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 							}
 						}
-
-						if (document.getElementById("searchPrevPage")) {
-							const $searchPrevPage = document
-									.getElementById("searchPrevPage");
+						
+						if(document.getElementById("searchPrevPage")) {
+							const $searchPrevPage = document.getElementById("searchPrevPage");
 							$searchPrevPage.onclick = function() {
-								location.href = searchLink
-										+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+								location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 							}
 						}
-
-						if (document.getElementById("searchNextPage")) {
-							const $searchNextPage = document
-									.getElementById("searchNextPage");
+						
+						if(document.getElementById("searchNextPage")) {
+							const $searchNextPage = document.getElementById("searchNextPage");
 							$searchNextPage.onclick = function() {
-								location.href = searchLink
-										+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+								location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 							}
 						}
-
-						if (document.getElementById("searchMaxPage")) {
-							const $searchMaxPage = document
-									.getElementById("searchMaxPage");
+						
+						if(document.getElementById("searchMaxPage")) {
+							const $searchMaxPage = document.getElementById("searchMaxPage");
 							$searchMaxPage.onclick = function() {
-								location.href = searchLink
-										+ "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+								location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 							}
 						}
 
@@ -282,4 +305,6 @@
 						}  
 	
 	
-</script> </body> </html>
+</script>
+</body>
+</html>

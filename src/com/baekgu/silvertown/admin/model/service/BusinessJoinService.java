@@ -62,7 +62,7 @@ public class BusinessJoinService {
 		Connection con = getConnection();
 		
 		BusinessJoinDTO bJoinDTO = 
-		 new BusinessJoinDAO().BusinessJoinDetail(con,bCode);		
+				businessJoinDAO.BusinessJoinDetail(con,bCode);		
 		
 		System.out.println("기업코드 상세보기 : " + bJoinDTO);
 		
@@ -78,7 +78,7 @@ public class BusinessJoinService {
 		
 		Connection con = getConnection();
 		
-		int result = new BusinessJoinDAO().joinSubmitUpdate(con,joinDTO);
+		int result = businessJoinDAO.joinSubmitUpdate(con,joinDTO);
 		
 		if(result > 0) {
 			commit(con);
@@ -103,7 +103,7 @@ public class BusinessJoinService {
 		
 	   Connection con = getConnection();
 		
-		int result = new BusinessJoinDAO().joinBlockUpdate(con,joinDTO);
+		int result = businessJoinDAO.joinBlockUpdate(con,joinDTO);
 		
 		if(result > 0) {
 			commit(con);
@@ -119,6 +119,42 @@ public class BusinessJoinService {
 		
 		
 		
+	}
+
+	/**
+	 * 가입 승인 검색 결과 개수 메소드 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int joinSearch(String searchSelect, String searchInput) {
+		
+	     Connection con = getConnection();
+		
+		int totalCount = businessJoinDAO.joinSearch(con, searchSelect,searchInput);
+		
+		close(con);
+		
+		
+		return totalCount;
+	}
+
+	/**
+	 * 가입 승인 검색 결과 리스트 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<BusinessJoinDTO> joinSearchSelect(String searchSelect, String searchInput, PageInfoDTO pageInfo) {
+	
+		Connection con = getConnection();
+		System.out.println("서비스 검색리스트 : " + searchSelect);
+		List<BusinessJoinDTO> joinDTO = businessJoinDAO.joinSearchSelect(con,searchSelect,searchInput,pageInfo);
+		
+		close(con);
+		
+		return joinDTO;
 	}
 
 }

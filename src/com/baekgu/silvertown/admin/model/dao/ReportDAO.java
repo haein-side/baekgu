@@ -176,7 +176,7 @@ public class ReportDAO {
 	 * @return
 	 */
 	public List<BlockDTO> selectWaitReportList(Connection con, PageInfoDTO pageInfo) {
-		
+	
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -237,7 +237,7 @@ public class ReportDAO {
 	 * @param condition
 	 * @return
 	 */
-	public List<BlockDTO> selectSearchReportList(Connection con, PageInfoDTO pageInfo, String value, String condition) {
+	public List<BlockDTO> selectSearchReport(Connection con, PageInfoDTO pageInfo, String searchSelect, String searchInput) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -246,15 +246,15 @@ public class ReportDAO {
 		
 		String query = null;
 		
-		System.out.println("condition : " + condition);
+		System.out.println("searchSelect dao: " + searchSelect);
 		
-		if(condition.equals("userCode")) {
+		if(searchSelect.equals("rCode")) {
 			
-			query = prop.getProperty("searchUserCodeReport");
+			query = prop.getProperty("searchrCodeReport");
 			
-		} else if(condition.equals("postCode")) {
+		} else if(searchSelect.equals("bdCode")) {
 			
-			query = prop.getProperty("searchPostCodeReport");
+			query = prop.getProperty("searchbdCodeReport");
 			
 		} 	
 		
@@ -264,7 +264,7 @@ public class ReportDAO {
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1, value);
+			pstmt.setString(1, searchInput);
 			pstmt.setInt(2, pageInfo.getStartRow());
 			
 			rset = pstmt.executeQuery();
@@ -283,6 +283,7 @@ public class ReportDAO {
 				report.setUserCode(rset.getInt("USER_CODE"));
 				report.setDlCode(rset.getInt("D_LIST_CODE"));
 				
+
 				report.setbCode(rset.getInt("D_LIST_CODE"));
 				report.setbReason(rset.getString("D_LIST_REASON"));
 				report.setbDate(rset.getDate("D_LIST_DATE"));
@@ -305,33 +306,40 @@ public class ReportDAO {
 		return searchList;
 	}
 
-	public int searchReportCount(Connection con, String condition, String value) {
+	/**
+	 * 신고관리 검색 카운트 메소드
+	 * @param con
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int SearhCount(Connection con, String searchSelect, String searchInput) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		//쿼리문이 셀렉트 옵션의 갯수에 따라 나온다. 따라서 null로 선언을 해주고 후에 if문으로 값을 준다
 		String query = null;
-		int count = 0;
+		int totalCount = 0;
 		
-		if(condition.equals("userCode")) {
+		if(searchSelect.equals("rCode")) {
 			
-			query = prop.getProperty("searchUserCodeCount");
+			query = prop.getProperty("searchrCodeCount");
 			
-		} else if(condition.equals("postCode")) {
+		} else if(searchSelect.equals("bdCode")) {
 			
-			query = prop.getProperty("searchPostCodeCount");
+			query = prop.getProperty("searchbdCodeCount");
 			
 		} 
-		
+		System.out.println("count serachInput : " + searchInput);
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, value);
+			pstmt.setString(1, searchInput);
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				count = rset.getInt("COUNT(*)");
+				totalCount = rset.getInt("COUNT(*)");
 			}
 
 		} catch (SQLException e) {
@@ -341,9 +349,9 @@ public class ReportDAO {
 			close(pstmt);
 		}
 		System.out.println("사용 쿼리 : " + query);
-		System.out.println("count : " + count);
+		System.out.println("count : " + totalCount);
 		
-		return count;
+		return totalCount;
 		
 		
 	}

@@ -82,77 +82,104 @@
 					<section class="panel">
 						<div class="panel-body">
 							<div class="text-center">
-								<%-- 페이지 처리 (분기처리한 것) --%>
-								<div class="pagingArea" align="center">
+								
+					<%-- 페이지 처리 --%>
+		<div class="pagingArea" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
+			
+			<!-- 검색 폼 -->
+							<form id="loginForm"
+								action="${ pageContext.servletContext.contextPath }/admin/joinSearch"
+								method="get">
+								<div class="search-area" align="center">
 									<c:choose>
-										<c:when test="${ empty requestScope.searchValue }">
-											<button id="startPage"><<</button>
-
-											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-												<button disabled><</button>
-											</c:if>
-											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
-												<button id="prevPage"><</button>
-											</c:if>
-
-											<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-												<button onclick="pageButtonAction(this.innerText);">
-													<c:out value="${ p }" />
-												</button>
-											</c:if>
-
-
-											<!-- max페이지에 대한 내용  -->
-											<c:if
-												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-												<button disabled>></button>
-											</c:if>
-											<c:if
-												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-												<button id="nextPage">></button>
-											</c:if>
-
-											<button id="maxPage">>></button>
+										<c:when test="${ !empty requestScope.searchValue }">
+										<!-- 검색 카테고리  -->
+										<!-- name으로 키값을 전달한다. -->
+											<select id="searchSelect" name="searchSelect">
+												<option value="postCode"
+													<c:if test="${requestScope.searchCondition eq 'bCode'}">selected</c:if>>기업코드</option>
+												<option value="hrId"
+													<c:if test="${requestScope.searchCondition eq 'bName'}">selected</c:if>>기업명</option>
+											</select>
+											<!-- 입력한 값 , name으로 키값을 전달한다.  -->
+											<input type="search" id="searchInput" name="searchInput"
+												value="${ requestScope.searchValue }">
 										</c:when>
 										<c:otherwise>
-											<button id="searchStartPage"><<</button>
-
-											<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-												<button disabled><</button>
-											</c:if>
-											<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
-												<button id="searchPrevPage"><</button>
-											</c:if>
-
-											<c:forEach var="p"
-												begin="${ requestScope.pageInfo.startPage }"
-												end="${ requestScope.pageInfo.endPage }" step="1">
-												<c:if test="${ requestScope.pageInfo.pageNo eq p }">
-													<button disabled>
-														<c:out value="${ p }" />
-													</button>
-												</c:if>
-												<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-													<button onclick="seachPageButtonAction(this.innerText);">
-														<c:out value="${ p }" />
-													</button>
-												</c:if>
-											</c:forEach>
-
-											<c:if
-												test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-												<button disabled>></button>
-											</c:if>
-											<c:if
-												test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-												<button id="searchNextPage">></button>
-											</c:if>
-
-											<button id="searchMaxPage">>></button>
+											<select id="searchSelect" name="searchSelect">
+												<option value="bCode">기업코드</option>
+												<option value="bName">기업명</option>
+											</select>
+												<!-- 어떤 검색을 했는지 넘겨주는 것   -->
+											<input type="search" id="searchInput" name="searchInput">
 										</c:otherwise>
 									</c:choose>
+									<button type="submit">검색하기</button>
+									<c:if test="${ !empty requestScope.loginMember }">
+										<button id="writeBoard">작성하기</button>
+									</c:if>
 								</div>
+							</form>
 							</div>
+					</section>	
                 </section>
             </section>
             <!--main content end-->

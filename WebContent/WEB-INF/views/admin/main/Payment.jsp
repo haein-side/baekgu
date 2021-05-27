@@ -128,34 +128,43 @@
 			    </c:otherwise>
 			</c:choose>   
 
-							<!-- 검색 폼 -->
-		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/paymentSearch" method="get">		
-			<div class="search-area" align="center">
-				<c:choose>
-				    <c:when test="${ !empty requestScope.searchValue }">
-   					    <select id="searchCondition" name="searchCondition">
-							<option value="userCode" <c:if test="${requestScope.searchCondition eq 'userCode'}">selected</c:if>>유저코드</option>
-							<option value="postCode" <c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
-						</select>
-				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
-				    </c:when>
-				    <c:otherwise>
-					    <select id="searchCondition" name="searchCondition">
-							<option value="userCode">유저코드</option>
-							<option value="postCode">공고코드</option>
-						</select>
-				        <input type="search" id="searchValue" name="searchValue" >
-				    </c:otherwise>
-				</c:choose>
-				<button type="submit">검색하기</button>
-				<c:if test="${ !empty requestScope.loginMember }">
-					<button id="writeBoard">작성하기</button>
-				</c:if>
-			</div>
-		</form>
+		<!-- 검색 폼 -->
+									<form id="loginForm"
+										action="${ pageContext.servletContext.contextPath }/admin/paymentSearch"
+										method="get">
+										<div class="search-area" align="center">
+											<c:choose>
+												<c:when test="${ !empty requestScope.searchValue }">
+													<!-- 검색 카테고리  -->
+													<!-- name으로 키값을 전달한다. -->
+													<select id="searchSelect" name="searchSelect">
+														<option value="bName"
+															<c:if test="${requestScope.searchCondition eq 'bName'}">selected</c:if>>기업명</option>
+														<option value="postAdDate"
+															<c:if test="${requestScope.searchCondition eq 'postAdDate'}">selected</c:if>>결제날짜</option>
+													</select>
+													<!-- 입력한 값 , name으로 키값을 전달한다.  -->
+													<input type="search" id="searchInput" name="searchInput"
+														value="${ requestScope.searchValue }">
+												</c:when>
+												<c:otherwise>
+													<select id="searchSelect" name="searchSelect">
+														<option value="bName">기업명</option>
+														<option value="postAdDate">결제날짜</option>
+													</select>
+													<!-- 어떤 검색을 했는지 넘겨주는 것   -->
+													<input type="search" id="searchInput" name="searchInput">
+												</c:otherwise>
+											</c:choose>
+											<button type="submit">검색하기</button>
+											<c:if test="${ !empty requestScope.loginMember }">
+												<button id="writeBoard">작성하기</button>
+											</c:if>
+										</div>
+									</form>
 		<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/payment";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/paymentSearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
