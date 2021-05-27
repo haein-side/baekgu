@@ -59,6 +59,7 @@
 		   AND A.EXP_CODE = I.EXP_CODE
 		   AND A.AGE_CODE = J.AGE_CODE
 	       AND B.D_LIST_REASON is not null
+	  order by post_date desc      
 	     LIMIT ?, 10
 	</entry>
 	<entry key="selectPostDetail">
@@ -134,7 +135,258 @@
 	       AND A.P_METHOD_CODE = C.P_METHOD_CODE
 	       AND POST_CODE = ?
 	</entry>
-
+	<entry key="selectPostingCount">
+	    SELECT
+		       COUNT(*)
+		  FROM POST A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+	       AND B.D_LIST_REASON is not null
+	       and NOW() &lt;= A.POST_END
+	</entry>
+	<entry key="selectPostingList">
+	  	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+		  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+	       AND B.D_LIST_REASON is not null
+	  	   AND NOW() &lt;= A.POST_END
+	  order by post_date desc  
+	     LIMIT ?, 10
+	</entry>
+	<entry key="selectPostedCount">
+	    SELECT
+		       COUNT(*)
+		  FROM POST A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+	       AND B.D_LIST_REASON is not null
+	       and NOW() &gt; A.POST_END
+	</entry>
+	<entry key="selectPostedList">
+	  	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+		  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+	       AND B.D_LIST_REASON is not null
+	  	   AND NOW() &gt; A.POST_END
+	  order by post_date desc  
+	     LIMIT ?, 10
+	</entry>
+	<entry key="searchOnlineCount">
+	    SELECT
+		       COUNT(*)
+		  FROM POST A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+	       AND B.D_LIST_REASON is not null
+	       and A.POST_ONLINE LIKE '%' ? '%'
+	</entry>
+	<entry key="searchPostCodeCount">
+	    SELECT
+		       COUNT(*)
+		  FROM POST A, DECISION_LIST B
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+	       AND B.D_LIST_REASON is not null
+	       and A.POST_CODE LIKE '%' ? '%'
+	</entry>
+	<entry key="searchPostCodeList">
+	  	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+		  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+	       AND B.D_LIST_REASON is not null
+	  	   AND A.POST_CODE LIKE '%' ? '%'
+	  order by POST_CODE 
+	     LIMIT ?, 10
+	</entry>
+	<entry key="searchPostOnlineList">
+	  	    SELECT
+	  	       A.POST_CODE
+		     , A.POST_TITLE
+		     , A.POST_CONTENT 
+		     , A.POST_TO
+	    	 , A.POST_START 
+		     , A.POST_END 
+	    	 , A.POST_ONLINE
+	    	 , A.POST_DATE 
+	    	 , A.POST_ADDRESS 
+		     , A.POST_DAY
+		     , A.PAYMENT 
+	    	 , A.GENDER 
+	    	 , A.ADVANTAGE 
+	    	 , A.BENEFIT 
+	    	 , A.FULLTIME_YN 
+	    	 , A.POST_M_NAME 
+	     	 , A.POST_M_EMAIL 
+	    	 , A.POST_M_PHONE 
+	    	 , A.EXP_CODE 
+	    	 , I.EXP_NAME
+	    	 , A.JOB_CODE
+	     	 , C.JOB_NAME
+	     	 , A.PERIOD_CODE
+	    	 , D.PERIOD_NAME 
+	     	 , A.HOUR_CODE 
+	     	 , E.HOUR_NAME
+	    	 , A.LOCATION_CODE 
+	    	 , F.LOCATION_NAME
+	    	 , A.PAY_CODE 
+	    	 , G.PAY_NAME
+	    	 , A.AGE_CODE 
+	    	 , J.AGE_NAME
+	    	 , A.HR_ID 
+		     , A.DEGREE_CODE 
+		     , H.DEGREE_LEVEL
+	    	 , A.D_LIST_CODE 
+		  FROM POST A, DECISION_LIST B, JOB C
+		     , work_period D, WORK_HOUR E
+		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
+		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
+		   AND A.JOB_CODE = C.JOB_CODE
+		   AND A.PERIOD_CODE = D.PERIOD_CODE
+		   AND A.HOUR_CODE = E.HOUR_CODE
+		   AND A.LOCATION_CODE = F.LOCATION_CODE
+		   AND A.PAY_CODE = G.PAY_CODE
+		   AND A.DEGREE_CODE = H.DEGREE_CODE
+		   AND A.EXP_CODE = I.EXP_CODE
+		   AND A.AGE_CODE = J.AGE_CODE
+	       AND B.D_LIST_REASON is not null
+	  	   AND A.POST_ONLINE LIKE '%' ? '%'
+	  order by post_date desc  
+	     LIMIT ?, 10
+	</entry>
 </properties>
 
 
