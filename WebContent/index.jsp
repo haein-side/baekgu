@@ -10,7 +10,7 @@
 
 <body>
 	<!-- 통합 테스트 -->
-	<%-- <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/> --%>
+     <jsp:forward page="/WEB-INF/views/customer/main/main.jsp"/> 
 
 	<!-- 강현우 테스트 -->
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/>--%>
@@ -19,7 +19,7 @@
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/postlist.jsp"/> --%>
 	
 	<!-- 김현빈 테스트 -->
-    <%--<jsp:forward page="/WEB-INF/views/business/main/signinB.jsp"/>--%>
+<%--     <jsp:forward page="/WEB-INF/views/business/main/BusinessMainPage.jsp"/> --%>
 
 	<!-- 정주영 테스트 -->
 	<%--  <jsp:forward page="/WEB-INF/views/admin/main/main.jsp"/>  --%>
@@ -34,3 +34,4 @@
 <%-- 	<jsp:forward page="/WEB-INF/views/customer/main/detailedsearchpost.jsp"/> --%>
 </body>
 </html>
+<!-- 숨결 - 한요한 give me that 요한 -->

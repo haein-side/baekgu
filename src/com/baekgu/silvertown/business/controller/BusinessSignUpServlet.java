@@ -45,7 +45,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 		
 
 		if(ServletFileUpload.isMultipartContent(request)) {
-			
+					
 			/* 이미지 경로 설정하기 */
 			// WebContent 경로 설정하기
 			String rootContext =  getServletContext().getRealPath("/");
@@ -177,10 +177,13 @@ public class BusinessSignUpServlet extends HttpServlet {
 				String hrId = parameter.get("hrId");
 				String hrPwd = parameter.get("enteredPwd");
 				
+	
+				
 				// 직접 암호화
 				String hrName = parameter.get("hrName");
 				String hrPhone = parameter.get("hrPhone");
 				String hrEmail = parameter.get("hrEmail");
+				
 				
 				hr = new HrDTO();
 				

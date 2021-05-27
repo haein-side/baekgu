@@ -189,6 +189,7 @@
     	
 	   const postadcode = document.getElementById("postadcode").value;
     	var success;
+    	
     	console.log(postadcode);
         var IMP = window.IMP; // 생략가능
         IMP.init('imp36587437'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -246,6 +247,8 @@
                         	type:"GET",
                         	data:{ success : success,
                         		postadcode : postadcode
+
+                   
                         	},
                         	success:function(data, textStatus, xhr){
                         		
