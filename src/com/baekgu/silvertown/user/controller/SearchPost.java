@@ -82,11 +82,24 @@ public class SearchPost extends HttpServlet {
       String period = "";
       
       if (array[2] != null && array[2].length() > 0) {
+	      
+	         period = array[2].replace("&", "");
+	         System.out.println("period : " + period);
+	         
+	         // 마지막 선택 값이 "무관"일 때 period를 30이란 특이값으로 만들어줌 
+	    	  if (period.equals("1")) {
+	    		   
+	    			  System.out.println("마지막 선택값이 무관인 경우");
+	    			  
+	    				  period = "30";
+	    		
+	    			  System.out.println("period가 바뀌었는지 보기 : " + period);
+	    	  }
+	         
+	         
+	   }
       
-         period = array[2].replace("&", "");
-         System.out.println("period : " + period);
-         
-      }
+      
       
       // DTO에 입력받은 값들을 set해줌
       SearchPostDTO searchPost = new SearchPostDTO();

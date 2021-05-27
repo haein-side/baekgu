@@ -2,10 +2,7 @@ package com.baekgu.silvertown.user.model.dto;
 
 import java.util.Arrays;
 
-/**
- * @author kim
- *
- */
+
 public class DetailedSearchPostDTO {
 
 	private int dListTypeCode;

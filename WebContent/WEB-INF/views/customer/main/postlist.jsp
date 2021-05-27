@@ -126,7 +126,7 @@
 	                            <button class="btn btn-lg">자세히 보기</button>
 	                        </div> -->
 	                         <div class="card-footer text-center">
-	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
 	                         자세히 보기
 	                         </a>
 	                         </div>
@@ -168,7 +168,7 @@
 	                            <button class="btn btn-lg">자세히 보기</button>
 	                        </div> -->
 	                         <div class="card-footer text-center">
-	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
 	                         자세히 보기
 	                         </a>
 	                         </div>
@@ -277,7 +277,7 @@
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
                             <div class="card-footer text-center">
-                           <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+                           <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
                             자세히 보기
                             </a>
                             </div>
