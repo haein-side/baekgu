@@ -41,15 +41,49 @@
 		    </div>
 		  
 		    <div class="collapse navbar-collapse" id="myNavbar">
+		    
+		    
+		    <%-- <c:choose>
+							    <c:when test="${resumeInfo.degreeCode eq 1 }">
+							    <p>학력사항 없음</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 2 }">
+								<p>초등학교 졸업</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 3 }">
+								<p>중학교 졸업</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 4 }">
+								<p>고등학교 졸업</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 5 }">
+								<p>대학교 2-3년제 졸업</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 6 }">
+								<p>대학교 4년제 졸업</p>
+							    </c:when>
+							    <c:when test="${resumeInfo.degreeCode eq 7 }">
+							    <p>대학원 이상</p>
+							    </c:when>
+							</c:choose> --%>
+		    
 		  
 		      <ul class="nav navbar-nav">
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/main">홈</a></li>
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/insertpost">공고등록</a></li>
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/postlist">공고관리</a></li>
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/paymentlist">결제관리</a></li>
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/applicablePostlist">지원자관리</a></li>
-		        <li><a href="${ pageContext.servletContext.contextPath }/business/report">신고내역</a></li>
-		        <li><a href="#">상품안내</a></li>
+		     	<c:choose>
+		     		<c:when test="${not empty sessionScope.loginBusinessMember }">
+		     			<li><a href="${ pageContext.servletContext.contextPath }/business/main">홈</a></li>
+		        		<li><a href="${ pageContext.servletContext.contextPath }/business/insertpost">공고등록</a></li>
+		        		<li><a href="${ pageContext.servletContext.contextPath }/business/postlist">공고관리</a></li>
+		        		<li><a href="${ pageContext.servletContext.contextPath }/business/paymentlist">결제관리</a></li>
+		        		<li><a href="${ pageContext.servletContext.contextPath }/business/applicablePostlist">지원자관리</a></li>
+		        		<li><a href="${ pageContext.servletContext.contextPath }/business/report">신고내역</a></li>
+		        		<li><a href="#">상품안내</a></li>
+		     		</c:when>
+		     		<c:otherwise>
+		     			<li><p style="color:white; margin-top:15px; margin-left:400px">백구 기업페이지에 오신걸 환영합니다! 기다리고 있었습니다!</p></li>
+		     		</c:otherwise>
+		     	</c:choose>
+		        
 		      </ul>
 		  	
 		  	<c:if test="${ empty sessionScope.loginBusinessMember }">
