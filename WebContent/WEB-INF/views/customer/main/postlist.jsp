@@ -125,7 +125,11 @@
 	                            <h3>300만원/월급</h3>
 	                            <button class="btn btn-lg">자세히 보기</button>
 	                        </div> -->
-	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
+	                         <div class="card-footer text-center">
+	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+	                         자세히 보기
+	                         </a>
+	                         </div>
 	                        </div>      
 	                    </div>
 	                   </c:if>
@@ -161,7 +165,11 @@
 	                            <h3>300만원/월급</h3>
 	                            <button class="btn btn-lg">자세히 보기</button>
 	                        </div> -->
-	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
+	                         <div class="card-footer text-center">
+	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+	                         자세히 보기
+	                         </a>
+	                         </div>
 	                        </div>      
 	                    </div>
 	                    </c:if>
@@ -193,14 +201,23 @@
                                 <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-                            <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: orange;">자세히 보기</a></div>
+                            <div class="card-footer text-center">
+                           <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/searchView?postCode=${post.postCode}">
+                            자세히 보기
+                            </a>
+                            </div>
                         </div>
                     </div>
                     </c:if>
                   </c:forEach>
                 </div>
             </div>
-        </section>      
+        </section>     
+        
+        
+        
+        
+         
         <!-- footer -->
         <%@ include file="../common/footer.jsp" %> 
     </body>
