@@ -485,16 +485,56 @@
 										</p>
 									</div>
 									<br>
+									
 									<div align="center">
-										<p style="font-size: 25px; text-align: center;">혹시 이 공고가
-											수상한가요?
-										<h2>
-											<a href=""
-											onclick="window.open('${ pageContext.servletContext.contextPath }/user/report', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
-										</h2>
+										
+										<p style="font-size: 25px; text-align: center;">
+										본 채용 정보에 불법, 허위, 과장 또는 잘못된 내용이 있을 경우, 신고해주세요.
 										</p>
+											<!-- 신고하기 버튼 -->
+<%-- 										<h2>
+											<a href=""
+											onclick="window.open('${ pageContext.servletContext.contextPath }/user/reportPopup', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
+										</h2>
+											<form action="${ pageContext.servletContext.contextPath }/user/reportPopup" method="post">
+											<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
+											<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>	
+											</form> --%>
+										
+										<input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    				
+	                    				<!-- 신고하기 모달창 -->
+					                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					                        <div class="modal-dialog" role="document">
+						                        <div class="modal-content">
+						                            <div class="modal-header">
+						                            	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                            	<h4 class="modal-title" id="myModalLabel">지원자 <span style="color:blue;"></span> 신고하기</h4>
+						                            </div>
+						                            
+						                            <form action="${ pageContext.servletContext.contextPath }/user/report" method="post">
+						                            	<div class="modal-body">
+						                            		<label>신고 사유 :  </label><br> 
+						                            		<textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
+						                            		<br><br>
+						                            		*신고된 내용을 심사숙고하여 최대한 빠른 결과로 응답해드리겠습니다
+						                            		<br>
+						                            		*심사결과는 보통 3~5일뒤에 확인하실 수 있습니다
+						                           		</div>
+						                            
+						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
+						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
+						                            
+						                            	<div class="modal-footer">
+						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						                            		<button type="submit" class="btn btn-default">신고하기</button>
+						                            	</div>
+						                            </form>
+						                        </div>
+					                        </div>
+					                    </div>
+										<!-- 모달 끝 -->
 									</div>
-
 								</div>
 							</div>
 							<div>
@@ -566,6 +606,21 @@
 			</div>
 		
 	</section>
+	
+	<script>
+		/* 신고하기 모달창 script */
+		/* $('#reportModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // 모달창 띄우는 버튼(Trigger)
+		  var recipient = button.data('whatever') // Extract info from data-* attributes
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text('New message to ' + recipient)
+		  modal.find('.modal-body input').val(recipient)
+		}) */
+	
+	</script>
+	
 <%@ include file="../common/footer.jsp"%>
 
 </body>

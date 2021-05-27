@@ -10,7 +10,7 @@
             border: 1px solid black;
             background: orange;
         }
-ij
+
         .fr_txta{
             width: 600px;
             height: 300px;
@@ -42,7 +42,7 @@ ij
 </head>
 
 <body class="none">
-<form>
+<form action="${ pageContext.servletContext.contextPath }/user/report" method="get">
     <div id="FRWrap">
         <div class="header">
             <h1 class="bg_fr fr_tit" align="center"><span class="blind">공고 신고하기</span></h1>
@@ -97,7 +97,7 @@ ij
                         <tr>
                             <th>신고사유 <span class="bg_fr fr_point"></span></th>
                             <td>
-                                <select name="ReasonCode">
+                                <select name="reportCode">
                                     <option value="">------- 선택 -------</option>
                                     
                                     <option value="1" >허위과장광고</option>
@@ -120,7 +120,7 @@ ij
                         <tr class="last" style="font-family: nan;">
                             <th>신고내용 <span class="bg_fr fr_point"></span></th>
                             <td>
-                                <textarea cols="75" rows="15" name="txtContents" id="txtContents" class="fr_txta" onkeyup="limitTextNum('txtContents',500,'txtContentsspan')" style="resize:none;"></textarea>
+                                <textarea cols="75" rows="15" name="reportDetail" id="txtContents" class="fr_txta" onkeyup="limitTextNum('txtContents',500,'txtContentsspan')" style="resize:none;"></textarea>
                                 <p align="center">신고내용을 30자 이내로 입력해주세요.<!-- (<span id="txtContentsspan">0</span>/30자)--> </p> 
                             </td>
                         </tr>
@@ -136,6 +136,7 @@ ij
         <div class="footer" align="center">
             <input type="button" class="btn1" style="font: 30px jua; width: 200px; height: 80px;" value="신고하기"/>
             <input type="button" class="btn1"  style="font: 30px jua; width: 200px; height: 80px; margin-left: 100px;" value="나가기"/>
+    	</div>
     </div>
 </form>
 </body>
