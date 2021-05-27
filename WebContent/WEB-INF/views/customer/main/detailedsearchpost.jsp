@@ -36,51 +36,10 @@
 <!-- script 시작 -->
 <script type="text/javascript">
 	
-/* btnSubmit 종료 */
- 
-	   
-    /* btnSubmit 종료 */
-	    
-	    
-       /* $(".btn1").click(function() {
-        	  if ($(this).hasClass("active")) {
-        	  /*   $(this).removeClass("active");
-        	  } else { */
-        	  /*   $(".active").removeClass("active");
-        	    $(this).addClass('active');
-        	  }
-        });  */
-	        
-	        /* function update(location){
-	          document.form1.action = "${ pageContext.servletContext.contextPath }/user/detailedSearchPost?location=" + location;
-	          document.form1.submit();
-	       }  */
-	        
-    /* $(".btn1 in").click(function() {
-		
-    	(this).attr
-    	
-    	const industry = $(".btn1 in").val();
-    	
-    	console.log("button 동작");
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry : industry },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	}); */
-    
-	window.onload = function(){
+	var a;
+	var b;
+
+ window.onload = function(){ 
 	       $(".btn1 lo").click(function() {
 	   		    if ($(this).hasClass("btnSelected")) {
 	   		      $(this).removeClass("btnSelected");
@@ -106,10 +65,6 @@
 	   		       /* $('.btn1').removeClass("btnSelected");
 	   		        $(this).addClass("btnSelected")  */
 	   		         jQuery(this).toggleClass("active");
-	   		        
-	   		      if ( $('#category1')){
-		            	window.location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost';
-		            }
 	   		        
 	   		         
 	   			});    
@@ -154,7 +109,7 @@
 		    	
 		    	// 직종
 		    	 if (document.getElementsByClassName("btn1 jb")) {
-		    		for (var i = 1; i <= 5; i++){
+		    		for (var i = a+1; i <= b; i++){
 		    			console.log(document.getElementById("j" + i));
 		    			if(document.getElementById("j" + i).checked == true){
 		    				location += document.getElementById("j" + i).value + "&";
@@ -213,31 +168,13 @@
 		    	console.log(location); 
 		    	document.getElementById("location").value = location;
 		    	
-				   /* $.ajax({
-					   
-		                url: "/baekgu/user/detailedSearchPost",
-		                type: "get",
-		                data:{ location : location },
-		                success: function(data,textStatus,xhr){
-		                   console.log(data);
-		                   var jobArray = "";
-		                   
-		                   
-		                },
-		                error: function(xhr, status, message){
-		                   console.log(message);
-		                }
-		                
-		             }) ; */ 
-				   
+
 				  
 			}); 
 		
-	}
+	 } 
 	       
 	       function itemChange() {
-	    	   
-	    	  
 	   				 /* var restaurant = ['요리사', '주방보조', '찬모', '설거지', '서빙', '카운터'];5
 	   		 var market = ['편의점', '슈퍼/마트/대형마트', '쇼핑몰/아울렛/백화점', '찜질방/사우나', '농수산/청과/축산', '물류/재고', '기타/매장'];12
 	   		 var counsel = ['인바운드/CS', '아웃바운드/TM', '일반/기술영업', '보험/금융상담', '방문판매', '부동산상담', '홍보/마켓팅'];19
@@ -265,31 +202,49 @@
 	   		
 	   		var selectItem = $('input[name="industry1"]:checked').val();
 	   		var changeItem;
-	   		if (selectItem == "1") {
-	   			changeItem = job.slice(0, 5);
-	   		} else if (selectItem == "2") {
-	   			changeItem = job.slice(6, 12);
-	   		} else if (selectItem == "3") {
-	   			changeItem = job.slice(13, 19);
-	   		} else if (selectItem == "4") {
-	   			changeItem = job.slice(20, 31);
-	   		} else if (selectItem == "5") {
-	   			changeItem = job.slice(32, 35);
-	   		} else if (selectItem == "6") {
-	   			changeItem = job.slice(36, 39);
-	   		} else if (selectItem == "7") {
-	   			changeItem = job.slice(40, 45);
-	   		} else if (selectItem == "8") {
-	   			changeItem = job.slice(46, 50);
-	   		} else if (selectItem == "9") {
-	   			changeItem = job.slice(51, 58);
-	   		}
+	   	 if (selectItem == "1") {
+             changeItem = job.slice(0, 5);
+             a=0;
+             b=5;
+          } else if (selectItem == "2") {
+             changeItem = job.slice(6, 12);
+             a=6;
+             b=12;
+          } else if (selectItem == "3") {
+             changeItem = job.slice(13, 19);
+             a=13;
+             b=19;
+          } else if (selectItem == "4") {
+             changeItem = job.slice(20, 31);
+             a=20;
+             b=31;
+          } else if (selectItem == "5") {
+             changeItem = job.slice(32, 35);
+             a=32;
+             b=35;
+          } else if (selectItem == "6") {
+             changeItem = job.slice(36, 39);
+             a=36;
+             b=39;
+          } else if (selectItem == "7") {
+             changeItem = job.slice(40, 45);
+             a=40;
+             b=45;
+          } else if (selectItem == "8") {
+             changeItem = job.slice(46, 50);
+             a=46;
+             b=50;
+          } else if (selectItem == "9") {
+             changeItem = job.slice(51, 58);
+             a=51;
+             b=58;
+          }
 	   		$('#selectJob').empty();
 	   		
 	   		
 	   		for (var i = 0; i < changeItem.length; i++) {
-	   			var option = $('<label for="j' + (i+1) + '" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">'+changeItem[i]+'</p></label>' 
-                        + '<input type="checkbox" id="j'+(i+1)+'" name = "job1" style="display: none" value="'+(i+1)+'">');
+	   			var option = $('<label for="j' + (i+1+a) + '" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">'+changeItem[i]+'</p></label>' 
+                        + '<input type="checkbox" id="j'+(i+1+a)+'" name = "job1" style="display: none" value="'+(i+1+a)+'">');
 	   			
 	   			console.log(option);
 	   			
@@ -302,41 +257,41 @@
 	   			/* <label for="j1" class="btn1 jb" name="job" style="margin: 15px; width: 150pt; height: 60pt; font-size: x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">요리사</p></label> 
                 <input type="checkbox" id="j1" name = "job1" style="display: none" value="1">  */
                 
-	   		 /* $(".btn1 lo").click(function() {
-		   		    if ($(this).hasClass("btnSelected")) {
-		   		      $(this).removeClass("btnSelected");
-		   		    } else {
-		   		      $(".btn1 lo").removeClass("btnSelected");
-		   		      $(this).addClass('btnSelected');
-		   		    }
-		   		  }); */
-		   		$(".btn1 jb").click(function() {
-		   		     $(".btn1").removeClass("btnSelected");
-		   		  jQuery(this).toggleClass("active");
-		   		     $(this).addClass("btnSelected");
-		   		  });
-		   		/* $(".btn1 lo").click(function() {
-		   		     $(".btn1 lo").removeClass("active");
-		   		     $(this).addClass("active");
-		   		  }); */
-		   		/* jQuery('button.account').click(function() {
-		   		   jQuery(this).toggleClass("btn-success");
-		   		  //  jQuery(this).addClass("btn-success");
-		   		}); */
-		   		jQuery(document).ready(function() {
-		   		    $('.btn1').click(function() {
-		   		       /* $('.btn1').removeClass("btnSelected");
-		   		        $(this).addClass("btnSelected")  */
-		   		         jQuery(this).toggleClass("active");
-		   		        
-		   			});    
-	
-		   		}); 
-                
 	   			
 	   		} 
 	   		
-	   		
+	   		$(".btn1 lo").click(function() {
+	   		    if ($(this).hasClass("btnSelected")) {
+	   		      $(this).removeClass("btnSelected");
+	   		    } else {
+	   		      $(".btn1 lo").removeClass("btnSelected");
+	   		      $(this).addClass('btnSelected');
+	   		    }
+	   		  });
+	   		$(".btn1").click(function() {
+	   		     $(".btn1").removeClass("btnSelected");
+	   		     $(this).addClass("btnSelected");
+	   		  });
+	   		$(".btn1 lo").click(function() {
+	   		     $(".btn1 lo").removeClass("active");
+	   		     $(this).addClass("active");
+	   		  });
+	   		jQuery('button.account').click(function() {
+	   		   jQuery(this).toggleClass("btn-success");
+	   		  //  jQuery(this).addClass("btn-success");
+	   		});
+	   		jQuery(document).ready(function() {
+	   		    $('.btn1').click(function() {
+	   		       /* $('.btn1').removeClass("btnSelected");
+	   		        $(this).addClass("btnSelected")  */
+	   		         jQuery(this).toggleClass("active");
+	   		        
+	   		         
+	   			});    
+	   		   
+	   		    
+	   		   
+	   		});  
 	   	}
 	       
 	      
@@ -363,10 +318,12 @@
 						</div>
 					</div>
 					<div align="center" id="btn_group" style="padding: 50px;">
-						<input type="button" class="btn1" id="category1" style="width:200pt;height:60pt;font-size:
-							x-large;text-align:center;" onclick= 'move()' value="단순 검색"></input>
-                    	<input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
-                        x-large; margin-left: 160px;x-large;text-align:center;"value="상세 검색"></input>
+						<button class="btn1"
+							style="width: 200pt; height: 60pt; font-size: x-large;"
+							onclick="location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost'">단순&nbsp;검색</button>
+						<button class="btn1"
+							style="width: 200pt; height: 60pt; font-size: x-large; margin-left: 160px;"
+							disabled >상세&nbsp;검색</button>
 					</div>
 
 					<!-- hidden -->                               	
@@ -624,219 +581,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-	
-	<!-- 상세 검색에서 업종을 누르면 직종명을 가져오는 function-->
-	
-   /*  $("#i1").click(function() {
-    	
-    	const industry1 = $("#i1").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry1);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ 
-    			industry1 : industry1
-    		},
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-	
-      $("#i2").click(function() {
-    	
-    	const industry2 = $("#i2").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry2);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry2 : industry2 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i3").click(function() {
-    	
-    	const industry3 = $("#i3").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry3);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry3 : industry3 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i4").click(function() {
-    	
-    	const industry4 = $("#i4").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry4);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry4 : industry4 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i5").click(function() {
-    	
-    	const industry5 = $("#i5").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry5);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry5 : industry5 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			alert("저장되셨습니다");
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i6").click(function() {
-    	
-    	const industry6 = $("#i6").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry6);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry6 : industry6 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i7").click(function() {
-    	
-    	const industry7 = $("#i7").val();
-    	console.log(industry7);
-    	
-    	console.log("button 동작");
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry7 : industry7 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i8").click(function() {
-    	
-    	const industry8 = $("#i8").val();
-    	console.log(industry8);
-    	
-    	console.log("button 동작");
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry8 : industry8 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	});
-    
-    $("#i9").click(function() {
-    	
-    	const industry = $("#i9").val();
-    	
-    	console.log("button 동작");
-    	console.log(industry9);
-    	
-    	$.ajax({
-    		url: "/baekgu/jobSearch",
-    		type: "get",
-    		data:{ industry9 : industry9 },
-    		success: function(data,textStatus,xhr){
-    			console.log(data);
-    			var jobArray = "";
-    			
-    		},
-    		error: function(xhr, status, message){
-    			console.log(message);
-    		}
-    		
-    	});
-	}); */ 
-	</script>
+
 	<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

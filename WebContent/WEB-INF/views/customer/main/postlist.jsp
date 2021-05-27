@@ -131,7 +131,9 @@
 	                   </c:if>
 	                    </c:forEach>
                     </div>
-
+					
+					<br>
+					
                     <!-- 업종광고하단 (adCode = 2) -->
                     <div class="row">
                         <c:forEach var="post" items="${ requestScope.selectInAdPost }">
@@ -166,8 +168,9 @@
 	                    </div>
 	                    </c:if>
 	                    </c:forEach>     
-                        </div>
-                </div>
+                      </div>
+ 
+                <br>
                 
                  <!-- 직종광고상단 (adCode = 3) -->
                     <div class="row">
@@ -204,7 +207,7 @@
 	                   </c:if>
 	                    </c:forEach>
                     </div>
-                    
+                 
                  <!-- 직종광고상단 (adCode = 4) -->
                     <div class="row">
                     <c:forEach var="post" items="${ requestScope.selectJobAdPost }">
@@ -242,7 +245,7 @@
                     </div>
                 
                 <hr>
-                <!-- 일반 광고 -->
+                <!-- 일반 공고 -->
                 <div class="text-left">
                     <h2 style="font-family: BM;">검색 결과</h2>
                 </div>

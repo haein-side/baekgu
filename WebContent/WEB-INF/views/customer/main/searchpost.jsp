@@ -84,10 +84,10 @@
 	
 	             jQuery(this).toggleClass("active");
 	            
-	            if ( $('#category1')){
+	            /* if ( $('#category1')){
 	            	window.location.href='${ pageContext.servletContext.contextPath }/user/toDetailedSearchPost';
 	            }
-	            
+	             */
 	             
 	    	});    
 	        

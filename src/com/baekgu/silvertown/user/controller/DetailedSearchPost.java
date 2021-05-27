@@ -108,6 +108,17 @@ public class DetailedSearchPost extends HttpServlet {
 		         period = array[4].replace("&", "");
 		         System.out.println("period : " + period);
 		         
+		         // 마지막 선택 값이 "무관"일 때 period를 30이란 특이값으로 만들어줌 
+		    	  if (period.equals("1")) {
+		    		   
+		    			  System.out.println("마지막 선택값이 무관인 경우");
+		    			  
+		    				  period = "30";
+		    		
+		    			  System.out.println("period가 바뀌었는지 보기 : " + period);
+		    	  }
+		         
+		         
 		   }
 		  
 		   // 시간 (복수선택 가능)
@@ -183,7 +194,8 @@ public class DetailedSearchPost extends HttpServlet {
 				 request.setAttribute("selectPost", selectPost);
 				 request.setAttribute("selectNormalPost", selectNormalPost);
 				 
-		    	
+				 System.out.println("보내기전 selectPost 확인 : " + selectPost);
+		    	 
 			} else {
 				path = "/WEB-INF/views/user/common/errorPage.jsp";
 				request.setAttribute("message", "공고조회를 실패했습니다.");

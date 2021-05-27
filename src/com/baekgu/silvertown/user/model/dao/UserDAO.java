@@ -816,7 +816,25 @@ public class UserDAO {
 			
 			/* 기간 */
 			if(dSearchPost.getPeriodCode() > 0) {
-				query += " and wp.period_code = " + dSearchPost.getPeriodCode();
+				String periodCode = "";
+				
+				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
+				if(dSearchPost.getPeriodCode() == 30) {
+					for (int j = 2; j < 8; j++) {
+						periodCode += j;
+						if (j < 7){
+							periodCode += ", "; 
+						} 
+					} 
+				// "무관"을 선택하지 않은 경우
+				} else {
+				
+					periodCode += dSearchPost.getPeriodCode();
+						
+					}
+				
+				query += " and wp.period_code IN (" + periodCode + ")";
+			
 			}
 			
 			/* 시간 */
@@ -941,11 +959,35 @@ public class UserDAO {
 			if(dSearchPost.getJobCode() > 0) {
 				query += " and j.job_code = " + dSearchPost.getJobCode();
 			}
-				
+			
+			/* 경력 */
+			if(dSearchPost.getExpCode() > 0) {
+				query += " and e.exp_code <> " + dSearchPost.getExpCode();
+			}
+			
 			/* 기간 */
 			if(dSearchPost.getPeriodCode() > 0) {
-				query += " and wp.period_code = " + dSearchPost.getPeriodCode();
+				String periodCode = "";
+				
+				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
+				if(dSearchPost.getPeriodCode() == 30) {
+					for (int j = 2; j < 8; j++) {
+						periodCode += j;
+						if (j < 7){
+							periodCode += ", "; 
+						} 
+					} 
+				// "무관"을 선택하지 않은 경우
+				} else {
+				
+					periodCode += dSearchPost.getPeriodCode();
+						
+					}
+				
+				query += " and wp.period_code IN (" + periodCode + ")";
+			
 			}
+
 			
 			/* 시간 */
 			if(dSearchPost.getHourCode() != null) {

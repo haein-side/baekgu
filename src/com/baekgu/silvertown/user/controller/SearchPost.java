@@ -54,7 +54,7 @@ public class SearchPost extends HttpServlet {
     	  }
     
     	  
-    	  // 마지막 선택 값이 "무관"일 때 location을 null로 만들어줌 (위치 조건 삭제를 위해)
+    	  // 마지막 선택 값이 "무관"일 때 location[0]을 30이란 특이값으로 만들어줌 
     	  if (location[location.length - 1].equals("1")) {
     		  
     		   
