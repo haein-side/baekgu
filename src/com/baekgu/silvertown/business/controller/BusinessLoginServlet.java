@@ -1,6 +1,8 @@
 package com.baekgu.silvertown.business.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,9 +56,14 @@ public class BusinessLoginServlet extends HttpServlet {
 		
 		BusinessService bService = new BusinessService();
 	
+		
 		BusinessMemberDTO loginBusinessMember = bService.loginCheck(bMember);
 		
 		System.out.println(loginBusinessMember);
+		
+		
+		String path = "";
+		
 		
 		if(bId.equals(loginBusinessMember.getbId())) {
 			
@@ -68,36 +75,41 @@ public class BusinessLoginServlet extends HttpServlet {
 				if(bPwd.equals(loginBusinessMember.getbPwd())) {
 					
 					/* 아이디 비번 매칭 성공 */
-					System.out.println("로그인이 되셨습니다.");
 										
 					/* Session이 없으면 생성 */
 					HttpSession session = request.getSession();
 					session.setAttribute("loginBusinessMember", loginBusinessMember);			
 					response.sendRedirect(request.getContextPath() + "/business/main");
 					
-//					request.getRequestDispatcher("/WEB-INF/views/business/main/BusinessMainPage.jsp").forward(request, response);
+					
 					
 				} else if(!bPwd.equals(loginBusinessMember.getbPwd())) {
-					
-					request.setAttribute("message", "로그인 실패!");
-					request.getRequestDispatcher("/WEB-INF/views/business/common/failedLogin.jsp").forward(request, response);
+
 					/* 비밀번호 매칭 실패 */
-					System.out.println("비밀 번호를 잘 못 입렵 하셨습니다.");
+					request.setAttribute("message", "비밀번호를 잘못 입력하셨습니다.");
+					path = "/WEB-INF/views/business/main/signinB.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+		
+					
+
+
 				}
 			} else {
 				
-				request.setAttribute("message", "해당 아이디는 신고에 의해 차단당하셨습니다!!");
-				request.getRequestDispatcher("/WEB-INF/views/business/common/BlockedId.jsp").forward(request, response);
 				/* 차단 상태가 1인경우 */
-				System.out.println("해당 아이디는 신고에 의해 차단 되었습니다.");
+				request.setAttribute("message", "해당 아이디는 신고에 의해 차단당하셨습니다. 관리자에게 문의 하세요 (02-XXX-XXXX)");
+				path = "/WEB-INF/views/business/main/signinB.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
 			}
 		} else {
 			
 			/* 매칭되는 아이디가 없는 경우 */
-			System.out.println("존재 하지 않는 아이디입니다.");
-			request.setAttribute("message", "해당아이디는 존재하지 않습니다.!");
-			request.getRequestDispatcher("/WEB-INF/views/business/common/NoIdinsite.jsp").forward(request, response);
+			request.setAttribute("message", "해당아이디는 존재하지 않습니다.");
+			path = "/WEB-INF/views/business/main/signinB.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+			
 		}
+		
 	}
 
 }

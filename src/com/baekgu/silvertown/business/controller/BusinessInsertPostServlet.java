@@ -118,6 +118,7 @@ public class BusinessInsertPostServlet extends HttpServlet {
 		int payment = Integer.parseInt(request.getParameter("payment"));
 		int contract = Integer.parseInt(request.getParameter("contract"));
 		int period = Integer.parseInt(request.getParameter("period"));
+		int location = Integer.parseInt(request.getParameter("location"));
 	
 		// 근무 요일
 		String[] days = request.getParameterValues("days");
@@ -173,10 +174,16 @@ public class BusinessInsertPostServlet extends HttpServlet {
 		post.setFullTimeYn(contract);
 		post.setDegree(degree);
 		post.setHrId(loggedInUser.getbId());
+		post.setLocationCode(location);
 
+		
+		List<Object> containDTO = new ArrayList<>();
+		
+		containDTO.add(post);
+		
 		BusinessService service = new BusinessService();
 
-		int result = service.insertNewPost(post);
+		int result = service.insertDecisionList(4, containDTO);
 		
 		
 	}

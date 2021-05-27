@@ -55,6 +55,56 @@
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
+    </head>
+    <body>
+  <jsp:include page="../common/header.jsp"/>
+	<!-- 로그인 세션 값이 비었을시 아무것도 보이지 않는다 -->
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
+            <!--main content start-->
+            <section id="main-content">
+                <section class="wrapper">
+                    <!--overview start-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">
+                                <i class="fa fa-laptop"></i>
+                                신고관리
+                            </h3>
+                        </div>
+                        <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/reportWait" style="margin-left: 30px;">
+                            접수대기 모아보기
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <section class="panel">
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                  	<th></th>
+                                  	<th>신고대상</th>
+                                    <th>신고코드</th>
+                                    <th>신고명</th>
+                                    <th>심사사유</th>
+                                    <th>신고날짜</th>
+                                    <!-- <th>심사날짜</th> -->
+                                    <th>공고코드</th>
+                                    <th>유저코드</th>
+                                    <th>접수상태</th>
+                                    <th>신고 처리 관리자</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="report" items="${ requestScope.reportList }">
 									<tr>
 										<th></th>
 										<th>신고대상</th>
@@ -69,6 +119,7 @@
 										<th>신고 처리 관리자</th>
 									</tr>
 								</thead>
+								</c:forEach>
 								<tbody>
 									<c:forEach var="report" items="${ requestScope.reportList }">
 										<tr>
@@ -214,7 +265,34 @@
 									</c:if>
 								</div>
 							</form>
-							<script>
+						
+		<form id="loginForm" action="${ pageContext.servletContext.contextPath }/admin/reportSearch" method="get">		
+			<div class="search-area" align="center">
+				<c:choose>
+				    <c:when test="${ !empty requestScope.searchValue }">
+   					    <select id="searchCondition" name="searchCondition">
+							<option value="userCode" <c:if test="${requestScope.searchCondition eq 'userCode'}">selected</c:if>>유저코드</option>
+							<option value="postCode" <c:if test="${requestScope.searchCondition eq 'postCode'}">selected</c:if>>공고코드</option>
+						</select>
+				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
+				    </c:when>
+				    <c:otherwise>
+					    <select id="searchCondition" name="searchCondition">
+							<option value="userCode">유저코드</option>
+							<option value="postCode">공고코드</option>
+						</select>
+				        <input type="search" id="searchValue" name="searchValue" >
+				    </c:otherwise>
+				</c:choose>
+				<button type="submit">검색하기</button>
+				<c:if test="${ !empty requestScope.loginMember }">
+					<button id="writeBoard">작성하기</button>
+				</c:if>
+			</div>
+		</form>
+		
+		<script>
+		
 		const link = "${ pageContext.servletContext.contextPath }/admin/reportlist";
 		const searchLink = "${ pageContext.servletContext.contextPath }/admin/reportSearch";
 			
@@ -293,7 +371,7 @@
 					const no = this.parentNode.children[7].innerText;
 					
 					location.href = "${ pageContext.servletContext.contextPath }/admin/memberdetail?no=" + no;
-				  } else{
+				  } else if(this.parentElement.children[0].children[0].value == 2){
 					 const no = this.parentNode.children[6].innerText;
 				     location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 				  }
@@ -313,5 +391,9 @@
 			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
 		}
 	</script>
+
+</c:if>
+
+
 </body>
 </html>

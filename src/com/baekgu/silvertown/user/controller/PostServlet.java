@@ -16,7 +16,7 @@ public class PostServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int postCode = Integer.parseInt(request.getParameter("POST_CODE"));
+		int postCode = Integer.parseInt(request.getParameter("postCode"));
 		
 		System.out.println("상세공고 서블릿 도착" );
 		System.out.println("선택된 공고 번호 : " + postCode );

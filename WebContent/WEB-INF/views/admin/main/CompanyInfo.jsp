@@ -34,6 +34,17 @@
  <body style="overflow-x:hidden">
  <jsp:include page="../common/header.jsp"/>
 
+	<!-- 로그인 세션 값이 비었을시 아무것도 보이지 않는다 -->
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+
+	<c:if test="${ !empty sessionScope.loginAdminName }">
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper">
@@ -42,7 +53,7 @@
                         <div class="col-lg-12">
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
-                                기업 정보</h3>           
+                                기업 정보</h3> 
                         </div>
                     </div>
                  <div class="row">
@@ -212,7 +223,7 @@
 		</form>
 		<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/companyList";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/companySearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -302,6 +313,7 @@
 
                     </section>
                     <!--main content end-->
+</c:if>
 
 
   </body> 

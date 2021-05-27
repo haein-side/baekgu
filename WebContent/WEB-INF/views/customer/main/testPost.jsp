@@ -10,7 +10,7 @@
 	<h3>공고 번호로 공고 조회하기</h3>
 	<form action="${ pageContext.servletContext.contextPath}/user/post" method="get">
 		<label>조회할 공고 번호 : </label>
-		<input type="text" name="POST_CODE" id="POST_CODE">
+		<input type="text" name="postCode" id="postCode">
 		<button type="submit">조회하기</button>
 	</form>
 

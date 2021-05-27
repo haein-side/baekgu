@@ -33,7 +33,16 @@
 </head>
 <body style="overflow-x: hidden">
 	<jsp:include page="../common/header.jsp" />
+		<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
 
+<c:if test="${ !empty sessionScope.loginAdminName }">
 	<!--main content start-->
 	<section id="main-content">
 		<section class="wrapper">
@@ -179,7 +188,7 @@
 		</form>
 		<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/memberList";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/memberSearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -269,6 +278,7 @@
 </section>
 </section>
 
+</c:if>
 
 			
 </body>

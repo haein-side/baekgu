@@ -39,7 +39,16 @@
   </head>
     <body style="overflow-x:hidden">
   <jsp:include page="../common/header.jsp"/>
-               <!--main content start-->
+ 	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
+  <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
          
@@ -323,6 +332,7 @@
               </section>
   			</section>
           <!-- page end-->
+</c:if>
 
 
  </body> 

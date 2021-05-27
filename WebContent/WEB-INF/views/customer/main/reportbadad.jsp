@@ -42,6 +42,7 @@ ij
 </head>
 
 <body class="none">
+<form>
     <div id="FRWrap">
         <div class="header">
             <h1 class="bg_fr fr_tit" align="center"><span class="blind">공고 신고하기</span></h1>
@@ -66,7 +67,7 @@ ij
                     <div class="fr_list">
                         <ul align="center" >
                             <li style="display: block; font-size: x-large;"><strong>정확한 사실</strong>만을 기재해 주시기 바랍니다.</li>
-                            <li style="display: block; font-size: x-large;"><strong>연락처(이메일 또는 휴대폰)</strong>를 반드시 기재해 주시기 바랍니다.</li>
+                            <li style="display: block; font-size: x-large;"><strong>연락처(휴대폰 번호)</strong>를 반드시 기재해 주시기 바랍니다.</li>
                         </ul>
                     </div>
                 </div>
@@ -109,9 +110,9 @@ ij
                                     
                                     <option value="6" >최저임금 위반광고</option>
                                     
-                                    <option value="13" >마감광고</option>
+                                    <option value="7" >마감광고</option>
                                     
-                                    <option value="15" >기타</option>
+                                    <option value="8" >기타</option>
                                     
                                 </select>
                             </td>
@@ -120,7 +121,7 @@ ij
                             <th>신고내용 <span class="bg_fr fr_point"></span></th>
                             <td>
                                 <textarea cols="75" rows="15" name="txtContents" id="txtContents" class="fr_txta" onkeyup="limitTextNum('txtContents',500,'txtContentsspan')" style="resize:none;"></textarea>
-                                <p align="center">신고내용을 30자 이내로 입력해주세요. (<span id="txtContentsspan">0</span>/30자)</p>
+                                <p align="center">신고내용을 30자 이내로 입력해주세요.<!-- (<span id="txtContentsspan">0</span>/30자)--> </p> 
                             </td>
                         </tr>
                     </tbody>
@@ -136,6 +137,6 @@ ij
             <input type="button" class="btn1" style="font: 30px jua; width: 200px; height: 80px;" value="신고하기"/>
             <input type="button" class="btn1"  style="font: 30px jua; width: 200px; height: 80px; margin-left: 100px;" value="나가기"/>
     </div>
-    </form>
+</form>
 </body>
 </html>

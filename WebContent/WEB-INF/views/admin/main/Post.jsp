@@ -31,6 +31,150 @@
 <link href="RESOURCES/CSS/ADMIN/style-responsive.css" rel="stylesheet" />
 <link href="RESOURCES/CSS/ADMIN/jquery-ui-1.10.4.min.css"
 	rel="stylesheet">
+    </head>
+   <body>
+   <jsp:include page="../common/header.jsp"/>
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+			</section>
+		</section>
+	</c:if>
+<c:if test="${ !empty sessionScope.loginAdminName }">
+            <!--main content start-->
+            <section id="main-content">
+                <section class="wrapper">
+                    <!--overview start-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">
+                                <i class="fa fa-laptop"></i>
+                                공고관리</h3>
+                            
+                        </div>
+                    </div>
+                </section>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                      <section class="panel">
+                        <header class="panel-heading">
+                          공고 리스트
+                        </header>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>공고코드</th>
+                                <th>공고제목</th>
+                                <th>공고업로드 시작일</th>
+                                <th>공고업로드 종료일</th>
+                                <th>공고종료 여부</th>
+                                <th>온라인 접수 여부</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <c:forEach var="post" items="${ requestScope.postList }">
+                              	<tr>
+                              		<td><c:out value="${ post.postCode }"/></td>
+                              		<td><c:out value="${ post.postTitle }"/></td>
+                              		<td><c:out value="${ post.startDate }"/></td>
+                              		<td><c:out value="${ post.endDate }"/></td>
+                              		<jsp:useBean id="now" class="java.util.Date" /> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+									<fmt:formatDate value="${ post.endDate }" pattern="yyyy-MM-dd" var="endday"/>
+									<c:choose>
+										<c:when test="${today <= endday }">
+											<td>
+											<c:out value="게시중"/>
+											</td>
+										</c:when>
+										<c:when test="${today >  endday}">
+											<td>
+											<c:out value="게시종료"/>
+											</td>
+										</c:when>
+									</c:choose>
+                              		
+                              		<c:choose>
+                              			<c:when test="${ post.online eq 0 }">
+                              				<td>
+                              					<c:out value="N"/>
+                              				</td>
+                              			</c:when>
+                              			<c:when test="${ post.online eq 1 }">
+                              				<td>
+                              					<c:out value="Y"/>
+                              				</td>
+                              			</c:when>
+                              		</c:choose>
+                              	</tr>
+                              </c:forEach>
+                            </tbody>
+                          </table>
+                        </div>
+	<%-- 페이지 처리 --%>
+		<div class="pagingArea" align="center">
+			<c:choose>
+			    <c:when test="${ empty requestScope.searchValue }">
+				    <button id="startPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="prevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="nextPage">></button>
+					</c:if>
+					
+					<button id="maxPage">>></button> 
+			     </c:when>
+			    <c:otherwise>
+   				    <button id="searchStartPage"><<</button>
+	
+					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+						<button disabled><</button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+						<button id="searchPrevPage"><</button>
+					</c:if>
+		
+					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
+						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+							<button disabled><c:out value="${ p }"/></button>
+						</c:if>
+						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+						<button disabled>></button>
+					</c:if>
+					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+						<button id="searchNextPage">></button>
+					</c:if>
+					
+					<button id="searchMaxPage">>></button> 
+			    </c:otherwise>
+			</c:choose>   
 
 </head>
 <body>
@@ -213,7 +357,7 @@
 						</form>
 						<script>
 		const link = "${ pageContext.servletContext.contextPath }/admin/postList";
-		const searchLink = "${ pageContext.servletContext.contextPath }/board/search";
+		const searchLink = "${ pageContext.servletContext.contextPath }/admin/postSearch";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -305,5 +449,13 @@
 	</section>
 	<!-- container section start -->
 
-</body>
-</html>
+
+
+            </section>
+            <!--main content end-->
+        </section>
+        <!-- container section start -->
+</c:if>
+
+</body> 
+</html> 

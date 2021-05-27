@@ -21,11 +21,11 @@ import com.baekgu.silvertown.common.wrapper.EncryptReqeustWrapper;
  * 
  * -> 3 page의 signup url에 대해 아래 필터를 거쳐 암호화를 진행한다.
  */
-@WebFilter("/*/signup")
-public class PasswordEncryptFilter implements Filter {
+@WebFilter("/business/*")
+public class BusinessPasswordEncryptFilter implements Filter {
 	// 사용자가 입력한 문자를 암호화 처리할려고하는 필터
 	
-    public PasswordEncryptFilter() {}
+    public BusinessPasswordEncryptFilter() {}
 
 	public void destroy() {}
 
@@ -33,23 +33,24 @@ public class PasswordEncryptFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest hrequest = (HttpServletRequest) request;
-//		
-//		String uri = hrequest.getRequestURI();
-//		System.out.println("uri : " + uri);
-//		
-//		String intent = uri.substring(uri.lastIndexOf("/"));
-//		System.out.println("intent : " + intent);
-//		
-//		if(!"/login".equals(intent)) {
+	
+		String uri = hrequest.getRequestURI();
+		System.out.println("uri : " + uri);
 		
-		System.out.println("Encrypt test");
+		String intent = uri.substring(uri.lastIndexOf("/"));
+		System.out.println("intent : " + intent);
+		
+		if(!"/login".equals(intent)) {
+		
+//		System.out.println("Encrypt test");
+		System.out.println("비밀번호 암호화처리 필터 작동!");
 		
 		EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
 			
 		chain.doFilter(wrapper, response);
-//		} else {
-//			chain.doFilter(request, response);
-//		}
+		} else {
+			chain.doFilter(request, response);
+		}
 		
 	}
 

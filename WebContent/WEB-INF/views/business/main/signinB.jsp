@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,6 +106,12 @@
   </style>
 </head>
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.message }">
+    		<script>alert('${ requestScope.message }')</script>
+    </c:when>
+</c:choose>
+
 
 <jsp:include page="../common/header.jsp"/>
 
@@ -134,28 +141,26 @@
         <div class="form-group">
           <label for="pwd">비밀번호</label>
           <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="bPwd">
-          <small id="passwordHelp" class="form-text text-muted">영어와 숫자를 사용하여 8자리 이상 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)</small>
+          <small id="passwordHelp" class="form-text text-muted">(대문자, 소문자 사용에 주의하세요.)</small>
         </div>
      
         <div class="form-group" style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
           <input type="submit" id="bregsubmit" class="btn btn-info btn-submit" value="확인">
         </div>
-
-        <div class="buttontype" align="right">
-          <input type="button" value="관리자 로그인" class="signinbutton" style="margin-top: 80px;" onclick=""/>
-            <a href=""></a>
-        </div>
         </form>
      </div>
+	<p id="result"></p>
+	
+	
 
+	
+	
+	
   </div>
 </div>
 
-      </div>
       <div class="col-sm-1 sidenav" style="height: 0px;">
       </div>
-    </div>
-  </div>
 
 <%@ include file="../common/footer.jsp" %>
 

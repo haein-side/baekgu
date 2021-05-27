@@ -21,6 +21,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -101,30 +102,30 @@ public class BusinessDAO {
 	 * @param con
 	 * @return
 	 */
-	public int insertNewDecisionList(Connection con) {
-		
-		PreparedStatement pstmt = null;
-		
-		int result = 0;
-		
-		String query = prop.getProperty("insertDecisionList");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
+//	public int insertNewDecisionList(Connection con) {
+//		
+//		PreparedStatement pstmt = null;
+//		
+//		int result = 0;
+//		
+//		String query = prop.getProperty("insertDecisionList");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			
+//			result = pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			
+//		} finally {
+//			
+//			close(pstmt);
+//		}
+//		
+//		return result;
+//	}
+//	
 	public Map<Integer, Integer> selectTotalCount(Connection con, String loggedId) {
 		
 		PreparedStatement psmt = null;
@@ -367,7 +368,7 @@ public class BusinessDAO {
 			pstmt.setInt(18,  post.getJob());
 			pstmt.setInt(19, post.getPeriodCode());
 			pstmt.setInt(20, post.getHours());
-			pstmt.setString(21, null);
+			pstmt.setInt(21, post.getLocationCode());
 			pstmt.setInt(22, post.getPay());
 			pstmt.setInt(23, post.getAge());
 			pstmt.setString(24, post.getHrId());
@@ -523,7 +524,6 @@ public class BusinessDAO {
 			
 			payStatus = 1;
 		}
-		System.out.println("asdsada : " + payStatus);
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -810,6 +810,84 @@ public class BusinessDAO {
 		System.out.println(result + " result value in dao");
 		
 		return result;
+	}
+
+	public int insertDecisionList(Connection con, int i) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertDefaultDecisionList");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, i);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result;
+	}
+
+	public int insertApplicantReport(Connection con, BusinessReportDTO reportDTO) {
+
+		PreparedStatement psmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertApplicantReport");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, reportDTO.getReportReason());
+			psmt.setInt(2, reportDTO.getPostCode());
+			psmt.setInt(3, reportDTO.getResumeCode());
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result;
+	}
+
+	public String selectUsername(Connection con, int resumeCode) {
+
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String userName = "";
+		
+		String query = prop.getProperty("selectUsername");
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, resumeCode);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				userName = rset.getString("USER_NAME");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		
+		return userName;
 	}
 	
 	

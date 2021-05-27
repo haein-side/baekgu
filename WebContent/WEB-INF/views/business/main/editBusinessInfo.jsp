@@ -150,7 +150,7 @@
             <tr>
               <th class="th">사업자등록번호</th>
               <td>
-                <input style="border: 0px" value="${ sessionScope.loginBusinessMember.bNumber }"readonly>
+                <input style="border: 0px" value="${ requestScope.str2 }"readonly>
               </td>        
             </tr>
 <!--             <tr>

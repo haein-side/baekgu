@@ -94,7 +94,7 @@ public class AdminPostDetailServlet extends HttpServlet {
 				result = companyService.updateBlockCompany(block);
 				
 				if(result > 0) {
-					response.sendRedirect(request.getContextPath() + "/admin/reportlist");
+					response.sendRedirect(request.getContextPath() + "/admin/postDetail?no="+bCode);
 				} else {
 					String path ="/WEB-INF/views/admin/common/errorPage.jsp";
 					request.setAttribute("message", "신고가 들어온 기업이 맞는지 불확실 합니다. 신고내역에서 확인 후, 차단해주세요!");

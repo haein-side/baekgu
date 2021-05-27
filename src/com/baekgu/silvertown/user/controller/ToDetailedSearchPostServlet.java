@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/user/toDetailedSearchPost")
 public class ToDetailedSearchPostServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("상세검색으로 가는 서블릿 도착");
-		String path = "/WEB-INF/views/customer/main/detailedsearchpost.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
-	}
+      System.out.println("상세검색으로 가는 서블릿 도착");
+      String path = "/WEB-INF/views/customer/main/detailedsearchpost.jsp";
+      request.getRequestDispatcher(path).forward(request, response);
+   }
 
 }

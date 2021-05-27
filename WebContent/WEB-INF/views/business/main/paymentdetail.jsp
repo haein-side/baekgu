@@ -1,14 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%  // import 변수 설정
+    String name = (String)request.getAttribute("name");
+    String email = (String)request.getAttribute("email");
+    String phone = (String)request.getAttribute("phone");
+    String address = (String)request.getAttribute("address");
+    int total = (int)request.getAttribute("total");    
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -134,12 +143,16 @@
             <br>
             <br>
     <div align="center">
+    
+<!--     <button type="button" id="dopay" >결제하기</button> -->
+     
+    
             <!-- 결제하기 버튼 누른 후 모달창 만들어놓음 -->
-            <c:if test="${ paymentdetail.postAdPaid eq 0 }"><button type="button" class="btn-primary"  style="height: 50px; width: 150px;" data-toggle="modal" data-target="#myModal">결제하기</button>
+            <c:if test="${ paymentdetail.postAdPaid eq 0 }"><button id="dopay" type="button" class="btn-primary"  style="height: 50px; width: 150px;">결제하기</button>
              </c:if>
              <c:if test="${ paymentdetail.postAdPaid eq 1 }"><button type="button" class="btn-primary" style="height: 50px; width: 150px;">영수증 출력하기</button>
              </c:if>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<%--             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -151,13 +164,13 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                      <button type="button" class="btn btn-default">결제하기</button>
+                      <button id="doPay" type="button" class="btn btn-default">결제하기</button>
                     </div>
                   </div>
                 </div>
 
 
-    </div>
+    </div> --%>
     </div>
     </div>
     <div class="col-sm-1 sidenav">
@@ -166,6 +179,80 @@
 </div>
 <br><br><br><br>
 	<jsp:include page="../common/footer.jsp"/>
+	
+	
+	   <script>
+    $('#dopay').click(function(){
+    	
+    	var success;
+        var IMP = window.IMP; // 생략가능
+        IMP.init('imp36587437'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        var msg;
+        
+        IMP.request_pay({
+            pg : 'kakaopay',
+            pay_method : 'card',
+            merchant_uid : 'merchant_' + new Date().getTime(),
+            name : '백구 (백세구인구직)',
+            amount : <%=100000%>,
+            buyer_email : '<%=email%>',
+            buyer_name : '<%=name%>',
+            buyer_tel : '<%=phone%>',
+            buyer_addr : '<%=address%>',
+            buyer_postcode : '123-456',
+            //m_redirect_url : 'http://www.naver.com'
+        }, function(rsp) {
+            if ( rsp.success ) {
+                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+                jQuery.ajax({
+                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        imp_uid : rsp.imp_uid
+                        //기타 필요한 데이터가 있으면 추가 전달
+                    }
+                }).done(function(data) {
+                    //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+                    if ( everythings_fine ) {
+                        msg = '결제가 완료되었습니다.';
+                        msg += '\n고유ID : ' + rsp.imp_uid;
+                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                        msg += '\결제 금액 : ' + rsp.paid_amount;
+                        msg += '카드 승인번호 : ' + rsp.apply_num;
+                        
+                        alert(msg);
+                    } else {
+                        //[3] 아직 제대로 결제가 되지 않았습니다.
+                        //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+                    }
+                });
+                //성공시 이동할 페이지
+                      success = 2;
+                        
+                        $.ajax({
+                        	
+                        	url:"/baekgu/business/paycomplate",
+                        	type:"GET",
+                        	data:{ success : success },
+                        	success:function(data, textStatus, xhr){
+                        		
+                                              	}
+                        
+                        });	
+                        
+<%--                 location.href='<%=request.getContextPath()%>/order/paySuccess?msg='+msg; --%>
+            } else {
+                msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+                //실패시 이동할 페이지
+             <%--    location.href="<%=request.getContextPath()%>/order/payFail"; --%>
+                alert(msg);
+            }
+        });
+        
+    });
+   </script>
 
 </body>
 </html>

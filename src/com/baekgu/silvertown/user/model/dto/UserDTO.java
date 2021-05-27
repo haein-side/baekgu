@@ -44,8 +44,6 @@ public class UserDTO {
 	private String industryName;
 	
 	/* 공고 */
-	
-	
 	public UserDTO() {}
 
 	public UserDTO(int userCode, String userName, String userPhone, String userPwd, Date userBday, String userGender,
@@ -309,21 +307,36 @@ public class UserDTO {
 				+ ", expCode=" + expCode + ", degreeCode=" + degreeCode + ", applyCode=" + applyCode + ", applyDate="
 				+ applyDate + ", applyYn=" + applyYn + ", applyRead=" + applyRead + ", postCode=" + postCode
 				+ ", applyCancel=" + applyCancel + ", jobCode=" + jobCode + ", jobName=" + jobName + ", industryCode="
-				+ industryCode + ", industryName=" + industryName + ", getUserCode()=" + getUserCode()
-				+ ", getUserName()=" + getUserName() + ", getUserPhone()=" + getUserPhone() + ", getUserPwd()="
-				+ getUserPwd() + ", getUserBday()=" + getUserBday() + ", getUserGender()=" + getUserGender()
-				+ ", getUserAddress()=" + getUserAddress() + ", getUserRegisterDate()=" + getUserRegisterDate()
-				+ ", getUserBlock()=" + getUserBlock() + ", getVerifiedNum()=" + getVerifiedNum() + ", getResumeCode()="
-				+ getResumeCode() + ", getResumeWriteDate()=" + getResumeWriteDate() + ", getResumeSubphone()="
-				+ getResumeSubphone() + ", getResumeLetter()=" + getResumeLetter() + ", getResumeAdvantage()="
-				+ getResumeAdvantage() + ", getExpCode()=" + getExpCode() + ", getDegreeCode()=" + getDegreeCode()
-				+ ", getApplyCode()=" + getApplyCode() + ", getApplyDate()=" + getApplyDate() + ", getApplyYn()="
-				+ getApplyYn() + ", getApplyRead()=" + getApplyRead() + ", getPostCode()=" + getPostCode()
-				+ ", getApplyCancel()=" + getApplyCancel() + ", getJobCode()=" + getJobCode() + ", getJobName()="
-				+ getJobName() + ", getIndustryCode()=" + getIndustryCode() + ", getIndustryName()=" + getIndustryName()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ industryCode + ", industryName=" + industryName + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "UserDTO [userCode=" + userCode + ", userName=" + userName + ", userPhone=" + userPhone + ", userPwd="
+//				+ userPwd + ", userBday=" + userBday + ", userGender=" + userGender + ", userAddress=" + userAddress
+//				+ ", userRegisterDate=" + userRegisterDate + ", userBlock=" + userBlock + ", verifiedNum=" + verifiedNum
+//				+ ", resumeCode=" + resumeCode + ", resumeWriteDate=" + resumeWriteDate + ", resumeSubphone="
+//				+ resumeSubphone + ", resumeLetter=" + resumeLetter + ", resumeAdvantage=" + resumeAdvantage
+//				+ ", expCode=" + expCode + ", degreeCode=" + degreeCode + ", applyCode=" + applyCode + ", applyDate="
+//				+ applyDate + ", applyYn=" + applyYn + ", applyRead=" + applyRead + ", postCode=" + postCode
+//				+ ", applyCancel=" + applyCancel + ", jobCode=" + jobCode + ", jobName=" + jobName + ", industryCode="
+//				+ industryCode + ", industryName=" + industryName + ", getUserCode()=" + getUserCode()
+//				+ ", getUserName()=" + getUserName() + ", getUserPhone()=" + getUserPhone() + ", getUserPwd()="
+//				+ getUserPwd() + ", getUserBday()=" + getUserBday() + ", getUserGender()=" + getUserGender()
+//				+ ", getUserAddress()=" + getUserAddress() + ", getUserRegisterDate()=" + getUserRegisterDate()
+//				+ ", getUserBlock()=" + getUserBlock() + ", getVerifiedNum()=" + getVerifiedNum() + ", getResumeCode()="
+//				+ getResumeCode() + ", getResumeWriteDate()=" + getResumeWriteDate() + ", getResumeSubphone()="
+//				+ getResumeSubphone() + ", getResumeLetter()=" + getResumeLetter() + ", getResumeAdvantage()="
+//				+ getResumeAdvantage() + ", getExpCode()=" + getExpCode() + ", getDegreeCode()=" + getDegreeCode()
+//				+ ", getApplyCode()=" + getApplyCode() + ", getApplyDate()=" + getApplyDate() + ", getApplyYn()="
+//				+ getApplyYn() + ", getApplyRead()=" + getApplyRead() + ", getPostCode()=" + getPostCode()
+//				+ ", getApplyCancel()=" + getApplyCancel() + ", getJobCode()=" + getJobCode() + ", getJobName()="
+//				+ getJobName() + ", getIndustryCode()=" + getIndustryCode() + ", getIndustryName()=" + getIndustryName()
+//				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+//				+ "]";
+//	}
+	
+	
 
 
 }

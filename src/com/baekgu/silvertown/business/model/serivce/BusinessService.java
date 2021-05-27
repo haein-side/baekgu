@@ -15,6 +15,7 @@ import com.baekgu.silvertown.business.model.dao.BusinessDAO;
 import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -56,44 +57,44 @@ public class BusinessService {
 	 * @param hr
 	 * @return
 	 */
-	public int insertNewBusiness(BusinessDTO business, HrDTO hr) {
-		
-		Connection con = getConnection();
-		
-		int decisionList = businessDAO.insertNewDecisionList(con);
-		int insertBusiness = 0;
-		int insertHr = 0;
-		
-		
-		/* 심사상태 테이블 insert 성공시 기업정보 insert*/
-		if(decisionList > 0) {
-				commit(con);
-			    insertBusiness = businessDAO.insertNewBusiness(con, business);
-				/* 기업정보 테이블 insert 성공시 담당자 insert */
-				if(insertBusiness > 0 ) {
-					commit(con);
-					 insertHr = businessDAO.insertNewHr(con, hr);
-					
-					if(insertHr > 0) {
-						commit(con);
-						System.out.println("기업 회원가입 성공!");
-					}
-				} else {
-					
-					System.out.println("기업정보 insert 실패");
-				}
-				
-		} else {
-			
-			System.out.println(" 심사상태 insert 실패");
-		}
-		
-		close(con);
-		
-		
-		return decisionList+insertBusiness+insertHr;
-
-	}
+//	public int insertNewBusiness(BusinessDTO business, HrDTO hr) {
+//		
+//		Connection con = getConnection();
+//		
+//		int decisionList = businessDAO.insertNewDecisionList(con);
+//		int insertBusiness = 0;
+//		int insertHr = 0;
+//		
+//		
+//		/* 심사상태 테이블 insert 성공시 기업정보 insert*/
+//		if(decisionList > 0) {
+//				commit(con);
+//			    insertBusiness = businessDAO.insertNewBusiness(con, business);
+//				/* 기업정보 테이블 insert 성공시 담당자 insert */
+//				if(insertBusiness > 0 ) {
+//					commit(con);
+//					 insertHr = businessDAO.insertNewHr(con, hr);
+//					
+//					if(insertHr > 0) {
+//						commit(con);
+//						System.out.println("기업 회원가입 성공!");
+//					}
+//				} else {
+//					
+//					System.out.println("기업정보 insert 실패");
+//				}
+//				
+//		} else {
+//			
+//			System.out.println(" 심사상태 insert 실패");
+//		}
+//		
+//		close(con);
+//		
+//		
+//		return decisionList+insertBusiness+insertHr;
+//
+//	}
 	public Map<Integer, Integer> selectTotalCount(String loggedId) {
 		
 		Connection con = getConnection();
@@ -117,24 +118,24 @@ public class BusinessService {
 		return postList;
 	}
 
-	public int insertNewPost(PostInsertDTO post) {
-		
-		Connection con = getConnection();
-		
-		int decisionList = businessDAO.insertNewDecisionListpost(con);
-		int insertPost = 0;
-		
-		if(decisionList > 0) {
-			commit(con);
-			
-			insertPost = businessDAO.insertNewPost(con, post);
-			commit(con);
-		}
-		
-		
-		close(con);
-		return insertPost + insertPost;
-	}
+//	public int insertNewPost(PostInsertDTO post) {
+//		
+//		Connection con = getConnection();
+//		
+//		int decisionList = businessDAO.insertNewDecisionListpost(con);
+//		int insertPost = 0;
+//		
+//		if(decisionList > 0) {
+//			commit(con);
+//			
+//			insertPost = businessDAO.insertNewPost(con, post);
+//			commit(con);
+//		}
+//		
+//		
+//		close(con);
+//		return insertPost + insertPost;
+//	}
 
 	public String chekId(String hrId_1) {
 		
@@ -276,6 +277,74 @@ public class BusinessService {
 		close(con);
 		
 		return result;
+	}
+
+	public int insertDecisionList(int i, List<Object> containDTO) {
+		
+		Connection con = getConnection();
+		
+		int firstResult = businessDAO.insertDecisionList(con, i);
+		int secondResult = 0;
+		
+		System.out.println("1.신고가 안되었을까? " + firstResult);
+
+		if(firstResult > 0) {
+			
+			commit(con);
+			
+			// 심사내역에 등록한 후, 분기문 매개변수 i를 가지고 판단.
+			// 1일 때 - 기업에서 지원자 신고하는 경우
+			// 2일 때(사용안함) - 고객이 기업의 공고를 신고하는 경우
+			// 3일 때 - 기업에서 가입신청하는 경우
+			// 4일 때 - 기업에서 공고등록을 하는 경우 
+			switch(i) {
+			case 1:
+				// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
+				BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
+				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
+				System.out.println("1.신고가 안되었을까? " + secondResult);
+				break;
+			case 3:
+				BusinessDTO business = (BusinessDTO)containDTO.get(0);
+				secondResult = businessDAO.insertNewBusiness(con, business);
+				System.out.println(" 기업 추가 :" + secondResult);
+				if(secondResult > 0) {
+					
+					HrDTO hr = (HrDTO)containDTO.get(1);
+					int thirdResult = businessDAO.insertNewHr(con, hr);
+					System.out.println("담장자 회원가입 : " + thirdResult);
+				}
+				break;
+			case 4:
+				PostInsertDTO post = (PostInsertDTO)containDTO.get(0);
+				secondResult = businessDAO.insertNewPost(con, post);
+				System.out.println("공고가 올라갔을까? : " + secondResult);
+				break;
+			}
+		}else {
+			rollback(con);
+		}
+		
+		if(secondResult > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return secondResult;
+	}
+
+	public String selectUsername(int resumeCode) {
+
+		Connection con = getConnection();
+		
+		String userName = businessDAO.selectUsername(con, resumeCode);
+		
+		close(con);
+		
+		return userName;
 	}
 
 
