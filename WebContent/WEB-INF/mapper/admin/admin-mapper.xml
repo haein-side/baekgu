@@ -104,6 +104,23 @@
 		 WHERE AD_CODE = ?
 		
 	</entry>
+	<entry key="advertCountCode">
+		SELECT 
+		     count(*)
+		  FROM AD 
+		  WHERE AD_CODE = ?
+	
+	</entry>
+	
+	
+	
+	<entry key="searchCountName">
+		SELECT 
+		     count(*)
+		  FROM AD 
+		  WHERE AD_NAME = ?
+	
+	</entry>
 	
 		<entry key="advertUpdate">
 	    UPDATE 
@@ -113,10 +130,25 @@
 	      WHERE AD_CODE = ?
 	
 	</entry>
-		<entry key="advertDelete">
+	<entry key="advertDelete">
 		DELETE 
 		  FROM AD
 		  WHERE AD_CODE = ?	
+	</entry>
+	
+	<entry key="searchadminName">
+	    select 
+	           count(*)
+	      from admin 
+	      where ADMIN_NAME = ?
+	</entry>
+	
+	<entry key="adminNameSelect"> 
+	 SELECT 
+	        *
+	   FROM ADMIN
+	   WHERE ADMIN_NAME = ?
+	
 	</entry>
 	
 	

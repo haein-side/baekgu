@@ -60,7 +60,7 @@ public class AdminDAO {
 			while (rset.next()) {
 				AdminDTO admin = new AdminDTO();
 				admin.setAdminId(rset.getString("admin_id"));
-				admin.setAdminPwd(rset.getString("admin_pwd"));
+			    admin.setAdminPwd(rset.getString("admin_pwd")); 
 				admin.setAdminName(rset.getString("admin_name"));
 				admin.setAdminEmail(rset.getString("admin_email"));
 				admin.setAdminDate(rset.getDate("admin_date"));
@@ -229,5 +229,101 @@ public class AdminDAO {
 		return boardCount;
 		
 		
+	}
+
+	/**
+	 * 관리자 검색했을 시 개수 조회용 메소드 
+	 * @param con
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int adminManagerSerach(Connection con, String searchSelect, String searchInput) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = null;
+		int totalCount = 0;
+		
+		
+		if(searchSelect.equals("adminId")) {
+			query = prop.getProperty("adminIdSelect");
+		} else {
+			query = prop.getProperty("searchadminName");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchInput);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("totalCount : " + totalCount);
+		
+		return totalCount;
+	}
+
+	public List<AdminDTO> adminSearchSelect(Connection con, String searchSelect, String searchInput,
+			PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		List<AdminDTO> adminDTO = null;
+		
+		String query = null;
+		
+		System.out.println("searchSelect dao : " + searchSelect);
+		
+		if(searchSelect.equals("adminId")) {
+			query = prop.getProperty("selectOneAdminId");
+		} else {
+			query = prop.getProperty("adminNameSelect");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchInput);
+			
+			rset = pstmt.executeQuery();
+			
+			adminDTO = new ArrayList<>();
+			
+			
+			while(rset.next()) {
+				AdminDTO admin = new AdminDTO();
+				admin.setAdminId(rset.getString("admin_id"));
+			    admin.setAdminPwd(rset.getString("admin_pwd")); 
+				admin.setAdminName(rset.getString("admin_name"));
+				admin.setAdminEmail(rset.getString("admin_email"));
+				admin.setAdminDate(rset.getDate("admin_date"));
+				admin.setAdminRole(rset.getString("admin_role"));
+
+				adminDTO.add(admin);
+				
+			}
+		
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		
+		System.out.println(query);
+		
+		return adminDTO;
 	}
 }

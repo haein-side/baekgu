@@ -6,17 +6,17 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
-
+import com.baekgu.silvertown.user.model.dao.SearchPostDAO;
 import com.baekgu.silvertown.user.model.dao.UserDAO;
 import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 
 public class SearchPostService {
 	
-	private final UserDAO userDAO;
+	private final SearchPostDAO searchDAO;
 	
 	public SearchPostService() {
-		userDAO = new UserDAO();
+		searchDAO = new SearchPostDAO();
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class SearchPostService {
 		
 		Connection con = getConnection();
 		
-		List<SearchPostDTO> selectPost = userDAO.searchPost(con, searchPost);
+		List<SearchPostDTO> selectPost = searchDAO.searchPost(con, searchPost);
 		
 		close(con);
 		
@@ -43,7 +43,7 @@ public class SearchPostService {
 	public List<SearchPostDTO> selectInAdPost(int industryCode) {
 		Connection con = getConnection();
 		
-		List<SearchPostDTO> selectInAdPost = userDAO.selectInAdPost(con, industryCode);
+		List<SearchPostDTO> selectInAdPost = searchDAO.selectInAdPost(con, industryCode);
 		
 		close(con);
 		
@@ -59,7 +59,7 @@ public class SearchPostService {
 		
 		Connection con = getConnection();
 		
-		List<DetailedSearchPostDTO> selectBestPost = userDAO.selectBestPost(con, dSearchPost);
+		List<DetailedSearchPostDTO> selectBestPost = searchDAO.selectBestPost(con, dSearchPost);
 		
 		close(con);
 		
@@ -74,7 +74,7 @@ public class SearchPostService {
 	public List<DetailedSearchPostDTO> selectNormalPost(DetailedSearchPostDTO dSearchPost) {
 		Connection con = getConnection();
 		
-		List<DetailedSearchPostDTO> selectNormalPost = userDAO.selectNormalPost(con, dSearchPost);
+		List<DetailedSearchPostDTO> selectNormalPost = searchDAO.selectNormalPost(con, dSearchPost);
 		
 		close(con);
 		
@@ -89,7 +89,7 @@ public class SearchPostService {
 	public List<SearchPostDTO> selectJobAdPost(int jobCode) {
 		Connection con = getConnection();
 		
-		List<SearchPostDTO> selectJobAdPost = userDAO.selectJobAdPost(con, jobCode);
+		List<SearchPostDTO> selectJobAdPost = searchDAO.selectJobAdPost(con, jobCode);
 		
 		close(con);
 		

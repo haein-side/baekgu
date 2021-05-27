@@ -82,13 +82,12 @@ $(function(){
 
    <%@ include file="../common/header2.jsp"%>
    
-	
-</form>
+
 
    <!-- 입력한 값을 전송하기 위해 form 태그를 사용함 -->
    <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 customer/signup 서블렛 -->
-   <form action="${ pageContext.servletContext.contextPath }/user/signup" method="post">
-  
+   
+	<form action="${ pageContext.servletContext.contextPath }/user/signup" method="post">
   
    
       <div class="container" style="z-index: 1; margin-top: 15%; margin: auto;">
