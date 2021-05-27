@@ -16,6 +16,8 @@ public class ToPostView extends HttpServlet {
 		System.out.println("공고상세보기로 가는 서블릿 도착");
 		String path = "/WEB-INF/views/customer/main/searchView.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
+		String postCode = request.getParameter("postCode");
+		System.out.println("postCode : " + postCode);
 	
 	}
 

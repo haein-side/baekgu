@@ -30,6 +30,7 @@
 			</section>
 		</section>
 	</c:if>
+
 	<c:if test="${ !empty sessionScope.loginAdminName }">
 		<!--main content start-->
 		<section id="main-content">
@@ -184,98 +185,119 @@
 									</div>
 								</form>
 								<script>
-		const link = "${ pageContext.servletContext.contextPath }/admin/payment";
-		const searchLink = "${ pageContext.servletContext.contextPath }/admin/paymentSearch";
+									const link = "${ pageContext.servletContext.contextPath }/admin/payment";
+									const searchLink = "${ pageContext.servletContext.contextPath }/admin/paymentSearch";
 
-			
-		if(document.getElementById("startPage")) {
-			const $startPage = document.getElementById("startPage");
-			$startPage.onclick = function() {
-				location.href = link + "?currentPage=1";
-			}
-		}
-		
-		if(document.getElementById("prevPage")) {
-			const $prevPage = document.getElementById("prevPage");
-			$prevPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
-			}
-		}
-		
-		if(document.getElementById("nextPage")) {
-			const $nextPage = document.getElementById("nextPage");
-			$nextPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
-			}
-		}
-		
-		if(document.getElementById("maxPage")) {
-			const $maxPage = document.getElementById("maxPage");
-			$maxPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
-			}
-		}
-		
-		if(document.getElementById("searchStartPage")) {
-			const $searchStartPage = document.getElementById("searchStartPage");
-			$searchStartPage.onclick = function() {
-				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchPrevPage")) {
-			const $searchPrevPage = document.getElementById("searchPrevPage");
-			$searchPrevPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchNextPage")) {
-			const $searchNextPage = document.getElementById("searchNextPage");
-			$searchNextPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchMaxPage")) {
-			const $searchMaxPage = document.getElementById("searchMaxPage");
-			$searchMaxPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementsByTagName("td")) {
-			
-			const $tds = document.getElementsByTagName("td");
-			for(let i = 0; i < $tds.length; i++) {
-				
-				$tds[i].onmouseenter = function() {
-					this.parentNode.style.cursor = "pointer";
-				}
-				
-				
-				$tds[i].onclick = function() {
-					
-					const no = this.parentNode.children[0].innerText;
-					location.href = "${ pageContext.servletContext.contextPath }/admin/tax?no=" + no;
-					
-				}
-				
-			}
-			
-		} 
-			
-	
-		
-		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text;
-		}
-		function seachPageButtonAction(text) {
-			location.href = searchLink + "?currentPage=" + text + "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-		}
-	</script>
+									if (document.getElementById("startPage")) {
+										const $startPage = document
+												.getElementById("startPage");
+										$startPage.onclick = function() {
+											location.href = link
+													+ "?currentPage=1";
+										}
+									}
+
+									if (document.getElementById("prevPage")) {
+										const $prevPage = document
+												.getElementById("prevPage");
+										$prevPage.onclick = function() {
+											location.href = link
+													+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+										}
+									}
+
+									if (document.getElementById("nextPage")) {
+										const $nextPage = document
+												.getElementById("nextPage");
+										$nextPage.onclick = function() {
+											location.href = link
+													+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+										}
+									}
+
+									if (document.getElementById("maxPage")) {
+										const $maxPage = document
+												.getElementById("maxPage");
+										$maxPage.onclick = function() {
+											location.href = link
+													+ "?currentPage=${ requestScope.pageInfo.maxPage }";
+										}
+									}
+
+									if (document
+											.getElementById("searchStartPage")) {
+										const $searchStartPage = document
+												.getElementById("searchStartPage");
+										$searchStartPage.onclick = function() {
+											location.href = searchLink
+													+ "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+										}
+									}
+
+									if (document
+											.getElementById("searchPrevPage")) {
+										const $searchPrevPage = document
+												.getElementById("searchPrevPage");
+										$searchPrevPage.onclick = function() {
+											location.href = searchLink
+													+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+										}
+									}
+
+									if (document
+											.getElementById("searchNextPage")) {
+										const $searchNextPage = document
+												.getElementById("searchNextPage");
+										$searchNextPage.onclick = function() {
+											location.href = searchLink
+													+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+										}
+									}
+
+									if (document
+											.getElementById("searchMaxPage")) {
+										const $searchMaxPage = document
+												.getElementById("searchMaxPage");
+										$searchMaxPage.onclick = function() {
+											location.href = searchLink
+													+ "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+										}
+									}
+
+									if (document.getElementsByTagName("td")) {
+
+										const $tds = document
+												.getElementsByTagName("td");
+										for (let i = 0; i < $tds.length; i++) {
+
+											$tds[i].onmouseenter = function() {
+												this.parentNode.style.cursor = "pointer";
+											}
+
+											$tds[i].onclick = function() {
+
+												const no = this.parentNode.children[0].innerText;
+												location.href = "${ pageContext.servletContext.contextPath }/admin/tax?no="
+														+ no;
+
+											}
+
+										}
+
+									}
+
+									function pageButtonAction(text) {
+										location.href = link + "?currentPage="
+												+ text;
+									}
+									function seachPageButtonAction(text) {
+										location.href = searchLink
+												+ "?currentPage="
+												+ text
+												+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+									}
+								</script>
+						</section>
 	</c:if>
-
-
 </body>
 </html>
