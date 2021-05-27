@@ -16,6 +16,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessApplicationDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -44,8 +45,7 @@ public class BusinessService {
 		BusinessMemberDTO loginBusinessMember = null;
 		
 		loginBusinessMember = businessDAO.selectLoginMember(con, bMember);
-		
-		
+
 		close(con);
 		
 		return loginBusinessMember;
@@ -286,15 +286,13 @@ public class BusinessService {
 		int firstResult = businessDAO.insertDecisionList(con, i);
 		int secondResult = 0;
 		
-		System.out.println("1.신고가 안되었을까? " + firstResult);
-
 		if(firstResult > 0) {
 			
 			commit(con);
 			
 			// 심사내역에 등록한 후, 분기문 매개변수 i를 가지고 판단.
 			// 1일 때 - 기업에서 지원자 신고하는 경우
-			// 2일 때(사용안함) - 고객이 기업의 공고를 신고하는 경우
+			// 2일 때 - 고객이 기업의 공고를 신고하는 경우
 			// 3일 때 - 기업에서 가입신청하는 경우
 			// 4일 때 - 기업에서 공고등록을 하는 경우 
 			switch(i) {
@@ -302,8 +300,8 @@ public class BusinessService {
 				// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
 				BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
 				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
-				System.out.println("1.신고가 안되었을까? " + secondResult);
 				break;
+			case 2: // 현우형 - 기업공고 신고
 			case 3:
 				BusinessDTO business = (BusinessDTO)containDTO.get(0);
 				secondResult = businessDAO.insertNewBusiness(con, business);
@@ -345,6 +343,48 @@ public class BusinessService {
 		close(con);
 		
 		return userName;
+	}
+
+	public int selectReportCount(String loggedId) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.selectReportCount(con, loggedId);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public List<BusinessReportListDTO> selectReportList(String loggedId, PageInfoDTO pageInfo) {
+
+		Connection con = getConnection();
+		
+		List<BusinessReportListDTO> reportList = businessDAO.selectReportList(con, loggedId, pageInfo);
+		
+		close(con);
+		
+		return reportList;
+	}
+	public int updatePaymentList(int success, int postAdCode) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updatePaymentList(con, success, postAdCode);
+		
+		
+		System.out.println("");
+		if(result > 0 ) {
+			
+			commit(con);
+		} else {
+			
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
 	}
 
 

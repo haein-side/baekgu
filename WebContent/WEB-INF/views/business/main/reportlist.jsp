@@ -70,25 +70,27 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th style="display:none">공고코드</th>
+              <th>신고날짜</th>
               <th>공고담당자</th>
               <th>공고제목</th>
-              <th>모집인원</th>
-              <th>지원자수</th>
-              <th>미열람 지원자 수</th>
-              <th>마감일</th>
+              <th>신고대상</th>
+              <th>신고사유</th>
+              <th>심사상태</th>
+              <th>심사날짜</th>
+              <th>심사내용</th>
             </tr>
           </thead>
           <tbody>
-            <c:forEach var="post" items="${ requestScope.postList }">
+            <c:forEach var="report" items="${ requestScope.reportList }">
 			<tr> 
- 				<td style = "display:none"><c:out value="${ post.postCode }"/></td>
- 				<td><c:out value="${ post.managerName }"/></td>
-				<td><c:out value="${ post.postTitle }"/></td>
-				<td><c:out value="${ post.postTO }"/></td>
-				<td><c:out value="${ post.countOfApplicants }"/></td>
-				<td><c:out value="${ post.countOfUnreadResume }"/></td>
-				<td><c:out value="${ post.postEnd }"/></td>
+ 				<td><c:out value="${ report.reportDate }"/></td>
+ 				<td><c:out value="${ report.managerName }"/></td>
+				<td><c:out value="${ report.postTitle }"/></td>
+				<td><c:out value="${ report.userName }"/></td>
+				<td><c:out value="${ report.reportReason }"/></td>
+				<td><c:out value="${ report.decisionStatus }"/></td>
+				<td><c:out value="${ report.decisionDate }"/></td>
+				<td><c:out value="${ report.decisionReason }"/></td>
 			</tr>
 			</c:forEach> 
           </tbody>
@@ -167,8 +169,8 @@
 
 </div>
 	<script>
-		const link = "${ pageContext.servletContext.contextPath }/business/applicablePostlist";
-		const categoryLink = "${ pageContext.servletContext.contextPath }/business/applicablePostlist";
+		const link = "${ pageContext.servletContext.contextPath }/business/report";
+		const categoryLink = "${ pageContext.servletContext.contextPath }/business/report";
 			
 		if(document.getElementById("startPage")) {
 			const $startPage = document.getElementById("startPage");
@@ -213,10 +215,10 @@
 					this.parentNode.style.backgroundColor = "white";
 				}
 				
-				$tds[i].onclick = function() {
+/* 				$tds[i].onclick = function() {
 					location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="
 							         +  this.parentNode.children[0].innerText;
-				}
+				} */
 			}
 			
 		}

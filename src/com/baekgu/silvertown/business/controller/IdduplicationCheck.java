@@ -21,14 +21,10 @@ public class IdduplicationCheck extends HttpServlet {
 		
 		String hrId_1 = request.getParameter("hrId_1");
 		
-		System.out.println("담장다 아이디를 찾아보자 : " + hrId_1);
-
 		BusinessService service = new BusinessService();
 		
 		String result = service.chekId(hrId_1);
-		
-		System.out.println("dsafsdf" + result);
-		
+				
 		PrintWriter out = response.getWriter();
 		out.print(result);
 		

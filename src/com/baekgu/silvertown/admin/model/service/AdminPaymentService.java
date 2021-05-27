@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.baekgu.silvertown.admin.model.dao.PaymentDAO;
+import com.baekgu.silvertown.admin.model.dto.BlockDTO;
 import com.baekgu.silvertown.admin.model.dto.PaymentDTO;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 
@@ -71,6 +72,31 @@ public class AdminPaymentService {
 		close(con);
 		
 		return tax;
+	}
+
+
+	public int paymentSearchTotalCount(String searchSelect, String searchInput) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = paymentDAO.paymentSearchTotalCount(con,searchSelect, searchInput);
+		
+		close(con);
+		
+		return totalCount;
+	}
+
+
+	public List<PaymentDTO> paymentSearchList(String searchSelect, String searchInput, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		System.out.println("서비스 searchSelect : " + searchSelect);
+		
+		List<PaymentDTO> searhList = paymentDAO.paymentSearchList(con, pageInfo, searchSelect, searchInput);
+
+		close(con);
+
+		return searhList;
 	}
 
 }

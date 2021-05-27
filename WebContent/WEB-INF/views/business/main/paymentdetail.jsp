@@ -143,6 +143,7 @@
             <br>
             <br>
     <div align="center">
+    <input type="hidden" id="postadcode" value="${ paymentdetail.postAdCode }"/>
     
 <!--     <button type="button" id="dopay" >결제하기</button> -->
      
@@ -182,9 +183,13 @@
 	
 	
 	   <script>
+	   
+	   
     $('#dopay').click(function(){
     	
+	   const postadcode = document.getElementById("postadcode").value;
     	var success;
+    	console.log(postadcode);
         var IMP = window.IMP; // 생략가능
         IMP.init('imp36587437'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
@@ -201,10 +206,15 @@
             buyer_addr : '<%=address%>',
             buyer_postcode : '123-456',
             //m_redirect_url : 'http://www.naver.com'
+            
         }, function(rsp) {
+        	
             if ( rsp.success ) {
+            	
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+                
                 jQuery.ajax({
+                	
                     url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
                     type: 'POST',
                     dataType: 'json',
@@ -228,15 +238,19 @@
                     }
                 });
                 //성공시 이동할 페이지
-                      success = 2;
+                      success = 1;
                         
                         $.ajax({
                         	
                         	url:"/baekgu/business/paycomplate",
                         	type:"GET",
-                        	data:{ success : success },
+                        	data:{ success : success,
+                        		postadcode : postadcode
+                        	},
                         	success:function(data, textStatus, xhr){
                         		
+                        		
+                        		location.replace("${ pageContext.servletContext.contextPath }/business/paymentlist")
                                               	}
                         
                         });	

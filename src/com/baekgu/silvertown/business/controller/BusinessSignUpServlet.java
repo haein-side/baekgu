@@ -33,36 +33,17 @@ public class BusinessSignUpServlet extends HttpServlet {
 	
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String hrId_1 = request.getParameter("hrId_1");
-		
+
 		String path = "/WEB-INF/views/business/main/signupB.jsp";
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-
-		
-		BusinessService service = new BusinessService();
-		
-		String result = service.chekId(hrId_1);
-		
-		System.out.println("dsafsdf" + result);
-		
-		PrintWriter out = response.getWriter();
-		out.print(result);
-		
-		out.flush();
-		out.close();
-		
-
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-//		String imageRoot = "";
+
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			/* 이미지 경로 설정하기 */
@@ -195,6 +176,8 @@ public class BusinessSignUpServlet extends HttpServlet {
 
 				String hrId = parameter.get("hrId");
 				String hrPwd = parameter.get("enteredPwd");
+				
+				// 직접 암호화
 				String hrName = parameter.get("hrName");
 				String hrPhone = parameter.get("hrPhone");
 				String hrEmail = parameter.get("hrEmail");
