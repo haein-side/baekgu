@@ -57,7 +57,7 @@ public class LoginCheck extends HttpServlet {
 		/* Ajax에 대한 response를 PrintWriter 로 출력해주기 */ 
 		
 		/* 분기 처리 1. 회원가입 여부 확인 */
-		if(loginUser.getUserPwd() != null) {
+		if(loginUser != null) {
 
 			/* 비밀번호 값을 보내서 조회하기 */
 			loginUserInfo = userServiceInfo.loginInfo(requestUser);

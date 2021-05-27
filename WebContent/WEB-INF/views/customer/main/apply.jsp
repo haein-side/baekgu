@@ -14,6 +14,7 @@
 				const postCode = $("#postCode").value;
 				
 				console.log(postCode);
+				alert(!!!);
 				
 				$.ajax({
 					url:"${ pageContext.servletContext.contextPath }/post/apply",

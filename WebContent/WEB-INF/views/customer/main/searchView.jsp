@@ -11,14 +11,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Css Styles -->
 <link rel="stylesheet"
-	href="RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
+	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css"
 	type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
 	type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.report }">
+          <script>alert('신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다')</script>
+    </c:when>
+</c:choose>
+
 
 <%@ include file="../common/header2.jsp"%>
 
@@ -60,14 +68,14 @@
 										function apply(){
 											if(userCode != null && userCode != "") {
 												// 로그인한 경우 지원하기 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-												
+												//window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${ reuqestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+												window.open("/baekgu/apply?postCode=+${ reuqestScope.postInfo.postCode }", "a", "width=450, height=600, left=500, top=250");
 											} else {
 												// 로그인 하지 않은 경우 로그인 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-																								
-												window.opener.location.reload();
-												window.close();
+												//window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode=+${ requestScope.postInfo.postCode }", "a", "width=450, height=600, left=500, top=250");				
+												//window.opener.location.reload();
+												//window.close();
 											}
 
                                         }
@@ -501,18 +509,49 @@
 											<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>	
 											</form> --%>
 										
-										<input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+										<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportModal" data-whatever="@mdo">신고하기</button> -->
+										
+										
+										<!-- <input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
 	                    				
-	                    				<!-- 신고하기 모달창 -->
+										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+										        <form>
+										          <div class="form-group">
+										            <label for="recipient-name" class="col-form-label">Recipient:</label>
+										            <input type="text" class="form-control" id="recipient-name">
+										          </div>
+										          <div class="form-group">
+										            <label for="message-text" class="col-form-label">Message:</label>
+										            <textarea class="form-control" id="message-text"></textarea>
+										          </div>
+										        </form>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">Send message</button>
+										      </div>
+										    </div>
+										  </div>
+										</div> -->         
+	                    				
+	                    				<input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    				<!--  신고하기 모달창 -->
+					                    <form action="${ pageContext.servletContext.contextPath }/user/report" method="post">
 					                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					                        <div class="modal-dialog" role="document">
 						                        <div class="modal-content">
-						                            <div class="modal-header">
-						                            	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                            	<h4 class="modal-title" id="myModalLabel">지원자 <span style="color:blue;"></span> 신고하기</h4>
+						                            <div class="modal-header" style="z-index: 100;">
 						                            </div>
 						                            
-						                            <form action="${ pageContext.servletContext.contextPath }/user/report" method="post">
 						                            	<div class="modal-body">
 						                            		<label>신고 사유 :  </label><br> 
 						                            		<textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
@@ -524,16 +563,40 @@
 						                            
 						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
 						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
-						                            
+						                            	
+						                            	${ postInfo.postCode }
+						                            	
 						                            	<div class="modal-footer">
 						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 						                            		<button type="submit" class="btn btn-default">신고하기</button>
 						                            	</div>
-						                            </form>
+						                            
 						                        </div>
 					                        </div>
 					                    </div>
+					                    </form>
 										<!-- 모달 끝 -->
+										<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                							<div class="modal-dialog" role="document">
+                  								<div class="modal-content">
+                    								<div class="modal-header">
+                      									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      									<h4 class="modal-title" id="myModalLabel">결제하시겠습니까?</h4>
+                    								</div>
+                    								<div class="modal-body">
+                      									총 ${ paymentdetail.totalPrice } 원이 결제됩니다
+                    								</div>
+                    								<div class="modal-footer">
+                      									<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                      									<button id="doPay" type="button" class="btn btn-default">결제하기</button>
+                    								</div>
+                  								</div>
+                							</div>
+    									</div> --!>
+										
+										<!-- 
+										
+										 -->
 									</div>
 								</div>
 							</div>
@@ -617,8 +680,12 @@
 		  var modal = $(this)
 		  modal.find('.modal-title').text('New message to ' + recipient)
 		  modal.find('.modal-body input').val(recipient)
-		}) */
-	
+		}); */
+		
+		
+		$('#report').on('click', function(event) {
+			var button = $(event.relatedTarget)
+		});
 	</script>
 	
 <%@ include file="../common/footer.jsp"%>

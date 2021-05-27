@@ -10,7 +10,7 @@
 
 <body>
 	<!-- 통합 테스트 -->
-	<jsp:forward page="/WEB-INF/views/business/main/applicantlist.jsp"/>
+	<jsp:forward page="/WEB-INF/views/customer/main/searchView.jsp"/>
 
 	<!-- 강현우 테스트 -->
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/signup.jsp"/>--%>
