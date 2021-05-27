@@ -101,14 +101,14 @@
   			}
   			
   			$.ajax({
-  				url:"/baekgu/business/signup",
+  				url:"/baekgu/business/checkduplicate",
   				type:"GET",
   				data:{ hrId_1 : hrId_1 },
   				success:function(data, textStatus,xhr){
   					console.log(data);
   					if(data == "success"){
   						$("#checkMessage").html("사용할 수 있는 아이디입니다.");
-  						alert("사용가능한 아이디입니다.!");
+  						alert("사용가능한 아이디입니다!");
   						
   						$('#checkId').attr("value","success");
 

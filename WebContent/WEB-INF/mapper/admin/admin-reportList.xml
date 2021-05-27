@@ -69,37 +69,68 @@
 		   AND A.USER_CODE LIKE '%' ? '%'
 		 LIMIT ?,10
 	</entry>
-	<entry key="searchPostCodeReport">
-		SELECT
-		       A.REPORT_CODE
-		     , A.REPORT_REASON
-		     , A.REPORT_DATE
-		     , A.POST_CODE
-		     , A.USER_CODE
-		     , A.D_LIST_CODE
-		     , B.D_LIST_CODE
-		     , B.D_LIST_REASON
-		     , B.D_LIST_DATE 
-		     , B.DECISION_CODE 
-		     , B.D_LIST_TYPE_CODE 
-		     , B.ADMIN_ID 
-		  FROM REPORT A, DECISION_LIST B
-		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
-		   AND A.POST_CODE LIKE '%' ? '%'
-		 LIMIT ?,10
+
+	
+	<entry key="searchrCodeReport">
+	  	SELECT
+		       a.REPORT_CODE
+		     , a.REPORT_REASON
+		     , a.REPORT_DATE
+		     , a.POST_CODE
+		     , a.USER_CODE
+		     , a.D_LIST_CODE
+		     , b.D_LIST_CODE
+		     , b.D_LIST_REASON
+		     , b.D_LIST_DATE 
+		     , b.DECISION_CODE 
+		     , b.D_LIST_TYPE_CODE 
+		     , b.ADMIN_ID 
+		  FROM REPORT a, DECISION_LIST b
+		 WHERE a.D_LIST_CODE = b.D_LIST_CODE
+		  and a.REPORT_CODE LIKE '%' ? '%' 	
+	 	LIMIT ?,10
+	   
+	
 	</entry>
-	<entry key="searchUserCodeCount">
-   SELECT
-	      COUNT(*)
-	 FROM REPORT
-	WHERE REPORT.USER_CODE LIKE '%' ? '%'
+	
+	<entry key="searchbdCodeReport">
+	  SELECT
+	           a.REPORT_CODE
+		     , a.REPORT_REASON
+		     , a.REPORT_DATE
+		     , a.POST_CODE
+		     , a.USER_CODE
+		     , a.D_LIST_CODE
+		     , b.D_LIST_CODE
+		     , b.D_LIST_REASON
+		     , b.D_LIST_DATE 
+		     , b.DECISION_CODE 
+		     , b.D_LIST_TYPE_CODE 
+		     , b.ADMIN_ID  
+	 FROM REPORT a  , decision_list b , decision c
+	WHERE a.D_LIST_CODE = b.D_LIST_CODE
+	  and b.DECISION_CODE = c.DECISION_CODE
+	  and c.DECISION_STATUS LIKE '%' ? '%'
+      LIMIT ?,10 		
 	</entry>
-	<entry key="searchPostCodeCount">
-   SELECT
-	      COUNT(*)
-	 FROM REPORT
-	WHERE REPORT.POST_CODE LIKE '%' ? '%'
+	
+	
+	<entry key="searchrCodeCount">
+       SELECT
+	          COUNT(*)
+	     FROM REPORT
+	    WHERE REPORT_CODE LIKE '%' ? '%'
 	</entry>
+	
+	<entry key="searchbdCodeCount">
+	     SELECT
+	           COUNT(*)
+	       FROM REPORT a , decision b , decision_list c
+	       WHERE a.D_LIST_CODE = c.D_LIST_CODE
+	         and b.DECISION_CODE = c.DECISION_CODE
+	         and b.DECISION_STATUS LIKE '%' ? '%'
+	</entry>
+
 
 	
 

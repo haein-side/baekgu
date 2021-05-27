@@ -22,12 +22,13 @@ public class EncryptReqeustWrapper extends HttpServletRequestWrapper{
 		if("enteredPwd".equals(key)) {
 			/* 스프링 시큐리티 중 BCrypt암호화를 제공해주는 라이브러리*/
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			value = passwordEncoder.encode(super.getParameter(key)); // memberPwd에 입력된 값
+			value = passwordEncoder.encode(super.getParameter(key)); 
 		} else {
 			value = super.getParameter(key);
 		}
 		return value;
 	}
 
+	
 	
 }

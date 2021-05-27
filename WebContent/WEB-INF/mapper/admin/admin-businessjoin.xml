@@ -181,5 +181,105 @@
 	
 	</entry>
 	
+	<entry key="seachpostCodeSelect">
+	     SELECT 
+                a.POST_CODE    
+               ,a.POST_TITLE       
+               ,a.HR_ID                                  
+               ,a.POST_M_NAME                 
+               ,a.POST_M_EMAIL                                              
+          FROM  POST a , decision_list b 
+         where  a.D_LIST_CODE = b.D_LIST_CODE
+           and b.DECISION_CODE = 1  
+           and b.D_LIST_TYPE_CODE = 4
+           and b.D_LIST_REASON is null  
+           and a.POST_CODE like '%' ? '%'   
+           LIMIT ?,?    
+	</entry>
+	
+	
+	<entry key="seachHrNameSelect"> 
+	      SELECT 
+                a.POST_CODE    
+               ,a.POST_TITLE       
+               ,a.HR_ID                                  
+               ,a.POST_M_NAME                 
+               ,a.POST_M_EMAIL                                              
+           FROM  POST a , decision_list b 
+          where  a.D_LIST_CODE = b.D_LIST_CODE
+            and b.DECISION_CODE = 1  
+            and b.D_LIST_TYPE_CODE = 4
+            and b.D_LIST_REASON is null  
+            and a.HR_ID like '%' ? '%' 	
+            LIMIT ?,?  
+	
+	</entry>
+	
+	
+	<entry key="searchpostCode">
+	select 
+		   count(*)
+	  from post
+	  where post_code = ?
+	</entry>
+	
+	<entry key="searchHrId"> 
+	    select 
+		       count(*)
+	      from post
+	     where hr_Id = ?
+	
+	</entry>
+	
+	<entry key="searchbCode">
+	    select 
+              count(*)
+          from business 
+         where B_CODE = ?
+	
+	</entry>
+	
+	<entry key="searchbName">
+       select 
+              count(*)
+        from business 
+        where B_NAME = ?
+	</entry>
+	
+	<entry key="joinSelectbCode">
+	    SELECT 
+	            a.B_CODE
+	          , a.B_NAME
+	          , a.B_OWNER
+	          , a.B_NUMBER
+	          , a.B_ADDRESS
+	          , a.B_PHONE
+	      FROM business a, decision_list b
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+           AND b.DECISION_CODE = 1 
+           AND b.D_LIST_TYPE_CODE = 3
+	       AND b.D_LIST_REASON is null
+	       and a.B_CODE like '%' ? '%'
+	       LIMIT ?,? 
+	
+	</entry>
+	
+	<entry key="joinSelectbName">
+	   SELECT 
+	            a.B_CODE
+	          , a.B_NAME
+	          , a.B_OWNER
+	          , a.B_NUMBER
+	          , a.B_ADDRESS
+	          , a.B_PHONE
+	      FROM business a, decision_list b
+         WHERE a.D_LIST_CODE = b.D_LIST_CODE
+           AND b.DECISION_CODE = 1 
+           AND b.D_LIST_TYPE_CODE = 3
+	       AND b.D_LIST_REASON is null
+	       and a.B_NAME like '%' ? '%'
+	       LIMIT ?,? 
+	
+	</entry>
 
 </properties>

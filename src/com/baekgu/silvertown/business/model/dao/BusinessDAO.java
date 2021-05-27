@@ -29,6 +29,7 @@ import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
+import com.mysql.cj.xdevapi.Result;
 
 public class BusinessDAO {
 	
@@ -103,30 +104,30 @@ public class BusinessDAO {
 	 * @param con
 	 * @return
 	 */
-	public int insertNewDecisionList(Connection con) {
-		
-		PreparedStatement pstmt = null;
-		
-		int result = 0;
-		
-		String query = prop.getProperty("insertDecisionList");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} finally {
-			
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
+//	public int insertNewDecisionList(Connection con) {
+//		
+//		PreparedStatement pstmt = null;
+//		
+//		int result = 0;
+//		
+//		String query = prop.getProperty("insertDecisionList");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			
+//			result = pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			
+//		} finally {
+//			
+//			close(pstmt);
+//		}
+//		
+//		return result;
+//	}
+//	
 	public Map<Integer, Integer> selectTotalCount(Connection con, String loggedId) {
 		
 		PreparedStatement psmt = null;
@@ -525,7 +526,6 @@ public class BusinessDAO {
 			
 			payStatus = 1;
 		}
-		System.out.println("asdsada : " + payStatus);
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -962,6 +962,60 @@ public class BusinessDAO {
 		}
 		
 		return reportList;
+	}
+	public int updatePaymentList(Connection con, String paymentResult) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updatePaymentStatus");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, paymentResult);
+			pstmt.setInt(2, 1);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public int updatePaymentList(Connection con, int success, int postAdCode) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		
+		String query = prop.getProperty("updatePaymentStatus");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, success);
+			pstmt.setInt(2, 1);
+			pstmt.setInt(3, postAdCode);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
+		return result;
 	}
 	
 	

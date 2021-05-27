@@ -190,31 +190,32 @@ public class PostApproveDAO {
 	}
 
 	/**
-	 * 공고 코드를 이용한 광고 정보 조회 
+	 * 공고 코드를 이용한 광고 정보 조회
+	 * 
 	 * @param con
 	 * @param postCode
 	 * @return
 	 */
 	public List<PostDTO> selectAdDetail(Connection con, int postCode) {
-	
+
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		List<PostDTO> payment = null;
-		
+
 		String query = prop.getProperty("selectAdDetail");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setInt(1, postCode);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			payment = new ArrayList<>();
-			
-			while(rset.next()) {
-				
+
+			while (rset.next()) {
+
 				PostDTO pay = new PostDTO();
 				pay.setPostCode(rset.getInt("POST_CODE"));
 				pay.setPostAdCode(rset.getInt("POST_AD_CODE"));
@@ -222,87 +223,191 @@ public class PostApproveDAO {
 				pay.setAdCode(rset.getInt("AD_CODE"));
 				pay.setAdName(rset.getString("AD_NAME"));
 				pay.setAdPrice(rset.getInt("AD_PRICE"));
-				
+
 				payment.add(pay);
-				
+
 				System.out.println("광고 신청 조회 : " + payment);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
-		
+
 		return payment;
 	}
 
 	/**
-	 * 공고 승인 시 업데이트 
+	 * 공고 승인 시 업데이트
+	 * 
 	 * @param con
 	 * @param postDTO
 	 * @return
 	 */
 	public int postSubmitUpdate(Connection con, PostDTO postDTO) {
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+
 		String query = prop.getProperty("postSubmitUpdate");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
-			pstmt.setString(1,"이상없음");
-			pstmt.setString(2,postDTO.getAdminId());
-			pstmt.setInt(3,postDTO.getPostCode());
-			
+
+			pstmt.setString(1, "이상없음");
+			pstmt.setString(2, postDTO.getAdminId());
+			pstmt.setInt(3, postDTO.getPostCode());
+
 			result = pstmt.executeUpdate();
 			System.out.println(query);
-			
-		
+
 		} catch (SQLException e) {
-		
+
 			e.printStackTrace();
-		} close(pstmt);
-		
+		}
+		close(pstmt);
+
 		System.out.println("DAO " + result);
-		
+
 		return result;
 	}
 
 	/**
-	 * 공고 거절 시 업데이트 
+	 * 공고 거절 시 업데이트
+	 * 
 	 * @param con
 	 * @param postDTO
 	 * @return
 	 */
 	public int postBlockUpdate(Connection con, PostDTO postDTO) {
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+
 		String query = prop.getProperty("postBlockUpdate");
-		
-		   try {
+
+		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1,postDTO.getListReason());
-			pstmt.setString(2,postDTO.getAdminId());
-			pstmt.setInt(3,postDTO.getPostCode());
-			
+			pstmt.setString(1, postDTO.getListReason());
+			pstmt.setString(2, postDTO.getAdminId());
+			pstmt.setInt(3, postDTO.getPostCode());
+
 			result = pstmt.executeUpdate();
 			System.out.println(query);
-			
+
 		} catch (SQLException e) {
-		
+
 			e.printStackTrace();
 		}
-		   System.out.println("DAO " + result);
-		
+		System.out.println("DAO " + result);
+
 		return result;
+	}
+
+	/**
+	 * 공고 심사 검색용 결과 개수 조회용 메소드
+	 * 
+	 * @param con
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int postApproveSearch(Connection con, String searchSelect, String searchInput) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = null;
+		int totalCount = 0;
+
+		if (searchSelect.equals("postCode")) {
+			query = prop.getProperty("searchpostCode");
+		} else {
+			query = prop.getProperty("searchHrId");
+
+		}
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchInput);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				totalCount = rset.getInt("COUNT(*)");
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		System.out.println("totalCount : " + totalCount);
+
+		return totalCount;
+	}
+
+	public List<PostDTO> postApproveSelect(Connection con, String searchSelect, String searchInput,
+			PageInfoDTO pageInfo) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<PostDTO> postList = null;
+
+		String query = null;
+
+		System.out.println("searchselect dao : " + searchSelect);
+
+		if (searchSelect.equals("postCode")) {
+			query = prop.getProperty("seachpostCodeSelect");
+
+		} else if (searchSelect.equals("hrId")) {
+			query = prop.getProperty("seachHrNameSelect");
+		}
+
+		System.out.println("사용 쿼리  : " + query);
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, searchInput);
+			pstmt.setInt(2, pageInfo.getStartRow());
+			pstmt.setInt(3, pageInfo.getEndRow());
+
+			rset = pstmt.executeQuery();
+
+			postList = new ArrayList<>();
+
+			while (rset.next()) {
+
+				PostDTO postdto = new PostDTO();
+				postdto.setPostCode(rset.getInt("POST_CODE"));
+				postdto.setPostTitle(rset.getString("POST_TITLE"));
+				postdto.setHrId(rset.getString("HR_ID"));
+				postdto.setName(rset.getString("POST_M_NAME"));
+				postdto.setEmail(rset.getString("POST_M_EMAIL"));
+				System.out.println(query);
+
+				postList.add(postdto);
+
+			}
+
+			System.out.println("검색 리스트 : " + postList);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return postList;
 	}
 
 }
