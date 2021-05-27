@@ -456,5 +456,9 @@ select
    		   JOIN RESUME b on(a.USER_CODE = b.USER_CODE)
   		  WHERE b.RESUME_CODE = ?
 	</entry>
-	
+	<entry key="updatePaymentStatus">
+		update post_ad_payment 
+   set post_ad_date = now() , POST_AD_PAID = ? , P_METHOD_CODE = ?
+  where post_Ad_code = ?
+	</entry>
 </properties>
