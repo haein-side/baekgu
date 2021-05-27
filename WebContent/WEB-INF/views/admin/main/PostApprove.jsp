@@ -99,51 +99,8 @@
 							</table>
 						</div>
 
-						<!--main content start-->
-						<section id="main-content">
-							<section class="wrapper">
-								<!--overview start-->
-								<div class="row">
-									<div class="col-lg-12">
-										<h3 class="page-header">
-											<i class="fa fa-laptop"></i> 공고 심사 관리
-										</h3>
-
-									</div>
-								</div>
-							</section>
-
-							<div class="row">
-								<div class="col-lg-12">
-									<section class="panel">
-										<header class="panel-heading"> 기업 리스트 </header>
-										<div class="table-responsive">
-											<table class="table">
-												<thead>
-													<tr>
-														<th>공고코드</th>
-														<th>공고제목</th>
-														<th>담당자아이디</th>
-														<th>담당자이름</th>
-														<th>담당자이메일</th>
-														<!--  <th>공고등록</th> -->
-													</tr>
-												</thead>
-												<tbody>
-													<c:forEach var="postapprove"
-														items="${ requestScope.postList }">
-														<tr>
-															<td><c:out value="${ postapprove.postCode }" /></td>
-															<td><c:out value="${ postapprove.postTitle }" /></td>
-															<td><c:out value="${ postapprove.hrId }" /></td>
-															<td><c:out value="${ postapprove.name }" /></td>
-															<td><c:out value="${ postapprove.email }" /></td>
-															<%-- 	   <td><c:out value="${ postapprove.dday }"/></td> --%>
-														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
+	
+								
 										<!--하단 페이지 넘기기-->
 										<section class="panel">
 											<div class="panel-body">
