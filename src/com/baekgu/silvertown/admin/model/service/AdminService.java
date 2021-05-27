@@ -105,6 +105,40 @@ public class AdminService {
 		
 	}
 
+	/**
+	 * 관리자 검색했을 시 개수 조회용 메소드 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @return
+	 */
+	public int adminManagerSerach(String searchSelect, String searchInput) {
+		
+		Connection con = getConnection();
+		
+		int totalCount = adminDAO.adminManagerSerach(con, searchSelect,searchInput);
+		
+		close(con);
+		
+		
+		return totalCount;
+	}
+
+	/** 관리자 검색했을 시 리스트 조회용 메소드 
+	 * @param searchSelect
+	 * @param searchInput
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<AdminDTO> adminSearchSelect(String searchSelect, String searchInput, PageInfoDTO pageInfo) {
+		
+		Connection con = getConnection();
+		System.out.println("서비스 검색 리스트 : " + searchSelect);
+		List<AdminDTO> adminDTO = adminDAO.adminSearchSelect(con,searchSelect,searchInput,pageInfo);
+		
+		
+		return adminDTO;
+	}
+
 
 	}
 

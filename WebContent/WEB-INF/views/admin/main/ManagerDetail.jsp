@@ -63,7 +63,8 @@
                         </header>
                         <div class="panel-body">
                           <div class="form">
-                           <c:if test="${ sessionScope.adminRole eq '대표관리자' }"> 
+                          <!-- 대표관리자일 때는 수정이 가능하다.  -->
+                           <c:if test="${ sessionScope.adminRole eq '대표관리자' }" > 
                             <form class="form-validate form-horizontal" id="feedback_form" method="post" action="${ pageContext.servletContext.contextPath }/admin/adminid">
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
@@ -99,6 +100,55 @@
                                 <label for="cname" class="control-label col-lg-2">권한</label>
                                 <div class="col-lg-10">
                                   <input class="form-control" id="beak" name="beakre" type="text"  value=<c:out value="${ adminDTO.adminRole }"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                  <button class="btn btn-primary" class="btn btn-primary" type="submit">등록</button>
+                                 
+                                </div>
+                              </div>
+                            </form>
+                            </c:if>
+                            
+                            <!-- ********************************************************************** -->
+                              <!-- 서브관리자일 떄는 수정이 불가능하다. 열람만 가능   -->
+                            <c:if test="${ sessionScope.adminRole eq '서브관리자' }" > 
+                            <form class="form-validate form-horizontal" id="feedback_form" method="post"  action="${ pageContext.servletContext.contextPath }/admin/adminid">
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">이름 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beakname" name="name"  type="text" readonly value=<c:out value="${ adminDTO.adminName}"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cemail" class="control-label col-lg-2">아이디</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="baekid" type="id" name="id" readonly  value=<c:out value="${ adminDTO.adminId }"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="curl" class="control-label col-lg-2">비밀번호</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="beakpassword" type="password" name="password" readonly value=<c:out value="${ adminDTO.adminPwd }"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">이메일 </label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beakemail" name="email" type="text" readonly value=<c:out value="${ adminDTO.adminEmail }"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="ccomment" class="control-label col-lg-2">등록일</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control " id="beakconfirm" name="confirm" readonly value=<c:out value="${ adminDTO.adminDate }"/>></input>
+                                </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-2">권한</label>
+                                <div class="col-lg-10">
+                                  <input class="form-control" id="beak" name="beakre" type="text" readonly value=<c:out value="${ adminDTO.adminRole }"/>></input>
                                 </div>
                               </div>
                               <div class="form-group">

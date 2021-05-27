@@ -46,243 +46,260 @@
 
 <body>
 	<jsp:include page="../common/header.jsp" />
-<c:if test="${ empty sessionScope.loginAdminName }">
+	<c:if test="${ empty sessionScope.loginAdminName }">
+		<section id="main-content">
+			<section class="wrapper"></section>
+		</section>
+	</c:if>
+	<c:if test="${ !empty sessionScope.loginAdminName }">
+
+
+
+		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
+				<!--overview start-->
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="fa fa-laptop"></i> 관리자 및 직원 관리
+						</h3>
+
+					</div>
+				</div>
 			</section>
-		</section>
-</c:if>
-<c:if test="${ !empty sessionScope.loginAdminName }">
 
-
-
-	<!--main content start-->
-	<section id="main-content">
-		<section class="wrapper">
-			<!--overview start-->
 			<div class="row">
 				<div class="col-lg-12">
-					<h3 class="page-header">
-						<i class="fa fa-laptop"></i> 관리자 및 직원 관리
-					</h3>
+					<section class="panel">
+						<header class="panel-heading">
+							관리자 및 직원관리
+							<c:if test="${ sessionScope.adminRole eq '대표관리자' }">
+								<button class="btn btn-success" id="btnsubmit"
+									style="margin-left: 30px;" type="button"
+									onClick="Registration()">등록하기</button>
 
-				</div>
-			</div>
+								<button class="btn btn-warning" id="btnDelete"
+									data-toggle="modal" type="button" onClick="deleteClick()"
+									style="margin-left: 30px;">삭제하기</button>
+							</c:if>
+						</header>
+						<div class="table-responsive">
+							<table align="center" class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>아이디</th>
+										<!-- 	<th>비밀번호</th> -->
+										<th>이름</th>
+										<th>이메일</th>
+										<th>등록일</th>
+										<th>권한</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
+									<c:forEach var="admin" items="${ requestScope.adminList }">
+										<tr>
+											<th><input class="check" type="checkbox"
+												id="${admin.adminId }" onClick="checkClick(this)"></th>
+											<td><c:out value="${ admin.adminId }" /></td>
+											<%-- 	<td><c:out value="${ admin.adminPwd }" /></td> --%>
+											<td><c:out value="${ admin.adminName }" /></td>
+											<td><c:out value="${ admin.adminEmail }" /></td>
+											<td><c:out value="${ admin.adminDate }" /></td>
+											<td><c:out value="${ admin.adminRole }" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
+
+
+
+						<!--하단 페이지 넘기기-->
+						<section class="panel">
+							<div class="panel-body">
+								<div class="text-center">
+									<%-- 페이지 처리 --%>
+									<div class="pagingArea" align="center">
+										<c:choose>
+											<c:when test="${ empty requestScope.searchValue }">
+												<button id="startPage"><<</button>
+
+												<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+													<button disabled><</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+													<button id="prevPage"><</button>
+												</c:if>
+
+												<c:forEach var="p"
+													begin="${ requestScope.pageInfo.startPage }"
+													end="${ requestScope.pageInfo.endPage }" step="1">
+													<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+														<button disabled>
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+													<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+														<button onclick="pageButtonAction(this.innerText);">
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+												</c:forEach>
+
+												<c:if
+													test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+													<button disabled>></button>
+												</c:if>
+												<c:if
+													test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+													<button id="nextPage">></button>
+												</c:if>
+
+												<button id="maxPage">>></button>
+											</c:when>
+											<c:otherwise>
+												<button id="searchStartPage"><<</button>
+
+												<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
+													<button disabled><</button>
+												</c:if>
+												<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
+													<button id="searchPrevPage"><</button>
+												</c:if>
+
+												<c:forEach var="p"
+													begin="${ requestScope.pageInfo.startPage }"
+													end="${ requestScope.pageInfo.endPage }" step="1">
+													<c:if test="${ requestScope.pageInfo.pageNo eq p }">
+														<button disabled>
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+													<c:if test="${ requestScope.pageInfo.pageNo ne p }">
+														<button onclick="seachPageButtonAction(this.innerText);">
+															<c:out value="${ p }" />
+														</button>
+													</c:if>
+												</c:forEach>
+
+												<c:if
+													test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
+													<button disabled>></button>
+												</c:if>
+												<c:if
+													test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
+													<button id="searchNextPage">></button>
+												</c:if>
+
+												<button id="searchMaxPage">>></button>
+											</c:otherwise>
+										</c:choose>
+
+										<!-- 검색 폼 -->
+										<form id="loginForm"
+											action="${ pageContext.servletContext.contextPath }/admin/adminsearch"
+											method="get">
+											<div class="search-area" align="center">
+												<c:choose>
+													<c:when test="${ !empty requestScope.searchValue }">
+														<!-- 검색 카테고리  -->
+														<!-- name으로 키값을 전달한다. -->
+														<select id="searchSelect" name="searchSelect">
+															<option value="adminId"
+																<c:if test="${requestScope.searchCondition eq 'adminId'}">selected</c:if>>아이디</option>
+															<option value="adminName"
+																<c:if test="${requestScope.searchCondition eq 'adminName'}">selected</c:if>>이름</option>
+														</select>
+														<!-- 입력한 값 , name으로 키값을 전달한다.  -->
+														<input type="search" id="searchInput" name="searchInput"
+															value="${ requestScope.searchValue }">
+													</c:when>
+													<c:otherwise>
+														<select id="searchSelect" name="searchSelect">
+															<option value="adminId">아이디</option>
+															<option value="adminName">이름</option>
+														</select>
+														<!-- 어떤 검색을 했는지 넘겨주는 것   -->
+														<input type="search" id="searchInput" name="searchInput">
+													</c:otherwise>
+												</c:choose>
+												<button type="submit">검색하기</button>
+												<c:if test="${ !empty requestScope.loginMember }">
+													<button id="writeBoard">작성하기</button>
+												</c:if>
+											</div>
+										</form>
+									</div>
+						</section>
+					</section>
 		</section>
 
-		<div class="row">
-			<div class="col-lg-12">
-				<section class="panel">
-					<header class="panel-heading">
-						관리자 및 직원관리
-						 <c:if test="${ sessionScope.adminRole eq '대표관리자' }"> 
-						<button class="btn btn-success" id="btnsubmit" style="margin-left: 30px;"
-							type="button" onClick="Registration()">등록하기</button>
-						 				
-						<button class="btn btn-warning" id="btnDelete" data-toggle="modal"
-							type="button" onClick="deleteClick()" style="margin-left: 30px;">
-							삭제하기</button>
-					   </c:if> 
-					</header>
-					<div class="table-responsive">
-						<table align="center" class="table">
-							<thead>
-								<tr>
-									<th></th>
-									<th>아이디</th>
-									<th>비밀번호</th>
-									<th>이름</th>
-									<th>이메일</th>
-									<th>등록일</th>
-									<th>권한</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- 배열, Collection 또는 Map에 저장되어 있는 값들을 순차적으로 처리할 때 사용  -->
-								<c:forEach var="admin" items="${ requestScope.adminList }">
-									<tr>
-										<th><input class="check" type="checkbox"
-											id="${admin.adminId }" onClick="checkClick(this)"></th>
-										<td><c:out value="${ admin.adminId }" /></td>
-										<td><c:out value="${ admin.adminPwd }" /></td>
-										<td><c:out value="${ admin.adminName }" /></td>
-										<td><c:out value="${ admin.adminEmail }" /></td>
-										<td><c:out value="${ admin.adminDate }" /></td>
-										<td><c:out value="${ admin.adminRole }" /></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
 
 
+		<script>
+			/*  등록하기 버튼 클릭 시  */
+			function Registration() {
+				const link = "${ pageContext.servletContext.contextPath }/admin/signup";
+				location.href = link;
+			}
+		</script>
 
+		<script>
+			/* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
+			function deleteClick() {
+				$.ajax({
+					url : "/baekgu/admin/admindelete",
+					data : {
+						isDelete : true
+					},
+					type : "post",
+					success : function(data, textStatus, xhr) {
+						console.log(xhr);
+						if (xhr.responseText == "refresh") {
+							location.reload(true)
+						} else if (xhr.responseText == "error") {
+							console.log("error")
+							location.reload(true)
+						}
 
-					<!--하단 페이지 넘기기-->
-					<section class="panel">
-						<div class="panel-body">
-							<div class="text-center">
-					<%-- 페이지 처리 --%>
-		<div class="pagingArea" align="center">
-			<c:choose>
-			    <c:when test="${ empty requestScope.searchValue }">
-				    <button id="startPage"><<</button>
-	
-					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-						<button disabled><</button>
-					</c:if>
-					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
-						<button id="prevPage"><</button>
-					</c:if>
-		
-					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
-						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
-							<button disabled><c:out value="${ p }"/></button>
-						</c:if>
-						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-							<button onclick="pageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
-						</c:if>
-					</c:forEach>
-					
-					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-						<button disabled>></button>
-					</c:if>
-					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-						<button id="nextPage">></button>
-					</c:if>
-					
-					<button id="maxPage">>></button> 
-			     </c:when>
-			    <c:otherwise>
-   				    <button id="searchStartPage"><<</button>
-	
-					<c:if test="${ requestScope.pageInfo.pageNo <= 1 }">
-						<button disabled><</button>
-					</c:if>
-					<c:if test="${ requestScope.pageInfo.pageNo > 1 }">
-						<button id="searchPrevPage"><</button>
-					</c:if>
-		
-					<c:forEach var="p" begin="${ requestScope.pageInfo.startPage }" end="${ requestScope.pageInfo.endPage }" step="1">
-						<c:if test="${ requestScope.pageInfo.pageNo eq p }">
-							<button disabled><c:out value="${ p }"/></button>
-						</c:if>
-						<c:if test="${ requestScope.pageInfo.pageNo ne p }">
-							<button onclick="seachPageButtonAction(this.innerText);"><c:out value="${ p }"/></button>
-						</c:if>
-					</c:forEach>
-					
-					<c:if test="${ requestScope.pageInfo.pageNo >= requestScope.pageInfo.maxPage }">
-						<button disabled>></button>
-					</c:if>
-					<c:if test="${ requestScope.pageInfo.pageNo < requestScope.pageInfo.maxPage }">
-						<button id="searchNextPage">></button>
-					</c:if>
-					
-					<button id="searchMaxPage">>></button> 
-			    </c:otherwise>
-			</c:choose>   
-
-							<%-- <!-- 검색 폼 -->
-							<form id="loginForm"
-								action="${ pageContext.servletContext.contextPath }/admin/search"
-								method="get">
-								<div class="search-area" align="center">
-									<c:choose>
-										<c:when test="${ !empty requestScope.searchValue }">
-										<!-- 검색 카테고리  -->
-											<select id="searchCondition" name="searchCondition">
-												<option value="adminId"
-													<c:if test="${requestScope.searchCondition eq 'adminId'}">selected</c:if>>아이디</option>
-												<option value="adminName"
-													<c:if test="${requestScope.searchCondition eq 'adminName'}">selected</c:if>>이름</option>
-											</select>
-											<!-- 입력한 값   -->
-											<input type="search" id="searchValue" name="searchValue"
-												value="${ requestScope.searchValue }">
-										</c:when>
-										<c:otherwise>
-											<select id="searchCondition" name="searchCondition">
-												<option value="adminId">아이디</option>
-												<option value="adminName">이름</option>
-											</select>
-												<!-- 어떤 검색을 했는지 넘겨주는 것   -->
-											<input type="search" id="searchValue" name="searchValue">
-										</c:otherwise>
-									</c:choose>
-									<button type="submit">검색하기</button>
-									<c:if test="${ !empty requestScope.loginMember }">
-										<button id="writeBoard">작성하기</button>
-									</c:if>
-								</div>
-							</form> --%>
-						</div>
-					</section>
-				</section>
-        	</section>
-
-
-
-	<script>
-		/*  등록하기 버튼 클릭 시  */
-		function Registration() {
-			const link = "${ pageContext.servletContext.contextPath }/admin/signup";
-			location.href = link;
-		}
-	</script>
-
-	<script>
-		/* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
-		function deleteClick() {
-			$.ajax({
-				url : "/baekgu/admin/admindelete",
-				data : {
-					isDelete : true
-				},
-				type : "post",
-				success : function(data, textStatus, xhr) {
-					console.log(xhr);
-					if (xhr.responseText == "refresh") {
-						location.reload(true)
-					} else if (xhr.responseText == "error") {
-						console.log("error")
-						location.reload(true)
+					},
+					error : function(xhr, status, error) {
+						console.log(error);
 					}
 
-				},
-				error : function(xhr, status, error) {
-					console.log(error);
-				}
+				});
+			}
+		</script>
 
-			});
-		}
-	</script>
+		<script>
+			/*  체크박스 클릭 했을 시  */
+			function checkClick(checkBox) {
+				$.ajax({
+					url : "/baekgu/admin/admindelete",
+					data : {
+						sendData : checkBox.checked,
+						adminId : checkBox.id,
+						isDelete : false
+					},
+					type : "post",
+					success : function(data, textStatus, xhr) {
+						console.log(data);
+					},
+					error : function(xhr, status, error) {
+						console.log(error);
+					}
 
-	<script>
-		/*  체크박스 클릭 했을 시  */
-		function checkClick(checkBox) {
-			$.ajax({
-				url : "/baekgu/admin/admindelete",
-				data : {
-					sendData : checkBox.checked,
-					adminId : checkBox.id,
-					isDelete : false
-				},
-				type : "post",
-				success : function(data, textStatus, xhr) {
-					console.log(data);
-				},
-				error : function(xhr, status, error) {
-					console.log(error);
-				}
-
-			});
-		}
-	</script>
+				});
+			}
+		</script>
 
 
 
-	<!--  	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
+		<!--  	/* 체크박스 삭제하기 눌렀을 때 삭제되도록 하는 것  */
 	/*	window.onload = function() {
 			var deleteManager = document.getElementById("btnDelete");
 			deleteManager.onclick = function() {
@@ -320,105 +337,113 @@
 			};
 		}; */ -->
 
-	<script>
-		const link = "${ pageContext.servletContext.contextPath }/admin/list";
-		const searchLink = "${ pageContext.servletContext.contextPath }/admin/search";
-		
-		
-		
-		if(document.getElementById("startPage")) {
-			const $startPage = document.getElementById("startPage");
-			$startPage.onclick = function() {
-				location.href = link + "?currentPage=1";
-			}
-		}
-		
-		if(document.getElementById("prevPage")) {
-			const $prevPage = document.getElementById("prevPage");
-			$prevPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
-			}
-		}
-		
-		if(document.getElementById("nextPage")) {
-			const $nextPage = document.getElementById("nextPage");
-			$nextPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
-			}
-		}
-		
-		if(document.getElementById("maxPage")) {
-			const $maxPage = document.getElementById("maxPage");
-			$maxPage.onclick = function() {
-				location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
-			}
-		}
-		
-		if(document.getElementById("searchStartPage")) {
-			const $searchStartPage = document.getElementById("searchStartPage");
-			$searchStartPage.onclick = function() {
-				location.href = searchLink + "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchPrevPage")) {
-			const $searchPrevPage = document.getElementById("searchPrevPage");
-			$searchPrevPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchNextPage")) {
-			const $searchNextPage = document.getElementById("searchNextPage");
-			$searchNextPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
-		
-		if(document.getElementById("searchMaxPage")) {
-			const $searchMaxPage = document.getElementById("searchMaxPage");
-			$searchMaxPage.onclick = function() {
-				location.href = searchLink + "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-			}
-		}
+		<script>
+			const link = "${ pageContext.servletContext.contextPath }/admin/list";
+			const searchLink = "${ pageContext.servletContext.contextPath }/admin/adminsearch";
 
-		/* td태그 안에 상세 보기 용 '/admin/adminid?id' 경로 지정  */
-		if (document.getElementsByTagName("td")) {
+			if (document.getElementById("startPage")) {
+				const $startPage = document.getElementById("startPage");
+				$startPage.onclick = function() {
+					location.href = link + "?currentPage=1";
+				}
+			}
 
-			const $tds = document.getElementsByTagName("td");
-			for (let i = 0; i < $tds.length; i++) {
+			if (document.getElementById("prevPage")) {
+				const $prevPage = document.getElementById("prevPage");
+				$prevPage.onclick = function() {
+					location.href = link
+							+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+				}
+			}
 
-				$tds[i].onmouseenter = function() {
-				 	/* this.parentNode.style.backgroundColor = "orangered"; */
-						this.parentNode.style.cursor = "pointer";  
+			if (document.getElementById("nextPage")) {
+				const $nextPage = document.getElementById("nextPage");
+				$nextPage.onclick = function() {
+					location.href = link
+							+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+				}
+			}
+
+			if (document.getElementById("maxPage")) {
+				const $maxPage = document.getElementById("maxPage");
+				$maxPage.onclick = function() {
+					location.href = link
+							+ "?currentPage=${ requestScope.pageInfo.maxPage }";
+				}
+			}
+
+			if (document.getElementById("searchStartPage")) {
+				const $searchStartPage = document
+						.getElementById("searchStartPage");
+				$searchStartPage.onclick = function() {
+					location.href = searchLink
+							+ "?currentPage=1&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				}
+			}
+
+			if (document.getElementById("searchPrevPage")) {
+				const $searchPrevPage = document
+						.getElementById("searchPrevPage");
+				$searchPrevPage.onclick = function() {
+					location.href = searchLink
+							+ "?currentPage=${ requestScope.pageInfo.pageNo - 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				}
+			}
+
+			if (document.getElementById("searchNextPage")) {
+				const $searchNextPage = document
+						.getElementById("searchNextPage");
+				$searchNextPage.onclick = function() {
+					location.href = searchLink
+							+ "?currentPage=${ requestScope.pageInfo.pageNo + 1 }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				}
+			}
+
+			if (document.getElementById("searchMaxPage")) {
+				const $searchMaxPage = document.getElementById("searchMaxPage");
+				$searchMaxPage.onclick = function() {
+					location.href = searchLink
+							+ "?currentPage=${ requestScope.pageInfo.maxPage }&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+				}
+			}
+
+			/* td태그 안에 상세 보기 용 '/admin/adminid?id' 경로 지정  */
+			if (document.getElementsByTagName("td")) {
+
+				const $tds = document.getElementsByTagName("td");
+				for (let i = 0; i < $tds.length; i++) {
+
+					$tds[i].onmouseenter = function() {
+						/* this.parentNode.style.backgroundColor = "orangered"; */
+						this.parentNode.style.cursor = "pointer";
+					}
+
+					/* 	 $tds[i].onmouseout = function() {
+							this.parentNode.style.backgroundColor = "gray"; 
+						}  */
+
+					$tds[i].onclick = function() {
+						location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id="
+								+ this.parentNode.children[1].innerText;
+
+					}
+
 				}
 
-			/* 	 $tds[i].onmouseout = function() {
-					this.parentNode.style.backgroundColor = "gray"; 
-				}  */
-
-				$tds[i].onclick = function() {
-					location.href = "${ pageContext.servletContext.contextPath }/admin/adminid?id="
-							+ this.parentNode.children[1].innerText;
-
-				}
-
 			}
 
-		}
+			function pageButtonAction(text) {
+				location.href = link + "?currentPage=" + text;
+			}
 
-		function pageButtonAction(text) {
-			location.href = link + "?currentPage=" + text;
-		}
-
-		function seachPageButtonAction(text) {
-			location.href = searchLink
-					+ "?currentPage="
-					+ text
-					+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
-		}
-	</script>
-</c:if>
+			function seachPageButtonAction(text) {
+				location.href = searchLink
+						+ "?currentPage="
+						+ text
+						+ "&searchCondition=${ requestScope.searchCondition}&searchValue=${ requestScope.searchValue}";
+			}
+		</script>
+	</c:if>
 
 
 </body>

@@ -1,96 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>백구 기업회원가입</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      background: darkslategrey;
-    }
+<title>백구 기업회원가입</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+	background: darkslategrey;
+}
 
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {
-      height: 450px
-    }
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+	height: 450px
+}
 
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      /* background-color: #f1f1f1; */
-      height: 100%;
-    }
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	/* background-color: #f1f1f1; */
+	height: 100%;
+}
 
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
 
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
 
-      .row.content {
-        height: auto;
-      }
-    }
+thead {
+	background-color: lightgrey;
+}
 
-    thead {
-      background-color: lightgrey;
-    }
+h1, h2 {
+	text-align: center;
+}
 
-    h1,
-    h2 {
-      text-align: center;
-    }
+/* submi 버튼 설정 */
+.btn-submit {
+	background-color: orange;
+	border: orange;
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+}
 
-    /* submi 버튼 설정 */
-    .btn-submit {
-      background-color: orange;
-      border: orange;
-      width: 150px;
-      height: 50px;
-      font-size: 25px;
-    }
+.btn-submit:hover {
+	background-color: orange;
+	border: orange;
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+}
 
-    .btn-submit:hover {
-      background-color: orange;
-      border: orange;
-      width: 150px;
-      height: 50px;
-      font-size: 25px;
-    }
+.btn-submit:active {
+	background-color: orange;
+	border: orange;
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+}
 
-    .btn-submit:active {
-      background-color: orange;
-      border: orange;
-      width: 150px;
-      height: 50px;
-      font-size: 25px;
-    }
-
-    .btn-submit:visited {
-      background-color: orange;
-      border: orange;
-      width: 150px;
-      height: 50px;
-      font-size: 25px;
-    }
-  </style>
-  <script>
+.btn-submit:visited {
+	background-color: orange;
+	border: orange;
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+}
+</style>
+<script>
   	$(function(){
   		
   		$('#duplicationCheck').click(function(){
@@ -136,21 +136,25 @@
   </script>
 </head>
 <body>
- 
- <jsp:include page="../common/header.jsp"/>
- 
- 
-  <div class="container-fluid text-center">
-    <div class="row content">
-      <div class="col-sm-3 sidenav">
-      </div>
-      <div class="col-sm-6 text-left" style="padding-top: 30px;">
-        <h1 style="margin-bottom: 40px;">기업 회원가입</h1>
-        <p style="padding-top: 20px;"><input type="checkbox" value=""><b> 이용약관, 개인정보 수집 및 이용, 마케팅, 이벤트 정보 수신(선택)에 모두 동의
-            합니다.</b></p>
-        <hr>
-        <p><input type="checkbox" value=""><b> </b>이용 약관 동의 (필수)</p>
-        <textarea class="form-control" rows="5" id="comment" style="margin-bottom: 30px;">
+
+	<jsp:include page="../common/header.jsp" />
+
+
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-3 sidenav"></div>
+			<div class="col-sm-6 text-left" style="padding-top: 30px;">
+				<h1 style="margin-bottom: 40px;">기업 회원가입</h1>
+				<p style="padding-top: 20px;">
+					<input type="checkbox" value=""><b> 이용약관, 개인정보 수집 및 이용,
+						마케팅, 이벤트 정보 수신(선택)에 모두 동의 합니다.</b>
+				</p>
+				<hr>
+				<p>
+					<input type="checkbox" value=""><b> </b>이용 약관 동의 (필수)
+				</p>
+				<textarea class="form-control" rows="5" id="comment"
+					style="margin-bottom: 30px;">
         기업 회원 약관 (개정 및 적용 2021. 05. 08)
         
         제1장 총칙
@@ -413,174 +417,180 @@
         2021. 05. 08
         (주)백세구직
       </textarea>
-        <p style="padding-top: 30px;"><input type="checkbox" value=""><b> </b>개인정보 수집 이용 동의 (필수)</p>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>이용 목적</th>
-              <th>개인정보 항목</th>
-              <th>보유 및 이용기간</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                본인 확인 및 부정 이용방지
-              </td>
-              <td>
-                아이디, 비밀번호, 기업구분, 상호명, 사업자등록번호, 이메일, 이름, 생년월일, 성별, 휴대폰 전화번호
-              </td>
-              <td>
-                회원 탈퇴시까지 또는 고객 요청시</td>
-            </tr>
-          </tbody>
-        </table>
-        <small>* 필수 수집 정보는 서비스 이용에 필요한 최소한의 정보이며, 동의를 해야만 서비스를 이용할 수 있습니다.</small><br><br>
-        <p style="padding-top: 30px;"><input type="checkbox" value=""><b> </b>마케팅, 이벤트정보 수신 동의 (선택)</p>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>이용 목적</th>
-              <th>개인정보 항목</th>
-              <th>보유 및 이용기간</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                이용자에게 맞춤형 구직활동 지원
-              </td>
-              <td>
-                이름, 상호(기업)명, 휴대폰 번호, 이메일
-              </td>
-              <td>회원 탈퇴시까지 또는 고객 요청에 따라 개인정보 이용동의 철회 요청시까지</td>
-            </tr>
-          </tbody>
-        </table>
-        <small>* 선택적 수집항목은 동의하지 않아도 회원가입은 가능하나, 혜택 안내가 제한될 수 있습니다.</small>
-        <hr>
-      </div>
-      <hr>
-    </div>
-  </div>
-  <div class="container-fluid text-center">
-    <div class="row content">
-      <div class="col-sm-4 sidenav">
-      </div>
-      <div class="col-sm-4 text-left">
-          <form action="${ pageContext.servletContext.contextPath }/business/signup" method="POST" onsubmit="return validate();" encType="multipart/form-data">
-          <h2 style="padding-top: 30px; padding-bottom: 20px;">기업정보</h2>
-          <div class="form-group">
-            <label for="buser">기업/상호명 (필수)</label>
-            <input type="text" class="form-control" id="bname" placeholder="기업/상호명 입력" name="bName" required>
-          </div>
-          <div class="form-group">
-            <label for="regnum">사업자번호 (필수)</label>
-            <div class="form-group row">
-              <div class="col-xs-12">
-                <input class="form-control" id="businessNo" type="text"  name="businessNo" required>
-              </div>
-            </div>
-            <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
-          </div>
-          <div class="form-group">
-            <label for="owner">대표자명</label>
-            <input type="text" class="form-control" id="ownerName" placeholder="대표자 명 입력" name="ownerName">
-          </div>
-          <div class="form-group">
-            <label for="business_categroy">기업 분류</label>
-				<select name="BC" id="BC_select" class= "form-control">
-				    <option>----선택-----</option>
-				    <option value="1">미분류</option>
-				    <option value="2">일반기업</option>
-				    <option value="3">공기업</option>
-				    <option value="4">사회적기업</option>
-				    <option value="5">공공기관</option>
-				</select>
-
-            </div>
-          <div class="form-group">
-            <label for="regnum">연 매출액 </label>
-            <div class="form-group row">
-              <div class="col-xs-10">
-                <input class="form-control" id="profit" type="text" placeholder="숫자로만 입력해주세요 단위 : 원"  name="profit">
-              </div>
-            </div>
-            <small>백만원 단위로 입력해주세요.</small>
-          </div>
-          <div class="form-group">
-            <label for="bphone">기업 전화번호 (필수)</label>
-            <input type="text" class="form-control" id="bPhone" placeholder="기업 전화번호" name="bPhone">
-            <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
-          </div>
-          <div class="form-group">
-          
-           <label for="bsaddress">기업 주소</label>
-            <br>
-            <small>우편 번호</small>
-            <input type="button" value="검색" class="btn btn-yg" id="searchZipCode">
-            <input type="text" name="zipCode" id="zipCode" readonly class= "form-control">
-           
-            <br>
-            <small>주소</small>
-            <input type="text" name="address1" id="address1" readonly class= "form-control">
-            <br>
-            <small>상세주소</small>
-            <input type="text" name="address2" id="address2" class= "form-control" required>
-          </div>
-          
-          <!-- 기업 로고  -->
-            <div class="" id="bLogo">
-	           <label for="bLogo">회사 로고</label>
-	           <br>
-			   <img id="bLogo1" width="120" height="100"><br>
-        	   <input type="file" name="bLogo" onchange="loadImg(this,1)"/>
+				<p style="padding-top: 30px;">
+					<input type="checkbox" value=""><b> </b>개인정보 수집 이용 동의 (필수)
+				</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>이용 목적</th>
+							<th>개인정보 항목</th>
+							<th>보유 및 이용기간</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>본인 확인 및 부정 이용방지</td>
+							<td>아이디, 비밀번호, 기업구분, 상호명, 사업자등록번호, 이메일, 이름, 생년월일, 성별, 휴대폰
+								전화번호</td>
+							<td>회원 탈퇴시까지 또는 고객 요청시</td>
+						</tr>
+					</tbody>
+				</table>
+				<small>* 필수 수집 정보는 서비스 이용에 필요한 최소한의 정보이며, 동의를 해야만 서비스를 이용할 수
+					있습니다.</small><br>
+				<br>
+				<p style="padding-top: 30px;">
+					<input type="checkbox" value=""><b> </b>마케팅, 이벤트정보 수신 동의
+					(선택)
+				</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>이용 목적</th>
+							<th>개인정보 항목</th>
+							<th>보유 및 이용기간</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>이용자에게 맞춤형 구직활동 지원</td>
+							<td>이름, 상호(기업)명, 휴대폰 번호, 이메일</td>
+							<td>회원 탈퇴시까지 또는 고객 요청에 따라 개인정보 이용동의 철회 요청시까지</td>
+						</tr>
+					</tbody>
+				</table>
+				<small>* 선택적 수집항목은 동의하지 않아도 회원가입은 가능하나, 혜택 안내가 제한될 수 있습니다.</small>
+				<hr>
 			</div>
-          <hr>
-          <!-- 이름, 휴대폰 번호, 이메일 -->
-          <h2 style="padding-top: 30px;">담당자 정보</h2>
-          <div class="form-group">
-            <label for="bid">아이디(필수)</label>
-            <input type="text" class="form-control" id="hrId_1" placeholder="아이디" name="hrId">
-            <div id="checkMessage" style="font-size : 23px; color: red; text-align: center;">
-			</div>   
-            <input type="button" id="duplicationCheck" class="btn-btn-or" value="중복 확인" required>
-            <input type="hidden" id="checkId" name="checkId" value="fail">
-          </div>
-          <div class="form-group">
-            <label for="bpwd">비밀 번호 (필수)</label>
-            <input type="password" class="form-control" id="enteredPwd" placeholder="비밀 번호 입력"  name="enteredPwd" required>
-          </div>
-          <div class="form-group">
-            <label for="bpwd">비밀 번호 확인(필수)</label>
-            <input type="password" class="form-control" id="checkPwd" placeholder="비밀 번호 확인" name="checkPwd" required>
-          </div>
-          <div class="form-group" style="padding-top: 10px;">
-            <label for="user">이름 (필수)</label>
-            <input type="text" class="form-control" id="userName" placeholder="담당자 이름" name="hrName" required>
-          </div>
-          <div class="form-group">
-            <label for="buphone">휴대폰 번호 (필수)</label>
-            <input type="text" class="form-control" id="hrPhone" placeholder="휴대폰 번호" name="hrPhone" required>
-            <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
-          </div>
-          <div class="form-group">
-            <label for="">이메일 (필수)</label>
-                <input class="form-control" id="hrEmail" type="text" name="hrEmail">
-          </div>
-          <div class="form-group" style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
-            <input type="submit" id="btnSubmit" class="btn btn-info btn-submit" value="확인">
-          </div>
-      </form>
-      </div>
-      <div class="col-sm-1 sidenav">
-      </div>
-    </div>
-  </div>
+			<hr>
+		</div>
+	</div>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-4 sidenav"></div>
+			<div class="col-sm-4 text-left">
+				<form
+					action="${ pageContext.servletContext.contextPath }/business/signup"
+					method="POST" onsubmit="return validate();"
+					encType="multipart/form-data">
+					<h2 style="padding-top: 30px; padding-bottom: 20px;">기업정보</h2>
+					<div class="form-group">
+						<label for="buser">기업/상호명 (필수)</label> <input type="text"
+							class="form-control" id="bname" placeholder="기업/상호명 입력"
+							name="bName" required>
+					</div>
+					<div class="form-group">
+						<label for="regnum">사업자번호 (필수)</label>
+						<div class="form-group row">
+							<div class="col-xs-12">
+								<input class="form-control" id="businessNo" type="text"
+									name="businessNo" required>
+							</div>
+						</div>
+						<small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
+					</div>
+					<div class="form-group">
+						<label for="owner">대표자명</label> <input type="text"
+							class="form-control" id="ownerName" placeholder="대표자 명 입력"
+							name="ownerName">
+					</div>
+					<div class="form-group">
+						<label for="business_categroy">기업 분류</label> <select name="BC"
+							id="BC_select" class="form-control">
+							<option>----선택-----</option>
+							<option value="1">미분류</option>
+							<option value="2">일반기업</option>
+							<option value="3">공기업</option>
+							<option value="4">사회적기업</option>
+							<option value="5">공공기관</option>
+						</select>
 
-  <jsp:include page="../common/footer.jsp"/>
-  <!-- 기업 이미지 넣기 -->
-  <script>
+					</div>
+					<div class="form-group">
+						<label for="regnum">연 매출액 </label>
+						<div class="form-group row">
+							<div class="col-xs-10">
+								<input class="form-control" id="profit" type="text"
+									placeholder="숫자로만 입력해주세요 단위 : 원" name="profit">
+							</div>
+						</div>
+						<small>백만원 단위로 입력해주세요.</small>
+					</div>
+					<div class="form-group">
+						<label for="bphone">기업 전화번호 (필수)</label> <input type="text"
+							class="form-control" id="bPhone" placeholder="기업 전화번호"
+							name="bPhone"> <small>특수문자(-)를 제외한 숫자만 입력하세요.</small>
+					</div>
+					<div class="form-group">
+
+						<label for="bsaddress">기업 주소</label> <br> <small>우편
+							번호</small> <input type="button" value="검색" class="btn btn-yg"
+							id="searchZipCode"> <input type="text" name="zipCode"
+							id="zipCode" readonly class="form-control"> <br> <small>주소</small>
+						<input type="text" name="address1" id="address1" readonly
+							class="form-control"> <br> <small>상세주소</small> <input
+							type="text" name="address2" id="address2" class="form-control"
+							required>
+					</div>
+
+					<!-- 기업 로고  -->
+					<div class="" id="bLogo">
+						<label for="bLogo">회사 로고</label> <br> <img id="bLogo1"
+							width="120" height="100"><br> <input type="file"
+							name="bLogo" onchange="loadImg(this,1)" />
+					</div>
+					<hr>
+					<!-- 이름, 휴대폰 번호, 이메일 -->
+					<h2 style="padding-top: 30px;">담당자 정보</h2>
+					<div class="form-group">
+						<label for="bid">아이디(필수)</label> <input type="text"
+							class="form-control" id="hrId_1" placeholder="아이디" name="hrId">
+						<div id="checkMessage"
+							style="font-size: 23px; color: red; text-align: center;"></div>
+						<input type="button" id="duplicationCheck" class="btn-btn-or"
+							value="중복 확인" required> <input type="hidden" id="checkId"
+							name="checkId" value="fail">
+					</div>
+					<div class="form-group">
+						<label for="bpwd">비밀 번호 (필수)</label> <input type="password"
+							class="form-control" id="enteredPwd" placeholder="비밀 번호 입력"
+							name="enteredPwd" required>
+					</div>
+					<div class="form-group">
+						<label for="bpwd">비밀 번호 확인(필수)</label> <input type="password"
+							class="form-control" id="checkPwd" placeholder="비밀 번호 확인"
+							name="checkPwd" required>
+					</div>
+					<div class="form-group" style="padding-top: 10px;">
+						<label for="user">이름 (필수)</label> <input type="text"
+							class="form-control" id="userName" placeholder="담당자 이름"
+							name="hrName" required>
+					</div>
+					<div class="form-group">
+						<label for="buphone">휴대폰 번호 (필수)</label> <input type="text"
+							class="form-control" id="hrPhone" placeholder="휴대폰 번호"
+							name="hrPhone" required> <small>특수문자(-)를 제외한 숫자만
+							입력하세요.</small>
+					</div>
+					<div class="form-group">
+						<label for="">이메일 (필수)</label> <input class="form-control"
+							id="hrEmail" type="text" name="hrEmail">
+					</div>
+					<div class="form-group"
+						style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
+						<input type="submit" id="btnSubmit"
+							class="btn btn-info btn-submit" value="확인">
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-1 sidenav"></div>
+		</div>
+	</div>
+
+	<jsp:include page="../common/footer.jsp" />
+	<!-- 기업 이미지 넣기 -->
+	<script>
 	const $bLogo = document.getElementById("bLogo");
 	
 	$bLogo.onclick = function() {
@@ -602,11 +612,12 @@
 	}
   </script>
 
-<!-- 다음 우편번호 api -->
+	<!-- 다음 우편번호 api -->
 	<!-- key 발급 없이 무제한으로 이용이 가능하다. -->
 	<!-- 아래 스크립트를 불러온 후 사용해야 한다. -->
 	<!-- 참고 링크 : http://postcode.map.daum.net/guide -->
-	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		const $searchZipCode = document.getElementById("searchZipCode");
 		
@@ -624,11 +635,10 @@
 		}
 	</script>
 
- <!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 --> 
-    <script>
+	<!-- 회원가입 유효성 검사: 정규식을 통한 alert창 띄우기 -->
+	<script>
 
        function validate(){
-       
           var bName = document.getElementById("bName");
           var businessNo = document.getElementById("businessNo"); 
           var owner = document.getElementById("owner");
@@ -745,7 +755,7 @@
        
        }
        </script>
-   <!-- script 끝남 -->
+	<!-- script 끝남 -->
 
 </body>
 </html>

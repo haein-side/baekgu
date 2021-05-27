@@ -32,6 +32,7 @@ public class BusinessPasswordEncryptFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
+		
 		HttpServletRequest hrequest = (HttpServletRequest) request;
 	
 		String uri = hrequest.getRequestURI();
@@ -44,6 +45,9 @@ public class BusinessPasswordEncryptFilter implements Filter {
 		
 	//		System.out.println("Encrypt test");
 			System.out.println("비밀번호 암호화처리 필터 작동!");
+			
+			
+			
 			
 			EncryptReqeustWrapper wrapper = new EncryptReqeustWrapper(hrequest);
 				
