@@ -38,9 +38,7 @@
     </head>
     <body>
    <jsp:include page="../common/header.jsp"/>
-                </div>
-            </aside>
-            <!--sidebar end-->
+         
 
             <!--main content start-->
             <section id="main-content">
@@ -81,11 +79,11 @@
                                   <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
-                              <div class="form-group ">
+                             <div class="form-group ">
                                 <label for="curl" class="control-label col-lg-2">비밀번호</label>
                                 <div class="col-lg-10">
                                   <input class="form-control " id="adminPwd"  name="enteredPwd" type="password" required/>
-                                </div>
+                                </div> 
                               </div>
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이메일 </label>
@@ -119,7 +117,7 @@
                   </div>   
                    <!-- 관리자 및 직원 등록   -->
             </section>
-            <!--main content end-->
+         
             
    <!--  등록하기 버튼 클릭 시  리스트로 넘어감. -->
       <script>
@@ -144,9 +142,9 @@
    				},
    				success: function(data,textStatus,xhr) {
    					if(data == 'success') {
-   						alert("이용하세요");
+   						alert("현재 아이디를 사용하셔도 됩니다.");
    					}  else {
-   						alert("중복된 아이디입니다.");
+   						alert("중복된 아이디입니다. 다른 아이디를 사용해주세요.");
    						$("#adminId").select();
    					}
    					

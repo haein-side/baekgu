@@ -52,7 +52,6 @@
                             <h3 class="page-header">
                                 <i class="fa fa-laptop"></i>
                                 공고관리</h3>
-                            
                         </div>
                     </div>
                 </section>
@@ -62,6 +61,12 @@
                       <section class="panel">
                         <header class="panel-heading">
                           공고 리스트
+                          <a class="btn btn-success" href="${ pageContext.servletContext.contextPath }/admin/posting" style="margin-left: 30px;">
+                            게시중 모아보기
+                        </a>
+                        <a class="btn btn-warning" href="${ pageContext.servletContext.contextPath }/admin/posted" style="margin-left: 30px;">
+                            게시종료 모아보기
+                        </a>
                         </header>
                         <div class="table-responsive">
                           <table class="table">
@@ -182,27 +187,20 @@
 				<c:choose>
 				    <c:when test="${ !empty requestScope.searchValue }">
    					    <select id="searchCondition" name="searchCondition">
-							<option value="name" <c:if test="${requestScope.searchCondition eq 'name'}">selected</c:if>>기업명</option>
-							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>기업코드</option>
-							<option value="category" <c:if test="${requestScope.searchCondition eq 'category'}">selected</c:if>>기업분류</option>
-							<option value="state" <c:if test="${requestScope.searchCondition eq 'state'}">selected</c:if>>승인여부</option>
+							<option value="code" <c:if test="${requestScope.searchCondition eq 'code'}">selected</c:if>>공고코드</option>
+							<option value="state" <c:if test="${requestScope.searchCondition eq 'state'}">selected</c:if>>온라인 여부</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" value="${ requestScope.searchValue }">
 				    </c:when>
 				    <c:otherwise>
 					    <select id="searchCondition" name="searchCondition">
-							<option value="name">기업명</option>
-							<option value="code">기업코드</option>
-							<option value="category">기업분류</option>
-							<option value="state">승인여부</option>
+							<option value="code">공고코드</option>
+							<option value="state">온라인 여부</option>
 						</select>
 				        <input type="search" id="searchValue" name="searchValue" >
 				    </c:otherwise>
 				</c:choose>
 				<button type="submit">검색하기</button>
-				<c:if test="${ !empty requestScope.loginMember }">
-					<button id="writeBoard">작성하기</button>
-				</c:if>
 			</div>
 		</form>
 		<script>
@@ -277,7 +275,6 @@
 				
 				$tds[i].onclick = function() {
 					
-					/* alert(this.parentNode.children[0].innerText); */ //유저코드를 알럿으로 띄워 알 수 있다.
 					const no = this.parentNode.children[0].innerText;
 					location.href = "${ pageContext.servletContext.contextPath }/admin/postDetail?no=" + no;
 					

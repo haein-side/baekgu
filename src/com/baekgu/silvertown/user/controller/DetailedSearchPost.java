@@ -108,6 +108,17 @@ public class DetailedSearchPost extends HttpServlet {
 		         period = array[4].replace("&", "");
 		         System.out.println("period : " + period);
 		         
+		         // 마지막 선택 값이 "무관"일 때 period를 30이란 특이값으로 만들어줌 
+		    	  if (period.equals("1")) {
+		    		   
+		    			  System.out.println("마지막 선택값이 무관인 경우");
+		    			  
+		    				  period = "30";
+		    		
+		    			  System.out.println("period가 바뀌었는지 보기 : " + period);
+		    	  }
+		         
+		         
 		   }
 		  
 		   // 시간 (복수선택 가능)
@@ -162,7 +173,7 @@ public class DetailedSearchPost extends HttpServlet {
 			
 			// 상세검색 비즈니스 로직 처리
 			/* selectBestPost - 모든 검색 조건 부합 */
-			List<DetailedSearchPostDTO> selectBestPost = searchService.selectBestPost(dSearchPost);
+			List<DetailedSearchPostDTO> selectPost = searchService.selectBestPost(dSearchPost);
 			
 			/* selectNormalPost - 경력 제외 조건 부합 */
 			List<DetailedSearchPostDTO> selectNormalPost = searchService.selectNormalPost(dSearchPost);
@@ -173,60 +184,28 @@ public class DetailedSearchPost extends HttpServlet {
 			/* selectJobAdPost - 직종광고 */
 			List<SearchPostDTO> selectJobAdPost = searchService.selectJobAdPost(jobCode);
 			
+			// 응답페이지 처리
+			String path = "";
+		    if(selectNormalPost != null) {
+		    	
+				 path = "/WEB-INF/views/customer/main/postlist.jsp";
+				 request.setAttribute("selectInAdPost", selectInAdPost);
+				 request.setAttribute("selectJobAdPost", selectJobAdPost);
+				 request.setAttribute("selectPost", selectPost);
+				 request.setAttribute("selectNormalPost", selectNormalPost);
+				 
+				 System.out.println("보내기전 selectPost 확인 : " + selectPost);
+		    	 
+			} else {
+				path = "/WEB-INF/views/user/common/errorPage.jsp";
+				request.setAttribute("message", "공고조회를 실패했습니다.");
+			}
+			
+		    request.getRequestDispatcher(path).forward(request, response);
+			
+			
 	}
 
 	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("post");
-		
-		
-		String select = request.getParameter("location");
-		
-		System.out.println("selectedList : " + select);	
-		
-		String[] array = select.split("!");
-		
-		for(int i=0; i<array.length;i++) {
-					System.out.println("array[" + i + "] : " + array[i]);
-					}
-		
-		System.out.println("========");
-		
-		// 지역
-		String[] location = array[0].split("&");
-		
-		for(int i=0 ; i < location.length;i++) {
-			System.out.println("location[" + i + "] : " + location[i]);
-			}
-		
-		String location1 = location[0];
-		String location2 = location[1];
-		
-		// 업종
-		String industry = array[1].replace("&", "");
-		
-		// 직종
-		String job = array[2].replace("&", "");
-		
-		// 경력
-		String exp = array[3].replace("&", "");
-		
-		// 기간
-		String period = array[4].replace("&", "");
-		
-		// 시간
-		String time = array[5].replace("&","");
-		
-		System.out.println(location1);
-		System.out.println(location2);
-		System.out.println(industry);
-		System.out.println(job);
-		System.out.println(exp);
-		System.out.println(period);
-		System.out.println(time);
-	
-	}
 
 }
