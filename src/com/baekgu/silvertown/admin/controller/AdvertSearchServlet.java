@@ -35,7 +35,7 @@ public class AdvertSearchServlet extends HttpServlet {
 		 * 전달받은 페이지 수 이다.
 		 */
 		String currentPage = request.getParameter("currentPage");
-		int pageNo = 1;
+		int pageNo = 0;
 
 		if (currentPage != null && !"".equals(currentPage)) {
 			pageNo = Integer.parseInt(currentPage);
@@ -52,12 +52,25 @@ public class AdvertSearchServlet extends HttpServlet {
 		System.out.println("totalCount : " + totalCount );
 		
 		int limit = 10;
-		int buttonAmount = 0;
+		int buttonAmount = 5;
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
 		
 		List<AdvertDTO>  advertDTO = advertService.advertSelectSearch(searchSelect, searchInput, pageInfo);
 		
+		String path = "";
+		if (advertDTO != null) {
+			path = "/WEB-INF/views/admin/main/Advert.jsp";
+			request.setAttribute("advertList", advertDTO);
+			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("searchSelect", searchSelect);
+			request.setAttribute("searchInput", searchInput);
+		} else {
+			path = "/WEB-INF/views/admin/common/errorPage.jsp";
+			request.setAttribute("message", "광고 검색에 실패했습니다. 관련 문의는 개발자에게 문의해주세요.");
+		}
+
+		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 
