@@ -15,6 +15,7 @@ public class BusinessPostDTO {
 	private String postManager;
 	private String industry;
 	private String job;
+	private int weeks;
 	
 	public BusinessPostDTO() {
 		super();
@@ -121,6 +122,14 @@ public class BusinessPostDTO {
 
 	public void setJob(String job) {
 		this.job = job;
+	}
+
+	public int getWeeks() {
+		return weeks;
+	}
+
+	public void setWeeks(int weeks) {
+		this.weeks = weeks;
 	}
 
 	@Override

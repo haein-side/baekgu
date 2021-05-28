@@ -67,7 +67,6 @@ public class BusinessAdvertiseServlet extends HttpServlet {
             }
         }
 		
-		int totalCount = hold; // 전체 공고 수 
 		
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
@@ -77,38 +76,27 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
 		/* JDBC 시작 - 공고 조회 */
 		
-		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, hold, limit, buttonAmount, "접수");
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, hold, limit, buttonAmount, "광고접수");
 
-		List<?> postList = (List<BusinessPostDTO>)businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		List<?> postAdList = (List<BusinessPostDTO>)businessService.selectPostList(loggedInUser.getbId(), pageInfo);
+		
+		System.out.println("JINSEO JJANG"+postAdList);
 		
 		String path = "";
 
-		if(postList != null) {
+		if(postAdList != null) {
 			path = "/WEB-INF/views/business/main/advertise.jsp";
 						
-			request.setAttribute("postList", postList);
+			request.setAttribute("postAdList", postAdList);
 			request.setAttribute("pageInfo", pageInfo); 
-			request.setAttribute("total", totalCount);
-			request.setAttribute("hold", hold);
-			request.setAttribute("approved", approved);
-			request.setAttribute("rejected", rejected);
-		} 
-		
-		
-		
-		
+			
+		}
 //			else {
 //			path = "/WEB-INF/views/common/failed.jsp";
 //			request.setAttribute("message", "게시물 목록 조회 실패!");
 //		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-		
-
-		request.getRequestDispatcher(path).forward(request, response);
-
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

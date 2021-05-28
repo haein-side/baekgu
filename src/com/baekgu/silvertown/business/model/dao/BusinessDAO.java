@@ -168,7 +168,90 @@ public class BusinessDAO {
 		
 		String query;
 		
-		if(pageInfo.getCategory() != null) {
+		if(pageInfo.getCategory() == null) {
+			
+			List<BusinessApplicablePostDTO> postList = null;
+			
+			query = prop.getProperty("selectApplicationList");
+			
+			try {
+				psmt = con.prepareStatement(query);
+				
+				psmt.setString(1, loggedId);
+				psmt.setInt(2, pageInfo.getStartRow());
+				psmt.setInt(3, pageInfo.getEndRow());
+				
+				
+				rset = psmt.executeQuery();
+				
+				postList = new ArrayList<>();
+				
+				while(rset.next()) {
+					BusinessApplicablePostDTO aPost = new BusinessApplicablePostDTO();
+					
+					aPost.setPostCode(rset.getInt("POST_CODE"));
+					aPost.setManagerName(rset.getString("POST_M_NAME"));
+					aPost.setPostTitle(rset.getString("POST_TITLE"));
+					aPost.setPostTO(rset.getInt("POST_TO"));
+					aPost.setPostEnd(rset.getDate("POST_END"));
+					aPost.setCountOfApplicants(rset.getInt("countOfApplicant"));
+					aPost.setCountOfUnreadResume(rset.getInt("unreadResume"));
+					
+					postList.add(aPost);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(psmt);
+			}
+			
+			return postList;
+			
+		}else if(pageInfo.getCategory().equals("광고접수")) {
+			
+			List<BusinessPostDTO> postAdList = null;
+			
+			query = prop.getProperty("AdPostList");
+			
+			try {
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, loggedId);
+				
+				rset = psmt.executeQuery();
+				
+				postAdList = new ArrayList<>();
+				
+				while(rset.next()) {
+					BusinessPostDTO aPost = new BusinessPostDTO();
+					
+					aPost.setPostCode(rset.getInt("POST_CODE"));
+					aPost.setPostManager(rset.getString("POST_M_NAME"));
+					aPost.setPostDate(rset.getDate("POST_DATE"));
+					aPost.setPostTitle(rset.getString("POST_TITLE"));
+					aPost.setPostStart(rset.getDate("POST_START"));
+					aPost.setPostEnd(rset.getDate("POST_END"));
+					aPost.setJob(rset.getString("JOB_NAME"));
+					aPost.setIndustry(rset.getString("INDUSTRY_NAME"));
+					aPost.setWeeks(rset.getInt("WEEKS"));
+					
+					postAdList.add(aPost);
+					
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(psmt);
+			}
+			
+			return postAdList;
+			
+		}else {
+			
 			List<BusinessPostDTO> postList = null;
 			
 			/* 페이지 카테고리에 따른 분기처리 */
@@ -222,49 +305,6 @@ public class BusinessDAO {
 			}
 			
 			return postList;
-
-		/* 지원자가 있는 공고 조회 */	
-		}else {
-			List<BusinessApplicablePostDTO> postList = null;
-						
-			query = prop.getProperty("selectApplicationList");
-			
-			try {
-				psmt = con.prepareStatement(query);
-				
-				psmt.setString(1, loggedId);
-				psmt.setInt(2, pageInfo.getStartRow());
-				psmt.setInt(3, pageInfo.getEndRow());
-				
-				
-				rset = psmt.executeQuery();
-				
-				postList = new ArrayList<>();
-				
-				while(rset.next()) {
-					BusinessApplicablePostDTO aPost = new BusinessApplicablePostDTO();
-					
-					aPost.setPostCode(rset.getInt("POST_CODE"));
-					aPost.setManagerName(rset.getString("POST_M_NAME"));
-					aPost.setPostTitle(rset.getString("POST_TITLE"));
-					aPost.setPostTO(rset.getInt("POST_TO"));
-					aPost.setPostEnd(rset.getDate("POST_END"));
-					aPost.setCountOfApplicants(rset.getInt("countOfApplicant"));
-					aPost.setCountOfUnreadResume(rset.getInt("unreadResume"));
-					
-					postList.add(aPost);
-					
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(psmt);
-			}
-			
-			return postList;
-			
 		}
 	}
 

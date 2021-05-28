@@ -79,7 +79,7 @@
       <p style="text-align: right;">
         130,000원 / 7일
         <br>
-        <input type="button" class="btn btn-warning" value="이 상품 담기" />
+        <input type="button" class="btn btn-warning" value="이 상품 담기" id="premium1"/>
       </p>
       </button>
 
@@ -99,7 +99,7 @@
       <p style="text-align: right;">
         100,000원 / 7일
         <br>
-        <input type="button" class="btn btn-warning" value="이 상품 담기" />
+        <input type="button" class="btn btn-warning" value="이 상품 담기"  />
       </p>
       </button>
 
@@ -152,7 +152,7 @@
     	</div>
 	
 	 <hr>	
-	 <h3>광고 신청한 공고 리스트</h3>
+	 <h3>광고신청 가능한 공고 리스트</h3>
 	 <ul style="padding-left: 25px;">
 	 	<li>공고를 선택하여 주세요</li>
         <li>광고는 심사중인(접수) 공고에만 신청하실 수 있습니다(이미 승인된 공고에는 신청이 불가합니다)</li>
@@ -163,7 +163,10 @@
 	 <table class="table table-bordered">
           <thead>
             <tr>
+              <th style="display:none">공고코드</th>
               <th>공고담당자</th>
+              <th>업종</th>
+              <th>직종</th>
               <th>공고제목</th>
               <th>공고시작일</th>
               <th>공고마감일</th>
@@ -171,27 +174,185 @@
             </tr>
           </thead>
           <tbody>
-            <c:forEach var="holdPost" items="${ requestScope.holdPostList }">
+          
+         
+            <c:forEach var="postAd" items="${ requestScope.postAdList }">
 			<tr> 
- 				<td><c:out value="${ report.reportDate }"/></td>
- 				<td><c:out value="${ report.managerName }"/></td>
-				<td><c:out value="${ report.postTitle }"/></td>
-				<td><c:out value="${ report.userName }"/></td>
-				<td><c:out value="${ report.reportReason }"/></td>
-				<td><c:out value="${ report.decisionStatus }"/></td>
-				<td><c:out value="${ report.decisionDate }"/></td>
-				<td><c:out value="${ report.decisionReason }"/></td>
+ 				<td style="display:none"><c:out value="${ postAd.postCode }"/></td>
+ 				<td><c:out value="${ postAd.postManager }"/></td>
+ 				<td><c:out value="${ postAd.industry }"/></td>
+ 				<td><c:out value="${ postAd.job }"/></td>
+				<td><c:out value="${ postAd.postTitle }"/></td>
+				<td><c:out value="${ postAd.postStart }"/></td>
+				<td><c:out value="${ postAd.postEnd }"/></td>
+				<td><c:out value="${ postAd.weeks }"/></td>
 			</tr>
 			</c:forEach> 
           </tbody>
         </table>
 
+		<hr>
+		<h3>선택한 상품과 공고</h3>
+		<ul style="padding-left: 25px;">
+			<li style="color:red">결제는 해당 공고가 승인이 난 후, 결제관리 페이지에서 가능합니다!</li>
+		</ul>
+		<form action="business/advertise" method="post" style="margin-bottom: 50px">
+			<input style="display:none;" type="text" name="selectedPostCode" id="selectedPostCode" value="" style="margin-left:20px" readonly required/>
+			
+			<label> 공고 담당자 - </label> <input type="text" name="selectedManager" id="selectedManager" value="" style="margin-left:15px" readonly required/>
+			<br>
+			<label> 업종 -  </label><input type="text" name="selectedIndustry" id="selectedIndustry" value="" style="margin-left:15px" readonly required/>
+			<br>			
+			<label> 직종 -  </label><input type="text" name="selectedJob" id="selectedJob" value="" style="margin-left:15px" readonly required/>
+			<br>
+			<label> 공고 제목 -  </label><input type="text" name="selectedPostTitle" id="selectedPostTitle" value="" style="margin-left:15px" size="70" readonly required>
+			<br>
+			<label> 공고 기간(단위 : 일주일) -  </label><input type="text" name="selectedWeeks" id="selectedWeeks" value="" style="margin-left:15px" readonly required/>
+			<br><br>
+			<label> 광고 상품 -  </label><input type="text" name="selectedAd" id="selectedAd" value="" style="margin-left:15px" readonly required/>
+			<br><br>
+			<label> 총 예상 금액 -  </label><input type="text" name="totalPrice" id="totalPrice" value="" style="margin-left:15px" readonly required/>
+			
+			<button type="submit">광고 신청</button>
+			<button type="reset">다시 선택하기</button>
+		</form>
     </div>
-    
   </div>
 </div>
 
 <jsp:include page="../common/footer.jsp"/>
+
+<script>
+window.onload = function(){
+	const link = "${ pageContext.servletContext.contextPath }/business/advertise";
+	const categoryLink = "${ pageContext.servletContext.contextPath }/business/advertise";
+		
+	const $premium1 = document.getElementById("premium1")
+	$premium1.onclick = function() {
+		
+		document.getElementById("selectedAd").value = "프리미엄 업종 상단";
+
+	}
+	
+	if(document.getElementById("startPage")) {
+		const $startPage = document.getElementById("startPage");
+		$startPage.onclick = function() {
+			location.href = link + "?currentPage=1";
+		}
+	}
+	
+	if(document.getElementById("prevPage")) {
+		const $prevPage = document.getElementById("prevPage");
+		$prevPage.onclick = function() {
+			location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo - 1 }";
+		}
+	}
+	
+	if(document.getElementById("nextPage")) {
+		const $nextPage = document.getElementById("nextPage");
+		$nextPage.onclick = function() {
+			location.href = link + "?currentPage=${ requestScope.pageInfo.pageNo + 1 }";
+		}
+	}
+	
+	if(document.getElementById("maxPage")) {
+		const $maxPage = document.getElementById("maxPage");
+		$maxPage.onclick = function() {
+			location.href = link + "?currentPage=${ requestScope.pageInfo.maxPage }";
+		}
+	}
+	
+	if(document.getElementsByTagName("td")) {
+		
+		const $tds = document.getElementsByTagName("td");
+		for(let i = 0; i < $tds.length; i++) {
+			
+			$tds[i].onmouseenter = function() {
+				this.parentNode.style.backgroundColor = "green";
+				this.parentNode.style.cursor = "pointer";
+			}
+			
+			$tds[i].onmouseout = function() {
+				this.parentNode.style.backgroundColor = "white";
+			}
+			
+			$tds[i].onclick = function() {
+				document.getElementById("selectedPostCode").value = this.parentNode.children[0].innerText;
+				
+				document.getElementById("selectedManager").value = this.parentNode.children[1].innerText;
+				document.getElementById("selectedIndustry").value = this.parentNode.children[2].innerText;
+				document.getElementById("selectedJob").value = this.parentNode.children[3].innerText;
+				document.getElementById("selectedPostTitle").value = this.parentNode.children[4].innerText;
+				document.getElementById("selectedWeeks").value = this.parentNode.children[7].innerText;
+				
+/* 				document.getElementById("selectedAd").value = this.parentNode.children[4].innerText;
+ */				
+/* 				document.getElementById("totalPrice").value = this.parentNode.children[4].innerText;
+ */			} 
+		}
+		
+		/* for(let j = 6; j < $tds.length; j+=8){
+			
+			$tds[j].onchange = function(event){ */
+				/* console.log(event)
+				const no = this.parentNode.children[j]; */
+				/* alert("해당 지원자의 합격여부를 \"" + event.target.value + "\"(으)로 변경하였습니다.");
+					const no = this.parentNode.children[0].innerText; // row별 applycode를 가져온다.
+				
+					let decision = 0;
+					switch(event.target.value){
+					case "미분류":
+						decision = 1;
+						break;
+					case "합격":
+						decision = 2;
+						break;
+					case "불합격":
+						decision += 3;
+						break;
+					}
+					
+					const postCode = ${ requestScope.applicationList.get(0).postCode };
+				location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="+postCode+"&applyCode="+no+"&decision="+decision;
+			}
+			
+		} */
+		
+	}
+	
+	
+	
+	
+	/* if(document.getElementsByTagName("td")) {
+		
+		const $tds = document.getElementsByTagName("td");
+		for(let i = 6; i < $tds.length; i+=8) {
+			
+			$tds[i].onchange = function(){
+				const dec = this.value;
+				alert("해당 지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
+				location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+			}
+		}
+	} */
+	
+	
+	
+	/* if(document.getElementById("decision")){
+		const $dcs = document.getElementById("decision");
+		$dcs.onchange = function(){
+			const dec = this.value;
+			alert("지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
+			location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
+		}
+	} */
+	
+	function pageButtonAction(text) {
+		location.href = link + "?currentPage=" + text;
+	}
+}
+
+</script>
 
 
 </body>
