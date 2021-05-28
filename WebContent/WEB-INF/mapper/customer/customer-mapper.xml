@@ -350,7 +350,8 @@
      LEFT JOIN DEGREE ON (POST.DEGREE_CODE = DEGREE.DEGREE_CODE)
          WHERE POST.POST_CODE = ?
 	</entry>
-		
+	
+	<!-- 유저 코드로 이력서 코드 조회 -->
 	<entry key="selectResumeCode">
 		SELECT
 		       RESUME_CODE
@@ -363,16 +364,24 @@
 		INSERT
  		  INTO APPLY 
         (
-           APPLY_DATE
-         , RESUME_CODE 
-         , POST_CODE 
-        )
-        VALUES 
-        (
-        NOW()
-        , ?
-        , ?
-        )
+		  APPLY_DATE
+		, APPLY_YN
+		, APPLY_READ
+		, APPLY_CANCEL
+		, RESUME_CODE
+		, POST_CODE
+		)
+		 VALUES
+		(
+		  NOW()
+		, '미분류'
+		, 0
+		, 0
+		, (SELECT RESUME_CODE
+  	 		 FROM RESUME
+ 			WHERE USER_CODE = ?)
+		, ? 
+		)
 	</entry>
 	
 	<!-- 암호화된 비밀번호 조회 -->

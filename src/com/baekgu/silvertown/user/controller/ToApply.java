@@ -7,17 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/signinpopup")
-public class ToSigninpopup extends HttpServlet {
+
+@WebServlet("/toapply")
+public class ToApply extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int postCode = 50; //Integer.parseInt(request.getParameter("postCode"));
+		String postCode = request.getParameter("postCode");
+		System.out.println("이동 서블릿 : " + postCode);
+		System.out.println("지원하기 servlet 도착 : Post 방식"); 
+		
 		request.setAttribute("postCode", postCode);
 		
-		System.out.println("Login으로 가는 서블릿 도착");
-		String path = "/WEB-INF/views/customer/main/signinpopup.jsp";
+		String path = "/WEB-INF/views/customer/main/apply.jsp?postCode="+postCode;
 		request.getRequestDispatcher(path).forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

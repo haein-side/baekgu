@@ -24,7 +24,6 @@ import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.ResumeDTO;
 import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
-import com.baekgu.silvertown.user.model.dto.UserDTO2;
 
 
 
