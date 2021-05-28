@@ -9,40 +9,35 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function(){
+			//alert("${ postCode }");
+			
+		
 			$("#btnApply").click(function(){
 				
-				const postCode = $("#postCode").value;
+				const postCode = $("#postCode").val();
 				
 				console.log(postCode);
+				//alert('postCode');
 				
 				$.ajax({
-					url:"${ pageContext.servletContext.contextPath }/post/apply",
+					url:"${ pageContext.servletContext.contextPath }/user/apply",
 					type:"post",
 					data :{	postCode : postCode },
 					success:function(data, status, xhr){
-						//window.onload = successmsg;
+						
+						alert("공고 지원에 성공하였습니다.");
 						window.close();
-						window.onunload = refreshParent;
-							/* 성공 팝업 동작 안함 */
-							/* function successmsg() {
-						    	var success =  "공고 지원에 성공했습니다.";
-								alert(success);
-						    } */ 
+						window.onunload = refreshParent;							
+							/* 부모창 reload 시키기 */
 						 	function refreshParent() {
 						        window.opener.location.reload();
 						    }
 					},
 					error:function(xhr, status, error){
-
+						alert("공고 지원에 실패하였습니다. 다시 지원해주세요.");
 						window.close();
-						/* 실패 팝업 동작 안함 */
-						/* window.onunload = failmsg;
-							function failmsg() {
-								var failure = "공고 지원에 실패했습니다. 다시 지원해주세요.";
-								alert(failure); */
-							}
+
 					}
-					
 				});
 			});
 		});
@@ -65,7 +60,7 @@
     </div>
     <div align="center">
     	<!-- <form action="${ pageContext.servletContext.contextPath }/post/apply" method="get"> -->
-    	<input type="hidden" id="postCode" name="postCode" value="${ postInfo.postCode }"/>
+    	<input type="hidden" id="postCode" name="postCode" value="${ postCode }"/>
         <button class="jione_button" name="btn" id="btnApply" type="submit">
             <h2>이력서 넣기</h2>
 <!--  	 		<script>

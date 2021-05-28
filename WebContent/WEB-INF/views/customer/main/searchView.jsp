@@ -11,14 +11,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Css Styles -->
 <link rel="stylesheet"
-	href="RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
+	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css"
 	type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
 	type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.report }">
+          <script>alert('신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다')</script>
+    </c:when>
+</c:choose>
+
 
 <%@ include file="../common/header2.jsp"%>
 
@@ -56,18 +64,22 @@
 							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
                                         
 										var userCode = document.getElementById("userCode").value;
+							
+										console.log(userCode);
 								
 										function apply(){
 											if(userCode != null && userCode != "") {
 												// 로그인한 경우 지원하기 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-												
+												//window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${ reuqestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+												//postCode?=+${ reuqestScope.postInfo.postCode }
 											} else {
 												// 로그인 하지 않은 경우 로그인 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-																								
-												window.opener.location.reload();
-												window.close();
+												//window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
+												//?postCode=+${ requestScope.postInfo.postCode }
+												//window.opener.location.reload(); 
+												//window.close();
 											}
 
                                         }
@@ -485,16 +497,111 @@
 										</p>
 									</div>
 									<br>
+									
 									<div align="center">
-										<p style="font-size: 25px; text-align: center;">혹시 이 공고가
-											수상한가요?
-										<h2>
-											<a href=""
-											onclick="window.open('${ pageContext.servletContext.contextPath }/user/report', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
-										</h2>
+										
+										<p style="font-size: 25px; text-align: center;">
+										본 채용 정보에 불법, 허위, 과장 또는 잘못된 내용이 있을 경우, 신고해주세요.
 										</p>
+											<!-- 신고하기 버튼 -->
+<%-- 										<h2>
+											<a href=""
+											onclick="window.open('${ pageContext.servletContext.contextPath }/user/reportPopup', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
+										</h2>
+											<form action="${ pageContext.servletContext.contextPath }/user/reportPopup" method="post">
+											<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
+											<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>	
+											</form> --%>
+										
+										<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportModal" data-whatever="@mdo">신고하기</button> -->
+										
+										
+										<!-- <input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    				
+										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+										        <form>
+										          <div class="form-group">
+										            <label for="recipient-name" class="col-form-label">Recipient:</label>
+										            <input type="text" class="form-control" id="recipient-name">
+										          </div>
+										          <div class="form-group">
+										            <label for="message-text" class="col-form-label">Message:</label>
+										            <textarea class="form-control" id="message-text"></textarea>
+										          </div>
+										        </form>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">Send message</button>
+										      </div>
+										    </div>
+										  </div>
+										</div> -->         
+	                    				
+	                    				<input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    				<!--  신고하기 모달창 -->
+					                    <form action="${ pageContext.servletContext.contextPath }/user/report" method="post">
+					                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					                        <div class="modal-dialog" role="document">
+						                        <div class="modal-content">
+						                            <div class="modal-header" style="z-index: 100;">
+						                            </div>
+						                            
+						                            	<div class="modal-body">
+						                            		<label>신고 사유 :  </label><br> 
+						                            		<textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
+						                            		<br><br>
+						                            		*신고된 내용을 심사숙고하여 최대한 빠른 결과로 응답해드리겠습니다
+						                            		<br>
+						                            		*심사결과는 보통 3~5일뒤에 확인하실 수 있습니다
+						                           		</div>
+						                            
+						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
+						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
+						                            	
+						                            	${ postInfo.postCode }
+						                            	
+						                            	<div class="modal-footer">
+						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						                            		<button type="submit" class="btn btn-default">신고하기</button>
+						                            	</div>
+						                            
+						                        </div>
+					                        </div>
+					                    </div>
+					                    </form>
+										<!-- 모달 끝 -->
+										<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                							<div class="modal-dialog" role="document">
+                  								<div class="modal-content">
+                    								<div class="modal-header">
+                      									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      									<h4 class="modal-title" id="myModalLabel">결제하시겠습니까?</h4>
+                    								</div>
+                    								<div class="modal-body">
+                      									총 ${ paymentdetail.totalPrice } 원이 결제됩니다
+                    								</div>
+                    								<div class="modal-footer">
+                      									<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                      									<button id="doPay" type="button" class="btn btn-default">결제하기</button>
+                    								</div>
+                  								</div>
+                							</div>
+    									</div> --!>
+										
+										<!-- 
+										
+										 -->
 									</div>
-
 								</div>
 							</div>
 							<div>
@@ -566,6 +673,25 @@
 			</div>
 		
 	</section>
+	
+	<script>
+		/* 신고하기 모달창 script */
+		/* $('#reportModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // 모달창 띄우는 버튼(Trigger)
+		  var recipient = button.data('whatever') // Extract info from data-* attributes
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text('New message to ' + recipient)
+		  modal.find('.modal-body input').val(recipient)
+		}); */
+		
+		
+		$('#report').on('click', function(event) {
+			var button = $(event.relatedTarget)
+		});
+	</script>
+	
 <%@ include file="../common/footer.jsp"%>
 
 </body>
