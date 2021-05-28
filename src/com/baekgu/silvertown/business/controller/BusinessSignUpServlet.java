@@ -190,7 +190,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 				hr = new HrDTO();
 
 				hr.setHrId(hrId);
-				hr.setHrPwd(hrPwd);
+				hr.setHrPwd(value);
 				hr.setHrName(hrName);
 				hr.setHrPhone(hrPhone);
 				hr.setHrEmail(hrEmail);

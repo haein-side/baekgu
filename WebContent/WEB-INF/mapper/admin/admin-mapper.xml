@@ -146,8 +146,8 @@
 	<entry key="adminNameSelect"> 
 	 SELECT 
 	        *
-	   FROM ADMIN
-	   WHERE ADMIN_NAME = ?
+	   FROM AD
+	   WHERE AD_NAME like '%' ? '%'
 	
 	</entry>
 	
