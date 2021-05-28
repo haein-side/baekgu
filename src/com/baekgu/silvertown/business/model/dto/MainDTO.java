@@ -52,6 +52,7 @@ public class MainDTO {
 	public void setCurrntPost(int currntPost) {
 		this.currntPost = currntPost;
 	}
+	
 	@Override
 	public String toString() {
 		return "MainDTO [bName=" + bName + ", logoPath=" + logoPath + ", totalApplicant=" + totalApplicant

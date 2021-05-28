@@ -66,6 +66,8 @@ public class BusinessDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, bMember.getbId());
+			pstmt.setString(2, bMember.getbId());
+			pstmt.setString(3, bMember.getbId());
 			rset = pstmt.executeQuery();
 			
 			businessLoginMember = new BusinessMemberDTO();
@@ -80,8 +82,11 @@ public class BusinessDAO {
 				businessLoginMember.setbCode(rset.getInt("B_CODE"));
 				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
-				businessLoginMember.setCName(rset.getString("B_NAME"));
+				businessLoginMember.setcName(rset.getString("B_NAME"));
 				businessLoginMember.setbNumber(rset.getInt("B_NUMBER"));
+				businessLoginMember.setLogoPath(rset.getString(11));
+				businessLoginMember.setTotalApplicatnt(rset.getInt(12));
+				businessLoginMember.setTotalPost(rset.getInt(13));
 				
 				
 			}	
