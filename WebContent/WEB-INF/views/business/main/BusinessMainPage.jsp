@@ -77,10 +77,10 @@
 		              </div>
 		            </div>
 		              <div style="width: 1000px; display:inline-flex; margin: 1%; margin-left: 26px;" align="center">
-		                <div id="gopostinsert" class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div id="gopostinsert" class="item1" style=" width: 19%; height: 300px; background-color: orange;" style="cursor:pointer;">
 		                  <h3>공고 등록</h3>
 		                  <p>공고를 등록해 원하는 사람들을 만나보세요!</p>
-		                  <input type="button" value="공고등록"/>
+		
 		                </div>
 		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange;">
 		                  <h3>지원자 관리</h3>
