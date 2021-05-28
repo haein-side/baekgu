@@ -1015,7 +1015,7 @@ public class BusinessDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setInt(1, i);
+			//pstmt.setInt(1, i);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

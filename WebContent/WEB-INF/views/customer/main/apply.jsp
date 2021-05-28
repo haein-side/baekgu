@@ -9,15 +9,18 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function(){
+			alert("${ postCode }");
+			
+		
 			$("#btnApply").click(function(){
 				
-				const postCode = $("#postCode").value;
+				const postCode = $("#postCode").val();
 				
 				console.log(postCode);
-				alert(!!!);
+				//alert(!!!);
 				
 				$.ajax({
-					url:"${ pageContext.servletContext.contextPath }/post/apply",
+					url:"${ pageContext.servletContext.contextPath }/apply",
 					type:"post",
 					data :{	postCode : postCode },
 					success:function(data, status, xhr){
@@ -42,7 +45,7 @@
 								var failure = "공고 지원에 실패했습니다. 다시 지원해주세요.";
 								alert(failure); */
 							}
-					}
+					
 					
 				});
 			});
@@ -66,7 +69,7 @@
     </div>
     <div align="center">
     	<!-- <form action="${ pageContext.servletContext.contextPath }/post/apply" method="get"> -->
-    	<input type="hidden" id="postCode" name="postCode" value="${ postInfo.postCode }"/>
+    	<input type="hidden" id="postCode" name="postCode" value="${ postCode }"/>
         <button class="jione_button" name="btn" id="btnApply" type="submit">
             <h2>이력서 넣기</h2>
 <!--  	 		<script>

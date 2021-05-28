@@ -69,12 +69,14 @@
 											if(userCode != null && userCode != "") {
 												// 로그인한 경우 지원하기 팝업 표시
 												//window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${ reuqestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												window.open("/baekgu/apply?postCode=+${ reuqestScope.postInfo.postCode }", "a", "width=450, height=600, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/toapply?postCode=50", "a", "width=450, height=600, left=500, top=250");
+												//postCode?=+${ reuqestScope.postInfo.postCode }
 											} else {
 												// 로그인 하지 않은 경우 로그인 팝업 표시
 												//window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode=+${ requestScope.postInfo.postCode }", "a", "width=450, height=600, left=500, top=250");				
-												//window.opener.location.reload();
+												window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
+												//?postCode=+${ requestScope.postInfo.postCode }
+												//window.opener.location.reload(); 
 												//window.close();
 											}
 

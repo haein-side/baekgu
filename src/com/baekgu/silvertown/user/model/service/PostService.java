@@ -49,6 +49,7 @@ public class PostService {
 		
 		int newApply = postDAO.insertApply(con, applyInfo);
 		
+		
 		// transaction 처리하기
 		if(newApply > 0) {
 			commit(con);

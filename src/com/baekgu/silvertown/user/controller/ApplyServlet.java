@@ -65,8 +65,12 @@ public class ApplyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String postCode1 = request.getParameter("postCode");
+		System.out.println("insert용 : " + postCode1);
+		
 		System.out.println("지원하기 servlet 도착 : Post 방식"); // 공고 번호 받기 int postCode =
-		int postCode = Integer.parseInt(request.getParameter("postCode"));
+		int postCode = Integer.parseInt(postCode1);
+		//request.getParameter("postCode")
 		System.out.println("postCode : " + postCode);
 		
 		// 고객 번호 받기 HttpSession session = request.getSession(); int userCode =

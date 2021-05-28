@@ -80,59 +80,67 @@ public class LoginCheck extends HttpServlet {
 			out.close();
 		}
 		
-		/* 회원 정보가 있을 때 차단 여부 확인하기 */
-		if(loginUserInfo.getUserBlock() != 1) {
-			
-			/* 비밀번호 대조 */
-			if(requestUser.getUserPwd().equals(loginUser.getUserPwd())) {
-				
-				/* 로그인 성공시 변수에 값이 담겼는지 재확인 */
-				if(loginUser != null) {
-					
-					/* 조회한 회원정보를 Session의 loginUserInfo라는 이름의 key value 형태로 넣음 */
-					HttpSession session = request.getSession();
-		            session.setAttribute("loginUserInfo", loginUserInfo);
-		            
-		            /* Console 출력 테스트 */
-		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
-					System.out.println("로그인 성공");
-
-					/* 로그인 성공 시 Ajax 값 리턴 */
-					PrintWriter out = response.getWriter();
-					
-					out.print(loginUser);
-					out.flush();
-					out.close();
-				}
-
-			} else {
-				
-				/* 비밀번호가 틀렸을 때 */
-				System.out.println("잘못된 비밀번호");
-				
-				String output = "비밀번호가 틀렸습니다. 다시 로그인 해주세요.";
-				response.setContentType("text/plain; charset=utf-8");
-				
-				PrintWriter out = response.getWriter();
-				
-				out.print(output);
-				out.flush();
-				out.close();
-			}
-		} else {
-			
-			/* 차단된 유저일 때 */
-			System.out.println("차단 유저된 유저 입니다.");
-		     	
-			String output = "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.";
-			response.setContentType("text/plain; charset=utf-8");
-			
-			PrintWriter out = response.getWriter();
-			
-			out.print(output);
-			out.flush();
-			out.close(); 	
-		}
+		HttpSession session = request.getSession();
+        
+		int test = 1;
+        // Session에 조회한 회원정보를 loginUserInfo로 넣어줌
+        session.setAttribute("loginUserInfo", test);
+        
+        
+		
+//		/* 회원 정보가 있을 때 차단 여부 확인하기 */
+//		if(loginUserInfo.getUserBlock() != 1) {
+//			
+//			/* 비밀번호 대조 */
+//			if(requestUser.getUserPwd().equals(loginUser.getUserPwd())) {
+//				
+//				/* 로그인 성공시 변수에 값이 담겼는지 재확인 */
+//				if(loginUser != null) {
+//					
+//					/* 조회한 회원정보를 Session의 loginUserInfo라는 이름의 key value 형태로 넣음 */
+//					HttpSession session = request.getSession();
+//		            session.setAttribute("loginUserInfo", loginUserInfo);
+//		            
+//		            /* Console 출력 테스트 */
+//		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
+//					System.out.println("로그인 성공");
+//
+//					/* 로그인 성공 시 Ajax 값 리턴 */
+//					PrintWriter out = response.getWriter();
+//					
+//					out.print(loginUser);
+//					out.flush();
+//					out.close();
+//				}
+//
+//			} else {
+//				
+//				/* 비밀번호가 틀렸을 때 */
+//				System.out.println("잘못된 비밀번호");
+//				
+//				String output = "비밀번호가 틀렸습니다. 다시 로그인 해주세요.";
+//				response.setContentType("text/plain; charset=utf-8");
+//				
+//				PrintWriter out = response.getWriter();
+//				
+//				out.print(output);
+//				out.flush();
+//				out.close();
+//			}
+//		} else {
+//			
+//			/* 차단된 유저일 때 */
+//			System.out.println("차단 유저된 유저 입니다.");
+//		     	
+//			String output = "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.";
+//			response.setContentType("text/plain; charset=utf-8");
+//			
+//			PrintWriter out = response.getWriter();
+//			
+//			out.print(output);
+//			out.flush();
+//			out.close(); 	
+		
 	}
 
 }
