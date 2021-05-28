@@ -13,13 +13,13 @@ public class ToApply extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String postCode1 = request.getParameter("postCode");
-		System.out.println("이동 서블릿 : " + postCode1);
+		String postCode = request.getParameter("postCode");
+		System.out.println("이동 서블릿 : " + postCode);
 		System.out.println("지원하기 servlet 도착 : Post 방식"); 
 		
-		request.setAttribute("postCode", postCode1);
+		request.setAttribute("postCode", postCode);
 		
-		String path = "/WEB-INF/views/customer/main/apply.jsp?postCode="+postCode1;
+		String path = "/WEB-INF/views/customer/main/apply.jsp?postCode="+postCode;
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

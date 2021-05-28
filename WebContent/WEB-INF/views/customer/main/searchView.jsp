@@ -64,12 +64,14 @@
 							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
                                         
 										var userCode = document.getElementById("userCode").value;
+							
+										console.log(userCode);
 								
 										function apply(){
 											if(userCode != null && userCode != "") {
 												// 로그인한 경우 지원하기 팝업 표시
 												//window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${ reuqestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												window.open("${ pageContext.servletContext.contextPath }/toapply?postCode=50", "a", "width=450, height=600, left=500, top=250");
+												window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
 												//postCode?=+${ reuqestScope.postInfo.postCode }
 											} else {
 												// 로그인 하지 않은 경우 로그인 팝업 표시

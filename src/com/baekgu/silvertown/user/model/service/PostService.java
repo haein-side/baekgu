@@ -28,36 +28,9 @@ public class PostService {
 		PostDTO postInfo = null;
 		
 		postInfo = postDAO.selectPostInfo(con, postCode);
-		System.out.println("service의 postInfo 값 : " + postInfo);
+		System.out.println("service postInfo의 postCode 값 : " + postInfo.getPostCode());
 		
 		return postInfo;
-	}
-
-	public PostDTO selectResume(PostDTO userPostCode) {
-		
-		Connection con = getConnection();
-		PostDTO selectResume = null;
-		
-		selectResume = postDAO.selectResume(con, userPostCode);
-		
-		return selectResume;
-	}
-
-	public int insertApply(PostDTO applyInfo) {
-		
-		Connection con = getConnection();
-		
-		int newApply = postDAO.insertApply(con, applyInfo);
-		
-		
-		// transaction 처리하기
-		if(newApply > 0) {
-			commit(con);
-		} else {
-			rollback(con);
-		}
-
-		return newApply;
 	}
 	
 }
