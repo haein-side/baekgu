@@ -65,6 +65,7 @@
                           <div class="form">
                             <form class="form-validate form-horizontal" id="feedback_form" 
                                   action="${ pageContext.servletContext.contextPath }/admin/signup" method="post" >
+                        
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
