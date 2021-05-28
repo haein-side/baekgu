@@ -12,13 +12,16 @@ public class BusinessPostDTO {
 	private Date postStart; // 공고 시작일
 	private Date postEnd; // 공고 마감일
 	private int countOfApplicants; // 해당 공고에 대한 지원자수 
+	private String postManager;
+	private String industry;
+	private String job;
 	
 	public BusinessPostDTO() {
 		super();
 	}
 
 	public BusinessPostDTO(int postCode, String decisionStatus, Date postDate, String postTitle, String adName,
-			Date postStart, Date postEnd, String jobName, int countOfApplicants) {
+			Date postStart, Date postEnd, String jobName, int countOfApplicants, String postManager, String industry, String job) {
 		super();
 		this.postCode = postCode;
 		this.decisionStatus = decisionStatus;
@@ -28,6 +31,7 @@ public class BusinessPostDTO {
 		this.postStart = postStart;
 		this.postEnd = postEnd;
 		this.countOfApplicants = countOfApplicants;
+		
 	}
 
 	public int getPostCode() {
@@ -93,6 +97,30 @@ public class BusinessPostDTO {
 
 	public void setCountOfApplicants(int countOfApplicants) {
 		this.countOfApplicants = countOfApplicants;
+	}
+
+	public String getPostManager() {
+		return postManager;
+	}
+
+	public void setPostManager(String postManager) {
+		this.postManager = postManager;
+	}
+
+	public String getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
 	}
 
 	@Override
