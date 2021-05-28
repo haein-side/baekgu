@@ -495,7 +495,7 @@ public class SearchPostDAO {
 			
 			/* 경력 */
 			if(dSearchPost.getExpCode() > 0) {
-				query += " and e.exp_code <> " + dSearchPost.getExpCode();
+				query += " and e.exp_code < " + dSearchPost.getExpCode();
 			}
 			
 			/* 기간 */

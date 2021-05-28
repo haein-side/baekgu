@@ -104,76 +104,9 @@ public class PostDAO {
 			close(pstmt);
 		}
 		System.out.println("DAO 공고 정보 조회 성공");
-		System.out.println("DAO postInfo : " + postInfo);
+		System.out.println("DAO postInfo의 postCode : " + postInfo.getPostCode());
 		
 		return postInfo;
-	}
-
-	public PostDTO selectResume(Connection con, PostDTO userPostCode) {
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		PostDTO selectResume = null;
-		
-		String query = prop.getProperty("selectResumeCode");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, userPostCode.getUserCode());
-			
-			rset = pstmt.executeQuery();
-			
-			selectResume = new PostDTO();
-			
-			if(rset.next()) {
-				
-				selectResume.setResumeCode(rset.getInt("RESUME_CODE"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-
-		System.out.println("DAO resume 출력 : " + selectResume.getResumeCode());
-		
-		return selectResume;
-	}
-
-	/**
-	 * 지원하기(Apply) insert 메소드
-	 * @param con
-	 * @param applyInfo
-	 * @return newApply
-	 */
-	public int insertApply(Connection con, PostDTO applyInfo) {
-		
-		PreparedStatement pstmt = null;
-		
-		int newApply = 0;
-		
-		String query = prop.getProperty("insertApply");
-		
-		try {
-		
-			pstmt = con.prepareStatement(query);
-			
-			pstmt.setInt(1, applyInfo.getResumeCode());
-			pstmt.setInt(2, applyInfo.getPostCode());
-			
-			newApply = pstmt.executeUpdate();
-			
-			System.out.println("DAO 쿼리문 실행 결과 : " + newApply);
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return newApply;
 	}
 
 }

@@ -111,8 +111,8 @@ public class UserSigninServlet extends HttpServlet {
 
 					/* 로그인 성공 시 메인으로 */
 					response.sendRedirect(request.getContextPath() + "/user/toMain");
-						/* 로그인 성공 시 메인으로 */
-						response.sendRedirect(request.getContextPath() + "/user/toMain");
+					/* 로그인 성공 시 메인으로 */
+					response.sendRedirect(request.getContextPath() + "/user/toMain");
 		    		
 				    } else {
 				    

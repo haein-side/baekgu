@@ -270,6 +270,21 @@
 		   and J.job_code = ?	
 	</entry>
 	
+	<!-- 인증번호 업데이트 해주는 쿼리 -->
+	<entry key = "insertVerifiedNum">
+	    UPDATE USER
+	       SET VERIFIED_NUM = ?
+	     WHERE USER_PHONE = ?
+	</entry>
+	
+	<!-- 휴대폰번호 인증번호 조회 -->
+	<entry key = "selectVerifiedNum">
+	    SELECT 
+	           VERIFIED_NUM
+	      FROM USER
+	     WHERE USER_PHONE = ?
+	</entry>
+	
 	<!-- 공고 상세보기 쿼리문 -->
 	<!-- 차단 여부에 대한 FILTERING CODE 넣기 -->
 	<entry key="postContent">
@@ -335,7 +350,8 @@
      LEFT JOIN DEGREE ON (POST.DEGREE_CODE = DEGREE.DEGREE_CODE)
          WHERE POST.POST_CODE = ?
 	</entry>
-		
+	
+	<!-- 유저 코드로 이력서 코드 조회 -->
 	<entry key="selectResumeCode">
 		SELECT
 		       RESUME_CODE
@@ -348,16 +364,24 @@
 		INSERT
  		  INTO APPLY 
         (
-           APPLY_DATE
-         , RESUME_CODE 
-         , POST_CODE 
-        )
-        VALUES 
-        (
-        NOW()
-        , ?
-        , ?
-        )
+		  APPLY_DATE
+		, APPLY_YN
+		, APPLY_READ
+		, APPLY_CANCEL
+		, RESUME_CODE
+		, POST_CODE
+		)
+		 VALUES
+		(
+		  NOW()
+		, '미분류'
+		, 0
+		, 0
+		, (SELECT RESUME_CODE
+  	 		 FROM RESUME
+ 			WHERE USER_CODE = ?)
+		, ? 
+		)
 	</entry>
 	
 	<!-- 암호화된 비밀번호 조회 -->

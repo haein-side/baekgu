@@ -24,7 +24,6 @@ import com.baekgu.silvertown.user.model.dto.ReportDTO;
 import com.baekgu.silvertown.user.model.dto.ResumeDTO;
 import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
-import com.baekgu.silvertown.user.model.dto.UserDTO2;
 
 
 
@@ -586,10 +585,6 @@ public class UserDAO {
 		
 	}
 
-
-	
-
-
 	/**
 	 * 암호화 처리 된 비밀번호 조회용 메소드
 	 * @param con
@@ -627,7 +622,74 @@ public class UserDAO {
 		return encPwd;
 	}
 
+	/**
+	 * db에 인증번호 저장
+	 * @param con
+	 * @param num
+	 * @param numStr
+	 * @return
+	 */
+	public int insertVerifiedNum(Connection con, String num, String numStr) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertVerifiedNum");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, numStr);
+			pstmt.setString(2, num);
+			
+			result = pstmt.executeUpdate();
+			
+			System.out.println("insertVerifiedNum에 왔음");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
+	/**
+	 * 휴대폰번호에 대한 인증번호 조회
+	 * @param con
+	 * @param num
+	 * @return
+	 */
+	public String selectVerifiedNum(Connection con, String num) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String numStr = null;
+		
+		String query = prop.getProperty("selectVerifiedNum");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, num);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				numStr = rset.getString("VERIFIED_NUM");
+			}
+			
+			System.out.println("조회된 인증번호 : " + numStr);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return numStr;
+	}
 
 
 	

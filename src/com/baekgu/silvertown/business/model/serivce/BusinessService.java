@@ -303,6 +303,8 @@ public class BusinessService {
 				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
 				break;
 			case 2: // 현우형 - 기업공고 신고
+				BusinessReportDTO postReport = (BusinessReportDTO)containDTO.get(0);
+				secondResult = businessDAO.insertPostReport(con, postReport);
 			case 3:
 				BusinessDTO business = (BusinessDTO)containDTO.get(0);
 				secondResult = businessDAO.insertNewBusiness(con, business);

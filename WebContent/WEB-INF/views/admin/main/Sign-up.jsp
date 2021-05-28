@@ -274,8 +274,8 @@
 							for (let i = 0; i < $tds.length; i++) {
 
 								$tds[i].onmouseenter = function() {
-									/*  	this.parentNode.style.backgroundColor = "orangered";
-										this.parentNode.style.cursor = "pointer";   */
+									/*  	this.parentNode.style.backgroundColor = "orangered"; */
+										this.parentNode.style.cursor = "pointer";  
 								}
 
 								/* 	 $tds[i].onmouseout = function() {
