@@ -18,6 +18,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
@@ -385,6 +386,17 @@ public class BusinessService {
 		close(con);
 		
 		return result;
+	}
+
+	public MainDTO selectBusinessInfo(String bId) {
+		
+		Connection con = getConnection();
+		
+		MainDTO main = businessDAO.selectBusinessInfo(con, bId);
+		
+		close(con);
+		
+		return main;
 	}
 
 

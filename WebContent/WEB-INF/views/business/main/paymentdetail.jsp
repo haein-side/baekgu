@@ -168,10 +168,10 @@
                       <button id="doPay" type="button" class="btn btn-default">결제하기</button>
                     </div>
                   </div>
-                </div>
+                </div> --%>
 
 
-    </div> --%>
+    </div>
     </div>
     </div>
     <div class="col-sm-1 sidenav">

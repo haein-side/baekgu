@@ -24,6 +24,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
@@ -1017,6 +1018,51 @@ public class BusinessDAO {
 		
 		return result;
 	}
+
+	public MainDTO selectBusinessInfo(Connection con, String bId) {
+
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		MainDTO main = null;
+		
+		String query = prop.getProperty("selectMainPage");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, bId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				main = new MainDTO();
+				
+				main.setbName(rset.getString(1));
+				main.setLogoPath(rset.getString(2));
+				main.setTotalApplicant(rset.getInt(3));
+				main.setTotalPost(rset.getInt(4));
+			
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return main;
+		
+		
+	}
+	
 	
 	
 	

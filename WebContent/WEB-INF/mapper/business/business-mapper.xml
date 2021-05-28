@@ -462,4 +462,26 @@ select
    set post_ad_date = now() , POST_AD_PAID = ? , P_METHOD_CODE = ?
   where post_Ad_code = ?
 	</entry>
+	<entry key="selectMainPage">
+	select 
+      b.B_NAME
+    , b.B_LOGO   
+    , (SELECT
+       		   COUNT(a.APPLY_CODE)
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+   		   WHERE b.HR_ID = 'brave'
+   		   AND a.APPLY_CANCEL = FALSE) as 지원자수
+    , (select 
+       count(post_code)
+  from post p
+ where hr_id = 'brave'
+ group by hr_id) as 공고수
+  from business b
+  join hr h on (h.B_CODE = b.B_CODE)
+  join post p on (h.HR_ID = p.HR_ID)
+ where p.hr_id = ?
+ group by b.B_name;
+	</entry>
 </properties>
