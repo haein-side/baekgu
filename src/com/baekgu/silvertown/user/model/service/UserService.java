@@ -179,5 +179,28 @@ public class UserService {
 		return numStr;
 	}
 
+	/**
+	 * 휴대폰번호의 비밀번호 업데이트
+	 * @param userPhone
+	 * @param enteredPwd
+	 * @return
+	 */
+	public int updatePwd(String userPhone, String enteredPwd) {
+		Connection con = getConnection();
+		
+		int result = userDAO.updatePwd(con, userPhone, enteredPwd);
+		
+		if(result > 0) {
+			commit(con);
+			System.out.println("커밋된 result : " + result);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }

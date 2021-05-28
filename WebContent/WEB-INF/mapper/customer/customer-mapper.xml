@@ -285,6 +285,13 @@
 	     WHERE USER_PHONE = ?
 	</entry>
 	
+	<!-- 비밀번호 업데이트 해주는 쿼리 -->
+	<entry key = "updatePwd">
+	    UPDATE USER
+	       SET USER_PWD = ?
+	     WHERE USER_PHONE = ?
+	</entry>
+	
 	<!-- 공고 상세보기 쿼리문 -->
 	<!-- 차단 여부에 대한 FILTERING CODE 넣기 -->
 	<entry key="postContent">
