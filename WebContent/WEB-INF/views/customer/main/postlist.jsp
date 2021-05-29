@@ -107,13 +107,7 @@
 	                        <div class="panel-heading">
 	                            <h3><c:out value="${ post.jobName }"/></h3>
 	                        </div>
-	                        <%-- <div class="panel-body">
-	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-	                        </div> --%>
+	                       
 	                        <div class="card-body" style = "text-align: center">
                             	<p class="card-text">
                             	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
@@ -122,10 +116,6 @@
                                 <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-<!-- 	                        <div class="panel-footer">
-	                            <h3>300만원/월급</h3>
-	                            <button class="btn btn-lg">자세히 보기</button>
-	                        </div> -->
 	                         <div class="card-footer text-center">
 	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
 	                         자세히 보기
@@ -148,14 +138,7 @@
 	                        <div class="panel-heading">
 	                            <h3><c:out value="${ post.jobName }"/></h3>
 	                        </div>
-	                       <%--  <div class="panel-body">
-	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-
-	                        </div> --%>
+	                     
 	                        <div class="card-body" style = "text-align: center">
                             	<p class="card-text">
                             	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
@@ -164,10 +147,7 @@
                                 <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-	                        <!-- <div class="panel-footer">
-	                            <h3>300만원/월급</h3>
-	                            <button class="btn btn-lg">자세히 보기</button>
-	                        </div> -->
+	                        
 	                         <div class="card-footer text-center">
 	                         <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
 	                         자세히 보기
@@ -191,13 +171,7 @@
 	                        <div class="panel-heading">
 	                            <h3><c:out value="${ post.jobName }"/></h3>
 	                        </div>
-	                        <%-- <div class="panel-body">
-	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-	                        </div> --%>
+	                        
 	                        <div class="card-body" style = "text-align: center">
                             	<p class="card-text">
                             	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
@@ -206,10 +180,6 @@
                                 <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-<!-- 	                        <div class="panel-footer">
-	                            <h3>300만원/월급</h3>
-	                            <button class="btn btn-lg">자세히 보기</button>
-	                        </div> -->
 	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
 	                        </div>      
 	                    </div>
@@ -227,13 +197,7 @@
 	                        <div class="panel-heading">
 	                            <h3><c:out value="${ post.jobName }"/></h3>
 	                        </div>
-	                        <%-- <div class="panel-body">
-	                            <p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-	                            <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-	                            <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-	                            <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-	                            <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-	                        </div> --%>
+	                     
 	                        <div class="card-body" style = "text-align: center">
                             	<p class="card-text">
                             	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
@@ -242,10 +206,7 @@
                                 <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
-<!-- 	                        <div class="panel-footer">
-	                            <h3>300만원/월급</h3>
-	                            <button class="btn btn-lg">자세히 보기</button>
-	                        </div> -->
+
 	                         <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: red;">자세히 보기</a></div>
 	                        </div>      
 	                    </div>
@@ -263,7 +224,6 @@
                 <div class="row">
                     <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
                    <c:forEach var="post" items="${ requestScope.selectPost }">
-                   <%-- <c:if test="${ post.adCode eq 0 }"> --%>
                     <div class="col-lg-4 mb-4 mb-lg-0" style="padding-bottom: 40px;">
                         <div class="card h-100">
                             <h4 class="card-header" style = "text-align: center;">
@@ -278,45 +238,17 @@
                                 <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
                             </div>
                             <div class="card-footer text-center">
-                           <a class="btn btn-primary" style="background-color: red;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
+                           <a class="btn btn-primary" style="background-color: orange;" href="${ pageContext.servletContext.contextPath }/user/post?postCode=${post.postCode}">
                             자세히 보기
                             </a>
                             </div>
                         </div>
                     </div>
-                    <%-- </c:if> --%>
-                  </c:forEach>
-                </div>
-                
-                <!-- 상세공고 시 경력 조건 제외 -->
-                 <div class="row">
-                    <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
-                   <c:forEach var="post" items="${ requestScope.selectNormalPost }">
-                   <c:if test="${ post.adCode eq 0 }">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="card h-100">
-                            <h4 class="card-header" style = "text-align: center">
-                            	<c:out value="${ post.jobName }"/>
-                            </h4>
-                            <div class="card-body" style = "text-align: center">
-                            	<p class="card-text">
-                            	<p><strong>지역</strong> <c:out value="${ post.locationName }"/></p>
-                                <p><strong>업종</strong> <c:out value="${ post.industryName }"/></p>
-                                <p><strong>직종</strong> <c:out value="${ post.jobName }"/></p>
-                                <p><strong>복리후생</strong> <c:out value="${ post.benefit }"/></p>
-                                <p><strong>급여</strong> <c:out value="${ post.payment }"/>/<c:out value="${ post.payName }"/></p>
-                            </div>
-                            <div class="card-footer text-center"><a class="btn btn-primary" href="#!" style="background-color: orange;">자세히 보기</a></div>
-                        </div>
-                    </div>
-                    </c:if>
                   </c:forEach>
                 </div>
                 
                 
-                
-                
-                
+               
             </div>
         </section>     
         

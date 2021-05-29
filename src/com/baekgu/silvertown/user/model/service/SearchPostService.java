@@ -66,20 +66,6 @@ public class SearchPostService {
 		return selectBestPost;
 	}
 
-	/**
-	 * 상세검색 - 경력을 제외하고 조건을 맞추는 공고를 받아오는 메소드
-	 * @param dSearchPost
-	 * @return selectNormalPost
-	 */
-	public List<DetailedSearchPostDTO> selectNormalPost(DetailedSearchPostDTO dSearchPost) {
-		Connection con = getConnection();
-		
-		List<DetailedSearchPostDTO> selectNormalPost = searchDAO.selectNormalPost(con, dSearchPost);
-		
-		close(con);
-		
-		return selectNormalPost;
-	}
 
 	/**
 	 * 상세검색 - 직종 광고 조회
