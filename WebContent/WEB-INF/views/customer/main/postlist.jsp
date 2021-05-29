@@ -264,9 +264,9 @@
                     <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
                    <c:forEach var="post" items="${ requestScope.selectPost }">
                    <%-- <c:if test="${ post.adCode eq 0 }"> --%>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="col-lg-4 mb-4 mb-lg-0" style="padding-bottom: 40px;">
                         <div class="card h-100">
-                            <h4 class="card-header" style = "text-align: center">
+                            <h4 class="card-header" style = "text-align: center;">
                             	<c:out value="${ post.jobName }"/>
                             </h4>
                             <div class="card-body" style = "text-align: center">
