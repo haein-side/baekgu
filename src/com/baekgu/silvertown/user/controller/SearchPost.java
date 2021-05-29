@@ -2,6 +2,7 @@ package com.baekgu.silvertown.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,11 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.common.paging.PageNation;
+import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.service.SearchPostService;
 import com.google.gson.Gson;
 
-@WebServlet("/user/searchPost")    
+@WebServlet("/user/searchPost")
 public class SearchPost extends HttpServlet {
    
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -117,12 +121,50 @@ public class SearchPost extends HttpServlet {
       SearchPostService searchService = new SearchPostService();
       
       // 단순검색 비즈니스 로직 처리
-      List<SearchPostDTO> selectPost = searchService.selectPost(searchPost);
+      List<SearchPostDTO> selectPostFirst = searchService.selectPost(searchPost);
       
       // 업종광고 공고 비즈니스 로직 처리
       List<SearchPostDTO> selectInAdPost = searchService.selectInAdPost(industryCode);
       
       System.out.println("컨트롤러에서 받은 업종광고 공고 : " + selectInAdPost);
+      
+      /* 페이징 처리 */
+   	  String currentPage = request.getParameter("currentPage");
+   	  int pageNo = 0;
+   			
+   	  if(currentPage != null && !"".equals(currentPage)) {
+   		 pageNo = Integer.parseInt(currentPage);
+   	  }
+   			
+   	  if(pageNo <= 0) {
+   		 pageNo = 1;
+   	  }
+   			
+   	  System.out.println("currentPage : "+ currentPage);
+   	  System.out.println("pageNo : " + pageNo);
+   			
+   	  /* 전체 게시물의 갯수가 필요하다 */
+   	  /* DB에서 먼저 전체 게시물의 갯수를 조회한다 */
+   	  int totalCount = selectPostFirst.size();
+   			
+   	  System.out.println("단순 검색 일반 공고의 총 개수 : " + totalCount);
+   			
+   	   System.out.println("totalCount : " + totalCount);
+   			
+   	   /* 한 페이지에서 보여 줄 게시물의 수 */
+   	   int limit = 3;
+   			
+   	   /* 한 번에 보여질 페이징 버튼 수 */
+   	   int buttonAmount = 5;
+   			
+   	    /* 페이징 처리를 위한 로직 호출 후, 페이징 처리에 관한 정보를 담고 있는 인스턴스 리턴 */
+   		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
+   			
+   		System.out.println("pageInfo : " + pageInfo);
+   			
+   		/* 페이징처리 정보 담고 조회 */
+   		List<SearchPostDTO> selectPost = searchService.selectPostPaging(searchPost, pageInfo);
+   			
       
       // 응답페이지 처리
 	  String path = "";
@@ -130,10 +172,24 @@ public class SearchPost extends HttpServlet {
 	    	System.out.println("서블렛에서 받은 공고들 : " + selectPost);
 			
 			 path = "/WEB-INF/views/customer/main/postlist.jsp";
-
-			 request.setAttribute("selectPost", selectPost); //일반공고 
-			 request.setAttribute("selectInAdPost", selectInAdPost); // 업종광고가 붙은 공고 ad_code = 1/2
+			 request.setAttribute("selectPost", selectPost);
+			 request.setAttribute("selectInAdPost", selectInAdPost);
+			 request.setAttribute("pageInfo", pageInfo);
 			 
+			 // 단순검색인 것을 알려줌
+			 request.setAttribute("type", 1);
+			 
+			 System.out.println("내가 선택한 값들 : " + select);
+			 
+			 String encodedselect = URLEncoder.encode(select, "UTF-8");
+			 System.out.println("인코딩된 선택값들 : " + encodedselect);
+
+			 // 내가 선택한 값
+			 request.setAttribute("location", encodedselect);
+			 
+			 System.out.println("보내기전 selectPost 확인 : " + selectPost);
+
+	    	
 		} else {
 			path = "/WEB-INF/views/user/common/errorPage.jsp";
 			request.setAttribute("message", "공고조회를 실패했습니다.");

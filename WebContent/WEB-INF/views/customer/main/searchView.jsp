@@ -16,8 +16,7 @@
 	type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
 	type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
 </head>
 
 <body>
@@ -29,14 +28,14 @@
     		
     			alert("신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다");
     		}
-    		</script>
+    	</script>
 	</c:if>
 
 	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
 			<div class="row">
          		<div class="col-lg-6 col-md-6">
-            		<div><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/product-details-1.jpg"></div>
+            		<div><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/product-details-1.jpg">`ㄷ222222222222221ㄴㅊㅈㅇㅍ87</div>
             	</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__text ">
@@ -57,35 +56,30 @@
 							${ requestScope.postInfo.postContent }<br>
 						</p> --%>
 						<div align="right">
-							
+							<!-- hidden 타입의 input 태그에 유저코드와 공고번호를 넣어둠 -->
 							<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
 							<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>
 							
 							<button class="jione_button" type="submit" onclick=apply();>
-							<!-- <input type="button" value="${ requestScope.postInfo.postCode } }"> -->
-							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
-                                        
-										var userCode = document.getElementById("userCode").value;
+								<script>
+									/* 지원하기 버튼 onclick 이벤트 */
+									var userCode = document.getElementById("userCode").value;
 							
-										console.log(userCode);
-								
-										function apply(){
-											if(userCode != null && userCode != "") {
-												// 로그인한 경우 지원하기 팝업 표시
-												//window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${ reuqestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												//postCode?=+${ reuqestScope.postInfo.postCode }
-											} else {
-												// 로그인 하지 않은 경우 로그인 팝업 표시
-												//window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
-												window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
-												//?postCode=+${ requestScope.postInfo.postCode }
-												//window.opener.location.reload(); 
-												//window.close();
-											}
+									console.log(userCode);
+									
+									function apply(){
+										/* userCode가 존재할 경우 지원하기 창 띄우기 */
+										if(userCode != null && userCode != "") {
 
-                                        }
-                                    </script> 
+											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=600, left=500, top=250");
+
+										/* 유저코드가 존재하지 않을 경우 로그인창 띄우기 */
+										} else {
+
+											window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
+										}
+                              		}
+								</script> 
 								<h2>지원하기</h2>
 							</button>
 							
@@ -676,17 +670,6 @@
 	</section>
 	
 	<script>
-		/* 신고하기 모달창 script */
-		/* $('#reportModal').on('show.bs.modal', function (event) {
-		  var button = $(event.relatedTarget) // 모달창 띄우는 버튼(Trigger)
-		  var recipient = button.data('whatever') // Extract info from data-* attributes
-		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-		  var modal = $(this)
-		  modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find('.modal-body input').val(recipient)
-		}); */
-		
 		
 		$('#report').on('click', function(event) {
 			var button = $(event.relatedTarget)
