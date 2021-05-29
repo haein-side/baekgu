@@ -83,6 +83,12 @@ public class BusinessLoginServlet extends HttpServlet {
 					session.setAttribute("loginBusinessMember", loginBusinessMember);	
 					response.sendRedirect(request.getContextPath() + "/business/main");
 					
+				} else if(bPwd.equals(loginBusinessMember.getbPwd())) {
+					
+					HttpSession session = request.getSession();
+					session.setAttribute("loginBusinessMember", loginBusinessMember);	
+					response.sendRedirect(request.getContextPath() + "/business/main");
+					
 					
 				} else if(!bPwd.equals(loginBusinessMember.getbPwd())) {
 

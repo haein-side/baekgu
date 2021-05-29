@@ -157,7 +157,8 @@
    		
 
    	});
-   	
+   			
+   	/* 중복확인 용  */
 			function ManagerList() {
 			
 				if (gbl_data == 1) {

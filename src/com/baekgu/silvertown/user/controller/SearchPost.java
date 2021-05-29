@@ -15,7 +15,7 @@ import com.baekgu.silvertown.user.model.dto.SearchPostDTO;
 import com.baekgu.silvertown.user.model.service.SearchPostService;
 import com.google.gson.Gson;
 
-@WebServlet("/user/searchPost")
+@WebServlet("/user/searchPost")    
 public class SearchPost extends HttpServlet {
    
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -130,11 +130,10 @@ public class SearchPost extends HttpServlet {
 	    	System.out.println("서블렛에서 받은 공고들 : " + selectPost);
 			
 			 path = "/WEB-INF/views/customer/main/postlist.jsp";
-			 request.setAttribute("selectPost", selectPost);
-			 request.setAttribute("selectInAdPost", selectInAdPost);
-			 			 
-	    	
-	    	
+
+			 request.setAttribute("selectPost", selectPost); //일반공고 
+			 request.setAttribute("selectInAdPost", selectInAdPost); // 업종광고가 붙은 공고 ad_code = 1/2
+			 
 		} else {
 			path = "/WEB-INF/views/user/common/errorPage.jsp";
 			request.setAttribute("message", "공고조회를 실패했습니다.");

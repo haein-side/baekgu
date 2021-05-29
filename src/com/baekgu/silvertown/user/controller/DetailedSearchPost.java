@@ -175,9 +175,6 @@ public class DetailedSearchPost extends HttpServlet {
 			/* selectBestPost - 모든 검색 조건 부합 */
 			List<DetailedSearchPostDTO> selectPost = searchService.selectBestPost(dSearchPost);
 			
-			/* selectNormalPost - 경력 제외 조건 부합 */
-			List<DetailedSearchPostDTO> selectNormalPost = searchService.selectNormalPost(dSearchPost);
-			
 			/* selectInAdPost - 업종광고 */
 			List<SearchPostDTO> selectInAdPost = searchService.selectInAdPost(industryCode);
 			
@@ -186,13 +183,13 @@ public class DetailedSearchPost extends HttpServlet {
 			
 			// 응답페이지 처리
 			String path = "";
-		    if(selectNormalPost != null) {
+		    if(selectInAdPost != null) {
 		    	
 				 path = "/WEB-INF/views/customer/main/postlist.jsp";
 				 request.setAttribute("selectInAdPost", selectInAdPost);
 				 request.setAttribute("selectJobAdPost", selectJobAdPost);
 				 request.setAttribute("selectPost", selectPost);
-				 request.setAttribute("selectNormalPost", selectNormalPost);
+					/* request.setAttribute("selectNormalPost", selectNormalPost); */
 				 
 				 System.out.println("보내기전 selectPost 확인 : " + selectPost);
 		    	 
