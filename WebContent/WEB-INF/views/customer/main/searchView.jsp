@@ -21,14 +21,16 @@
 </head>
 
 <body>
-<c:choose>
-    <c:when test="${ not empty requestScope.report }">
-          <script>alert('신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다')</script>
-    </c:when>
-</c:choose>
-
 
 <%@ include file="../common/header2.jsp"%>
+	<c:if test="${ requestScope.result > 0 }">
+    	<script>
+    		function() {
+    		
+    			alert("신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다");
+    		}
+    		</script>
+	</c:if>
 
 	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
@@ -554,8 +556,8 @@
 					                        <div class="modal-dialog" role="document">
 						                        <div class="modal-content">
 						                            <div class="modal-header" style="z-index: 100;">
+														<h3>공고 신고하기</h3>
 						                            </div>
-						                            
 						                            	<div class="modal-body">
 						                            		<label>신고 사유 :  </label><br> 
 						                            		<textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
@@ -568,13 +570,12 @@
 						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
 						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
 						                            	
-						                            	${ postInfo.postCode }
+						                            	<p>공고 번호 : </p>${ postInfo.postCode }
 						                            	
 						                            	<div class="modal-footer">
 						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 						                            		<button type="submit" class="btn btn-default">신고하기</button>
 						                            	</div>
-						                            
 						                        </div>
 					                        </div>
 					                    </div>

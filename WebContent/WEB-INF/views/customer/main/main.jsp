@@ -77,7 +77,7 @@
 						<!-- 로그인, 회원가입 -->
 							<!-- 임의로 상세 공고보기 메뉴 생성 -->
 							<li><a href="${ pageContext.servletContext.contextPath }/testPost" style="font-family: icomoon; font-size: 30px;">상세공고보기</a></li>
-							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName }님 반갑습니다! </a></li>
+							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName } 님 반갑습니다! </a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
 						</ul>	
 					</nav>
