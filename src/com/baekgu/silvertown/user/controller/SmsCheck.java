@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baekgu.silvertown.user.model.service.UserService;
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 /**
  * Servlet implementation class SmsCheck
@@ -37,25 +39,33 @@ public class SmsCheck extends HttpServlet {
 		System.out.println("컨트롤러에서 받은 인증번호 조회결과 : " + numStr);
 		
 		/* 입력한 인증번호와 조회한 인증번호가 일치하는지 여부 분기처리 */
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
-		String data = "";
+		Gson gson = new Gson();
 		
-		if (check.equals(numStr)) {
-		// 일치하는 경우
-			System.out.println("인증번호 일치함");
-			data = "ok";
-			System.out.println("ajax로 돌아가는 data : " + data);
-			
-		} else { // 일치하지 않는 경우 
-			System.out.println("인증번호 일치하지 않음"); 
-			data = "fail";
-			System.out.println("ajax로 돌아가는 data : " + data); 
-		}
 		
-		out.print(data);
-		out.flush();
-		out.close();
+		response.setContentType("application/json; charset = utf-8");
+        response.setCharacterEncoding("UTF-8");
+        
+        String data = "";
+        
+        if (check.equals(numStr)) {
+        // 일치하는 경우
+           System.out.println("인증번호 일치함");
+           data = "ok";
+           System.out.println("ajax로 돌아가는 data : " + data);
+ 
+           
+        } else { // 일치하지 않는 경우 
+           System.out.println("인증번호 일치하지 않음"); 
+           data = "fail";
+           System.out.println("ajax로 돌아가는 data : " + data); 
+        }
+
+        String result = gson.toJson(data);
+        PrintWriter out = response.getWriter();
+        out.print(result);
+        
+        out.flush();
+        out.close();
 		
 	}
 

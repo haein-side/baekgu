@@ -13,11 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 import com.baekgu.silvertown.user.model.service.UserService;
 
-/**
- * Servlet implementation class LoginCheck
- */
 @WebServlet("/loginCheck")
-public class LoginCheck extends HttpServlet {
+public class UserSignupPopupServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

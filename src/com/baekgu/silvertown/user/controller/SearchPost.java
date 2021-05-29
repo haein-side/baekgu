@@ -129,12 +129,10 @@ public class SearchPost extends HttpServlet {
 	    if(selectPost != null) {
 	    	System.out.println("서블렛에서 받은 공고들 : " + selectPost);
 			
-			
-			
 			 path = "/WEB-INF/views/customer/main/postlist.jsp";
+
 			 request.setAttribute("selectPost", selectPost); //일반공고 
 			 request.setAttribute("selectInAdPost", selectInAdPost); // 업종광고가 붙은 공고 ad_code = 1/2
-			 
 			 
 		} else {
 			path = "/WEB-INF/views/user/common/errorPage.jsp";

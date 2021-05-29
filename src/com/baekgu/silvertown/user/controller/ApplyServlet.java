@@ -43,6 +43,7 @@ public class ApplyServlet extends HttpServlet {
 		ApplyPostDTO userPostCode = new ApplyPostDTO();
 		userPostCode.setUserCode(userCode);
 		userPostCode.setPostCode(ChangedPostCode);
+		userPostCode.setUserCode(userCode);
 		
 		// Service로 값 보내기
 		ApplyService applyService = new ApplyService(); 

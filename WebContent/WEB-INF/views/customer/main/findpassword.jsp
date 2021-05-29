@@ -11,73 +11,76 @@
     <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/findpassword.css" type="text/css">
 	
 <script>
+
  
-	  
-  function sendSms(){
-	  
-	  var num = $("#phoneNumber").val();
-	  
-	  $.ajax({
-		  url: "/baekgu/user/sendSms",
-		  data : {
-			  num : num
-		  },
-		  type : "post",
-		  success : function(data,textStatus,xhr){
-			  console.log(data);
-			  console.log(data['text'])
-			  console.log(data.text)
-			  console.log(data['success_count'])
-			  if (true){
-			  alert("인증번호를 발송했습니다. 인증번호가 오지 않으면 입력하신 휴대폰번호가 회원정보와 일치하는지 확인해주세요.")				  
-			  } /* else {
-				  alert("인증번호 전송을 실패했습니다.");
-			  } */
-		  },
-		  error : function(xhr, status, error){
-			  console.log(error);
-		  }
+	  function sendSms(){
 		  
-	  });
-	    
-  }
+		  var num = $("#phoneNumber").val();
+		  
+		  $.ajax({
+			  url: "/baekgu/user/sendSms",
+			  data : {
+				  num : num
+			  },
+			  type : "post",
+			  success : function(data,textStatus,xhr){
+				  console.log(data);
+				  console.log(data['text'])
+				  console.log(data.text)
+				  console.log(data['success_count'])
+				  if (true){
+				  alert("인증번호를 발송했습니다. 인증번호가 오지 않으면 입력하신 휴대폰번호가 회원정보와 일치하는지 확인해주세요.")				  
+				  } /* else {
+					  alert("인증번호 전송을 실패했습니다.");
+				  } */
+			  },
+			  error : function(xhr, status, error){
+				  console.log(error);
+			  }
+			  
+		  });
+		    
+	  }
+	 
+	  function smsCheck(){
+		  
+		  var num = $("#phoneNumber").val();
+		  var check = $("#sms").val();
+		  
+		  alert('test');
+		  console.log(num);
+		  
+		  $.ajax({
+			  url: "/baekgu/user/smsCheck",
+			  type : "post",
+			  data : {
+				  check : check,
+				  num : num
+			  },
+			  dataType : "json",
+			  success : function(result,textStatus,xhr){
+				  console.log(result);
+				 
+				 if ($.trim(result) == "ok"){
+				  alert("번호 인증이 성공되었습니다.");	
+				  $("#checkResult").attr("value", "success");
+				  
+				  console.log($("#checkResult").innerHTML);
+				  
+				  } else {
+					  alert("번호 인증을 실패했습니다.");
+				  } 
+			  },
+			  error: function(xhr, status, error){
+					console.log(error);
+				}
+			  /* e.preventDefault(); */
+			    /* return false; */
+		  }); 
+		   
+	  }
  
-  function smsCheck(){
-	  
-	  var num = $("#phoneNumber").val();
-	  var check = $("#sms").val();
-	  
-	  alert('test');
-	  console.log(num);
-	  
-	  $.ajax({
-		  url: "/baekgu/user/smsCheck",
-		  type : "post",
-		  data : {
-			  check : check,
-			  num : num
-		  },
-		  success : function(result,textStatus,xhr){
-			  console.log(result);
-			 
-			 if ($.trim(result) == "ok"){
-			  alert("번호 인증이 성공되었습니다.");	
-			  $("#checkResult").attr("value", "success");
-			  
-			  console.log($("#checkResult").innerHTML);
-			  
-			  } else {
-				  alert("번호 인증을 실패했습니다.");
-			  } 
-		  },
-		  error: function(xhr, status, error){
-				console.log(error);
-			}
-		  /* e.preventDefault(); */
-		    /* return false; */
-	  }); 
-	   
-  }
+  
   
 </script>
 
@@ -89,7 +92,7 @@
  	</div>
 
 	<div class="wrapper">
-  <form class="form-signin" style="margin-top: 15%; height: 650px;">    
+  <form class="form-signin" action="${ pageContext.servletContext.contextPath }/user/toChangePassword"  method="post" style="margin-top: 15%; height: 650px;">    
       <h1 class="form-signin-heading" style="height: 100px; margin-top: 100px; color: orange;">비밀번호 찾기</h1>
        
         <!-- <lable class="text-label"><b>이름</b></lable>
@@ -104,7 +107,7 @@
           
           <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" placeholder="(예 : 01012345678)" style="width: 62%; float: left;" required> 
           
-          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" onclick="sendSms()" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">
+          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" onclick="sendSms()" onsubmit="return false" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">
           인증번호 요청
           </button>
           
@@ -122,7 +125,7 @@
           
           <input class="form-control" type="text" id="sms" name="sms" placeholder="(예 : 2341)" style="width: 62%; float: left;" required> 
           
-          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" onclick="smsCheck()" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">
+          <button class="btn btn-block-1 btn-lg-1 btn-primary-1" onclick="smsCheck()" type="button" style="margin-left: 10px; width: 35%; float:left; height: 43px; font-size: 20px;">
           인증번호 확인
           </button>
           
@@ -158,7 +161,6 @@
   		 	alert("인증번호 확인을 완료해주시기 바랍니다.");
   		    console.log(checkResult);
   		  	document.getElementById(checkResult).focus();
-  		  	document.getElementById(checkResult).value = "";
   		    return false;
   	    } else {
   	    	return true;
