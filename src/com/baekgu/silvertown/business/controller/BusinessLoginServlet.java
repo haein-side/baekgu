@@ -84,7 +84,12 @@ public class BusinessLoginServlet extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + "/business/main");
 					
 					
-				} else if(!bPwd.equals(loginBusinessMember.getbPwd())) {
+				} 
+				
+				
+				
+				
+				else if(!bPwd.equals(loginBusinessMember.getbPwd())) {
 
 					/* 비밀번호 매칭 실패 */
 					request.setAttribute("message", "비밀번호를 잘못 입력하셨습니다.");

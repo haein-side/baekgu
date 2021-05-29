@@ -35,12 +35,12 @@ public class UserSigninServlet extends HttpServlet {
 		
 		/* Service와 연결하여 회원가입과 차단여부 조회 */
 		UserService userService = new UserService();
+		UserService userServiceInfo = new UserService();
 		UserDTO loginUser = userService.loginCheck(requestUser);
-	    System.out.println("Servlet 고객 차단여부 : " + loginUser.getUserBlock());
+		UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
+	    System.out.println("Servlet 고객 차단여부 : " + loginUserInfo.getUserBlock());
 	       
 	    /* Service와 연결하여 로그인 정보 받아오기 */
-	    UserService userServiceInfo = new UserService();
-	    UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
 	    System.out.println("Servlet 고객코드 : " + loginUserInfo.getUserCode());
 	    
 	    String errorPage = "";
