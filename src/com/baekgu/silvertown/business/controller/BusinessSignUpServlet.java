@@ -126,7 +126,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 									rootContext + "RESOURCES/UPLOAD/THUMBNAIL/" + "thumbnail_" + randomFileName);
 
 							/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
-							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/thumbnail_" + randomFileName);
+							fileMap.put("thumbnailPath", "/RESOURCES/UPLOAD/THUMBNAIL/thumbnail_" + randomFileName);
 
 						}
 

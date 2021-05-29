@@ -13,6 +13,19 @@ select
      , D.D_LIST_REASON
      , B.B_NAME
      , B.B_NUMBER
+     , B.B_LOGO 
+     , (SELECT
+       		   COUNT(a.APPLY_CODE)
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+   		   WHERE b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE) as 지원자수
+     , (select 
+       count(post_code)
+  from post p
+ where hr_id = ?
+ group by hr_id) as 공고수
   FROM HR H
   join BUSINESS B on (H.B_CODE = B.B_CODE)
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)
@@ -461,5 +474,27 @@ select
 		update post_ad_payment 
    set post_ad_date = now() , POST_AD_PAID = ? , P_METHOD_CODE = ?
   where post_Ad_code = ?
+	</entry>
+	<entry key="selectMainPage">
+	select 
+      b.B_NAME
+    , b.B_LOGO   
+    , (SELECT
+       		   COUNT(a.APPLY_CODE)
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+   		   WHERE b.HR_ID = 'brave'
+   		   AND a.APPLY_CANCEL = FALSE) as 지원자수
+    , (select 
+       count(post_code)
+  from post p
+ where hr_id = 'brave'
+ group by hr_id) as 공고수
+  from business b
+  join hr h on (h.B_CODE = b.B_CODE)
+  join post p on (h.HR_ID = p.HR_ID)
+ where p.hr_id = ?
+ group by b.B_name;
 	</entry>
 </properties>
