@@ -21,6 +21,7 @@ import com.baekgu.silvertown.business.model.dto.HrDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
+import com.baekgu.silvertown.user.model.dto.ReportPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
@@ -302,8 +303,9 @@ public class BusinessService {
 				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
 				break;
 			case 2: // 현우형 - 기업공고 신고
-				BusinessReportDTO postReport = (BusinessReportDTO)containDTO.get(0);
+				ReportPostDTO postReport = (ReportPostDTO)containDTO.get(0);
 				secondResult = businessDAO.insertPostReport(con, postReport);
+				break;
 			case 3:
 				BusinessDTO business = (BusinessDTO)containDTO.get(0);
 				secondResult = businessDAO.insertNewBusiness(con, business);

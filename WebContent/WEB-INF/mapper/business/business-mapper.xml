@@ -201,7 +201,7 @@ select
 	    , ?
     	, ?
     	, ?
-    	, LAST_INSERT_ID()
+    	, LAST_	_ID()
 	     )
 	</entry>
 	
@@ -461,5 +461,24 @@ select
 		update post_ad_payment 
    set post_ad_date = now() , POST_AD_PAID = ? , P_METHOD_CODE = ?
   where post_Ad_code = ?
+	</entry>
+		<entry key="insertPostReport">
+		 INSERT
+   		   INTO REPORT
+		(
+  		  REPORT_REASON
+		, REPORT_DATE 
+		, POST_CODE 
+		, USER_CODE 
+		, D_LIST_CODE 
+		)
+		VALUES
+		(
+  		   ?
+		 , NOW()
+		 , ?
+		 , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)
+		 , LAST_INSERT_ID() 
+		)
 	</entry>
 </properties>

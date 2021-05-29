@@ -28,6 +28,7 @@ import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
+import com.baekgu.silvertown.user.model.dto.ReportPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 import com.mysql.cj.xdevapi.Result;
 
@@ -935,7 +936,7 @@ public class BusinessDAO {
 				reportList.add(report);
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException e) {	
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -999,29 +1000,35 @@ public class BusinessDAO {
 
 	/**
 	 * 고객이 공고(기업)를 신고하는 메소드
-	 * 
 	 * @param con
 	 * @param post
 	 * @return result
 	 */
-	public int insertPostReport(Connection con, BusinessReportDTO post) {
+	public int insertPostReport(Connection con, ReportPostDTO post) {
 
 		PreparedStatement pstmt = null;
 
 		int result = 0;
 
-		String query = prop.getProperty("insertDefaultDecisionList");
+		String query = prop.getProperty("insertPostReport");
 
 		try {
 			pstmt = con.prepareStatement(query);
 
-			//pstmt.setInt(1, i);
+			pstmt.setString(1, post.getReportReason());
+			pstmt.setInt(2, post.getPostCode());
+			pstmt.setInt(3, post.getUserCode());
+
+			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		
+			close(pstmt);
 		}
 
-		return 0;
+		return result;
 	}
 
 }

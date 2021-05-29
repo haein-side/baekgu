@@ -38,15 +38,8 @@ public class UserService {
 		//비밀번호를 먼저 매치해서 일치여부 확인
 		String encPwd = userDAO.selectEncryptedPwd(con, requestUser);
 		
-		System.out.println("비밀번호 매치 잘 됐니? : " + encPwd);
+		System.out.println("Service에서 비밀번호 일치 여부 확인 : " + encPwd);
 
-		// 비밀번호, 유저 차단 여부 조회
-		//UserDTO encPwdBlock = null;
-//		loginUser = userDAO.selectEnCryptedPwd(con,requestUser);
-//		
-//		
-//		System.out.println("Service 유저 차단 조회 : " + loginUser.getUserBlock());
-		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		/* 로그인 요청한 원문 비밀번호와 저장되어 있는 암호화된 비밀번호가 일치하는지 확인 */
 		if(passwordEncoder.matches(requestUser.getUserPwd(), encPwd)) {
