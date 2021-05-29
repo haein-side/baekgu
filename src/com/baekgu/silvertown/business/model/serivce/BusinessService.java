@@ -376,7 +376,6 @@ public class BusinessService {
 		int result = businessDAO.updatePaymentList(con, success, postAdCode);
 		
 		
-		System.out.println("");
 		if(result > 0 ) {
 			
 			commit(con);

@@ -24,18 +24,26 @@ public class BusinessMainServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 		
+		BusinessService service = new BusinessService();
+		MainDTO main = null;
 		
 		String path = "";
 		
 		if(loggedInUser != null) {
-								
+			
+			
+			main = service.selectBusinessInfo(loggedInUser.getbId());
+			
+			System.out.println(main);
+						
 			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
 			
+			request.setAttribute("main", main);
 			
 		}else {
 
 			/* 로그인이 안된 상태에서 홈버튼을 눌렀을시 회원가입페이지로 보낸다. */
-
+			/* 추후 모달창으로 업데이트 예정. */
 			path = "/WEB-INF/views/business/main/signupB.jsp";
 
 		}

@@ -67,8 +67,6 @@ public class BusinessDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, bMember.getbId());
-			pstmt.setString(2, bMember.getbId());
-			pstmt.setString(3, bMember.getbId());
 			rset = pstmt.executeQuery();
 
 			businessLoginMember = new BusinessMemberDTO();
@@ -85,17 +83,12 @@ public class BusinessDAO {
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
 				businessLoginMember.setcName(rset.getString("B_NAME"));
 				businessLoginMember.setbNumber(rset.getInt("B_NUMBER"));
-				businessLoginMember.setLogoPath(rset.getString(11));
-				businessLoginMember.setTotalApplicatnt(rset.getInt(12));
-				businessLoginMember.setTotalPost(rset.getInt(13));
-				
-				
+
+						
 			}	
 			
 
-			
-
-
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -1022,6 +1015,9 @@ public class BusinessDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, bId);
+			pstmt.setString(2, bId);
+			pstmt.setString(3, bId);
+			pstmt.setString(4, bId);
 			
 			rset = pstmt.executeQuery();
 			
@@ -1033,6 +1029,7 @@ public class BusinessDAO {
 				main.setLogoPath(rset.getString(2));
 				main.setTotalApplicant(rset.getInt(3));
 				main.setTotalPost(rset.getInt(4));
+				main.setCurrntPost(rset.getInt(5));
 			
 				
 			}

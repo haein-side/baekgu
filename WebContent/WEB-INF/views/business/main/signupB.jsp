@@ -639,6 +639,7 @@ h1, h2 {
 	<script>
 
        function validate(){
+    	   
           var bName = document.getElementById("bName");
           var businessNo = document.getElementById("businessNo"); 
           var owner = document.getElementById("owner");
