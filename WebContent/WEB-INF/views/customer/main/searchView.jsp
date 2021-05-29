@@ -10,32 +10,20 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Css Styles -->
-<link rel="stylesheet"
-	href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css"
-	type="text/css">
-<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-	type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
 	
 </head>
 
 <body>
 
 <%@ include file="../common/header2.jsp"%>
-	<c:if test="${ requestScope.result > 0 }">
-    	<script>
-    		function() {
-    		
-    			alert("신고 접수가 완료되었습니다.\n상단의 신고내역에서 확인하실 수 있습니다");
-    		}
-    	</script>
-	</c:if>
-
 	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
 			<div class="row">
          		<div class="col-lg-6 col-md-6">
-            		<div><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/product-details-1.jpg">`ㄷ222222222222221ㄴㅊㅈㅇㅍ87</div>
+            		<div><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/product-details-1.jpg"></div>
             	</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__text ">
@@ -77,6 +65,7 @@
 										} else {
 
 											window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
+										
 										}
                               		}
 								</script> 
@@ -89,7 +78,7 @@
 							<tr>
 								<th>지원자격</th>
 								<td>${ requestScope.postInfo.ageName }</td>
-							</tr>			
+							</tr>
 							<tr>
 								<th>급여</th>
 								<td>${ requestScope.postInfo.payment } 원</td>

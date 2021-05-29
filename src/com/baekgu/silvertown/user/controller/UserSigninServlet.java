@@ -39,9 +39,9 @@ public class UserSigninServlet extends HttpServlet {
 	    System.out.println("Servlet 고객 차단여부 : " + loginUser.getUserBlock());
 	    
 	    String errorPage = "";
-	    
+
 	    /* 고객정보 유무로 분기 처리 */
-	    if(loginUser != null) {
+	    if(loginUser.getUserPwd() != null) {
 	    	
 	    	/* 고객정보 일치시 */
 	    	/* Service와 연결하여 로그인 정보 받아오기 */
