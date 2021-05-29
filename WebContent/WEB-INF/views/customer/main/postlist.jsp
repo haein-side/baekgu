@@ -70,7 +70,7 @@
         
 <!-- width 100% 크기 조정, header size needed -->
         <div class="breadcrumb mb-4" style="height: 60px; position: fixed; width: 100%; z-index: 10000; margin-top : 240px; background-color: skyblue;">
-           <c:forEach var="title" begin="1" end="1" items="${ requestScope.selectPost }">
+           <c:forEach var="title" begin="0" end="0" items="${ requestScope.selectPost }">
             <p style="margin: auto; color: black; font-size: larger;">검색 조건 : 지역 - <c:forEach var="lo" items="${ requestScope.selectPost }"><c:out value="${ lo.locationName }"/> </c:forEach>  |  업종 - <c:out value="${ title.industryName }"/>  |  기간 - <c:out value="${ title.periodName }"/></p>
             </c:forEach>
             <!-- 재검색하기 버튼 눌렀을 때, 이전페이지인 검색페이지로 이동하기 -->
@@ -88,8 +88,9 @@
                 
                 <!-- premium ads -->
                 <div class="text-left">
-                <c:forEach var="title" begin="1" end="1" items="${ requestScope.selectPost }">
-                    <h2 style="font-family: BM;">백구와 함께하는 추천 기업 - <c:out value="${ title.industryName }"/> 업종</h2>
+                <%-- <c:forEach var="title" begin="1" end="1" items="${ requestScope.selectPost }"> --%>
+                 <c:forEach var="post" begin="0" end="0" items="${ requestScope.selectPost }">
+                    <h2 style="font-family: BM;">백구와 함께하는 추천 기업 - <c:out value="${ post.industryName }"/> 업종</h2>
 				</c:forEach>
                 </div>
                 <!-- Container  -->
@@ -262,7 +263,7 @@
                 <div class="row">
                     <!-- for-loop 으로 결과값 출력, 갯수를 파악하여 loop을 해야한다.-->
                    <c:forEach var="post" items="${ requestScope.selectPost }">
-                   <c:if test="${ post.adCode eq 0 }">
+                   <%-- <c:if test="${ post.adCode eq 0 }"> --%>
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="card h-100">
                             <h4 class="card-header" style = "text-align: center">
@@ -283,7 +284,7 @@
                             </div>
                         </div>
                     </div>
-                    </c:if>
+                    <%-- </c:if> --%>
                   </c:forEach>
                 </div>
                 

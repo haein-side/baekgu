@@ -129,31 +129,10 @@ public class SearchPost extends HttpServlet {
 	    if(selectPost != null) {
 	    	System.out.println("서블렛에서 받은 공고들 : " + selectPost);
 			
-			
-			
 			 path = "/WEB-INF/views/customer/main/postlist.jsp";
 			 request.setAttribute("selectPost", selectPost);
 			 request.setAttribute("selectInAdPost", selectInAdPost);
-			 
-			 
-			 
-			
-			
-				/*
-				 * String jsonString = new Gson().toJson(selectPost);
-				 * 
-				 * System.out.println(jsonString);
-				 * 
-				 * response.setContentType("application/json; charset=utf-8");
-				 * 
-				 * PrintWriter out = response.getWriter();
-				 * 
-				 * out.print(jsonString);
-				 * 
-				 * out.flush(); out.close();
-				 */
-			 
-			 
+			 			 
 	    	
 	    	
 		} else {

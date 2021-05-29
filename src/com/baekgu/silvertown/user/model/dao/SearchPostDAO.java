@@ -179,7 +179,7 @@ public class SearchPostDAO {
 			
 			selectedPost = new ArrayList<>();
 			
-			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, J.job_name, J.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2";
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, J.job_name, J.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL";
 			
 			if(searchPost.getLocationCode() != null) {
 				String locationCode = "";
@@ -216,7 +216,7 @@ public class SearchPostDAO {
 				
 				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
 				if(searchPost.getPeriodCode() == 30) {
-					for (int j = 2; j < 8; j++) {
+					for (int j = 1; j < 8; j++) {
 						periodCode += j;
 						if (j < 7){
 							periodCode += ", "; 
@@ -247,6 +247,7 @@ public class SearchPostDAO {
 				selectPost.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
 				selectPost.setDecisionCode(rset.getInt("DECISION_CODE"));
 				selectPost.setPostCode(rset.getInt("post_code"));
+				selectPost.setAdCode(rset.getInt("AD_CODE"));
 				selectPost.setPostTitle(rset.getString("post_title"));
 				selectPost.setLocationName(rset.getString("location_name"));
 				//selectPost.setLocationCode(rset.getInt("LOCATION_CODE"));
@@ -260,13 +261,12 @@ public class SearchPostDAO {
 				selectPost.setBenefit(rset.getString("benefit"));
 				selectPost.setPeriodCode(rset.getInt("PERIOD_CODE"));
 				selectPost.setPeriodName(rset.getString("PERIOD_NAME"));
-				selectPost.setAdCode(rset.getInt("AD_CODE"));
 				
-				System.out.println("selectPost : " + selectPost);
+				
+			
 				
 				selectedPost.add(selectPost);
-				
-				System.out.println("selectedPost의 길이 : " + selectedPost.size());
+			
 				
 			}
 		  
@@ -277,6 +277,7 @@ public class SearchPostDAO {
 			close(pstmt);
 		}
 		
+		System.out.println("selectedPost의 길이 : " + selectedPost.size());
 		System.out.println("selectPost from DAO : " + selectedPost);
 		
 		return selectedPost;
@@ -352,7 +353,7 @@ public class SearchPostDAO {
 				
 				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
 				if(dSearchPost.getPeriodCode() == 30) {
-					for (int j = 2; j < 8; j++) {
+					for (int j = 1; j < 8; j++) {
 						periodCode += j;
 						if (j < 7){
 							periodCode += ", "; 
@@ -504,7 +505,7 @@ public class SearchPostDAO {
 				
 				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
 				if(dSearchPost.getPeriodCode() == 30) {
-					for (int j = 2; j < 8; j++) {
+					for (int j = 1; j < 8; j++) {
 						periodCode += j;
 						if (j < 7){
 							periodCode += ", "; 
