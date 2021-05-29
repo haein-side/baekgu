@@ -691,6 +691,38 @@ public class UserDAO {
 		return numStr;
 	}
 
+	/**
+	 * 휴대폰번호의 비밀번호 업데이트
+	 * @param con
+	 * @param userPhone
+	 * @param enteredPwd
+	 * @return
+	 */
+	public int updatePwd(Connection con, String userPhone, String enteredPwd) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updatePwd");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, enteredPwd);
+			pstmt.setString(2, userPhone);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+
+		}
+		return result;
+	}
+
 
 	
 

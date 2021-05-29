@@ -201,7 +201,7 @@
 	    , ?
     	, ?
     	, ?
-    	, LAST_INSERT_ID()
+    	, LAST_	_ID()
 	     )
 	</entry>
 	
@@ -487,5 +487,24 @@
 		 join post p on (h.HR_ID = p.HR_ID)
 		where p.hr_id = ?
 	    group by b.B_name
+	    </entry>
+		<entry key="insertPostReport">
+		 INSERT
+   		   INTO REPORT
+		(
+  		  REPORT_REASON
+		, REPORT_DATE 
+		, POST_CODE 
+		, USER_CODE 
+		, D_LIST_CODE 
+		)
+		VALUES
+		(
+  		   ?
+		 , NOW()
+		 , ?
+		 , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)
+		 , LAST_INSERT_ID() 
+		)
 	</entry>
 </properties>
