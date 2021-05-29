@@ -7,11 +7,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.common.config.ConfigLocation;
 import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
 import com.baekgu.silvertown.user.model.dto.PostDTO;
@@ -277,8 +279,7 @@ public class SearchPostDAO {
 	}
 
 	/**
-	 * 상세검색 - 최적의 공고
-	 * 
+	 * 상세검색 - 일반공고
 	 * @param con
 	 * @param dSearchPost
 	 * @return selectBestPost
@@ -425,5 +426,275 @@ public class SearchPostDAO {
 
 		return selectBestPost;
 	}
+
+	public List<DetailedSearchPostDTO> selectDPostPaging(Connection con, DetailedSearchPostDTO dSearchPost,
+			PageInfoDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<DetailedSearchPostDTO> selectPost = null;
+
+		String query = "";
+
+		try {
+
+			selectPost = new ArrayList<>();
+
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE , I.industry_name, I.industry_code, J.job_name, J.job_code, e.exp_name, e.exp_code, p.PERIOD_CODE , wp.PERIOD_NAME , wh.HOUR_NAME , wh.HOUR_code , p.payment, f.PAY_CODE , f.pay_name, p.benefit, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join exp e on p.exp_code = e.exp_code left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join work_hour wh on p.HOUR_CODE = wh.HOUR_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is null";
+
+			/* 지역 */
+			if (dSearchPost.getLocationCode() != null) {
+				String locationCode = "";
+
+				// "무관"을 선택하여 첫번째 locationCode가 30일 때 2부터 26까지 위치코드를 넣어줌
+				if (dSearchPost.getLocationCode()[0] == 30) {
+					for (int j = 2; j < 27; j++) {
+						locationCode += j;
+						if (j < 26) {
+							locationCode += ", ";
+						}
+					}
+					// "무관"을 선택하지 않은 경우
+				} else {
+
+					for (int i = 0; i < dSearchPost.getLocationCode().length; i++) {
+						locationCode += dSearchPost.getLocationCode()[i];
+						if (i < dSearchPost.getLocationCode().length - 1) {
+							locationCode += ", ";
+						}
+					}
+				}
+
+				query += " and l.location_code IN (" + locationCode + ")";
+			}
+
+			/* 업종 */
+			if (dSearchPost.getIndustryCode() > 0) {
+				query += " and I.industry_code = " + dSearchPost.getIndustryCode();
+			}
+
+			/* 직종 */
+			if (dSearchPost.getJobCode() > 0) {
+				query += " and j.job_code = " + dSearchPost.getJobCode();
+			}
+
+			/* 경력 */
+			if (dSearchPost.getExpCode() > 0) {
+				query += " and e.exp_code <= " + dSearchPost.getExpCode();
+			}
+
+			/* 기간 */
+			if (dSearchPost.getPeriodCode() > 0) {
+				String periodCode = "";
+
+				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
+				if (dSearchPost.getPeriodCode() == 30) {
+					for (int j = 1; j < 8; j++) {
+						periodCode += j;
+						if (j < 7) {
+							periodCode += ", ";
+						}
+					}
+					// "무관"을 선택하지 않은 경우
+				} else {
+
+					periodCode += dSearchPost.getPeriodCode();
+
+				}
+
+				query += " and wp.period_code IN (" + periodCode + ")";
+
+			}
+
+			/* 시간 */
+			if (dSearchPost.getHourCode() != null) {
+				String hourCode = "";
+
+				for (int i = 0; i < dSearchPost.getHourCode().length; i++) {
+					hourCode += dSearchPost.getHourCode()[i];
+					if (i < dSearchPost.getHourCode().length - 1) {
+						hourCode += ", ";
+					}
+				}
+				query += " and p.HOUR_CODE IN (" + hourCode + ")";
+			}
+
+			query += " order by exp_code desc";
+			
+			// 일단 한 페이지에 1개의 일반 공고만 띄움
+			query += " limit " + pageInfo.getStartRow() + ", " + 1;
+
+			System.out.println("최적의 공고 쿼리문 : " + query);
+
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				DetailedSearchPostDTO selectPost2 = new DetailedSearchPostDTO();
+
+				selectPost2.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
+				selectPost2.setDecisionCode(rset.getInt("DECISION_CODE"));
+				selectPost2.setPostCode(rset.getInt("post_code"));
+				selectPost2.setPostTitle(rset.getString("post_title"));
+				selectPost2.setLocationName(rset.getString("location_name"));
+				//selectPost2ost.setLocationCode(rset.getInt("LOCATION_CODE"));
+				selectPost2.setIndustryName(rset.getString("industry_name"));
+				selectPost2.setIndustryCode(rset.getInt("industry_code"));
+				selectPost2.setJobName(rset.getString("job_name"));
+				selectPost2.setJobCode(rset.getInt("job_code"));
+				selectPost2.setExpName(rset.getString("exp_name"));
+				selectPost2.setExpCode(rset.getInt("exp_code"));
+				selectPost2.setPeriodCode(rset.getInt("PERIOD_CODE"));
+				selectPost2.setPeriodName(rset.getString("PERIOD_NAME"));
+				//selectPost2ost.setHourCode(rset.getInt("HOUR_CODE"));
+				selectPost2.setHourName(rset.getString("HOUR_NAME"));
+				selectPost2.setPayment(rset.getInt("payment"));
+				selectPost2.setPayCode(rset.getInt("PAY_CODE"));
+				selectPost2.setPayName(rset.getString("pay_name"));
+				selectPost2.setBenefit(rset.getString("benefit"));
+				selectPost2.setAdCode(rset.getInt("AD_CODE"));
+
+				System.out.println("페이징을 위한 selectPost : " + selectPost2);
+
+				selectPost.add(selectPost2);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("페이징을 위한 상세 일반공고의 길이 : " + selectPost.size());
+
+		System.out.println("페이징 상세 일반공고 : " + selectPost);
+
+		return selectPost;
+	}
+
+	/**
+	 * 단순 일반공고 페이징처리 조회
+	 * @param con
+	 * @param searchPost
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<SearchPostDTO> selectPostPaging(Connection con, SearchPostDTO searchPost, PageInfoDTO pageInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		List<SearchPostDTO> selectedPost = null;
+
+		String query = "";
+
+		try {
+
+			selectedPost = new ArrayList<>();
+
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, J.job_name, J.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from post p left join location l on p.location_code = l.LOCATION_CODE left join job j on p.JOB_CODE = j.JOB_CODE left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  left join pay f on p.PAY_CODE = f.PAY_CODE left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL";
+
+			if (searchPost.getLocationCode() != null) {
+				String locationCode = "";
+
+				// "무관"을 선택하여 첫번째 locationCode가 30일 때 2부터 26까지 위치코드를 넣어줌
+				if (searchPost.getLocationCode()[0] == 30) {
+					for (int j = 2; j < 27; j++) {
+						locationCode += j;
+						if (j < 26) {
+							locationCode += ", ";
+						}
+					}
+					// "무관"을 선택하지 않은 경우
+				} else {
+
+					for (int i = 0; i < searchPost.getLocationCode().length; i++) {
+						locationCode += searchPost.getLocationCode()[i];
+						if (i < searchPost.getLocationCode().length - 1) {
+							locationCode += ", ";
+						}
+					}
+				}
+
+				query += " and l.location_code IN (" + locationCode + ")";
+			}
+
+			if (searchPost.getIndustryCode() > 0) {
+				query += " and I.industry_code = " + searchPost.getIndustryCode();
+			}
+
+			if (searchPost.getPeriodCode() > 0) {
+				String periodCode = "";
+
+				// "무관"을 선택하여 첫번째 periodCode가 30일 때 2부터 7까지 위치코드를 넣어줌
+				if (searchPost.getPeriodCode() == 30) {
+					for (int j = 1; j < 8; j++) {
+						periodCode += j;
+						if (j < 7) {
+							periodCode += ", ";
+						}
+					}
+					// "무관"을 선택하지 않은 경우
+				} else {
+
+					periodCode += searchPost.getPeriodCode();
+
+				}
+
+				query += " and wp.period_code IN (" + periodCode + ")";
+
+			}
+
+			// 일단 한 페이지에 1개의 일반 공고만 띄움
+			query += " limit " + pageInfo.getStartRow() + ", " + 3;
+
+			System.out.println("최적의 공고 쿼리문 : " + query);
+			
+			System.out.println(query);
+
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+
+
+			while (rset.next()) {
+				SearchPostDTO selectPost = new SearchPostDTO();
+
+				selectPost.setdListTypeCode(rset.getInt("D_LIST_TYPE_CODE"));
+				selectPost.setDecisionCode(rset.getInt("DECISION_CODE"));
+				selectPost.setPostCode(rset.getInt("post_code"));
+				selectPost.setAdCode(rset.getInt("AD_CODE"));
+				selectPost.setPostTitle(rset.getString("post_title"));
+				selectPost.setLocationName(rset.getString("location_name"));
+				// selectPost.setLocationCode(rset.getInt("LOCATION_CODE"));
+				selectPost.setIndustryName(rset.getString("industry_name"));
+				selectPost.setIndustryCode(rset.getInt("industry_code"));
+				selectPost.setJobName(rset.getString("job_name"));
+				selectPost.setJobCode(rset.getInt("job_code"));
+				selectPost.setPayment(rset.getInt("payment"));
+				selectPost.setPayCode(rset.getInt("PAY_CODE"));
+				selectPost.setPayName(rset.getString("pay_name"));
+				selectPost.setBenefit(rset.getString("benefit"));
+				selectPost.setPeriodCode(rset.getInt("PERIOD_CODE"));
+				selectPost.setPeriodName(rset.getString("PERIOD_NAME"));
+
+				selectedPost.add(selectPost);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("페이징을 위한 상세 일반공고의 길이 : " + selectedPost.size());
+
+		System.out.println("페이징 상세 일반공고 : " + selectedPost);
+
+		return selectedPost;
+	}
+
 
 }
