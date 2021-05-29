@@ -13,6 +13,19 @@ select
      , D.D_LIST_REASON
      , B.B_NAME
      , B.B_NUMBER
+     , B.B_LOGO 
+     , (SELECT
+       		   COUNT(a.APPLY_CODE)
+  		  FROM APPLY a
+  		  JOIN POST b on(a.POST_CODE = b.POST_CODE)
+  		  JOIN RESUME c on(a.RESUME_CODE = c.RESUME_CODE)
+   		   WHERE b.HR_ID = ?
+   		   AND a.APPLY_CANCEL = FALSE) as 지원자수
+     , (select 
+       count(post_code)
+  from post p
+ where hr_id = ?
+ group by hr_id) as 공고수
   FROM HR H
   join BUSINESS B on (H.B_CODE = B.B_CODE)
   join DECISION_LIST D on (B.D_LIST_CODE = D.D_LIST_CODE)

@@ -51,7 +51,7 @@
 		    <div class="col-sm-6 text-left">
 		        <div> 
 		        <br><br><br>
-		        <h1> <img src="../resources/images/cat.jpg" style="width :200px; height: 200px;">기업 이름이 들어갈 것입니당<div class=""></div></h1>
+		        <h1> <img src="${ pageContext.servletContext.contextPath }${ sessionScope.loginBusinessMember.logoPath }" style="width :200px; height: 200px;">${ sessionScope.loginBusinessMember.cName }</h1>
 		        <ul style="padding-left: 25px;">
 		          <li><p style="color: red; font-size: 15px;"><b>[주의]</b> 유료 상품을 이용 중이신 경우, 광고를 조기 마감하더라도 남은 기간에 대한 차액은 환불되지 않습니다.</p></li>
 		          </ul>
@@ -59,48 +59,45 @@
 		        <div  class="container">
 		          <div  style="background-color: orange; width: 1000px; height: 800px; padding-top: 1%;">
 		            <div style="display: flex; margin: 1%;">
+
 		            <div  class="item" style="width: 30%; height: 25%;  background-color: orange;">
-		              <h2 align="center">진행중 공고</h2>
-		              <span style="font-size: xx-large; padding-left: 100px;">n</span><label>건</label><br>
+		              <h2 align="center">등록 공고현황</h2>
+		              <span style="font-size: xx-large; padding-left: 100px;">${ sessionScope.loginBusinessMember.totalPost }</span><label>건</label><br>
 		            </div>
 		              <div class="item" style="width: 100%; background-color: orange;">
 		              </div>
 		            </div>
 		            <div style="width: 100%; height:300px; background-color: orange; display: flex;">
 		              <div style="width: 50%; height: 100%; background-color: orange; padding-top: 80px;">
-		                <h2  align="center">등록된 공고 현황</h2>
+		                <h2  align="center">진행중인 공고</h2>
 		                <span style="font-size: xx-large; padding-left: 250px;" align="center" >n</span><label>건</label>
 		              </div>
 		              <div style="width: 50%; height: 100%; background-color: orange; padding-top: 80px;">
 		                <h2  align="center">총 지원자 수 현황</h2>
-		                <span style="font-size: xx-large; padding-left: 250px;" align="center" >n</span><label>명</label>
+		                <span style="font-size: xx-large; padding-left: 250px;" align="center" >${ sessionScope.loginBusinessMember.totalApplicatnt }</span><label>명</label>
 		              </div>
 		            </div>
 		              <div style="width: 1000px; display:inline-flex; margin: 1%; margin-left: 26px;" align="center">
-		                <div id="gopostinsert" class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/insertpost';">
 		                  <h3>공고 등록</h3>
 		                  <p>공고를 등록해 원하는 사람들을 만나보세요!</p>
-		                  <input type="button" value="공고등록"/>
+		
 		                </div>
-		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/applicablePostlist';">
 		                  <h3>지원자 관리</h3>
 		                  <p>당신의 기업을 원하는 사람들을 만나보세요!</p>
-		                  <button>여기를 눌러</button>
 		                </div>
-		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/postlist';">
 		                  <h3>공고 관리</h3>
 		                  <p>등록하신 공고를 한눈에 보세요!</p>
-		                  <button>여기를 눌러</button>
 		                </div>
-		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/paymentlist';">
 		                  <h3>결제 관리</h3>
 		                  <p>돈을 얼마나 썻는지 한눈에 알수 있어요!</p>
-		                  <button>여기를 눌러</button>
 		                </div>
-		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange;">
+		                <div class="item1" style=" width: 19%; height: 300px; background-color: orange; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/';">
 		                  <h3>상품 안내</h3>
 		                  <p>돈을 주면 사람들에게 더 눈에 잘 띄이게 해줘요!</p>
-		                  <button>여기를 눌러</button>
 		                </div>
 		              </div>
 		            </div>
@@ -115,20 +112,6 @@
 		      </div>
 		    </div>
 	<br><br><br>
-
-		<jsp:include page="../common/footer.jsp"/>
-		
- 		<script>
-		$("#gopostinsert").click(function(){
-			
-			alert("안녕 클릭이 되니?");
-			location.replace="${ pageContext.servletContext.contextPath }/business/insertpost";
-			
-			
-		});
-		
-		</script>
-
-
+		<jsp:include page="../common/footer.jsp"/>		
 </body>
 </html>

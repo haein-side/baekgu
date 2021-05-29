@@ -278,7 +278,7 @@ $(function(){
                <input class="btn btn-lg btn-primary btn-block" type="submit" id="btnSubmit"
                   style="font-size: 28px; margin: auto; margin-top: 100px; margin-bottom: 200px; padding-bottom: 55px;" value="들어가기">
             
-            	<button type="submit" id="regist">제출하기</button>
+            	<!-- <button type="submit" id="regist">제출하기</button> -->
             
             </div>
          </div>
@@ -441,11 +441,11 @@ $(function(){
           }
          
          // 아이디 중복체크 필수로 함
-         if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
+         /* if(checkMessage.innerHTML != "사용할 수 있는 아이디입니다."){
         	 duplicationCheck.focus();
         	 alert("휴대폰번호 중복확인을 해주세요.")
         	 return false;
-         }
+         } */
        
         // 유효성 검사 alert 창 띄워주는 것
         function chk(re, ele, msg){

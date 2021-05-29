@@ -10,14 +10,18 @@ public class BusinessMemberDTO {
 	private int bCode;
 	private int blockStatus;
 	private String bReason;
-	private String CName;
+	private String cName;
+	private String logoPath;
+	private int totalApplicatnt;
+	private int totalPost;
 	private int bNumber;
-	
 	public BusinessMemberDTO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode, int blockStatus,
-			String bReason, String CName, int bNumber) {
+	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode,
+			int blockStatus, String bReason, String cName, String logoPath, int totalApplicatnt, int totalPost,
+			int bNumber) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -27,22 +31,11 @@ public class BusinessMemberDTO {
 		this.bCode = bCode;
 		this.blockStatus = blockStatus;
 		this.bReason = bReason;
-		this.CName = CName;
+		this.cName = cName;
+		this.logoPath = logoPath;
+		this.totalApplicatnt = totalApplicatnt;
+		this.totalPost = totalPost;
 		this.bNumber = bNumber;
-	}
-	
-	
-	public int getbNumber() {
-		return bNumber;
-	}
-	public void setbNumber(int bNumber) {
-		this.bNumber = bNumber;
-	}
-	public String getCName() {
-		return CName;
-	}
-	public void setCName(String cName) {
-		CName = cName;
 	}
 	public String getbId() {
 		return bId;
@@ -92,14 +85,44 @@ public class BusinessMemberDTO {
 	public void setbReason(String bReason) {
 		this.bReason = bReason;
 	}
+	public String getcName() {
+		return cName;
+	}
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+	public String getLogoPath() {
+		return logoPath;
+	}
+	public void setLogoPath(String logoPath) {
+		this.logoPath = logoPath;
+	}
+	public int getTotalApplicatnt() {
+		return totalApplicatnt;
+	}
+	public void setTotalApplicatnt(int totalApplicatnt) {
+		this.totalApplicatnt = totalApplicatnt;
+	}
+	public int getTotalPost() {
+		return totalPost;
+	}
+	public void setTotalPost(int totalPost) {
+		this.totalPost = totalPost;
+	}
+	public int getbNumber() {
+		return bNumber;
+	}
+	public void setbNumber(int bNumber) {
+		this.bNumber = bNumber;
+	}
 	@Override
 	public String toString() {
 		return "BusinessMemberDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone
 				+ ", bEmail=" + bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason
-				+ ", CName=" + CName + ", bNumber=" + bNumber + "]";
+				+ ", cName=" + cName + ", logoPath=" + logoPath + ", totalApplicatnt=" + totalApplicatnt
+				+ ", totalPost=" + totalPost + ", bNumber=" + bNumber + "]";
 	}
-
 	
-
-	 
+	
+	
 }

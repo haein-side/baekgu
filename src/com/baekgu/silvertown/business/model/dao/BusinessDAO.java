@@ -24,6 +24,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
@@ -67,6 +68,8 @@ public class BusinessDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, bMember.getbId());
+			pstmt.setString(2, bMember.getbId());
+			pstmt.setString(3, bMember.getbId());
 			rset = pstmt.executeQuery();
 
 			businessLoginMember = new BusinessMemberDTO();
@@ -81,10 +84,18 @@ public class BusinessDAO {
 				businessLoginMember.setbCode(rset.getInt("B_CODE"));
 				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
-				businessLoginMember.setCName(rset.getString("B_NAME"));
+				businessLoginMember.setcName(rset.getString("B_NAME"));
 				businessLoginMember.setbNumber(rset.getInt("B_NUMBER"));
+				businessLoginMember.setLogoPath(rset.getString(11));
+				businessLoginMember.setTotalApplicatnt(rset.getInt(12));
+				businessLoginMember.setTotalPost(rset.getInt(13));
+				
+				
+			}	
+			
 
-			}
+			
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -997,6 +1008,58 @@ public class BusinessDAO {
 
 		return result;
 	}
+
+
+	public MainDTO selectBusinessInfo(Connection con, String bId) {
+
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		MainDTO main = null;
+		
+		String query = prop.getProperty("selectMainPage");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, bId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				main = new MainDTO();
+				
+				main.setbName(rset.getString(1));
+				main.setLogoPath(rset.getString(2));
+				main.setTotalApplicant(rset.getInt(3));
+				main.setTotalPost(rset.getInt(4));
+			
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return main;
+		
+		
+	}
+	
+	
+	
+	
+	
+
+
 
 	/**
 	 * 고객이 공고(기업)를 신고하는 메소드

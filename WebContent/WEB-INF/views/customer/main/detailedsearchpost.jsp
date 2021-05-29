@@ -294,8 +294,11 @@
 	   		});  
 	   	}
 	       
-	      
-	     
+	       
+	    
+	       function move(){
+	       	window.location.href="${ pageContext.servletContext.contextPath }/user/toSearchPost";
+	       } 
 	       <!-- btnSubmit -->
 	 
     </script>
@@ -318,9 +321,8 @@
 						</div>
 					</div>
 					<div align="center" id="btn_group" style="padding: 50px;">
-						<button class="btn1"
-							style="width: 200pt; height: 60pt; font-size: x-large;"
-							onclick="location.href='${ pageContext.servletContext.contextPath }/user/toSearchPost'">단순&nbsp;검색</button>
+						<input type="button" class="btn1" id="category" style="width:200pt;height:60pt;font-size:
+							x-large;text-align:center;" value="단순 검색" onclick='move()'></input>
 						<button class="btn1"
 							style="width: 200pt; height: 60pt; font-size: x-large; margin-left: 160px;"
 							disabled >상세&nbsp;검색</button>

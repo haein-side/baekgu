@@ -134,9 +134,66 @@ public class UserService {
 		return jobInfo;
 	}
 
-	
-	
-	
-	
+	/**
+	 * db에 해당 휴대폰 번호에 대한 인증번호 저장
+	 * @param num
+	 * @param numStr
+	 * @return
+	 */
+	public int verifiedNum(String num, String numStr) {
+		Connection con = getConnection();
+		
+		int result = userDAO.insertVerifiedNum(con, num, numStr);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	/**
+	 * 휴대폰번호의 인증번호 조회
+	 * @param num
+	 * @return numStr
+	 */
+	public String selectVerifiedNum(String num) {
+		
+		Connection con = getConnection();
+		
+		String numStr = userDAO.selectVerifiedNum(con, num);
+		
+		close(con);
+		
+		return numStr;
+	}
+
+	/**
+	 * 휴대폰번호의 비밀번호 업데이트
+	 * @param userPhone
+	 * @param enteredPwd
+	 * @return
+	 */
+	public int updatePwd(String userPhone, String enteredPwd) {
+		Connection con = getConnection();
+		
+		int result = userDAO.updatePwd(con, userPhone, enteredPwd);
+		
+		if(result > 0) {
+			commit(con);
+			System.out.println("커밋된 result : " + result);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }

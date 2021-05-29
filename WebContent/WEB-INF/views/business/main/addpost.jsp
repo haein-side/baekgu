@@ -220,7 +220,6 @@ footer {
 											.getElementById("selectJob").value;
 
 									console.log(value);
-
 								}
 							</script>
 
