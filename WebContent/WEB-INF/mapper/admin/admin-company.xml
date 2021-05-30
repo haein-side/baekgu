@@ -168,7 +168,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_NAME LIKE '%' ? '%'
-	       AND B.D_LIST_REASON is not null
+	       AND b.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchCodeCompanyList">
@@ -187,7 +187,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_CODE LIKE '%' ? '%'
-	       AND B.D_LIST_REASON is not null
+	       AND b.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchCategoryCompanyList">
@@ -206,7 +206,7 @@
 		  FROM BUSINESS a, DECISION_LIST b
 	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	       AND a.B_CATEGORY_CODE LIKE '%' ? '%'
-	       AND B.D_LIST_REASON is not null
+	       AND b.D_LIST_REASON is not null
          LIMIT ?,10
 	</entry>
 	<entry key="searchReturnStateCompanyList">
@@ -223,10 +223,10 @@
 		     , b.DECISION_CODE
 		     , b.D_LIST_TYPE_CODE
 		  FROM BUSINESS a, DECISION_LIST b
-	     WHERE A.D_LIST_CODE = B.D_LIST_CODE
-	       and B.DECISION_CODE = 3
-	       and B.D_LIST_TYPE_CODE = 3
-	       AND B.D_LIST_REASON is not null
+	     WHERE a.D_LIST_CODE = b.D_LIST_CODE
+	       and b.DECISION_CODE = 3
+	       and b.D_LIST_TYPE_CODE = 3
+	       AND b.D_LIST_REASON is not null
 	     LIMIT ?,10
 	</entry>
 	<entry key="searchStateCompanyList">
@@ -243,9 +243,9 @@
 		     , b.DECISION_CODE
 		     , b.D_LIST_TYPE_CODE
 		  FROM BUSINESS a, DECISION_LIST b
-	  	 WHERE A.D_LIST_CODE = B.D_LIST_CODE
-  	   AND NOT (B.DECISION_CODE = 3  <![CDATA[&&]]> B.D_LIST_TYPE_CODE = 3 )
-	       AND B.D_LIST_REASON is not null
+	  	 WHERE a.D_LIST_CODE = b.D_LIST_CODE
+  	   AND NOT (b.DECISION_CODE = 3  <![CDATA[&&]]> b.D_LIST_TYPE_CODE = 3 )
+	       AND b.D_LIST_REASON is not null
 	     LIMIT ?,10
 	</entry>
 	<entry key="selectReportCode">
