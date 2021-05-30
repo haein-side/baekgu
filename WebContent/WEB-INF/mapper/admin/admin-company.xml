@@ -21,7 +21,7 @@
 		    , a.D_LIST_CODE
 		    , b.DECISION_CODE
 		    , b.D_LIST_TYPE_CODE
-		 from business a, decision_list b
+		 from BUSINESS a, DECISION_LIST b
   	    where a.D_LIST_CODE = b.D_LIST_CODE
           and ((b.DECISION_CODE = 2 and b.D_LIST_TYPE_CODE = 3) or (b.DECISION_CODE = 3 and b.D_LIST_TYPE_CODE = 3))
         LIMIT ?,?
