@@ -29,7 +29,6 @@ public class BusinessReportServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 	    BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 	      
-		
 		/* paging 처리 */
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;

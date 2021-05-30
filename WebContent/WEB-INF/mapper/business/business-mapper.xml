@@ -546,8 +546,11 @@
           JOIN JOB b ON(a.JOB_CODE = b.JOB_CODE)
           JOIN INDUSTRY c ON(b.INDUSTRY_CODE = c.INDUSTRY_CODE)
           JOIN DECISION_LIST d ON(a.D_LIST_CODE = d.D_LIST_CODE)
-        WHERE a.HR_ID = ?
-            AND d.DECISION_CODE = 1
+         WHERE a.HR_ID = ?
+           AND d.DECISION_CODE = 1
+           AND a.POST_CODE NOT IN(SELECT e.POST_CODE 
+                                    FROM POST_AD_PAYMENT e
+                                  )
    </entry>
    <entry key="insertPostAdPayment">
    		INSERT 

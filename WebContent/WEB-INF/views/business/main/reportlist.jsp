@@ -215,10 +215,6 @@
 					this.parentNode.style.backgroundColor = "white";
 				}
 				
-/* 				$tds[i].onclick = function() {
-					location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="
-							         +  this.parentNode.children[0].innerText;
-				} */
 			}
 			
 		}

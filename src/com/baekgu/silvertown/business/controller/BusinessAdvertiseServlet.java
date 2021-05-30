@@ -68,14 +68,9 @@ public class BusinessAdvertiseServlet extends HttpServlet {
             }
         }
 		
-		
-		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
-		/* 한 번에 보여질 페이징 버튼의 수*/
-		int buttonAmount = 5;
 		
-		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
-		/* JDBC 시작 - 공고 조회 */
+		int buttonAmount = 5;
 		
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, hold, limit, buttonAmount, "광고접수");
 
@@ -104,19 +99,6 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 	
 		System.out.println("test doPost method");
 		
-//		name="selectedPostCode"
-//		name="selectedAdCode"
-//		name="selectedManager"
-//		name="selectedIndustry"
-//		name="selectedJob"
-//		name="selectedPostTitle"
-//		name="selectedWeeks"
-//		name="selectedAd"
-		
-		System.out.println("1 " + request.getParameter("selectedPostCode"));
-		System.out.println("2 " + request.getParameter("selectedAdCode"));
-		System.out.println("7 " + request.getParameter("selectedWeeks"));
-		
 		PaymentDTO postAd = new PaymentDTO();
 		postAd.setPostCode(Integer.parseInt(request.getParameter("selectedPostCode")));
 		postAd.setAdCode(Integer.parseInt(request.getParameter("selectedAdCode")));
@@ -127,9 +109,15 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 		String path = "";
 
 		if(result > 0 ) {
+			request.setAttribute("adName", request.getParameter("selectedAd"));
+			request.setAttribute("postTitle", request.getParameter("selectedPostTitle"));
+			request.setAttribute("postManager", request.getParameter("selectedManager"));
+			
 			path = "/WEB-INF/views/business/main/advertise.jsp";
 		}
 	
+		request.getRequestDispatcher(path).forward(request, response);
+
 	}
 
 }
