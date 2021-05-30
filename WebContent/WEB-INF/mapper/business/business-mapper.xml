@@ -549,4 +549,25 @@
         WHERE a.HR_ID = ?
             AND d.DECISION_CODE = 1
    </entry>
+   <entry key="insertPostAdPayment">
+   		INSERT 
+  		  INTO POST_AD_PAYMENT
+		(
+  		  POST_AD_DATE
+		, POST_AD_PAID
+		, POST_AD_WEEK
+		, AD_CODE
+		, POST_CODE
+		, P_METHOD_CODE 
+		)
+		VALUES
+		(
+  		  NOW()
+		, 0
+		, ?
+		, ?
+		, ?
+		, null
+		)
+   </entry>
 </properties>

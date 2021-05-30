@@ -239,14 +239,14 @@ $(function(){
          <div>
             <label for="address" class="basiclabel">약관 동의하기</label>
             <div class="form-group">
-               <div class="user_join_agree">
+               <!-- <div class="user_join_agree">
                
                   <input type="checkbox" name="agree" id="agreeChkAll" class="agrSeletAll" value="selectAll" onclick="selectAll(this)">
                   <label for="agreeChkAll"
                      style="font-size: 16px;">[모두 동의] 필수 이용 동의 약관 및 선택 사항에 모두
                      동의합니다.</label>
                      
-               </div>
+               </div> -->
                <div class="join_dot"></div>
                <div class="user_join_agree agrSelect">
                

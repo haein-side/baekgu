@@ -202,8 +202,7 @@ public class DetailedSearchPost extends HttpServlet {
 			System.out.println("currentPage : "+ currentPage);
 			System.out.println("pageNo : " + pageNo);
 			
-			/* 전체 게시물의 갯수가 필요하다 */
-			/* DB에서 먼저 전체 게시물의 갯수를 조회한다 */
+			/* 전체 게시물의 갯수 필요 */
 			int totalCount = selectPostFirst.size();
 			
 			System.out.println("상세 검색 일반 공고의 총 개수 : " + totalCount);
@@ -211,7 +210,7 @@ public class DetailedSearchPost extends HttpServlet {
 			System.out.println("totalCount : " + totalCount);
 			
 			/* 한 페이지에서 보여 줄 게시물의 수 */
-			int limit = 1;
+			int limit = 3;
 			
 			/* 한 번에 보여질 페이징 버튼 수 */
 			int buttonAmount = 5;

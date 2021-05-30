@@ -31,7 +31,7 @@ public class SearchPost extends HttpServlet {
       System.out.println("selectedList : " + select);   
    
       // 카테고리별 스플릿 - String[] array에 담아줌
-      String[] array = select.split("!"); // 반드시 3이 아님
+      String[] array = select.split("!"); 
       
       System.out.println("array의 크기 : " + array.length);
       

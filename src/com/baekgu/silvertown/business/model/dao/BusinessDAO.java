@@ -1299,4 +1299,29 @@ public class BusinessDAO {
 		return result;
 	}
 
+	public int insertPostAdPayment(Connection con, PaymentDTO postAd) {
+
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("insertPostAdPayment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postAd.getWeeks());
+			pstmt.setInt(2, postAd.getAdCode());
+			pstmt.setInt(3, postAd.getPostCode());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

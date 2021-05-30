@@ -180,7 +180,7 @@ public class SearchPostDAO {
 
 			selectedPost = new ArrayList<>();
 
-			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, j.job_name, j.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from POST p left join LOCATION l on p.location_code = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL";
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, j.job_name, j.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from POST p left join LOCATION l on p.location_code = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL and p.post_date <= NOW()";
 
 			if (searchPost.getLocationCode() != null) {
 				String locationCode = "";
@@ -297,7 +297,7 @@ public class SearchPostDAO {
 
 			selectBestPost = new ArrayList<>();
 
-			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE , I.industry_name, I.industry_code, j.job_name, j.job_code, e.exp_name, e.exp_code, p.PERIOD_CODE , wp.PERIOD_NAME , wh.HOUR_NAME , wh.HOUR_code , p.payment, f.PAY_CODE , f.pay_name, p.benefit, pap.AD_CODE from POST p left join LOCATION l on p.LOCATION_CODE = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join EXP e on p.EXP_CODE = e.EXP_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join WORK_HOUR wh on p.HOUR_CODE = wh.HOUR_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is null";
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE , I.industry_name, I.industry_code, j.job_name, j.job_code, e.exp_name, e.exp_code, p.PERIOD_CODE , wp.PERIOD_NAME , wh.HOUR_NAME , wh.HOUR_code , p.payment, f.PAY_CODE , f.pay_name, p.benefit, pap.AD_CODE from POST p left join LOCATION l on p.LOCATION_CODE = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join EXP e on p.EXP_CODE = e.EXP_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join WORK_HOUR wh on p.HOUR_CODE = wh.HOUR_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is null  and p.post_date <= NOW()";
 
 			/* 지역 */
 			if (dSearchPost.getLocationCode() != null) {
@@ -441,7 +441,7 @@ public class SearchPostDAO {
 
 			selectPost = new ArrayList<>();
 
-			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE , I.industry_name, I.industry_code, j.job_name, j.job_code, e.exp_name, e.exp_code, p.PERIOD_CODE , wp.PERIOD_NAME , wh.HOUR_NAME , wh.HOUR_code , p.payment, f.PAY_CODE , f.pay_name, p.benefit, pap.AD_CODE from POST p left join LOCATION l on p.LOCATION_CODE = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join EXP e on p.EXP_CODE = e.EXP_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join WORK_HOUR wh on p.HOUR_CODE = wh.HOUR_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is null";
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE , I.industry_name, I.industry_code, j.job_name, j.job_code, e.exp_name, e.exp_code, p.PERIOD_CODE , wp.PERIOD_NAME , wh.HOUR_NAME , wh.HOUR_code , p.payment, f.PAY_CODE , f.pay_name, p.benefit, pap.AD_CODE from POST p left join LOCATION l on p.LOCATION_CODE = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join EXP e on p.EXP_CODE = e.EXP_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join WORK_HOUR wh on p.HOUR_CODE = wh.HOUR_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is null and p.post_date <= NOW()";
 
 			/* 지역 */
 			if (dSearchPost.getLocationCode() != null) {
@@ -523,7 +523,7 @@ public class SearchPostDAO {
 			query += " order by exp_code desc";
 			
 			// 일단 한 페이지에 1개의 일반 공고만 띄움
-			query += " limit " + pageInfo.getStartRow() + ", " + 1;
+			query += " limit " + pageInfo.getStartRow() + ", " + 3;
 
 			System.out.println("최적의 공고 쿼리문 : " + query);
 
@@ -593,7 +593,7 @@ public class SearchPostDAO {
 
 			selectedPost = new ArrayList<>();
 
-			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, j.job_name, j.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from POST p left join LOCATION l on p.location_code = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL";
+			query = "select dl.D_LIST_TYPE_CODE, dl.DECISION_CODE, p.post_code, p.post_title, l.location_name, l.LOCATION_CODE, I.industry_name, I.industry_code, j.job_name, j.job_code, p.payment, f.PAY_CODE , f.pay_name, p.benefit, p.PERIOD_CODE, wp.PERIOD_NAME, pap.AD_CODE from POST p left join LOCATION l on p.location_code = l.LOCATION_CODE left join JOB j on p.JOB_CODE = j.JOB_CODE left join INDUSTRY I on j.INDUSTRY_CODE = I.INDUSTRY_CODE  left join PAY f on p.PAY_CODE = f.PAY_CODE left join WORK_PERIOD wp on p.PERIOD_CODE = wp.PERIOD_CODE left join DECISION_LIST dl on p.D_LIST_CODE = dl.D_LIST_CODE left join POST_AD_PAYMENT pap on p.POST_CODE = pap.POST_CODE where dl.D_LIST_TYPE_CODE = 4 and dl.DECISION_CODE = 2 and pap.AD_CODE is NULL and p.post_date <= NOW()";
 
 			if (searchPost.getLocationCode() != null) {
 				String locationCode = "";

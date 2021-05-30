@@ -243,7 +243,7 @@
                         
                         $.ajax({
                         	
-                        	url:"/baekgu/business/paycomplate",
+                        	url:"${ pageContext.servletContext.contextPath }/business/paycomplate",
                         	type:"GET",
                         	data:{ success : success,
                         		postadcode : postadcode

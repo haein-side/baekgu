@@ -235,6 +235,7 @@
 		 where DL.D_LIST_TYPE_CODE = 4
 		   and DL.DECISION_CODE = 2
 		   and PAP.AD_CODE IN (1, 2)
+		   and P.post_date <![CDATA[ <= ]]> NOW()
 		   and I.INDUSTRY_CODE = ?
 	</entry>
 	
@@ -269,6 +270,7 @@
 		 where DL.D_LIST_TYPE_CODE = 4
 		   and DL.DECISION_CODE = 2
 		   and PAP.AD_CODE IN (3, 4)
+		   and P.post_date <![CDATA[ <= ]]> NOW()
 		   and J.JOB_CODE = ?
 	</entry>
 		
