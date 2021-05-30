@@ -101,7 +101,7 @@ h1, h2 {
   			}
   			
   			$.ajax({
-  				url:"/baekgu/business/checkduplicate",
+  				url:"${ pageContext.servletContext.contextPath }/business/checkduplicate",
   				type:"GET",
   				data:{ hrId_1 : hrId_1 },
   				success:function(data, textStatus,xhr){

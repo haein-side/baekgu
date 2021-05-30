@@ -271,7 +271,7 @@
 		   and PAP.AD_CODE IN (3, 4)
 		   and J.JOB_CODE = ?
 	</entry>
-	
+		
 	<!-- 인증번호 업데이트 해주는 쿼리 -->
 	<entry key = "insertVerifiedNum">
 	    UPDATE USER

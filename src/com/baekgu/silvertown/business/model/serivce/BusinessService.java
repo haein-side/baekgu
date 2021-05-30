@@ -372,6 +372,7 @@ public class BusinessService {
 		
 		return reportList;
 	}
+	
 	public int updatePaymentList(int success, int postAdCode) {
 		
 		Connection con = getConnection();
@@ -473,6 +474,23 @@ public class BusinessService {
 			
 			rollback(con);
 			System.out.println("비밀번호 업데이트 실패 : " + result);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int insertPostAdPayment(PaymentDTO postAd) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.insertPostAdPayment(con, postAd);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
 		}
 		
 		close(con);
