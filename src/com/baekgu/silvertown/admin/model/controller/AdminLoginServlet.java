@@ -37,6 +37,7 @@ public class AdminLoginServlet extends HttpServlet {
 		System.out.println("adminPwd : " + adminPwd);
 		
 		AdminDTO requestAdmin = new AdminDTO();
+		//1. 아이디만 dto에 등록된다
 		requestAdmin.setAdminId(adminId);
 		requestAdmin.setAdminPwd(adminPwd);
 		
