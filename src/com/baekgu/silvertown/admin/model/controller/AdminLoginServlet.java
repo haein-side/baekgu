@@ -56,8 +56,7 @@ public class AdminLoginServlet extends HttpServlet {
 		} else{
 			
 			request.setAttribute("message", "아이디 또는 비밀번호에 오류가 있습니다.");
-			request.getRequestDispatcher("/WEB-INF/views/admin/main/signin.").forward(request, response);
-			
+			request.getRequestDispatcher("/WEB-INF/views/admin/main/signin.jsp").forward(request, response);
 		}
 		
 		

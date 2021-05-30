@@ -34,9 +34,3 @@
 	<%--<jsp:forward page="/WEB-INF/views/customer/main/manageApply.jsp"/>--%>
 </body>
 </html>
-<!-- 숨결 -->
-
-
-
-
-
