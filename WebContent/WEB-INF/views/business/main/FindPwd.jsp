@@ -104,7 +104,7 @@ h1, h2 {
 
  		$.ajax({
  			
- 			url:"/baekgu/business/sendsms",
+ 			url:"${ pageContext.servletContext.contextPath }/business/sendsms",
  			data:{
  				num : num,
  				userId : userId
@@ -130,7 +130,7 @@ h1, h2 {
  		
  		$.ajax({
  			
- 			url: "/baekgu/business/checkmessage",
+ 			url: "${ pageContext.servletContext.contextPath }/business/checkmessage",
  			type:"post",
  			data: {
  				userId : userId,

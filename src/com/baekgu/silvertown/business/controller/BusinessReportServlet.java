@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+=======
+>>>>>>> branch 'master' of https://github.com/109SilverTown/baekgu.git
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
@@ -26,6 +29,7 @@ public class BusinessReportServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+<<<<<<< HEAD
 		HttpSession session = request.getSession();
 	    BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 	      
@@ -62,6 +66,7 @@ public class BusinessReportServlet extends HttpServlet {
 	      
 	    request.getRequestDispatcher(path).forward(request, response);
 		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
