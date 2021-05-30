@@ -18,6 +18,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.HrNumDTO;
 import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -400,6 +401,83 @@ public class BusinessService {
 		close(con);
 		
 		return main;
+	}
+
+	/**
+	 * hr 번호 확인을 위한 번호 select method
+	 * @param bId
+	 * @return
+	 */
+	public HrNumDTO selectHrNum(String bId) {
+		
+		Connection con = getConnection();
+		
+		HrNumDTO hNum = businessDAO.selecthNum(con, bId);
+		
+		close(con);
+		return hNum;
+	}
+
+	/**
+	 * 생성된 인증번호를 update 하는 메소드
+	 * @param infoWIthVNum
+	 * @return
+	 */
+	public int updateVerifiedNum(HrNumDTO infoWIthVNum) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateVerifiedNum(con, infoWIthVNum);
+		
+		System.out.println("DAO 가기전에 인증 번호 확인 : " +infoWIthVNum.getVarifiedNum());
+		
+		if(result > 0) {
+			System.out.println("문자인증 서비스 업데이트 성공");
+			commit(con);
+			
+			
+		} else {
+			
+			System.out.println("문자인증 서비스 업데이트실패");
+			rollback(con);
+			
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public String selectVerifiedNum(String userId) {
+		
+		Connection con = getConnection();
+		
+		String numStr = businessDAO.selectVerifiedNum(con, userId);
+		
+		close(con);
+		
+		return numStr;
+	}
+
+	public int updatePwd(String enterPwd, String hrId) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updatePwd(con, enterPwd, hrId);
+		
+		if(result > 0) {
+			
+			commit(con);
+			System.out.println("비밀번호 업데이트 성공 : " + result);
+		} else {
+			
+			rollback(con);
+			System.out.println("비밀번호 업데이트 실패 : " + result);
+		}
+		
+		close(con);
+		
+		return result;
 	}
 
 

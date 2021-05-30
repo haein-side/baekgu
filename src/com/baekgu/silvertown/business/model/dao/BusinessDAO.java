@@ -24,6 +24,7 @@ import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.HrNumDTO;
 import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
@@ -1088,6 +1089,128 @@ public class BusinessDAO {
 			close(pstmt);
 		}
 
+		return result;
+	}
+
+	public HrNumDTO selecthNum(Connection con, String bId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		HrNumDTO hrNum = new HrNumDTO();
+		
+		String query = prop.getProperty("selectHrNum");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, bId);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				hrNum.setHrId(rset.getString(1));
+				hrNum.setbPhone(rset.getInt(2));
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return hrNum;
+	}
+
+	public int updateVerifiedNum(Connection con, HrNumDTO infoWIthVNum) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateVerifiedNum");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, infoWIthVNum.getVarifiedNum());
+			pstmt.setString(2, infoWIthVNum.getHrId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public String selectVerifiedNum(Connection con, String userId) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String verifiedCode = "";
+		
+		String query = prop.getProperty("selectVerifiedNum");
+		
+		try {
+			
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				verifiedCode = rset.getString(1);
+				
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		return verifiedCode;
+	}
+
+	
+	
+	public int updatePwd(Connection con, String enterPwd, String hrId) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("updateNewPwd");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, enterPwd);
+			pstmt.setString(2, hrId);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		
 		return result;
 	}
 
