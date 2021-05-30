@@ -37,15 +37,7 @@ public class AdminLoginService {
 		} else{
 			System.out.println("로그인 실패!!");
 		}
-		
-		
-		System.out.println("loginAdmin : " + loginAdmin);
-		
-		
-		
-		
-		
-		
+
 		return loginAdmin;
 	}
 	

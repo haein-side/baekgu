@@ -556,7 +556,7 @@ private final Properties prop;
 		
 		
 		
-		//value가 승인여부 쿼리문 작동시에는 ?가 안 들어간다 따라서 따로 빼준다
+		//value가 승인여부 쿼리문 작동시에는 ?가 하나만 들어간다 따라서 따로 빼준다
 		if(value.equals("거절") || value.equals("승인")) {
 			
 			pstmt = con.prepareStatement(query);
