@@ -619,12 +619,12 @@
 		
 	</section>
 	
-	<script>
+<!-- 	<script>
 		
 		$('#report').on('click', function(event) {
 			var button = $(event.relatedTarget)
 		});
-	</script>
+	</script> -->
 	
 <%@ include file="../common/footer.jsp"%>
 

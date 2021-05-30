@@ -36,49 +36,56 @@ public class UserSigninServlet extends HttpServlet {
 		/* Service와 연결하여 회원가입(비밀번호)과 차단여부 조회 */
 		UserService userService = new UserService();
 		UserDTO loginUser = userService.loginCheck(requestUser);
-	    System.out.println("Servlet 고객 차단여부 : " + loginUser.getUserBlock());
 	    
 	    String errorPage = "";
 
 	    /* 고객정보 유무로 분기 처리 */
-	    if(loginUser.getUserPwd() != null) {
-	    	
-	    	/* 고객정보 일치시 */
-	    	/* Service와 연결하여 로그인 정보 받아오기 */
-		    UserService userServiceInfo = new UserService();
-		    UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
-		    System.out.println("Servlet 고객코드 : " + loginUserInfo.getUserCode());
-		    
-		    if(loginUserInfo.getUserBlock() != 1) {
+	    try {
+	    	if(loginUser != null) {
+		    	
+		    	/* 고객정보 일치시 */
+		    	/* Service와 연결하여 로그인 정보 받아오기 */
+			    UserService userServiceInfo = new UserService();
+			    UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
+			    System.out.println("Servlet 고객코드 : " + loginUserInfo.getUserCode());
+			    
+			    if(loginUserInfo.getUserBlock() != 1) {
 
-	            /* 로그인 성공시 */ 
-				/* Session에 조회한 회원정보를 loginUserInfo로 넣어줌 */
-				HttpSession session = request.getSession();
-	            session.setAttribute("loginUserInfo", loginUserInfo);
-				response.sendRedirect("/baekgu/user/toMain");
-				
-				System.out.println("로그인 성공");		    
-		    
+		            /* 로그인 성공시 */ 
+					/* Session에 조회한 회원정보를 loginUserInfo로 넣어줌 */
+					HttpSession session = request.getSession();
+		            session.setAttribute("loginUserInfo", loginUserInfo);
+					response.sendRedirect("/baekgu/user/toMain");
+					
+					System.out.println("로그인 성공");		    
+			    
+			    } else {
+			    	
+			    	/* 차단된 유저일 경우 */
+			        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
+			        System.out.println("차단 유저");
+			        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
+			        request.getRequestDispatcher(errorPage).forward(request, response);
+
+			    }
+		    	
 		    } else {
 		    	
-		    	/* 차단된 유저일 경우 */
-		        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
-		        System.out.println("차단 유저");
-		        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
-		        request.getRequestDispatcher(errorPage).forward(request, response);
-
+		    	/* 고객정보가 없을시 */				
+				errorPage="/WEB-INF/views/customer/common/errorWrongId.jsp";
+	        	request.setAttribute("errorMessage", "회원정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
+	        	request.getRequestDispatcher(errorPage).forward(request, response);
+		    	
+	        	System.out.println("Servlet : 회원정보를 찾을 수 없습니다.");
 		    }
 	    	
-	    } else {
+	    } catch (Exception e) {
 	    	
-	    	/* 고객정보가 없을시 */
-	    	System.out.println("Servlet : 회원정보를 찾을 수 없습니다.");
-			
-			errorPage="/WEB-INF/views/customer/common/errorWrongId.jsp";
-        	request.setAttribute("errorMessage", "회원정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
-        	request.getRequestDispatcher(errorPage).forward(request, response);
+	    	e.printStackTrace();
 	    	
+	    	System.out.println("nullcheck");
 	    }
+	    
 
 	}
 }
