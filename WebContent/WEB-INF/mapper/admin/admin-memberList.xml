@@ -22,22 +22,22 @@
 	</entry>
 	<entry key="selectMemberDetail">
 		select 
-		       user.USER_CODE
-		     , user.USER_NAME
-			 , user.USER_PHONE
-			 , user.USER_BDAY
-			 , user.USER_GENDER
-			 , user.USER_ADDRESS
-			 , user.USER_REGISTER_DATE
-			 , user.USER_BLOCK
+		       USER.USER_CODE
+		     , USER.USER_NAME
+			 , USER.USER_PHONE
+			 , USER.USER_BDAY
+			 , USER.USER_GENDER
+			 , USER.USER_ADDRESS
+			 , USER.USER_REGISTER_DATE
+			 , USER.USER_BLOCK
 		     , RESUME.RESUME_CODE 
 		     , RESUME.RESUME_WRITE_DATE
 		     , RESUME.RESUME_SUBPHONE
 		     , RESUME.RESUME_LETTER
 		     , RESUME.RESUME_ADVANTAGE
-		  from user, resume
-		 where user.USER_CODE = RESUME.USER_CODE
- 		   and user.USER_CODE = ?
+		  from USER, RESUME
+		 where USER.USER_CODE = RESUME.USER_CODE
+ 		   and USER.USER_CODE = ?
 	</entry>
 	<entry key="selectBlockTotalCount">
 		SELECT
