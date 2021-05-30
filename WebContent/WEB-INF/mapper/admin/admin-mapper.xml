@@ -3,17 +3,17 @@
 <properties>
 	<entry key="adminRegist">
 	INSERT
-	INTO admin
-	(
-	   admin_id
-	  ,admin_pwd
-	  ,admin_name
-	  ,admin_email
-	  ,admin_date
-	  ,admin_role
-	)
-	VALUES
-	(
+	INTO ADMIN 
+  (
+    ADMIN_ID
+   ,ADMIN_PWD
+   ,ADMIN_NAME
+   ,ADMIN_EMAIL 
+   ,ADMIN_DATE 
+   ,ADMIN_ROLE 
+  )
+   values
+  (
 	   ?
 	  ,?
 	  ,?
@@ -27,7 +27,7 @@
 	    SELECT 
 	           COUNT(*)
 	      FROM ADMIN
-	      WHERE admin_id = ?
+	      WHERE ADMIN_ID = ?
 	</entry>
 	
 	<entry key="selectAdminList">
@@ -106,7 +106,7 @@
 	</entry>
 	<entry key="advertCountCode">
 		SELECT 
-		     count(*)
+		     COUNT(*)
 		  FROM AD 
 		  WHERE AD_CODE = ?
 	
@@ -116,7 +116,7 @@
 	
 	<entry key="searchCountName">
 		SELECT 
-		     count(*)
+		     COUNT(*)
 		  FROM AD 
 		  WHERE AD_NAME = ?
 	
@@ -138,16 +138,16 @@
 	
 	<entry key="searchadminName">
 	    select 
-	           count(*)
-	      from admin 
+	           COUNT(*)
+	      from ADMIN 
 	      where ADMIN_NAME = ?
 	</entry>
 	
 	<entry key="adminNameSelect"> 
 	 SELECT 
 	        *
-	   FROM admin
-	   WHERE ADMIN_NAME like '%' ? '%'
+	   FROM ADMIN
+	   WHERE ADMIN_NAME LIKE '%' ? '%'
 	
 	</entry>
 	
@@ -155,7 +155,7 @@
 	 SELECT 
 	        *
 	   FROM AD
-	   WHERE AD_NAME like '%' ? '%'
+	   WHERE AD_NAME LIKE '%' ? '%'
 	
 	</entry>
 </properties>
