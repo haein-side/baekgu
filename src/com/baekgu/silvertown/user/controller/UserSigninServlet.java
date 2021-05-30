@@ -55,7 +55,7 @@ public class UserSigninServlet extends HttpServlet {
 				/* Session에 조회한 회원정보를 loginUserInfo로 넣어줌 */
 				HttpSession session = request.getSession();
 	            session.setAttribute("loginUserInfo", loginUserInfo);
-				response.sendRedirect("/baekgu/user/toMain");
+				response.sendRedirect("/user/toMain");
 				
 				System.out.println("로그인 성공");		    
 		    

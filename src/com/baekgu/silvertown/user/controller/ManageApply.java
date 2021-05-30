@@ -138,7 +138,7 @@ public class ManageApply extends HttpServlet {
 	    String path = "";
 		if(cancelApply != 0) {
 			System.out.println("들어옴");
-			path = "/baekgu/user/manageApply";
+			path = "/user/manageApply";
 			response.sendRedirect(path);
 			
 		} else {
