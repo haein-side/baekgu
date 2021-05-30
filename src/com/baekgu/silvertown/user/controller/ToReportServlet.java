@@ -7,18 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/toapply")
-public class ToApply extends HttpServlet {
+@WebServlet("/user/toreport")
+public class ToReportServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String postCode = request.getParameter("postCode");
+		System.out.println("신고하기 이동 서블릿 : " + postCode);
+		
 		request.setAttribute("postCode", postCode);
 		
-		System.out.println("지원하기 servlet : postCode");
-		
-		String path = "/WEB-INF/views/customer/main/apply.jsp?postCode="+postCode;
+		String path = "/WEB-INF/views/customer/main/report.jsp?postCode="+postCode;
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
