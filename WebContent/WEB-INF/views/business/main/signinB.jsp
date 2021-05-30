@@ -147,7 +147,7 @@
         <div class="form-group" style="text-align: center; padding-top: 80px; padding-bottom: 80px;">
           <input type="submit" id="bregsubmit" class="btn btn-info btn-submit" value="확인">
         </div>
-        <p style="padding-right: 5px;">비밀번호가 기억나지 않으시나요?&nbsp;<a href="${ pageContext.servletContext.contextPath }/user/toFindpassword">비밀번호 찾으러 가기</a></p>
+        <p style="padding-right: 5px;">비밀번호가 기억나지 않으시나요?&nbsp;<a href="${ pageContext.servletContext.contextPath }/business/tochangepwd">비밀번호 찾으러 가기</a></p>
         </form>
      </div>
 	<p id="result"></p>

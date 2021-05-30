@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,6 +159,11 @@ cursor: pointer;
 </script>
 </head>
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.message }">
+    		<script>alert('${ requestScope.message }')</script>
+    </c:when>
+</c:choose>
 	<jsp:include page="../common/header.jsp" />
 	<div class="container-fluid text-center">
 		<div class="row content">
@@ -178,14 +184,14 @@ cursor: pointer;
 						<label for="" class="col-sm-2 control-label">담당자 성함(필수)</label>
 						<div class="col-sm-3">
 							<input id="name" type="" class="form-control" name="name"
-								placeholder="담당자명 입력">
+								placeholder="담당자명 입력" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">전화번호(필수)</label>
 						<div class="col-sm-3">
 							<input id="phone" type="text" class="form-control" name="phone"
-								placeholder="ex) 010-xxxx-xxxx">
+								placeholder="ex) 010-xxxx-xxxx" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -193,18 +199,18 @@ cursor: pointer;
 							주소(필수)</label>
 						<div class="col-sm-3">
 							<input id="email" type="text" class="form-control" name="email"
-								placeholder="이메일 주소">
+								placeholder="이메일 주소" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">기업 주소</label>
 						<br>
-						<div class="col-sm-3" style="margin-left: ;">
+						<div class="col-sm-3">
 						
-						<small>우편번호 <input type="button" value="검색" class="btn btn-yg" id="searchZipCode"><input	type="text" name="zipCode" id="zipCode" readonly class="form-control"></small>
+						<small>우편번호 <input type="button" value="검색" class="btn btn-yg" id="searchZipCode"><input	type="text" name="zipCode" id="zipCode" readonly class="form-control" required></small>
 							
-						<small>주소 <input type="text" name="address1" id="address1" readonly class="form-control"> </small> <br>
-						<small>상세주소 <input type="text" name="address2" id="address2" class="form-control"></small> 
+						<small>주소 <input type="text" name="address1" id="address1" readonly class="form-control" required> </small> <br>
+						<small>상세주소 <input type="text" name="address2" id="address2" class="form-control" required></small> 
 						 </div>
 					</div>
 					<div class="col-sm-0 sidenav"></div>
@@ -218,7 +224,7 @@ cursor: pointer;
 						<label for="inputPassword3" class="col-sm-2 control-label">모집분야명(업종)</label>
 						<div class="col-sm-1">
 							<select id="selectInustry" onchange="itemChange()"
-								name="industry">
+								name="industry" required>
 								<option selected>---전체---</option>
 								<option>식당/서빙</option>
 								<option>매장관리</option>
@@ -237,7 +243,7 @@ cursor: pointer;
 						<div class="col-sm-1">
 
 
-							<select id="selectJob" onchange="selectjob()" name="job">
+							<select id="selectJob" onchange="selectjob()" name="job" required>
 								<option selected>---선택---</option>
 
 							</select>
@@ -260,9 +266,8 @@ cursor: pointer;
 							기간</label>
 						<div class="col-sm-1">
 
-							<select name="exp" id="" required class="">
-								<option>----선택-----</option>
-								<option value="1">경력 없음</option>
+							<select name="exp" required>
+								<option value="1" selected>경력 없음</option>
 								<option value="2">1년 이하</option>
 								<option value="3">1년 이상</option>
 								<option value="4">2년 이상</option>
@@ -276,9 +281,8 @@ cursor: pointer;
 						<label for="inputPassword3" class="col-sm-2 control-label">학력</label>
 						<div class="col-sm-1">
 
-							<select name="degree" id="" required class="">
-								<option>----선택-----</option>
-								<option value="1">무관</option>
+							<select name="degree" required>
+								<option value="1" selceted>무관</option>
 								<option value="2">초등학교 졸업</option>
 								<option value="3">중학교 졸업</option>
 								<option value="4">고등학교 졸업</option>
@@ -298,7 +302,7 @@ cursor: pointer;
 							제목을 작성해주세요.</label>
 						<div class="col-sm-10">
 							<input type="text" name="postTitle" style="width: 500px;"
-								placeholder="공고 제목.">
+								placeholder="공고 제목." required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -306,7 +310,7 @@ cursor: pointer;
 							내용을 작성해주세요.</label>
 						<div class="col-sm-10">
 							<input type="textarea" name="postContent" cols=85 rows=15
-								style="width: 500px; height: 300px;" placeholder="공고 내용">
+								style="width: 500px; height: 300px;" placeholder="공고 내용" required>
 						</div>
 					</div>
 								  <div class="form-group">
@@ -314,9 +318,8 @@ cursor: pointer;
 									<div class="col-sm-1">
 						<div class="dropdown">
 							<select name="location" id="" class="selectpicker"
-								data-style="btn-warning">
-								<option>----선택----</option>
-								<option value="1">무관</option>
+								data-style="btn-warning" required>
+								<option value="1" selected>무관</option>
 								<option value="2">강남구</option>
 								<option value="3">강동구</option>
 								<option value="4">강북구</option>
@@ -350,7 +353,7 @@ cursor: pointer;
 					<div class="form-group">
 						<br> <label for="inputEmail3" class="col-sm-2 control-label">모집인원</label>
 						<div class="col-sm-10">
-							<input name="postTo" type='number' min='1' max='30' step='1' placeholder="숫자만 입력해주세요.">
+							<input name="postTo" type='number' min='1' max='30' step='1' placeholder="숫자만 입력해주세요." required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -363,18 +366,17 @@ cursor: pointer;
 					<div class="form-group">
 						<br> <label for="inputEmail3" class="col-sm-2 control-label">모집시작일 ~ 모집마감일</label>
 						<div class="col-sm-6">
-							<input type="date" name="startDate"> 
+							<input type="date" name="startDate" required> 
 							<label>~</label> 
-							<input type="date" name="endDate">
+							<input type="date" name="endDate" required>
 						</div>
 					</div>
 					<br>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">임금</label>
 						<div class="col-sm-6">
-							<select name="pay" id="" required="" class="">
-								<option>--선택--</option>
-								<option value="1">시급</option>
+							<select name="pay" required>
+								<option value="1" selected>시급</option>
 								<option value="2">일급</option>
 								<option value="3">월급</option>
 							</select>
@@ -390,9 +392,8 @@ cursor: pointer;
 						<label for="inputPassword3" class="col-sm-2 control-label">근무
 							형식</label>
 						<div class="col-sm-6">
-							<select name="contract" id="" required class="">
-								<option>----선택-----</option>
-								<option value="0">비정규직</option>
+							<select name="contract" required>
+								<option value="0" selected>비정규직</option>
 								<option value="1">정규직</option>
 							</select>
 						</div>
@@ -400,9 +401,8 @@ cursor: pointer;
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">연령(선택)</label>
 						<div class="col-sm-1">
-							<select name="age" id="" required class="">
-								<option>--선택--</option>
-								<option value="1">연령 무관</option>
+							<select name="age" required>
+								<option value="1" selected>연령 무관</option>
 								<option value="2">50세 이상</option>
 								<option value="3">60세 이상</option>
 								<option value="4">70세 이상</option>
@@ -413,9 +413,8 @@ cursor: pointer;
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">근무 기간</label>
 						<div class="col-sm-1">
-							<select name="period" id="" required class="">
-								<option>----선택-----</option>
-								<option value="1">무관</option>
+							<select name="period" required>
+								<option value="1" selected>무관</option>
 								<option value="2">일주일 이하</option>
 								<option value="3">일주일 이상</option>
 								<option value="4">1개월 이상</option>
@@ -483,16 +482,15 @@ cursor: pointer;
 					<div class="form-group">
 						<br> <label for="inputEmail3" class="col-sm-2 control-label">복리후생</label>
 						<div class="col-sm-10">
-							<input type="text" name="benefit" style="width: 500px;" class="form-control" placeholder="예) 4대보험 식사제공 기숙사제공" />
+							<input type="text" name="benefit" style="width: 500px;" class="form-control" placeholder="예) 4대보험 식사제공 기숙사제공"/>
 						</div>
 					</div>
 					<div class="form-group">
 						` <label for="inputPassword3" class="col-sm-2 control-label">근무
 							시간</label>
 						<div class="col-sm-1">
-							<select name="hours" id="" required class="">
-								<option>--선택--</option>
-								<option value="1">풀타임</option>
+							<select name="hours" required>
+								<option value="1" selected>풀타임</option>
 								<option value="2">새벽</option>
 								<option value="3">오전</option>
 								<option value="4">오후</option>
@@ -502,11 +500,10 @@ cursor: pointer;
 					</div>
 					<br>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">성별(선택)</label>
-						<div class="col-sm-1">
-							<select name="gender" id="" required class="">
-								<option>--선택--</option>
-								<option value="무관">상관 없음</option>
+						<label for="inputPassword3" class="col-sm-2 control-label">성별</label>
+						<div class="col-sm-1" required>
+							<select name="gender">
+								<option value="무관" selected>상관 없음</option>
 								<option value="남자">남자</option>
 								<option value="여자">여자</option>
 							</select>

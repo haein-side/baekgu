@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +49,11 @@
   </style>
 </head>
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.message }">
+    		<script>alert('${ requestScope.message }')</script>
+    </c:when>
+</c:choose>
 
 <jsp:include page="../common/header.jsp"/>
 

@@ -107,7 +107,7 @@ public class PostApproveDetailServlet extends HttpServlet {
 				result = postService.postSubmitUpdate(postDTO);
 
 				if (result > 0) {
-					path = "/baekgu/admin/postapprove";
+					path = "/admin/postapprove";
 					response.sendRedirect(path);
 				} else {
 					path = "/WEB-INF/views/common/errorPage.jsp";
@@ -121,7 +121,7 @@ public class PostApproveDetailServlet extends HttpServlet {
 				System.out.println("컨트롤러 공고 거절 ");
 				result = postService.postBlockUpdate(postDTO);
 				if (result > 0) {
-					path = "/baekgu/admin/postapprove";
+					path = "/admin/postapprove";
 					response.sendRedirect(path);
 
 				} else {

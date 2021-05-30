@@ -11,13 +11,13 @@ public class BusinessMemberDTO {
 	private int blockStatus;
 	private String bReason;
 	private String cName;
-	private int bNumber;
+	private String bNumber;
 	public BusinessMemberDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode,
-			int blockStatus, String bReason, String cName, int bNumber) {
+			int blockStatus, String bReason, String cName, String bNumber) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -85,10 +85,10 @@ public class BusinessMemberDTO {
 		this.cName = cName;
 	}
 	
-	public int getbNumber() {
+	public String getbNumber() {
 		return bNumber;
 	}
-	public void setbNumber(int bNumber) {
+	public void setbNumber(String bNumber) {
 		this.bNumber = bNumber;
 	}
 	@Override

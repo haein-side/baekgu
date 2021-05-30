@@ -19,7 +19,7 @@ $(function(){
 		    }
 		
 		$.ajax({
-			url: "/baekgu/user/signup",
+			url: "${ pageContext.servletContext.contextPath }/user/signup",
 			type: "get",
 			data:{ userPhone : userPhone },
 			success: function(data,textStatus,xhr){
