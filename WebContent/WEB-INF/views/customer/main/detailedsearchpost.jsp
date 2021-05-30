@@ -31,6 +31,10 @@
     .btn1 {
      background-color:black;
     } */
+    
+.btn1 exp.active2{
+	background-color: orange;
+}
 </style>
 
 <!-- script 시작 -->
@@ -38,7 +42,6 @@
 	
 	var a;
 	var b;
-
  window.onload = function(){ 
 	       $(".btn1 lo").click(function() {
 	   		    if ($(this).hasClass("btnSelected")) {
@@ -168,7 +171,6 @@
 		    	console.log(location); 
 		    	document.getElementById("location").value = location;
 		    	
-
 				  
 			}); 
 		
@@ -585,5 +587,12 @@
 	</div>
 
 	<%@ include file="../common/footer.jsp"%>
+	<script>
+	$(".btn1 exp").click(function() {
+	       $(".btn1 exp").removeClass("active2");
+	       $(this).addClass("active2");
+	    });
+	
+	</script>
 </body>
 </html>

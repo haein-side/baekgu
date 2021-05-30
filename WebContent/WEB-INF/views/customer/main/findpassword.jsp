@@ -47,7 +47,6 @@
 		  var num = $("#phoneNumber").val();
 		  var check = $("#sms").val();
 		  
-		  alert('test');
 		  console.log(num);
 		  
 		  $.ajax({
@@ -69,6 +68,7 @@
 				  
 				  } else {
 					  alert("번호 인증을 실패했습니다.");
+					$("#checkResult").attr("value", "fail");
 				  } 
 			  },
 			  error: function(xhr, status, error){
@@ -138,7 +138,7 @@
           
         
         <div class="form-group">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnSubmit" style="height: 55px; width: 150px; font-size: 28px; margin-top: 70px; margin-bottom: 30px;">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnSubmit" onclick="validate()" style="height: 55px; width: 150px; font-size: 28px; margin-top: 70px; margin-bottom: 30px;">
         확인
         </button>
         
@@ -151,20 +151,23 @@
 	<%@ include file="../main/footerHW.jsp" %>
 	
 	<script type="text/javascript">
-	 $("#btnSubmit").click(function(){
+	/* window.onload = function() {
+	$("#btnSubmit").click(function(){
 	    	validate();
 	    });
-	
+	}
+	 */
+	 
 	function validate(){
 		
-		if(document.getElementById(checkResult).value != "success"){
+		if(document.getElementById("checkResult").value != "success"){
   		 	alert("인증번호 확인을 완료해주시기 바랍니다.");
   		    console.log(checkResult);
-  		  	document.getElementById(checkResult).focus();
+  		  	/* document.getElementById(checkResult).focus(); */
+  		  	document.getElementById("sms").value="";
+  		  	document.getElementById("sms").focus();
   		    return false;
-  	    } else {
-  	    	return true;
-  	    }
+  	    } 
 
 	} 
 	
