@@ -415,7 +415,7 @@
    
    <entry key="selectCountReported">
       SELECT
-                COUNT(a.REPORT_CODE) AS "COUNT"
+               COUNT(a.REPORT_CODE) AS "COUNT"
           FROM REPORT a
           JOIN DECISION_LIST b ON(a.D_LIST_CODE = b.D_LIST_CODE)
         WHERE a.POST_CODE IN (SELECT f.POST_CODE
@@ -426,7 +426,7 @@
    
    <entry key="selectApplicantReported">
       SELECT
-                a.REPORT_DATE
+              a.REPORT_DATE
             , a.REPORT_REASON
             , b.POST_M_NAME
             , b.POST_TITLE

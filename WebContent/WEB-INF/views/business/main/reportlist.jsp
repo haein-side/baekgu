@@ -98,7 +98,8 @@
   
       <br>
       <br>
-      <%-- 페이지 처리 --%>
+
+	<%-- 페이지 처리 --%>
 	 <div class="text-center">
 	 	<div class="pagination" align="center">
 			<c:choose>
@@ -160,7 +161,7 @@
 			    </c:otherwise>
 			</c:choose>   
 		</div>
-  </div>
+  	  </div>
       
     
   </div>

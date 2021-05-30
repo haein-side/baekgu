@@ -38,13 +38,9 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 			pageNo = 1;
 		}
 		
-		/* 해당 기업에 대한 공고의 전체 수 조회하기
-		 * 현재 로그인된 유저의 아이디로 공고의 전체 가져오기.
-		 *   */
 		HttpSession session = request.getSession();
 		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 		
-		/* 공고 심사 상태별 갯수 구하기 + 전체 게시물 수 구하기  */
 		BusinessService businessService = new BusinessService();
 		Map<Integer, Integer> counts = businessService.selectTotalCount(loggedInUser.getbId());
 		
@@ -76,8 +72,6 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 
 		List<?> postAdList = (List<BusinessPostDTO>)businessService.selectPostList(loggedInUser.getbId(), pageInfo);
 		
-		System.out.println("JINSEO JJANG"+postAdList);
-		
 		String path = "";
 
 		if(postAdList != null) {
@@ -87,10 +81,6 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 			request.setAttribute("pageInfo", pageInfo); 
 			
 		}
-//			else {
-//			path = "/WEB-INF/views/common/failed.jsp";
-//			request.setAttribute("message", "게시물 목록 조회 실패!");
-//		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

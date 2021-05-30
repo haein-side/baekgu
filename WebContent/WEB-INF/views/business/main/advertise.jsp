@@ -73,7 +73,7 @@
       </ul>
       <hr>
 		
-		<h2>백구 상품 리스트 - <a href="#"> 상품 예시 보러가기 </a></h2>
+		<h2>백구 상품 리스트 - <a href="${ pageContext.servletContext.contextPath }/business/adExample" target="_blank" onclick="window.open(this.href,'popup', 'width=1000, height=800, location=no, status=no, scrollbars=no'); return false;"> 상품 예시 보러가기 </a></h2>
 		<br>
       <button type="button" class="btn btn-default" style="height: 190px; width: 800px;">
       <h3 class ="text-left" style="color:red;"><i>상품 1 - 프리미엄 상단 업종 배치 </i></h3>
