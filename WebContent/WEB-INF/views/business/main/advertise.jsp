@@ -198,7 +198,7 @@
 		</ul>
 		<form id="advertiseForm" action="${ pageContext.servletContext.contextPath }/business/advertise" method="post" style="margin-bottom: 50px">
 			<input style="display:none;" type="text" name="selectedPostCode" id="selectedPostCode" value="" style="margin-left:20px"/>
-			<input style="display:none;" type="text" name="selectedPrice" id="selectedPostCode" value="" style="margin-left:20px" />
+			<input style="display:none;" type="text" name="selectedAdCode" id="selectedAdCode" value="" style="margin-left:20px" />
 			
 			<label> 공고 담당자 - </label> <input type="text" name="selectedManager" id="selectedManager" value="" style="margin-left:15px" readonly required/>
 			<br>
@@ -266,24 +266,29 @@ window.onload = function(){
 	$premium1.onclick = function() {
 		
 		document.getElementById("selectedAd").value = "프리미엄 업종 상단(₩130,000/1주)";
+		document.getElementById("selectedAdCode").value = 1;
 
 	}
 	const $premium2 = document.getElementById("premium2")
 	$premium2.onclick = function() {
 		
 		document.getElementById("selectedAd").value = "프리미엄 업종 하단(₩100,000/1주)";
+		document.getElementById("selectedAdCode").value = 2;
 
 	}
 	const $premium3 = document.getElementById("premium3")
 	$premium3.onclick = function() {
 		
 		document.getElementById("selectedAd").value = "프리미엄 직종 상단(₩70,000/1주)";
+		document.getElementById("selectedAdCode").value = 3;
+
 
 	}
 	const $premium4 = document.getElementById("premium4")
 	$premium4.onclick = function() {
 		
 		document.getElementById("selectedAd").value = "프리미엄 직종 하단(₩50,000/1주)";
+		document.getElementById("selectedAdCode").value = 4;
 
 	}
 	

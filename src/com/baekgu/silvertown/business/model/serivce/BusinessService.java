@@ -480,6 +480,23 @@ public class BusinessService {
 		return result;
 	}
 
+	public int insertPostAdPayment(PaymentDTO postAd) {
+
+		Connection con = getConnection();
+		
+		int result = businessDAO.insertPostAdPayment(con, postAd);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
 
 
 

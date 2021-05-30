@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessPostDTO;
+import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 import com.baekgu.silvertown.common.paging.PageNation;
 
@@ -104,7 +105,7 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 		System.out.println("test doPost method");
 		
 //		name="selectedPostCode"
-//		name="selectedPrice"
+//		name="selectedAdCode"
 //		name="selectedManager"
 //		name="selectedIndustry"
 //		name="selectedJob"
@@ -112,8 +113,22 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 //		name="selectedWeeks"
 //		name="selectedAd"
 		
-//		System.out.println("1 " + selectedPostCode);
+		System.out.println("1 " + request.getParameter("selectedPostCode"));
+		System.out.println("2 " + request.getParameter("selectedAdCode"));
+		System.out.println("7 " + request.getParameter("selectedWeeks"));
 		
+		PaymentDTO postAd = new PaymentDTO();
+		postAd.setPostCode(Integer.parseInt(request.getParameter("selectedPostCode")));
+		postAd.setAdCode(Integer.parseInt(request.getParameter("selectedAdCode")));
+		postAd.setWeeks(Integer.parseInt(request.getParameter("selectedWeeks")));
+		
+		int result = new BusinessService().insertPostAdPayment(postAd);
+		
+		String path = "";
+
+		if(result > 0 ) {
+			path = "/WEB-INF/views/business/main/advertise.jsp";
+		}
 	
 	}
 
