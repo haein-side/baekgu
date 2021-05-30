@@ -35,6 +35,14 @@ public class BusinessChangePasswordServlet extends HttpServlet {
 		int result = service.updatePwd(enteredPwd, hrId);
 		
 		System.out.println("비밀번호 업데이트 성공 : "  + result);
+		
+		
+		if(result > 0) {
+			String path = "/WEB-INF/views/business/main/signinB.jsp";
+			
+			request.getRequestDispatcher(path).forward(request, response);
+			
+		}
 	}
 
 }

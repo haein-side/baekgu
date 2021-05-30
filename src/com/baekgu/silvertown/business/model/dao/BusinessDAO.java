@@ -84,7 +84,7 @@ public class BusinessDAO {
 				businessLoginMember.setBlockStatus(rset.getInt("B_BLOCK"));
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
 				businessLoginMember.setcName(rset.getString("B_NAME"));
-				businessLoginMember.setbNumber(rset.getInt("B_NUMBER"));
+				businessLoginMember.setbNumber(rset.getString("B_NUMBER"));
 
 						
 			}	
