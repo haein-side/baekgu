@@ -55,7 +55,7 @@ public class AdminRegistServlet extends HttpServlet {
 		
 		String path = "";
 		if(result > 0) {
-			path = "/baekgu/admin/list";
+			path = "/admin/list";
 			response.sendRedirect(path);
 		} else {
 			path = "/WEB-INF/views/admin/common/erroPage.jsp";

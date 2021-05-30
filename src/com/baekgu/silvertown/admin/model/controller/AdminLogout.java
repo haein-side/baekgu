@@ -24,7 +24,7 @@ public class AdminLogout extends HttpServlet {
 //		request.getRequestDispatcher(path).forward(request, response);
 //		
 		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + "/user/toMain"); 
 		
 	
 	}
