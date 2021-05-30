@@ -16,7 +16,7 @@ import com.baekgu.silvertown.user.model.service.ApplyService;
 import com.baekgu.silvertown.user.model.service.PostService;
 
 @WebServlet("/user/apply")
-public class ApplyServlet extends HttpServlet {
+public class UserApplyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
