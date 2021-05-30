@@ -681,6 +681,7 @@ public class UserDAO {
 			}
 			
 			System.out.println("조회된 인증번호 : " + numStr);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

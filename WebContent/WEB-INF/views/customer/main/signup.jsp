@@ -102,7 +102,7 @@ $(function(){
             
                   <label for="mobile" class="basiclabel">휴대폰번호 (아이디로 사용됩니다.)</label>
                   
-                  <input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="(예 : 01012345678)" value = "01010002000" required> 
+                  <input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="(예 : 01012345678)" required> 
                  
                   <small id="passwordHelp" class="form-text text-muted">특수문자(-) 없이 숫자로만 10자리 혹은 11자리를 입력하세요.</small>
                   
@@ -122,7 +122,7 @@ $(function(){
                <div class="form-group">
                   <label for="password" class="basiclabel">비밀번호</label> 
                   
-                  <input type="password" class="form-control" id="userPwd" name ="enteredPwd" placeholder="(예 : hgd610405)"  value = "hb2qp5555" required>
+                  <input type="password" class="form-control" id="userPwd" name ="enteredPwd" placeholder="(예 : hgd610405)" required>
                   
                   <small id="passwordHelp" class="form-text text-muted">
                   영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)
@@ -133,7 +133,7 @@ $(function(){
                   
                  <label for="password1" class="basiclabel">비밀번호 확인</label> 
                   
-                  <input type="password" class="form-control" id="userPwd1" name ="userPwd1" placeholder="(비밀번호를 다시 입력해주세요)" value = "hb2qp5555" required>
+                  <input type="password" class="form-control" id="userPwd1" name ="userPwd1" placeholder="(비밀번호를 다시 입력해주세요)" required>
                   
                   <small id="passwordHelp" class="form-text text-muted">
                   비밀번호를 다시 입력해주세요
@@ -145,7 +145,7 @@ $(function(){
                <div class="form-group">
                   <label for="name" class="basiclabel">이름</label> 
                   
-                  <input type="text" class="form-control" id="userName" name="userName" placeholder="(예 : 홍길동)" value = "홍길이" required>
+                  <input type="text" class="form-control" id="userName" name="userName" placeholder="(예 : 홍길동)" required>
                   
                   <small id="passwordHelp" class="form-text text-muted">이름을 입력해주세요.</small>
                </div>
@@ -161,7 +161,7 @@ $(function(){
                   style="width: 150px" minlength="4" maxlength="4" value="1921" > -->
                   
                    <input type="number" class="birthinfo" id="userBday1" name="userBday1" min="1900" step="1" placeholder="연도(4자)"
-              maxlength="4" style="width: 150px" required  value="1920" >
+              maxlength="4" style="width: 150px" required >
                   
                   <label>년</label><br> 
                   <small class="form-text text-muted">(예 : 1970)</small>
@@ -172,7 +172,7 @@ $(function(){
             <div class="col-md-4 mb-3">
                <label for="birthmonth" class="basiclabel">태어난 달</label><br>
                 
-                <select required id="userBday2" name="userBday2" style="width: 150px; height:30px; border: 1px solid #ced4da; font-size: 18px; color: #495057;"  value="01" >
+                <select required id="userBday2" name="userBday2" style="width: 150px; height:30px; border: 1px solid #ced4da; font-size: 18px; color: #495057;" >
                      <option value="">월</option>
                      <option value="01" >1</option>
                      <option value="02" >2</option>
@@ -196,7 +196,7 @@ $(function(){
                <label for="birthday" class="basiclabel">태어난 날</label><br> 
                
               <input type="number" class="birthinfo" id="userBday3" name="userBday3" min="1" max="31" step="1" placeholder="일(2자)"
-              maxlength="2" style="width: 150px" required  value="11" >
+              maxlength="2" style="width: 150px" required>
                 
                 
                 <label>일</label><br>
@@ -224,12 +224,12 @@ $(function(){
 
          <div class="form-group">
             <label for="address" class="basiclabel">주소</label> 
-            <input type="text" class="form-control" name="userAddress1" id="userAddress1" placeholder="(예 : 서울시 서초구 서초동 1310-15)" required value="서울시 서초구"> 
+            <input type="text" class="form-control" name="userAddress1" id="userAddress1" placeholder="(예 : 서울시 서초구 서초동 1310-15)" required> 
                <small id="address" class="form-text text-muted">시, 구, 동까지 입력해주세요.</small>
                
                <br>
                
-            <input type="text" class="form-control" name="userAddress2" id="userAddress2" placeholder="(예 : 서초빌라 302호)"  value="반포1동 서초빌라"> 
+            <input type="text" class="form-control" name="userAddress2" id="userAddress2" placeholder="(예 : 서초빌라 302호)"> 
                <small id="address" class="form-text text-muted">세부 주소(번지, 건물명, 호수)를 입력해주세요.</small>
          </div>
          

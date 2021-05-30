@@ -507,4 +507,27 @@
 		 , LAST_INSERT_ID() 
 		)
 	</entry>
+	<entry key="selectHrNum">
+	   select 
+	          hr_id
+	        , HR_PHONE
+	     from HR
+	    where hr_id = ?
+	</entry>
+	<entry key="updateVerifiedNum">
+	   update hr
+	      set varified_num = ?
+	    where  hr_id = ?
+	</entry>
+	<entry key="selectVerifiedNum">
+		SELECT 
+	           varified_NUM
+	      FROM HR
+	     WHERE HR_ID = ?
+	</entry>
+	<entry key="updateNewPwd">
+	    update HR
+	       set hr_pwd = ?
+	     where hr_id = ?
+	</entry>
 </properties>
