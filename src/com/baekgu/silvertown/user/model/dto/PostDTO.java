@@ -33,6 +33,9 @@ public class PostDTO {
 	private int degreeCode;
 	private int dListCode;
 
+	/* 기업 로고 경로 가져오는 변수 */
+	private String logoPath;
+	
 	private String degreeLevel;
 
 	private String expName;
@@ -146,6 +149,7 @@ public class PostDTO {
 	 * @param hrId
 	 * @param degreeCode
 	 * @param dListCode
+	 * @param logoPath
 	 * @param degreeLevel
 	 * @param expName
 	 * @param periodName
@@ -205,16 +209,17 @@ public class PostDTO {
 			int postOnline, Date postDate, String postAddress, String postDay, int payment, String gender,
 			String advantage, String benefit, int fulltimeYn, String postMName, String postMEmail, String postMPhone,
 			int expCode, int jobCode, int periodCode, int hourCode, int locationCode, int payCode, int ageCode,
-			int hrId, int degreeCode, int dListCode, String degreeLevel, String expName, String periodName,
-			String hourName, String locationName, String ageName, String payName, String hrName, String hrPhone,
-			String hrEmail, String bCode, String bName, String bOwner, String bNumber, String bAddress, String bPhone,
-			String bType, int bBlock, long bProfit, int bCategoryCode, int categoryCode, String categoryLevel,
-			String dListReason, Date dListdate, int decisionCode, int dListTypeCode, int reportCode,
-			String reportReason, Date reportDate, String dListTarget, String decisionStatus, int userCode,
-			String userName, String userPhone, String userPwd, Date userBday, String userGender, String userAddress,
-			Date userRegisterDate, int userBlock, String verifiedNum, int resumeCode, Date resumeWriteDate,
-			String resumeSubphone, String resumeLetter, String resumeAdvantage, int applyCode, Date applyDate,
-			String applyYn, int applyRead, int applyCancel, String jobName, int industryCode, String industryName) {
+			int hrId, int degreeCode, int dListCode, String logoPath, String degreeLevel, String expName,
+			String periodName, String hourName, String locationName, String ageName, String payName, String hrName,
+			String hrPhone, String hrEmail, String bCode, String bName, String bOwner, String bNumber, String bAddress,
+			String bPhone, String bType, int bBlock, long bProfit, int bCategoryCode, int categoryCode,
+			String categoryLevel, String dListReason, Date dListdate, int decisionCode, int dListTypeCode,
+			int reportCode, String reportReason, Date reportDate, String dListTarget, String decisionStatus,
+			int userCode, String userName, String userPhone, String userPwd, Date userBday, String userGender,
+			String userAddress, Date userRegisterDate, int userBlock, String verifiedNum, int resumeCode,
+			Date resumeWriteDate, String resumeSubphone, String resumeLetter, String resumeAdvantage, int applyCode,
+			Date applyDate, String applyYn, int applyRead, int applyCancel, String jobName, int industryCode,
+			String industryName) {
 		super();
 		this.postCode = postCode;
 		this.postTitle = postTitle;
@@ -244,6 +249,7 @@ public class PostDTO {
 		this.hrId = hrId;
 		this.degreeCode = degreeCode;
 		this.dListCode = dListCode;
+		this.logoPath = logoPath;
 		this.degreeLevel = degreeLevel;
 		this.expName = expName;
 		this.periodName = periodName;
@@ -522,6 +528,14 @@ public class PostDTO {
 
 	public void setdListCode(int dListCode) {
 		this.dListCode = dListCode;
+	}
+
+	public String getLogoPath() {
+		return logoPath;
+	}
+
+	public void setLogoPath(String logoPath) {
+		this.logoPath = logoPath;
 	}
 
 	public String getDegreeLevel() {
@@ -966,23 +980,23 @@ public class PostDTO {
 				+ ", postMPhone=" + postMPhone + ", expCode=" + expCode + ", jobCode=" + jobCode + ", periodCode="
 				+ periodCode + ", hourCode=" + hourCode + ", locationCode=" + locationCode + ", payCode=" + payCode
 				+ ", ageCode=" + ageCode + ", hrId=" + hrId + ", degreeCode=" + degreeCode + ", dListCode=" + dListCode
-				+ ", degreeLevel=" + degreeLevel + ", expName=" + expName + ", periodName=" + periodName + ", hourName="
-				+ hourName + ", locationName=" + locationName + ", ageName=" + ageName + ", payName=" + payName
-				+ ", hrName=" + hrName + ", hrPhone=" + hrPhone + ", hrEmail=" + hrEmail + ", bCode=" + bCode
-				+ ", bName=" + bName + ", bOwner=" + bOwner + ", bNumber=" + bNumber + ", bAddress=" + bAddress
-				+ ", bPhone=" + bPhone + ", bType=" + bType + ", bBlock=" + bBlock + ", bProfit=" + bProfit
-				+ ", bCategoryCode=" + bCategoryCode + ", categoryCode=" + categoryCode + ", categoryLevel="
-				+ categoryLevel + ", dListReason=" + dListReason + ", dListdate=" + dListdate + ", decisionCode="
-				+ decisionCode + ", dListTypeCode=" + dListTypeCode + ", reportCode=" + reportCode + ", reportReason="
-				+ reportReason + ", reportDate=" + reportDate + ", dListTarget=" + dListTarget + ", decisionStatus="
-				+ decisionStatus + ", userCode=" + userCode + ", userName=" + userName + ", userPhone=" + userPhone
-				+ ", userPwd=" + userPwd + ", userBday=" + userBday + ", userGender=" + userGender + ", userAddress="
-				+ userAddress + ", userRegisterDate=" + userRegisterDate + ", userBlock=" + userBlock + ", verifiedNum="
-				+ verifiedNum + ", resumeCode=" + resumeCode + ", resumeWriteDate=" + resumeWriteDate
-				+ ", resumeSubphone=" + resumeSubphone + ", resumeLetter=" + resumeLetter + ", resumeAdvantage="
-				+ resumeAdvantage + ", applyCode=" + applyCode + ", applyDate=" + applyDate + ", applyYn=" + applyYn
-				+ ", applyRead=" + applyRead + ", applyCancel=" + applyCancel + ", jobName=" + jobName
-				+ ", industryCode=" + industryCode + ", industryName=" + industryName + "]";
+				+ ", logoPath=" + logoPath + ", degreeLevel=" + degreeLevel + ", expName=" + expName + ", periodName="
+				+ periodName + ", hourName=" + hourName + ", locationName=" + locationName + ", ageName=" + ageName
+				+ ", payName=" + payName + ", hrName=" + hrName + ", hrPhone=" + hrPhone + ", hrEmail=" + hrEmail
+				+ ", bCode=" + bCode + ", bName=" + bName + ", bOwner=" + bOwner + ", bNumber=" + bNumber
+				+ ", bAddress=" + bAddress + ", bPhone=" + bPhone + ", bType=" + bType + ", bBlock=" + bBlock
+				+ ", bProfit=" + bProfit + ", bCategoryCode=" + bCategoryCode + ", categoryCode=" + categoryCode
+				+ ", categoryLevel=" + categoryLevel + ", dListReason=" + dListReason + ", dListdate=" + dListdate
+				+ ", decisionCode=" + decisionCode + ", dListTypeCode=" + dListTypeCode + ", reportCode=" + reportCode
+				+ ", reportReason=" + reportReason + ", reportDate=" + reportDate + ", dListTarget=" + dListTarget
+				+ ", decisionStatus=" + decisionStatus + ", userCode=" + userCode + ", userName=" + userName
+				+ ", userPhone=" + userPhone + ", userPwd=" + userPwd + ", userBday=" + userBday + ", userGender="
+				+ userGender + ", userAddress=" + userAddress + ", userRegisterDate=" + userRegisterDate
+				+ ", userBlock=" + userBlock + ", verifiedNum=" + verifiedNum + ", resumeCode=" + resumeCode
+				+ ", resumeWriteDate=" + resumeWriteDate + ", resumeSubphone=" + resumeSubphone + ", resumeLetter="
+				+ resumeLetter + ", resumeAdvantage=" + resumeAdvantage + ", applyCode=" + applyCode + ", applyDate="
+				+ applyDate + ", applyYn=" + applyYn + ", applyRead=" + applyRead + ", applyCancel=" + applyCancel
+				+ ", jobName=" + jobName + ", industryCode=" + industryCode + ", industryName=" + industryName + "]";
 	}
 
 }
