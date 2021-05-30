@@ -99,7 +99,7 @@
       <p style="text-align: right;">
         100,000원 / 7일
         <br>
-        <input type="button" class="btn btn-warning" value="이 상품 담기"  />
+        <input type="button" class="btn btn-warning" value="이 상품 담기"  id="premium2"/>
       </p>
       </button>
 
@@ -121,7 +121,7 @@
       <p style="text-align: right;">
         70,000원 / 7일
         <br>
-        <input type="button" class="btn btn-warning" value="이 상품 담기" />
+        <input type="button" class="btn btn-warning" value="이 상품 담기" id="premium3"/>
       </p>
       </button>
 
@@ -143,7 +143,7 @@
       <p style="text-align: right;">
         50,000원 / 7일
         <br>
-        <input type="button" class="btn btn-warning" value="이 상품 담기" />
+        <input type="button" class="btn btn-warning" value="이 상품 담기" id="premium4"/>
       </p>
       </button>
 
@@ -196,8 +196,9 @@
 		<ul style="padding-left: 25px;">
 			<li style="color:red">결제는 해당 공고가 승인이 난 후, 결제관리 페이지에서 가능합니다!</li>
 		</ul>
-		<form action="business/advertise" method="post" style="margin-bottom: 50px">
-			<input style="display:none;" type="text" name="selectedPostCode" id="selectedPostCode" value="" style="margin-left:20px" readonly required/>
+		<form id="advertiseForm" action="${ pageContext.servletContext.contextPath }/business/advertise" method="post" style="margin-bottom: 50px">
+			<input style="display:none;" type="text" name="selectedPostCode" id="selectedPostCode" value="" style="margin-left:20px"/>
+			<input style="display:none;" type="text" name="selectedPrice" id="selectedPostCode" value="" style="margin-left:20px" />
 			
 			<label> 공고 담당자 - </label> <input type="text" name="selectedManager" id="selectedManager" value="" style="margin-left:15px" readonly required/>
 			<br>
@@ -207,14 +208,12 @@
 			<br>
 			<label> 공고 제목 -  </label><input type="text" name="selectedPostTitle" id="selectedPostTitle" value="" style="margin-left:15px" size="70" readonly required>
 			<br>
-			<label> 공고 기간(단위 : 일주일) -  </label><input type="text" name="selectedWeeks" id="selectedWeeks" value="" style="margin-left:15px" readonly required/>
+			<label> 공고 기간(단위 : 일주일) -  </label><input type="text" name="selectedWeeks" id="selectedWeeks" value="" style="margin-left:15px" size="3px" readonly required/>
 			<br><br>
-			<label> 광고 상품 -  </label><input type="text" name="selectedAd" id="selectedAd" value="" style="margin-left:15px" readonly required/>
-			<br><br>
-			<label> 총 예상 금액 -  </label><input type="text" name="totalPrice" id="totalPrice" value="" style="margin-left:15px" readonly required/>
+			<label> 광고 상품 -  </label><input type="text" name="selectedAd" id="selectedAd" value="" style="margin-left:15px" size="40px" readonly required/>
 			
-			<button type="submit">광고 신청</button>
-			<button type="reset">다시 선택하기</button>
+			<input type="submit" id="adSubmit" class="btn btn-info btn-submit" value="광고신청">
+			<input type="reset" id="adReset" class="btn btn-info btn-submit" value="다시선택하기">
 		</form>
     </div>
   </div>
@@ -224,13 +223,67 @@
 
 <script>
 window.onload = function(){
+	 $( '#advertiseForm' ).submit( function( event ) {
+
+        //validate fields
+        var fail = false;
+        var fail_log = '';
+        var name;
+        $( '#advertiseForm' ).find( 'input' ).each(function(){
+            if( ! $( this ).prop( 'required' )){
+
+            } else {
+                if ( ! $( this ).val() ) {
+                    fail = true; 
+                     name = $( this ).attr( 'name' );
+                     fail_log = "상품과 공고를 선택후 진행하여 주십시오.";
+                 }
+
+            }
+        });
+
+        if ( fail ) {
+            alert( fail_log );
+            event.preventDefault();
+        } 
+        /* else{
+        	alert("test");
+        }
+ */
+	}); 
+	/* $('#adSubmit').click(function(e) {
+		if($('#selectedIndustry').val() == ""){
+			alert("test jquery");
+			e.preventDefault();
+		}
+	}); */
+	
+	
 	const link = "${ pageContext.servletContext.contextPath }/business/advertise";
 	const categoryLink = "${ pageContext.servletContext.contextPath }/business/advertise";
 		
 	const $premium1 = document.getElementById("premium1")
 	$premium1.onclick = function() {
 		
-		document.getElementById("selectedAd").value = "프리미엄 업종 상단";
+		document.getElementById("selectedAd").value = "프리미엄 업종 상단(₩130,000/1주)";
+
+	}
+	const $premium2 = document.getElementById("premium2")
+	$premium2.onclick = function() {
+		
+		document.getElementById("selectedAd").value = "프리미엄 업종 하단(₩100,000/1주)";
+
+	}
+	const $premium3 = document.getElementById("premium3")
+	$premium3.onclick = function() {
+		
+		document.getElementById("selectedAd").value = "프리미엄 직종 상단(₩70,000/1주)";
+
+	}
+	const $premium4 = document.getElementById("premium4")
+	$premium4.onclick = function() {
+		
+		document.getElementById("selectedAd").value = "프리미엄 직종 하단(₩50,000/1주)";
 
 	}
 	
@@ -287,7 +340,7 @@ window.onload = function(){
 				
 /* 				document.getElementById("selectedAd").value = this.parentNode.children[4].innerText;
  */				
-/* 				document.getElementById("totalPrice").value = this.parentNode.children[4].innerText;
+/* 				document.getElementById("totalPrice").value = parseInt(this.parentNode.children[7].innerText) * parseInt(document.getElementById("selectedPrice").value);
  */			} 
 		}
 		

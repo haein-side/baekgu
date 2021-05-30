@@ -100,6 +100,21 @@ public class BusinessAdvertiseServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		System.out.println("test doPost method");
+		
+//		name="selectedPostCode"
+//		name="selectedPrice"
+//		name="selectedManager"
+//		name="selectedIndustry"
+//		name="selectedJob"
+//		name="selectedPostTitle"
+//		name="selectedWeeks"
+//		name="selectedAd"
+		
+//		System.out.println("1 " + selectedPostCode);
+		
+	
 	}
 
 }
