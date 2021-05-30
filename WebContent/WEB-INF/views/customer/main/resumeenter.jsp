@@ -271,7 +271,7 @@
         <b>${ today }</b>
         <br>
         <span>열람자 :
-            <b>${ sessionScope.loginBusinessMember.bName }</b>(${ sessionScope.loginBusinessMember.CName })</span></p>
+            <b>${ sessionScope.loginBusinessMember.bName }</b>(${ sessionScope.loginBusinessMember.cName })</span></p>
 	</c:if>
 </div>
 <!-- 작성일 및 이름 끝 -->

@@ -372,6 +372,7 @@ public class BusinessService {
 		
 		return reportList;
 	}
+	
 	public int updatePaymentList(int success, int postAdCode) {
 		
 		Connection con = getConnection();
