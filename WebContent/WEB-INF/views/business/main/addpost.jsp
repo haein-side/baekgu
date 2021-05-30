@@ -49,6 +49,32 @@ footer {
 		height: auto;
 	}
 }
+
+input[type="checkbox"]{
+
+width: 20px; /*Desired width*/
+
+height: 20px; /*Desired height*/
+
+cursor: pointer;
+
+
+}
+
+input[type="radio"]{
+
+width: 20px; /*Desired width*/
+
+height: 20px; /*Desired height*/
+
+cursor: pointer;
+
+
+}
+.lab{
+	margin-right: 2%;
+}
+
 </style>
 <script>
 	/* job */
@@ -171,13 +197,15 @@ footer {
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">기업
-							주소</label> <small>우편번호</small> <input type="button" value="검색"
-							class="btn btn-yg" id="searchZipCode"> <br> <input
-							type="text" name="zipCode" id="zipCode" readonly class="">
-						<small>주소</small> <input type="text" name="address1" id="address1"
-							readonly class=""> <small>상세주소</small> <input type="text"
-							name="address2" id="address2" class="l">
+						<label for="inputPassword3" class="col-sm-2 control-label">기업 주소</label>
+						<br>
+						<div class="col-sm-3" style="margin-left: ;">
+						
+						<small>우편번호 <input type="button" value="검색" class="btn btn-yg" id="searchZipCode"><input	type="text" name="zipCode" id="zipCode" readonly class="form-control"></small>
+							
+						<small>주소 <input type="text" name="address1" id="address1" readonly class="form-control"> </small> <br>
+						<small>상세주소 <input type="text" name="address2" id="address2" class="form-control"></small> 
+						 </div>
 					</div>
 					<div class="col-sm-0 sidenav"></div>
 					<br> <br> <br> <br> <br>
@@ -220,7 +248,6 @@ footer {
 											.getElementById("selectJob").value;
 
 									console.log(value);
-
 								}
 							</script>
 
@@ -327,38 +354,42 @@ footer {
 						</div>
 					</div>
 					<div class="form-group">
-						<br> <label for="inputEmail3" class="col-sm-2 control-label">온라인
-							접수</label> <input type="checkbox" name="online" id="res_chk6_16"
-							value="1"> <label for="res_chk6_16">온라인 접수 희망</label>
-							<input type="checkbox" name="online" id="res_chk6_16"
-							value="0"> <label for="res_chk6_16">온라인 접수 비희망</label>
+						<br> <label for="inputEmail3" class="col-sm-2 control-label">온라인 접수</label> 
+						<input type="radio" name="online" id="res_chk6_16" value="1"> 
+						<label for="res_chk6_16">온라인 접수 희망</label>
+						<input type="radio" name="online" id="res_chk6_16" value="0"> 
+						<label for="res_chk6_16">온라인 접수 비희망</label>
 					</div>
 					<div class="form-group">
-						<br> <label for="inputEmail3" class="col-sm-2 control-label">모집시작일
-							~ 모집마감일</label>
+						<br> <label for="inputEmail3" class="col-sm-2 control-label">모집시작일 ~ 모집마감일</label>
 						<div class="col-sm-6">
-							<input type="date" name="startDate"> <label>~</label> <input
-								type="date" name="endDate">
+							<input type="date" name="startDate"> 
+							<label>~</label> 
+							<input type="date" name="endDate">
 						</div>
 					</div>
 					<br>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">임금</label>
-						<div class="col-sm-1">
+						<div class="col-sm-6">
 							<select name="pay" id="" required="" class="">
 								<option>--선택--</option>
 								<option value="1">시급</option>
 								<option value="2">일급</option>
 								<option value="3">월급</option>
-							</select> <label style="font-size: 15px;"><input type="text"
-								name="payment" class="form-control" placeholder="정확한 임금을 적어주세요."></label>
+							</select>
+						</div>
+						<br>
+						<div class="col-sm-2">
+							<br>
+							<input type="text" name="payment" class="form-control" placeholder="정확한 임금을 적어주세요.">
 						</div>
 					</div>
 					<br>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">근무
 							형식</label>
-						<div class="col-sm-1">
+						<div class="col-sm-6">
 							<select name="contract" id="" required class="">
 								<option>----선택-----</option>
 								<option value="0">비정규직</option>
@@ -380,7 +411,7 @@ footer {
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">work_period</label>
+						<label for="inputPassword3" class="col-sm-2 control-label">근무 기간</label>
 						<div class="col-sm-1">
 							<select name="period" id="" required class="">
 								<option>----선택-----</option>
@@ -396,21 +427,22 @@ footer {
 					</div>
 					<br>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">근무
-							요일</label>
+						<label for="inputPassword3" class="col-sm-2 control-label">근무 요일</label>
 						<div class="col-sm-6">
-							<input type="checkbox" name="days" id="res_chk6_16" value="월요일">
-							<label for="res_chk6_16">월요일</label> <input type="checkbox"
-								name="days" id="res_chk6_17" value="화요일"> <label
-								for="res_chk6_17">화요일</label> <input type="checkbox" name="days"
-								id="res_chk6_18" value="수요일"> <label for="res_chk6_18">수요일</label>
-							<input type="checkbox" name="days" id="res_chk6_19" value="목요일">
-							<label for="res_chk6_19">목요일</label> <input type="checkbox"
-								name="days" id="res_chk6_20" value="금요일"> <label
-								for="res_chk6_20">금요일</label> <input type="checkbox" name="days"
-								id="res_chk6_21" value="토요일"> <label for="res_chk6_21">토요일</label>
-							<input type="checkbox" name="days" id="res_chk6_22" value="일요일">
-							<label for="res_chk6_22">일요일</label>
+
+							<label class="lab" for="res_chk6_16"><input type="checkbox" name="days" id="res_chk6_16" value="월요일"/>월요일</label>
+
+							<label class="lab" for="res_chk6_17"><input type="checkbox" name="days" id="res_chk6_17" value="화요일"/>화요일</label> 
+
+							<label class="lab" for="res_chk6_18"><input type="checkbox" name="days" id="res_chk6_18" value="수요일"/>수요일</label>
+
+							<label class="lab" for="res_chk6_19"><input type="checkbox" name="days" id="res_chk6_19" value="목요일"/>목요일</label> 
+
+							<label class="lab" for="res_chk6_20"><input type="checkbox" name="days" id="res_chk6_20" value="금요일"/>금요일</label> 
+
+							<label class="lab" for="res_chk6_21"><input type="checkbox" name="days" id="res_chk6_21" value="토요일"/>토요일</label>
+
+							<label class="lab" for="res_chk6_22"><input type="checkbox" name="days" id="res_chk6_22" value="일요일"/>일요일</label>
 
 
 						</div>
@@ -421,30 +453,29 @@ footer {
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">우대사항</label>
 						<div class="col-sm-6">
-							<input type="checkbox" name="priority" id="res_chk6_16"
-								value="장비보유"> <label for="res_chk6_16">장비 보유</label> <input
-								type="checkbox" name="priority" id="res_chk6_17" value="원동기면허소지">
-							<label for="res_chk6_17">원동기면허 소지</label> <input type="checkbox"
-								name="priority" id="res_chk6_18" value="운전능숙"> <label
-								for="res_chk6_18">운전 능숙</label> <input type="checkbox"
-								name="priority" id="res_chk6_19" value="즉시근무가능"> <label
-								for="res_chk6_19">즉시 근무 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_20" value="야간근무가능"> <label
-								for="res_chk6_20">야간 근무 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_21" value="주말근무가능"> <label
-								for="res_chk6_21">주말 근무 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_22" value="교대근무가능"> <label
-								for="res_chk6_22">교대 근무 가능</label> <br> <input
-								type="checkbox" name="priority" id="res_chk6_23" value="지방근무가능">
-							<label for="res_chk6_23">지방 근무 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_24" value="기숙사생활가능"> <label
-								for="res_chk6_24">기숙사 생활 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_25" value="인근거주가능"> <label
-								for="res_chk6_25">인근 거주 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_26" value="파트타임가능"> <label
-								for="res_chk6_26">파트타임 가능</label> <input type="checkbox"
-								name="priority" id="res_chk6_27" value="자차출퇴근가능"> <label
-								for="res_chk6_27">자차 출퇴근 가능</label>
+							<label class="lab" for="res_chk6_16"><input type="checkbox" name="priority" id="jb-checkbox" value="장비보유"/>장비보유</label>
+
+							<label class="lab" for="res_chk6_17"><input type="checkbox" name="priority" id="res_chk6_17" value="원동기면허소지"/>원동기면허 소지</label>
+							 
+							<label class="lab" for="res_chk6_18"><input type="checkbox" name="priority" id="res_chk6_18" value="운전능숙"/>운전 능숙</label> 
+
+							<label class="lab" for="res_chk6_19"><input type="checkbox" name="priority" id="res_chk6_19" value="즉시근무가능"/>즉시 근무 가능</label>
+
+							<label class="lab" for="res_chk6_20"><input type="checkbox" name="priority" id="res_chk6_20" value="야간근무가능"/>야간 근무 가능</label> 
+
+							<label class="lab" for="res_chk6_21"><input type="checkbox" name="priority" id="res_chk6_21" value="주말근무가능"/>주말 근무 가능</label> <br><br>
+
+							<label class="lab" for="res_chk6_22"><input type="checkbox" name="priority" id="res_chk6_22" value="교대근무가능"/>교대 근무 가능</label> 
+
+							<label class="lab" for="res_chk6_23"><input type="checkbox" name="priority" id="res_chk6_23" value="지방근무가능"/>지방 근무 가능</label>
+
+							<label class="lab" for="res_chk6_24"><input type="checkbox" name="priority" id="res_chk6_24" value="기숙사생활가능"/>기숙사 생활 가능</label> 
+
+							<label class="lab" for="res_chk6_25"><input type="checkbox" name="priority" id="res_chk6_25" value="인근거주가능"/>인근 거주 가능</label> 
+
+							<label class="lab" for="res_chk6_26"><input type="checkbox" name="priority" id="res_chk6_26" value="파트타임가능"/>파트타임 가능</label> <br><br>
+
+							<label class="lab" for="res_chk6_27"><input type="checkbox" name="priority" id="res_chk6_27" value="자차출퇴근가능"/>자차 출퇴근 가능</label>
 
 						</div>
 
@@ -452,8 +483,7 @@ footer {
 					<div class="form-group">
 						<br> <label for="inputEmail3" class="col-sm-2 control-label">복리후생</label>
 						<div class="col-sm-10">
-							<input type="text" name="benefit" style="width: 500px;"
-								placeholder="복리후생" />
+							<input type="text" name="benefit" style="width: 500px;" class="form-control" placeholder="예) 4대보험 식사제공 기숙사제공" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -483,7 +513,9 @@ footer {
 						</div>
 					</div>
 					<br>
-					<div align="">
+					<br>
+					<br>
+					<div align="center" style=" margin-right: 500px;">
 						<button type="submit" style="width: 100px; height: 50px;"
 							class="btn btn-warning">등록</button>
 					</div>

@@ -10,18 +10,15 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Css Styles -->
-<link rel="stylesheet"
-	href="RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css"
-	type="text/css">
-<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css"
-	type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
+<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
+	
 </head>
 
 <body>
 
 <%@ include file="../common/header2.jsp"%>
-
 	<section class="product-details" style="margin-top: 10%; z-index: 1;">
 		<div class="container">
 			<div class="row">
@@ -47,31 +44,33 @@
 							${ requestScope.postInfo.postContent }<br>
 						</p> --%>
 						<div align="right">
-							
+							<!-- hidden 타입의 input 태그에 유저코드와 공고번호를 넣어둠 -->
 							<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
 							<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>
 							
 							<button class="jione_button" type="submit" onclick=apply();>
-							<!-- <input type="button" value="${ requestScope.postInfo.postCode } }"> -->
-							<script> /* form 태그 쓰면 값이 초기화되서 안넘어감. hidden input 태그로 넘기는 방법도 있음 */
-                                        
-										var userCode = document.getElementById("userCode").value;
 								
-										function apply(){
-											if(userCode != null && userCode != "") {
-												// 로그인한 경우 지원하기 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/apply?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-												
-											} else {
-												// 로그인 하지 않은 경우 로그인 팝업 표시
-												window.open("${ pageContext.servletContext.contextPath }/signinpopup?postCode="+${requestScope.postInfo.postCode}, "a", "width=450, height=600, left=500, top=250");
-																								
-												window.opener.location.reload();
-												window.close();
-											}
+								
+								<script>
+									/* 지원하기 버튼 onclick 이벤트 */
+									var userCode = document.getElementById("userCode").value;
+							
+									console.log(userCode);
+									
+									function apply(){
+										/* userCode가 존재할 경우 지원하기 창 띄우기 */
+										if(userCode != null && userCode != "") {
 
-                                        }
-                                    </script> 
+											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="/*+${ requestScope.postInfo.postCode }*/, "a", "width=450, height=600, left=500, top=250");
+
+										/* 유저코드가 존재하지 않을 경우 로그인창 띄우기 */
+										} else {
+
+											window.open("${ pageContext.servletContext.contextPath }/signinpopup", "a", "width=450, height=600, left=500, top=250");				
+										
+										}
+                              		}
+								</script>
 								<h2>지원하기</h2>
 							</button>
 							
@@ -81,7 +80,7 @@
 							<tr>
 								<th>지원자격</th>
 								<td>${ requestScope.postInfo.ageName }</td>
-							</tr>			
+							</tr>
 							<tr>
 								<th>급여</th>
 								<td>${ requestScope.postInfo.payment } 원</td>
@@ -485,16 +484,71 @@
 										</p>
 									</div>
 									<br>
+									
 									<div align="center">
-										<p style="font-size: 25px; text-align: center;">혹시 이 공고가
-											수상한가요?
-										<h2>
-											<a href=""
-											onclick="window.open('${ pageContext.servletContext.contextPath }/user/report', '공고 신고하기', 'width=800, height=900, left=300, top=150')" style="color: red;">신고하기</a>
-										</h2>
+										
+										<p style="font-size: 25px; text-align: center;">
+										본 채용 정보에 불법, 허위, 과장 또는 잘못된 내용이 있을 경우, 신고해주세요.
 										</p>
-									</div>
+										<!-- 신고하기 버튼 -->
+										<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
+										
+										<button class="report_button" type="button" onclick=report();>
+											<script>
+											
+												var postCode = document.getElementById("postCode").value;
+												console.log(postCode);
+											
+												/* 신고하기 버튼 onclick 이벤트 */
+												function report(){
+	
+													window.open("${ pageContext.servletContext.contextPath }/user/toreport?postCode="+${ requestScope.postInfo.postCode }, "a", "width=550, height=700, left=450, top=200");
 
+        	                      				}
+											</script> 
+											<h2>신고하기</h2>
+										</button>
+											
+											
+									
+										
+										<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportModal" data-whatever="@mdo">신고하기</button> -->	
+										<!-- <input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
+	                    				
+										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+										        <form>
+										          <div class="form-group">
+										            <label for="recipient-name" class="col-form-label">Recipient:</label>
+										            <input type="text" class="form-control" id="recipient-name">
+										          </div>
+										          <div class="form-group">
+										            <label for="message-text" class="col-form-label">Message:</label>
+										            <textarea class="form-control" id="message-text"></textarea>
+										          </div>
+										        </form>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">Send message</button>
+										      </div>
+										    </div>
+										  </div>
+										</div> -->         
+	                    				
+
+										<!-- 모달 끝 -->
+										
+								
+									</div>
 								</div>
 							</div>
 							<div>
@@ -557,15 +611,21 @@
 
 									</div>
 								</div>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		
 	</section>
+	
+	<script>
+		
+		$('#report').on('click', function(event) {
+			var button = $(event.relatedTarget)
+		});
+	</script>
+	
 <%@ include file="../common/footer.jsp"%>
 
 </body>

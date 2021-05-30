@@ -146,10 +146,16 @@
 	<entry key="adminNameSelect"> 
 	 SELECT 
 	        *
-	   FROM ADMIN
-	   WHERE ADMIN_NAME = ?
+	   FROM admin
+	   WHERE ADMIN_NAME like '%' ? '%'
 	
 	</entry>
 	
+		<entry key="advertnameSelect"> 
+	 SELECT 
+	        *
+	   FROM AD
+	   WHERE AD_NAME like '%' ? '%'
 	
+	</entry>
 </properties>

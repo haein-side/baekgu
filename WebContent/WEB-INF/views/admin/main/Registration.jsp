@@ -65,6 +65,7 @@
                           <div class="form">
                             <form class="form-validate form-horizontal" id="feedback_form" 
                                   action="${ pageContext.servletContext.contextPath }/admin/signup" method="post" >
+                            <input type="hidden" name="idregist" value="fail" />
                               <div class="form-group ">
                                 <label for="cname" class="control-label col-lg-2">이름 </label>
                                 <div class="col-lg-10">
@@ -75,8 +76,8 @@
                                 <label for="cemail" class="control-label col-lg-2">아이디</label>
                                 <div class="col-lg-10">
                                   <input class="form-control " id="adminId" name="adminId" type="id" required/>
-                       	           <!-- 중복확인 -->
-                                  <input type="button" value="중복확인" class="btn btn-primary" id="duplicationCheck"/>
+                       	          
+                                  <input type="button" value="중복확인"  class="btn btn-primary" id="duplicationCheck"/>
                                 </div>
                               </div>
                              <div class="form-group ">
@@ -105,7 +106,7 @@
                               </div>
                               <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                  <button class="btn btn-primary" type="submit"  onClick="ManagerList()">등록</button>
+                                  <button class="btn btn-primary" type="submit" onclick="return ManagerList()">등록</button>
                                 </div>
                               </div>
                             </form>
@@ -121,14 +122,12 @@
             
    <!--  등록하기 버튼 클릭 시  리스트로 넘어감. -->
       <script>
-           function ManagerList(){
-                const link = "${ pageContext.servletContext.contextPath }/admin/search";
-                location.href = link;
-          }
      </script>
+
    
-   <!-- 아이디 중복확인용  -->
   <script>
+   <!-- 아이디 중복확인용  -->
+    var gbl_data = 0;
    	$(function(){
    		
    		$("#duplicationCheck").click(function(){
@@ -143,6 +142,7 @@
    				success: function(data,textStatus,xhr) {
    					if(data == 'success') {
    						alert("현재 아이디를 사용하셔도 됩니다.");
+   						gbl_data = 1;
    					}  else {
    						alert("중복된 아이디입니다. 다른 아이디를 사용해주세요.");
    						$("#adminId").select();
@@ -157,9 +157,20 @@
    		
 
    	});
-   
+   			
+   	/* 중복확인 용  */
+			function ManagerList() {
+			
+				if (gbl_data == 1) {
+					const link = "${ pageContext.servletContext.contextPath }/admin/search";
+					location.href = link;
+				} else if(gbl_data == 0){
+					alert("중복체크를 하고 오세요.");
+					return false;
 
-   </script>
+				}
+			}
+		</script>
    
  
        

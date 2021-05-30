@@ -233,7 +233,7 @@ public class AdvertDAO {
 		if (searchSelect.equals("code")) {
 			query = prop.getProperty("advertDetail");
 		} else {
-			query = prop.getProperty("adminNameSelect");
+			query = prop.getProperty("advertnameSelect");
 		}
 		System.out.println("사용 쿼리 : " + query);
 

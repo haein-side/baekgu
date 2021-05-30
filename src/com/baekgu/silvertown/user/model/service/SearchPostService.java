@@ -6,6 +6,8 @@ import static com.baekgu.silvertown.common.jdbc.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
+import com.baekgu.silvertown.admin.model.dto.MemberDTO;
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
 import com.baekgu.silvertown.user.model.dao.SearchPostDAO;
 import com.baekgu.silvertown.user.model.dao.UserDAO;
 import com.baekgu.silvertown.user.model.dto.DetailedSearchPostDTO;
@@ -66,20 +68,6 @@ public class SearchPostService {
 		return selectBestPost;
 	}
 
-	/**
-	 * 상세검색 - 경력을 제외하고 조건을 맞추는 공고를 받아오는 메소드
-	 * @param dSearchPost
-	 * @return selectNormalPost
-	 */
-	public List<DetailedSearchPostDTO> selectNormalPost(DetailedSearchPostDTO dSearchPost) {
-		Connection con = getConnection();
-		
-		List<DetailedSearchPostDTO> selectNormalPost = searchDAO.selectNormalPost(con, dSearchPost);
-		
-		close(con);
-		
-		return selectNormalPost;
-	}
 
 	/**
 	 * 상세검색 - 직종 광고 조회
@@ -95,6 +83,39 @@ public class SearchPostService {
 		
 		return selectJobAdPost;
 	}
+
+	/**
+	 * 페이징 처리를 위한 상세검색 일반공고 조회
+	 * @param dSearchPost
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<DetailedSearchPostDTO> selectDPostPaging(DetailedSearchPostDTO dSearchPost, PageInfoDTO pageInfo) {
+		Connection con = getConnection();
+		
+		List<DetailedSearchPostDTO> selectPost = searchDAO.selectDPostPaging(con, dSearchPost, pageInfo);
+		
+		close(con);
+		
+		return selectPost;
+	}
+
+	/**
+	 * 페이징 처리를 위한 단순검색 일반공고 조회
+	 * @param searchPost
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<SearchPostDTO> selectPostPaging(SearchPostDTO searchPost, PageInfoDTO pageInfo) {
+		Connection con = getConnection();
+		
+		List<SearchPostDTO> selectSPost = searchDAO.selectPostPaging(con, searchPost, pageInfo);
+		
+		close(con);
+		
+		return selectSPost;
+	}
+
 
 	
 

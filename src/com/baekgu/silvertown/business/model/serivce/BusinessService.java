@@ -18,9 +18,12 @@ import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.dto.HrDTO;
+import com.baekgu.silvertown.business.model.dto.HrNumDTO;
+import com.baekgu.silvertown.business.model.dto.MainDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDTO;
 import com.baekgu.silvertown.business.model.dto.PaymentDetailDTO;
 import com.baekgu.silvertown.business.model.dto.PostInsertDTO;
+import com.baekgu.silvertown.user.model.dto.ReportPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 
 
@@ -302,6 +305,9 @@ public class BusinessService {
 				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
 				break;
 			case 2: // 현우형 - 기업공고 신고
+				ReportPostDTO postReport = (ReportPostDTO)containDTO.get(0);
+				secondResult = businessDAO.insertPostReport(con, postReport);
+				break;
 			case 3:
 				BusinessDTO business = (BusinessDTO)containDTO.get(0);
 				secondResult = businessDAO.insertNewBusiness(con, business);
@@ -373,13 +379,100 @@ public class BusinessService {
 		int result = businessDAO.updatePaymentList(con, success, postAdCode);
 		
 		
-		System.out.println("");
 		if(result > 0 ) {
 			
 			commit(con);
 		} else {
 			
 			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public MainDTO selectBusinessInfo(String bId) {
+		
+		Connection con = getConnection();
+		
+		MainDTO main = businessDAO.selectBusinessInfo(con, bId);
+		
+		close(con);
+		
+		return main;
+	}
+
+	/**
+	 * hr 번호 확인을 위한 번호 select method
+	 * @param bId
+	 * @return
+	 */
+	public HrNumDTO selectHrNum(String bId) {
+		
+		Connection con = getConnection();
+		
+		HrNumDTO hNum = businessDAO.selecthNum(con, bId);
+		
+		close(con);
+		return hNum;
+	}
+
+	/**
+	 * 생성된 인증번호를 update 하는 메소드
+	 * @param infoWIthVNum
+	 * @return
+	 */
+	public int updateVerifiedNum(HrNumDTO infoWIthVNum) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updateVerifiedNum(con, infoWIthVNum);
+		
+		System.out.println("DAO 가기전에 인증 번호 확인 : " +infoWIthVNum.getVarifiedNum());
+		
+		if(result > 0) {
+			System.out.println("문자인증 서비스 업데이트 성공");
+			commit(con);
+			
+			
+		} else {
+			
+			System.out.println("문자인증 서비스 업데이트실패");
+			rollback(con);
+			
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public String selectVerifiedNum(String userId) {
+		
+		Connection con = getConnection();
+		
+		String numStr = businessDAO.selectVerifiedNum(con, userId);
+		
+		close(con);
+		
+		return numStr;
+	}
+
+	public int updatePwd(String enterPwd, String hrId) {
+		
+		Connection con = getConnection();
+		
+		int result = businessDAO.updatePwd(con, enterPwd, hrId);
+		
+		if(result > 0) {
+			
+			commit(con);
+			System.out.println("비밀번호 업데이트 성공 : " + result);
+		} else {
+			
+			rollback(con);
+			System.out.println("비밀번호 업데이트 실패 : " + result);
 		}
 		
 		close(con);

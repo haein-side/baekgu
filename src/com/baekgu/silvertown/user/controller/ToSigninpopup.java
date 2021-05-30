@@ -12,7 +12,7 @@ public class ToSigninpopup extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int postCode = Integer.parseInt(request.getParameter("postCode"));
+		int postCode = 50; //Integer.parseInt(request.getParameter("postCode"));
 		request.setAttribute("postCode", postCode);
 		
 		System.out.println("Login으로 가는 서블릿 도착");

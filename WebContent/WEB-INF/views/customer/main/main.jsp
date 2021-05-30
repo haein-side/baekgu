@@ -4,10 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>백세구인구직 백구</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Guide &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -31,8 +30,7 @@
 
 	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/style.css">
 
-	<!-- 오렌지 색상
-	FF7844 -->
+	<!-- 오렌지 색상 FF7844 -->
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -53,7 +51,6 @@
 						</h1>
 						<ul class="pull-right right-menu">
 						<!-- 로그인, 회원가입 -->
-							<li><a href="${ pageContext.servletContext.contextPath }/testPost" style="font-family: icomoon; font-size: 30px;">상세공고보기</a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
 							<li class="fh5co-cta-btn"><a href="${ pageContext.servletContext.contextPath }/user/toSignup" style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
 						</ul>
@@ -76,8 +73,7 @@
 						<ul class="pull-right right-menu" style="align:left;">
 						<!-- 로그인, 회원가입 -->
 							<!-- 임의로 상세 공고보기 메뉴 생성 -->
-							<li><a href="${ pageContext.servletContext.contextPath }/testPost" style="font-family: icomoon; font-size: 30px;">상세공고보기</a></li>
-							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName }님 반갑습니다! </a></li>
+							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName } 님 반갑습니다! </a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
 						</ul>	
 					</nav>

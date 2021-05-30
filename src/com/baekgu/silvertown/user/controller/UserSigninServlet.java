@@ -33,123 +33,52 @@ public class UserSigninServlet extends HttpServlet {
 		requestUser.setUserPhone(userPhone);
 		requestUser.setUserPwd(userPwd);
 		
-		// 서비스 객체 생성
+		/* Service와 연결하여 회원가입(비밀번호)과 차단여부 조회 */
 		UserService userService = new UserService();
-		
-		// 서비스에서 주는 값을 DTO형태로 받기
 		UserDTO loginUser = userService.loginCheck(requestUser);
-	    System.out.println("서블릿의 loginUser : " + loginUser);
-	       
-	    UserService userServiceInfo = new UserService();
-	    UserDTO loginUserInfo = null;
-	       
-	    String errorPage = "";
-	       
-	    /* 회원가입 여부 분기처리 */
+	    System.out.println("Servlet 고객 차단여부 : " + loginUser.getUserBlock());
 	    
+	    String errorPage = "";
+
+	    /* 고객정보 유무로 분기 처리 */
+	    if(loginUser.getUserPwd() != null) {
 	    	
-	    loginUserInfo = userServiceInfo.loginInfo(requestUser);
+	    	/* 고객정보 일치시 */
+	    	/* Service와 연결하여 로그인 정보 받아오기 */
+		    UserService userServiceInfo = new UserService();
+		    UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
+		    System.out.println("Servlet 고객코드 : " + loginUserInfo.getUserCode());
 		    
-		System.out.println("컨트롤러 유저 값 조회 : " + loginUserInfo);
-		
-		if(loginUser != null) {
-			
-//		    /* 아이디 매치여부 조회 */
-//	    	if(requestUser.getUserPhone() != loginUserInfo.getUserPhone()) {
-//	    		
-//	    		/* 아이디가 일치하지 않을 경우 */
-//		        errorPage="/WEB-INF/views/customer/common/errorWrongId.jsp";
-//		        System.out.println("잘못된 아이디");
-//		        request.setAttribute("errorMessage", "아이디를 찾을 수 없습니다. 다시 획안해주세요.");
-//		        request.getRequestDispatcher(errorPage).forward(request, response);
-//	        	
-//	    	} else {
-	    		
-	    		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	    		/* 로그인 요청한 원문 비밀번호와 저장되어 있는 암호화된 비밀번호가 일치하는지 확인 */
-	    		if(passwordEncoder.matches(requestUser.getUserPwd(), loginUserInfo.getUserPwd())) {
-	    			
-					/* 고객 차단여부 분기처리 */
-				    if(loginUserInfo.getUserBlock() != 1) {
-				    	
-				    	HttpSession session = request.getSession();
-			            
-			            // Session에 조회한 회원정보를 loginUserInfo로 넣어줌
-			            session.setAttribute("loginUserInfo", loginUserInfo);
-			            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
-						// 서버 연결 후 출력 확인해보기
-						System.out.println("로그인 성공");
+		    if(loginUserInfo.getUserBlock() != 1) {
 
-			// 값을 보내서 조회해오기
-			loginUserInfo = userServiceInfo.loginInfo(requestUser);
-			
-			System.out.println("컨트롤러 유저 값 조회 : " + loginUserInfo);
-		} else {
-			// 회원가입 안내 alert
-			System.out.println("잘못된 아이디");
-			
-			errorPage="/WEB-INF/views/customer/common/errorAgain.jsp";
-       	 	request.setAttribute("errorMessage", "입력하신 정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
-       	 	request.getRequestDispatcher(errorPage).forward(request, response);
-		}
-		
-		// 차단 여부 확인
-		if(loginUserInfo.getUserBlock() != 1) {
-			
-			// 비밀번호 대조
-			if(requestUser.getUserPwd().equals(loginUser.getUserPwd())) {
-				// 로그인 성공
-				// 뷰 분기처리, 로그인 정보는 session에 담기
-				if(loginUser != null) {
-					HttpSession session = request.getSession();
-		            
-		            // Session에 조회한 회원정보를 loginUserInfo로 넣어줌
-		            session.setAttribute("loginUserInfo", loginUserInfo);
-		            System.out.println("loginUser의 usercode : " + loginUserInfo.getUserCode());
-					// 서버 연결 후 출력 확인해보기
-					System.out.println("로그인 성공");
+	            /* 로그인 성공시 */ 
+				/* Session에 조회한 회원정보를 loginUserInfo로 넣어줌 */
+				HttpSession session = request.getSession();
+	            session.setAttribute("loginUserInfo", loginUserInfo);
+				response.sendRedirect("/baekgu/user/toMain");
+				
+				System.out.println("로그인 성공");		    
+		    
+		    } else {
+		    	
+		    	/* 차단된 유저일 경우 */
+		        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
+		        System.out.println("차단 유저");
+		        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
+		        request.getRequestDispatcher(errorPage).forward(request, response);
 
-					/* 로그인 성공 시 메인으로 */
-					response.sendRedirect(request.getContextPath() + "/user/toMain");
-						/* 로그인 성공 시 메인으로 */
-						response.sendRedirect(request.getContextPath() + "/user/toMain");
-		    		
-				    } else {
-				    
-				    	/* 차단된 유저일 경우 */
-				        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
-				        System.out.println("차단 유저");
-				        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
-				        request.getRequestDispatcher(errorPage).forward(request, response);
-				    	
-				    }
-					
-	    		} else {
-	    			
-	    			// 비밀번호 틀렸습니다.
-					System.out.println("잘못된 비밀번호");
-					
-					errorPage="/WEB-INF/views/customer/common/errorpwd.jsp";
-		        	request.setAttribute("errorMessage", "잘못된 비밀번호 입니다. 다시 확인해주세요.");
-		        	request.getRequestDispatcher(errorPage).forward(request, response);
-	    		}
-	  		
-	    	//}
-	    		
-	    	} else {
-	    		
-	    		errorPage="/WEB-INF/views/customer/common/errorAgain.jsp";   
-			    request.setAttribute("errorMessage", "입력하신 정보를 찾을 수 없습니다. 다시 로그인 해주세요.");    
-			    request.getRequestDispatcher(errorPage).forward(request, response);
-			    
-			    // 잘못된 회원정보
-			    System.out.println("잘못된 회원정보");
-	    		
-	    		
-	    	}
-	    	}
+		    }
+	    	
+	    } else {
+	    	
+	    	/* 고객정보가 없을시 */
+	    	System.out.println("Servlet : 회원정보를 찾을 수 없습니다.");
+			
+			errorPage="/WEB-INF/views/customer/common/errorWrongId.jsp";
+        	request.setAttribute("errorMessage", "회원정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
+        	request.getRequestDispatcher(errorPage).forward(request, response);
+	    	
 	    }
-	   
+
 	}
-		
 }
