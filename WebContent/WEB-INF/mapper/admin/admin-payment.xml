@@ -16,7 +16,7 @@
              , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
+             , f.P_METHOD_NAME
              , c.B_CODE
              , d.B_NAME
              , d.B_ADDRESS
@@ -29,8 +29,7 @@
            and a.AD_CODE = e.AD_CODE
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
-      group by POST_AD_DATE     
-      order by POST_AD_DATE DESC
+      ORDER BY POST_AD_DATE DESC
          LIMIT ?, 10
     </entry>
     <entry key="selectTax">
@@ -42,7 +41,7 @@
              , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
+             , f.P_METHOD_NAME
              , c.B_CODE
              , d.B_NAME
              , d.B_ADDRESS
@@ -73,7 +72,7 @@
              , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
+             , f.P_METHOD_NAME
              , c.B_CODE
              , d.B_NAME
              , d.B_ADDRESS
@@ -101,7 +100,7 @@
              , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
+             , f.P_METHOD_NAME
              , c.B_CODE
              , d.B_NAME
              , d.B_ADDRESS
