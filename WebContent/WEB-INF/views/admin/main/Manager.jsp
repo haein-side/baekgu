@@ -251,7 +251,7 @@
 			/* 삭제하기 버튼 클릭했을 시   -> 삭제하기할 때도 delete컨트롤러로 가는게 맞나 ?*/
 			function deleteClick() {
 				$.ajax({
-					url : "/baekgu/admin/admindelete",
+					url : "${ pageContext.servletContext.contextPath }/admin/admindelete",
 					data : {
 						isDelete : true
 					},
@@ -278,7 +278,7 @@
 			/*  체크박스 클릭 했을 시  */
 			function checkClick(checkBox) {
 				$.ajax({
-					url : "/baekgu/admin/admindelete",
+					url : "${ pageContext.servletContext.contextPath }/admin/admindelete",
 					data : {
 						sendData : checkBox.checked,
 						adminId : checkBox.id,
