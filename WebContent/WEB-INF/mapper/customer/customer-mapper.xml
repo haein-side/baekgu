@@ -206,70 +206,70 @@
 	
 	<!-- 업종광고공고 조회 -->
 	<entry key = "selectInAdPost">
-	   select
-		       dl.D_LIST_TYPE_CODE
-		     , dl.DECISION_CODE
-		     , p.post_code
-		     , p.post_title
-		     , l.location_name
-		     , l.LOCATION_CODE 
+	    select
+		       DL.D_LIST_TYPE_CODE
+		     , DL.DECISION_CODE
+		     , P.post_code
+		     , P.post_title
+		     , L.location_name
+		     , L.LOCATION_CODE 
 		     , I.industry_name
 		     , I.industry_code
 		     , J.job_name
 		     , J.job_code
-		     , p.payment
-		     , f.PAY_CODE 
-		     , f.pay_name
-		     , p.benefit
-		     , p.PERIOD_CODE 
-		     , wp.PERIOD_NAME 
-		     , pap.AD_CODE 
-		  from post p
-		  left join location l on p.location_code = l.LOCATION_CODE 
-		  left join job j on p.JOB_CODE = j.JOB_CODE
-		  left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
-		  left join pay f on p.PAY_CODE = f.PAY_CODE 
-		  left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE
-		  left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE 
-		  left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE 
-		 where dl.D_LIST_TYPE_CODE = 4
-		   and dl.DECISION_CODE = 2
-		   and pap.ad_code IN (1, 2)
-		   and I.industry_code = ?	
+		     , P.payment
+		     , F.PAY_CODE 
+		     , F.pay_name
+		     , P.benefit
+		     , P.PERIOD_CODE 
+		     , WP.PERIOD_NAME 
+		     , PAP.AD_CODE 
+		  from POST P
+		  left join LOCATION L on P.LOCATION_CODE = L.LOCATION_CODE 
+		  left join JOB J on P.JOB_CODE = J.JOB_CODE
+		  left join INDUSTRY I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
+		  left join PAY F on P.PAY_CODE = F.PAY_CODE 
+		  left join WORK_PERIOD WP on P.PERIOD_CODE = WP.PERIOD_CODE
+		  left join DECISION_LIST DL on P.D_LIST_CODE = DL.D_LIST_CODE 
+		  left join POST_AD_PAYMENT PAP on P.POST_CODE = PAP.POST_CODE 
+		 where DL.D_LIST_TYPE_CODE = 4
+		   and DL.DECISION_CODE = 2
+		   and PAP.AD_CODE IN (1, 2)
+		   and I.INDUSTRY_CODE = ?
 	</entry>
 	
 	<!-- 직종광고공고 조회 -->
 	<entry key = "selectJobAdPost">
-	   select
-		       dl.D_LIST_TYPE_CODE
-		     , dl.DECISION_CODE
-		     , p.post_code
-		     , p.post_title
-		     , l.location_name
-		     , l.LOCATION_CODE 
+ select
+		       DL.D_LIST_TYPE_CODE
+		     , DL.DECISION_CODE
+		     , P.post_code
+		     , P.post_title
+		     , L.location_name
+		     , L.LOCATION_CODE 
 		     , I.industry_name
 		     , I.industry_code
 		     , J.job_name
 		     , J.job_code
-		     , p.payment
-		     , f.PAY_CODE 
-		     , f.pay_name
-		     , p.benefit
-		     , p.PERIOD_CODE 
-		     , wp.PERIOD_NAME 
-		     , pap.AD_CODE 
-		  from post p
-		  left join location l on p.location_code = l.LOCATION_CODE 
-		  left join job j on p.JOB_CODE = j.JOB_CODE
-		  left join industry I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
-		  left join pay f on p.PAY_CODE = f.PAY_CODE 
-		  left join work_period wp on p.PERIOD_CODE = wp.PERIOD_CODE
-		  left join decision_list dl on p.D_LIST_CODE = dl.D_LIST_CODE 
-		  left join post_ad_payment pap on p.POST_CODE = pap.POST_CODE 
-		 where dl.D_LIST_TYPE_CODE = 4
-		   and dl.DECISION_CODE = 2
-		   and pap.ad_code IN (3, 4)
-		   and J.job_code = ?	
+		     , P.payment
+		     , F.PAY_CODE 
+		     , F.pay_name
+		     , P.benefit
+		     , P.PERIOD_CODE 
+		     , WP.PERIOD_NAME 
+		     , PAP.AD_CODE 
+		  from POST P
+		  left join LOCATION L on P.location_code = L.LOCATION_CODE 
+		  left join JOB J on P.JOB_CODE = J.JOB_CODE
+		  left join INDUSTRY I on J.INDUSTRY_CODE = I.INDUSTRY_CODE  
+		  left join PAY F on P.PAY_CODE = F.PAY_CODE 
+		  left join WORK_PERIOD WP on P.PERIOD_CODE = WP.PERIOD_CODE
+		  left join DECISION_LIST DL on P.D_LIST_CODE = DL.D_LIST_CODE 
+		  left join POST_AD_PAYMENT PAP on P.POST_CODE = PAP.POST_CODE 
+		 where DL.D_LIST_TYPE_CODE = 4
+		   and DL.DECISION_CODE = 2
+		   and PAP.AD_CODE IN (3, 4)
+		   and J.JOB_CODE = ?
 	</entry>
 		
 	<!-- 인증번호 업데이트 해주는 쿼리 -->
@@ -346,7 +346,7 @@
      LEFT JOIN DECISION_LIST ON (REPORT.D_LIST_CODE = DECISION_LIST.DECISION_CODE)
      LEFT JOIN DECISION ON (DECISION_LIST.DECISION_CODE = DECISION.DECISION_CODE)
      LEFT JOIN D_LIST_TYPE ON (DECISION_LIST.D_LIST_TYPE_CODE = D_LIST_TYPE.D_LIST_TYPE_CODE)
-     LEFT JOIN EXP ON (POST.EXP_CODE = exp.EXP_CODE)
+     LEFT JOIN EXP ON (POST.EXP_CODE = EXP.EXP_CODE)
      LEFT JOIN JOB ON (POST.JOB_CODE = JOB.JOB_CODE)
      LEFT JOIN INDUSTRY ON (JOB.INDUSTRY_CODE = INDUSTRY.INDUSTRY_CODE)
      LEFT JOIN WORK_PERIOD ON (POST.PERIOD_CODE = WORK_PERIOD.PERIOD_CODE)

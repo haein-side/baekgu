@@ -12,25 +12,24 @@
                a.POST_AD_CODE
              , a.POST_AD_DATE
              , a.AD_CODE
-             , e.ad_name
-             , e.ad_price * POST_AD_WEEK as ad_price
+             , e.AD_NAME
+             , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
-             , c.b_code
-             , d.b_name
-             , d.b_address
-             , d.b_address
-             , d.b_Number
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+             , f.P_METHOD_NAME
+             , c.B_CODE
+             , d.B_NAME
+             , d.B_ADDRESS
+             , d.B_ADDRESS
+             , d.B_NUMBER
+          FROM POST_AD_PAYMENT a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
            and a.AD_CODE = e.AD_CODE
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
-      group by post_ad_date     
-      order by POST_AD_DATE desc
+      ORDER BY POST_AD_DATE DESC
          LIMIT ?, 10
     </entry>
     <entry key="selectTax">
@@ -38,30 +37,30 @@
                a.POST_AD_CODE
              , a.POST_AD_DATE
              , a.AD_CODE
-             , e.ad_name
-             , e.ad_price * POST_AD_WEEK as ad_price
+             , e.AD_NAME
+             , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
-             , c.b_code
-             , d.b_name
-             , d.b_address
-             , d.b_address
-             , d.b_Number
+             , f.P_METHOD_NAME
+             , c.B_CODE
+             , d.B_NAME
+             , d.B_ADDRESS
+             , d.B_ADDRESS
+             , d.B_NUMBER
              , g.B_CATEGORY_LEVEL
-             , d.b_owner
+             , d.B_OWNER
              , now()
              , a.POST_AD_WEEK 
-             , e.ad_price
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f, business_category g
+             , e.AD_PRICE
+          FROM POST_AD_PAYMENT a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f, BUSINESS_CATEGORY g
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
            and a.AD_CODE = e.AD_CODE
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and d.B_CATEGORY_CODE = g.B_CATEGORY_CODE
-           and a.post_ad_paid = 1
-           and a.post_code = ?
+           and a.POST_AD_PAID = 1
+           and a.POST_CODE = ?
     </entry>
     
     <entry key="paymentDateSearchSelect">
@@ -69,16 +68,16 @@
                a.POST_AD_CODE
              , a.POST_AD_DATE
              , a.AD_CODE
-             , e.ad_name
-             , e.ad_price * POST_AD_WEEK as ad_price
+             , e.AD_NAME
+             , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
-             , c.b_code
-             , d.b_name
-             , d.b_address
-             , d.b_Number
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+             , f.P_METHOD_NAME
+             , c.B_CODE
+             , d.B_NAME
+             , d.B_ADDRESS
+             , d.B_NUMBER
+          FROM POST_AD_PAYMENT a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
@@ -86,8 +85,8 @@
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
            and month(POST_AD_DATE) = ?
-      group by post_ad_date     
-      order by POST_CODE asc
+      group by POST_AD_DATE     
+      order by POST_CODE ASC
          LIMIT ?, 10
     
     </entry>
@@ -97,48 +96,48 @@
                a.POST_AD_CODE
              , a.POST_AD_DATE
              , a.AD_CODE
-             , e.ad_name
-             , e.ad_price * POST_AD_WEEK as ad_price
+             , e.AD_NAME
+             , e.AD_PRICE * POST_AD_WEEK as AD_PRICE
              , a.POST_CODE
              , a.P_METHOD_CODE
-             , F.P_METHOD_NAME
-             , c.b_code
-             , d.b_name
-             , d.b_address
-             , d.b_Number
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+             , f.P_METHOD_NAME
+             , c.B_CODE
+             , d.B_NAME
+             , d.B_ADDRESS
+             , d.B_NUMBER
+          FROM POST_AD_PAYMENT a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
            and a.AD_CODE = e.AD_CODE
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
-           and d.b_name = ?
-      group by post_ad_date     
-      order by POST_CODE asc
+           and d.B_NAME = ?
+      group by POST_AD_DATE     
+      order by POST_CODE ASC
        LIMIT ?, 10
     </entry>
     
     <entry key="searchbName">
         SELECT distinct
               count(*) over()
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+          FROM POST_AD_PAYMENT a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
            and a.AD_CODE = e.AD_CODE
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
-           and d.b_name = ?
-          group by post_ad_date
+           and d.B_NAME = ?
+          group by POST_AD_DATE
     
     
     </entry>
     
      <entry key="paymentSearch">
          SELECT distinct
-                count(*) over() as TOTAL
-          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, payment_method f
+                count(*) over()
+          FROM post_ad_payment a, POST b, HR c, BUSINESS d, AD e, PAYMENT_METHOD f
          WHERE a.POST_CODE = b.POST_CODE
            and b.HR_ID = c.HR_ID
            and c.B_CODE = d.B_CODE
@@ -146,7 +145,7 @@
            and a.P_METHOD_CODE = f.P_METHOD_CODE
            and POST_AD_PAID = 1
            and month(POST_AD_DATE) = ?
-          group by post_ad_date
+          group by POST_AD_DATE
     
     
     </entry>

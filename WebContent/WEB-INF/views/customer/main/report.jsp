@@ -37,7 +37,6 @@
 				
 				console.log(postCode);
 				console.log(reportReason);
-				//alert('postCode');
 				
 				$.ajax({
 					url:"${ pageContext.servletContext.contextPath }/user/report",

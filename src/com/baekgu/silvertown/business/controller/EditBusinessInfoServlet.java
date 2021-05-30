@@ -20,8 +20,10 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
 		
-		String str = String.valueOf(loggedInUser.getbNumber());
-		String  str2 = str.substring(0, 3) + "-" + str.substring(3, 5) + "-" + str.substring(6);
+//		String str = String.valueOf(loggedInUser.getbNumber());
+//		String  str2 = str.substring(0, 3) + "-" + str.substring(3, 5) + "-" + str.substring(6);
+		
+		String str2 = loggedInUser.getbNumber();
 		
 		request.setAttribute("str2", str2);
 		System.out.println("EditBusinessInfoServlet 서블릿 도착");
@@ -69,13 +71,19 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		
 		
 		String path ="";
-		if(result > 0 ) {
+		if(result > 0) {
 		
-			path = "";
+
+			request.setAttribute("message", "회원정보 수정이 완료 되었습니다.");
+			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
 			
 		} else {
 			
-			path = "";
+
+			request.setAttribute("message", "회원정보 수정이 실패 하였습니다.");
+			path = "/WEB-INF/views/business/main/editBusinessInfo.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
 			
 		}
 	}

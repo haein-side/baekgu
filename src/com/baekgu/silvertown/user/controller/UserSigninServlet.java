@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.baekgu.silvertown.user.model.dto.UserDTO;
 import com.baekgu.silvertown.user.model.service.UserService;
 
@@ -41,34 +39,33 @@ public class UserSigninServlet extends HttpServlet {
 
 	    /* 고객정보 유무로 분기 처리 */
 	    try {
+	    	
 	    	if(loginUser != null) {
 		    	
 		    	/* 고객정보 일치시 */
 		    	/* Service와 연결하여 로그인 정보 받아오기 */
 			    UserService userServiceInfo = new UserService();
 			    UserDTO loginUserInfo = userServiceInfo.loginInfo(requestUser);
-			    System.out.println("Servlet 고객코드 : " + loginUserInfo.getUserCode());
 			    
 			    if(loginUserInfo.getUserBlock() != 1) {
-
-		            /* 로그인 성공시 */ 
+			    	
+			    	/* 로그인 성공시 */ 
 					/* Session에 조회한 회원정보를 loginUserInfo로 넣어줌 */
 					HttpSession session = request.getSession();
-		            session.setAttribute("loginUserInfo", loginUserInfo);
-					response.sendRedirect("/baekgu/user/toMain");
+					session.setAttribute("loginUserInfo", loginUserInfo);
+					response.sendRedirect("/user/toMain");
 					
-					System.out.println("로그인 성공");		    
-			    
 			    } else {
 			    	
 			    	/* 차단된 유저일 경우 */
 			        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
-			        System.out.println("차단 유저");
 			        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
 			        request.getRequestDispatcher(errorPage).forward(request, response);
-
+			        
+			        System.out.println("차단 유저");
+			        
 			    }
-		    	
+			    		    	
 		    } else {
 		    	
 		    	/* 고객정보가 없을시 */				
@@ -86,6 +83,5 @@ public class UserSigninServlet extends HttpServlet {
 	    	System.out.println("nullcheck");
 	    }
 	    
-
 	}
 }

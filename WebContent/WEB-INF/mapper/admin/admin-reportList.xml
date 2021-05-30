@@ -107,7 +107,7 @@
 		     , b.DECISION_CODE 
 		     , b.D_LIST_TYPE_CODE 
 		     , b.ADMIN_ID  
-	 FROM REPORT a  , decision_list b , decision c
+	 FROM REPORT a  , DECISION_LIST b , DECISION c
 	WHERE a.D_LIST_CODE = b.D_LIST_CODE
 	  and b.DECISION_CODE = c.DECISION_CODE
 	  and c.DECISION_STATUS LIKE '%' ? '%'
@@ -125,7 +125,7 @@
 	<entry key="searchbdCodeCount">
 	     SELECT
 	           COUNT(*)
-	       FROM REPORT a , decision b , decision_list c
+	       FROM REPORT a , DECISION b , DECISION_LIST c
 	       WHERE a.D_LIST_CODE = c.D_LIST_CODE
 	         and b.DECISION_CODE = c.DECISION_CODE
 	         and b.DECISION_STATUS LIKE '%' ? '%'

@@ -185,6 +185,24 @@ public class BusinessInsertPostServlet extends HttpServlet {
 
 		int result = service.insertDecisionList(4, containDTO);
 		
+		String path ="";
+		
+		if(result > 0) {
+			
+			System.out.println("공고 등록 성공 : " + result);
+			request.setAttribute("message", "공고 등록이 되었습니다.");
+			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+			
+		} else {
+			
+			System.out.println("공고 등록 실패 : " + result);
+			request.setAttribute("message", "공고 등록이 실패하였습니다.");
+			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+			
+		}
+		
 		
 	}
 

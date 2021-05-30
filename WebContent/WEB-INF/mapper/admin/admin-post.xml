@@ -47,7 +47,7 @@
 		     , H.DEGREE_LEVEL
 	    	 , A.D_LIST_CODE 
 		  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -59,7 +59,7 @@
 		   AND A.EXP_CODE = I.EXP_CODE
 		   AND A.AGE_CODE = J.AGE_CODE
 	       AND B.D_LIST_REASON is not null
-	  order by post_date desc      
+	  order by POST_DATE DESC      
 	     LIMIT ?, 10
 	</entry>
 	<entry key="selectPostDetail">
@@ -103,7 +103,7 @@
 	    	 , K.B_CODE
 	    	 , L.B_BLOCK
 			  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J, HR K, BUSINESS L
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -182,7 +182,7 @@
 		     , H.DEGREE_LEVEL
 	    	 , A.D_LIST_CODE 
 		  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -195,7 +195,7 @@
 		   AND A.AGE_CODE = J.AGE_CODE
 	       AND B.D_LIST_REASON is not null
 	  	   AND NOW() &lt;= A.POST_END
-	  order by post_date desc  
+	  order by POST_DATE DESC  
 	     LIMIT ?, 10
 	</entry>
 	<entry key="selectPostedCount">
@@ -245,7 +245,7 @@
 		     , H.DEGREE_LEVEL
 	    	 , A.D_LIST_CODE 
 		  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -258,7 +258,7 @@
 		   AND A.AGE_CODE = J.AGE_CODE
 	       AND B.D_LIST_REASON is not null
 	  	   AND NOW() &gt; A.POST_END
-	  order by post_date desc  
+	  order by POST_DATE DESC  
 	     LIMIT ?, 10
 	</entry>
 	<entry key="searchOnlineCount">
@@ -316,7 +316,7 @@
 		     , H.DEGREE_LEVEL
 	    	 , A.D_LIST_CODE 
 		  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -371,7 +371,7 @@
 		     , H.DEGREE_LEVEL
 	    	 , A.D_LIST_CODE 
 		  FROM POST A, DECISION_LIST B, JOB C
-		     , work_period D, WORK_HOUR E
+		     , WORK_PERIOD D, WORK_HOUR E
 		     , LOCATION F, PAY G, DEGREE H, EXP I, AGE J
 		 WHERE A.D_LIST_CODE = B.D_LIST_CODE
 		   AND A.JOB_CODE = C.JOB_CODE
@@ -384,7 +384,7 @@
 		   AND A.AGE_CODE = J.AGE_CODE
 	       AND B.D_LIST_REASON is not null
 	  	   AND A.POST_ONLINE LIKE '%' ? '%'
-	  order by post_date desc  
+	  order by POST_DATE DESC  
 	     LIMIT ?, 10
 	</entry>
 </properties>

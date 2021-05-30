@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/style.css" type="text/css">
 <link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/RESOURCES/CSS/CUSTOMER/YJCSS/header2.css" type="text/css">
-	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -47,10 +49,9 @@
 							<!-- hidden 타입의 input 태그에 유저코드와 공고번호를 넣어둠 -->
 							<input type="hidden" id="userCode" name="userCode" value="${ loginUserInfo.userCode }"/>
 							<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.postCode }"/>
+							<input type="hidden" id="postCode" name="postCode" value="${ requestScope.postInfo.bName }"/>
 							
-							<button class="jione_button" type="submit" onclick=apply();>
-								
-								
+							<button class="jione_button" type="submit" onclick=apply();>								
 								<script>
 									/* 지원하기 버튼 onclick 이벤트 */
 									var userCode = document.getElementById("userCode").value;
@@ -61,7 +62,7 @@
 										/* userCode가 존재할 경우 지원하기 창 띄우기 */
 										if(userCode != null && userCode != "") {
 
-											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="/*+${ requestScope.postInfo.postCode }*/, "a", "width=450, height=600, left=500, top=250");
+											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode=${ requestScope.postInfo.postCode }&bName=${ requestScope.postInfo.bName }", "a", "width=450, height=600, left=500, top=250");
 
 										/* 유저코드가 존재하지 않을 경우 로그인창 띄우기 */
 										} else {
@@ -143,23 +144,6 @@
 												</ul>
 											</div> --%>
 											<br><br><br>
-											<div id="map" style="width: 500px; height: 400px;">
-<!-- 											<script type="text/javascript"
-												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65305e0eba5c1c2d79790d8038140b78"></script>
-											<script>
-                                                        var container = document.getElementById('map');
-                                                        var options = {
-                                                            center: new kakao
-                                                                .maps
-                                                                .LatLng(33.450701, 126.570667),
-                                                            level: 3
-                                                        };
-
-                                                        var map = new kakao
-                                                            .maps
-                                                            .Map(container, options);
-                                            </script> -->
-                                            </div> 
 										</div>
 									</div>
 								</div>
@@ -493,7 +477,7 @@
 										<!-- 신고하기 버튼 -->
 										<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
 										
-										<button class="report_button" type="button" onclick=report();>
+										<!-- <button class="report_button" type="button" onclick=report();>
 											<script>
 											
 												var postCode = document.getElementById("postCode").value;
@@ -507,45 +491,40 @@
         	                      				}
 											</script> 
 											<h2>신고하기</h2>
-										</button>
-											
-											
-									
-										
-										<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportModal" data-whatever="@mdo">신고하기</button> -->	
-										<!-- <input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important;" data-toggle="modal" data-target="#report" value="신고하기"/>
-	                    				
-										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										  <div class="modal-dialog" role="document">
-										    <div class="modal-content">
-										      <div class="modal-header">
-										        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										          <span aria-hidden="true">&times;</span>
-										        </button>
-										      </div>
-										      <div class="modal-body">
-										        <form>
-										          <div class="form-group">
-										            <label for="recipient-name" class="col-form-label">Recipient:</label>
-										            <input type="text" class="form-control" id="recipient-name">
-										          </div>
-										          <div class="form-group">
-										            <label for="message-text" class="col-form-label">Message:</label>
-										            <textarea class="form-control" id="message-text"></textarea>
-										          </div>
-										        </form>
-										      </div>
-										      <div class="modal-footer">
-										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										        <button type="button" class="btn btn-primary">Send message</button>
-										      </div>
-										    </div>
-										  </div>
-										</div> -->         
-	                    				
-
+										</button> -->
 										<!-- 모달 끝 -->
+										
+										<input type="button" class="btn btn-primary" style="width: 117.73913049697876px !important; padding-left: 8px !important; height: 60px !important; width: 40px; border: 0px; background: white; color: red; font-Size: 28px;" data-toggle="modal" data-target="#report" value="신고하기"/>
+										<!--  신고하기 모달창 -->
+					                    <form action="${ pageContext.servletContext.contextPath }/user/report" method="post">
+					                    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 20000;">
+					                        <div class="modal-dialog" role="document">
+						                        <div class="modal-content">
+						                            <div class="modal-header">
+														<h3>공고 신고하기</h3>
+						                            </div>
+						                            	<div class="modal-body">
+						                            		<label>신고 사유 :  </label><br> 
+						                            		<textarea id="reportReason" name="reportReason"  rows="50" cols="60" style="height:300px; resize:none"></textarea>
+						                            		<br><br>
+						                            		*신고된 내용을 심사숙고하여 최대한 빠른 결과로 응답해드리겠습니다
+						                            		<br>
+						                            		*심사결과는 보통 3~5일뒤에 확인하실 수 있습니다
+						                           		</div>
+						                            
+						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
+						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
+						                            	
+						                            	<p>공고 번호 : </p>${ postInfo.postCode }
+						                            	
+						                            	<div class="modal-footer">
+						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						                            		<button type="submit" class="btn btn-default">신고하기</button>
+						                            	</div>
+						                        </div>
+					                        </div>
+					                    </div>
+					                    </form>	
 										
 								
 									</div>
@@ -616,15 +595,15 @@
 					</div>
 				</div>
 			</div>
-		
 	</section>
 	
-<!-- 	<script>
+	<script>
 		
 		$('#report').on('click', function(event) {
 			var button = $(event.relatedTarget)
 		});
-	</script> -->
+	</script>
+
 	
 <%@ include file="../common/footer.jsp"%>
 
