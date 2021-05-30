@@ -515,8 +515,6 @@
 						                            	<input type="hidden" name="userCode" value="<c:out value="${ loginUserInfo.userCode }"/>">
 						                            	<input type="hidden" name="postCode" value="<c:out value="${ requestScope.postInfo.postCode }"/>">
 						                            	
-						                            	<p>공고 번호 : </p>${ postInfo.postCode }
-						                            	
 						                            	<div class="modal-footer">
 						                            		<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 						                            		<button type="submit" class="btn btn-default">신고하기</button>

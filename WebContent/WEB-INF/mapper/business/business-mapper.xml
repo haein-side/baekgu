@@ -378,7 +378,7 @@
        INSERT
             INTO REPORT
       (
-          REPORT_REASON
+        REPORT_REASON
       , REPORT_DATE 
       , POST_CODE 
       , USER_CODE 
@@ -386,7 +386,7 @@
       )
       VALUES
       (
-           ?
+         ?
        , NOW()
        , ?
        , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)

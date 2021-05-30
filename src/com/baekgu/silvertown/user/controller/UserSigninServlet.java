@@ -54,23 +54,22 @@ public class UserSigninServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUserInfo", loginUserInfo);
 					response.sendRedirect("/user/toMain");
-					
+			    
 			    } else {
 			    	
 			    	/* 차단된 유저일 경우 */
 			        errorPage="/WEB-INF/views/customer/common/errorBlockUser.jsp";
+			        System.out.println("차단 유저");
 			        request.setAttribute("errorMessage", "고객님의 이력서 신고 접수가 승인되어 백구 이용이 제한되었습니다.");
 			        request.getRequestDispatcher(errorPage).forward(request, response);
-			        
-			        System.out.println("차단 유저");
-			        
+			    	
 			    }
 			    		    	
 		    } else {
 		    	
-		    	/* 고객정보가 없을시 */				
+		    	/* 고객정보가 없거나 차단되었을 경우 */				
 				errorPage="/WEB-INF/views/customer/common/errorWrongId.jsp";
-	        	request.setAttribute("errorMessage", "회원정보를 찾을 수 없습니다. 다시 로그인 해주세요.");
+	        	request.setAttribute("errorMessage", "회원 정보를 찾을 수 없거나 차단 되었습니다. 다시 확인해주세요.");
 	        	request.getRequestDispatcher(errorPage).forward(request, response);
 		    	
 	        	System.out.println("Servlet : 회원정보를 찾을 수 없습니다.");
