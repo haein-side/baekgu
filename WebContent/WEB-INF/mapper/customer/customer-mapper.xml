@@ -161,6 +161,8 @@
 	     WHERE U.USER_CODE = ?
 	       AND D.D_LIST_TYPE_CODE = 2
 	</entry>
+	
+
 
 	<!-- resumeenter에 쓸 이력서 전체 내용 조회 -->
 	<entry key="selectResumeInfo">
