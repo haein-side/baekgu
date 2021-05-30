@@ -27,14 +27,14 @@
         
         <div style="margin-bottom: 25px;">
 			<label class="text-label"><b>변경할 비밀번호</b></label>
-        	<input type="text" class="form-control" name="enteredPwd" id="enteredPwd" placeholder="" required="" autofocus=""/>
+        	<input type="password" class="form-control" name="enteredPwd" id="enteredPwd" placeholder="" required="" autofocus=""/>
         	<small id="passwordHelp" class="form-text text-muted">
         	영어와 숫자를 사용하여 8자리 이상 15자리 이하 입력하세요.<br>(대문자, 소문자 사용에 주의하세요.)
 			</small>	
         </div>
         <div>
         	<label class="text-label"><b>비밀번호 확인 (다시 입력해주세요.)</b></label>
-        	<input type="text" class="form-control" name="pwdconfirm" id="pwdconfirm" placeholder="" required="">
+        	<input type="password" class="form-control" name="pwdconfirm" id="pwdconfirm" placeholder="" required="">
 			<!-- js에서 비밀번호가 일치하는지 검증 후 텍스트 띄우기? modal/alert창 띄우기? -->
         </div>
 
