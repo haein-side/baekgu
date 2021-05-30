@@ -23,7 +23,9 @@ public class AdminLoginService {
 		Connection con = getConnection();
 		AdminDTO loginAdmin = null;
 		
-		String encPwd = adminDAO.selectEncryptedPwd(con,requestAdmin);
+		String encPwd = ""; 
+				
+		encPwd = adminDAO.selectEncryptedPwd(con,requestAdmin);
 		
 		System.out.println("encPwd : " + encPwd);
 		
@@ -32,13 +34,8 @@ public class AdminLoginService {
 		if(passwordEncoder.matches(requestAdmin.getAdminPwd(), encPwd)) {
 			/* 비밀번호가 일치하는 경우에만 회원 정보를 조회해온다. */
 			loginAdmin = adminDAO.selectLoginAdmin(con, requestAdmin);
-		}
-		
-		if(encPwd != null && encPwd.equals(requestAdmin.getAdminPwd())) {
-			loginAdmin = adminDAO.selectLoginAdmin(con, requestAdmin);
-		} else if(encPwd == null){
+		} else{
 			System.out.println("로그인 실패!!");
-			loginAdmin = null;
 		}
 		
 		
