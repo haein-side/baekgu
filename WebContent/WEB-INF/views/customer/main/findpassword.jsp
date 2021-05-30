@@ -18,7 +18,7 @@
 		  var num = $("#phoneNumber").val();
 		  
 		  $.ajax({
-			  url: "/baekgu/user/sendSms",
+			  url: "${ pageContext.servletContext.contextPath }/user/sendSms",
 			  data : {
 				  num : num
 			  },
@@ -50,7 +50,7 @@
 		  console.log(num);
 		  
 		  $.ajax({
-			  url: "/baekgu/user/smsCheck",
+			  url: "${ pageContext.servletContext.contextPath }/user/smsCheck",
 			  type : "post",
 			  data : {
 				  check : check,

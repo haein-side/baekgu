@@ -60,20 +60,30 @@ public class ResumeServlet extends HttpServlet {
 		   System.out.println("resumeAdvantage1 체크박스 선택한 리스트들 : " + resumeAdvantage1);
 		   
 		   String resumeAdvantage  = "";
-		   for (int i = 0; i < resumeAdvantage1.length; i++) {
-			   resumeAdvantage += resumeAdvantage1[i];
-			   if(i < resumeAdvantage1.length - 1) {
-				   resumeAdvantage += "&";
+		   if (resumeAdvantage1 != null) {
+			   
+			   for (int i = 0; i < resumeAdvantage1.length; i++) {
+				   resumeAdvantage += resumeAdvantage1[i];
+				   if(i < resumeAdvantage1.length - 1) {
+					   resumeAdvantage += "&";
+				   }
+				   
 			   }
 			   
 		   }
 		   
-		   
 		   // 학력사항
-		   int degreeCode = Integer.parseInt(request.getParameter("degree"));
+		   int degreeCode = 0;
+		   if (request.getParameter("degree") != null) {			   
+			   degreeCode = Integer.parseInt(request.getParameter("degree"));
+		   }
 		   
 		   // 경력사항
-		   int expCode = Integer.parseInt(request.getParameter("exp"));
+		   int expCode = 0;
+		   if (request.getParameter("exp") != null) {
+			   expCode = Integer.parseInt(request.getParameter("exp"));
+		   }
+		   
 		   
 		   // 작성일 --> db 쿼리문에서 넣어주면 됨
 		   
@@ -97,6 +107,7 @@ public class ResumeServlet extends HttpServlet {
 		   ResumeService resumeService = new ResumeService();
 		   
 		   int reviseResume = resumeService.fixResume(updateResume);
+		   System.out.println("reviseResume : " + reviseResume);
 		   
 		   // 비즈니스 로직 실행 결과에 따른 뷰 연결
 		   
