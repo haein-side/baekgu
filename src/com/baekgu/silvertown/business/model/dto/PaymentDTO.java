@@ -4,6 +4,9 @@ import java.sql.Date;
 
 public class PaymentDTO {
 
+	private int postCode;
+	private int adCode;
+	private int weeks;
 	private String postTitle;
 	private String adName;
 	private java.sql.Date postDate;
@@ -72,6 +75,30 @@ public class PaymentDTO {
 
 	public void setPostAdPaid(int postAdPaid) {
 		this.postAdPaid = postAdPaid;
+	}
+
+	public int getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(int postCode) {
+		this.postCode = postCode;
+	}
+
+	public int getAdCode() {
+		return adCode;
+	}
+
+	public void setAdCode(int adCode) {
+		this.adCode = adCode;
+	}
+
+	public int getWeeks() {
+		return weeks;
+	}
+
+	public void setWeeks(int weeks) {
+		this.weeks = weeks;
 	}
 
 	@Override

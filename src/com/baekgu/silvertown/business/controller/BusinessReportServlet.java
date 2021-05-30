@@ -9,9 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.baekgu.silvertown.board.model.dto.PageInfoDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessMemberDTO;
 import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
+import com.baekgu.silvertown.business.model.dto.BusinessReportListDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
+import com.baekgu.silvertown.common.paging.PageNation;
 
 /**
  * Servlet implementation class BusinessReportServlet
@@ -21,7 +26,43 @@ public class BusinessReportServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+	    BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+	      
 		
+		/* paging 처리 */
+		String currentPage = request.getParameter("currentPage");
+		int pageNo = 1;
+		
+		if(currentPage != null && !"".equals(currentPage)) {
+			pageNo = Integer.parseInt(currentPage);
+		}
+		
+		if(pageNo <= 0) {
+			pageNo = 1;
+		}
+		
+		/* 한 페이지에 보여 줄 게시물 수 */
+		int limit = 10;
+		/* 한 번에 보여질 페이징 버튼의 수*/
+		int buttonAmount = 5;
+		
+	    BusinessService service = new BusinessService();
+
+		int totalCount = service.selectReportCount(loggedInUser.getbId());
+		
+		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, totalCount, limit, buttonAmount);
+
+	    List<BusinessReportListDTO> reportList = new ArrayList<>();
+	      
+	    reportList  = service.selectReportList(loggedInUser.getbId(), pageInfo);
+	    
+	    request.setAttribute("reportList", reportList);
+	    String path = "/WEB-INF/views/business/main/reportlist.jsp";
+	      
+	    request.getRequestDispatcher(path).forward(request, response);
+		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,10 +88,6 @@ public class BusinessReportServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("postCode", postCode);
-//			System.out.println("set up the path");
-			
-//			path = "/business/applicantlist"; // 다른 서블릿으로 포워드 안됌.
-//			path = "/WEB-INF/views/business/main/applicantlist.jsp";
 		
 			response.sendRedirect(request.getContextPath() + "/business/applicantlist?postCode="+postCode+"&resumeCode="+resumeCode);
 		}

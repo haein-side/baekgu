@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +10,12 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function(){
-			//alert("${ postCode }");
-			
-		
+
 			$("#btnApply").click(function(){
 				
 				const postCode = $("#postCode").val();
 				
 				console.log(postCode);
-				//alert('postCode');
 				
 				$.ajax({
 					url:"${ pageContext.servletContext.contextPath }/user/apply",
@@ -49,18 +47,19 @@
     <div style="margin-top: 50px;">
         <p>
             <h2 style="text-align: center; color: black;">회사명 : </h2>
-            <h1 style="text-align: center;">김씨네 식당</h1>
+            <h1 style="text-align: center;"> ${ bName } </h1>
         </p>
     </div>
     <br>
     <div style="margin-top: 10px;">
         <p style="text-align: center;">
-            원하는 곳이 <b>김씨네 식당</b>이 맞으신가요?
+            원하는 곳이 <b> <c:out value="${ bName }"></c:out> </b>이 맞으신가요?
         </p>
     </div>
     <div align="center">
     	<!-- <form action="${ pageContext.servletContext.contextPath }/post/apply" method="get"> -->
     	<input type="hidden" id="postCode" name="postCode" value="${ postCode }"/>
+    	<input type="hidden" id="postCode" name="postCode" value="${ bName }"/>
         <button class="jione_button" name="btn" id="btnApply" type="submit">
             <h2>이력서 넣기</h2>
 <!--  	 		<script>

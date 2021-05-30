@@ -75,8 +75,7 @@ public class EditBusinessInfoServlet extends HttpServlet {
 		
 
 			request.setAttribute("message", "회원정보 수정이 완료 되었습니다.");
-			path = "/WEB-INF/views/business/main/BusinessMainPage.jsp";
-			request.getRequestDispatcher(path).forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/business/main");
 			
 		} else {
 			
