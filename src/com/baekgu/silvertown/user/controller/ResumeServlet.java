@@ -108,7 +108,7 @@ public class ResumeServlet extends HttpServlet {
 					 * request.setAttribute("requestUser", requestUser);
 					 * request.setAttribute("reviseResume", reviseResume);
 					 */
-	        	 path = "/baekgu/user/resumeEnter";
+	        	 path = "/user/resumeEnter";
 	        	 response.sendRedirect(path);
 	        	 
 	        	 
