@@ -50,7 +50,6 @@
 							<a href="${ pageContext.servletContext.contextPath }/user/toMain"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 						</h1>
 						<ul class="pull-right right-menu">
-						<!-- 로그인, 회원가입 -->
 							<li><a href="${ pageContext.servletContext.contextPath }/user/toSignin" style="font-family: icomoon; font-size: 30px;">들어가기</a></li>
 							<li class="fh5co-cta-btn"><a href="${ pageContext.servletContext.contextPath }/user/toSignup" style="font-family: icomoon; font-size: 30px;">회원가입</a></li>
 						</ul>
@@ -69,10 +68,7 @@
 						<!-- 상단 백구 로고 / a 태그 뒤에 시작페이지 링크 수정해야-->
 							<a href="index.html"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/백구로고.png" width="120" alt="Free HTML5 Bootstrap Template" class="img-responsive"></a>
 						</h1>
-					
 						<ul class="pull-right right-menu" style="align:left;">
-						<!-- 로그인, 회원가입 -->
-							<!-- 임의로 상세 공고보기 메뉴 생성 -->
 							<li><a href="" style="font-family: icomoon; font-size: 30px;"> ${ sessionScope.loginUserInfo.userName } 님 반갑습니다! </a></li>
 							<li><a href="${ pageContext.servletContext.contextPath }/user/logout" style="font-family: icomoon; font-size: 30px;">나가기</a></li>
 						</ul>	
@@ -112,7 +108,7 @@
 				<div class="row text-center row-bottom-padded-md">
 					<div class="col-md-8 col-md-offset-2">
 						<!-- 이미지 수정해야 -->
-						<figure class="fh5co-devices animate-box"><img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/baekgu3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></figure>
+						<figure class="fh5co-devices animate-box"><img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/group.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></figure>
 						<!-- 백구 설명 타이틀 -->
 						<h2 class="fh5co-lead animate-box" style="font-family: BME; font-size: 70px;">단순하지만 똑똑한 백구</h2>
 						<!-- 백구 설명 타이틀 하단 내용 -->
@@ -209,14 +205,14 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/jinseo.jpg" style="height: 299px" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">차진서</h4>
 							<!-- 팀원 한마디 수정해야 -->
 							<span style="font-size: 18px;">당신의 열정에 백구를 더하다</span> 
 							<!-- 깃허브 주소 -->
-							<a href="https://github.com/jinseo-James-Cha"><i class="icon-github"></i></a>
+							<a href="https://github.com/jinseo-James-Cha"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 							<!-- <img src="images/githubicon.png"  width="30" class="img-responsive"> -->
 						  </div>
 						  <div class="social"></div>
@@ -233,7 +229,7 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.1s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/hyunwoo.jpg" style="height: 299px" class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">강현우</h4>
@@ -241,7 +237,7 @@
 							<span style="font-size: 18px;">50세부터 100세까지,<br>
 								인생의 반을 사용할 새로운 직업 플랫폼</span>
 							<!-- 깃허브 주소 -->
-							<a href="https://github.com/HyonWooKang"><i class="icon-github"></i></a>
+							<a href="https://github.com/HyonWooKang"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 						  </div>
 						</div>
 					  </div>
@@ -251,13 +247,13 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.2s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/hyunbin.jpg" style="height: 299px"  class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김현빈</h4>
 							<span style="font-size: 18px;">부모님이 쓰신다는 마음으로 만들었습니다</span>
 							<!-- 깃허브 주소 -->
-							<a href="https://github.com/Priesticide"><i class="icon-github"></i></a>
+							<a href="https://github.com/Priesticide"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 						  </div>
 						</div>
 					  </div>
@@ -267,13 +263,13 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 					  <div class="member">
 						  <!-- 프로필 이미지 수정해야-->
-						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						<img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/yujin.jpg" style="height: 299px"  class="img-fluid" alt="">
 						<div class="member-info">
 						  <div class="member-info-content">
 							<h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김유진</h4>
 							<span style="font-size: 18px;">백세 시대에 걸맞는<br>백구 시대를 만들었습니다</span>
 							<!-- 노션 주소로 수정해야 -->
-							<a href="https://github.com/YuJin-Kimm"><i class="icon-github"></i></a>
+							<a href="https://github.com/YuJin-Kimm"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 						  </div>
 						</div>
 					  </div>
@@ -283,13 +279,13 @@
 					<div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 						<div class="member">
 							<!-- 프로필 이미지 수정해야-->
-						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/juyoung.jpg" style="height: 299px"  class="img-fluid" alt="">
 						  <div class="member-info">
 							<div class="member-info-content">
 							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">정주영</h4>
 							  <!-- 팀원 한마디 수정해야 -->
 							  <span style="font-size: 18px;">30년 뒤 내가 쓸 홈페이지, 백구</span>
-							  <a href="https://github.com/jeong-juyoung"><i class="icon-github"></i></a>
+							  <a href="https://github.com/jeong-juyoung"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 							</div>
 						  </div>
 						</div>
@@ -299,12 +295,12 @@
 					  <div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 						<div class="member">
 							<!-- 프로필 이미지 수정해야-->
-						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/teamprofile (2).jpg" class="img-fluid" alt="">
+						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/haein.jpg" style="height: 299px"  class="img-fluid" alt="">
 						  <div class="member-info">
 							<div class="member-info-content">
 							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김해인</h4>
 							  <span  style="font-size: 18px;">백구를 만들 수 있어서 좋았습니다</span>
-							  <a href="https://github.com/haein-side"><i class="icon-github"></i></a>
+							  <a href="https://github.com/haein-side"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/whitegithub.png" width="30"></a>
 							</div>
 						  </div>
 						</div>
@@ -361,7 +357,7 @@
 							<h3 style="font-family: BME; font-size: 30px;">백구 소스코드</h3>
 							<ul class="fh5co-social">
 								<!-- 백구 깃허브 주소 연결해놨음 -->
-								<li><a href="https://github.com/109SilverTown"><i class="icon-github"></i></a></li>
+								<li><a href="https://github.com/109SilverTown"><img src="${ pageContext.servletContext.contextPath }/RESOURCES/IMAGES/깃헙아이콘.png" width="40" ></a></li>
 							</ul>
 						</div>
 					</div>

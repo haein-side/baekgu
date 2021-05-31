@@ -12,12 +12,14 @@ public class BusinessMemberDTO {
 	private String bReason;
 	private String cName;
 	private String bNumber;
+	private String bLogo;
+	
 	public BusinessMemberDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public BusinessMemberDTO(String bId, String bPwd, String bName, String bPhone, String bEmail, int bCode,
-			int blockStatus, String bReason, String cName, String bNumber) {
+			int blockStatus, String bReason, String cName, String bNumber, String bLogo) {
 		super();
 		this.bId = bId;
 		this.bPwd = bPwd;
@@ -29,6 +31,15 @@ public class BusinessMemberDTO {
 		this.bReason = bReason;
 		this.cName = cName;
 		this.bNumber = bNumber;
+		this.bLogo = bLogo;
+	}
+	
+	
+	public String getbLogo() {
+		return bLogo;
+	}
+	public void setbLogo(String bLogo) {
+		this.bLogo = bLogo;
 	}
 	public String getbId() {
 		return bId;
@@ -95,8 +106,9 @@ public class BusinessMemberDTO {
 	public String toString() {
 		return "BusinessMemberDTO [bId=" + bId + ", bPwd=" + bPwd + ", bName=" + bName + ", bPhone=" + bPhone
 				+ ", bEmail=" + bEmail + ", bCode=" + bCode + ", blockStatus=" + blockStatus + ", bReason=" + bReason
-				+ ", cName=" + cName + ", bNumber=" + bNumber + "]";
+				+ ", cName=" + cName + ", bNumber=" + bNumber + ", bLogo=" + bLogo + "]";
 	}
+
 	
 	
 	

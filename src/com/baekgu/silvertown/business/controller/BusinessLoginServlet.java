@@ -63,6 +63,8 @@ public class BusinessLoginServlet extends HttpServlet {
 			
 		BusinessMemberDTO loginBusinessMember = bService.loginCheck(bMember);
 		
+		System.out.println("loginBusinessMember : " + loginBusinessMember.getbLogo());
+		
 		System.out.println(loginBusinessMember);
 		/* 기업 가입승인 코드 셀랙 해오기 */
 		String decisionCode = bService.selectDecisionCode(loginBusinessMember.getbId());

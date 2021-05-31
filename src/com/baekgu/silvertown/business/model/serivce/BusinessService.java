@@ -299,33 +299,29 @@ public class BusinessService {
 			// 3일 때 - 기업에서 가입신청하는 경우
 			// 4일 때 - 기업에서 공고등록을 하는 경우 
 			switch(i) {
-			case 1:
-				// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
-				BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
-				secondResult = businessDAO.insertApplicantReport(con, reportDTO);
-				break;
-			/*
-			 * case 2: // 기업공고 신고 ReportPostDTO postReport =
-			 * (ReportPostDTO)containDTO.get(0); secondResult =
-			 * businessDAO.insertPostReport(con, postReport); break;
-			 */
-			case 3:
-				BusinessDTO business = (BusinessDTO)containDTO.get(0);
-				secondResult = businessDAO.insertNewBusiness(con, business);
-				System.out.println(" 기업 추가 :" + secondResult);
-				if(secondResult > 0) {
-					
-					HrDTO hr = (HrDTO)containDTO.get(1);
-					int thirdResult = businessDAO.insertNewHr(con, hr);
-					System.out.println("담장자 회원가입 : " + thirdResult);
+				case 1:
+					// 지원자 신고 등록에 대한 정보가 있는 DTO로 다운캐스팅(명시적 형변환) 후 진행
+					BusinessReportDTO reportDTO = (BusinessReportDTO)containDTO.get(0);
+					secondResult = businessDAO.insertApplicantReport(con, reportDTO);
+					break;
+				
+				case 3:
+					BusinessDTO business = (BusinessDTO)containDTO.get(0);
+					secondResult = businessDAO.insertNewBusiness(con, business);
+					System.out.println(" 기업 추가 :" + secondResult);
+					if(secondResult > 0) {
+						
+						HrDTO hr = (HrDTO)containDTO.get(1);
+						int thirdResult = businessDAO.insertNewHr(con, hr);
+						System.out.println("담장자 회원가입 : " + thirdResult);
+					}
+					break;
+				case 4:
+					PostInsertDTO post = (PostInsertDTO)containDTO.get(0);
+					secondResult = businessDAO.insertNewPost(con, post);
+					System.out.println("공고가 올라갔을까? : " + secondResult);
+					break;
 				}
-				break;
-			case 4:
-				PostInsertDTO post = (PostInsertDTO)containDTO.get(0);
-				secondResult = businessDAO.insertNewPost(con, post);
-				System.out.println("공고가 올라갔을까? : " + secondResult);
-				break;
-			}
 		}else {
 			rollback(con);
 		}

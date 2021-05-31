@@ -14,9 +14,7 @@
 			$("#btnApply").click(function(){
 				
 				const postCode = $("#postCode").val();
-				
-				console.log(postCode);
-				
+
 				$.ajax({
 					url:"${ pageContext.servletContext.contextPath }/user/apply",
 					type:"post",

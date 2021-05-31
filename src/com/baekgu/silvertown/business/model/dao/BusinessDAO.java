@@ -85,6 +85,7 @@ public class BusinessDAO {
 				businessLoginMember.setbReason(rset.getString("D_LIST_REASON"));
 				businessLoginMember.setcName(rset.getString("B_NAME"));
 				businessLoginMember.setbNumber(rset.getString("B_NUMBER"));
+				businessLoginMember.setbLogo(rset.getString("B_LOGO"));
 
 						
 			}	

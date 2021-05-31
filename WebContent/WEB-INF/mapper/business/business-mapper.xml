@@ -13,6 +13,7 @@
           , D.D_LIST_REASON
           , B.B_NAME
           , B.B_NUMBER
+          , B.B_LOGO
          FROM HR H
          JOIN BUSINESS B ON (H.B_CODE = B.B_CODE)
          JOIN DECISION_LIST D ON (B.D_LIST_CODE = D.D_LIST_CODE)

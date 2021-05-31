@@ -39,7 +39,7 @@ public class UserPostServlet extends HttpServlet {
 	    String changeBen = postInfo.getBenefit();
 	    if(changeBen != null && changeBen != "") {
 	    	
-	    	postInfo.setAdvantage(changeAdv.replaceAll("&", ", "));
+	    	postInfo.setBenefit(changeBen .replaceAll("&", ", "));
 	    }
 	    /* 주소 특수문자 제거 */	
 	    String changePostAddress = postInfo.getPostAddress();
@@ -50,6 +50,7 @@ public class UserPostServlet extends HttpServlet {
 
 	    /* request에 공고정보 담아서 보내기 */ 
 	    request.setAttribute("postInfo", postInfo);
+	    System.out.println(postInfo.getLogoPath());
 	    
 	    /* forward 방식 */
 	    String path = "/WEB-INF/views/customer/main/searchView.jsp";
