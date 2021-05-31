@@ -35,10 +35,7 @@ public class UserApplyServlet extends HttpServlet {
 		HttpSession session = request.getSession();	
 		UserDTO userInfo = (UserDTO) session.getAttribute("loginUserInfo");
 		int userCode = userInfo.getUserCode();
-		
-		System.out.println("서블릿 ChangedPostCode : " + ChangedPostCode);
-		System.out.println("서블릿 userCode : " + userCode);
-		
+
 		// 공고 번호, 고객 번호를 DTO타입 객체에 넣기
 		ApplyPostDTO userPostCode = new ApplyPostDTO();
 		userPostCode.setUserCode(userCode);
