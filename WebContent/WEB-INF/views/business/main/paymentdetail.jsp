@@ -151,7 +151,7 @@
             <!-- 결제하기 버튼 누른 후 모달창 만들어놓음 -->
             <c:if test="${ paymentdetail.postAdPaid eq 0 }"><button id="dopay" type="button" class="btn-primary"  style="height: 50px; width: 150px;">결제하기</button>
              </c:if>
-             <c:if test="${ paymentdetail.postAdPaid eq 1 }"><button type="button" class="btn-primary" style="height: 50px; width: 150px;" disabled>결제 하기</button>
+             <c:if test="${ paymentdetail.postAdPaid eq 1 }"><button type="button" class="btn-primary" style="height: 50px; width: 150px;" disabled>결제 완료</button>
              </c:if>
 <%--             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -200,7 +200,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '백구 (백세구인구직)',
-            amount : <%=100000%>,
+            amount : <%=total%>,
             buyer_email : '<%=email%>',
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
