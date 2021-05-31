@@ -99,7 +99,6 @@ public class BusinessDAO {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println(businessLoginMember.getbNumber());
 
 		return businessLoginMember;
 	}
@@ -1297,6 +1296,70 @@ public class BusinessDAO {
 		
 		
 		return result;
+	}
+
+	public String selectDecisionCode(Connection con, String bId) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String decisionCode = "";
+		
+		String query = prop.getProperty("selectDecisionCode");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, bId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				decisionCode = rset.getString(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+				
+		return decisionCode;
+	}
+
+	public String selectId(Connection con, String bId) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String checkId ="";
+		String query = prop.getProperty("selectId");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, bId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				checkId = rset.getString(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return checkId;
 	}
 
 }

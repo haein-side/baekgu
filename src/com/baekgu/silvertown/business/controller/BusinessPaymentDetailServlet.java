@@ -58,6 +58,7 @@ public class BusinessPaymentDetailServlet extends HttpServlet {
 		String path = "/WEB-INF/views/business/main/paymentdetail.jsp";
 		
 		request.getRequestDispatcher(path).forward(request, response);		
+	
 		
 		
 		
