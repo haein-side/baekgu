@@ -235,9 +235,11 @@ public class AdminCompanyService {
 		return result2;
 	}
 
+	
+	
 	public int updateNoBlockCompany(BlockDTO block) {
 		
-Connection con = getConnection();
+		Connection con = getConnection();
 		
 		int result = companyDAO.updateNoBlockCompany(con, block);
 		
