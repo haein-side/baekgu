@@ -95,6 +95,7 @@ public class PostDAO {
 				postInfo.setbProfit(rset.getLong("B_PROFIT"));
 				postInfo.setDegreeCode(rset.getInt("DEGREE_CODE"));
 				postInfo.setDegreeLevel(rset.getString("DEGREE_LEVEL"));
+				postInfo.setLogoPath(rset.getString("B_LOGO"));
 				
 			}	
 		} catch (SQLException e) {

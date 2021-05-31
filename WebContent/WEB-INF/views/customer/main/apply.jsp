@@ -46,27 +46,22 @@
 
     <div style="margin-top: 50px;">
         <p>
-            <h2 style="text-align: center; color: black;">회사명 : </h2>
-            <h1 style="text-align: center;"> ${ bName } </h1>
+            <h2 style="text-align: center; color: black;">해당 공고에 지원하시겠습니까?</h2>
+            <%-- <h1 style="text-align: center;"> ${ bName } </h1> --%>
         </p>
     </div>
     <br>
     <div style="margin-top: 10px;">
-        <p style="text-align: center;">
+        <%-- <p style="text-align: center;">
             원하는 곳이 <b> <c:out value="${ bName }"></c:out> </b>이 맞으신가요?
-        </p>
+        </p> --%>
     </div>
     <div align="center">
-    	<!-- <form action="${ pageContext.servletContext.contextPath }/post/apply" method="get"> -->
+		<!-- hidden 타입의 input 태그로 값 전달하기 -->
     	<input type="hidden" id="postCode" name="postCode" value="${ postCode }"/>
     	<input type="hidden" id="postCode" name="postCode" value="${ bName }"/>
         <button class="jione_button" name="btn" id="btnApply" type="submit">
             <h2>이력서 넣기</h2>
-<!--  	 		<script>
-             function apply(){
-                 window.open("${ pageContext.servletContext.contextPath }/post/apply?postCode="+${requestScope.postInfo.postCode}, "a", "width=400, height=500, left=500, top=250");
-             }
-        </script> -->
         </button>
     </div>
 </body>

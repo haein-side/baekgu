@@ -235,6 +235,7 @@
 		 where DL.D_LIST_TYPE_CODE = 4
 		   and DL.DECISION_CODE = 2
 		   and PAP.AD_CODE IN (1, 2)
+		   and P.post_date <![CDATA[ <= ]]> NOW()
 		   and I.INDUSTRY_CODE = ?
 	</entry>
 	
@@ -269,6 +270,7 @@
 		 where DL.D_LIST_TYPE_CODE = 4
 		   and DL.DECISION_CODE = 2
 		   and PAP.AD_CODE IN (3, 4)
+		   and P.post_date <![CDATA[ <= ]]> NOW()
 		   and J.JOB_CODE = ?
 	</entry>
 		
@@ -339,6 +341,7 @@
 		     , BUSINESS.B_OWNER 
 		     , BUSINESS.B_ADDRESS
 		     , BUSINESS.B_PROFIT
+		     , BUSINESS.B_LOGO
 		     , DEGREE.DEGREE_CODE 
 		     , DEGREE.DEGREE_LEVEL
   		  FROM POST 
@@ -401,6 +404,43 @@
          WHERE USER_BLOCK = 0
            AND USER_PHONE = ?
 	</entry>
-	
+   	<entry key="insertPostReport">
+       INSERT
+         INTO REPORT
+      (
+        REPORT_REASON
+      , REPORT_DATE 
+      , POST_CODE 
+      , USER_CODE 
+      , D_LIST_CODE 
+      )
+      VALUES
+      (
+        ?
+      , NOW()
+      , ?
+      , (SELECT USER.USER_CODE FROM USER WHERE USER_CODE = ?)
+      , LAST_INSERT_ID() 
+      )
+   	</entry>	
+	<entry key="insertDefaultDecisionList">
+       INSERT
+         INTO DECISION_LIST 
+       (
+         D_LIST_REASON
+       , D_LIST_DATE
+       , ADMIN_ID
+       , DECISION_CODE
+       , D_LIST_TYPE_CODE
+       )
+       VALUES
+      (
+        NULL
+      , NULL
+      , NULL
+      , 1
+      , ?
+      )
+   </entry>
 	
 </properties>

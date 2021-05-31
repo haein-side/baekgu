@@ -386,7 +386,7 @@
       )
       VALUES
       (
-           ?
+         ?
        , NOW()
        , ?
        , (SELECT USER_CODE FROM RESUME WHERE RESUME_CODE = ?)
@@ -415,7 +415,7 @@
    
    <entry key="selectCountReported">
       SELECT
-                COUNT(a.REPORT_CODE) AS "COUNT"
+               COUNT(a.REPORT_CODE) AS "COUNT"
           FROM REPORT a
           JOIN DECISION_LIST b ON(a.D_LIST_CODE = b.D_LIST_CODE)
         WHERE a.POST_CODE IN (SELECT f.POST_CODE
@@ -426,7 +426,7 @@
    
    <entry key="selectApplicantReported">
       SELECT
-                a.REPORT_DATE
+              a.REPORT_DATE
             , a.REPORT_REASON
             , b.POST_M_NAME
             , b.POST_TITLE
@@ -546,8 +546,32 @@
           JOIN JOB b ON(a.JOB_CODE = b.JOB_CODE)
           JOIN INDUSTRY c ON(b.INDUSTRY_CODE = c.INDUSTRY_CODE)
           JOIN DECISION_LIST d ON(a.D_LIST_CODE = d.D_LIST_CODE)
-        WHERE a.HR_ID = ?
-            AND d.DECISION_CODE = 1
+         WHERE a.HR_ID = ?
+           AND d.DECISION_CODE = 1
+           AND a.POST_CODE NOT IN(SELECT e.POST_CODE 
+                                    FROM POST_AD_PAYMENT e
+                                  )
+   </entry>
+   <entry key="insertPostAdPayment">
+   		INSERT 
+  		  INTO POST_AD_PAYMENT
+		(
+  		  POST_AD_DATE
+		, POST_AD_PAID
+		, POST_AD_WEEK
+		, AD_CODE
+		, POST_CODE
+		, P_METHOD_CODE 
+		)
+		VALUES
+		(
+  		  NOW()
+		, 0
+		, ?
+		, ?
+		, ?
+		, null
+		)
    </entry>
    <entry key="selectDecisionCode">
 	    SELECT

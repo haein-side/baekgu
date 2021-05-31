@@ -98,19 +98,24 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		
 		for(int i = 0; i < applicationList.size(); i++) {
 			
-			String[] resumeAdvantages = applicationList.get(i).getResumeAdvantages().split("&");
-			applicationList.get(i).setCorrectAdvantages(new ArrayList<>());
-			
-			for(int j = 0; j < resumeAdvantages.length; j++) {
-				for(int k = 0; k < postAdvantages.length; k++) {
-					if(resumeAdvantages[j].equals(postAdvantages[k])) {
-						/* 적합성 일치 저장 */
-						applicationList.get(i).getCorrectAdvantages().add(resumeAdvantages[j]);
+			if(applicationList.get(i).getResumeAdvantages() != null) {
+				String[] resumeAdvantages = applicationList.get(i).getResumeAdvantages().split("&");
+				applicationList.get(i).setCorrectAdvantages(new ArrayList<>());
+				
+				for(int j = 0; j < resumeAdvantages.length; j++) {
+					for(int k = 0; k < postAdvantages.length; k++) {
+						if(resumeAdvantages[j].equals(postAdvantages[k])) {
+							/* 적합성 일치 저장 */
+							applicationList.get(i).getCorrectAdvantages().add(resumeAdvantages[j]);
+						}
 					}
 				}
+				/* 적합성 % 생성 */
+				applicationList.get(i).setCorrection((int)(((float)applicationList.get(i).getCorrectAdvantages().size() / postAdvantages.length)*100));
+			}else {
+				applicationList.get(i).setCorrection(0);
 			}
-			/* 적합성 % 생성 */
-			applicationList.get(i).setCorrection((int)(((float)applicationList.get(i).getCorrectAdvantages().size() / postAdvantages.length)*100));
+			
 		}
 		
 		String path = "";
