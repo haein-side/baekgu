@@ -58,7 +58,7 @@ h2{
 		<div class="container">
 			<div class="row">
          		<div class="col-lg-6 col-md-6">
-            		<div><img src="${ pageContext.servletContext.contextPath }${ logoPath }" style="width :450px; height: 450px; margin: auto;"></div>
+            		<div><img src="${ pageContext.servletContext.contextPath }${ postInfo.logoPath } " style="width :450px; height: 450px; margin: auto;"></div>
             	</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__text ">
@@ -90,7 +90,7 @@ h2{
 										/* userCode가 존재할 경우 지원하기 창 띄우기 */
 										if(userCode != null && userCode != "") {
 
-											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode=${ requestScope.postInfo.postCode }&bName=${ requestScope.postInfo.bName }", "a", "width=450, height=250, left=500, top=250");
+											window.open("${ pageContext.servletContext.contextPath }/toapply?postCode="+${ requestScope.postInfo.postCode }, "a", "width=450, height=250, left=500, top=250");
 
 										/* 유저코드가 존재하지 않을 경우 로그인창 띄우기 */
 										} else {
@@ -112,7 +112,7 @@ h2{
 							</tr>
 							<tr>
 								<th style="padding-bottom: 10px; padding-left: 40px;">급여</th>
-								<td style="padding-bottom: 10px; padding-left: 40px;">${ requestScope.postInfo.payment } 원</td>
+								<td style="padding-bottom: 10px; padding-left: 40px;">${ requestScope.postInfo.payment } 원 (${ requestScope.postInfo.payName })</td>
 							</tr>
 							<tr >
 								<th style="padding-bottom: 10px; padding-left: 40px;">근무기간</th>
@@ -267,12 +267,11 @@ h2{
 											</tr>
 											<tr>
 												<th style="padding-bottom: 10px; padding-left: 40px;"> 급여 </th>
-												<td style="padding-bottom: 10px; padding-left: 40px;"> ${ requestScope.postInfo.payment }원</td>
+												<td style="padding-bottom: 10px; padding-left: 40px;"> ${ requestScope.postInfo.payment } 원 (${ requestScope.postInfo.payName })</td>
 											</tr>
 										</table>
 									</div>
 								</div>
-
 							</div>
 							<div class="tab-pane active" id="tabs-2" role="tabpanel">
 								<div class="product__details__tab__desc" align="center"

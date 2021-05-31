@@ -37,9 +37,9 @@ public class UserSigninServlet extends HttpServlet {
 	    
 	    String errorPage = "";
 
-	    /* 고객정보 유무로 분기 처리 */
+	    
 	    try {
-	    	
+	    	/* 고객정보 유무로 분기 처리 */
 	    	if(loginUser != null) {
 		    	
 		    	/* 고객정보 일치시 */

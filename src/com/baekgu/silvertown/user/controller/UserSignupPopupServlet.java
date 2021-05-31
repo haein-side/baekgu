@@ -19,8 +19,8 @@ public class UserSignupPopupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 로그인 정보 받아오기
-		String userPhone = request.getParameter("USER_PHONE");
-		String userPwd = request.getParameter("USER_PWD");
+		String userPhone = request.getParameter("userPhone");
+		String userPwd = request.getParameter("userPwd");
 		
 		// 출력 테스트
 		System.out.println("입력한 고객 전화번호 : " + userPhone);
