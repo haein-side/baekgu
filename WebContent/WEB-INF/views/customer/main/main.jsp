@@ -295,7 +295,7 @@
 					  <div class="col-xl-3 col-lg-4 col-md-6 animate-box" data-wow-delay="0.3s">
 						<div class="member">
 							<!-- 프로필 이미지 수정해야-->
-						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/.jpg" style="height: 299px"  class="img-fluid" alt="">
+						  <img src="${pageContext.request.contextPath}/RESOURCES/IMAGES/silvertownMembers/haein.jpg" style="height: 299px"  class="img-fluid" alt="">
 						  <div class="member-info">
 							<div class="member-info-content">
 							  <h4 style="font-family: BME; font-size: 30px; font-weight:lighter">김해인</h4>
