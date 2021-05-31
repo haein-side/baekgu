@@ -82,7 +82,7 @@ private final Properties prop;
 				
 		try {
 			pstmt = con.prepareStatement(query);
-			
+			System.out.println("pageInfo.getStartRow() : " + pageInfo.getStartRow());
 			pstmt.setInt(1, pageInfo.getStartRow());
 			pstmt.setInt(2, 10);
 			
