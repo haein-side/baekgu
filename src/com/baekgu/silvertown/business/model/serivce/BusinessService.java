@@ -482,6 +482,26 @@ public class BusinessService {
 		return result;
 	}
 
+
+	public String selectDecisionCode(String bId) {
+		
+		Connection con = getConnection();
+		
+		String decisionCode = businessDAO.selectDecisionCode(con, bId);
+		
+		close(con);
+		return decisionCode;
+	}
+
+	public String selectId(String bId) {
+		
+		Connection con = getConnection();
+		
+		String checkId = businessDAO.selectId(con, bId);
+		
+		close(con);
+		return checkId;
+	}
 	public int insertPostAdPayment(PaymentDTO postAd) {
 
 		Connection con = getConnection();
@@ -497,6 +517,7 @@ public class BusinessService {
 		close(con);
 		
 		return result;
+
 	}
 
 

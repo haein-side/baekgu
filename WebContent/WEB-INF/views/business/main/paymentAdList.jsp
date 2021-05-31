@@ -91,7 +91,7 @@
 				<td><c:out value="${ pay.totalPrice }"/></td>
 				<td><c:if test="${ pay.postAdPaid eq '1' }">결제 완료</c:if>
 					<c:if test="${ pay.postAdPaid eq '0' }">미결제</c:if></td>
- 				<form action="${ pageContext.servletContext.contextPath }//business/paymentdetail" method="get">
+ 				<form action="${ pageContext.servletContext.contextPath }/business/paymentdetail" method="get">
 				<td><button type="submit" name="detail" class="btn btn-primary"value="${ pay.postAdCode }">상세 정보</button></td>
 				</form>
 			</tr>

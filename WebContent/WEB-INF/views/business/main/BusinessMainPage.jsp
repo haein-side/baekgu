@@ -109,7 +109,7 @@
 		                  <h3>결제 관리</h3>
 		                  <p>결제한 공고들의 정보들을 한눈에 볼 수 있어요!</p>
 		                </div>
-		                <div class="item1" style=" background-color: skyblue; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/';">
+		                <div class="item1" style=" background-color: skyblue; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/advertise';">
 		                  <h3>상품 안내</h3>
 		                  <p>백구가 준비한 상품을 만나보세요!</p>
 		                </div>

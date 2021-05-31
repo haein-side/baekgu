@@ -49,6 +49,14 @@
   </style>
 </head>
 <body>
+<c:choose>
+    <c:when test="${ not empty requestScope.postTitle }">
+          <script>alert('담당자 - ' + '${ requestScope.postManager }' + 
+        		       '\n공고제목 - ' + '${ requestScope.postTitle }' + 
+        		       '\n광고상품 - ' + '${ requestScope.adName }' + 
+        		       '\n\n 공고 심사가 승인 된 후, 결제내역에서 결제를 진행해 주십시오!')</script>
+    </c:when>
+</c:choose>
 
 <jsp:include page="../common/header.jsp"/>
   
@@ -65,7 +73,7 @@
       </ul>
       <hr>
 		
-		<h2>백구 상품 리스트 - <a href="#"> 상품 예시 보러가기 </a></h2>
+		<h2>백구 상품 리스트 - <a href="${ pageContext.servletContext.contextPath }/business/adExample" target="_blank" onclick="window.open(this.href,'popup', 'width=1000, height=800, location=no, status=no, scrollbars=no'); return false;"> 상품 예시 보러가기 </a></h2>
 		<br>
       <button type="button" class="btn btn-default" style="height: 190px; width: 800px;">
       <h3 class ="text-left" style="color:red;"><i>상품 1 - 프리미엄 상단 업종 배치 </i></h3>
@@ -343,67 +351,13 @@ window.onload = function(){
 				document.getElementById("selectedPostTitle").value = this.parentNode.children[4].innerText;
 				document.getElementById("selectedWeeks").value = this.parentNode.children[7].innerText;
 				
-/* 				document.getElementById("selectedAd").value = this.parentNode.children[4].innerText;
- */				
-/* 				document.getElementById("totalPrice").value = parseInt(this.parentNode.children[7].innerText) * parseInt(document.getElementById("selectedPrice").value);
- */			} 
+ 			} 
 		}
 		
-		/* for(let j = 6; j < $tds.length; j+=8){
-			
-			$tds[j].onchange = function(event){ */
-				/* console.log(event)
-				const no = this.parentNode.children[j]; */
-				/* alert("해당 지원자의 합격여부를 \"" + event.target.value + "\"(으)로 변경하였습니다.");
-					const no = this.parentNode.children[0].innerText; // row별 applycode를 가져온다.
-				
-					let decision = 0;
-					switch(event.target.value){
-					case "미분류":
-						decision = 1;
-						break;
-					case "합격":
-						decision = 2;
-						break;
-					case "불합격":
-						decision += 3;
-						break;
-					}
-					
-					const postCode = ${ requestScope.applicationList.get(0).postCode };
-				location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="+postCode+"&applyCode="+no+"&decision="+decision;
-			}
-			
-		} */
+		
 		
 	}
 	
-	
-	
-	
-	/* if(document.getElementsByTagName("td")) {
-		
-		const $tds = document.getElementsByTagName("td");
-		for(let i = 6; i < $tds.length; i+=8) {
-			
-			$tds[i].onchange = function(){
-				const dec = this.value;
-				alert("해당 지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
-				location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
-			}
-		}
-	} */
-	
-	
-	
-	/* if(document.getElementById("decision")){
-		const $dcs = document.getElementById("decision");
-		$dcs.onchange = function(){
-			const dec = this.value;
-			alert("지원자의 합격여부를 \"" + dec + "\"(으)로 변경하였습니다.");
-			location.href = "${ pageContext.servletContext.contextPath }/business/userresume?applyCode="+no;
-		}
-	} */
 	
 	function pageButtonAction(text) {
 		location.href = link + "?currentPage=" + text;

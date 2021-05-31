@@ -69,7 +69,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 			ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
 
 			try {
-				// request 를 파싱해서 FileIte으로 변환
+				// request 를 파싱해서 FileItem으로 변환
 				List<FileItem> fileItems = fileUpload.parseRequest(request);
 
 				// fileItems 리스트안에 파일 꺼내오기
@@ -90,7 +90,6 @@ public class BusinessSignUpServlet extends HttpServlet {
 
 							// . 의 위치를 변수에 담는다
 							int dot = originFileName.lastIndexOf(".");
-							System.out.println("dot : " + dot);
 
 							// . 이후의 확장자 명을 변수에 담는다
 							String ext = originFileName.substring(dot);
@@ -103,7 +102,6 @@ public class BusinessSignUpServlet extends HttpServlet {
 							File storeFile = new File(imageFilesDirectory + "/" + randomFileName);
 
 							item.write(storeFile);
-							System.out.println("오셨어요???");
 
 							/* 필요한 정보를 Map에 담는다. */
 							fileMap = new HashMap<>();
@@ -117,7 +115,6 @@ public class BusinessSignUpServlet extends HttpServlet {
 							int height = 0;
 
 							/* 썸네일로 변환 할 사이즈를 지정한다. */
-
 							width = 120;
 							height = 100;
 
@@ -131,13 +128,7 @@ public class BusinessSignUpServlet extends HttpServlet {
 						}
 
 					} else {
-						/* 폼 데이터인 경우 */
-						/*
-						 * 전송된 폼의 name은 getFiledName()으로 받아오고, 해당 필드의 value는 getString()으로 받아온다. 하지만 인코딩
-						 * 설정을 하더라도 전송되는 파라미터는 ISO-8859-1로 처리된다. 별도로 ISO-8859-1로 해석된 한글을 UTF-8로 변경해주어야
-						 * 한다.
-						 */
-//						parameter.put(item.getFieldName(), item.getString());
+
 						parameter.put(item.getFieldName(),
 								new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
 
@@ -172,20 +163,13 @@ public class BusinessSignUpServlet extends HttpServlet {
 				String hrId = parameter.get("hrId");
 				String hrPwd = parameter.get("enteredPwd");
 
-				
-	
-				
-
-				System.out.println("jjy hrPwd : " + hrPwd);
 				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 				String value = passwordEncoder.encode(hrPwd);
-				System.out.println("jjy 암호화 확인 : " + value);
 
 				// 직접 암호화
 				String hrName = parameter.get("hrName");
 				String hrPhone = parameter.get("hrPhone");
 				String hrEmail = parameter.get("hrEmail");
-
 
 				hr = new HrDTO();
 
@@ -199,12 +183,12 @@ public class BusinessSignUpServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			List<Object> containDTO = new ArrayList<>();
-
-			containDTO.add(business);
-			containDTO.add(hr);
-
-			BusinessService service = new BusinessService();
+				List<Object> containDTO = new ArrayList<>();
+	
+				containDTO.add(business);
+				containDTO.add(hr);
+	
+				BusinessService service = new BusinessService();
 
 			int result = service.insertDecisionList(3, containDTO);
 
