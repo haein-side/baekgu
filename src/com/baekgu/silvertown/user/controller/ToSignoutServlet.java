@@ -13,9 +13,13 @@ public class ToSignoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("로그아웃 후 시작 페이지로 가는 서블릿 도착");
-		// 로그아웃 = session을 종료 처리하고 redirect로 메인 페이지 가기
+		
+		String path = "http://www.baekgu.com";
+		
+		/* 세션 초기화 및 새창 띄우기 */
 		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath()); // ContectPath는 /baekgu
+		response.sendRedirect(path);
+		// ContextPath로 보내기 하면 "/user/logout"에 갇혀서 하얀 화면 표시됨
 		
 	}
 

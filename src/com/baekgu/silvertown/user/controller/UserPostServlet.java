@@ -12,7 +12,7 @@ import com.baekgu.silvertown.user.model.dto.PostDTO;
 import com.baekgu.silvertown.user.model.service.PostService;
 
 @WebServlet("/user/post")
-public class PostServlet extends HttpServlet {
+public class UserPostServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -29,39 +29,33 @@ public class PostServlet extends HttpServlet {
 		// 차단여부에 대해서는 query으로 처리하기 (where절에서 차단여부 0 인것 검색하기)
 	    PostDTO postInfo = postService.getPostInfo(postCode);
 	    
-	    // 우대사항 특수문자 제거
+	    /* 우대사항 특수문자 제거 */
 	    String changeAdv =  postInfo.getAdvantage();
 	    if(changeAdv != null && changeAdv != "") {
 	    	
 	    	postInfo.setAdvantage(changeAdv.replaceAll("&", ", "));
 	    }
-	    // 복리후생 특수문자 제거	    
+	    /* 복리후생 특수문자 제거	*/   
 	    String changeBen = postInfo.getBenefit();
 	    if(changeBen != null && changeBen != "") {
 	    	
 	    	postInfo.setAdvantage(changeAdv.replaceAll("&", ", "));
 	    }
-	    // 주소 특수문자 제거	
+	    /* 주소 특수문자 제거 */	
 	    String changePostAddress = postInfo.getPostAddress();
 	    if(changePostAddress != null && changePostAddress != "") {
 	    	
 	    	postInfo.setPostAddress(changePostAddress.replaceAll("&", " "));
 	    }
-	    
-		
-	    // Session에 공고 코드 넣어두기
-	    //HttpSession session = request.getSession();
-	    //session.setAttribute("postInfo", postInfo);
-	    
-	    System.out.println("컨트롤러 postInfo : " + postInfo);
-	    
-	    // forward 방식으로 진행
+
+	    /* request에 공고정보 담아서 보내기 */ 
 	    request.setAttribute("postInfo", postInfo);
 	    
+	    /* forward 방식 */
 	    String path = "/WEB-INF/views/customer/main/searchView.jsp";
 	    request.getRequestDispatcher(path).forward(request, response);
 	    
-
+	    System.out.println("컨트롤러 postInfo : " + postInfo);
 	}
 
 }

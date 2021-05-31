@@ -15,20 +15,22 @@ import com.baekgu.silvertown.business.model.dto.BusinessReportDTO;
 import com.baekgu.silvertown.business.model.serivce.BusinessService;
 import com.baekgu.silvertown.user.model.dto.ReportPostDTO;
 import com.baekgu.silvertown.user.model.dto.UserDTO;
+import com.baekgu.silvertown.user.model.service.ReportService;
 
 @WebServlet("/user/report")
 public class UserReportServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		/* 신고하기를 위해 공고 번호, 신고 사유, 고객 코드를 받아옴 */
 		int postCode = Integer.parseInt(request.getParameter("postCode")); 
 		String reportReason = request.getParameter("reportReason");
 		
 		HttpSession session = request.getSession();
 		UserDTO userInfo = (UserDTO) session.getAttribute("loginUserInfo");
 		int userCode = userInfo.getUserCode();
-
-		
+		String userPhone = userInfo.getUserPhone();
+	
 		System.out.println("postCode : " + postCode);
 		System.out.println("reportReason : " + reportReason);
 		System.out.println("userCode : " + userCode);
@@ -38,14 +40,14 @@ public class UserReportServlet extends HttpServlet {
 		ReportPostDTO reportDTO = new ReportPostDTO();
 		reportDTO.setPostCode(postCode);
 		reportDTO.setReportReason(reportReason);
-		
+		reportDTO.setUserCode(userCode);
 		
 		/* Business의 Service, DTO를 사용하기 위해 타입을 통합 */
 		List<Object> containDTO = new ArrayList<>();
 		containDTO.add(reportDTO);
 		
 		/* 공고 신고는 번호 2번 */
-		int result = new BusinessService().insertDecisionList(2, containDTO);
+		int result = new ReportService().insertDecisionList(2, containDTO);
 		
 		String path = null;
 		
@@ -60,7 +62,10 @@ public class UserReportServlet extends HttpServlet {
 			
 		} else {
 			
+			request.setAttribute("result", result);
 			
+			path = "/WEB-INF/views/customer/main/searchView.jsp?postCode=" + postCode;
+			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
 	}
