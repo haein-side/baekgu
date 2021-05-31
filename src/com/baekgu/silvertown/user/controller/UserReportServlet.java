@@ -57,9 +57,7 @@ public class UserReportServlet extends HttpServlet {
 			
 			path = "/WEB-INF/views/customer/main/searchView.jsp?postCode=" + postCode;
 			request.getRequestDispatcher(path).forward(request, response);
-			
-			//response.sendRedirect(request.getContextPath() + "/user/toPost?postCode=" + postCode);
-			
+
 		} else {
 			
 			request.setAttribute("result", result);

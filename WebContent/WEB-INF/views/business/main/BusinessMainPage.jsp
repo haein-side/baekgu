@@ -66,7 +66,7 @@
 		    <div class="col-sm-8 text-left">
 		        <div style="margin-left: 200px;"> 
 		        <br><br><br>
-		        <h1 style="margin-left: 50px;"> <img src="${ pageContext.servletContext.contextPath }${ main.logoPath }" style="width :200px; height: 200px; margin-right: 100px; ">${ main.bName }</h1>
+		        <h1 style="margin-left: 50px;"> <img src="${ pageContext.servletContext.contextPath }${ sessionScope.loginBusinessMember.bLogo }${ sessionScope.loginBusinessMember.cName }" style="width :200px; height: 200px; margin-right: 100px; ">${ sessionScope.loginBusinessMember.cName }</h1>
 		        <ul style="padding-left: 25px;">
 		          <li><p style="color: red; font-size: 15px;"><b>[주의]</b> 유료 상품을 이용 중이신 경우, 광고를 조기 마감하더라도 남은 기간에 대한 차액은 환불되지 않습니다.</p></li>
 		          </ul>
@@ -109,7 +109,7 @@
 		                  <h3>결제 관리</h3>
 		                  <p>결제한 공고들의 정보들을 한눈에 볼 수 있어요!</p>
 		                </div>
-		                <div class="item1" style=" background-color: skyblue; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/';">
+		                <div class="item1" style=" background-color: skyblue; cursor:pointer;" onclick="location.href='${ pageContext.servletContext.contextPath }/business/advertise';">
 		                  <h3>상품 안내</h3>
 		                  <p>백구가 준비한 상품을 만나보세요!</p>
 		                </div>
