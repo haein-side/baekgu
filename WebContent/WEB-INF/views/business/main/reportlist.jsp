@@ -53,7 +53,7 @@
 
 <jsp:include page="../common/header.jsp"/>
   
-<div class="container-fluid text-center" style="padding-left: 0%;">    
+<div class="container-fluid text-center" style="padding-left: 0%; height:700px;" >    
   <div class="row content" style="height: auto;">
     <div class="col-sm-1 sidenav">
     </div>
@@ -98,7 +98,8 @@
   
       <br>
       <br>
-      <%-- 페이지 처리 --%>
+
+	<%-- 페이지 처리 --%>
 	 <div class="text-center">
 	 	<div class="pagination" align="center">
 			<c:choose>
@@ -160,7 +161,7 @@
 			    </c:otherwise>
 			</c:choose>   
 		</div>
-  </div>
+  	  </div>
       
     
   </div>
@@ -215,10 +216,6 @@
 					this.parentNode.style.backgroundColor = "white";
 				}
 				
-/* 				$tds[i].onclick = function() {
-					location.href = "${ pageContext.servletContext.contextPath }/business/applicantlist?postCode="
-							         +  this.parentNode.children[0].innerText;
-				} */
 			}
 			
 		}

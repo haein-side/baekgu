@@ -55,7 +55,6 @@ public class BusinessApplicantListServlet extends HttpServlet {
 			
 		}
 		
-		
 		/* paging 처리 */
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
@@ -78,17 +77,9 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		BusinessService businessService = new BusinessService();
 		int counts = businessService.selectTotalApplicants(loggedInUser.getbId(), postCode);
 		
-		
-		
-		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
-		/* 한 번에 보여질 페이징 버튼의 수*/
 		int buttonAmount = 5;
-		
-		/* 페이징 처리를 위한 로직 호출 후 페이징 처리에 관한 정보를 담고 있는 인스턴스를 반환받는다. */
-		/* JDBC 시작 - 공고 조회 */
-		
-		// 승인된 공고 갯수를 기준으로 리스트를 시작한다 - 최댓값 
+
 		PageInfoDTO pageInfo = PageNation.getPageInfo(pageNo, counts, limit, buttonAmount);
 		
 		List<BusinessApplicationDTO> applicationList =  businessService.selectApplicationList(loggedInUser.getbId(), postCode , pageInfo);
@@ -98,19 +89,24 @@ public class BusinessApplicantListServlet extends HttpServlet {
 		
 		for(int i = 0; i < applicationList.size(); i++) {
 			
-			String[] resumeAdvantages = applicationList.get(i).getResumeAdvantages().split("&");
-			applicationList.get(i).setCorrectAdvantages(new ArrayList<>());
-			
-			for(int j = 0; j < resumeAdvantages.length; j++) {
-				for(int k = 0; k < postAdvantages.length; k++) {
-					if(resumeAdvantages[j].equals(postAdvantages[k])) {
-						/* 적합성 일치 저장 */
-						applicationList.get(i).getCorrectAdvantages().add(resumeAdvantages[j]);
+			if(applicationList.get(i).getResumeAdvantages() != null) {
+				String[] resumeAdvantages = applicationList.get(i).getResumeAdvantages().split("&");
+				applicationList.get(i).setCorrectAdvantages(new ArrayList<>());
+				
+				for(int j = 0; j < resumeAdvantages.length; j++) {
+					for(int k = 0; k < postAdvantages.length; k++) {
+						if(resumeAdvantages[j].equals(postAdvantages[k])) {
+							/* 적합성 일치 저장 */
+							applicationList.get(i).getCorrectAdvantages().add(resumeAdvantages[j]);
+						}
 					}
 				}
+				/* 적합성 % 생성 */
+				applicationList.get(i).setCorrection((int)(((float)applicationList.get(i).getCorrectAdvantages().size() / postAdvantages.length)*100));
+			}else {
+				applicationList.get(i).setCorrection(0);
 			}
-			/* 적합성 % 생성 */
-			applicationList.get(i).setCorrection((int)(((float)applicationList.get(i).getCorrectAdvantages().size() / postAdvantages.length)*100));
+			
 		}
 		
 		String path = "";

@@ -429,19 +429,19 @@ cursor: pointer;
 						<label for="inputPassword3" class="col-sm-2 control-label">근무 요일</label>
 						<div class="col-sm-6">
 
-							<label class="lab" for="res_chk6_16"><input type="checkbox" name="days" id="res_chk6_16" value="월요일"/>월요일</label>
+							<label class="lab" for="res_chk6_16"><input type="checkbox" name="days" id="res_chk6_16" value="월"/>월요일</label>
 
-							<label class="lab" for="res_chk6_17"><input type="checkbox" name="days" id="res_chk6_17" value="화요일"/>화요일</label> 
+							<label class="lab" for="res_chk6_17"><input type="checkbox" name="days" id="res_chk6_17" value="화"/>화요일</label> 
 
-							<label class="lab" for="res_chk6_18"><input type="checkbox" name="days" id="res_chk6_18" value="수요일"/>수요일</label>
+							<label class="lab" for="res_chk6_18"><input type="checkbox" name="days" id="res_chk6_18" value="수"/>수요일</label>
 
-							<label class="lab" for="res_chk6_19"><input type="checkbox" name="days" id="res_chk6_19" value="목요일"/>목요일</label> 
+							<label class="lab" for="res_chk6_19"><input type="checkbox" name="days" id="res_chk6_19" value="목"/>목요일</label> 
 
-							<label class="lab" for="res_chk6_20"><input type="checkbox" name="days" id="res_chk6_20" value="금요일"/>금요일</label> 
+							<label class="lab" for="res_chk6_20"><input type="checkbox" name="days" id="res_chk6_20" value="금"/>금요일</label> 
 
-							<label class="lab" for="res_chk6_21"><input type="checkbox" name="days" id="res_chk6_21" value="토요일"/>토요일</label>
+							<label class="lab" for="res_chk6_21"><input type="checkbox" name="days" id="res_chk6_21" value="토"/>토요일</label>
 
-							<label class="lab" for="res_chk6_22"><input type="checkbox" name="days" id="res_chk6_22" value="일요일"/>일요일</label>
+							<label class="lab" for="res_chk6_22"><input type="checkbox" name="days" id="res_chk6_22" value="일"/>일요일</label>
 
 
 						</div>

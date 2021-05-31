@@ -34,7 +34,8 @@ public class ApplyDAO {
 	}
 
 	public int insertApply(Connection con, ApplyPostDTO userPostCode) {
-PreparedStatement pstmt = null;
+		
+		PreparedStatement pstmt = null;
 		
 		int newApply = 0;
 		

@@ -25,11 +25,7 @@ import com.baekgu.silvertown.common.paging.PageNation;
 public class BusinessReportServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		HttpSession session = request.getSession();
-	    BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
-	      
-		
+	  
 		/* paging 처리 */
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 1;
@@ -41,7 +37,10 @@ public class BusinessReportServlet extends HttpServlet {
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
-		
+
+		HttpSession session = request.getSession();
+	    BusinessMemberDTO loggedInUser = (BusinessMemberDTO)session.getAttribute("loginBusinessMember");
+	    
 		/* 한 페이지에 보여 줄 게시물 수 */
 		int limit = 10;
 		/* 한 번에 보여질 페이징 버튼의 수*/
@@ -58,6 +57,7 @@ public class BusinessReportServlet extends HttpServlet {
 	    reportList  = service.selectReportList(loggedInUser.getbId(), pageInfo);
 	    
 	    request.setAttribute("reportList", reportList);
+		request.setAttribute("pageInfo", pageInfo); 
 	    String path = "/WEB-INF/views/business/main/reportlist.jsp";
 	      
 	    request.getRequestDispatcher(path).forward(request, response);
@@ -67,11 +67,6 @@ public class BusinessReportServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 값확인 - 성공 
-//		System.out.println(request.getParameter("reportReason"));
-//		System.out.println(request.getParameter("postCode"));
-//		System.out.println(request.getParameter("resumeCode"));
-		
 		int postCode = Integer.parseInt(request.getParameter("postCode"));
 		int resumeCode = Integer.parseInt(request.getParameter("resumeCode"));
 		String reportReason = request.getParameter("reportReason");

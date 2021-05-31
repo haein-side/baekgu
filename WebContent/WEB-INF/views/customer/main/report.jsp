@@ -28,16 +28,12 @@
         <button class="report_button" name="btn" id="btnReport" type="submit">
             <script>
 				$(function(){
-				//alert("${ postCode }");
 			
 				$("#btnReport").click(function(){
 				
 				const postCode = $("#postCode").val();
 				const reportReason = $("#reportDetail").val();
-				
-				console.log(postCode);
-				console.log(reportReason);
-				
+
 				$.ajax({
 					url:"${ pageContext.servletContext.contextPath }/user/report",
 					type:"post",
