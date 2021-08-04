@@ -287,14 +287,12 @@
 	   		       /* $('.btn1').removeClass("btnSelected");
 	   		        $(this).addClass("btnSelected")  */
 	   		         jQuery(this).toggleClass("active");
-	   		        
-	   		         
 	   			});    
-	   		   
-	   		    
-	   		   
+
 	   		});  
 	   	}
+
+	       
 	       
 	       
 	    
@@ -481,7 +479,7 @@
 								<div align="center" style="margin-bottom: 70px;">
 									<div style="width: 1000px;">
 										<!-- 경력 카테고리 -->
-										<label for="e1" class="btn1 exp" name="exp" style="margin: 15px; width: 200pt; height: 60pt; font-size: 
+										<label for="e1" class="btn1 exp" name="exp"  style="margin: 15px; width: 200pt; height: 60pt; font-size: 
                            				x-large; text-align: center;"><p style="margin-top:22px; font-weight:normal">경력 없음</p></label> 
                                     	<input type="checkbox" id="e1" name = "exp1" style="display: none" value="1">  
 

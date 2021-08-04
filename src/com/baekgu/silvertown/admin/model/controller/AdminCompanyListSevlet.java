@@ -24,21 +24,23 @@ public class AdminCompanyListSevlet extends HttpServlet {
 		
 		String currentPage = request.getParameter("currentPage");
 		int pageNo = 0;
-		
-		if(currentPage != null && "".equals(currentPage)) {
+		System.out.println("currentPage : " + currentPage);
+		if(currentPage != null && !"".equals(currentPage)) {
+			System.out.println("currentPage 2 : " + currentPage);
 			pageNo = Integer.parseInt(currentPage);
 		}
-		
+		System.out.println("pageInNo : " + pageNo);
 		if(pageNo <= 0) {
 			pageNo = 1;
 		}
 		
-		
+		System.out.println("pageInNo 1 : " + pageNo);
 		//가입신청이 한 번이라도 거절, 승인된 기업만 나타낸다
 		AdminCompanyService companyService = new AdminCompanyService();
 		int totalCount = companyService.selectTotalCount();
 		
 		System.out.println("총 기업 수 : " + totalCount);
+		
 		
 		int limit = 10;
 		int buttonAmount = 5;

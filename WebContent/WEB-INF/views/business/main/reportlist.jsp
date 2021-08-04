@@ -53,7 +53,7 @@
 
 <jsp:include page="../common/header.jsp"/>
   
-<div class="container-fluid text-center" style="padding-left: 0%;">    
+<div class="container-fluid text-center" style="padding-left: 0%; height:700px;" >    
   <div class="row content" style="height: auto;">
     <div class="col-sm-1 sidenav">
     </div>
