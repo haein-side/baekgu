@@ -92,44 +92,29 @@ h1, h2 {
 }
 </style>
 <script>
- 	function sendSms(){
- 		
+ 	function sendSms(){		
  		var num = $('#buphone').val();
  		var userId = $('#userId').val();
- 		
- 		
  		console.log(num);
  		console.log(userId);
- 		
-
- 		$.ajax({
- 			
+ 		$.ajax({	
  			url:"${ pageContext.servletContext.contextPath }/business/sendsms",
  			data:{
  				num : num,
  				userId : userId
  			},
  			type:"post",
- 			success:function(data, textStatus, xhr){
- 			
+ 			success:function(data, textStatus, xhr){		
  			alert("인증번호를 전송했습니다. 인증번호가 오지 않으면 입력하신 휴대폰번호가 회원정보와 일치하는지 확인해주세요.")
- 			
  			},
  			error:function(xhr, status, error){
- 				
  			}
- 			
  		});	
- 			
  	} 
- 	
  	function smsCheck(){
- 		
  		var userId = $('#userId').val();
  		var check = $('#sms').val();
- 		
  		$.ajax({
- 			
  			url: "${ pageContext.servletContext.contextPath }/business/checkmessage",
  			type:"post",
  			data: {
@@ -138,21 +123,17 @@ h1, h2 {
  			},
  			dataType:"json",
  			success:function(result, textStatus, xhr){
- 				
  				console.log(result);
  				if($.trim(result) == "ok"){
  					alert("인증에 성공 하셨습니다.");
  					$('#checking').attr("value", "success");
- 					
  				} else {
  					alert("인증에 실패 하셨습니다");
  				}
  			},
  			error:function(xhr, status, error){
- 				
  			}
  		});
- 		
  	}
   </script>
 </head>

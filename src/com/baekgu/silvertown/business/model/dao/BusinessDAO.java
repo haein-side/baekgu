@@ -578,58 +578,37 @@ public class BusinessDAO {
 	}
 
 	public List<PaymentDTO> selectAllpayList(Connection con, String hrId, PageInfoDTO pageInfo) {
-
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-
 		List<PaymentDTO> payList = new ArrayList<PaymentDTO>();
-
 		String query;
-
 		boolean flag = true;
-
 		if (pageInfo.getCategory().equals("전체")) {
-
 			query = prop.getProperty("selectAllPayList");
-
 		} else {
-
 			query = prop.getProperty("selectPayListByCategory");
 			flag = false;
 		}
-
-		System.out.println("pageInfo : " + pageInfo.getCategory());
-
 		int payStatus = 0;
 		if (pageInfo.getCategory().equals("미결제")) {
 			payStatus = 0;
-
 		} else {
-
 			payStatus = 1;
 		}
-
 		try {
 			pstmt = con.prepareStatement(query);
-
 			if (flag) {
-
 				pstmt.setString(1, hrId);
 				pstmt.setInt(2, pageInfo.getStartRow());
 				pstmt.setInt(3, pageInfo.getEndRow());
-
 			} else {
-
 				pstmt.setString(1, hrId);
 				pstmt.setInt(2, payStatus);
 				pstmt.setInt(3, pageInfo.getStartRow());
 				pstmt.setInt(4, pageInfo.getEndRow());
-
 			}
 			rset = pstmt.executeQuery();
-
 			while (rset.next()) {
-
 				PaymentDTO payment = new PaymentDTO();
 				payment.setPostAdCode(rset.getInt(1));
 				payment.setPostTitle(rset.getString(2));
@@ -639,16 +618,13 @@ public class BusinessDAO {
 				payment.setPostAdPaid(rset.getInt(6));
 
 				payList.add(payment);
-
 			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-
 		return payList;
 	}
 
